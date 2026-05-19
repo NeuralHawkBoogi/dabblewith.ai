@@ -35,8 +35,26 @@ node model-router/smoke-test.js
 git diff --check
 ```
 
+### Implemented — slice 2: persisted usage counters + routing logs
+
+**Files added:**
+- `model-router/usage-store.js` — dependency-free JSON usage store
+  - Persists per-community daily/monthly token and cost counters.
+  - Supports plan defaults (`free`, `starter`, `growth`) and community-level budget overrides.
+  - Resets daily/monthly counters on UTC day/month rollover while preserving recent logs.
+  - `routeAndRecord(storageDir, input)` combines router budget checks with durable usage accounting.
+  - Routing logs store task class, model tier, token estimate, cost estimate, fallback reason, budget status, and context hash — not raw user messages or raw context.
+- `model-router/usage-store-smoke-test.js` — CLI smoke test covering sanitized community IDs, persistence, no raw text leakage, daily budget degradation, day rollover, and month rollover.
+
+**Test commands:**
+```
+node model-router/smoke-test.js
+node model-router/usage-store-smoke-test.js
+git diff --check
+```
+
 ### Next steps
 - [ ] Wire router decisions into the WhatsApp runtime reply path behind a backwards-compatible feature flag.
-- [ ] Persist per-community daily/monthly usage counters and routing logs.
+- [x] Persist per-community daily/monthly usage counters and routing logs.
 - [ ] Add provider-specific prompt-cache keys where supported.
 - [ ] Add rolling conversation summaries before sending context to cloud models.
