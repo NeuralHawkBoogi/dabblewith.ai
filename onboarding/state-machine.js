@@ -73,6 +73,47 @@ const STATES = {
 
 const TERMINAL_STATES = new Set(['pending_admin', 'activated', 'rejected']);
 
+const FIELD_ALIASES = {
+  communityName: ['community name', 'name', 'community', 'title'],
+  description: ['description', 'about', 'basics', 'community basics', 'purpose'],
+  audience: ['audience', 'members', 'ideal member', 'target members', 'target audience'],
+  tone: ['tone', 'voice', 'style', 'personality'],
+  topics: ['topics', 'interests', 'allowed topics'],
+  rules: ['rules', 'guidelines', 'community rules'],
+  linksEvents: ['links/events', 'links events', 'links', 'events', 'important links', 'upcoming events'],
+  registrationFields: ['registration fields', 'registration', 'fields', 'member fields', 'signup fields'],
+  whatsappNumber: ['whatsapp number', 'whatsapp', 'number', 'phone', 'phone number'],
+};
+
+function normalizeRevisionText(input) {
+  return (input || '')
+    .toLowerCase()
+    .replace(/[“”"'`]/g, '')
+    .replace(/[?:.!]+$/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .replace(/^(please\s+)?(revise|change|edit|update|set|fix|redo)\s+(the\s+)?/, '')
+    .replace(/^(please\s+)?(i want to|id like to|i would like to)\s+(revise|change|edit|update|set|fix|redo)\s+(the\s+)?/, '')
+    .trim();
+}
+
+function getStateForRevisionRequest(userMessage) {
+  const normalized = normalizeRevisionText(userMessage);
+  if (!normalized) return null;
+
+  for (const [stateName, stateDef] of Object.entries(STATES)) {
+    if (stateDef.field && stateDef.field.toLowerCase() === normalized) return stateName;
+  }
+
+  for (const [field, aliases] of Object.entries(FIELD_ALIASES)) {
+    if (aliases.some(alias => alias === normalized)) {
+      return Object.entries(STATES).find(([, stateDef]) => stateDef.field === field)?.[0] || null;
+    }
+  }
+
+  return null;
+}
+
 function sessionPath(storageDir, ownerId, communityId) {
   return path.join(storageDir, `${ownerId}_${communityId}.json`);
 }
@@ -160,12 +201,10 @@ function advance(session, userMessage) {
       const next = STATES[session.state];
       return { session, reply: next.prompt, done: true };
     }
-    // check if user wants to revise a field
-    const fieldKey = Object.entries(STATES).find(
-      ([, s]) => s.field && s.field.toLowerCase() === msg.toLowerCase()
-    );
-    if (fieldKey) {
-      const [targetState, targetDef] = fieldKey;
+    // check if user wants to revise a field by field name, alias, or `revise <field>` command
+    const targetState = getStateForRevisionRequest(msg);
+    if (targetState) {
+      const targetDef = STATES[targetState];
       session.state = targetState;
       session.revising = true;
       return { session, reply: targetDef.prompt, done: false };

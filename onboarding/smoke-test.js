@@ -18,7 +18,7 @@ const SCRIPT = [
   'https://chat.whatsapp.com/example | Launch meetup June 2026', // linksEvents
   'name, profession, city',                          // registrationFields
   '+91 98765 43210',                                 // whatsappNumber
-  'tone',                                            // review revision request
+  'revise tone',                                     // review revision request with command syntax
   'warm, concise, practical, slightly playful',      // revised tone
   'YES',                                             // review confirmation
 ];
@@ -49,8 +49,8 @@ function run() {
     sm.saveSession(storageDir, session);
     console.log(`\nBOT: ${result.reply}`);
 
-    if (answer === 'tone' && session.state !== 'tone') {
-      console.error('\nSMOKE TEST FAILED: review revision request should jump to tone state');
+    if (answer === 'revise tone' && session.state !== 'tone') {
+      console.error('\nSMOKE TEST FAILED: revise command should jump to tone state');
       process.exit(1);
     }
 
@@ -116,6 +116,26 @@ function run() {
       console.error(`\nSMOKE TEST FAILED: profile missing required field "${f}"`);
       process.exit(1);
     }
+  }
+
+  // Verify review-state aliases beyond exact field keys.
+  const aliasSession = sm.createSession('owner_alias', 'community_alias');
+  aliasSession.state = 'review';
+  aliasSession.answers = {
+    communityName: 'Alias Test Community',
+    description: 'Testing revision aliases',
+    audience: 'Community owners',
+    tone: 'friendly',
+    topics: 'AI, communities',
+    rules: 'Be useful',
+    linksEvents: 'none',
+    registrationFields: 'name, city',
+    whatsappNumber: '+91 90000 00000',
+  };
+  const aliasResult = sm.advance(aliasSession, 'change WhatsApp number');
+  if (aliasResult.session.state !== 'whatsapp_number' || !aliasResult.reply.includes('What WhatsApp number')) {
+    console.error('\nSMOKE TEST FAILED: aliased revise command should jump to whatsapp_number state');
+    process.exit(1);
   }
 
   // Test resume: load session and confirm it's in terminal state

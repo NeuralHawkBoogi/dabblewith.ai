@@ -89,8 +89,26 @@ node onboarding/smoke-test.js
 node onboarding/admin-gate-smoke-test.js
 ```
 
+### Implemented — slice 5: `revise <field>` command aliases
+
+**Files modified:**
+- `onboarding/state-machine.js`
+  - Added review-state revision command parsing for `revise/change/edit/update/set/fix/redo <field>`.
+  - Added friendly aliases for fields, including `community name`, `about`, `members`, `voice`, `links`, `events`, `registration fields`, and `WhatsApp number`.
+  - Existing exact field-key revision behavior remains backwards-compatible.
+- `onboarding/smoke-test.js`
+  - Updated main revision path to use `revise tone`.
+  - Added focused alias regression for `change WhatsApp number` jumping back to the `whatsapp_number` state.
+
+**Test commands:**
+```
+node onboarding/smoke-test.js
+node onboarding/admin-gate-smoke-test.js
+git diff --check
+```
+
 ### Next steps
 - [ ] Wire `advance()` into WhatsApp webhook handler (Twilio/Cloud API layer, separate ticket)
 - [x] Version community profile on each revision (keep history array)
-- [ ] Add `revise` command in review state that lets owner jump back to any named field by alias
+- [x] Add `revise` command in review state that lets owner jump back to any named field by alias
 - [ ] Integration test with real WhatsApp sandbox number
