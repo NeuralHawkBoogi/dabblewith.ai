@@ -39,7 +39,25 @@ node market-validation/smoke-test.js
 git diff --check
 ```
 
+### Implemented — slice 2: WhatsApp CTA/setup-intent lead adapter
+
+**Files added:**
+- `market-validation/whatsapp-intake.js`
+  - Detects WhatsApp owner-intent messages such as “setup a similar community bot” or “need an AI host for my community”.
+  - Converts CTA/runtime inbound events into structured lead inputs for `market-validation/leads.js` with inferred audience size, pain points, budget signal, urgency, source attribution, and segment hints.
+  - Stores only hashed/sanitized external references; raw phone numbers, emails, and token-like strings are not persisted.
+- `market-validation/whatsapp-intake-smoke-test.js`
+  - Covers setup-intent detection, non-lead message skipping, structured lead creation from a WhatsApp CTA message, qualification scoring, validation report inclusion, and no raw phone/email/secret leakage.
+
+**Test commands:**
+```bash
+node market-validation/smoke-test.js
+node market-validation/whatsapp-intake-smoke-test.js
+git diff --check
+```
+
 ### Next steps
-- [ ] Wire `/community-bot/` WhatsApp CTA and runtime owner-intent path to create lead records when users ask for a similar bot.
+- [x] Add a WhatsApp CTA/setup-intent adapter that can create lead records when users ask for a similar bot.
+- [ ] Wire the adapter into the runtime owner-intent path behind a disabled-by-default flag or explicit local-only capture mode.
 - [ ] Add admin report cron/export once real design-partner leads arrive.
 - [ ] Run 10 interviews and record segment findings before building heavy self-serve infrastructure.
