@@ -145,8 +145,26 @@ curl -fsS http://127.0.0.1:8122/healthz
 
 **Note:** service restart was blocked by interactive systemd authentication in the cron runner, so production remains on the pre-restart healthy code path until an authorized restart.
 
+### Implemented — slice 8: local WhatsApp transcript integration test
+
+**Files added:**
+- `onboarding/whatsapp-transcript-integration-test.js`
+  - Simulates an owner completing WhatsApp-first onboarding end-to-end without network calls or production sends.
+  - Covers first-contact prompt behavior, interruption/resume from persisted storage, full review summary, `change tone` revision alias, version/history creation, final `pending_admin` submission, and raw phone-number leakage prevention.
+  - Keeps the real sandbox-number acceptance item open because it requires an authorized WhatsApp test run.
+
+**Test commands:**
+```
+node onboarding/smoke-test.js
+node onboarding/admin-gate-smoke-test.js
+node onboarding/whatsapp-smoke-test.js
+node onboarding/whatsapp-transcript-integration-test.js
+git diff --check
+```
+
 ### Next steps
 - [x] Wire `handleInboundMessage()` into WhatsApp webhook handler behind a backwards-compatible feature flag (runtime repo)
 - [x] Version community profile on each revision (keep history array)
 - [x] Add `revise` command in review state that lets owner jump back to any named field by alias
+- [x] Add local transcript-style WhatsApp onboarding integration coverage without production sends
 - [ ] Integration test with real WhatsApp sandbox number
