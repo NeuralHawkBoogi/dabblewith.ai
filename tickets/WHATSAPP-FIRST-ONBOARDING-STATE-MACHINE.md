@@ -58,6 +58,21 @@ node onboarding/smoke-test.js           # slice 1 regression
 node onboarding/admin-gate-smoke-test.js
 ```
 
+### Implemented — slice 3: single-field review revision returns to summary
+
+**Files modified:**
+- `onboarding/state-machine.js`
+  - When an owner types a field name at review (for example `tone`), the state machine now marks a one-answer revision.
+  - After the revised answer is captured, onboarding returns directly to the generated review summary instead of forcing the owner to re-answer every later field.
+- `onboarding/smoke-test.js`
+  - Added a regression path that revises `tone`, asserts the session returns to `review`, and verifies the revised value is persisted before submitting for admin review.
+
+**Test commands:**
+```
+node onboarding/smoke-test.js
+node onboarding/admin-gate-smoke-test.js
+```
+
 ### Next steps
 - [ ] Wire `advance()` into WhatsApp webhook handler (Twilio/Cloud API layer, separate ticket)
 - [ ] Version community profile on each revision (keep history array)

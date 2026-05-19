@@ -18,6 +18,8 @@ const SCRIPT = [
   'https://chat.whatsapp.com/example | Launch meetup June 2026', // linksEvents
   'name, profession, city',                          // registrationFields
   '+91 98765 43210',                                 // whatsappNumber
+  'tone',                                            // review revision request
+  'warm, concise, practical, slightly playful',      // revised tone
   'YES',                                             // review confirmation
 ];
 
@@ -46,6 +48,23 @@ function run() {
     session = result.session;
     sm.saveSession(storageDir, session);
     console.log(`\nBOT: ${result.reply}`);
+
+    if (answer === 'tone' && session.state !== 'tone') {
+      console.error('\nSMOKE TEST FAILED: review revision request should jump to tone state');
+      process.exit(1);
+    }
+
+    if (answer === 'warm, concise, practical, slightly playful') {
+      if (session.state !== 'review' || !result.reply.includes('Reply YES to submit')) {
+        console.error('\nSMOKE TEST FAILED: revised field should return directly to review');
+        process.exit(1);
+      }
+      if (session.answers.tone !== answer) {
+        console.error('\nSMOKE TEST FAILED: revised tone was not persisted');
+        process.exit(1);
+      }
+    }
+
     if (result.done) { done = true; break; }
   }
 

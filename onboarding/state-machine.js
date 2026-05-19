@@ -166,6 +166,7 @@ function advance(session, userMessage) {
     if (fieldKey) {
       const [targetState, targetDef] = fieldKey;
       session.state = targetState;
+      session.revising = true;
       return { session, reply: targetDef.prompt, done: false };
     }
     // treat as revision of last non-review field
@@ -175,6 +176,12 @@ function advance(session, userMessage) {
   // normal state: store the answer, advance
   if (currentState.field) {
     session.answers[currentState.field] = msg;
+  }
+
+  if (session.revising) {
+    delete session.revising;
+    session.state = 'review';
+    return { session, reply: buildReviewPrompt(session), done: false };
   }
 
   session.state = currentState.next;
