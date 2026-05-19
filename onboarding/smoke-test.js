@@ -63,6 +63,20 @@ function run() {
         console.error('\nSMOKE TEST FAILED: revised tone was not persisted');
         process.exit(1);
       }
+      // Versioned-revision behavior
+      if (session.version !== 2) {
+        console.error('\nSMOKE TEST FAILED: version should bump to 2 after one revision, got', session.version);
+        process.exit(1);
+      }
+      if (!Array.isArray(session.history) || session.history.length !== 1) {
+        console.error('\nSMOKE TEST FAILED: history should contain 1 snapshot after one revision, got', session.history && session.history.length);
+        process.exit(1);
+      }
+      const snap = session.history[0];
+      if (snap.version !== 2 || snap.tone !== answer) {
+        console.error('\nSMOKE TEST FAILED: history snapshot should reflect version 2 and the revised tone');
+        process.exit(1);
+      }
     }
 
     if (result.done) { done = true; break; }
@@ -84,6 +98,16 @@ function run() {
   const profile = sm.generateProfile(loaded);
   console.log('\n=== Generated Community Profile ===');
   console.log(JSON.stringify(profile, null, 2));
+
+  // Latest generateProfile must reflect the current version
+  if (profile.version !== 2) {
+    console.error('\nSMOKE TEST FAILED: latest profile should report version 2, got', profile.version);
+    process.exit(1);
+  }
+  if (!Array.isArray(loaded.history) || loaded.history.length !== 1) {
+    console.error('\nSMOKE TEST FAILED: persisted history should contain 1 snapshot, got', loaded.history && loaded.history.length);
+    process.exit(1);
+  }
 
   // Verify profile fields
   const required = ['communityName', 'description', 'audience', 'tone', 'topics', 'whatsappNumber'];

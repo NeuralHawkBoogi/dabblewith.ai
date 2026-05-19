@@ -86,6 +86,7 @@ function createSession(ownerId, communityId) {
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     version: 1,
+    history: [],
   };
 }
 
@@ -181,6 +182,10 @@ function advance(session, userMessage) {
   if (session.revising) {
     delete session.revising;
     session.state = 'review';
+    // Versioned revision: bump version and snapshot the new profile into history.
+    session.version = (session.version || 1) + 1;
+    if (!Array.isArray(session.history)) session.history = [];
+    session.history.push(generateProfile(session));
     return { session, reply: buildReviewPrompt(session), done: false };
   }
 

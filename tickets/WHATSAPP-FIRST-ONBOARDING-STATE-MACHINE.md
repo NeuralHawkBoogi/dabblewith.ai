@@ -73,8 +73,24 @@ node onboarding/smoke-test.js
 node onboarding/admin-gate-smoke-test.js
 ```
 
+### Implemented — slice 4: versioned profile history on review revisions
+
+**Files modified:**
+- `onboarding/state-machine.js`
+  - New sessions now initialize `history: []`.
+  - Completing a field revision from the review state now increments `session.version` and appends the latest generated profile snapshot to `session.history`.
+  - Older persisted sessions without `history` continue to work; the history array is created on first revision.
+- `onboarding/smoke-test.js`
+  - Added assertions that a review-state tone revision bumps the session to version 2, appends one history snapshot, persists that snapshot, and keeps `generateProfile()` aligned with the latest version.
+
+**Test commands:**
+```
+node onboarding/smoke-test.js
+node onboarding/admin-gate-smoke-test.js
+```
+
 ### Next steps
 - [ ] Wire `advance()` into WhatsApp webhook handler (Twilio/Cloud API layer, separate ticket)
-- [ ] Version community profile on each revision (keep history array)
+- [x] Version community profile on each revision (keep history array)
 - [ ] Add `revise` command in review state that lets owner jump back to any named field by alias
 - [ ] Integration test with real WhatsApp sandbox number
