@@ -99,8 +99,29 @@ node market-validation/admin-report-smoke-test.js
 git diff --check
 ```
 
+### Implemented — slice 5: interview findings tracker + 10-interview decision gate
+
+**Files added:**
+- `market-validation/interviews.js`
+  - Records privacy-safe design-partner interview findings with sanitized community/lead ids and hashed external refs.
+  - Captures segment, interview date, willingness-to-pay signal, urgency, pain score, expected monthly conversations, objections/findings/next step, and recommendation (`continue`, `pivot`, `pause`).
+  - Summarizes qualified interview count, remaining interviews needed for the 10-interview gate, ranked segment signals, expected monthly conversation volume, and decision state.
+  - Exports Markdown/JSON via CLI: `node market-validation/interviews.js report <storageDir> [output.md|output.json]`.
+- `market-validation/interviews-smoke-test.js`
+  - Covers required-field validation, persistence, aggregation, 10-qualified-interview gate, segment ranking, Markdown/JSON export, and no raw phone/email/secret leakage.
+
+**Validation commands:**
+```bash
+node market-validation/smoke-test.js
+node market-validation/whatsapp-intake-smoke-test.js
+node market-validation/admin-report-smoke-test.js
+node market-validation/interviews-smoke-test.js
+git diff --check
+```
+
 ### Next steps
 - [x] Add a WhatsApp CTA/setup-intent adapter that can create lead records when users ask for a similar bot.
 - [x] Wire the adapter into the runtime owner-intent path behind a disabled-by-default flag or explicit local-only capture mode.
 - [x] Add admin report/export for inbound design-partner leads.
+- [x] Add privacy-safe interview findings tracker and segment decision-gate report.
 - [ ] Run 10 interviews and record segment findings before building heavy self-serve infrastructure.
