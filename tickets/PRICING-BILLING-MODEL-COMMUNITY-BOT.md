@@ -96,7 +96,29 @@ node billing/report-smoke-test.js
 git diff --check
 ```
 
+
+### Implemented — slice 4: offline Meta billing export reconciliation
+
+**Files added:**
+- `billing/meta-reconcile.js`
+  - Imports local Meta/WhatsApp billing exports from CSV or JSON without calling external APIs.
+  - Normalizes community ids, conversation categories, INR/USD amounts, and hashed external references.
+  - Compares actual Meta export WhatsApp cost against the platform meter’s WhatsApp estimate by community and category.
+  - Produces Markdown/JSON reconciliation reports with variance, review status, and gross margin recalculated using actual WhatsApp cost.
+  - Keeps output privacy-safe: raw phone numbers, message text, Meta IDs, and token-like strings are not emitted.
+- `billing/meta-reconcile-smoke-test.js`
+  - Covers CSV and JSON export parsing, INR/USD conversion, variance detection, category aggregation, actual-cost margin recalculation, report writes, and privacy leakage checks.
+
+**Validation commands:**
+```bash
+node billing/smoke-test.js
+node billing/report-smoke-test.js
+node billing/meta-reconcile-smoke-test.js
+git diff --check
+```
+
 ### Next steps
 - [x] Wire runtime inbound/outbound events into `billing/meter.js` behind a disabled-by-default feature flag.
 - [x] Add an admin-readable monthly usage export/report.
-- [ ] Reconcile WhatsApp conversation category pricing against live Meta billing export before invoicing.
+- [x] Add offline reconciliation of WhatsApp conversation category pricing against Meta billing exports before invoicing.
+- [ ] Run reconciliation on the first real Meta billing export before generating any customer invoice.
