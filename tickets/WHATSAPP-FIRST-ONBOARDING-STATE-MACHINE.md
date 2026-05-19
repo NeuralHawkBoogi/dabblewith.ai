@@ -107,8 +107,26 @@ node onboarding/admin-gate-smoke-test.js
 git diff --check
 ```
 
+### Implemented — slice 6: WhatsApp onboarding adapter without production runtime changes
+
+**Files added:**
+- `onboarding/whatsapp-adapter.js` — dependency-free adapter for WhatsApp webhook runtimes
+  - `handleInboundMessage(storageDir, { from, body, communityId? })` hashes the sender phone into a stable opaque `ownerId`, defaults/sanitizes `communityId`, loads-or-creates the onboarding session, advances the existing state machine, persists progress, and returns `{ ownerId, communityId, reply, done, state, isNew }`.
+  - First contact returns the opening prompt without consuming the body, so “hi” does not become the community name.
+  - Raw sender phone numbers are not persisted; sessions store only a masked phone suffix for admin/debug views.
+  - The module does not send WhatsApp messages and is not imported by production runtime yet, keeping current WhatsApp behavior unchanged.
+- `onboarding/whatsapp-smoke-test.js` — scripted CLI smoke test covering first-contact creation, resume-after-interruption, per-owner/community session isolation, review revision, terminal state behavior, and no raw owner phone leakage in persisted session JSON.
+
+**Test commands:**
+```
+node onboarding/smoke-test.js
+node onboarding/admin-gate-smoke-test.js
+node onboarding/whatsapp-smoke-test.js
+git diff --check
+```
+
 ### Next steps
-- [ ] Wire `advance()` into WhatsApp webhook handler (Twilio/Cloud API layer, separate ticket)
+- [ ] Wire `handleInboundMessage()` into WhatsApp webhook handler behind a backwards-compatible feature flag (runtime repo)
 - [x] Version community profile on each revision (keep history array)
 - [x] Add `revise` command in review state that lets owner jump back to any named field by alias
 - [ ] Integration test with real WhatsApp sandbox number
