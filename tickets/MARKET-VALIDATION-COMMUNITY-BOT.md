@@ -56,8 +56,32 @@ node market-validation/whatsapp-intake-smoke-test.js
 git diff --check
 ```
 
+### Implemented — slice 3: WhatsApp runtime lead-capture feature flag prepared
+
+**Runtime repo modified:** `/home/clawdbot/dabblewith-whatsapp/server.js`
+
+- Added disabled-by-default `DABBLE_MARKET_VALIDATION_ENABLED=false` flag.
+- Runtime loads `/home/clawdbot/dabblewith-ai/market-validation/whatsapp-intake.js` only when the flag is enabled.
+- Inbound WhatsApp text messages with owner/setup intent can create structured, privacy-safe design-partner lead records.
+- Capture runs after normal signal logging and does not send any outbound messages or broadcasts.
+- `/healthz` now reports market-validation flag/availability.
+- Added runtime smoke test: `/home/clawdbot/dabblewith-whatsapp/market-validation-runtime-smoke-test.js`.
+- Added docs: `docs/market-validation-whatsapp-runtime-flag.md`.
+
+**Validation commands:**
+```bash
+cd /home/clawdbot/dabblewith-whatsapp
+node --check server.js
+node market-validation-runtime-smoke-test.js
+
+cd /home/clawdbot/dabblewith-ai
+node market-validation/smoke-test.js
+node market-validation/whatsapp-intake-smoke-test.js
+git diff --check
+```
+
 ### Next steps
 - [x] Add a WhatsApp CTA/setup-intent adapter that can create lead records when users ask for a similar bot.
-- [ ] Wire the adapter into the runtime owner-intent path behind a disabled-by-default flag or explicit local-only capture mode.
+- [x] Wire the adapter into the runtime owner-intent path behind a disabled-by-default flag or explicit local-only capture mode.
 - [ ] Add admin report cron/export once real design-partner leads arrive.
 - [ ] Run 10 interviews and record segment findings before building heavy self-serve infrastructure.
