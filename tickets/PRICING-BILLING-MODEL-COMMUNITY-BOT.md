@@ -51,7 +51,25 @@ node billing/smoke-test.js
 git diff --check
 ```
 
+### Implemented — slice 2: admin-readable monthly usage report/export
+
+**Files added:**
+- `billing/report.js`
+  - Loads per-community monthly ledgers from `billing/meter.js` storage.
+  - Produces a portfolio summary and per-community summaries with plan, included conversations, overage estimate, revenue, model/WhatsApp/platform costs, gross margin, margin status, and recent metered events.
+  - Supports Markdown and JSON export via CLI: `node billing/report.js <storageDir> <YYYY-MM> <output.md|output.json>`.
+  - Keeps report output privacy-safe: only sanitized community ids and hashed external refs are emitted; raw WhatsApp text, phone numbers, and token-like strings are excluded.
+- `billing/report-smoke-test.js`
+  - Covers multi-community report generation, Markdown/JSON export, revenue/cost/margin aggregation, recent sanitized event inclusion, and no raw phone/secret/external-text leakage.
+
+**Test commands:**
+```bash
+node billing/smoke-test.js
+node billing/report-smoke-test.js
+git diff --check
+```
+
 ### Next steps
 - [ ] Wire runtime inbound/outbound events into `billing/meter.js` behind a disabled-by-default feature flag.
-- [ ] Add an admin-readable monthly usage export/report.
+- [x] Add an admin-readable monthly usage export/report.
 - [ ] Reconcile WhatsApp conversation category pricing against live Meta billing export before invoicing.
