@@ -100,6 +100,7 @@ function appendRoutingLog(usage, routed, opts = {}) {
     estimatedCostUsd: routed.log.estimatedCostUsd,
     fallbackReason: routed.log.fallbackReason,
     contextHash: routed.log.contextHash,
+    promptCache: routed.log.promptCache,
     conversationSummary: routed.log.conversationSummary,
     budgetStatus: routed.log.budgetStatus
   };

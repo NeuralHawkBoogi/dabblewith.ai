@@ -2,6 +2,7 @@
 
 const crypto = require('crypto');
 const { buildRoutingContext } = require('./conversation-summary');
+const { buildPromptCacheMetadata } = require('./prompt-cache');
 
 const MODEL_TIERS = {
   local_rules: { costPer1kInputUsd: 0, costPer1kOutputUsd: 0 },
@@ -109,6 +110,14 @@ function routeMessage(input = {}) {
     degradedReply = 'I can’t handle sensitive emergencies or secrets in chat. Please contact a human admin or local emergency/support channel right away.';
   }
 
+  const promptCache = buildPromptCacheMetadata({
+    ...input,
+    taskClass,
+    modelTier,
+    provider: input.provider || input.modelProvider || (modelTier === 'local_rules' ? 'local' : null),
+    context: routingContext.context,
+  });
+
   return {
     taskClass,
     modelTier,
@@ -122,6 +131,7 @@ function routeMessage(input = {}) {
       fallbackReason,
       budgetStatus,
       contextHash: contextHash(routingContext.context),
+      promptCache,
       conversationSummary: {
         messageCount: routingContext.conversationSummary.messageCount,
         olderMessageCount: routingContext.conversationSummary.olderMessageCount,

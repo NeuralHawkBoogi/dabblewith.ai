@@ -77,8 +77,28 @@ node model-router/conversation-summary-smoke-test.js
 git diff --check
 ```
 
+### Implemented — slice 4: provider-specific prompt-cache metadata
+
+**Files added/modified:**
+- `model-router/prompt-cache.js` — dependency-free cache metadata helper
+  - Normalizes provider names for OpenAI/GPT, Anthropic/Claude, Google/Gemini/Vertex, and local tiers.
+  - Emits provider-specific cache strategy metadata: OpenAI `prompt_cache_key`, Anthropic ephemeral cache control, Google cached-content key, local/no-cache.
+  - Builds stable opaque cache keys from community id, profile version, system prompt version, task class, and static context hash; raw context is never stored in the key.
+- `model-router/router.js` — routing logs now include `promptCache` metadata alongside token/cost/budget metadata.
+- `model-router/usage-store.js` — persisted routing logs retain sanitized prompt-cache metadata.
+- `model-router/prompt-cache-smoke-test.js` — covers provider normalization, stable key generation, cache busting on profile revision, local no-cache behavior, router wiring, persisted logs, and no raw context leakage.
+
+**Test commands:**
+```
+node model-router/smoke-test.js
+node model-router/usage-store-smoke-test.js
+node model-router/conversation-summary-smoke-test.js
+node model-router/prompt-cache-smoke-test.js
+git diff --check
+```
+
 ### Next steps
 - [ ] Wire router decisions into the WhatsApp runtime reply path behind a backwards-compatible feature flag.
 - [x] Persist per-community daily/monthly usage counters and routing logs.
-- [ ] Add provider-specific prompt-cache keys where supported.
+- [x] Add provider-specific prompt-cache keys where supported.
 - [x] Add rolling conversation summaries before sending context to cloud models.
