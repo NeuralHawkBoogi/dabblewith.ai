@@ -125,8 +125,28 @@ node onboarding/whatsapp-smoke-test.js
 git diff --check
 ```
 
+### Implemented — slice 7: runtime feature-flag wiring prepared
+
+**Runtime repo modified:** `/home/clawdbot/dabblewith-whatsapp/server.js`
+
+- Added opt-in owner onboarding routing behind `DABBLE_OWNER_ONBOARDING_ENABLED=false` by default.
+- Runtime loads `onboarding/whatsapp-adapter.js` only when the flag is enabled.
+- Owner-intent trigger phrases such as `community bot`, `setup bot`, `bot for my community`, and `start onboarding` can enter the WhatsApp-first onboarding flow.
+- Existing onboarding sessions resume by hashed sender id and sanitized community id.
+- Regular dabblewith.ai community messages continue through the existing community host path while the flag is off.
+- Added documentation: `docs/whatsapp-owner-onboarding-runtime-flag.md`.
+
+**Validation commands:**
+```
+cd /home/clawdbot/dabblewith-whatsapp
+node --check server.js
+curl -fsS http://127.0.0.1:8122/healthz
+```
+
+**Note:** service restart was blocked by interactive systemd authentication in the cron runner, so production remains on the pre-restart healthy code path until an authorized restart.
+
 ### Next steps
-- [ ] Wire `handleInboundMessage()` into WhatsApp webhook handler behind a backwards-compatible feature flag (runtime repo)
+- [x] Wire `handleInboundMessage()` into WhatsApp webhook handler behind a backwards-compatible feature flag (runtime repo)
 - [x] Version community profile on each revision (keep history array)
 - [x] Add `revise` command in review state that lets owner jump back to any named field by alias
 - [ ] Integration test with real WhatsApp sandbox number
