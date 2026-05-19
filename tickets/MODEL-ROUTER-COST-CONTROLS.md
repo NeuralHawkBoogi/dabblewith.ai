@@ -97,8 +97,33 @@ node model-router/prompt-cache-smoke-test.js
 git diff --check
 ```
 
+### Implemented — slice 5: WhatsApp runtime feature-flag wiring prepared
+
+**Runtime repo modified:** `/home/clawdbot/dabblewith-whatsapp/server.js`
+
+- Added disabled-by-default `DABBLE_MODEL_ROUTER_ENABLED=false` flag.
+- Runtime loads `/home/clawdbot/dabblewith-ai/model-router/usage-store.js` only when the flag is enabled.
+- Before LLM replies, runtime can route community messages through `routeAndRecord()` to persist sanitized usage counters and budget/safety metadata.
+- Budget/safety degraded replies can short-circuit the LLM call when enabled.
+- Outbound logs include sanitized `router` metadata; usage logs store hashes/estimates, not raw WhatsApp text or raw phone numbers.
+- Added runtime smoke test: `/home/clawdbot/dabblewith-whatsapp/model-router-runtime-smoke-test.js`.
+- Added docs: `docs/model-router-whatsapp-runtime-flag.md`.
+
+**Validation commands:**
+```
+cd /home/clawdbot/dabblewith-whatsapp
+node --check server.js
+node model-router-runtime-smoke-test.js
+cd /home/clawdbot/dabblewith-ai
+node model-router/smoke-test.js
+node model-router/usage-store-smoke-test.js
+node model-router/conversation-summary-smoke-test.js
+node model-router/prompt-cache-smoke-test.js
+git diff --check
+```
+
 ### Next steps
-- [ ] Wire router decisions into the WhatsApp runtime reply path behind a backwards-compatible feature flag.
+- [x] Wire router decisions into the WhatsApp runtime reply path behind a backwards-compatible feature flag.
 - [x] Persist per-community daily/monthly usage counters and routing logs.
 - [x] Add provider-specific prompt-cache keys where supported.
 - [x] Add rolling conversation summaries before sending context to cloud models.
