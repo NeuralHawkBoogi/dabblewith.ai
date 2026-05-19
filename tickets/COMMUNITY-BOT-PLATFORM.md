@@ -81,3 +81,13 @@ Needed platformization:
 - `tickets/COMMUNITY-GPU-SWARM-RD.md`
 - `tickets/WHATSAPP-FIRST-ONBOARDING-STATE-MACHINE.md`
 
+## Runtime hardening progress (2026-05-19)
+
+### WhatsApp runtime synthetic-send guard
+- Runtime repo modified: `/home/clawdbot/dabblewith-whatsapp/server.js`.
+- Added pre-Graph recipient normalization and synthetic test dry-run guard.
+- Default flag: `DABBLE_DRY_RUN_SYNTHETIC_SENDS=true`.
+- Prevents malformed/synthetic test sends like placeholder numbers ending `0000`/`0001` from hitting Meta Graph while leaving real recipients unchanged.
+- Smoke test added: `/home/clawdbot/dabblewith-whatsapp/synthetic-send-smoke-test.js`.
+- Docs: `docs/whatsapp-runtime-synthetic-send-guard.md`.
+
