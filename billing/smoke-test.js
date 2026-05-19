@@ -48,6 +48,20 @@ appendUsageRecord(dir, {
 appendUsageRecord(dir, {
   communityId,
   planId: 'starter',
+  unit: 'ai_conversation',
+  direction: 'outbound',
+  router: {
+    modelTier: 'low_cost_cloud',
+    taskClass: 'summary',
+    estimatedTokens: { input: 120, output: 45, total: 165 },
+    estimatedCostUsd: 0.001,
+  },
+  occurredAt: '2026-05-19T12:30:00.000Z',
+});
+
+appendUsageRecord(dir, {
+  communityId,
+  planId: 'starter',
   unit: 'broadcast',
   direction: 'outbound',
   whatsappCategory: 'marketing',
@@ -57,7 +71,7 @@ appendUsageRecord(dir, {
 const ledger = readLedger(dir, communityId, '2026-05');
 assert.strictEqual(ledger.communityId, 'fitness-moms-chennai', 'community id is filesystem-safe');
 assert.strictEqual(ledger.counters.onboardingWorkflows, 1, 'onboarding workflow is counted');
-assert.strictEqual(ledger.counters.aiConversations, 501, 'AI conversations are counted');
+assert.strictEqual(ledger.counters.aiConversations, 502, 'AI conversations are counted');
 assert.strictEqual(ledger.counters.adminReports, 1, 'admin reports are counted');
 assert.strictEqual(ledger.counters.broadcasts, 1, 'broadcasts are counted');
 assert.strictEqual(ledger.counters.nonBillableEvents, 2, 'non-billable records are explicit');
@@ -66,11 +80,12 @@ assert.strictEqual(JSON.stringify(ledger).includes('sk-live-secret'), false, 'ra
 assert.strictEqual(ledger.records[0].externalRefHash.length, 16, 'external references are hashed');
 
 const summary = summarizeMonth(dir, communityId, '2026-05');
-assert.strictEqual(summary.counters.billableAiConversations, 501, 'billable AI conversations are summarized');
-assert.strictEqual(summary.overageAiConversations, 1, 'overage is estimated before invoice generation');
+assert.strictEqual(summary.counters.billableAiConversations, 502, 'billable AI conversations are summarized');
+assert.strictEqual(summary.overageAiConversations, 2, 'overage is estimated before invoice generation');
 assert.strictEqual(summary.revenueInr.monthlyFee, 4999, 'monthly fee appears in summary');
-assert.strictEqual(summary.revenueInr.overage, 10, 'starter overage rate is applied');
+assert.strictEqual(summary.revenueInr.overage, 20, 'starter overage rate is applied');
 assert.strictEqual(summary.revenueInr.whatsappPassThrough > 0, true, 'WhatsApp pass-through revenue is estimated');
+assert.strictEqual(ledger.records.some(record => record.estimatedTokens === 165), true, 'router token objects are normalized');
 assert.strictEqual(summary.costsInr.model > 0, true, 'model costs are exported');
 assert.strictEqual(summary.costsInr.whatsapp > 0, true, 'WhatsApp costs are exported');
 assert.strictEqual(['healthy', 'watch'].includes(summary.marginStatus), true, 'gross margin status is present');

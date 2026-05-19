@@ -69,7 +69,34 @@ node billing/report-smoke-test.js
 git diff --check
 ```
 
+### Implemented — slice 3: WhatsApp runtime feature-flag wiring prepared
+
+**Runtime repo modified:** `/home/clawdbot/dabblewith-whatsapp/server.js`
+
+- Added disabled-by-default `DABBLE_BILLING_METER_ENABLED=false` flag.
+- Runtime loads `/home/clawdbot/dabblewith-ai/billing/meter.js` only when the flag is enabled.
+- Inbound WhatsApp text events can be metered as non-billable `whatsapp_pass_through` records.
+- Outbound community bot replies can be metered as billable `ai_conversation` records.
+- Owner onboarding replies can be metered as non-billable `onboarding_workflow` records until reviewed activation is defined.
+- `/healthz` now reports billing meter flag/availability.
+- Added runtime smoke test: `/home/clawdbot/dabblewith-whatsapp/billing-runtime-smoke-test.js`.
+- Added docs: `docs/billing-meter-whatsapp-runtime-flag.md`.
+- Hardened `billing/meter.js` to normalize model-router token objects and convert router USD cost estimates to INR so runtime router logs produce valid billing records.
+
+**Validation commands:**
+```bash
+cd /home/clawdbot/dabblewith-whatsapp
+node --check server.js
+node billing-runtime-smoke-test.js
+curl -fsS http://127.0.0.1:8122/healthz
+
+cd /home/clawdbot/dabblewith-ai
+node billing/smoke-test.js
+node billing/report-smoke-test.js
+git diff --check
+```
+
 ### Next steps
-- [ ] Wire runtime inbound/outbound events into `billing/meter.js` behind a disabled-by-default feature flag.
+- [x] Wire runtime inbound/outbound events into `billing/meter.js` behind a disabled-by-default feature flag.
 - [x] Add an admin-readable monthly usage export/report.
 - [ ] Reconcile WhatsApp conversation category pricing against live Meta billing export before invoicing.

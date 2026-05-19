@@ -13,6 +13,8 @@ const DEFAULT_WHATSAPP_COST_INR = Object.freeze({
   unknown: 0.35,
 });
 
+const DEFAULT_USD_TO_INR = 85;
+
 function sanitizeId(value, fallback = 'default') {
   const cleaned = String(value || '')
     .toLowerCase()
@@ -115,10 +117,10 @@ function appendUsageRecord(storageDir, input) {
   ledger.counters[counter] = (ledger.counters[counter] || 0) + 1;
   if (!billable) ledger.counters.nonBillableEvents += 1;
 
-  const modelCostInr = Number(input.modelCostInr || input.router?.costEstimateInr || 0);
+  const modelCostInr = estimateModelCostInr(input);
   const whatsappCategory = input.whatsappCategory || input.whatsapp?.category || null;
-  const whatsappCostInr = Number(input.whatsappCostInr ?? (whatsappCategory ? estimateWhatsAppCostInr(whatsappCategory) : 0));
-  const platformCostInr = Number(input.platformCostInr || 0);
+  const whatsappCostInr = coerceMoney(input.whatsappCostInr ?? (whatsappCategory ? estimateWhatsAppCostInr(whatsappCategory) : 0));
+  const platformCostInr = coerceMoney(input.platformCostInr || 0);
   ledger.costsInr.model += modelCostInr;
   ledger.costsInr.whatsapp += whatsappCostInr;
   ledger.costsInr.platform += platformCostInr;
@@ -132,7 +134,7 @@ function appendUsageRecord(storageDir, input) {
     source: input.source || 'runtime',
     modelTier: input.router?.modelTier || input.modelTier || null,
     taskClass: input.router?.taskClass || input.taskClass || null,
-    estimatedTokens: Number(input.router?.estimatedTokens || input.estimatedTokens || 0),
+    estimatedTokens: estimateTokens(input),
     costsInr: { model: modelCostInr, whatsapp: whatsappCostInr, platform: platformCostInr },
     whatsappCategory,
     externalRefHash: input.externalRef ? hashText(input.externalRef) : null,
@@ -143,6 +145,33 @@ function appendUsageRecord(storageDir, input) {
   recomputeRevenue(ledger);
   writeLedger(storageDir, ledger);
   return { ledger, record, summary: summarizeLedger(ledger) };
+}
+
+function estimateTokens(input) {
+  const candidate = input.router?.estimatedTokens ?? input.estimatedTokens ?? 0;
+  if (typeof candidate === 'number') return Number.isFinite(candidate) ? candidate : 0;
+  if (candidate && typeof candidate === 'object') {
+    const total = Number(candidate.total ?? 0);
+    if (Number.isFinite(total)) return total;
+    const inputTokens = Number(candidate.input ?? 0);
+    const outputTokens = Number(candidate.output ?? 0);
+    return Number.isFinite(inputTokens + outputTokens) ? inputTokens + outputTokens : 0;
+  }
+  const parsed = Number(candidate || 0);
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function coerceMoney(value) {
+  const parsed = Number(value || 0);
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function estimateModelCostInr(input) {
+  if (input.modelCostInr !== undefined) return coerceMoney(input.modelCostInr);
+  if (input.router?.costEstimateInr !== undefined) return coerceMoney(input.router.costEstimateInr);
+  if (input.router?.estimatedCostInr !== undefined) return coerceMoney(input.router.estimatedCostInr);
+  if (input.router?.estimatedCostUsd !== undefined) return coerceMoney(input.router.estimatedCostUsd) * DEFAULT_USD_TO_INR;
+  return 0;
 }
 
 function recomputeRevenue(ledger) {
