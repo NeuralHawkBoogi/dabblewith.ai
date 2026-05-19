@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#060912" />
+  <meta property="og:image" content="https://dabblewith.ai/app-icon-1024.png" />
+  <title>dabblewith.ai — Hands-on AI Community & Workshops</title>
+  <meta name="description" content="dabblewith.ai is an AI-operated, human-guided community for hands-on AI workshops, agent workflows, practical demos, and learning by doing." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="keywords" content="AI community, AI workshops, agent workflows, hands-on AI, learn AI, AI demos, AI automation community, dabblewith.ai" />
+  <meta name="author" content="dabblewith.ai" />
+  <link rel="canonical" href="https://dabblewith.ai/" />
+  <meta property="og:site_name" content="dabblewith.ai" />
+  <meta property="og:title" content="dabblewith.ai — Hands-on AI Community" />
+  <meta property="og:description" content="An AI-operated, human-guided community for hands-on AI workshops, agent workflows, practical demos, and learning by doing." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dabblewith.ai/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="dabblewith.ai — Hands-on AI Community" />
+  <meta name="twitter:description" content="AI-operated, human-guided workshops and demos for learning AI by doing." />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7473LZQGX2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-7473LZQGX2');
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "dabblewith.ai",
+    "url": "https://dabblewith.ai/",
+    "description": "AI-operated, human-guided community for hands-on AI workshops, agent workflows, practical demos, and learning by doing.",
+    "sameAs": []
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "dabblewith.ai",
+    "url": "https://dabblewith.ai/",
+    "description": "Hands-on AI community and workshops."
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #060912;
+      --panel: rgba(11, 18, 32, .88);
+      --panel-2: rgba(16, 27, 48, .92);
+      --line: rgba(116, 255, 219, .26);
+      --line-hard: #74ffdb;
+      --text: #f2fbff;
+      --muted: #91a5b8;
+      --green: #74ff7b;
+      --cyan: #74ffdb;
+      --blue: #58a6ff;
+      --amber: #ffcc66;
+      --red: #ff6b7a;
+      --violet: #a78bfa;
+      --shadow: 0 24px 90px rgba(0, 0, 0, .55);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        linear-gradient(rgba(116,255,219,.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(116,255,219,.055) 1px, transparent 1px),
+        radial-gradient(circle at 20% 0%, rgba(88,166,255,.22), transparent 28rem),
+        radial-gradient(circle at 90% 10%, rgba(116,255,123,.16), transparent 25rem),
+        radial-gradient(circle at 50% 100%, rgba(167,139,250,.15), transparent 34rem),
+        var(--bg);
+      background-size: 42px 42px, 42px 42px, auto, auto, auto, auto;
+      overflow-x: hidden;
+    }
+    body:before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,.025) 1px, transparent 1px, transparent 4px);
+      opacity: .45;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+    a { color: inherit; }
+    .shell { width: min(1180px, calc(100% - 30px)); margin: 0 auto; }
+    .statusbar {
+      border-bottom: 1px solid var(--line);
+      background: rgba(6,9,18,.82);
+      backdrop-filter: blur(14px);
+      color: var(--muted);
+      font: 12px/1.3 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    .statusbar .shell { display: flex; justify-content: space-between; gap: 18px; padding: 10px 0; flex-wrap: wrap; }
+    .ok { color: var(--green); }
+    .warn { color: var(--amber); }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; }
+    .logo { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; font-weight: 900; letter-spacing: -.05em; font-size: clamp(24px, 3vw, 35px); }
+    .logo-dot { width: 16px; height: 16px; border-radius: 999px; background: var(--green); box-shadow: 0 0 20px var(--green), 0 0 60px rgba(116,255,123,.5); }
+    .nav-links { display: flex; gap: 9px; flex-wrap: wrap; }
+    .nav-links a { color: var(--muted); text-decoration: none; border: 1px solid var(--line); padding: 9px 12px; border-radius: 999px; font-size: 13px; background: rgba(255,255,255,.03); }
+    .hero { display: grid; grid-template-columns: 1.12fr .88fr; gap: 18px; padding: 34px 0 52px; align-items: stretch; }
+    .panel {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(16,27,48,.94), rgba(8,13,25,.92));
+      box-shadow: var(--shadow);
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+    }
+    .panel:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 0%, rgba(116,255,219,.12), transparent 28rem);
+      pointer-events: none;
+    }
+    .panel-head {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font: 12px/1.2 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .lights { display: flex; gap: 7px; }
+    .light { width: 9px; height: 9px; border-radius: 50%; background: var(--green); box-shadow: 0 0 14px var(--green); }
+    .light:nth-child(2) { background: var(--amber); box-shadow: 0 0 14px var(--amber); }
+    .light:nth-child(3) { background: var(--blue); box-shadow: 0 0 14px var(--blue); }
+    .hero-main { padding: clamp(26px, 5vw, 54px); min-height: 610px; display: flex; flex-direction: column; justify-content: space-between; position: relative; z-index: 1; }
+    .eyebrow { width: fit-content; color: var(--cyan); border: 1px solid var(--line-hard); background: rgba(116,255,219,.08); border-radius: 999px; padding: 9px 12px; font: 12px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { margin: 26px 0 20px; font-size: clamp(50px, 8.8vw, 112px); line-height: .88; letter-spacing: -.075em; max-width: 900px; }
+    .lead { color: #d7e9f7; font-size: clamp(19px, 2.35vw, 27px); line-height: 1.35; max-width: 780px; margin: 0; }
+    .lead strong { color: var(--green); }
+    .actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 32px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: 1px solid var(--line-hard); color: var(--cyan); background: rgba(116,255,219,.07); border-radius: 14px; padding: 14px 17px; text-decoration: none; font-weight: 800; box-shadow: 0 0 28px rgba(116,255,219,.08); }
+    .btn.primary { color: #04120e; background: var(--green); border-color: var(--green); box-shadow: 0 0 30px rgba(116,255,123,.35); }
+    .console { margin-top: 28px; border: 1px solid rgba(116,255,219,.18); border-radius: 18px; background: rgba(0,0,0,.32); padding: 16px; color: #d3ffe5; font: 13px/1.75 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; max-width: 700px; }
+    .console .dim { color: #6f879b; }
+    .side { display: grid; gap: 18px; }
+    .small-panel { padding: 20px; position: relative; z-index: 1; }
+    .metric { display: grid; gap: 12px; }
+    .metric-row { display: flex; justify-content: space-between; gap: 14px; align-items: center; padding: 13px 0; border-bottom: 1px solid rgba(116,255,219,.12); font: 13px/1.25 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .metric-row:last-child { border-bottom: 0; }
+    .badge { color: var(--green); border: 1px solid rgba(116,255,123,.45); background: rgba(116,255,123,.08); padding: 4px 8px; border-radius: 999px; }
+    .badge.warn { color: var(--amber); border-color: rgba(255,204,102,.45); background: rgba(255,204,102,.08); }
+    .badge.blue { color: var(--blue); border-color: rgba(88,166,255,.45); background: rgba(88,166,255,.08); }
+    h2 { margin: 0; font-size: clamp(32px, 4.8vw, 55px); line-height: .96; letter-spacing: -.055em; }
+    h3 { margin: 0 0 9px; font-size: 23px; letter-spacing: -.035em; }
+    p { color: var(--muted); line-height: 1.58; }
+    section { padding: 44px 0; }
+    .section-head { display: grid; grid-template-columns: .85fr 1fr; gap: 22px; align-items: end; margin-bottom: 20px; }
+    .section-head p { margin: 0; font-size: 18px; color: #b8c8d8; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card { border: 1px solid var(--line); background: rgba(16,27,48,.76); border-radius: 22px; padding: 22px; min-height: 220px; position: relative; overflow: hidden; }
+    .card:after { content: attr(data-code); position: absolute; right: 14px; bottom: 10px; color: rgba(116,255,219,.16); font: 700 44px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .card strong { display: block; color: var(--text); font-size: 20px; margin-bottom: 10px; }
+    .card p { margin: 0; }
+    .flow { display: grid; gap: 12px; }
+    .flow-step { border: 1px solid var(--line); border-radius: 18px; background: rgba(6,9,18,.64); padding: 16px; display: grid; grid-template-columns: 170px 1fr auto; gap: 16px; align-items: center; }
+    .flow-step .agent { color: var(--cyan); font: 13px/1.2 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .flow-step p { margin: 0; }
+    .events { display: grid; gap: 14px; }
+    .event { border: 1px solid var(--line); border-radius: 22px; background: rgba(16,27,48,.82); padding: 18px; display: grid; grid-template-columns: 150px 1fr auto; gap: 18px; align-items: center; }
+    .date { border: 1px solid rgba(116,255,123,.45); color: var(--green); background: rgba(116,255,123,.07); border-radius: 16px; padding: 13px; text-align: center; font: 800 13px/1.3 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; text-transform: uppercase; }
+    .event p { margin: 0; }
+    .join { border: 1px solid var(--line-hard); border-radius: 26px; background: linear-gradient(135deg, rgba(116,255,123,.16), rgba(88,166,255,.12)); padding: clamp(24px, 4vw, 42px); box-shadow: var(--shadow); }
+    .join p { color: #d7e9f7; font-size: 19px; max-width: 760px; }
+    footer { border-top: 1px solid var(--line); margin-top: 40px; padding: 26px 0 34px; color: var(--muted); font: 13px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    footer .shell { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    @media (max-width: 900px) {
+      .hero, .section-head, .grid { grid-template-columns: 1fr; }
+      .event, .flow-step { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hero-main { min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="statusbar">
+    <div class="shell">
+      <span><span class="ok">●</span> community_os: booting</span>
+      <span><span class="warn">●</span> human_review: required</span>
+      <span>mode: online-first / hands-on</span>
+    </div>
+  </div>
+
+  <nav class="shell">
+    <a class="logo" href="#top"><span class="logo-dot"></span>dabblewith.ai</a>
+    <div class="nav-links">
+      <a href="/blog/">Blog</a>
+      <a href="/autopilot/">Autopilot</a>
+      <a href="/sessions/">Sessions</a>
+      <a href="/blog/">Blog</a>
+      <a href="#control-room">Control room</a>
+      <a href="#join">Join signal</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero shell">
+      <div class="panel">
+        <div class="panel-head"><span>main_control / dabblewith.ai</span><span class="lights"><i class="light"></i><i class="light"></i><i class="light"></i></span></div>
+        <div class="hero-main">
+          <div>
+            <div class="eyebrow">AI-run community · human supervised</div>
+            <h1>A community OS for learning AI by doing.</h1>
+            <p class="lead"><strong>dabblewith.ai</strong> is operated with AI agents and overseen by humans. The site, sessions, recaps, reminders, and experiments become part of the demo.</p>
+            <div class="console">
+              <span class="dim">$</span> topic_agent.scan(interests)<br/>
+              <span class="dim">$</span> human_review.approve(direction)<br/>
+              <span class="dim">$</span> session_agent.prepare(demo_materials)<br/>
+              <span class="dim">$</span> community.learn(in_public)
+            </div>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="https://wa.me/919566112518?text=I%27m%20interested%20in%20dabblewith.ai" target="_blank" rel="noreferrer">Send join signal</a>
+            <a class="btn" href="/autopilot/">Open autopilot</a>
+          </div>
+        </div>
+      </div>
+
+      <aside class="side">
+        <div class="panel">
+          <div class="panel-head"><span>operator_status</span><span class="ok">LIVE</span></div>
+          <div class="small-panel metric">
+            <div class="metric-row"><span>topic_agent</span><span class="badge">online</span></div>
+            <div class="metric-row"><span>event_page_agent</span><span class="badge">drafting</span></div>
+            <div class="metric-row"><span>recap_agent</span><span class="badge blue">standby</span></div>
+            <div class="metric-row"><span>human_review</span><span class="badge warn">mandatory</span></div>
+            <div class="metric-row"><span>community_status</span><span class="badge">forming</span></div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><span>mission</span><span>v0.1</span></div>
+          <div class="small-panel">
+            <h3>AI is not the mascot. It is part of the operating team.</h3>
+            <p>Every meetup should reveal what AI helped run, what humans corrected, and what members can reuse.</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+
+    <section class="shell" id="autopilot-preview">
+      <div class="section-head">
+        <div><div class="eyebrow">autonomous layer</div><h2>The community now has an autopilot.</h2></div>
+        <p>Agents maintain the topic queue, session drafts, public playbooks, and operating log. Humans still approve taste, safety, and public commitments.</p>
+      </div>
+      <div class="grid">
+        <article class="card" data-code="A1"><strong>Signal intake</strong><p>Member interest is converted into structured topic signals instead of disappearing into chat history.</p></article>
+        <article class="card" data-code="A2"><strong>Session queue</strong><p>AI drafts event candidates, artifacts, and agendas; the host reviews before announcement.</p></article>
+        <article class="card" data-code="A3"><strong>Content engine</strong><p>Workshops and operating notes become blog posts, recaps, checklists, and SEO pages.</p></article>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="/autopilot/">View autopilot</a>
+        <a class="btn" href="/sessions/">View session queue</a>
+      </div>
+    </section>
+
+    <section class="shell" id="control-room">
+      <div class="section-head">
+        <div><div class="eyebrow">control room</div><h2>What AI runs. What humans own.</h2></div>
+        <p>The community is designed as a transparent operating system: agents do the busywork, humans keep judgment, taste, safety, and context.</p>
+      </div>
+      <div class="grid">
+        <article class="card" data-code="01"><strong>AI handles operations</strong><p>Topic clustering, event copy, website updates, session notes, recaps, reminders, follow-up drafts, and content outlines.</p></article>
+        <article class="card" data-code="02"><strong>Humans supervise decisions</strong><p>People approve public copy, choose session direction, protect privacy, host the room, and correct bad outputs.</p></article>
+        <article class="card" data-code="03"><strong>Members see the machinery</strong><p>We show prompts, workflows, mistakes, fixes, and practical takeaways instead of pretending the system is magic.</p></article>
+      </div>
+    </section>
+
+    <section class="shell" id="workflow">
+      <div class="section-head">
+        <div><div class="eyebrow">operating loop</div><h2>Community workflow.</h2></div>
+        <p>A simple loop for each session: collect interest, let AI prepare options, humans approve, run the event, publish the learning.</p>
+      </div>
+      <div class="flow">
+        <div class="flow-step"><div class="agent">01 / signal intake</div><p>People message what they want to learn or build.</p><span class="badge">WhatsApp</span></div>
+        <div class="flow-step"><div class="agent">02 / AI clustering</div><p>Agents group interests into session themes and draft possible agendas.</p><span class="badge blue">AI assist</span></div>
+        <div class="flow-step"><div class="agent">03 / human gate</div><p>Humans pick the useful topic, check quality, and set the tone.</p><span class="badge warn">required</span></div>
+        <div class="flow-step"><div class="agent">04 / public learning</div><p>After the session, AI drafts notes and humans publish the final recap.</p><span class="badge">recap</span></div>
+      </div>
+    </section>
+
+    <section class="shell" id="sessions">
+      <div class="section-head">
+        <div><div class="eyebrow">first session queue</div><h2>Proposed runs.</h2></div>
+        <p>Initial topics for the first circle. Final order depends on member signals and human review.</p>
+      </div>
+      <div class="events">
+        <article class="event">
+          <div class="date">queued<br/>run_001</div>
+          <div><h3>OpenClaw: personal AI with tools</h3><p>How an assistant can remember context, use tools, send messages, schedule work, and still need human boundaries.</p></div>
+          <a class="btn" href="https://wa.me/919566112518?text=I%27m%20interested%20in%20the%20OpenClaw%20session" target="_blank" rel="noreferrer">Signal interest</a>
+        </article>
+        <article class="event">
+          <div class="date">queued<br/>run_002</div>
+          <div><h3>NeoSapien voice agents</h3><p>Live voice-agent demos, useful workflows, failure modes, and where the hype breaks.</p></div>
+          <a class="btn" href="https://wa.me/919566112518?text=I%27m%20interested%20in%20the%20NeoSapien%20session" target="_blank" rel="noreferrer">Signal interest</a>
+        </article>
+        <article class="event">
+          <div class="date">queued<br/>run_003</div>
+          <div><h3>Build an AI workflow in 60 minutes</h3><p>Prompt → tool → automation → review loop. A small useful workflow, built live.</p></div>
+          <a class="btn" href="https://wa.me/919566112518?text=I%27m%20interested%20in%20AI%20workflow%20sessions" target="_blank" rel="noreferrer">Signal interest</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="shell" id="join">
+      <div class="join">
+        <div class="eyebrow">join signal</div>
+        <h2>Enter the first control room.</h2>
+        <p>Message us on WhatsApp. We’ll use the first set of signals to decide the topic, timing, format, and community rhythm — with AI helping organize the inputs and humans making the call.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://wa.me/919566112518?text=I%27m%20interested%20in%20dabblewith.ai" target="_blank" rel="noreferrer">WhatsApp interest</a>
+          <a class="btn" href="mailto:bhuvanesh@neuralhawk.ai?subject=dabblewith.ai%20interest">Email interest</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <span>dabblewith.ai / community_os</span>
+      <span>AI-operated · human-supervised · online-first · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span>
+    </div>
+  </footer>
+</body>
+</html>

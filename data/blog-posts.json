@@ -1,0 +1,254 @@
+[
+  {
+    "slug": "hands-on-ai-community-learning-by-doing",
+    "title": "Why a Hands-On AI Community Beats Passive AI Learning",
+    "description": "A practical look at why learning AI through workshops, demos, and real workflows creates better outcomes than passive tutorials.",
+    "keywords": [
+      "hands-on AI community",
+      "learn AI by doing",
+      "AI workshops",
+      "practical AI demos"
+    ],
+    "publishedAt": "2026-05-18",
+    "status": "published",
+    "excerpt": "AI skill compounds when people build, break, review, and reuse workflows together.",
+    "sections": [
+      [
+        "The AI learning gap",
+        "Most AI learning still looks like passive consumption: watching tool demos, saving prompt lists, and reading threads. That helps awareness, but it rarely changes how people work. A hands-on AI community closes the gap by turning every session into a working lab. Members bring real problems, test agent workflows, and leave with reusable patterns."
+      ],
+      [
+        "Why doing matters",
+        "AI tools are probabilistic, contextual, and workflow-dependent. You cannot fully understand them from a polished demo. You need to see what fails, what needs human review, where automation saves time, and where it creates risk. This is why dabblewith.ai is built around practical AI demos instead of lectures."
+      ],
+      [
+        "The community advantage",
+        "A community adds shared context. One founder may test AI for sales research, another may use it for design reviews, and another may automate meeting notes. When these workflows are shown openly, everyone learns faster than they would alone."
+      ],
+      [
+        "What good sessions should produce",
+        "A strong AI workshop should produce artifacts: prompts, workflows, checklists, small automations, decision notes, and failure examples. The value is not just inspiration. The value is a system people can adapt the next day."
+      ],
+      [
+        "Human-guided AI learning",
+        "The best AI communities do not treat AI as magic. They keep humans responsible for judgment, privacy, quality, and taste. AI accelerates the operating loop; humans decide what is worth doing."
+      ]
+    ]
+  },
+  {
+    "slug": "ai-operated-community-human-guided",
+    "title": "What It Means to Run an AI-Operated, Human-Guided Community",
+    "description": "How AI agents can run community operations while humans keep judgment, safety, and taste in the loop.",
+    "keywords": [
+      "AI-operated community",
+      "human-guided AI",
+      "AI community operations",
+      "AI agents"
+    ],
+    "publishedAt": "2026-05-19",
+    "status": "published",
+    "excerpt": "AI can run the busywork of community operations, but humans must own the decisions.",
+    "sections": [
+      [
+        "AI as the operating layer",
+        "An AI-operated community uses agents for repeatable work: collecting member interests, drafting session agendas, preparing reminders, summarizing events, and turning raw notes into public recaps. The point is not to remove people; it is to remove operational drag."
+      ],
+      [
+        "Where humans stay essential",
+        "Humans decide what should be published, which topics deserve attention, how sensitive information is handled, and whether a workflow is actually useful. Human-guided AI keeps accountability in the system."
+      ],
+      [
+        "Transparent operations",
+        "The most interesting part of an AI-operated community is transparency. Members should see how an agenda was generated, what the agent missed, and how the human reviewer improved it. That turns operations into education."
+      ],
+      [
+        "Practical use cases",
+        "A community can use AI to cluster WhatsApp messages into themes, produce a shortlist of workshop ideas, draft landing pages, create post-event summaries, and maintain a living knowledge base."
+      ],
+      [
+        "The principle",
+        "Let AI do the repetitive work. Let humans provide direction, taste, ethics, and context. That is the operating model behind dabblewith.ai."
+      ]
+    ]
+  },
+  {
+    "slug": "agent-workflows-for-founders",
+    "title": "Agent Workflows for Founders: From Idea to Repeatable Operating System",
+    "description": "A founder-focused guide to using AI agent workflows for research, sales, operations, content, and decision support.",
+    "keywords": [
+      "agent workflows for founders",
+      "AI automation for startups",
+      "AI operating system",
+      "founder AI tools"
+    ],
+    "publishedAt": "2026-05-20",
+    "status": "queued",
+    "excerpt": "Founders should think in workflows, not one-off prompts.",
+    "sections": [
+      [
+        "Prompts are not enough",
+        "A prompt can save a few minutes. A workflow can save entire cycles. Founders get the most leverage when they connect inputs, decisions, tools, review points, and outputs into repeatable AI-assisted systems."
+      ],
+      [
+        "Research workflows",
+        "AI agents can scan competitors, summarize buyer pain points, extract positioning patterns, and produce a briefing. The founder's job is to validate assumptions and decide the strategic angle."
+      ],
+      [
+        "Sales workflows",
+        "A practical sales workflow might enrich lead data, draft a personalized opener, generate objections, and prepare follow-up messages. Human review remains mandatory before anything goes out."
+      ],
+      [
+        "Operating workflows",
+        "Agents can create meeting summaries, transform decisions into tasks, draft SOPs, and keep project notes current. This is where small teams gain compounding operational memory."
+      ],
+      [
+        "How to start",
+        "Pick one recurring task, define the input and desired output, add a human review gate, and run it weekly. Improve the workflow before expanding it."
+      ]
+    ]
+  },
+  {
+    "slug": "how-to-design-practical-ai-workshops",
+    "title": "How to Design Practical AI Workshops People Actually Use",
+    "description": "A framework for AI workshops that produce reusable workflows, not just excitement.",
+    "keywords": [
+      "AI workshops",
+      "practical AI workshop",
+      "hands-on AI training",
+      "AI demos"
+    ],
+    "publishedAt": "2026-05-21",
+    "status": "queued",
+    "excerpt": "The best AI workshops end with artifacts, not applause.",
+    "sections": [
+      [
+        "Start with a real job",
+        "A useful AI workshop begins with a real task: write a customer email, summarize a call, research a market, build a landing page, or automate a checklist. Abstract tool tours fade quickly."
+      ],
+      [
+        "Show the workflow",
+        "Participants should see the full loop: input, prompt, tool choice, draft output, human critique, revision, and final artifact. This makes AI feel usable instead of mysterious."
+      ],
+      [
+        "Include failure cases",
+        "Bad outputs are teaching moments. Show where the model hallucinated, where context was missing, and how the human reviewer corrected it."
+      ],
+      [
+        "Make it reusable",
+        "Every session should leave behind a prompt, checklist, template, or automation that members can adapt later."
+      ],
+      [
+        "Measure the outcome",
+        "A workshop works if participants use the workflow again after the session. Optimize for repeated use, not entertainment."
+      ]
+    ]
+  },
+  {
+    "slug": "ai-automation-community-content-engine",
+    "title": "Using AI Automation to Build a Community Content Engine",
+    "description": "How communities can use AI to turn sessions, conversations, and demos into useful content without losing human quality control.",
+    "keywords": [
+      "AI content automation",
+      "community content engine",
+      "AI community",
+      "SEO content workflow"
+    ],
+    "publishedAt": "2026-05-22",
+    "status": "queued",
+    "excerpt": "A good content engine turns community learning into searchable public knowledge.",
+    "sections": [
+      [
+        "Community conversations are raw material",
+        "Every meetup, chat thread, Q&A, and demo contains useful knowledge. AI can help convert that raw material into summaries, tutorials, checklists, and blog posts."
+      ],
+      [
+        "The workflow",
+        "Capture notes, extract themes, draft an article, check factual accuracy, improve structure, add examples, and publish. The human review step is what keeps the content trustworthy."
+      ],
+      [
+        "SEO without spam",
+        "Useful SEO is not keyword stuffing. It is answering real questions clearly and consistently. A community has an advantage because its content comes from actual member needs."
+      ],
+      [
+        "Repurposing outputs",
+        "One session can produce a recap, a blog post, a LinkedIn summary, a checklist, and a future workshop idea. AI makes this repurposing cheap; humans keep it sharp."
+      ],
+      [
+        "Compounding value",
+        "Over time, the content engine becomes a public knowledge base that attracts the right members and helps existing members revisit what they learned."
+      ]
+    ]
+  },
+  {
+    "slug": "human-review-in-ai-workflows",
+    "title": "Why Human Review Is the Most Important Part of an AI Workflow",
+    "description": "Human review turns AI output from fast draft into reliable work. Here is where review gates belong in practical workflows.",
+    "keywords": [
+      "human review AI",
+      "AI workflow quality",
+      "human in the loop",
+      "AI operations"
+    ],
+    "publishedAt": "2026-05-23",
+    "status": "queued",
+    "excerpt": "Speed is useful only when quality, privacy, and judgment survive the process.",
+    "sections": [
+      [
+        "AI drafts are not decisions",
+        "AI can summarize, suggest, transform, and draft. But in serious workflows, the output needs review before it affects customers, public content, or business decisions."
+      ],
+      [
+        "Where review matters most",
+        "Review gates are essential for facts, legal or medical claims, customer communication, financial advice, private data, and brand-sensitive content."
+      ],
+      [
+        "Review as a design pattern",
+        "A strong workflow does not add review as an afterthought. It defines who reviews, what they check, and what happens when output fails quality standards."
+      ],
+      [
+        "The benefit",
+        "Human review does not slow AI down as much as people fear. It makes AI usable in real operations because people trust the system."
+      ],
+      [
+        "The dabblewith.ai model",
+        "AI operates the loop; humans approve the direction. That balance is how practical AI becomes reliable."
+      ]
+    ]
+  },
+  {
+    "slug": "practical-ai-demos-vs-tool-lists",
+    "title": "Practical AI Demos Beat Tool Lists: What Learners Really Need",
+    "description": "Why people learn AI faster from real demos, workflows, and critique than from long lists of tools.",
+    "keywords": [
+      "practical AI demos",
+      "AI tools",
+      "learn AI",
+      "AI community demos"
+    ],
+    "publishedAt": "2026-05-24",
+    "status": "queued",
+    "excerpt": "Tool lists age quickly. Practical workflows teach durable judgment.",
+    "sections": [
+      [
+        "The problem with tool lists",
+        "AI tool lists feel useful, but they become outdated quickly. They also skip the hard part: deciding when to use a tool, what context to provide, and how to judge output."
+      ],
+      [
+        "Demos reveal judgment",
+        "A real demo shows the messy middle. You see the first bad output, the prompt revision, the missing context, the review step, and the final artifact."
+      ],
+      [
+        "Workflows transfer better",
+        "Once someone understands a workflow, they can swap tools as the market changes. The durable skill is not knowing every app; it is knowing how to structure AI-assisted work."
+      ],
+      [
+        "Community makes demos better",
+        "Members bring different use cases and critique each other's workflows. That makes every demo more grounded."
+      ],
+      [
+        "What dabblewith.ai optimizes for",
+        "The goal is practical AI confidence: people should leave with something they can use, not just another bookmarked tool."
+      ]
+    ]
+  }
+]

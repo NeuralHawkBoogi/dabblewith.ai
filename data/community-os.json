@@ -1,0 +1,218 @@
+{
+  "updatedAt": "2026-05-19T13:17:32.637Z",
+  "mission": "Run dabblewith.ai as an AI-operated, human-guided community where members learn AI by building real workflows in public.",
+  "autonomyLevel": "human-guided",
+  "principles": [
+    "AI can draft, cluster, summarize, schedule, and publish operational artifacts.",
+    "Humans approve public commitments, sensitive claims, and member-facing decisions.",
+    "Every session should leave behind a reusable artifact: workflow, checklist, prompt, teardown, or demo.",
+    "The machinery should be visible so members learn from the operating system itself."
+  ],
+  "agents": [
+    {
+      "id": "signal_agent",
+      "name": "Signal Agent",
+      "status": "active",
+      "job": "Collect member interest signals from WhatsApp, forms, and notes; normalize them into topic requests.",
+      "humanGate": "Reject spam/private content before public use."
+    },
+    {
+      "id": "topic_agent",
+      "name": "Topic Agent",
+      "status": "active",
+      "job": "Cluster signals into practical workshop themes and rank by urgency, usefulness, and demo potential.",
+      "humanGate": "Boogi approves final session direction."
+    },
+    {
+      "id": "session_agent",
+      "name": "Session Agent",
+      "status": "drafting",
+      "job": "Draft agendas, demo scripts, prep checklists, event pages, and take-home artifacts.",
+      "humanGate": "Host validates scope and quality before announcing."
+    },
+    {
+      "id": "content_agent",
+      "name": "Content Agent",
+      "status": "active",
+      "job": "Turn sessions and operating notes into blog posts, recaps, SEO pages, and reusable playbooks.",
+      "humanGate": "Sensitive or claim-heavy content needs review."
+    },
+    {
+      "id": "recap_agent",
+      "name": "Recap Agent",
+      "status": "standby",
+      "job": "After sessions, produce summaries, action items, resources, and follow-up nudges.",
+      "humanGate": "Remove private/member-specific details before publishing."
+    }
+  ],
+  "topicSignals": [
+    {
+      "topic": "Community GPU network: contribute compute, earn/use tokens",
+      "score": 90,
+      "source": "Boogi strategic direction",
+      "why": "Long-term self-sufficiency goal for dabblewith.ai; positions members as infrastructure contributors, not just learners.",
+      "recommendedFormat": "future strategy session + technical pilot"
+    },
+    {
+      "topic": "Mid-June launch event: Build your first practical AI workflow",
+      "score": 96,
+      "source": "Boogi launch planning",
+      "why": "Events should be the primary community driver; this proves the hands-on AI-by-doing positioning.",
+      "recommendedFormat": "in-person workshop, 30–50 people"
+    },
+    {
+      "topic": "Build a personal AI assistant with tools",
+      "score": 92,
+      "source": "founder/operator interest",
+      "why": "High demo value; directly shows memory, tools, scheduling, and boundaries.",
+      "recommendedFormat": "90-minute live build + teardown"
+    },
+    {
+      "topic": "AI workflow automation for founders",
+      "score": 88,
+      "source": "startup/operator use cases",
+      "why": "Useful to small teams immediately: research, follow-ups, meeting notes, content, CRM hygiene.",
+      "recommendedFormat": "hands-on workshop with templates"
+    },
+    {
+      "topic": "Human-in-the-loop review patterns",
+      "score": 81,
+      "source": "quality/safety recurring theme",
+      "why": "Differentiates dabblewith.ai from hype communities; teaches reliable AI operations.",
+      "recommendedFormat": "workflow teardown + checklist"
+    },
+    {
+      "topic": "Voice agents and memory devices",
+      "score": 79,
+      "source": "NeoSapien/OpenClaw experiments",
+      "why": "Concrete emerging-tech demo with strong curiosity pull.",
+      "recommendedFormat": "demo night + failure-mode discussion"
+    }
+  ],
+  "sessionQueue": [
+    {
+      "id": "run_004",
+      "title": "AI by Doing: Build Your First Practical AI Workflow",
+      "stage": "planning_mid_june",
+      "format": "in-person workshop + live build",
+      "artifact": "AI workflow canvas + post-event playbook",
+      "ctaText": "I’m interested in the mid-June dabblewith.ai launch event",
+      "targetDate": "2026-06-13 or 2026-06-14",
+      "plan": "/events/2026-06-mid-june-launch-event.md"
+    },
+    {
+      "id": "run_001",
+      "title": "OpenClaw: personal AI with tools",
+      "stage": "ready_for_host_review",
+      "format": "live demo + Q&A",
+      "artifact": "Personal AI assistant boundary checklist",
+      "ctaText": "I’m interested in the OpenClaw session"
+    },
+    {
+      "id": "run_002",
+      "title": "Build an AI workflow in 60 minutes",
+      "stage": "drafting",
+      "format": "hands-on build-along",
+      "artifact": "Prompt → tool → automation → review template",
+      "ctaText": "I’m interested in AI workflow sessions"
+    },
+    {
+      "id": "run_003",
+      "title": "Voice agents, memory, and where the hype breaks",
+      "stage": "queued",
+      "format": "demo night",
+      "artifact": "Voice agent evaluation checklist",
+      "ctaText": "I’m interested in the voice agents session"
+    }
+  ],
+  "operatingMetrics": [
+    {
+      "label": "agents online",
+      "value": "4/5"
+    },
+    {
+      "label": "session drafts",
+      "value": "3"
+    },
+    {
+      "label": "published playbooks",
+      "value": "1"
+    },
+    {
+      "label": "human gates",
+      "value": "enabled"
+    }
+  ],
+  "publicChangelog": [
+    {
+      "date": "2026-05-19",
+      "title": "Added long-term community compute goal",
+      "body": "dabblewith.ai should eventually explore a member-contributed GPU/token economy inspired by Petals-style decentralized inference."
+    },
+    {
+      "date": "2026-05-19",
+      "title": "Mid-June launch event planning started",
+      "body": "Added first event plan: AI by Doing — Build Your First Practical AI Workflow, targeting Jun 13/14."
+    },
+    {
+      "date": "2026-05-19",
+      "title": "run_001 promoted for host review",
+      "body": "Autopilot selected “OpenClaw: personal AI with tools” as the strongest next session candidate. Human approval is still required before announcement."
+    },
+    {
+      "date": "2026-05-18",
+      "title": "run_001 promoted for host review",
+      "body": "Autopilot selected “OpenClaw: personal AI with tools” as the strongest next session candidate. Human approval is still required before announcement."
+    },
+    {
+      "date": "2026-05-18",
+      "title": "Community OS v0.1 launched",
+      "body": "Added public operating model, blog engine, session queue, and autonomous publishing cron."
+    }
+  ],
+  "accessPolicy": {
+    "publicCommunityMode": [
+      "accept registrations",
+      "answer public FAQs",
+      "list sessions and blog resources",
+      "collect topic signals and votes",
+      "send public session information"
+    ],
+    "adminOnlyMode": {
+      "owner": "+919566112518",
+      "restrictedCapabilities": [
+        "exec/tool commands",
+        "site/deployment changes",
+        "cron changes",
+        "channel configuration",
+        "private files/memory",
+        "broadcasts",
+        "ticket administration"
+      ],
+      "rule": "Privileged operations require inbound sender E.164 to equal +919566112518. Everyone else receives safe public community help only."
+    },
+    "dedicatedWhatsAppStatus": "planned",
+    "policyDoc": "/COMMUNITY-WHATSAPP-POLICY.md"
+  },
+  "longTermGoals": [
+    {
+      "id": "community_compute_network",
+      "title": "Community-owned GPU/token economy",
+      "status": "strategic_goal",
+      "description": "Evolve dabblewith.ai into a self-sufficient AI community where members can contribute GPU capacity and earn/use community tokens for AI workloads, inspired by decentralized inference networks like Petals.",
+      "why": "This turns the community from an audience into infrastructure participants, reduces dependence on centralized API spend, and creates a practical reason for members to contribute hardware, knowledge, and experiments.",
+      "nearTermPath": [
+        "Teach members how local/decentralized inference works",
+        "Run demos comparing API inference, local models, and distributed inference",
+        "Identify members with spare GPUs",
+        "Design a safe contribution and token accounting model",
+        "Pilot a small internal compute pool before any public promise"
+      ],
+      "constraints": [
+        "Do not promise production-grade distributed inference until tested",
+        "Avoid financial/security claims around tokens until legal and technical model is clear",
+        "Sandbox contributed compute; never trust arbitrary member machines with private data"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+# OS/editor
+.DS_Store
+*.swp
+
+# Node/build if introduced later
+node_modules/
+dist/
+.build/
+.next/
+.env
+.env.*
+
+# Logs/secrets
+*.log
+secrets/
+credentials/
