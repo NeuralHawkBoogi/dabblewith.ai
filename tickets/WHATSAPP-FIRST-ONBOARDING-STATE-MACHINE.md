@@ -36,9 +36,30 @@ Let a new community owner onboard a community bot entirely through WhatsApp.
   - `getPrompt(session)` — current bot prompt without advancing state
 - `onboarding/smoke-test.js` — scripted full-flow CLI test; exits 1 on any assertion failure
 
+### Implemented — slice 2: admin review gate
+
+**Files added/modified:**
+- `onboarding/admin-gate.js` — dependency-free CommonJS module + CLI
+  - `listPending(storageDir)` — scan storage dir, return array of `{ownerId, communityId, createdAt, updatedAt, version, profile}` for all sessions in `pending_admin` state
+  - `approve(storageDir, ownerId, communityId, reviewedBy)` — stamps `reviewedAt`, `reviewedBy`, `activatedAt`; transitions state to `activated`; bumps `session.version`; throws if session is not `pending_admin`
+  - `reject(storageDir, ownerId, communityId, reviewedBy, rejectionReason)` — stamps `reviewedAt`, `reviewedBy`, `rejectedAt`, `rejectionReason`; transitions state to `rejected`; bumps `session.version`; throws if session is not `pending_admin`
+  - CLI: `ONBOARDING_DIR=./onboarding-data node onboarding/admin-gate.js list|approve|reject …`
+- `onboarding/admin-gate-smoke-test.js` — 8-step CLI smoke test (exits 1 on failure)
+  - Drives two sessions to `pending_admin`; asserts `listPending` returns 2
+  - Approves one, rejects one with a reason
+  - Asserts `listPending` returns 0
+  - Verifies persisted stamps, version bumps, guard on double-approve
+  - Verifies `advance()` reports `done=true` for `activated`/`rejected` states
+- `onboarding/state-machine.js` — added `activated` and `rejected` terminal states to `STATES` and `TERMINAL_STATES`
+
+**Test commands:**
+```
+node onboarding/smoke-test.js           # slice 1 regression
+node onboarding/admin-gate-smoke-test.js
+```
+
 ### Next steps
 - [ ] Wire `advance()` into WhatsApp webhook handler (Twilio/Cloud API layer, separate ticket)
-- [ ] Add `admin-gate.js`: list pending sessions, approve/reject, write `activatedAt` to session file
 - [ ] Version community profile on each revision (keep history array)
 - [ ] Add `revise` command in review state that lets owner jump back to any named field by alias
 - [ ] Integration test with real WhatsApp sandbox number

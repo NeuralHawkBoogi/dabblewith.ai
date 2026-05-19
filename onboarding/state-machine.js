@@ -59,9 +59,19 @@ const STATES = {
     field: null,
     next: null,
   },
+  activated: {
+    prompt: "Your community bot is now active! Members can start joining.",
+    field: null,
+    next: null,
+  },
+  rejected: {
+    prompt: "Your onboarding submission was not approved. Please contact support for details.",
+    field: null,
+    next: null,
+  },
 };
 
-const TERMINAL_STATES = new Set(['pending_admin']);
+const TERMINAL_STATES = new Set(['pending_admin', 'activated', 'rejected']);
 
 function sessionPath(storageDir, ownerId, communityId) {
   return path.join(storageDir, `${ownerId}_${communityId}.json`);
