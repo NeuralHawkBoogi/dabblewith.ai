@@ -28,3 +28,30 @@ Comparable AI bot products use outcome pricing, conversation bundles, message cr
 - Monthly usage can be summarized per community.
 - Overage estimate is available before invoice generation.
 - Admin can see gross margin estimate per community.
+
+## Progress (2026-05-19)
+
+### Implemented — slice 1: plan config + monthly usage meter foundation
+
+**Files added:**
+- `billing/plans.js`
+  - Defines the initial packaging to test: pilot, starter, growth, and pro.
+  - Captures setup fee, monthly fee, included AI conversations, overage rate, WhatsApp pass-through behavior, and target gross margin.
+  - Defines billing units for `ai_conversation`, `admin_report`, `broadcast`, `onboarding_workflow`, and `whatsapp_pass_through`.
+- `billing/meter.js`
+  - Persists per-community monthly JSON ledgers with sanitized community ids.
+  - Records billable/non-billable usage events, model cost, WhatsApp cost category, platform cost, model tier/task metadata, and hashed external references only.
+  - Summarizes monthly usage, overage, recurring revenue, WhatsApp pass-through estimate, gross margin INR/% and margin status.
+- `billing/smoke-test.js`
+  - Covers plan config, billable/non-billable mapping, monthly summary, overage estimate, gross margin estimate, WhatsApp/model cost export, and no raw phone/secret leakage.
+
+**Test commands:**
+```bash
+node billing/smoke-test.js
+git diff --check
+```
+
+### Next steps
+- [ ] Wire runtime inbound/outbound events into `billing/meter.js` behind a disabled-by-default feature flag.
+- [ ] Add an admin-readable monthly usage export/report.
+- [ ] Reconcile WhatsApp conversation category pricing against live Meta billing export before invoicing.
