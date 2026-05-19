@@ -1,6 +1,7 @@
 'use strict';
 
 const crypto = require('crypto');
+const { buildRoutingContext } = require('./conversation-summary');
 
 const MODEL_TIERS = {
   local_rules: { costPer1kInputUsd: 0, costPer1kOutputUsd: 0 },
@@ -88,7 +89,9 @@ function contextHash(context) {
 
 function routeMessage(input = {}) {
   const taskClass = classifyTask(input.message, input);
-  const tokens = estimateTokens(input);
+  const routingContext = buildRoutingContext(input, input.summaryOptions || {});
+  const effectiveInput = { ...input, context: routingContext.context };
+  const tokens = estimateTokens(effectiveInput);
   const budgetStatus = checkBudget(tokens, input.budget);
   let modelTier = ROUTING_POLICY[taskClass] || 'low_cost_cloud';
   let fallbackReason = null;
@@ -118,7 +121,14 @@ function routeMessage(input = {}) {
       estimatedCostUsd: estimateCost(modelTier, tokens),
       fallbackReason,
       budgetStatus,
-      contextHash: contextHash(input.context)
+      contextHash: contextHash(routingContext.context),
+      conversationSummary: {
+        messageCount: routingContext.conversationSummary.messageCount,
+        olderMessageCount: routingContext.conversationSummary.olderMessageCount,
+        recentMessageCount: routingContext.conversationSummary.recentMessageCount,
+        summaryHash: routingContext.conversationSummary.summaryHash,
+        truncated: routingContext.conversationSummary.truncated
+      }
     }
   };
 }
@@ -130,5 +140,6 @@ module.exports = {
   estimateTokens,
   estimateCost,
   checkBudget,
+  contextHash,
   routeMessage
 };

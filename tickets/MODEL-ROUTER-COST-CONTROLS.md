@@ -53,8 +53,32 @@ node model-router/usage-store-smoke-test.js
 git diff --check
 ```
 
+### Implemented — slice 3: rolling conversation summaries before cloud routing
+
+**Files added/modified:**
+- `model-router/conversation-summary.js` — dependency-free summary helper
+  - Builds compact routing context from static community context plus recent conversation messages.
+  - Keeps only the latest messages verbatim and compresses older turns into a bounded deterministic summary string.
+  - Redacts emails, phone numbers, and secret-looking tokens before summaries enter routing context.
+  - Emits stable summary hashes for prompt-cache/log correlation without storing raw conversation text.
+- `model-router/router.js`
+  - Routes against the summarized effective context when `conversation`/`messages` are provided.
+  - Routing logs now include `conversationSummary` metadata: counts, summary hash, and truncation status.
+- `model-router/usage-store.js`
+  - Persisted routing logs now include sanitized conversation-summary metadata, not raw messages.
+- `model-router/conversation-summary-smoke-test.js`
+  - Covers redaction, bounded older-message summary, recent-message retention, router wiring, and effective-context hashing.
+
+**Test commands:**
+```
+node model-router/smoke-test.js
+node model-router/usage-store-smoke-test.js
+node model-router/conversation-summary-smoke-test.js
+git diff --check
+```
+
 ### Next steps
 - [ ] Wire router decisions into the WhatsApp runtime reply path behind a backwards-compatible feature flag.
 - [x] Persist per-community daily/monthly usage counters and routing logs.
 - [ ] Add provider-specific prompt-cache keys where supported.
-- [ ] Add rolling conversation summaries before sending context to cloud models.
+- [x] Add rolling conversation summaries before sending context to cloud models.
