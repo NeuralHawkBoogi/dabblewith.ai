@@ -71,3 +71,13 @@ Needed platformization:
 - Registrations/signals are captured with clear structured data.
 - Admin gets reports without raw secrets or unnecessary full phone numbers.
 - Website CTA points to the onboarding flow.
+
+## Related strategy and build tickets
+- `docs/market-analysis/community-bot-market-and-cost-analysis.md`
+- `tickets/MARKET-VALIDATION-COMMUNITY-BOT.md`
+- `tickets/PRICING-BILLING-MODEL-COMMUNITY-BOT.md`
+- `tickets/MODEL-ROUTER-COST-CONTROLS.md`
+- `tickets/SLM-CONTINUOUS-REBUILD-PIPELINE.md`
+- `tickets/COMMUNITY-GPU-SWARM-RD.md`
+- `tickets/WHATSAPP-FIRST-ONBOARDING-STATE-MACHINE.md`
+
