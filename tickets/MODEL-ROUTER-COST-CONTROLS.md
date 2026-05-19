@@ -21,3 +21,22 @@ Prevent token spend from scaling linearly with conversation volume by routing ea
 - Each reply log records model tier, estimated tokens, fallback reason, and cost estimate.
 - A community can set daily/monthly token budgets.
 - Bot degrades gracefully when budget is exceeded.
+## Progress (2026-05-19)
+
+### Implemented — slice 1: deterministic routing + budget guard foundation
+
+**Files added:**
+- `model-router/router.js` — dependency-free CommonJS router with task classification, tier policy, token/cost estimates, budget checks, context hash, structured log metadata, and budget/safety degradation.
+- `model-router/smoke-test.js` — CLI smoke test covering greeting, FAQ, onboarding, hard reasoning, unsafe/sensitive guardrail, and budget-exceeded behavior.
+
+**Test commands:**
+```
+node model-router/smoke-test.js
+git diff --check
+```
+
+### Next steps
+- [ ] Wire router decisions into the WhatsApp runtime reply path behind a backwards-compatible feature flag.
+- [ ] Persist per-community daily/monthly usage counters and routing logs.
+- [ ] Add provider-specific prompt-cache keys where supported.
+- [ ] Add rolling conversation summaries before sending context to cloud models.
