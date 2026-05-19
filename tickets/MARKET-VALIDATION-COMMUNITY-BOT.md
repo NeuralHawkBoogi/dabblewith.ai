@@ -80,8 +80,27 @@ node market-validation/whatsapp-intake-smoke-test.js
 git diff --check
 ```
 
+### Implemented — slice 4: local admin report/export runner
+
+**Files added:**
+- `market-validation/admin-report.js`
+  - Generates privacy-safe Markdown and JSON admin reports from lead storage.
+  - Defaults to the runtime lead directory (`DABBLE_MARKET_VALIDATION_DIR` or `/home/clawdbot/dabblewith-whatsapp/data/market-validation-leads`) and writes dated exports under `reports/market-validation/`.
+  - Adds an admin next-action summary for the 10-qualified-lead decision gate without exposing raw WhatsApp text, phone numbers, emails, or token-like strings.
+  - CLI: `node market-validation/admin-report.js [--storage-dir DIR] [--output-dir DIR] [--date YYYY-MM-DD]`.
+- `market-validation/admin-report-smoke-test.js`
+  - Covers argument parsing, report generation, Markdown/JSON outputs, empty-storage behavior, and privacy leakage checks.
+
+**Validation commands:**
+```bash
+node market-validation/smoke-test.js
+node market-validation/whatsapp-intake-smoke-test.js
+node market-validation/admin-report-smoke-test.js
+git diff --check
+```
+
 ### Next steps
 - [x] Add a WhatsApp CTA/setup-intent adapter that can create lead records when users ask for a similar bot.
 - [x] Wire the adapter into the runtime owner-intent path behind a disabled-by-default flag or explicit local-only capture mode.
-- [ ] Add admin report cron/export once real design-partner leads arrive.
+- [x] Add admin report/export for inbound design-partner leads.
 - [ ] Run 10 interviews and record segment findings before building heavy self-serve infrastructure.
