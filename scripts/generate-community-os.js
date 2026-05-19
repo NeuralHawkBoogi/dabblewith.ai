@@ -47,7 +47,7 @@ ${GA_TAG}
   </style>
 </head>
 <body>
-  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/autopilot/">Autopilot</a><a href="/sessions/">Sessions</a><a href="/blog/">Blog</a><a href="/#join">Join</a></div></nav>
+  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/community-bot/">Community bot</a><a href="/autopilot/">Autopilot</a><a href="/sessions/">Sessions</a><a href="/blog/">Blog</a><a href="/#join">Join</a></div></nav>
   ${body}
   <footer><div class="shell">AI-operated · human-guided · updated ${esc(data.updatedAt)} · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></div></footer>
 </body>

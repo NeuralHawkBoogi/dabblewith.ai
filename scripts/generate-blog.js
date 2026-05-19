@@ -51,7 +51,7 @@ ${GA_TAG}
   </style>
 </head>
 <body>
-  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/blog/">Blog</a><a href="/#join">Join</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/sitemap.xml">Sitemap</a></div></nav>
+  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/community-bot/">Community bot</a><a href="/blog/">Blog</a><a href="/#join">Join</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/sitemap.xml">Sitemap</a></div></nav>
   ${body}
   <footer><div class="shell">AI-operated · human-guided · <a href="/">dabblewith.ai</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></div></footer>
 </body>
@@ -102,6 +102,7 @@ const urls = [
   ['https://dabblewith.ai/autopilot/', 'daily', '0.9'],
   ['https://dabblewith.ai/sessions/', 'daily', '0.9'],
   ['https://dabblewith.ai/blog/', 'daily', '0.9'],
+  ['https://dabblewith.ai/community-bot/', 'weekly', '0.9'],
   ['https://dabblewith.ai/privacy/', 'monthly', '0.5'],
   ['https://dabblewith.ai/terms/', 'monthly', '0.5'],
   ...published.map(p => [slugUrl(p), 'monthly', '0.8', p.publishedAt])
