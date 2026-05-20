@@ -1,6 +1,6 @@
 # Casagrand First City Campaign Report — 2026-05-20
 
-Generated: 2026-05-20T08:17:33.020Z
+Generated: 2026-05-20T10:18:06.445Z
 
 ## Funnel snapshot
 - Campaign signals: 0
