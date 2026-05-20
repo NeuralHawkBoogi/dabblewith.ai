@@ -22,6 +22,21 @@ const TOPIC_RULES = [
   ['community_bot', /\b(whatsapp bot|community bot|resident helper|faq bot|bot)/i],
   ['event_interest', /\b(event|session|workshop|clubhouse|attend|register|join)/i],
 ];
+const SOURCE_TAG_RULES = [
+  ['casagrand_rsvp', /casagrand\s+rsvp/i],
+  ['tester_career', /casagrand\s+(?:first\s+city\s+)?tester\s*[-–]\s*career|casagrand\s+career\s+help/i],
+  ['tester_workflow', /casagrand\s+(?:first\s+city\s+)?tester\s*[-–]\s*workflow|casagrand\s+workflow\s+help/i],
+  ['tester_founder', /casagrand\s+(?:first\s+city\s+)?tester\s*[-–]\s*founder|casagrand\s+founder\s+help/i],
+  ['tester_student', /casagrand\s+(?:first\s+city\s+)?tester\s*[-–]\s*student|casagrand\s+student\s+help/i],
+  ['tester_community_bot', /casagrand\s+(?:first\s+city\s+)?tester\s*[-–]\s*community\s*bot|casagrand\s+community\s+bot\s+demo/i],
+];
+const TRACK_FOR_TAG = {
+  tester_career: 'career',
+  tester_workflow: 'workflow',
+  tester_founder: 'founder',
+  tester_student: 'student',
+  tester_community_bot: 'community_bot',
+};
 
 function currentDate() {
   return new Date().toISOString().slice(0, 10);
@@ -88,6 +103,26 @@ function inferTopics(text, intent) {
   return topics.length ? [...new Set(topics)] : ['unclassified'];
 }
 
+function inferSourceTags(text) {
+  const normalized = normalizeText(text);
+  const tags = [];
+  for (const [tag, re] of SOURCE_TAG_RULES) {
+    if (re.test(normalized)) tags.push(tag);
+  }
+  if (tags.length) return tags;
+  if (/casagrand\s+first\s+city/i.test(normalized)) return ['casagrand_first_city'];
+  if (/casagrand/i.test(normalized)) return ['untagged_casagrand'];
+  return [];
+}
+
+function tracksForTags(tags) {
+  const tracks = [];
+  for (const tag of tags) {
+    if (TRACK_FOR_TAG[tag]) tracks.push(TRACK_FOR_TAG[tag]);
+  }
+  return [...new Set(tracks)];
+}
+
 function summarizeStatuses(statusRows) {
   const counts = {};
   for (const row of statusRows) {
@@ -112,6 +147,8 @@ function buildCampaignReport(runtimeDir, options = {}) {
   const users = new Map();
   const intents = {};
   const topics = {};
+  const sourceTags = {};
+  const trackCounts = {};
   const recentSignals = [];
 
   for (const signal of realCampaignSignals) {
@@ -119,12 +156,19 @@ function buildCampaignReport(runtimeDir, options = {}) {
     users.set(userKey, true);
     const intent = signal.intent || 'unknown';
     intents[intent] = (intents[intent] || 0) + 1;
-    for (const topic of inferTopics(signal.text, intent)) topics[topic] = (topics[topic] || 0) + 1;
+    const signalTopics = inferTopics(signal.text, intent);
+    for (const topic of signalTopics) topics[topic] = (topics[topic] || 0) + 1;
+    const signalSourceTags = inferSourceTags(signal.text);
+    for (const tag of signalSourceTags) sourceTags[tag] = (sourceTags[tag] || 0) + 1;
+    const signalTracks = tracksForTags(signalSourceTags);
+    for (const track of signalTracks) trackCounts[track] = (trackCounts[track] || 0) + 1;
     recentSignals.push({
       receivedAt: signal.received_at || null,
       source: signal.source || 'unknown',
       intent,
-      topics: inferTopics(signal.text, intent),
+      topics: signalTopics,
+      sourceTags: signalSourceTags,
+      tracks: signalTracks,
       displayName: normalizeText(signal.display_name || 'unknown').slice(0, 40),
       from: redactPhone(signal.from),
       messageRef: hashId(signal.message_id),
@@ -148,6 +192,8 @@ function buildCampaignReport(runtimeDir, options = {}) {
     },
     intents,
     topics,
+    sourceTags,
+    trackCounts,
     deliveryStatuses: summarizeStatuses(statusRows),
     recentSignals: recentSignals.slice(-20).reverse(),
     nextAction,
@@ -173,6 +219,12 @@ function renderMarkdown(report) {
   lines.push('## Requested topic clusters');
   appendCounts(lines, report.topics, 'No topic clusters captured yet.');
   lines.push('');
+  lines.push('## Source tag counts');
+  appendCounts(lines, report.sourceTags, 'No Casagrand source tags captured yet.');
+  lines.push('');
+  lines.push('## Tester track counts');
+  appendCounts(lines, report.trackCounts, 'No tester tracks captured yet.');
+  lines.push('');
   lines.push('## Delivery/status counts');
   appendCounts(lines, report.deliveryStatuses, 'No status events available.');
   lines.push('');
@@ -181,7 +233,9 @@ function renderMarkdown(report) {
     lines.push('- None yet.');
   } else {
     for (const signal of report.recentSignals) {
-      lines.push(`- ${signal.receivedAt || 'unknown'} · ${signal.from || 'unknown'} · ${signal.intent} · ${signal.topics.join(', ')} · “${signal.textPreview}” · ref=${signal.messageRef || 'n/a'}`);
+      const sourceTags = signal.sourceTags && signal.sourceTags.length ? signal.sourceTags.join(', ') : 'no_source_tag';
+      const tracks = signal.tracks && signal.tracks.length ? signal.tracks.join(', ') : 'no_track';
+      lines.push(`- ${signal.receivedAt || 'unknown'} · ${signal.from || 'unknown'} · ${signal.intent} · topics=${signal.topics.join(', ')} · tags=${sourceTags} · tracks=${tracks} · “${signal.textPreview}” · ref=${signal.messageRef || 'n/a'}`);
     }
   }
   lines.push('');
@@ -248,6 +302,8 @@ module.exports = {
   redactPhone,
   isCampaignText,
   inferTopics,
+  inferSourceTags,
+  tracksForTags,
   buildCampaignReport,
   renderMarkdown,
   writeCampaignReport,
