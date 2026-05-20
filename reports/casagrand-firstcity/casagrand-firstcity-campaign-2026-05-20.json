@@ -1,0 +1,22 @@
+{
+  "campaign": "casagrand-firstcity",
+  "generatedAt": "2026-05-20T02:18:29.405Z",
+  "runtimeDir": "/home/clawdbot/dabblewith-whatsapp/data",
+  "totals": {
+    "campaignSignals": 0,
+    "uniqueUsers": 0,
+    "syntheticOrExcludedSignals": 0,
+    "allSignalsAvailable": 6
+  },
+  "intents": {},
+  "topics": {},
+  "deliveryStatuses": {
+    "sent": 3,
+    "delivered": 3,
+    "failed": 1,
+    "read": 2
+  },
+  "recentSignals": [],
+  "nextAction": "Forward the Casagrand WhatsApp launch copy once, then run this report after 24 hours to pick the first clubhouse topic.",
+  "privacy": "Phone numbers are redacted except last 4 digits; message IDs are hashed; tokens and raw webhook payloads are not included."
+}
