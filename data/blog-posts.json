@@ -772,6 +772,143 @@
     }
   },
   {
+    "slug": "community-apple-silicon-distributed-inference",
+    "title": "Your Community's Idle MacBooks as a Shared AI Brain: Distributed Inference on Apple Silicon",
+    "description": "How communities can pool idle Apple Silicon Macs to create shared AI inference capacity using tools like exo, llama.cpp, and MLX — with honest caveats about what is and is not technically possible.",
+    "keywords": [
+      "distributed AI inference",
+      "Apple Silicon community AI",
+      "exo distributed inference",
+      "community AI infrastructure",
+      "llama.cpp MLX"
+    ],
+    "publishedAt": "2026-05-20",
+    "status": "published",
+    "excerpt": "Idle Apple Silicon machines in your community can serve real AI inference jobs. The catch is understanding what is actually being shared — and what is not.",
+    "sections": [
+      [
+        "The idea: your community's spare Macs as shared AI infrastructure",
+        "Imagine ten members of an AI learning community, each with a MacBook Pro or Mac mini sitting idle most of the day. Collectively, those machines hold anywhere from 96 GB to over 200 GB of unified memory. A 70-billion-parameter language model needs roughly 40 GB to run in 4-bit quantisation. Spread that across two or three machines and suddenly the community has inference capacity that would otherwise require renting cloud GPUs. This is not a hypothetical. Small distributed inference projects are already running on consumer hardware. The question for community builders is whether they can organise people, machines, and tooling well enough to make it practical — and honest enough to set the right expectations."
+      ],
+      [
+        "What unified memory actually is, and what pooling it means",
+        "Apple Silicon Macs use unified memory architecture: the CPU, GPU, and Neural Engine share one physical memory pool instead of moving data between separate banks. That is why a Mac with 64 GB of unified memory can run much larger models than a PC with a dedicated GPU of the same stated size. However, unified memory is not shared over a network. When your community talks about pooling Apple Silicon, it does not mean stitching together gigabytes of RAM across Wi-Fi into one giant virtual memory space. What you are actually pooling is inference capacity and model shards. Each machine loads one part of a model, processes a layer or a chunk, and passes intermediate results to the next machine over the network. The model is distributed; the memory is not."
+      ],
+      [
+        "How distributed inference works: shards, layers, and job routing",
+        "Large language models are stacks of transformer layers, often 80 or more in a 70B model. Distributed inference assigns different layers to different machines. Machine A loads layers 1 through 20, Machine B loads layers 21 through 40, and Machine C loads the rest. A prompt enters Machine A, activations flow to Machine B, then to Machine C, which returns the token. This pipeline parallelism adds latency per round-trip, so distributed inference is slower than running a model on a single large machine. But it makes otherwise impossible model sizes accessible. The community is sharing work, not memory. A good routing layer decides which machine handles which shard, monitors health, and reroutes when a node goes offline."
+      ],
+      [
+        "Petals: the research-grade option, with honest caveats",
+        "Petals, developed at HSE University and released as open source, is the most well-known project for this kind of distributed inference. It uses a BitTorrent-inspired model where community members each host a few transformer blocks and inference requests are routed through the swarm. The architecture is elegant and the research behind it is credible. The caveats are real, however. Petals was designed primarily with CUDA GPUs and Linux environments in mind. Apple Silicon support is limited: the Metal backend and MLX framework that make modern Mac inference fast are not well-integrated into the Petals stack. Running Petals on a Mac is possible but typically requires Linux virtual machines, Rosetta workarounds, or reduced performance compared to native paths. Petals is also research-oriented, meaning stability and operational support for production community use are not primary design goals. It is an excellent reference architecture and a fascinating experiment, but it is probably not where a non-technical community should start."
+      ],
+      [
+        "exo: the most Apple Silicon-native distributed inference option",
+        "exo is an open-source project built from the start for heterogeneous consumer hardware, with explicit Apple Silicon and MLX support. It can partition models like Llama, Mistral, and others across multiple devices on a local network, handling device discovery, shard assignment, and routing automatically. exo uses MLX under the hood on Apple devices, which means it benefits from the same optimised matrix operations that make standalone llama.cpp and MLX inference fast on Mac. A small cluster of three or four Apple Silicon Macs running exo can serve a 70B model at reasonable latency for text generation tasks. The project is young and evolving quickly, but it is the most practical starting point for a community that wants to build something real on Mac hardware today. Setup is straightforward enough for a technically curious group to attempt in an afternoon."
+      ],
+      [
+        "llama.cpp and MLX: the performance layer underneath",
+        "Two lower-level tools matter for understanding what makes Apple Silicon inference work. llama.cpp is a C++ inference engine that supports GGUF-format quantised models, runs well on CPU and Metal on Mac, and is the most widely deployed local inference runtime. It is what most wrappers, including Ollama, use underneath. MLX is Apple's own machine learning framework for Apple Silicon, designed to use unified memory efficiently with lazy evaluation and a numpy-like API. MLX-native models often outperform llama.cpp on throughput for the same hardware. For community distributed inference, these are the building blocks: exo uses MLX, llama.cpp-based runtimes are a fallback, and both can be combined through a routing layer. Understanding which layer is doing the heavy lifting matters when something goes wrong or when you want to optimise for a specific model size."
+      ],
+      [
+        "Community scenarios: who would actually use this",
+        "Several community types have a credible reason to run distributed inference. First, AI learning communities where members want to run open-source models without cloud costs or data-privacy concerns. Running a local Llama 3 or Mistral instance means member inputs never leave the group's machines. Second, developer communities building applications that require a shared endpoint. Instead of each developer paying for API access, the community runs a shared server. Third, founder cohorts doing research-heavy work like market analysis, document summarisation, or competitive intelligence, where API costs add up quickly across many small jobs. Fourth, residential communities with a privacy-first stance, such as a residents' association that wants to process meeting notes or community surveys without sending data to a third party. The common thread is that the community has enough machines, enough technical capacity to set up the cluster once, and a recurring use case that justifies the coordination overhead."
+      ],
+      [
+        "Dashboard design: seeing your community's AI capacity",
+        "A well-designed community inference dashboard makes the cluster legible to everyone, not just the person who set it up. The top row should show cluster-wide health at a glance: total nodes, nodes online, nodes offline, total model shards assigned, and a simple green-amber-red status. The second panel shows each node individually — machine name or alias, owner, current status, model shards hosted, memory allocated, uptime percentage for the last 7 days, and last seen timestamp. A connected or offline badge makes it immediately clear who is contributing. The third panel is a live token throughput graph: tokens served per minute across the cluster, broken down by model and by node. This gives contributors visibility into how much their machine is actually helping. The fourth panel covers latency: median and 95th-percentile time-to-first-token and total generation latency, segmented by job size. The fifth panel shows aggregate usage: total tokens served this week, total requests, top requesters, and estimated cloud cost avoided. A shard map — a visual showing which layers of the active model are hosted on which node — helps members understand the distributed architecture intuitively. Finally, an event log showing when nodes joined, left, or were reassigned gives the admin enough information to diagnose problems without needing a terminal."
+      ],
+      [
+        "The honest limits: latency, reliability, and network overhead",
+        "Distributed inference introduces latency that a single-machine setup does not have. Each pipeline stage requires a network round-trip, and on a home or office Wi-Fi network with variable quality, that adds up. A 70B model split across three machines may produce the first token in two to four seconds rather than under one second on a dedicated machine. For interactive chat that feels slow; for batch summarisation or background research it is fine. Reliability is the other honest challenge. If one machine in the chain goes offline, the job fails unless the routing layer has fallback logic. Machines that belong to community members will go offline unpredictably: lid-closed sleep, software updates, people taking their laptop to a coffee shop. A well-designed cluster needs at least one always-on node, such as a Mac mini used as a server, to maintain availability. Privacy is worth naming too: pipeline parallelism means intermediate activations travel between machines. On a local network this is usually acceptable, but it is not the same as a single machine processing everything locally."
+      ],
+      [
+        "Privacy and data governance for a community cluster",
+        "When community members use a shared inference cluster, they should understand what data travels where. Prompts and partial activations pass through each node in the pipeline chain. On a trusted local network among known members this is typically acceptable, but the community should have a clear policy. Who can see request logs? Are prompts stored? Can the cluster be accessed remotely or only on-premises? For communities handling sensitive content — resident survey data, personal career questions, financial planning prompts — the right answer may be to keep the cluster on a private network with explicit consent, or to route sensitive jobs to a single trusted machine rather than the full cluster. These are governance questions, not just technical ones. The person setting up the cluster should not be the only one who knows the answers."
+      ],
+      [
+        "A practical pilot: three machines, one community model",
+        "The smallest useful community cluster is three machines: one always-on Mac mini as the primary shard and request router, and two member MacBooks that contribute when available. Install exo on all three, load a 13B or 34B model split across the cluster, and expose a simple HTTP endpoint that members can point Ollama or their preferred client at. Run a two-week pilot with five or six active users making real requests. Measure three things: token throughput in tokens per second, median latency to first token, and cluster uptime as a percentage. If throughput is useful and uptime is above 80 percent, the pilot justifies expanding. If latency makes interactive use too slow, shift to batch use cases like overnight summarisation. The goal of the pilot is not to replace cloud API access entirely; it is to create a community-owned inference endpoint for the use cases where speed is not the primary concern."
+      ],
+      [
+        "Human-guided, community-powered AI infrastructure",
+        "The most durable community AI infrastructure is not the one with the most compute. It is the one where members understand what they built, why it is set up the way it is, and how to maintain it when something changes. A distributed inference cluster run by a community should have a designated maintainer, clear onboarding for new nodes, a simple health dashboard that anyone can check, and an honest record of what the cluster can and cannot do. The dabblewith.ai principle applies here as much as it does to workflows and workshops: AI-operated in the repeatable mechanics, human-guided in judgment and governance. The machines handle the inference. The community decides what models to run, who can use them, what data leaves which node, and when the cluster is good enough to trust for real work."
+      ]
+    ],
+    "qualityScore": 88,
+    "qualityNote": "Original research synthesis on distributed Apple Silicon inference with honest technical caveats, practical scenarios, and detailed dashboard design.",
+    "researchBrief": {
+      "reader": "Community builders, AI learning group organisers, and technically curious founders who want to pool Apple Silicon machines for shared inference without overclaiming what is possible.",
+      "jobToBeDone": "Understand whether and how to set up a community-run distributed inference cluster on Apple Silicon, with realistic expectations and practical starting points.",
+      "thesis": "Communities with idle Apple Silicon machines can pool inference capacity — not memory — using tools like exo, llama.cpp, and MLX, provided they design for the real constraints of pipeline latency, node reliability, and data governance.",
+      "searchIntent": "distributed inference Apple Silicon, community AI inference, exo distributed llm, llama.cpp cluster, Apple Silicon AI server",
+      "sources": [
+        {
+          "title": "exo — Run your own AI cluster at home with everyday devices",
+          "url": "https://github.com/exo-explore/exo",
+          "type": "primary",
+          "checkedAt": "2026-05-20",
+          "notes": "Open-source distributed inference runtime with native Apple Silicon / MLX support. Supports model partitioning across heterogeneous devices on local networks."
+        },
+        {
+          "title": "Petals — Run large language models at home, BitTorrent-style",
+          "url": "https://github.com/bigscience-workshop/petals",
+          "type": "primary",
+          "checkedAt": "2026-05-20",
+          "notes": "Research-grade distributed inference via shared transformer block hosting. Designed primarily for CUDA/Linux; limited native Apple Silicon support."
+        },
+        {
+          "title": "Apple MLX — Machine learning framework for Apple Silicon",
+          "url": "https://github.com/ml-explore/mlx",
+          "type": "primary",
+          "checkedAt": "2026-05-20",
+          "notes": "Apple's own ML framework leveraging unified memory and Metal. Used by exo and mlx-lm for fast local inference on Mac."
+        },
+        {
+          "title": "llama.cpp — LLM inference in C/C++",
+          "url": "https://github.com/ggml-org/llama.cpp",
+          "type": "primary",
+          "checkedAt": "2026-05-20",
+          "notes": "The most widely deployed local inference runtime. Supports GGUF quantisation and Metal on Apple Silicon. Foundation for Ollama and many community tools."
+        },
+        {
+          "title": "Petals research paper — Towards Crowdsourced Training of Large Neural Networks",
+          "url": "https://arxiv.org/abs/2209.01188",
+          "type": "critical",
+          "checkedAt": "2026-05-20",
+          "notes": "Original BitTorrent-style distributed inference paper. Establishes the pipeline parallelism model and quantifies latency overhead of network round-trips."
+        },
+        {
+          "title": "dabblewith.ai internal community-bot and model-router docs",
+          "url": "docs/model-router-whatsapp-runtime-flag.md",
+          "type": "internal",
+          "checkedAt": "2026-05-20",
+          "notes": "Internal routing and cost-control work relevant to how a community inference endpoint would integrate with the dabblewith.ai platform."
+        }
+      ],
+      "insights": [
+        "Unified memory is not shared over a network; what communities pool is inference capacity and model shards.",
+        "exo is currently the most practical Apple Silicon-native distributed inference tool for community use.",
+        "Petals is research-grade and primarily Linux/CUDA-oriented; honest about its limits.",
+        "Pipeline latency makes distributed inference better for batch workloads than low-latency interactive chat.",
+        "A community cluster needs governance — policies on data, node requirements, and a designated maintainer — as much as it needs software."
+      ],
+      "examples": [
+        "Three-machine exo cluster pilot: Mac mini primary shard plus two member MacBooks",
+        "Resident association using local cluster for privacy-first meeting note summarisation",
+        "Developer community running a shared Llama 3 endpoint to reduce API costs"
+      ],
+      "risks": [
+        "Overclaiming that unified memory is pooled across the network — it is not.",
+        "Node unreliability when community member laptops go offline unexpectedly.",
+        "Pipeline latency making the cluster feel slow for interactive use cases.",
+        "Privacy exposure if intermediate activations travel over untrusted networks.",
+        "Maintenance burden falling on one person when the original setup person leaves."
+      ],
+      "artifact": "Community inference dashboard spec: cluster health, per-node status, token throughput, latency, aggregate usage, shard map, and event log."
+    }
+  },
+  {
     "slug": "practical-ai-demos-vs-tool-lists",
     "title": "Practical AI Demos Beat Tool Lists: What Learners Really Need",
     "description": "Why durable AI learning comes from real demos, critique, and reusable workflows instead of endless tool lists that age quickly.",
