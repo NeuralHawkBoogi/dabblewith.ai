@@ -332,6 +332,11 @@ Validation questions:
 5. Add post-event recap template and testimonial capture flow.
 6. Create resident-helper demo concept note, explicitly unofficial.
 
+## Execution kits
+
+- `docs/growth/casagrand-firstcity-event-registration-kit.md` — RSVP fields, WhatsApp nudge/reminder copy, go/no-go thresholds, and topic decision rules.
+- `docs/growth/casagrand-firstcity-post-event-loop-kit.md` — post-event recap copy, office-hours invite, community-bot design-partner CTA, anonymized blog/case-study template, repeat-loop metrics, and privacy guardrails.
+
 ## Bottom line
 
 Use Casagrand as a local proving ground. The winning play is:
