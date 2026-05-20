@@ -162,6 +162,27 @@ node onboarding/whatsapp-transcript-integration-test.js
 git diff --check
 ```
 
+
+### Implemented — slice 9: admin edit-before-activation gate
+
+**Files modified:**
+- `onboarding/admin-gate.js`
+  - Added `editPending(storageDir, ownerId, communityId, reviewedBy, updates, note)` for admin-only edits while a session is still in `pending_admin`.
+  - Supports controlled updates to onboarding fields (`communityName`, `description`, `audience`, `tone`, `topics`, `rules`, `linksEvents`, `registrationFields`, `whatsappNumber`) before activation.
+  - Keeps the session pending, bumps `session.version`, stamps `adminEditedAt/adminEditedBy`, records `adminEdits`, and appends a generated profile snapshot to `history`.
+  - CLI: `ONBOARDING_DIR=... node onboarding/admin-gate.js edit <ownerId> <communityId> <reviewedBy> <field=value> [field=value...] [--note=note]`.
+- `onboarding/admin-gate-smoke-test.js`
+  - Added regression coverage for admin edit-before-approve, version/history updates, persisted admin metadata, and unsupported-field guardrails.
+
+**Test commands:**
+```bash
+node onboarding/smoke-test.js
+node onboarding/admin-gate-smoke-test.js
+node onboarding/whatsapp-smoke-test.js
+node onboarding/whatsapp-transcript-integration-test.js
+git diff --check
+```
+
 ### Next steps
 - [x] Wire `handleInboundMessage()` into WhatsApp webhook handler behind a backwards-compatible feature flag (runtime repo)
 - [x] Version community profile on each revision (keep history array)
