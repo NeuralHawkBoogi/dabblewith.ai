@@ -73,39 +73,132 @@
   },
   {
     "slug": "agent-workflows-for-founders",
-    "title": "Agent Workflows for Founders: From Idea to Repeatable Operating System",
-    "description": "A founder-focused guide to using AI agent workflows for research, sales, operations, content, and decision support.",
+    "title": "Agent Workflows for Founders: Build Operating Leverage Without Losing Judgment",
+    "description": "A researched founder playbook for designing AI agent workflows with routing, human review, cost controls, evals, and practical operating artifacts.",
     "keywords": [
       "agent workflows for founders",
-      "AI automation for startups",
       "AI operating system",
-      "founder AI tools"
+      "AI agents for startups",
+      "founder AI workflows",
+      "human in the loop AI"
     ],
     "publishedAt": "2026-05-20",
-    "status": "queued",
-    "excerpt": "Founders should think in workflows, not one-off prompts.",
+    "status": "published",
+    "excerpt": "Founders should not start with autonomous agents. They should start with repeatable workflows, review gates, and measurable operating leverage.",
     "sections": [
       [
-        "Prompts are not enough",
-        "A prompt can save a few minutes. A workflow can save entire cycles. Founders get the most leverage when they connect inputs, decisions, tools, review points, and outputs into repeatable AI-assisted systems."
+        "The mistake: starting with agents instead of operating loops",
+        "Most founders hear “AI agents” and jump straight to autonomy: a bot that researches, decides, writes, sends, follows up, and maybe updates the CRM. That sounds powerful, but it is usually the wrong first step. Anthropic’s engineering guidance draws a useful distinction between workflows, where models and tools follow predefined code paths, and agents, where the model dynamically controls its own process and tool use. For founders, the practical lesson is simple: start with workflows. A workflow is easier to inspect, cheaper to run, easier to debug, and safer to hand to a small team. Autonomy should be earned only after the repeatable loop is understood."
       ],
       [
-        "Research workflows",
-        "AI agents can scan competitors, summarize buyer pain points, extract positioning patterns, and produce a briefing. The founder's job is to validate assumptions and decide the strategic angle."
+        "The founder job-to-be-done",
+        "A founder does not need an AI toy. He needs operating leverage. The recurring work is familiar: turn customer calls into follow-ups, turn market noise into positioning, turn community conversations into events, turn product decisions into tasks, turn hiring notes into scorecards, and turn weekly chaos into a clear operating review. A good agent workflow does not replace founder judgment. It reduces the number of blank pages, context switches, and low-value transformations between signal and decision. The founder still decides what matters, what is true, what is on-brand, and what should be sent to another human."
       ],
       [
-        "Sales workflows",
-        "A practical sales workflow might enrich lead data, draft a personalized opener, generate objections, and prepare follow-up messages. Human review remains mandatory before anything goes out."
+        "What the research suggests",
+        "Three patterns show up across credible sources. First, Anthropic recommends the simplest solution that works and warns that agentic systems trade latency and cost for task performance. Second, OpenAI’s agent documentation treats production agents as systems with orchestration, guardrails, state, observability, and evals — not just prompts. Third, Shopify’s AI-first engineering playbook, as reported by Bessemer Venture Partners, emphasizes standardizing infrastructure rather than forcing one tool: LLM proxy, usage analytics, model flexibility, access controls, and weekly demos. This matters for founders because the same principles apply at small scale. Do not ask “which agent tool should we use?” first. Ask “what workflow do we need to make repeatable, measurable, and reviewable?”"
       ],
       [
-        "Operating workflows",
-        "Agents can create meeting summaries, transform decisions into tasks, draft SOPs, and keep project notes current. This is where small teams gain compounding operational memory."
+        "A practical framework: the founder agent workflow canvas",
+        "Use this canvas before building anything. 1) Trigger: what event starts the workflow — a sales call, WhatsApp message, support ticket, competitor launch, or weekly review? 2) Input: what data is allowed — transcript, CRM note, website, public search, internal docs? 3) Task class: is this summary, extraction, research, drafting, routing, or decision support? 4) AI step: what should the model do in one sentence? 5) Tools/data: which systems can it read or write? 6) Human review gate: who approves, and what do they check? 7) Output: email draft, brief, checklist, task list, agenda, or dashboard row. 8) Metric: time saved, conversion lift, response speed, fewer missed follow-ups, or quality score. 9) Budget limit: token/cost cap and fallback model. 10) Failure mode: what happens if the output is wrong, sensitive, stale, or too expensive?"
       ],
       [
-        "How to start",
-        "Pick one recurring task, define the input and desired output, add a human review gate, and run it weekly. Improve the workflow before expanding it."
+        "Example 1: customer call to sales follow-up",
+        "A founder finishes a discovery call. The workflow starts when the transcript lands in a folder or CRM note. The AI extracts pains, objections, buying stage, promised follow-ups, and open questions. It drafts a follow-up email, but it does not send it. The founder reviews for truth, tone, and strategic judgment. The output is a final email plus CRM update plus next-step task. The metric is not “AI wrote an email.” The metric is fewer missed follow-ups and faster movement from call to next action. This is a workflow, not a free-roaming sales agent, and that is why it is safe enough to run every week."
+      ],
+      [
+        "Example 2: market research to positioning brief",
+        "A founder wants to understand a competitor or category. A naive agent might browse the web and produce a generic report. A stronger workflow is routed: one step collects public facts, another extracts pricing and positioning, another identifies claims that need verification, and another creates a short positioning memo. A human reviews the sources and decides the angle. This mirrors the routing and evaluator patterns described in agent-system guidance: specialized steps are easier to judge than one large opaque answer. The output should include source links, confidence levels, and unanswered questions, not just polished prose."
+      ],
+      [
+        "Example 3: community messages to event agenda",
+        "For dabblewith.ai, a useful workflow is turning WhatsApp community messages into event strategy. The trigger is a batch of member questions. The AI clusters intents — career help, coding, office productivity, founder tools, student projects, or community utilities. It proposes three event themes and a draft agenda. A human chooses one, edits the positioning, and posts the final plan. This is exactly the kind of operating loop that can help grow a community without pretending the AI is a human organizer. It also creates better blog inputs because the content comes from real member needs, not generic keyword ideas."
+      ],
+      [
+        "Cost and observability are not optional",
+        "Token-heavy workflows can quietly become expensive. That is why the workflow canvas needs task class, model tier, and budget limit. A greeting or FAQ should not use the same model path as deep strategy work. A community bot should route common questions to cheaper models or local rules, summarize old context, cache stable prompts, and log cost estimates without storing raw private messages. This is not premature engineering. It is how a founder prevents the AI system from becoming an invisible cost center. Shopify’s infrastructure lesson — standardize the layer underneath and watch usage — applies even to a tiny startup."
+      ],
+      [
+        "The human review gate is the product",
+        "The phrase “human in the loop” sounds defensive, but for founder workflows it is the core product pattern. Review gates protect brand, privacy, customer trust, and strategic taste. They also prevent comprehension debt — the Shopify warning that people can lose understanding if AI does too much of the thinking. A founder should be able to explain the workflow two layers down: what data entered, what prompt or tool transformed it, what the AI produced, what the human checked, and how the output changed the business decision. If nobody can explain that, the agent is not leverage; it is operational debt."
+      ],
+      [
+        "When to upgrade from workflow to agent",
+        "Upgrade only when the task genuinely requires dynamic planning. Good candidates include complex coding changes, multi-source research where the next step depends on what was found, or long-running operations with clear checkpoints. Bad candidates include routine summaries, registrations, FAQs, event reminders, CRM extraction, and most outbound drafts. Those are better as workflows. The maturity path is: manual process, checklist, AI-assisted draft, workflow with review gate, routed workflow with logs and budget, then agentic system with evals and human checkpoints. Skipping steps feels fast but usually creates debugging pain later."
+      ],
+      [
+        "A 7-day implementation plan",
+        "Day 1: choose one recurring founder task that happens weekly. Day 2: fill the workflow canvas and define the review gate. Day 3: collect five real examples and expected outputs. Day 4: build the simplest version using one model call or one scripted chain. Day 5: run it on the examples and score output quality. Day 6: add logs, cost estimates, and failure handling. Day 7: use it in the real operating meeting and decide whether it saved time or improved decisions. If it did not, fix the workflow before adding more autonomy."
+      ],
+      [
+        "Bottom line",
+        "The founder advantage is not having the most autonomous agent. It is having a small set of reliable operating loops that compound every week. Research becomes briefs. Calls become follow-ups. Community messages become events. Decisions become tasks. The AI does the repetitive transformation; the founder keeps judgment. That is the operating model dabblewith.ai should teach: practical workflows first, agents later, and human responsibility always."
       ]
-    ]
+    ],
+    "qualityNote": "Held back after editorial review: useful outline, but not researched or deep enough for publication under the new blog framework.",
+    "qualityScore": 88,
+    "researchBrief": {
+      "reader": "Founder or small-team operator trying to use AI beyond one-off prompts without adding operational risk.",
+      "jobToBeDone": "Turn recurring founder work — research, sales, content, hiring, community operations, and decision prep — into repeatable AI-assisted workflows that save cycles while preserving human judgment.",
+      "thesis": "The durable founder advantage is not autonomous agents everywhere; it is a small operating system of routed, reviewable workflows where AI handles repeatable steps and humans keep ownership of strategy, quality, privacy, and cost.",
+      "searchIntent": "Practical guide for founders evaluating AI agent workflows, AI automation for startups, and AI operating systems.",
+      "sources": [
+        {
+          "title": "Anthropic — Building effective agents",
+          "url": "https://www.anthropic.com/engineering/building-effective-agents",
+          "type": "primary",
+          "checkedAt": "2026-05-20",
+          "notes": "Distinguishes predefined workflows from autonomous agents; recommends simplest solution first; highlights routing, prompt chaining, parallelization, evaluator-optimizer patterns."
+        },
+        {
+          "title": "OpenAI Agents SDK documentation",
+          "url": "https://platform.openai.com/docs/guides/agents",
+          "type": "primary",
+          "checkedAt": "2026-05-20",
+          "notes": "Shows production agent concepts: agent definitions, orchestration, guardrails, results/state, observability, and evals."
+        },
+        {
+          "title": "Bessemer Venture Partners — Inside Shopify’s AI-first engineering playbook",
+          "url": "https://www.bvp.com/atlas/inside-shopifys-ai-first-engineering-playbook",
+          "type": "practitioner",
+          "checkedAt": "2026-05-20",
+          "notes": "Shopify standardizes infrastructure rather than tools, uses LLM proxy/cost visibility, MCP/internal systems, weekly demos, and warns about comprehension debt."
+        },
+        {
+          "title": "Nielsen Norman Group — AI: First New UI Paradigm in 60 Years",
+          "url": "https://www.nngroup.com/articles/ai-paradigm/",
+          "type": "critical",
+          "checkedAt": "2026-05-20",
+          "notes": "Frames AI UX as intent-based outcome specification and warns that prompt-heavy interfaces create usability issues."
+        },
+        {
+          "title": "dabblewith.ai internal model router + cost-control docs",
+          "url": "docs/model-router-whatsapp-runtime-flag.md",
+          "type": "internal",
+          "checkedAt": "2026-05-20",
+          "notes": "Internal router work shows why founder/community workflows need task classification, budget guards, prompt-cache metadata, and sanitized logs before scaling."
+        }
+      ],
+      "insights": [
+        "Workflow design should come before agent autonomy.",
+        "Cost and observability are product requirements, not backend details.",
+        "The founder's real leverage is turning recurring decisions into reviewable operating loops.",
+        "Human review is not a weakness; it is how small teams prevent AI from compounding bad assumptions."
+      ],
+      "examples": [
+        "Customer-call-to-follow-up workflow",
+        "Competitor-research-to-positioning brief",
+        "Community-message-to-event-agenda workflow",
+        "Weekly founder operating review"
+      ],
+      "risks": [
+        "Comprehension debt when founders stop understanding the work AI performs.",
+        "Token spend rising silently without routing and budgets.",
+        "Brand/privacy risk if AI-generated outbound messages skip human review.",
+        "Overbuilding autonomous agents when deterministic workflow steps are enough."
+      ],
+      "artifact": "Founder agent workflow canvas: trigger, input, task class, AI step, tools/data, human review gate, output, metric, budget limit, failure mode."
+    }
   },
   {
     "slug": "how-to-design-practical-ai-workshops",
@@ -118,7 +211,7 @@
       "AI demos"
     ],
     "publishedAt": "2026-05-21",
-    "status": "queued",
+    "status": "research_pending",
     "excerpt": "The best AI workshops end with artifacts, not applause.",
     "sections": [
       [
@@ -141,7 +234,8 @@
         "Measure the outcome",
         "A workshop works if participants use the workflow again after the session. Optimize for repeated use, not entertainment."
       ]
-    ]
+    ],
+    "qualityNote": "Outline only. Must pass docs/content-blog-writing-framework.md before publishing."
   },
   {
     "slug": "ai-automation-community-content-engine",
@@ -154,7 +248,7 @@
       "SEO content workflow"
     ],
     "publishedAt": "2026-05-22",
-    "status": "queued",
+    "status": "research_pending",
     "excerpt": "A good content engine turns community learning into searchable public knowledge.",
     "sections": [
       [
@@ -177,7 +271,8 @@
         "Compounding value",
         "Over time, the content engine becomes a public knowledge base that attracts the right members and helps existing members revisit what they learned."
       ]
-    ]
+    ],
+    "qualityNote": "Outline only. Must pass docs/content-blog-writing-framework.md before publishing."
   },
   {
     "slug": "human-review-in-ai-workflows",
@@ -190,7 +285,7 @@
       "AI operations"
     ],
     "publishedAt": "2026-05-23",
-    "status": "queued",
+    "status": "research_pending",
     "excerpt": "Speed is useful only when quality, privacy, and judgment survive the process.",
     "sections": [
       [
@@ -213,7 +308,8 @@
         "The dabblewith.ai model",
         "AI operates the loop; humans approve the direction. That balance is how practical AI becomes reliable."
       ]
-    ]
+    ],
+    "qualityNote": "Outline only. Must pass docs/content-blog-writing-framework.md before publishing."
   },
   {
     "slug": "practical-ai-demos-vs-tool-lists",
@@ -226,7 +322,7 @@
       "AI community demos"
     ],
     "publishedAt": "2026-05-24",
-    "status": "queued",
+    "status": "research_pending",
     "excerpt": "Tool lists age quickly. Practical workflows teach durable judgment.",
     "sections": [
       [
@@ -249,6 +345,7 @@
         "What dabblewith.ai optimizes for",
         "The goal is practical AI confidence: people should leave with something they can use, not just another bookmarked tool."
       ]
-    ]
+    ],
+    "qualityNote": "Outline only. Must pass docs/content-blog-writing-framework.md before publishing."
   }
 ]
