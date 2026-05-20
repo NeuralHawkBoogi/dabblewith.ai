@@ -12,6 +12,19 @@ const GA_TAG = `  <!-- Google tag (gtag.js) -->
     gtag('js', new Date());
 
     gtag('config', 'G-7473LZQGX2');
+    document.addEventListener('click', function(event) {
+      var link = event.target && event.target.closest ? event.target.closest('a') : null;
+      if (!link || typeof gtag !== 'function') return;
+      var href = link.getAttribute('href') || '';
+      var text = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 80);
+      var isCta = /wa\.me|whatsapp|#join|\/community-bot\/?|\/casagrand-firstcity\/rsvp\/?|utm_/.test(href) || /join|rsvp|start|signal|community bot|whatsapp/i.test(text);
+      if (!isCta) return;
+      gtag('event', 'cta_click', {
+        link_url: link.href || href,
+        link_text: text,
+        page_path: location.pathname
+      });
+    });
   </script>`;
 
 function esc(s) {
