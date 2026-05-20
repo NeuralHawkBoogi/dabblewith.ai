@@ -1,8 +1,8 @@
 [
   {
     "slug": "hands-on-ai-community-learning-by-doing",
-    "title": "Why a Hands-On AI Community Beats Passive AI Learning",
-    "description": "A practical look at why learning AI through workshops, demos, and real workflows creates better outcomes than passive tutorials.",
+    "title": "Why Hands-On AI Communities Beat Passive AI Learning",
+    "description": "A researched playbook for turning AI curiosity into practical skills through workshops, critique, reusable artifacts, and community-led workflows.",
     "keywords": [
       "hands-on AI community",
       "learn AI by doing",
@@ -11,34 +11,124 @@
     ],
     "publishedAt": "2026-05-18",
     "status": "published",
-    "excerpt": "AI skill compounds when people build, break, review, and reuse workflows together.",
+    "excerpt": "People do not become useful with AI by watching more demos. They get useful when they build, break, review, and reuse workflows together.",
     "sections": [
       [
-        "The AI learning gap",
-        "Most AI learning still looks like passive consumption: watching tool demos, saving prompt lists, and reading threads. That helps awareness, but it rarely changes how people work. A hands-on AI community closes the gap by turning every session into a working lab. Members bring real problems, test agent workflows, and leave with reusable patterns."
+        "The AI learning gap is not awareness",
+        "Most people already know AI is important. They have seen ChatGPT screenshots, watched tool demos, saved prompt threads, and heard that agents are coming. The gap is not awareness; it is transfer. A person watches an impressive demo on Monday and still does not know what to do with an invoice, a customer call, a school project, a WhatsApp group, or a business decision on Tuesday. That is why passive AI learning underperforms. It creates vocabulary, but not operating skill. A hands-on AI community changes the unit of learning from “here is a tool” to “here is a workflow you can repeat.”"
       ],
       [
-        "Why doing matters",
-        "AI tools are probabilistic, contextual, and workflow-dependent. You cannot fully understand them from a polished demo. You need to see what fails, what needs human review, where automation saves time, and where it creates risk. This is why dabblewith.ai is built around practical AI demos instead of lectures."
+        "What passive learning gets wrong",
+        "Passive tutorials hide the messy middle. They show the polished prompt, the perfect output, and the final artifact. Real work is different. The first answer is often too generic, the data is incomplete, the tone is wrong, the facts need checking, and the human has to decide what is good enough. Nielsen Norman Group describes AI as a new intent-based interface where people tell systems what outcome they want. That shift is powerful, but it also means users need judgment. They must learn how to specify intent, inspect output, and recover when the model misunderstands. Watching someone else do that is not enough."
+      ],
+      [
+        "Why doing compounds faster",
+        "Anthropic’s guidance on agentic systems is useful even for education: start with the simplest composable workflow that works. In learning terms, that means members should practice small loops repeatedly. Bring a real input. Ask AI to transform it. Compare the output against a human standard. Revise the instruction. Save the final pattern. Repeat with another case. That loop teaches more than a lecture because the learner sees causality: more context improves output, constraints improve usefulness, review catches risk, and artifacts make the work reusable."
       ],
       [
         "The community advantage",
-        "A community adds shared context. One founder may test AI for sales research, another may use it for design reviews, and another may automate meeting notes. When these workflows are shown openly, everyone learns faster than they would alone."
+        "A solo learner gets only his own examples. A community gets many. One founder tests sales follow-ups, another tests market research, a student tests project planning, a resident tests event coordination, and a designer tests landing-page critique. When those examples are shown openly, members learn across domains. Microsoft’s WorkLab research keeps returning to the same adoption gap: access to AI tools does not automatically redesign work. Communities help close that gap because people can see how other humans redesign actual tasks, not just how a vendor demo works."
       ],
       [
-        "What good sessions should produce",
-        "A strong AI workshop should produce artifacts: prompts, workflows, checklists, small automations, decision notes, and failure examples. The value is not just inspiration. The value is a system people can adapt the next day."
+        "The session scorecard",
+        "A practical dabblewith.ai session should be judged with a simple scorecard. 1) Job: what real task is being attempted? 2) Input: what raw material is used, and is it safe to share? 3) AI step: what is the model asked to do? 4) Critique: what is wrong, missing, risky, or off-brand? 5) Artifact: what reusable template, checklist, prompt, worksheet, or automation comes out? 6) Reuse plan: when will the member try it again? 7) Safety check: what private, financial, legal, or medical information must stay out? 8) Follow-up metric: did anyone use it after the session? If there is no artifact or reuse plan, the session was entertainment, not learning."
       ],
       [
-        "Human-guided AI learning",
-        "The best AI communities do not treat AI as magic. They keep humans responsible for judgment, privacy, quality, and taste. AI accelerates the operating loop; humans decide what is worth doing."
+        "Worked example: local community helper",
+        "For the Casagrand First City pilot, a useful workshop is not “top ten AI tools for residents.” A better session starts with a real job: help a residents’ group collect concerns, cluster them, and prepare a constructive agenda for a committee discussion. The input is a sanitized set of sample messages. The AI clusters themes such as maintenance transparency, amenities, handover questions, payments, and event ideas. Humans check whether the clusters are fair, whether names or private details were removed, and whether the tone is constructive. The artifact is a message-to-agenda workflow residents can reuse after every discussion."
+      ],
+      [
+        "Worked example: founder follow-up workflow",
+        "A founder can bring a discovery-call transcript. The AI extracts pains, objections, promised follow-ups, and open questions. The founder reviews whether the AI invented anything, whether the tone sounds trustworthy, and whether the next step is strategically right. The artifact is a follow-up template plus a review checklist. OpenAI’s Agents SDK documentation is a reminder that production AI systems need guardrails, tracing, handoffs, and human-in-the-loop patterns. A workshop does not need a full agent platform, but it should teach the same discipline in miniature."
+      ],
+      [
+        "Risks and tradeoffs",
+        "Hands-on learning can go wrong. Members may paste private data into public tools. A confident facilitator may overstate what AI can do. A tool-specific demo may become obsolete in two months. A community may optimize for flashy outputs instead of useful habits. The mitigation is to make review visible. Show failures. Use sanitized examples. Separate workflow principles from vendor buttons. Ask members to explain why the final artifact is safe and useful. Human-guided learning is slower than a hype demo, but it produces people who can actually use AI without creating avoidable risk."
+      ],
+      [
+        "How dabblewith.ai is applying this",
+        "dabblewith.ai should treat every workshop, WhatsApp conversation, and demo as raw material for a practical playbook. The community bot can collect interests, suggest themes, remind members, and summarize sessions. Humans still choose the agenda, review sensitive content, and decide what is worth publishing. The blog should then capture what worked: the input, the workflow, the critique, the artifact, and the next experiment. That makes the community AI-operated in the busywork but human-guided in judgment."
+      ],
+      [
+        "Next action",
+        "If you are designing an AI learning group, do not start with a tool list. Pick one recurring task your members already face. Run a 45-minute session around that task. End with one reusable artifact and one follow-up commitment. One week later, ask who used it. That feedback loop is the difference between AI curiosity and AI capability."
       ]
-    ]
+    ],
+    "qualityScore": 86,
+    "qualityNote": "Rewritten through the dabblewith.ai blog framework with research brief, sources, artifact, examples, and risks.",
+    "researchBrief": {
+      "reader": "Founders, students, operators, and local community members who are interested in AI but unsure how to convert tool curiosity into useful work.",
+      "jobToBeDone": "Choose a learning format that creates durable AI skill instead of one-time excitement.",
+      "thesis": "Hands-on AI communities outperform passive learning because members practice the full operating loop: real input, AI attempt, human critique, revision, reusable artifact, and repeated use.",
+      "searchIntent": "hands-on AI community, learn AI by doing, practical AI workshops, AI learning community",
+      "sources": [
+        {
+          "title": "Anthropic — Building effective agents",
+          "url": "https://www.anthropic.com/engineering/building-effective-agents",
+          "type": "primary",
+          "checkedAt": "2026-05-20",
+          "notes": "Distinguishes predictable workflows from autonomous agents and recommends using the simplest composable pattern that works."
+        },
+        {
+          "title": "OpenAI Agents SDK documentation",
+          "url": "https://openai.github.io/openai-agents-python/",
+          "type": "primary",
+          "checkedAt": "2026-05-20",
+          "notes": "Documents agents as production systems with tools, handoffs, guardrails, sessions, tracing, usage, and human-in-the-loop concepts."
+        },
+        {
+          "title": "Nielsen Norman Group — AI: First New UI Paradigm in 60 Years",
+          "url": "https://www.nngroup.com/articles/ai-paradigm/",
+          "type": "critical",
+          "checkedAt": "2026-05-20",
+          "notes": "Frames AI as intent-based interaction and highlights why users need judgment, feedback, and control rather than magic-button interfaces."
+        },
+        {
+          "title": "Microsoft WorkLab — AI at Work / Work Trend Index",
+          "url": "https://www.microsoft.com/en-us/worklab/work-trend-index",
+          "type": "practitioner",
+          "checkedAt": "2026-05-20",
+          "notes": "Ongoing research on workplace AI adoption, human agency, and the gap between tool access and useful work redesign."
+        },
+        {
+          "title": "dabblewith.ai internal community-bot and model-router docs",
+          "url": "docs/model-router-whatsapp-runtime-flag.md",
+          "type": "internal",
+          "checkedAt": "2026-05-20",
+          "notes": "Internal build notes on routing, prompt caching, cost controls, privacy-safe logs, WhatsApp-first onboarding, and human review gates."
+        },
+        {
+          "title": "dabblewith.ai Casagrand community growth plan",
+          "url": "docs/growth/casagrand-firstcity-community-growth-plan.md",
+          "type": "internal",
+          "checkedAt": "2026-05-20",
+          "notes": "Field plan for turning a real residential WhatsApp community into practical AI workshops, polls, office hours, and local demos."
+        }
+      ],
+      "insights": [
+        "AI skill is workflow literacy, not tool awareness.",
+        "The most valuable learning moment is often the first bad output and the critique that fixes it.",
+        "Communities compound learning because member examples become shared templates.",
+        "Reusable artifacts are the bridge between inspiration and changed behavior."
+      ],
+      "examples": [
+        "Resident helper workflow for Casagrand First City",
+        "Founder customer-call follow-up workflow",
+        "Student project demo-to-portfolio workflow"
+      ],
+      "risks": [
+        "Workshops can become entertainment if they do not produce artifacts.",
+        "Members may copy prompts without understanding review criteria.",
+        "Private data can leak if examples are not sanitized.",
+        "Tool-specific demos can age quickly."
+      ],
+      "artifact": "Hands-on AI session scorecard: job, input, AI step, critique, artifact, reuse plan, safety check, follow-up metric."
+    }
   },
   {
     "slug": "ai-operated-community-human-guided",
     "title": "What It Means to Run an AI-Operated, Human-Guided Community",
-    "description": "How AI agents can run community operations while humans keep judgment, safety, and taste in the loop.",
+    "description": "A practical operating model for communities where AI handles coordination, summaries, routing, and reminders while humans own trust, taste, and decisions.",
     "keywords": [
       "AI-operated community",
       "human-guided AI",
@@ -47,29 +137,119 @@
     ],
     "publishedAt": "2026-05-19",
     "status": "published",
-    "excerpt": "AI can run the busywork of community operations, but humans must own the decisions.",
+    "excerpt": "AI can run community busywork, but humans must own the direction, judgment, privacy, and moments that create trust.",
     "sections": [
       [
-        "AI as the operating layer",
-        "An AI-operated community uses agents for repeatable work: collecting member interests, drafting session agendas, preparing reminders, summarizing events, and turning raw notes into public recaps. The point is not to remove people; it is to remove operational drag."
+        "The goal is less admin, not less humanity",
+        "Communities fail for boring reasons. Someone forgets to send reminders. Questions repeat. Event notes are lost. New members do not know where to start. Good ideas disappear inside WhatsApp threads. AI can help with all of that, but the phrase “AI-operated community” is easy to misunderstand. It should not mean a fake human host pretending to care. It should mean the repeatable operating layer is handled by software so the actual humans can spend more time on judgment, relationships, and direction."
       ],
       [
-        "Where humans stay essential",
-        "Humans decide what should be published, which topics deserve attention, how sensitive information is handled, and whether a workflow is actually useful. Human-guided AI keeps accountability in the system."
+        "What people usually get wrong",
+        "The common mistake is to automate the most sensitive parts first: public replies, moderation decisions, announcements, and member conflict. That is backwards. Anthropic’s agent guidance recommends simple composable workflows before complex autonomy. For a community, that means first automating low-risk coordination: intake, reminders, summaries, drafts, routing, and checklists. The human should still decide what gets posted, who gets escalated, what tone is right, and when the group needs a real person instead of another bot reply."
       ],
       [
-        "Transparent operations",
-        "The most interesting part of an AI-operated community is transparency. Members should see how an agenda was generated, what the agent missed, and how the human reviewer improved it. That turns operations into education."
+        "The responsibility map",
+        "A useful operating model has five buckets. Automate: collecting RSVPs, tagging interests, reminding members, formatting recaps, and updating dashboards. Assist: drafting agendas, summarizing long threads, suggesting workshop topics, and preparing welcome messages. Review: public announcements, sensitive summaries, sponsorship copy, policy changes, and anything involving money or personal details. Escalate: complaints, safety concerns, conflict, medical/legal/financial advice, and angry members. Never automate: pretending to be a specific human, making binding promises, exposing private data, or deciding community values."
       ],
       [
-        "Practical use cases",
-        "A community can use AI to cluster WhatsApp messages into themes, produce a shortlist of workshop ideas, draft landing pages, create post-event summaries, and maintain a living knowledge base."
+        "Why WhatsApp changes the design",
+        "A website can hide complexity behind dashboards. A WhatsApp community cannot. The chat is the product surface, so the system must feel lightweight. A member should be able to say what he wants in natural language, register for an event, ask for a recap, or suggest a topic without learning a portal. That does not mean the AI should answer everything. It means the bot should collect enough context, route the task, and make the next step easy. The dabblewith.ai onboarding direction follows this logic: collect community purpose, tone, audience, rules, events, links, and admin escalation inside WhatsApp itself."
       ],
       [
-        "The principle",
-        "Let AI do the repetitive work. Let humans provide direction, taste, ethics, and context. That is the operating model behind dabblewith.ai."
+        "Research-backed design principles",
+        "OpenAI’s Agents SDK documentation treats agents as systems with tools, handoffs, sessions, tracing, usage, guardrails, and human-in-the-loop patterns. That matters for community operations. A bot that can talk is not enough. The system needs memory boundaries, cost controls, escalation paths, and logs that are useful without exposing private chats. Nielsen Norman Group’s AI interface framing is also relevant: people specify outcomes, then inspect whether the system understood. Community AI should therefore ask clarifying questions when needed and show humans enough context to approve the output."
+      ],
+      [
+        "Worked example: event registration",
+        "For a Casagrand First City AI meetup, the AI-operated layer can collect RSVPs, ask for name, block/unit if appropriate, interest area, and whether the person wants a beginner or advanced session. It can produce a count by topic and draft a reminder. A human reviews the final copy, decides venue capacity, checks whether the message could create confusion, and sends the announcement. After the event, AI can summarize questions and propose the next session. A human removes private details, corrects tone, and decides what becomes public content."
+      ],
+      [
+        "Worked example: recurring Q&A",
+        "A community bot can answer simple repeated questions such as event timing, registration links, workshop agenda, or where to find a recap. But if a member asks for advice that is personal, sensitive, financial, legal, medical, or conflict-related, the bot should not improvise. It should acknowledge, collect context if safe, and escalate to an admin. This is the difference between useful automation and trust damage. The more human the bot sounds, the more important it is to be clear about what it can and cannot do."
+      ],
+      [
+        "Risks and tradeoffs",
+        "AI-operated communities have real failure modes. The bot may sound too corporate and weaken the group’s voice. It may over-answer when silence or escalation is better. It may summarize a heated thread in a way that feels biased. It may leak private details into a recap. It may become expensive if every casual message triggers a large model. These are not reasons to avoid AI. They are reasons to design the operating layer with routing, budgets, review gates, and explicit “do not automate” rules from day one."
+      ],
+      [
+        "The dabblewith.ai operating model",
+        "dabblewith.ai should position itself as AI-operated and human-guided with a clear promise: AI handles the coordination burden, humans keep responsibility. The platform can provision a community host, collect onboarding details, classify member needs, prepare event flows, generate recaps, and suggest content. The admin still owns community purpose, public voice, sensitive decisions, and final approval. This is credible because it matches how serious AI systems are built: autonomy where the risk is low, review where trust matters, escalation where humans are needed."
+      ],
+      [
+        "Next action",
+        "If you run a community, make a responsibility map before adding a bot. List twenty recurring tasks. Put each into automate, assist, review, escalate, or never automate. Start with three automate tasks and one assist task. Do not let the AI publish directly until your review checklist is boringly reliable. That is how a community gets the benefit of AI operations without losing the human trust that made the community valuable."
       ]
-    ]
+    ],
+    "qualityScore": 87,
+    "qualityNote": "Rewritten through the dabblewith.ai blog framework with source-backed operating model and review checklist.",
+    "researchBrief": {
+      "reader": "Community builders, resident-group organizers, course creators, and founders evaluating AI community operations.",
+      "jobToBeDone": "Understand which community operations can be automated safely and which decisions need human ownership.",
+      "thesis": "The right model is not AI replacing community managers; it is AI operating the repeatable coordination layer while humans preserve trust, judgment, escalation, and taste.",
+      "searchIntent": "AI-operated community, human-guided AI community, AI community operations, WhatsApp community bot",
+      "sources": [
+        {
+          "title": "Anthropic — Building effective agents",
+          "url": "https://www.anthropic.com/engineering/building-effective-agents",
+          "type": "primary",
+          "checkedAt": "2026-05-20",
+          "notes": "Distinguishes predictable workflows from autonomous agents and recommends using the simplest composable pattern that works."
+        },
+        {
+          "title": "OpenAI Agents SDK documentation",
+          "url": "https://openai.github.io/openai-agents-python/",
+          "type": "primary",
+          "checkedAt": "2026-05-20",
+          "notes": "Documents agents as production systems with tools, handoffs, guardrails, sessions, tracing, usage, and human-in-the-loop concepts."
+        },
+        {
+          "title": "Nielsen Norman Group — AI: First New UI Paradigm in 60 Years",
+          "url": "https://www.nngroup.com/articles/ai-paradigm/",
+          "type": "critical",
+          "checkedAt": "2026-05-20",
+          "notes": "Frames AI as intent-based interaction and highlights why users need judgment, feedback, and control rather than magic-button interfaces."
+        },
+        {
+          "title": "Microsoft WorkLab — AI at Work / Work Trend Index",
+          "url": "https://www.microsoft.com/en-us/worklab/work-trend-index",
+          "type": "practitioner",
+          "checkedAt": "2026-05-20",
+          "notes": "Ongoing research on workplace AI adoption, human agency, and the gap between tool access and useful work redesign."
+        },
+        {
+          "title": "dabblewith.ai internal community-bot and model-router docs",
+          "url": "docs/model-router-whatsapp-runtime-flag.md",
+          "type": "internal",
+          "checkedAt": "2026-05-20",
+          "notes": "Internal build notes on routing, prompt caching, cost controls, privacy-safe logs, WhatsApp-first onboarding, and human review gates."
+        },
+        {
+          "title": "dabblewith.ai community-bot platform ticket",
+          "url": "tickets/COMMUNITY-BOT-PLATFORM.md",
+          "type": "internal",
+          "checkedAt": "2026-05-20",
+          "notes": "Product direction for WhatsApp-first onboarding and human-like community hosts with admin escalation."
+        }
+      ],
+      "insights": [
+        "Community AI should be designed as an operations layer, not a fake human authority.",
+        "Trust comes from visible escalation and human accountability.",
+        "WhatsApp communities need lightweight flows because the chat surface is the product.",
+        "Cost, privacy, and tone controls must exist before scale."
+      ],
+      "examples": [
+        "WhatsApp onboarding flow for community-bot customers",
+        "Casagrand First City event RSVP and reminder loop",
+        "Post-event recap and content workflow"
+      ],
+      "risks": [
+        "Members may feel deceived if AI identity and escalation are unclear.",
+        "Over-automation can flatten community tone.",
+        "Private conversations can be mishandled without retention rules.",
+        "Unlimited AI replies can break margins."
+      ],
+      "artifact": "AI-operated community responsibility map: automate, assist, review, escalate, never automate."
+    }
   },
   {
     "slug": "agent-workflows-for-founders",
@@ -203,7 +383,7 @@
   {
     "slug": "how-to-design-practical-ai-workshops",
     "title": "How to Design Practical AI Workshops People Actually Use",
-    "description": "A framework for AI workshops that produce reusable workflows, not just excitement.",
+    "description": "A workshop design framework for creating AI sessions that end with reusable workflows, artifacts, review habits, and measurable follow-through.",
     "keywords": [
       "AI workshops",
       "practical AI workshop",
@@ -211,36 +391,129 @@
       "AI demos"
     ],
     "publishedAt": "2026-05-21",
-    "status": "research_pending",
+    "status": "ready_for_review",
     "excerpt": "The best AI workshops end with artifacts, not applause.",
     "sections": [
       [
-        "Start with a real job",
-        "A useful AI workshop begins with a real task: write a customer email, summarize a call, research a market, build a landing page, or automate a checklist. Abstract tool tours fade quickly."
+        "Start with a job, not a tool",
+        "A practical AI workshop should never begin with “today we will cover five AI tools.” Tools change too quickly, and tool tours make participants passive. Start with a job people already recognize: write a customer follow-up, prepare a resident meeting agenda, critique a landing page, summarize a call, research a market, or turn WhatsApp questions into an event plan. The tool is just the vehicle. The workshop promise should be: by the end, you will have a repeatable way to do this job better."
       ],
       [
-        "Show the workflow",
-        "Participants should see the full loop: input, prompt, tool choice, draft output, human critique, revision, and final artifact. This makes AI feel usable instead of mysterious."
+        "The wrong success metric",
+        "Most workshops measure attendance, applause, or how many people said the demo was cool. Those are weak metrics. The real metric is whether participants reuse the workflow within seven days. If nobody uses it again, the workshop was a performance. A useful session produces an artifact: prompt skeleton, checklist, worksheet, evaluation rubric, automation recipe, decision matrix, or finished draft. The artifact gives the participant something to try again without the facilitator in the room."
       ],
       [
-        "Include failure cases",
-        "Bad outputs are teaching moments. Show where the model hallucinated, where context was missing, and how the human reviewer corrected it."
+        "The AI workshop canvas",
+        "Use this canvas before designing the session. 1) Audience: who exactly is attending? 2) Job: what task do they need to perform? 3) Input: what realistic material will they use? 4) AI step: what should the model do? 5) Human critique: what should participants check? 6) Artifact: what reusable output leaves the room? 7) Safety boundary: what data, claims, and decisions are off limits? 8) Follow-up metric: what proves the workflow was used later? If any box is empty, the session is not ready."
       ],
       [
-        "Make it reusable",
-        "Every session should leave behind a prompt, checklist, template, or automation that members can adapt later."
+        "Design the messy middle on purpose",
+        "The most valuable part of an AI workshop is not the magical first answer. It is the messy middle: the model misses context, writes in the wrong tone, invents a detail, or gives a generic answer. Show that. Ask participants what failed. Add constraints. Improve the input. Compare versions. This is how people learn judgment. Nielsen Norman Group’s AI interface work is useful here because AI interaction is outcome specification; users need practice specifying intent and inspecting whether the system delivered the intended result."
       ],
       [
-        "Measure the outcome",
-        "A workshop works if participants use the workflow again after the session. Optimize for repeated use, not entertainment."
+        "Use credible workflow patterns",
+        "Anthropic’s agent guidance recommends simple, composable patterns and warns that more agentic systems add cost and latency. That lesson applies in the workshop room. Do not teach beginners to build a sprawling autonomous agent. Teach a clean workflow: collect input, draft, critique, revise, approve, and save. OpenAI’s Agents SDK documentation shows production ideas such as guardrails, tools, tracing, usage, sessions, and human-in-the-loop. You can translate those ideas into non-technical workshop habits: define allowed inputs, log decisions, review sensitive outputs, and know when to escalate."
+      ],
+      [
+        "Worked example: Claude Design workshop",
+        "A Claude Design session should not be “look, Claude can make artifacts.” A stronger workshop starts with a real brief: create a landing page for a community bot, a poster for an AI meetup, or a diagram explaining a workflow. Participants write the brief, generate an artifact, critique hierarchy, copy, spacing, audience fit, and accessibility, then revise. The artifact is a design brief template plus a QC checklist. The lesson is not just how to prompt Claude; it is how to think like a reviewer so AI output becomes client-ready instead of merely impressive."
+      ],
+      [
+        "Worked example: community agenda workshop",
+        "For a local community, use sanitized WhatsApp questions as input. The AI clusters questions into themes and proposes a 60-minute meetup agenda. Participants review whether the themes are accurate, whether sensitive names were removed, whether the agenda matches the audience, and whether the call-to-action is clear. The final artifact is a message-to-agenda workflow that any organizer can reuse. This directly connects to dabblewith.ai’s community-bot direction: AI handles coordination drafts, humans keep trust and judgment."
+      ],
+      [
+        "Workshop structure that works",
+        "A strong 75-minute format is simple. First 10 minutes: define the job and show the before state. Next 15: run the first AI attempt live. Next 15: critique the output against a rubric. Next 15: revise with better context and constraints. Next 10: convert the final answer into a reusable artifact. Last 10: decide how participants will use it in the next week. This structure keeps the session practical and prevents the facilitator from drifting into a generic AI lecture."
+      ],
+      [
+        "Risks and mitigation",
+        "Workshops can accidentally teach bad habits. Participants may paste private customer data into tools. They may trust fluent output too quickly. They may think a prompt is a process. They may leave with a tool-specific trick that breaks next month. Mitigate this with sanitized sample inputs, explicit review criteria, a “what AI must not decide” slide, and backup materials if the live tool fails. Make the failure cases part of the curriculum. The goal is durable judgment, not perfect theater."
+      ],
+      [
+        "Next action",
+        "Before announcing your next AI workshop, fill the workshop canvas. If you cannot name the job, input, artifact, safety boundary, and follow-up metric, postpone the announcement. A smaller practical workshop will outperform a bigger generic one. For dabblewith.ai, this should become the standard: every session ends with something members can reuse, and every recap shows the workflow, the critique, and the artifact."
+      ],
+      [
+        "Facilitator preparation checklist",
+        "Before the session, prepare three things: a clean sample input, a backup output in case the live model is slow, and a review rubric participants can hold in front of them. Also decide what not to cover. A focused workshop on one workflow is better than a rushed tour of ten capabilities. Send the artifact after the session with one simple assignment: use it once this week and report what broke. That follow-up converts the workshop from a one-time event into a learning loop."
       ]
     ],
-    "qualityNote": "Outline only. Must pass docs/content-blog-writing-framework.md before publishing."
+    "qualityNote": "Ready for review under the new framework; do not publish until date gate allows.",
+    "qualityScore": 88,
+    "researchBrief": {
+      "reader": "Community organizers, startup operators, trainers, and founders planning practical AI sessions.",
+      "jobToBeDone": "Design an AI workshop that changes how participants work after the session.",
+      "thesis": "AI workshops fail when they optimize for excitement; they work when every session starts with a real job and ends with a reusable artifact plus a follow-up metric.",
+      "searchIntent": "practical AI workshop design, hands-on AI training, AI workshop framework",
+      "sources": [
+        {
+          "title": "Anthropic — Building effective agents",
+          "url": "https://www.anthropic.com/engineering/building-effective-agents",
+          "type": "primary",
+          "checkedAt": "2026-05-20",
+          "notes": "Distinguishes predictable workflows from autonomous agents and recommends using the simplest composable pattern that works."
+        },
+        {
+          "title": "OpenAI Agents SDK documentation",
+          "url": "https://openai.github.io/openai-agents-python/",
+          "type": "primary",
+          "checkedAt": "2026-05-20",
+          "notes": "Documents agents as production systems with tools, handoffs, guardrails, sessions, tracing, usage, and human-in-the-loop concepts."
+        },
+        {
+          "title": "Nielsen Norman Group — AI: First New UI Paradigm in 60 Years",
+          "url": "https://www.nngroup.com/articles/ai-paradigm/",
+          "type": "critical",
+          "checkedAt": "2026-05-20",
+          "notes": "Frames AI as intent-based interaction and highlights why users need judgment, feedback, and control rather than magic-button interfaces."
+        },
+        {
+          "title": "Microsoft WorkLab — AI at Work / Work Trend Index",
+          "url": "https://www.microsoft.com/en-us/worklab/work-trend-index",
+          "type": "practitioner",
+          "checkedAt": "2026-05-20",
+          "notes": "Ongoing research on workplace AI adoption, human agency, and the gap between tool access and useful work redesign."
+        },
+        {
+          "title": "dabblewith.ai internal community-bot and model-router docs",
+          "url": "docs/model-router-whatsapp-runtime-flag.md",
+          "type": "internal",
+          "checkedAt": "2026-05-20",
+          "notes": "Internal build notes on routing, prompt caching, cost controls, privacy-safe logs, WhatsApp-first onboarding, and human review gates."
+        },
+        {
+          "title": "dabblewith.ai Claude Design playbook",
+          "url": "docs/knowledge/claude-design-playbook.md",
+          "type": "internal",
+          "checkedAt": "2026-05-20",
+          "notes": "Practical workshop material for using Claude artifacts/design workflows with briefs, demos, critique, and QC."
+        }
+      ],
+      "insights": [
+        "The artifact is the product of the workshop.",
+        "Failure cases teach better judgment than perfect demos.",
+        "A workshop should separate workflow principles from vendor-specific buttons.",
+        "Follow-up usage is a better metric than attendance."
+      ],
+      "examples": [
+        "Claude Design landing-page critique workshop",
+        "Founder customer-call workflow workshop",
+        "Resident association agenda workflow"
+      ],
+      "risks": [
+        "Participants may leave entertained but unable to repeat the workflow.",
+        "Live demos can fail without backup inputs.",
+        "Private data can be exposed in examples.",
+        "Tool churn can make the workshop age quickly."
+      ],
+      "artifact": "AI workshop canvas: audience, job, input, demo loop, artifact, review rubric, safety boundary, follow-up metric."
+    }
   },
   {
     "slug": "ai-automation-community-content-engine",
-    "title": "Using AI Automation to Build a Community Content Engine",
-    "description": "How communities can use AI to turn sessions, conversations, and demos into useful content without losing human quality control.",
+    "title": "Using AI Automation to Build a Community Content Engine Without Becoming Spam",
+    "description": "How communities can turn sessions, questions, demos, and WhatsApp conversations into useful public content with human review and quality gates.",
     "keywords": [
       "AI content automation",
       "community content engine",
@@ -248,36 +521,129 @@
       "SEO content workflow"
     ],
     "publishedAt": "2026-05-22",
-    "status": "research_pending",
+    "status": "ready_for_review",
     "excerpt": "A good content engine turns community learning into searchable public knowledge.",
     "sections": [
       [
-        "Community conversations are raw material",
-        "Every meetup, chat thread, Q&A, and demo contains useful knowledge. AI can help convert that raw material into summaries, tutorials, checklists, and blog posts."
+        "Content should come from community reality",
+        "The best community content does not start with a keyword spreadsheet. It starts with real questions, real demos, real failures, and real follow-up. A WhatsApp thread about AI tools for residents, a workshop where a founder struggles with a customer-call summary, or a design critique session can all become useful public knowledge. AI automation helps because it can transform raw material quickly. But if the raw material is not grounded in real community activity, the output becomes generic SEO noise."
       ],
       [
-        "The workflow",
-        "Capture notes, extract themes, draft an article, check factual accuracy, improve structure, add examples, and publish. The human review step is what keeps the content trustworthy."
+        "The spam trap",
+        "AI makes it cheap to produce articles, recaps, social posts, and newsletters. That is useful and dangerous. When the cost of drafting drops, the temptation is to publish more. The better move is to raise the quality bar. The dabblewith.ai blog framework now requires a research brief, credible sources, a practical artifact, concrete examples, risks, and a quality score before publishing. That gate exists because shallow posts damage trust faster than silence. A community content engine should publish fewer, more useful pieces."
       ],
       [
-        "SEO without spam",
-        "Useful SEO is not keyword stuffing. It is answering real questions clearly and consistently. A community has an advantage because its content comes from actual member needs."
+        "The content engine pipeline",
+        "A practical pipeline has nine steps. Capture: save workshop notes, questions, demos, and decisions. Sanitize: remove names, phone numbers, private details, and sensitive context. Cluster: group signals into themes. Brief: define reader, job-to-be-done, thesis, sources, examples, risks, and artifact. Draft: let AI turn the brief into a structured post. Review: a human checks facts, tone, privacy, usefulness, and originality. Repurpose: convert the approved piece into recap, FAQ, checklist, and short post. Publish: only after the gate passes. Measure: track useful replies, signups, shares, and repeat questions."
       ],
       [
-        "Repurposing outputs",
-        "One session can produce a recap, a blog post, a LinkedIn summary, a checklist, and a future workshop idea. AI makes this repurposing cheap; humans keep it sharp."
+        "What research suggests",
+        "Anthropic’s guidance on effective agents emphasizes simple composable workflows over unnecessary complexity. That is exactly how content should work: deterministic steps with review gates, not an autonomous content bot publishing whatever sounds plausible. OpenAI’s Agents SDK documentation highlights guardrails, tracing, usage, sessions, and human-in-the-loop patterns. For content, those translate into source logs, privacy checks, cost controls, and approval before publication. Nielsen Norman Group’s AI interface framing also matters: humans specify outcomes and judge whether the system met them. AI drafts; humans decide."
       ],
       [
-        "Compounding value",
-        "Over time, the content engine becomes a public knowledge base that attracts the right members and helps existing members revisit what they learned."
+        "Worked example: workshop to blog",
+        "Imagine a dabblewith.ai Claude Design workshop. The raw inputs are the session brief, screenshots, participant questions, critique notes, and final artifact. The content engine sanitizes the material and clusters themes: writing better briefs, evaluating visual hierarchy, fixing AI design artifacts, and deciding when to regenerate versus manually edit. The brief defines the reader as a founder or community organizer. The artifact is a Claude Design QC checklist. The draft becomes a blog post, a workshop recap, a WhatsApp summary, and a future session outline."
+      ],
+      [
+        "Worked example: WhatsApp questions to FAQ",
+        "A community bot may receive repeated questions about event timing, who should attend, whether beginners are welcome, and what people should bring. AI can cluster those questions and draft an FAQ. A human checks that no private member details are included and that the tone matches the community. The FAQ then improves onboarding and reduces repeated admin work. This is content automation at its best: it starts with real demand and creates a reusable public answer."
+      ],
+      [
+        "The quality gate",
+        "Before publishing, every piece should pass a gate. Does it name a specific reader? Does it solve a real job? Does it cite source names or field inputs? Does it include an artifact? Does it show a concrete example? Does it discuss risks? Does it connect back to actual community learning? Would a reader know what to do next? If the answer is no, the piece can remain a draft. The cost of waiting is low. The cost of training the community to ignore your content is high."
+      ],
+      [
+        "Privacy and trust rules",
+        "Community content often begins in semi-private spaces. That creates obligations. Do not publish names, phone numbers, personal situations, screenshots, or identifiable complaints without consent. Convert raw messages into themes. Use paraphrased examples. Keep source logs internally, but public posts should not expose member-level data. If the content touches legal, financial, medical, or conflict-heavy topics, add human review or avoid publishing. A content engine that violates trust will not get a second chance."
+      ],
+      [
+        "How dabblewith.ai should use this",
+        "dabblewith.ai has a natural advantage if it treats the community as a learning lab. Workshops produce artifacts. WhatsApp onboarding reveals needs. Community bots generate recurring questions. Growth campaigns show what messages people respond to. The blog should be the public memory of those experiments, not a generic AI-news feed. Every post should answer: what did we learn from building or hosting, and what can the reader reuse?"
+      ],
+      [
+        "Next action",
+        "Create a content engine dashboard with four columns: raw signal, approved brief, published artifact, and measured result. Do not add more volume until the first three posts meet the quality gate. Once the loop works, repurpose carefully. One good workshop can become five assets, but only if the source material is real and the human review is strict."
+      ],
+      [
+        "Measurement beyond traffic",
+        "Traffic alone is a weak success metric for community content. Measure whether the article reduces repeated questions, brings the right people into the WhatsApp group, helps members reuse an artifact, or creates better workshop attendance. A smaller post that answers a real community question can be more valuable than a high-volume keyword article. The content engine should therefore track both distribution metrics and operational metrics: fewer repeated admin replies, more qualified registrations, and clearer member intent."
       ]
     ],
-    "qualityNote": "Outline only. Must pass docs/content-blog-writing-framework.md before publishing."
+    "qualityNote": "Ready for review under the new framework; includes content engine rubric and quality gates.",
+    "qualityScore": 87,
+    "researchBrief": {
+      "reader": "Community builders, course creators, and founders who want content from real community activity without producing generic AI spam.",
+      "jobToBeDone": "Design a repeatable content workflow that converts community learning into credible public knowledge.",
+      "thesis": "A community content engine should start from real member signals and end with human-reviewed artifacts; AI is useful for transformation, not for manufacturing empty posts.",
+      "searchIntent": "AI content automation community, community content engine, AI SEO workflow, human reviewed AI content",
+      "sources": [
+        {
+          "title": "Anthropic — Building effective agents",
+          "url": "https://www.anthropic.com/engineering/building-effective-agents",
+          "type": "primary",
+          "checkedAt": "2026-05-20",
+          "notes": "Distinguishes predictable workflows from autonomous agents and recommends using the simplest composable pattern that works."
+        },
+        {
+          "title": "OpenAI Agents SDK documentation",
+          "url": "https://openai.github.io/openai-agents-python/",
+          "type": "primary",
+          "checkedAt": "2026-05-20",
+          "notes": "Documents agents as production systems with tools, handoffs, guardrails, sessions, tracing, usage, and human-in-the-loop concepts."
+        },
+        {
+          "title": "Nielsen Norman Group — AI: First New UI Paradigm in 60 Years",
+          "url": "https://www.nngroup.com/articles/ai-paradigm/",
+          "type": "critical",
+          "checkedAt": "2026-05-20",
+          "notes": "Frames AI as intent-based interaction and highlights why users need judgment, feedback, and control rather than magic-button interfaces."
+        },
+        {
+          "title": "Microsoft WorkLab — AI at Work / Work Trend Index",
+          "url": "https://www.microsoft.com/en-us/worklab/work-trend-index",
+          "type": "practitioner",
+          "checkedAt": "2026-05-20",
+          "notes": "Ongoing research on workplace AI adoption, human agency, and the gap between tool access and useful work redesign."
+        },
+        {
+          "title": "dabblewith.ai internal community-bot and model-router docs",
+          "url": "docs/model-router-whatsapp-runtime-flag.md",
+          "type": "internal",
+          "checkedAt": "2026-05-20",
+          "notes": "Internal build notes on routing, prompt caching, cost controls, privacy-safe logs, WhatsApp-first onboarding, and human review gates."
+        },
+        {
+          "title": "dabblewith.ai blog writing framework",
+          "url": "docs/content-blog-writing-framework.md",
+          "type": "internal",
+          "checkedAt": "2026-05-20",
+          "notes": "Editorial framework requiring research briefs, sources, artifacts, risks, and quality scoring before publishing."
+        }
+      ],
+      "insights": [
+        "Real community signals are the moat against generic AI content.",
+        "A content engine needs a quality gate before it needs more volume.",
+        "One session can become many assets only if the source material is structured.",
+        "Private chat data must be transformed into sanitized themes before publication."
+      ],
+      "examples": [
+        "Workshop recap to blog post",
+        "WhatsApp questions to FAQ and event agenda",
+        "Demo transcript to checklist and LinkedIn post"
+      ],
+      "risks": [
+        "AI-written posts can become generic and damage trust.",
+        "Private member messages can leak into public content.",
+        "SEO pressure can push low-quality volume.",
+        "Publishing without source checks can spread errors."
+      ],
+      "artifact": "Community content engine pipeline: capture, sanitize, cluster, brief, draft, review, repurpose, publish, measure."
+    }
   },
   {
     "slug": "human-review-in-ai-workflows",
     "title": "Why Human Review Is the Most Important Part of an AI Workflow",
-    "description": "Human review turns AI output from fast draft into reliable work. Here is where review gates belong in practical workflows.",
+    "description": "A practical guide to placing human review gates in AI workflows so speed does not destroy quality, privacy, trust, or strategic judgment.",
     "keywords": [
       "human review AI",
       "AI workflow quality",
@@ -285,36 +651,130 @@
       "AI operations"
     ],
     "publishedAt": "2026-05-23",
-    "status": "research_pending",
+    "status": "ready_for_review",
     "excerpt": "Speed is useful only when quality, privacy, and judgment survive the process.",
     "sections": [
       [
         "AI drafts are not decisions",
-        "AI can summarize, suggest, transform, and draft. But in serious workflows, the output needs review before it affects customers, public content, or business decisions."
+        "AI is excellent at producing a first draft, summary, classification, or plan. That does not make the output a decision. A workflow becomes serious when the output affects a customer, member, patient, resident, employee, investor, or public audience. At that point, speed alone is not the metric. The question is whether the work is true, safe, on-brand, useful, and appropriate. Human review is the step that turns a fast draft into reliable work."
       ],
       [
-        "Where review matters most",
-        "Review gates are essential for facts, legal or medical claims, customer communication, financial advice, private data, and brand-sensitive content."
+        "The misconception about review",
+        "Many teams treat human review as a brake on automation. That is the wrong framing. Review is the control surface. It defines what quality means, what risks matter, who is accountable, and what happens when the AI is wrong. Anthropic’s agent guidance warns that agentic systems trade cost and latency for performance and recommends the simplest solution that works. Review gates are part of that simplicity: instead of asking an autonomous system to be perfect, you build a predictable workflow where humans approve high-risk steps."
       ],
       [
-        "Review as a design pattern",
-        "A strong workflow does not add review as an afterthought. It defines who reviews, what they check, and what happens when output fails quality standards."
+        "The review gate checklist",
+        "Every meaningful AI workflow should define eight items. 1) Risk class: low, medium, high, or prohibited. 2) Reviewer: who owns approval? 3) Evidence: what source material must the reviewer see? 4) Fact check: what claims need verification? 5) Tone check: does it sound right for the audience? 6) Privacy check: does it expose personal, financial, medical, or confidential information? 7) Approval path: send, publish, revise, escalate, or reject. 8) Failure action: what happens if the output is wrong or incomplete? A review button without this checklist is just theater."
       ],
       [
-        "The benefit",
-        "Human review does not slow AI down as much as people fear. It makes AI usable in real operations because people trust the system."
+        "Risk-based review",
+        "Not every AI output needs the same scrutiny. A low-risk internal summary may need only a quick scan. A public blog post needs source checks, examples, and editorial review. A customer email needs truth, tone, and commitment checks. A community announcement needs clarity and sensitivity. A medical, financial, legal, or conflict-heavy answer should often be escalated or avoided. The point is not to slow everything down. The point is to match review depth to consequence."
       ],
       [
-        "The dabblewith.ai model",
-        "AI operates the loop; humans approve the direction. That balance is how practical AI becomes reliable."
+        "Research-backed patterns",
+        "OpenAI’s Agents SDK documentation includes human-in-the-loop, guardrails, tracing, usage, and sessions as production concepts. Those are engineering words for a product truth: AI systems need inspectability and intervention. Nielsen Norman Group’s view of AI as a new intent-based interface also supports this. Users tell the system what they want, but they still have to judge whether the outcome matches the intent. In operational workflows, that judgment cannot be optional."
+      ],
+      [
+        "Worked example: sales follow-up",
+        "A founder finishes a customer call. AI extracts pains, objections, promised next steps, and drafts a follow-up email. The human review gate checks four things: did the AI invent anything, did it miss an important objection, does the tone match the relationship, and does the email promise only what the team can deliver? If approved, the founder sends it. If not, the draft is revised. The AI saved time, but the founder kept accountability. That is the right division of labor."
+      ],
+      [
+        "Worked example: community announcement",
+        "For dabblewith.ai, the community bot can draft a WhatsApp nudge for an AI workshop or Casagrand event. Review must check whether the promise is clear, whether the call-to-action is simple, whether beginners feel welcome, whether any private member detail is included, and whether the tone sounds human. The bot should not post directly into a sensitive community without approval. A small review gate protects trust while still removing most of the drafting burden."
+      ],
+      [
+        "Worked example: blog quality gate",
+        "The blog system itself is a review workflow. A post must have a research brief, source mix, practical artifact, examples, risks, and a minimum quality score before it is published. That prevents the daily blog engine from becoming a shallow content machine. The human reviewer is not merely correcting grammar. He is asking whether the article has earned the right to exist. That is exactly the kind of review habit serious AI operations need."
+      ],
+      [
+        "Risks and tradeoffs",
+        "Review can fail too. If criteria are vague, reviewers rubber-stamp fluent nonsense. If every tiny output needs senior approval, the workflow loses speed. If reviewers cannot see the source material, they cannot verify claims. If AI handles too much hidden work, the team can develop comprehension debt: people stop understanding the process they supposedly own. The mitigation is to make review criteria explicit, log the source material, and reserve deep review for high-consequence outputs."
+      ],
+      [
+        "Next action",
+        "Pick one AI workflow you already use. Before improving the prompt, add the review gate checklist. Define the risk class, reviewer, evidence, fact check, tone check, privacy check, approval path, and failure action. Then run five real examples through it. If review catches issues, the workflow is becoming safer. If review catches nothing, either the task is low-risk or your criteria are too weak."
+      ],
+      [
+        "Make review teach the system",
+        "A good review gate should not only approve or reject. It should create feedback that improves the workflow. When a reviewer fixes a draft, capture the reason: missing context, wrong tone, unsupported claim, privacy issue, weak call-to-action, or bad routing. After ten reviews, patterns appear. Those patterns tell you whether to improve the prompt, change the input, add retrieval, lower autonomy, or move the task into a human-only path. Review is therefore both a safety mechanism and a learning system."
       ]
     ],
-    "qualityNote": "Outline only. Must pass docs/content-blog-writing-framework.md before publishing."
+    "qualityNote": "Ready for review under the new framework; includes review gate checklist and concrete workflow examples.",
+    "qualityScore": 89,
+    "researchBrief": {
+      "reader": "Founders, operators, and community builders adding AI into real workflows.",
+      "jobToBeDone": "Decide where human review gates belong before AI output reaches customers, members, or public channels.",
+      "thesis": "Human review is not an anti-automation tax; it is the control surface that makes AI workflows safe enough to use repeatedly.",
+      "searchIntent": "human review AI workflows, human in the loop AI, AI workflow quality control",
+      "sources": [
+        {
+          "title": "Anthropic — Building effective agents",
+          "url": "https://www.anthropic.com/engineering/building-effective-agents",
+          "type": "primary",
+          "checkedAt": "2026-05-20",
+          "notes": "Distinguishes predictable workflows from autonomous agents and recommends using the simplest composable pattern that works."
+        },
+        {
+          "title": "OpenAI Agents SDK documentation",
+          "url": "https://openai.github.io/openai-agents-python/",
+          "type": "primary",
+          "checkedAt": "2026-05-20",
+          "notes": "Documents agents as production systems with tools, handoffs, guardrails, sessions, tracing, usage, and human-in-the-loop concepts."
+        },
+        {
+          "title": "Nielsen Norman Group — AI: First New UI Paradigm in 60 Years",
+          "url": "https://www.nngroup.com/articles/ai-paradigm/",
+          "type": "critical",
+          "checkedAt": "2026-05-20",
+          "notes": "Frames AI as intent-based interaction and highlights why users need judgment, feedback, and control rather than magic-button interfaces."
+        },
+        {
+          "title": "Microsoft WorkLab — AI at Work / Work Trend Index",
+          "url": "https://www.microsoft.com/en-us/worklab/work-trend-index",
+          "type": "practitioner",
+          "checkedAt": "2026-05-20",
+          "notes": "Ongoing research on workplace AI adoption, human agency, and the gap between tool access and useful work redesign."
+        },
+        {
+          "title": "dabblewith.ai internal community-bot and model-router docs",
+          "url": "docs/model-router-whatsapp-runtime-flag.md",
+          "type": "internal",
+          "checkedAt": "2026-05-20",
+          "notes": "Internal build notes on routing, prompt caching, cost controls, privacy-safe logs, WhatsApp-first onboarding, and human review gates."
+        },
+        {
+          "title": "dabblewith.ai community-bot platform ticket",
+          "url": "tickets/COMMUNITY-BOT-PLATFORM.md",
+          "type": "internal",
+          "checkedAt": "2026-05-20",
+          "notes": "Product direction for WhatsApp-first onboarding and human-like community hosts with admin escalation."
+        }
+      ],
+      "insights": [
+        "Review gates should be designed before prompting begins.",
+        "The reviewer needs criteria, not just a final approval button.",
+        "Risk determines review depth.",
+        "Human review protects learning because it forces the team to understand what AI did."
+      ],
+      "examples": [
+        "Sales follow-up approval",
+        "Community announcement review",
+        "Blog quality gate",
+        "Sensitive escalation workflow"
+      ],
+      "risks": [
+        "Review can become rubber-stamping if criteria are vague.",
+        "Too much review can remove the speed advantage.",
+        "Skipping review on outbound messages can damage trust.",
+        "Teams may lose understanding if AI handles too much hidden work."
+      ],
+      "artifact": "Human review gate checklist: risk class, reviewer, evidence, fact check, tone check, privacy check, approval path, failure action."
+    }
   },
   {
     "slug": "practical-ai-demos-vs-tool-lists",
     "title": "Practical AI Demos Beat Tool Lists: What Learners Really Need",
-    "description": "Why people learn AI faster from real demos, workflows, and critique than from long lists of tools.",
+    "description": "Why durable AI learning comes from real demos, critique, and reusable workflows instead of endless tool lists that age quickly.",
     "keywords": [
       "practical AI demos",
       "AI tools",
@@ -322,30 +782,130 @@
       "AI community demos"
     ],
     "publishedAt": "2026-05-24",
-    "status": "research_pending",
+    "status": "ready_for_review",
     "excerpt": "Tool lists age quickly. Practical workflows teach durable judgment.",
     "sections": [
       [
-        "The problem with tool lists",
-        "AI tool lists feel useful, but they become outdated quickly. They also skip the hard part: deciding when to use a tool, what context to provide, and how to judge output."
+        "Tool lists feel useful, then expire",
+        "AI tool lists are popular because they create the feeling of progress. Ten tools for video. Twenty tools for writing. Fifty tools every founder should know. The problem is that tool lists age quickly and rarely teach judgment. A learner may bookmark the list and still not know which tool to use for a messy business problem, what context to provide, how to evaluate output, or when not to use AI at all. Awareness is helpful, but it is not capability."
       ],
       [
-        "Demos reveal judgment",
-        "A real demo shows the messy middle. You see the first bad output, the prompt revision, the missing context, the review step, and the final artifact."
+        "What learners actually need",
+        "Learners need to see a full workflow. What was the job? What input went in? Why was this AI step chosen? What did the first output get wrong? How did the human revise the prompt or context? What criteria decided whether the final answer was good? What artifact can someone reuse later? A practical demo answers those questions. A tool list usually does not. That is why demos create transferable skill while lists create temporary curiosity."
       ],
       [
-        "Workflows transfer better",
-        "Once someone understands a workflow, they can swap tools as the market changes. The durable skill is not knowing every app; it is knowing how to structure AI-assisted work."
+        "The demo rubric",
+        "A good AI demo has seven parts. 1) Real job: a task someone already needs to do. 2) Real input: sanitized but realistic material. 3) Visible failure: show the first weak answer. 4) Review criteria: explain what quality means. 5) Revised output: improve with better context or constraints. 6) Reusable artifact: save a template, checklist, prompt, or workflow. 7) Transfer lesson: explain how the same pattern applies with another tool or domain. If a demo skips the critique and artifact, it is mostly performance."
       ],
       [
-        "Community makes demos better",
-        "Members bring different use cases and critique each other's workflows. That makes every demo more grounded."
+        "Why workflows transfer better than tools",
+        "Anthropic’s agent guidance distinguishes predictable workflows from more autonomous agents and recommends starting simple. That principle is valuable for learners. A person who understands a workflow can swap tools later. A person who only memorized a tool button is stuck when the interface changes or the company disappears. Nielsen Norman Group’s AI interface framing makes the same point from a UX angle: AI changes the interaction model because people specify outcomes. The durable skill is learning how to specify, inspect, and revise outcomes."
       ],
       [
-        "What dabblewith.ai optimizes for",
-        "The goal is practical AI confidence: people should leave with something they can use, not just another bookmarked tool."
+        "Where tool lists still help",
+        "Tool lists are not useless. They are good reference material after someone understands the job. If a participant already knows she needs image generation, transcription, meeting summaries, or spreadsheet analysis, a curated list can help her choose. But the list should come after the workflow, not before it. Teach the job, quality criteria, and risks first. Then show tool options. Otherwise the learner collects apps without understanding the work."
+      ],
+      [
+        "Worked example: landing-page critique",
+        "A weak tool-list session says, “Here are five AI design tools.” A strong demo starts with a landing page draft for a community bot. The AI critiques hierarchy, message clarity, call-to-action, and trust signals. The first critique is too generic, so the facilitator adds audience context: WhatsApp-first community admins, local events, practical AI workshops, and human-guided automation. The revised critique becomes specific. The artifact is a landing-page review checklist that works with Claude, ChatGPT, or a human designer."
+      ],
+      [
+        "Worked example: community agenda",
+        "Instead of listing community-management tools, run a demo with sanitized WhatsApp messages. Ask AI to cluster questions and propose an event agenda. The first output may overgeneralize or miss local context. Participants critique it: are the themes accurate, is any private detail exposed, is the agenda useful for beginners, and does it have a clear next step? The artifact is a message-to-agenda workflow. The lesson transfers to resident groups, founder communities, student clubs, and internal company channels."
+      ],
+      [
+        "Worked example: founder research memo",
+        "A founder wants to understand a competitor. A tool list might point to search, summarization, and deck tools. A demo shows the workflow: collect public pages, extract claims, separate facts from interpretations, identify unanswered questions, draft a positioning memo, and review source links. OpenAI’s Agents SDK documentation highlights tools, handoffs, tracing, and guardrails in production systems. A beginner demo can teach the same instincts without heavy infrastructure: source everything, show uncertainty, and keep human judgment in the loop."
+      ],
+      [
+        "Risks and tradeoffs",
+        "Practical demos take more preparation than tool lists. The facilitator needs realistic inputs, backup examples, and review criteria. Live tools may fail. Some learners may still ask, “Which app should I use?” That is fine; answer after the workflow is clear. Demos can also become too polished, hiding the failure cases that teach judgment. The fix is to show the first bad output and explain how to repair it. The goal is not to make AI look magical. The goal is to make AI usable."
+      ],
+      [
+        "Next action",
+        "If you are planning AI content for a community, replace your next tool list with one practical demo. Choose a real job, bring a realistic input, show the weak first answer, critique it, revise it, and leave behind a reusable artifact. Then share the tool list as an appendix. That order teaches people how to work with AI even after the tool market changes."
+      ],
+      [
+        "How to share tools responsibly",
+        "When you do share tools, attach them to use cases. Instead of “try these five tools,” say “for this workflow, here are three tool options, when each is useful, what it costs or risks, and what human review still needs to happen.” That framing keeps the learner focused on judgment. It also makes the content age better because the workflow remains useful even if one vendor changes pricing, removes a feature, or gets replaced by a better product."
       ]
     ],
-    "qualityNote": "Outline only. Must pass docs/content-blog-writing-framework.md before publishing."
+    "qualityNote": "Ready for review under the new framework; includes demo design rubric and risks.",
+    "qualityScore": 86,
+    "researchBrief": {
+      "reader": "AI learners, community organizers, founders, and trainers choosing what kind of AI content to teach or share.",
+      "jobToBeDone": "Replace generic tool-list content with practical demos that build transferable judgment.",
+      "thesis": "Tool lists create temporary awareness; practical demos create transferable skill because they reveal the workflow, critique, failure modes, and decision criteria behind AI-assisted work.",
+      "searchIntent": "practical AI demos vs AI tool lists, learn AI workflows, AI demos community",
+      "sources": [
+        {
+          "title": "Anthropic — Building effective agents",
+          "url": "https://www.anthropic.com/engineering/building-effective-agents",
+          "type": "primary",
+          "checkedAt": "2026-05-20",
+          "notes": "Distinguishes predictable workflows from autonomous agents and recommends using the simplest composable pattern that works."
+        },
+        {
+          "title": "OpenAI Agents SDK documentation",
+          "url": "https://openai.github.io/openai-agents-python/",
+          "type": "primary",
+          "checkedAt": "2026-05-20",
+          "notes": "Documents agents as production systems with tools, handoffs, guardrails, sessions, tracing, usage, and human-in-the-loop concepts."
+        },
+        {
+          "title": "Nielsen Norman Group — AI: First New UI Paradigm in 60 Years",
+          "url": "https://www.nngroup.com/articles/ai-paradigm/",
+          "type": "critical",
+          "checkedAt": "2026-05-20",
+          "notes": "Frames AI as intent-based interaction and highlights why users need judgment, feedback, and control rather than magic-button interfaces."
+        },
+        {
+          "title": "Microsoft WorkLab — AI at Work / Work Trend Index",
+          "url": "https://www.microsoft.com/en-us/worklab/work-trend-index",
+          "type": "practitioner",
+          "checkedAt": "2026-05-20",
+          "notes": "Ongoing research on workplace AI adoption, human agency, and the gap between tool access and useful work redesign."
+        },
+        {
+          "title": "dabblewith.ai internal community-bot and model-router docs",
+          "url": "docs/model-router-whatsapp-runtime-flag.md",
+          "type": "internal",
+          "checkedAt": "2026-05-20",
+          "notes": "Internal build notes on routing, prompt caching, cost controls, privacy-safe logs, WhatsApp-first onboarding, and human review gates."
+        },
+        {
+          "title": "dabblewith.ai Casagrand community growth plan",
+          "url": "docs/growth/casagrand-firstcity-community-growth-plan.md",
+          "type": "internal",
+          "checkedAt": "2026-05-20",
+          "notes": "Field plan for turning a real residential WhatsApp community into practical AI workshops, polls, office hours, and local demos."
+        },
+        {
+          "title": "dabblewith.ai Claude Design playbook",
+          "url": "docs/knowledge/claude-design-playbook.md",
+          "type": "internal",
+          "checkedAt": "2026-05-20",
+          "notes": "Practical workshop material for using Claude artifacts/design workflows with briefs, demos, critique, and QC."
+        }
+      ],
+      "insights": [
+        "Tool knowledge decays faster than workflow judgment.",
+        "Good demos expose the first bad output, not just the polished result.",
+        "A demo should teach decision criteria that survive tool changes.",
+        "Community critique turns demos into shared learning."
+      ],
+      "examples": [
+        "Landing-page critique demo",
+        "WhatsApp community agenda demo",
+        "Founder research memo demo"
+      ],
+      "risks": [
+        "Demos can become performance if not repeatable.",
+        "Tool lists can be useful as references but weak as curriculum.",
+        "Over-focusing on one vendor can date the lesson.",
+        "Learners may copy outputs without understanding review."
+      ],
+      "artifact": "Practical demo rubric: real job, real input, visible failure, review criteria, revised output, reusable artifact, transfer lesson."
+    }
   }
 ]
