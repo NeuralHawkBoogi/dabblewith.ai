@@ -102,6 +102,12 @@ Offer:
 
 This segment can become a direct demo for the community-bot platform.
 
+## Active execution kits
+
+- `docs/growth/casagrand-firstcity-first-10-testers-sprint-kit.md` — direct tester sprint before the broader IT-group post.
+- `docs/growth/casagrand-firstcity-event-registration-kit.md` — RSVP funnel and registration copy.
+- `docs/growth/casagrand-firstcity-post-event-loop-kit.md` — recap, office-hours, and community-bot validation loop.
+
 ## Growth strategy
 
 ### Phase 1 — Soft launch in IT opportunities group

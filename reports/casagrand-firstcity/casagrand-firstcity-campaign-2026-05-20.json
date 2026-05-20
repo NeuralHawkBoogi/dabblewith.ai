@@ -1,18 +1,18 @@
 {
   "campaign": "casagrand-firstcity",
-  "generatedAt": "2026-05-20T02:18:29.405Z",
+  "generatedAt": "2026-05-20T08:17:33.020Z",
   "runtimeDir": "/home/clawdbot/dabblewith-whatsapp/data",
   "totals": {
     "campaignSignals": 0,
     "uniqueUsers": 0,
     "syntheticOrExcludedSignals": 0,
-    "allSignalsAvailable": 6
+    "allSignalsAvailable": 7
   },
   "intents": {},
   "topics": {},
   "deliveryStatuses": {
-    "sent": 3,
-    "delivered": 3,
+    "sent": 4,
+    "delivered": 4,
     "failed": 1,
     "read": 2
   },

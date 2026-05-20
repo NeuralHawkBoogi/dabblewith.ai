@@ -1,11 +1,11 @@
 # Casagrand First City Campaign Report — 2026-05-20
 
-Generated: 2026-05-20T02:18:29.405Z
+Generated: 2026-05-20T08:17:33.020Z
 
 ## Funnel snapshot
 - Campaign signals: 0
 - Unique residents/users: 0
-- All WhatsApp signals available: 6
+- All WhatsApp signals available: 7
 - Synthetic/excluded campaign-like signals: 0
 
 ## Intent counts
@@ -15,8 +15,8 @@ Generated: 2026-05-20T02:18:29.405Z
 - No topic clusters captured yet.
 
 ## Delivery/status counts
-- delivered: 3
-- sent: 3
+- delivered: 4
+- sent: 4
 - read: 2
 - failed: 1
 
