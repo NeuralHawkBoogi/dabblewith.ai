@@ -43,6 +43,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://dabblewith.ai/casagrand-firstcity/flyer/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://dabblewith.ai/community-bot/</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
