@@ -21,9 +21,10 @@ Status: active automation configured on 2026-05-20.
 - This makes the next analytics pass more useful because traffic can be connected to intent, not only pageviews.
 
 ## Known blocker
-- Property discovery is currently blocked because the Google Analytics Admin API is disabled for the OAuth project used by the existing token.
+- Property discovery is blocked because the Google Analytics Admin API is disabled for the OAuth project used by the existing token.
+- The previously discovered property ID `538311897` now reaches the Data API but returns `PERMISSION_DENIED`, so the OAuth user/client also needs access to the dabblewith.ai GA4 property before reports can run reliably.
 - Fix options:
-  1. Provide the GA4 numeric property ID for `G-7473LZQGX2`, or
-  2. Enable Google Analytics Admin API for the OAuth project.
+  1. Grant the OAuth user/client access to GA4 property `538311897`, and/or
+  2. Enable Google Analytics Admin API for the OAuth project so property discovery does not depend on cached IDs.
 
-Once either is done, the daily loop can pull GA reports directly.
+Once access is fixed, the daily loop can pull GA reports directly.

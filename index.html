@@ -39,6 +39,8 @@
       gtag('event', 'cta_click', {
         link_url: link.href || href,
         link_text: text,
+        cta_id: link.getAttribute('data-cta') || '',
+        cta_source: link.getAttribute('data-source') || location.pathname,
         page_path: location.pathname
       });
     });
@@ -162,6 +164,8 @@
     .lead { color: #d7e9f7; font-size: clamp(19px, 2.35vw, 27px); line-height: 1.35; max-width: 780px; margin: 0; }
     .lead strong { color: var(--green); }
     .actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 32px; }
+    .cta-proof { margin-top: 14px; color: #b8c8d8; font-size: 14px; max-width: 680px; }
+    .cta-proof strong { color: var(--green); }
     .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: 1px solid var(--line-hard); color: var(--cyan); background: rgba(116,255,219,.07); border-radius: 14px; padding: 14px 17px; text-decoration: none; font-weight: 800; box-shadow: 0 0 28px rgba(116,255,219,.08); }
     .btn.primary { color: #04120e; background: var(--green); border-color: var(--green); box-shadow: 0 0 30px rgba(116,255,123,.35); }
     .console { margin-top: 28px; border: 1px solid rgba(116,255,219,.18); border-radius: 18px; background: rgba(0,0,0,.32); padding: 16px; color: #d3ffe5; font: 13px/1.75 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; max-width: 700px; }
@@ -243,11 +247,14 @@
               <span class="dim">$</span> community.learn(in_public)
             </div>
           </div>
-          <div class="actions">
-            <a class="btn primary" href="https://wa.me/919566112518?text=I%27m%20interested%20in%20dabblewith.ai" target="_blank" rel="noreferrer">Send join signal</a>
-            <a class="btn" href="/casagrand-firstcity/">Casagrand pilot</a>
-            <a class="btn" href="/autopilot/">Open autopilot</a>
-            <a class="btn" href="/community-bot/">Setup a community bot</a>
+          <div>
+            <div class="actions">
+              <a class="btn primary" data-cta="homepage_join_signal" data-source="homepage_hero" href="https://wa.me/919566112518?text=I%27m%20interested%20in%20dabblewith.ai%20%28source%3A%20homepage%20join%20signal%29" target="_blank" rel="noreferrer">Send join signal</a>
+              <a class="btn" data-cta="homepage_casagrand_pilot" data-source="homepage_hero" href="/casagrand-firstcity/">Casagrand pilot</a>
+              <a class="btn" data-cta="homepage_autopilot" data-source="homepage_hero" href="/autopilot/">Open autopilot</a>
+              <a class="btn" data-cta="homepage_community_bot" data-source="homepage_hero" href="/community-bot/">Setup a community bot</a>
+            </div>
+            <p class="cta-proof"><strong>Start with one message:</strong> tell us what you want to build or learn, and the first control-room invites will be shaped from those signals.</p>
           </div>
         </div>
       </div>
@@ -285,8 +292,8 @@
         <article class="card" data-code="B3"><strong>Human-guided operations</strong><p>Admins receive reports, escalations, knowledge gaps, and delivery health without needing to watch every message.</p></article>
       </div>
       <div class="actions">
-        <a class="btn primary" href="https://wa.me/919566112518?text=I%20want%20to%20setup%20a%20similar%20community%20bot" target="_blank" rel="noreferrer">Start WhatsApp onboarding</a>
-        <a class="btn" href="/community-bot/">View offering</a>
+        <a class="btn primary" data-cta="homepage_bot_onboarding" data-source="homepage_community_bot_section" href="https://wa.me/919566112518?text=I%20want%20to%20setup%20a%20similar%20community%20bot%20%28source%3A%20homepage%20community%20bot%29" target="_blank" rel="noreferrer">Start WhatsApp onboarding</a>
+        <a class="btn" data-cta="homepage_view_bot_offering" data-source="homepage_community_bot_section" href="/community-bot/">View offering</a>
       </div>
     </section>
 
@@ -361,7 +368,7 @@
         <h2>Enter the first control room.</h2>
         <p>Message us on WhatsApp. We’ll use the first set of signals to decide the topic, timing, format, and community rhythm — with AI helping organize the inputs and humans making the call.</p>
         <div class="actions">
-          <a class="btn primary" href="https://wa.me/919566112518?text=I%27m%20interested%20in%20dabblewith.ai" target="_blank" rel="noreferrer">WhatsApp interest</a>
+          <a class="btn primary" data-cta="homepage_join_footer" data-source="homepage_join_section" href="https://wa.me/919566112518?text=I%27m%20interested%20in%20dabblewith.ai%20%28source%3A%20homepage%20join%20section%29" target="_blank" rel="noreferrer">WhatsApp interest</a>
           <a class="btn" href="mailto:bhuvanesh@neuralhawk.ai?subject=dabblewith.ai%20interest">Email interest</a>
         </div>
       </div>
