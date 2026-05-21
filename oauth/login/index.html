@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#060912" />
+  <meta property="og:image" content="https://dabblewith.ai/app-icon-1024.png" />
+  <title>Google OAuth Login | dabblewith.ai</title>
+  <meta name="description" content="Start Google OAuth login for dabblewith.ai Google Analytics access." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://dabblewith.ai/oauth/login/" />
+  <meta property="og:site_name" content="dabblewith.ai" />
+  <meta property="og:title" content="Google OAuth Login | dabblewith.ai" />
+  <meta property="og:description" content="Start the Google OAuth consent flow for dabblewith.ai Google Analytics access." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dabblewith.ai/oauth/login/" />
+  <style>
+    :root{--bg:#060912;--panel:rgba(16,27,48,.92);--line:rgba(116,255,219,.26);--text:#f2fbff;--muted:#9eb0c2;--green:#74ff7b;--cyan:#74ffdb;--red:#ff8b8b;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--text);background:radial-gradient(circle at 20% 0%,rgba(88,166,255,.22),transparent 28rem),radial-gradient(circle at 90% 10%,rgba(116,255,123,.16),transparent 25rem),var(--bg)}a{color:var(--cyan)}.shell{width:min(940px,calc(100% - 30px));margin:0 auto}nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0}.logo{text-decoration:none;color:var(--text);font-size:28px;font-weight:900;letter-spacing:-.05em}.nav{display:flex;gap:10px;flex-wrap:wrap}.nav a{border:1px solid var(--line);border-radius:999px;padding:9px 12px;text-decoration:none;color:var(--muted)}article{border:1px solid var(--line);background:linear-gradient(180deg,rgba(16,27,48,.95),rgba(8,13,25,.93));border-radius:24px;box-shadow:0 24px 90px rgba(0,0,0,.45);padding:clamp(24px,5vw,48px);margin:18px auto 30px}.eyebrow{color:var(--cyan);font:12px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}h1{font-size:clamp(42px,7vw,74px);line-height:.95;letter-spacing:-.06em;margin:14px 0 12px}h2{font-size:28px;letter-spacing:-.035em;margin:34px 0 10px}p,li,label{color:var(--muted);line-height:1.75;font-size:17px}.lead{font-size:20px;color:#d7e9f7}.card{border:1px solid var(--line);border-radius:18px;background:rgba(6,9,18,.62);padding:18px;margin:16px 0}.label{color:var(--green);font:12px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}input,textarea{width:100%;border:1px solid rgba(116,255,219,.22);border-radius:12px;background:rgba(0,0,0,.24);color:var(--text);font:15px/1.5 ui-monospace,Menlo,monospace;padding:12px}textarea{min-height:84px}.row{display:grid;gap:14px;margin:14px 0}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.button,button{border:1px solid var(--cyan);background:linear-gradient(135deg,rgba(116,255,219,.18),rgba(116,255,123,.15));color:var(--text);border-radius:999px;padding:12px 16px;text-decoration:none;font-weight:800;cursor:pointer}.button.secondary{border-color:var(--line);background:transparent;color:var(--muted)}.url{display:block;overflow-wrap:anywhere;color:var(--text);font:14px/1.6 ui-monospace,Menlo,monospace;background:rgba(0,0,0,.24);border:1px solid rgba(116,255,219,.18);border-radius:12px;padding:12px}.note{font:13px/1.6 ui-monospace,Menlo,monospace;color:var(--muted)}.err{color:var(--red)}footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0 34px;margin-top:36px;font:13px/1.5 ui-monospace,Menlo,monospace}.footlinks{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}@media(max-width:760px){.nav{display:none}article{padding:24px}}
+  </style>
+</head>
+<body>
+  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/oauth/">OAuth setup</a><a href="/oauth/callback/">Callback</a><a href="/privacy/">Privacy</a></div></nav>
+  <main class="shell">
+    <article>
+      <div class="eyebrow">google oauth</div>
+      <h1>Start Google login</h1>
+      <p class="lead">Use this page to start the Google OAuth consent flow for dabblewith.ai Google Analytics access. It keeps the client secret out of the browser.</p>
+
+      <div class="card">
+        <div class="row">
+          <label for="clientId">OAuth Client ID</label>
+          <input id="clientId" autocomplete="off" spellcheck="false" placeholder="Paste Google OAuth Web Client ID" />
+        </div>
+        <div class="row">
+          <label for="scopes">Scopes</label>
+          <textarea id="scopes" spellcheck="false">https://www.googleapis.com/auth/analytics.readonly</textarea>
+        </div>
+        <div class="row">
+          <div class="label">Redirect URI</div>
+          <code class="url" id="redirectUri">https://dabblewith.ai/oauth/callback/</code>
+        </div>
+        <p class="note">Tip: you can also open this page with <code>?client_id=YOUR_CLIENT_ID</code> to prefill the field.</p>
+        <p class="err" id="error" hidden></p>
+        <div class="actions">
+          <button id="start" type="button">Continue with Google</button>
+          <a class="button secondary" href="/oauth/">View setup URLs</a>
+        </div>
+      </div>
+
+      <h2>Google Cloud values</h2>
+      <ul>
+        <li>Authorized JavaScript origin: <strong>https://dabblewith.ai</strong></li>
+        <li>Authorized redirect URI: <strong>https://dabblewith.ai/oauth/callback/</strong></li>
+        <li>Use a Google account with access to GA4 property <strong>538311897</strong>.</li>
+      </ul>
+
+      <p class="note">After Google redirects back, copy the returned authorization code from the callback page and use it in a trusted server-side/local token exchange with the OAuth client secret.</p>
+    </article>
+  </main>
+  <footer><div class="shell">AI-operated · human-guided · dabblewith.ai<div class="footlinks"><a href="/oauth/">OAuth setup</a><a href="/oauth/callback/">Callback</a><a href="/privacy/">Privacy</a></div></div></footer>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var clientIdInput = document.getElementById('clientId');
+      var scopesInput = document.getElementById('scopes');
+      var redirectUri = 'https://dabblewith.ai/oauth/callback/';
+      var error = document.getElementById('error');
+      if (params.get('client_id')) clientIdInput.value = params.get('client_id');
+      document.getElementById('start').addEventListener('click', function () {
+        var clientId = clientIdInput.value.trim();
+        var scopes = scopesInput.value.trim().split(/\s+/).filter(Boolean).join(' ');
+        error.hidden = true;
+        error.textContent = '';
+        if (!clientId) {
+          error.textContent = 'Paste the OAuth Client ID first.';
+          error.hidden = false;
+          clientIdInput.focus();
+          return;
+        }
+        if (!scopes) {
+          error.textContent = 'At least one Google OAuth scope is required.';
+          error.hidden = false;
+          scopesInput.focus();
+          return;
+        }
+        var state = 'dwai-ga-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
+        try { sessionStorage.setItem('dwai_oauth_state', state); } catch (e) {}
+        var auth = new URL('https://accounts.google.com/o/oauth2/v2/auth');
+        auth.searchParams.set('client_id', clientId);
+        auth.searchParams.set('redirect_uri', redirectUri);
+        auth.searchParams.set('response_type', 'code');
+        auth.searchParams.set('scope', scopes);
+        auth.searchParams.set('access_type', 'offline');
+        auth.searchParams.set('prompt', 'consent');
+        auth.searchParams.set('include_granted_scopes', 'true');
+        auth.searchParams.set('state', state);
+        window.location.href = auth.toString();
+      });
+    })();
+  </script>
+</body>
+</html>
