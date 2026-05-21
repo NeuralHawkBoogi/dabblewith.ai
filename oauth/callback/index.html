@@ -19,43 +19,30 @@
   <main class="shell">
     <article>
       <div class="eyebrow">google oauth</div>
-      <h1>OAuth callback received</h1>
-      <p class="lead">This endpoint is ready for Google OAuth redirects. It displays returned query/hash values locally in this browser so the authorization code can be copied into the server-side token flow if needed.</p>
+      <h1>Google Analytics connected</h1>
+      <p class="lead">If you reached this page after Google login, the server-side callback should exchange and store the authorization securely. No authorization code or token is shown in the browser.</p>
 
       <div class="panel">
-        <h2 id="status">Reading callback…</h2>
-        <pre id="payload">No OAuth parameters found yet.</pre>
+        <h2 id="status">Callback endpoint is ready</h2>
+        <p id="payload">Use <a href="/oauth/login/">the login page</a> to reconnect Google Analytics if needed.</p>
       </div>
 
-      <p class="note">Security note: this static page does not send callback parameters anywhere. Copy only the values needed for the trusted token exchange flow, then close the tab.</p>
+      <p class="note">Security note: OAuth tokens are stored server-side for programmatic analytics pulls and are not displayed on this page.</p>
     </article>
   </main>
   <footer><div class="shell">AI-operated · human-guided · dabblewith.ai<div class="footlinks"><a href="/oauth/">OAuth setup</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div></div></footer>
   <script>
     (function () {
-      function collect(search) {
-        var params = new URLSearchParams(search || '');
-        var out = {};
-        params.forEach(function (value, key) { out[key] = value; });
-        return out;
-      }
-      var query = collect(window.location.search);
-      var hash = collect(window.location.hash ? window.location.hash.slice(1) : '');
-      var payload = { query: query, hash: hash };
-      var hasError = query.error || hash.error;
-      var hasCode = query.code || hash.code || query.access_token || hash.access_token;
+      try { history.replaceState({}, '', '/oauth/callback/'); } catch (e) {}
+      var params = new URLSearchParams(window.location.search || '');
       var status = document.getElementById('status');
-      if (hasError) {
-        status.textContent = 'OAuth returned an error';
+      if (params.get('error')) {
+        status.textContent = 'OAuth returned an error. Please reconnect.';
         status.className = 'err';
-      } else if (hasCode) {
-        status.textContent = 'OAuth authorization data is present';
-        status.className = 'ok';
       } else {
-        status.textContent = 'Callback endpoint is ready';
-        status.className = '';
+        status.textContent = 'Account connected';
+        status.className = 'ok';
       }
-      document.getElementById('payload').textContent = JSON.stringify(payload, null, 2);
     })();
   </script>
 </body>

@@ -7,8 +7,10 @@ const root = path.resolve(__dirname, '..');
 const outDir = path.join(root, 'reports', 'analytics');
 const propertyEnv = process.env.DABBLE_GA_PROPERTY_ID || process.env.GA_PROPERTY_ID;
 const measurementId = process.env.DABBLE_GA_MEASUREMENT_ID || 'G-7473LZQGX2';
-const tokensPath = process.env.DABBLE_GA_TOKENS_PATH || process.env.GA_TOKENS_PATH;
-const clientPath = process.env.DABBLE_GA_CLIENT_PATH || process.env.GA_CLIENT_PATH;
+const defaultTokensPath = path.join(root, 'credentials', 'google-ga-tokens.json');
+const defaultClientPath = '/home/clawdbot/.openclaw/workspace/dabblewith-ai-site/creds/client_secret_686953856069-4brfrho735gstt484q4rkuuou16j25o7.apps.googleusercontent.com.json';
+const tokensPath = process.env.DABBLE_GA_TOKENS_PATH || process.env.GA_TOKENS_PATH || defaultTokensPath;
+const clientPath = process.env.DABBLE_GA_CLIENT_PATH || process.env.GA_CLIENT_PATH || defaultClientPath;
 const days = Number(process.env.DABBLE_GA_LOOKBACK_DAYS || 7);
 
 function die(msg) { console.error(msg); process.exit(1); }
