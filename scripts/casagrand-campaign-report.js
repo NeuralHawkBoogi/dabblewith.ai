@@ -139,6 +139,72 @@ function summarizeStatuses(statusRows) {
   return counts;
 }
 
+function topEntry(counts) {
+  const entries = Object.entries(counts || {}).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+  if (!entries.length) return null;
+  return { key: entries[0][0], count: entries[0][1] };
+}
+
+// Mirrors the T+24 hour decision table in
+// docs/growth/casagrand-firstcity-24hour-launch-brief.md. Works only from
+// privacy-safe aggregates (counts and category names), never raw phones/messages.
+function computeLaunchDecision(report) {
+  const totals = report.totals || {};
+  const uniqueUsers = totals.uniqueUsers || 0;
+  const campaignSignals = totals.campaignSignals || 0;
+  const communityBotTopic = (report.topics && report.topics.community_bot) || 0;
+  const communityBotTrack = (report.trackCounts && report.trackCounts.community_bot) || 0;
+  const communityBotSignals = Math.max(communityBotTopic, communityBotTrack);
+  const topTopic = topEntry(report.topics);
+  const topSourceTag = topEntry(report.sourceTags);
+
+  const thresholds = [
+    { name: 'clubhouse_intro', test: '>=25 unique users', met: uniqueUsers >= 25, value: uniqueUsers },
+    { name: 'build_sprint', test: '10-24 unique users', met: uniqueUsers >= 10 && uniqueUsers <= 24, value: uniqueUsers },
+    { name: 'design_partner_calls', test: '>=2 community_bot signals/tracks', met: communityBotSignals >= 2, value: communityBotSignals },
+    { name: 'first10_tester_dms', test: '<10 weak/no signals', met: uniqueUsers < 10, value: uniqueUsers },
+  ];
+
+  const rationale = [
+    `${uniqueUsers} unique residents/users across ${campaignSignals} campaign signals`,
+    topTopic ? `Top topic cluster: ${topTopic.key} (${topTopic.count})` : 'No topic clusters captured yet',
+    topSourceTag ? `Top source tag: ${topSourceTag.key} (${topSourceTag.count})` : 'No source tags captured yet',
+    `community_bot signals/tracks: ${communityBotSignals}`,
+  ];
+
+  let stage;
+  let route;
+  let confidence;
+  let nextAction;
+  if (uniqueUsers >= 25) {
+    stage = 'clubhouse_intro';
+    route = 'Run clubhouse intro';
+    confidence = 'high';
+    nextAction = 'Pick the top topic cluster, propose 2 clubhouse slots, and prepare the QR/flyer.';
+    rationale.push('25+ unique users clears the clubhouse-intro threshold.');
+  } else if (uniqueUsers >= 10) {
+    stage = 'build_sprint';
+    route = 'Run smaller build sprint';
+    confidence = 'medium';
+    nextAction = 'Invite the first 10-12 residents to a focused 60-minute build sprint.';
+    rationale.push('10-24 unique users supports a smaller sprint, not a full clubhouse event yet.');
+  } else if (communityBotSignals >= 2) {
+    stage = 'design_partner_calls';
+    route = 'Run design-partner calls';
+    confidence = 'medium';
+    nextAction = 'Use /casagrand-firstcity/community-bot/ and qualify group admins for design-partner calls.';
+    rationale.push('2+ community_bot signals/tracks point to paid-product validation over a public event.');
+  } else {
+    stage = 'first10_tester_dms';
+    route = 'Do not force event';
+    confidence = 'low';
+    nextAction = 'Send first-10 tester DMs and rewrite the positioning before another public post.';
+    rationale.push('<10 weak/no signals: gather more evidence before another public post.');
+  }
+
+  return { stage, route, confidence, rationale, thresholds, nextAction };
+}
+
 function buildCampaignReport(runtimeDir, options = {}) {
   const signals = readJsonl(path.join(runtimeDir, 'community-signals.jsonl'));
   const statusRows = readJsonl(path.join(runtimeDir, 'statuses.jsonl')).concat(readJsonl(path.join(runtimeDir, 'webhooks.jsonl')));
@@ -180,7 +246,7 @@ function buildCampaignReport(runtimeDir, options = {}) {
     ? 'Forward the Casagrand WhatsApp launch copy once, then run this report after 24 hours to pick the first clubhouse topic.'
     : 'Use the top topic cluster to select the first clubhouse event title and post the poll.';
 
-  return {
+  const report = {
     campaign: 'casagrand-firstcity',
     generatedAt: new Date().toISOString(),
     runtimeDir,
@@ -199,6 +265,8 @@ function buildCampaignReport(runtimeDir, options = {}) {
     nextAction,
     privacy: 'Phone numbers are redacted except last 4 digits; message IDs are hashed; tokens and raw webhook payloads are not included.',
   };
+  report.decision = computeLaunchDecision(report);
+  return report;
 }
 
 function renderMarkdown(report) {
@@ -206,6 +274,8 @@ function renderMarkdown(report) {
   lines.push(`# Casagrand First City Campaign Report — ${report.generatedAt.slice(0, 10)}`);
   lines.push('');
   lines.push(`Generated: ${report.generatedAt}`);
+  lines.push('');
+  appendLaunchDecision(lines, report.decision);
   lines.push('');
   lines.push('## Funnel snapshot');
   lines.push(`- Campaign signals: ${report.totals.campaignSignals}`);
@@ -244,6 +314,24 @@ function renderMarkdown(report) {
   lines.push('');
   lines.push(`Privacy: ${report.privacy}`);
   return `${lines.join('\n')}\n`;
+}
+
+function appendLaunchDecision(lines, decision) {
+  lines.push('## Launch decision');
+  if (!decision) {
+    lines.push('- No decision computed.');
+    return;
+  }
+  lines.push(`- Stage: ${decision.stage}`);
+  lines.push(`- Route: ${decision.route}`);
+  lines.push(`- Confidence: ${decision.confidence}`);
+  lines.push(`- Next action: ${decision.nextAction}`);
+  lines.push('- Rationale:');
+  for (const reason of decision.rationale) lines.push(`  - ${reason}`);
+  lines.push('- Thresholds:');
+  for (const threshold of decision.thresholds) {
+    lines.push(`  - [${threshold.met ? 'x' : ' '}] ${threshold.name}: ${threshold.test} (observed ${threshold.value})`);
+  }
 }
 
 function appendCounts(lines, counts, empty) {
@@ -304,6 +392,7 @@ module.exports = {
   inferTopics,
   inferSourceTags,
   tracksForTags,
+  computeLaunchDecision,
   buildCampaignReport,
   renderMarkdown,
   writeCampaignReport,

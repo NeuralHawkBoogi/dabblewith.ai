@@ -63,6 +63,7 @@ It’s a free practical AI learning/building circle for residents — not a cour
 ### T+6 hours
 
 Run the campaign report and capture:
+- launch decision card (`clubhouse_intro`, `build_sprint`, `design_partner_calls`, or `first10_tester_dms`)
 - campaign signals
 - unique residents/users
 - source tag counts
