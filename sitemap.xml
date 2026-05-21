@@ -2,57 +2,63 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dabblewith.ai/</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://dabblewith.ai/autopilot/</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2026-05-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://dabblewith.ai/sessions/</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2026-05-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://dabblewith.ai/blog/</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2026-05-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://dabblewith.ai/casagrand-firstcity/</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://dabblewith.ai/casagrand-firstcity/rsvp/</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dabblewith.ai/community-bot/</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://dabblewith.ai/privacy/</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2026-05-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://dabblewith.ai/terms/</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2026-05-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://dabblewith.ai/blog/how-to-design-practical-ai-workshops/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dabblewith.ai/blog/agent-workflows-for-founders/</loc>
