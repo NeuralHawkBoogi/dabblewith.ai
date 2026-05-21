@@ -22,24 +22,47 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-7473LZQGX2');
-    document.addEventListener('click', function(event) {
-      var link = event.target && event.target.closest ? event.target.closest('a') : null;
-      if (!link || typeof gtag !== 'function') return;
-      var href = link.getAttribute('href') || '';
-      var text = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 80);
-      var isCta = /wa\.me|whatsapp|\/casagrand-firstcity\/(rsvp|date-poll|flyer|community-bot)\/?|#copy/.test(href) || /copy|rsvp|poll|flyer|community bot|whatsapp/i.test(text);
-      if (!isCta) return;
-      gtag('event', 'cta_click', {
+    function trackLaunchBoardAction(action, label, url) {
+      if (typeof gtag !== 'function') return;
+      gtag('event', action, {
         cta_id: 'casagrand_launch_board',
         cta_source: 'casagrand_launch_board',
-        link_url: link.href || href,
-        link_text: text,
+        link_url: url || '',
+        link_text: label || '',
         page_path: location.pathname
       });
+    }
+    document.addEventListener('click', function(event) {
+      var copyButton = event.target && event.target.closest ? event.target.closest('[data-copy-target]') : null;
+      if (copyButton) {
+        var target = document.querySelector(copyButton.getAttribute('data-copy-target'));
+        var textToCopy = target ? (target.textContent || '').trim() : '';
+        if (!textToCopy) return;
+        var label = (copyButton.textContent || 'copy').trim();
+        var onSuccess = function(){
+          copyButton.setAttribute('data-copied', 'true');
+          copyButton.textContent = 'Copied';
+          trackLaunchBoardAction('copy_text', label, copyButton.getAttribute('data-copy-target'));
+          window.setTimeout(function(){ copyButton.removeAttribute('data-copied'); copyButton.textContent = label; }, 1800);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(textToCopy).then(onSuccess).catch(function(){ window.prompt('Copy this text', textToCopy); });
+        } else {
+          window.prompt('Copy this text', textToCopy);
+        }
+        return;
+      }
+      var link = event.target && event.target.closest ? event.target.closest('a') : null;
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
+      var text = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 80);
+      var isCta = /wa\.me|whatsapp|\/casagrand-firstcity\/(rsvp|date-poll|flyer|community-bot|testers)\/?|#copy/.test(href) || /copy|rsvp|poll|flyer|community bot|whatsapp|tester/i.test(text);
+      if (!isCta) return;
+      trackLaunchBoardAction('cta_click', text, link.href || href);
     });
   </script>
   <style>
-    :root{--bg:#060912;--panel:rgba(16,27,48,.92);--line:rgba(116,255,219,.25);--hard:#74ffdb;--text:#f2fbff;--muted:#9eb0c2;--green:#74ff7b;--blue:#58a6ff;--amber:#ffcc66;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--text);background:radial-gradient(circle at 16% 0%,rgba(88,166,255,.24),transparent 30rem),radial-gradient(circle at 92% 4%,rgba(116,255,123,.15),transparent 28rem),linear-gradient(rgba(116,255,219,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(116,255,219,.055) 1px,transparent 1px),var(--bg);background-size:auto,auto,42px 42px,42px 42px,auto}a{color:inherit}.shell{width:min(1100px,calc(100% - 30px));margin:0 auto}nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0}.logo{text-decoration:none;font-size:30px;font-weight:900;letter-spacing:-.055em}.nav{display:flex;gap:10px;flex-wrap:wrap}.nav a{border:1px solid var(--line);border-radius:999px;padding:9px 12px;text-decoration:none;color:var(--muted);background:rgba(255,255,255,.03)}.hero,.panel,.card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(16,27,48,.95),rgba(8,13,25,.92));border-radius:24px;box-shadow:0 24px 90px rgba(0,0,0,.45)}.hero{padding:clamp(26px,5vw,52px);margin:18px auto 26px}.eyebrow{width:fit-content;color:var(--hard);border:1px solid var(--hard);background:rgba(116,255,219,.08);border-radius:999px;padding:9px 12px;font:12px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}h1{font-size:clamp(42px,7.5vw,82px);line-height:.92;letter-spacing:-.07em;margin:24px 0 18px}h2{font-size:clamp(28px,4vw,46px);line-height:.98;letter-spacing:-.055em;margin:0 0 14px}h3{font-size:22px;margin:0 0 8px}.lead{font-size:clamp(18px,2.2vw,24px);color:#d7e9f7;line-height:1.45;max-width:880px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.two{grid-template-columns:repeat(2,1fr)}.card,.panel{padding:22px}.muted,p,li{color:var(--muted);line-height:1.65}.badge{display:inline-flex;border:1px solid rgba(116,255,123,.45);color:var(--green);background:rgba(116,255,123,.08);padding:5px 9px;border-radius:999px;font:12px/1.2 ui-monospace,Menlo,monospace}.badge.blue{color:var(--blue);border-color:rgba(88,166,255,.45);background:rgba(88,166,255,.08)}.badge.warn{color:var(--amber);border-color:rgba(255,204,102,.45);background:rgba(255,204,102,.08)}section{padding:28px 0}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--hard);color:var(--hard);background:rgba(116,255,219,.07);border-radius:14px;padding:13px 16px;text-decoration:none;font-weight:850}.btn.primary{color:#04120e;background:var(--green);border-color:var(--green)}.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:26px}.copybox{white-space:pre-wrap;border:1px solid rgba(116,255,219,.18);border-radius:18px;background:rgba(0,0,0,.28);padding:16px;color:#d9f6ff;font:14px/1.65 ui-monospace,Menlo,monospace}.step{display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start;border-bottom:1px solid rgba(116,255,219,.12);padding:14px 0}.step:last-child{border-bottom:0}.num{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:rgba(116,255,123,.12);border:1px solid rgba(116,255,123,.45);color:var(--green);font-weight:900}.metric{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(116,255,219,.12);padding:12px 0;font:13px/1.25 ui-monospace,Menlo,monospace}.metric:last-child{border-bottom:0}footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0 34px;margin-top:36px;font:13px/1.4 ui-monospace,Menlo,monospace}@media(max-width:860px){.grid,.two{grid-template-columns:1fr}.nav{display:none}}
+    :root{--bg:#060912;--panel:rgba(16,27,48,.92);--line:rgba(116,255,219,.25);--hard:#74ffdb;--text:#f2fbff;--muted:#9eb0c2;--green:#74ff7b;--blue:#58a6ff;--amber:#ffcc66;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--text);background:radial-gradient(circle at 16% 0%,rgba(88,166,255,.24),transparent 30rem),radial-gradient(circle at 92% 4%,rgba(116,255,123,.15),transparent 28rem),linear-gradient(rgba(116,255,219,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(116,255,219,.055) 1px,transparent 1px),var(--bg);background-size:auto,auto,42px 42px,42px 42px,auto}a{color:inherit}.shell{width:min(1100px,calc(100% - 30px));margin:0 auto}nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0}.logo{text-decoration:none;font-size:30px;font-weight:900;letter-spacing:-.055em}.nav{display:flex;gap:10px;flex-wrap:wrap}.nav a{border:1px solid var(--line);border-radius:999px;padding:9px 12px;text-decoration:none;color:var(--muted);background:rgba(255,255,255,.03)}.hero,.panel,.card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(16,27,48,.95),rgba(8,13,25,.92));border-radius:24px;box-shadow:0 24px 90px rgba(0,0,0,.45)}.hero{padding:clamp(26px,5vw,52px);margin:18px auto 26px}.eyebrow{width:fit-content;color:var(--hard);border:1px solid var(--hard);background:rgba(116,255,219,.08);border-radius:999px;padding:9px 12px;font:12px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}h1{font-size:clamp(42px,7.5vw,82px);line-height:.92;letter-spacing:-.07em;margin:24px 0 18px}h2{font-size:clamp(28px,4vw,46px);line-height:.98;letter-spacing:-.055em;margin:0 0 14px}h3{font-size:22px;margin:0 0 8px}.lead{font-size:clamp(18px,2.2vw,24px);color:#d7e9f7;line-height:1.45;max-width:880px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.two{grid-template-columns:repeat(2,1fr)}.card,.panel{padding:22px}.muted,p,li{color:var(--muted);line-height:1.65}.badge{display:inline-flex;border:1px solid rgba(116,255,123,.45);color:var(--green);background:rgba(116,255,123,.08);padding:5px 9px;border-radius:999px;font:12px/1.2 ui-monospace,Menlo,monospace}.badge.blue{color:var(--blue);border-color:rgba(88,166,255,.45);background:rgba(88,166,255,.08)}.badge.warn{color:var(--amber);border-color:rgba(255,204,102,.45);background:rgba(255,204,102,.08)}section{padding:28px 0}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--hard);color:var(--hard);background:rgba(116,255,219,.07);border-radius:14px;padding:13px 16px;text-decoration:none;font-weight:850}.btn.primary{color:#04120e;background:var(--green);border-color:var(--green)}.btn.copy{cursor:pointer}.btn.copy[data-copied="true"]{color:#04120e;background:var(--hard);border-color:var(--hard)}.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:26px}.copybox{white-space:pre-wrap;border:1px solid rgba(116,255,219,.18);border-radius:18px;background:rgba(0,0,0,.28);padding:16px;color:#d9f6ff;font:14px/1.65 ui-monospace,Menlo,monospace}.step{display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start;border-bottom:1px solid rgba(116,255,219,.12);padding:14px 0}.step:last-child{border-bottom:0}.num{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:rgba(116,255,123,.12);border:1px solid rgba(116,255,123,.45);color:var(--green);font-weight:900}.metric{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(116,255,219,.12);padding:12px 0;font:13px/1.25 ui-monospace,Menlo,monospace}.metric:last-child{border-bottom:0}footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0 34px;margin-top:36px;font:13px/1.4 ui-monospace,Menlo,monospace}@media(max-width:860px){.grid,.two{grid-template-columns:1fr}.nav{display:none}}
   </style>
 </head>
 <body>
@@ -85,7 +108,8 @@
     <section id="copy" class="shell grid two">
       <div class="panel">
         <h2>First WhatsApp post</h2>
-        <div class="copybox">Hi everyone — I’m starting a small practical AI builders circle for Casagrand First City residents.
+        <button class="btn copy" type="button" data-copy-target="#first-post-copy">Copy first post</button>
+        <div id="first-post-copy" class="copybox">Hi everyone — I’m starting a small practical AI builders circle for Casagrand First City residents.
 
 The idea is simple: no theory, no hype. We meet online/at the clubhouse and build useful AI workflows — job search, interview prep, office automation, coding assistants, small business tools, WhatsApp/community bots, etc.
 
@@ -96,7 +120,8 @@ If enough people are interested, I’ll host a free intro session at the clubhou
       </div>
       <div class="panel">
         <h2>Follow-up poll copy</h2>
-        <div class="copybox">Quick poll so I can pick the right first session:
+        <button class="btn copy" type="button" data-copy-target="#poll-copy">Copy poll</button>
+        <div id="poll-copy" class="copybox">Quick poll so I can pick the right first session:
 
 What would you attend for a free practical AI session at the clubhouse?
 1. AI for job search/interviews
@@ -113,6 +138,30 @@ https://dabblewith.ai/casagrand-firstcity/date-poll/</div>
 
     <section class="shell grid two">
       <div class="panel">
+        <h2>Fallback: first-10 tester DM</h2>
+        <p>Use this if the campaign report shows fewer than 10 weak/no signals, or before the public group post if admin permission is delayed.</p>
+        <button class="btn copy" type="button" data-copy-target="#tester-dm-copy">Copy tester DM</button>
+        <div id="tester-dm-copy" class="copybox">Hey — I’m testing a practical AI builders circle for Casagrand residents before posting it broadly.
+
+Can you be one of the first 10 testers?
+
+Just message the bot with one real thing you want help with: resume/interview prep, office automation, coding, founder tasks, student projects, or a WhatsApp community bot idea.
+
+Tester page: https://dabblewith.ai/casagrand-firstcity/testers/
+
+If the signals are useful, I’ll host a free clubhouse intro session.</div>
+      </div>
+      <div class="panel">
+        <h2>Fallback tracking rule</h2>
+        <div class="metric"><span>Send</span><strong>10 trusted 1:1 DMs</strong></div>
+        <div class="metric"><span>Wait</span><strong>24 hours</strong></div>
+        <div class="metric"><span>Promote wider only if</span><strong>5+ real tester chats</strong></div>
+        <div class="metric"><span>Community-bot route if</span><strong>2 admin/owner asks</strong></div>
+      </div>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel">
         <h2>T+24 decision card</h2>
         <div class="metric"><span>25+ unique residents</span><strong>Lock clubhouse intro</strong></div>
         <div class="metric"><span>10–24 unique residents</span><strong>Run 60-min build sprint</strong></div>
@@ -122,7 +171,8 @@ https://dabblewith.ai/casagrand-firstcity/date-poll/</div>
       <div class="panel">
         <h2>Measurement command</h2>
         <p>For internal use after the post; reports must stay privacy-safe and aggregate-only.</p>
-        <div class="copybox">node scripts/casagrand-campaign-report.js \
+        <button class="btn copy" type="button" data-copy-target="#report-command-copy">Copy report command</button>
+        <div id="report-command-copy" class="copybox">node scripts/casagrand-campaign-report.js \
   --runtime-dir /home/clawdbot/dabblewith-whatsapp/data \
   --output-dir reports/casagrand-firstcity \
   --date 2026-05-21</div>

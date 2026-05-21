@@ -106,7 +106,7 @@ This segment can become a direct demo for the community-bot platform.
 
 - `https://dabblewith.ai/casagrand-firstcity/testers/` — private first-10 tester page with source-tagged WhatsApp CTAs before the broader IT-group post.
 - `https://dabblewith.ai/casagrand-firstcity/community-bot/` — local design-partner intake page for Casagrand groups that may want a WhatsApp AI host.
-- `https://dabblewith.ai/casagrand-firstcity/launch-board/` — mobile-ready launch board with the exact first post, poll follow-up, share links, T+24 decision thresholds, and internal measurement command.
+- `https://dabblewith.ai/casagrand-firstcity/launch-board/` — mobile-ready launch board with one-tap copy buttons for the exact first post, poll follow-up, first-10 tester fallback DM, share links, T+24 decision thresholds, and internal measurement command.
 - `https://dabblewith.ai/casagrand-firstcity/date-poll/` — source-tagged slot/topic voting page to convert first-post interest into a locked clubhouse date without manual spreadsheet tracking.
 - `https://dabblewith.ai/casagrand-firstcity/flyer/` — printable/forwardable clubhouse noticeboard flyer with value prop, audience, what to bring/leave with, RSVP + `Casagrand flyer` source-tagged WhatsApp CTAs, mini share copy, privacy note, and print-friendly CSS.
 - `docs/growth/casagrand-firstcity-first-10-testers-sprint-kit.md` — direct tester sprint before the broader IT-group post.
