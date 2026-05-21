@@ -1,6 +1,6 @@
 # Google Analytics optimization loop
 
-Status: active automation configured on 2026-05-20.
+Status: active automation configured on 2026-05-20; OAuth token refresh fixed on 2026-05-21.
 
 ## Cadence
 - Daily at 10:00 IST via OpenClaw cron: `dabblewith.ai daily GA growth optimizer`.
@@ -20,11 +20,7 @@ Status: active automation configured on 2026-05-20.
 - Added `cta_click` GA event tracking across site CTAs, WhatsApp links, RSVP links, join links, and community-bot links.
 - This makes the next analytics pass more useful because traffic can be connected to intent, not only pageviews.
 
-## Known blocker
-- Property discovery is blocked because the Google Analytics Admin API is disabled for the OAuth project used by the existing token.
-- The previously discovered property ID `538311897` now reaches the Data API but returns `PERMISSION_DENIED`, so the OAuth user/client also needs access to the dabblewith.ai GA4 property before reports can run reliably.
-- Fix options:
-  1. Grant the OAuth user/client access to GA4 property `538311897`, and/or
-  2. Enable Google Analytics Admin API for the OAuth project so property discovery does not depend on cached IDs.
-
-Once access is fixed, the daily loop can pull GA reports directly.
+## OAuth/token status
+- Fixed on 2026-05-21: `/oauth/callback/` now exchanges Google OAuth codes server-side and stores the refresh token outside git.
+- Report pulls should set `DABBLE_GA_PROPERTY_ID=538311897` and can use the default repo-local token path.
+- Google Analytics Data API pulls are verified working for property `538311897`.
