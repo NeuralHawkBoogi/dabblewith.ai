@@ -108,6 +108,7 @@ This segment can become a direct demo for the community-bot platform.
 - `docs/growth/casagrand-firstcity-first-10-testers-sprint-kit.md` — direct tester sprint before the broader IT-group post.
 - `docs/growth/casagrand-firstcity-event-registration-kit.md` — RSVP funnel and registration copy.
 - `docs/growth/casagrand-firstcity-post-event-loop-kit.md` — recap, office-hours, and community-bot validation loop.
+- `docs/growth/casagrand-firstcity-clubhouse-host-kit.md` — facilitator script, run of show, QR links, live-demo prompts, onsite metrics, and design-partner validation ask.
 
 ## Growth strategy
 
