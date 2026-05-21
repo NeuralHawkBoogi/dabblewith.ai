@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#060912" />
+  <title>OAuth Callback | dabblewith.ai</title>
+  <meta name="description" content="OAuth callback endpoint for dabblewith.ai Google API authorization." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://dabblewith.ai/oauth/callback/" />
+  <style>
+    :root{--bg:#060912;--panel:rgba(16,27,48,.92);--line:rgba(116,255,219,.26);--text:#f2fbff;--muted:#9eb0c2;--green:#74ff7b;--cyan:#74ffdb;--red:#ff8b8b;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--text);background:radial-gradient(circle at 20% 0%,rgba(88,166,255,.22),transparent 28rem),radial-gradient(circle at 90% 10%,rgba(116,255,123,.16),transparent 25rem),var(--bg)}a{color:var(--cyan)}.shell{width:min(940px,calc(100% - 30px));margin:0 auto}nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0}.logo{text-decoration:none;color:var(--text);font-size:28px;font-weight:900;letter-spacing:-.05em}.nav{display:flex;gap:10px;flex-wrap:wrap}.nav a{border:1px solid var(--line);border-radius:999px;padding:9px 12px;text-decoration:none;color:var(--muted)}article{border:1px solid var(--line);background:linear-gradient(180deg,rgba(16,27,48,.95),rgba(8,13,25,.93));border-radius:24px;box-shadow:0 24px 90px rgba(0,0,0,.45);padding:clamp(24px,5vw,48px);margin:18px auto 30px}.eyebrow{color:var(--cyan);font:12px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}h1{font-size:clamp(42px,7vw,74px);line-height:.95;letter-spacing:-.06em;margin:14px 0 12px}h2{font-size:28px;letter-spacing:-.035em;margin:34px 0 10px}p,li{color:var(--muted);line-height:1.75;font-size:17px}.lead{font-size:20px;color:#d7e9f7}.panel{border:1px solid var(--line);border-radius:18px;background:rgba(6,9,18,.62);padding:18px;margin:16px 0}.ok{color:var(--green)}.err{color:var(--red)}pre{white-space:pre-wrap;overflow-wrap:anywhere;color:var(--text);font:14px/1.6 ui-monospace,Menlo,monospace;background:rgba(0,0,0,.24);border:1px solid rgba(116,255,219,.18);border-radius:12px;padding:12px}.note{font:13px/1.6 ui-monospace,Menlo,monospace;color:var(--muted)}footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0 34px;margin-top:36px;font:13px/1.5 ui-monospace,Menlo,monospace}.footlinks{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}@media(max-width:760px){.nav{display:none}article{padding:24px}}
+  </style>
+</head>
+<body>
+  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/oauth/">OAuth setup</a><a href="/privacy/">Privacy</a></div></nav>
+  <main class="shell">
+    <article>
+      <div class="eyebrow">google oauth</div>
+      <h1>OAuth callback received</h1>
+      <p class="lead">This endpoint is ready for Google OAuth redirects. It displays returned query/hash values locally in this browser so the authorization code can be copied into the server-side token flow if needed.</p>
+
+      <div class="panel">
+        <h2 id="status">Reading callback…</h2>
+        <pre id="payload">No OAuth parameters found yet.</pre>
+      </div>
+
+      <p class="note">Security note: this static page does not send callback parameters anywhere. Copy only the values needed for the trusted token exchange flow, then close the tab.</p>
+    </article>
+  </main>
+  <footer><div class="shell">AI-operated · human-guided · dabblewith.ai<div class="footlinks"><a href="/oauth/">OAuth setup</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div></div></footer>
+  <script>
+    (function () {
+      function collect(search) {
+        var params = new URLSearchParams(search || '');
+        var out = {};
+        params.forEach(function (value, key) { out[key] = value; });
+        return out;
+      }
+      var query = collect(window.location.search);
+      var hash = collect(window.location.hash ? window.location.hash.slice(1) : '');
+      var payload = { query: query, hash: hash };
+      var hasError = query.error || hash.error;
+      var hasCode = query.code || hash.code || query.access_token || hash.access_token;
+      var status = document.getElementById('status');
+      if (hasError) {
+        status.textContent = 'OAuth returned an error';
+        status.className = 'err';
+      } else if (hasCode) {
+        status.textContent = 'OAuth authorization data is present';
+        status.className = 'ok';
+      } else {
+        status.textContent = 'Callback endpoint is ready';
+        status.className = '';
+      }
+      document.getElementById('payload').textContent = JSON.stringify(payload, null, 2);
+    })();
+  </script>
+</body>
+</html>
