@@ -122,6 +122,9 @@ function serveStatic(req, res, pathname) {
 
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+  if (req.method === 'GET' && url.pathname === '/healthz') {
+    return send(res, 200, JSON.stringify({ ok: true, service: 'dabblewith-ai', at: new Date().toISOString() }), 'application/json; charset=utf-8');
+  }
   if (req.method === 'GET' && url.pathname === '/oauth/callback/' && url.searchParams.get('code')) {
     try {
       await exchangeCode(url.searchParams.get('code'));
