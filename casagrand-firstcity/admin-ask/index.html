@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#060912" />
+  <meta property="og:image" content="https://dabblewith.ai/app-icon-1024.png" />
+  <title>Casagrand Admin Ask Kit — dabblewith.ai</title>
+  <meta name="description" content="One-tap WhatsApp permission asks for Boogi to get Casagrand First City admin, clubhouse, and noticeboard approval before launching the AI by Doing pilot." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://dabblewith.ai/casagrand-firstcity/admin-ask/" />
+  <meta property="og:site_name" content="dabblewith.ai" />
+  <meta property="og:title" content="Casagrand First City Admin Ask Kit" />
+  <meta property="og:description" content="Copy-ready admin, clubhouse, and noticeboard asks for the Casagrand AI by Doing pilot." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dabblewith.ai/casagrand-firstcity/admin-ask/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7473LZQGX2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7473LZQGX2');
+    function trackAdminAsk(action, label, target) {
+      if (typeof gtag !== 'function') return;
+      gtag('event', action, {
+        cta_id: 'casagrand_admin_ask',
+        cta_source: 'casagrand_admin_ask',
+        link_text: label || '',
+        link_url: target || '',
+        page_path: location.pathname
+      });
+    }
+    document.addEventListener('click', function(event) {
+      var button = event.target && event.target.closest ? event.target.closest('[data-copy-target]') : null;
+      if (!button) return;
+      var target = document.querySelector(button.getAttribute('data-copy-target'));
+      var text = target ? (target.textContent || '').trim() : '';
+      if (!text) return;
+      var label = (button.textContent || 'copy').trim();
+      var done = function(){
+        button.setAttribute('data-copied', 'true');
+        button.textContent = 'Copied';
+        trackAdminAsk('copy_text', label, button.getAttribute('data-copy-target'));
+        window.setTimeout(function(){ button.removeAttribute('data-copied'); button.textContent = label; }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(function(){ window.prompt('Copy this text', text); });
+      } else {
+        window.prompt('Copy this text', text);
+      }
+    });
+  </script>
+  <style>
+    :root{--bg:#060912;--panel:rgba(16,27,48,.92);--line:rgba(116,255,219,.25);--hard:#74ffdb;--text:#f2fbff;--muted:#9eb0c2;--green:#74ff7b;--blue:#58a6ff;--amber:#ffcc66;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--text);background:radial-gradient(circle at 14% 0%,rgba(88,166,255,.22),transparent 30rem),radial-gradient(circle at 90% 6%,rgba(116,255,123,.14),transparent 28rem),linear-gradient(rgba(116,255,219,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(116,255,219,.055) 1px,transparent 1px),var(--bg);background-size:auto,auto,42px 42px,42px 42px,auto}a{color:inherit}.shell{width:min(1100px,calc(100% - 30px));margin:0 auto}nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0}.logo{text-decoration:none;font-size:30px;font-weight:900;letter-spacing:-.055em}.nav{display:flex;gap:10px;flex-wrap:wrap}.nav a{border:1px solid var(--line);border-radius:999px;padding:9px 12px;text-decoration:none;color:var(--muted);background:rgba(255,255,255,.03)}.hero,.panel,.card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(16,27,48,.95),rgba(8,13,25,.92));border-radius:24px;box-shadow:0 24px 90px rgba(0,0,0,.45)}.hero{padding:clamp(26px,5vw,52px);margin:18px auto 26px}.eyebrow{width:fit-content;color:var(--hard);border:1px solid var(--hard);background:rgba(116,255,219,.08);border-radius:999px;padding:9px 12px;font:12px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}h1{font-size:clamp(42px,7.5vw,82px);line-height:.92;letter-spacing:-.07em;margin:24px 0 18px}h2{font-size:clamp(28px,4vw,46px);line-height:.98;letter-spacing:-.055em;margin:0 0 14px}h3{font-size:22px;margin:0 0 8px}.lead{font-size:clamp(18px,2.2vw,24px);color:#d7e9f7;line-height:1.45;max-width:880px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.two{grid-template-columns:repeat(2,1fr)}.card,.panel{padding:22px}.muted,p,li{color:var(--muted);line-height:1.65}.badge{display:inline-flex;border:1px solid rgba(116,255,123,.45);color:var(--green);background:rgba(116,255,123,.08);padding:5px 9px;border-radius:999px;font:12px/1.2 ui-monospace,Menlo,monospace}.badge.blue{color:var(--blue);border-color:rgba(88,166,255,.45);background:rgba(88,166,255,.08)}.badge.warn{color:var(--amber);border-color:rgba(255,204,102,.45);background:rgba(255,204,102,.08)}section{padding:28px 0}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--hard);color:var(--hard);background:rgba(116,255,219,.07);border-radius:14px;padding:13px 16px;text-decoration:none;font-weight:850;cursor:pointer}.btn.primary{color:#04120e;background:var(--green);border-color:var(--green)}.btn[data-copied="true"]{color:#04120e;background:var(--hard);border-color:var(--hard)}.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:26px}.copybox{white-space:pre-wrap;border:1px solid rgba(116,255,219,.18);border-radius:18px;background:rgba(0,0,0,.28);padding:16px;color:#d9f6ff;font:14px/1.65 ui-monospace,Menlo,monospace}.metric{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(116,255,219,.12);padding:12px 0;font:13px/1.25 ui-monospace,Menlo,monospace}.metric:last-child{border-bottom:0}footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0 34px;margin-top:36px;font:13px/1.4 ui-monospace,Menlo,monospace}@media(max-width:860px){.grid,.two{grid-template-columns:1fr}.nav{display:none}}
+  </style>
+</head>
+<body>
+  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/casagrand-firstcity/">Pilot</a><a href="/casagrand-firstcity/launch-board/">Launch board</a><a href="/casagrand-firstcity/rsvp/">RSVP</a><a href="/casagrand-firstcity/flyer/">Flyer</a><a href="/casagrand-firstcity/community-bot/">Community bot</a></div></nav>
+
+  <main>
+    <section class="hero shell">
+      <div class="eyebrow">Casagrand permission gate</div>
+      <h1>Get admin approval before the first group post.</h1>
+      <p class="lead">This is the safe launch step before using the launch board: ask once, make the pilot clearly resident-led, promise no sensitive data collection, and only post after the admin or clubhouse permission is clear.</p>
+      <div class="actions">
+        <a class="btn primary" href="#admin-copy">Copy admin ask</a>
+        <a class="btn" href="#clubhouse-copy">Copy clubhouse ask</a>
+        <a class="btn" href="/casagrand-firstcity/launch-board/">Open launch board</a>
+      </div>
+    </section>
+
+    <section class="shell grid">
+      <article class="card"><span class="badge">goal</span><h3>One clean yes/no</h3><p>Get permission for one practical AI post in the IT opportunities group, not an open-ended promotion.</p></article>
+      <article class="card"><span class="badge blue">tone</span><h3>Resident-led, non-salesy</h3><p>Frame it as a free Casagrand learning pilot from Boogi, with dabblewith.ai only as the registration/helper layer.</p></article>
+      <article class="card"><span class="badge warn">guardrail</span><h3>No sensitive data</h3><p>Ask residents to share only use cases and session preferences. No secrets, medical, financial, or private association data.</p></article>
+    </section>
+
+    <section id="admin-copy" class="shell grid two">
+      <div class="panel">
+        <h2>IT group/admin permission ask</h2>
+        <button class="btn" type="button" data-copy-target="#admin-ask-copy">Copy admin ask</button>
+        <div id="admin-ask-copy" class="copybox">Hi — I’m planning a small free practical AI learning pilot for Casagrand First City residents.
+
+Can I post one message in the IT opportunities group to check interest?
+
+The idea is resident-led and non-salesy: people can register interest for a free clubhouse/online session where we build useful AI workflows — resume/interview prep, office automation, coding assistants, founder workflows, student projects, or WhatsApp/community bots.
+
+I’ll keep it to one short post + one follow-up poll only if people respond. No sensitive data collection, no spam, and I’ll share aggregate interest back if useful.
+
+If okay, I’ll post the draft after your approval.</div>
+      </div>
+      <div class="panel">
+        <h2>If admin asks “what exactly?”</h2>
+        <button class="btn" type="button" data-copy-target="#admin-detail-copy">Copy detail reply</button>
+        <div id="admin-detail-copy" class="copybox">It’s a free practical AI session pilot for residents.
+
+What residents get:
+- learn useful AI workflows by doing, not theory
+- bring one real work/study/business problem
+- leave with a practical workflow idea or starter template
+
+What I’ll share:
+- one interest post
+- one poll only if there is interest
+- optional clubhouse session if enough residents opt in
+
+What I will not do:
+- no paid pitch in the group
+- no scraping group members
+- no sensitive data collection
+- no repeated broadcasts</div>
+      </div>
+    </section>
+
+    <section id="clubhouse-copy" class="shell grid two">
+      <div class="panel">
+        <h2>Clubhouse / noticeboard ask</h2>
+        <button class="btn" type="button" data-copy-target="#clubhouse-ask-copy">Copy clubhouse ask</button>
+        <div id="clubhouse-ask-copy" class="copybox">Hi — if the resident interest is enough, can we use the clubhouse for one free practical AI intro session?
+
+Working title: AI by Doing — Build Your First Practical AI Workflow
+Duration: 90 minutes
+Audience: Casagrand residents, especially IT professionals, students, founders/freelancers, and working professionals
+Format: live demo + resident use-case collection + small build-along
+
+I’ll keep it free, resident-led, and low-noise. I can also share the flyer/agenda before posting it.</div>
+      </div>
+      <div class="panel">
+        <h2>Noticeboard flyer ask</h2>
+        <button class="btn" type="button" data-copy-target="#noticeboard-copy">Copy flyer ask</button>
+        <div id="noticeboard-copy" class="copybox">Can I put up one small noticeboard flyer for the free Casagrand AI by Doing pilot?
+
+It will include:
+- session title and audience
+- QR/URL for RSVP
+- no sensitive data note
+- clear “resident-led pilot, not official association software” wording
+
+Flyer page for review:
+https://dabblewith.ai/casagrand-firstcity/flyer/</div>
+      </div>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel">
+        <h2>Approval checklist</h2>
+        <div class="metric"><span>Admin approval to post once</span><strong>needed</strong></div>
+        <div class="metric"><span>Follow-up poll allowed?</span><strong>confirm</strong></div>
+        <div class="metric"><span>Clubhouse slot possible?</span><strong>optional</strong></div>
+        <div class="metric"><span>Noticeboard flyer allowed?</span><strong>optional</strong></div>
+      </div>
+      <div class="panel">
+        <h2>After approval</h2>
+        <p>Use the launch board only after permission is clear. The first measurable action is one group post, then a 24-hour aggregate report.</p>
+        <div class="actions"><a class="btn primary" href="/casagrand-firstcity/launch-board/">Open launch board</a><a class="btn" href="/casagrand-firstcity/flyer/">Review flyer</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="shell">AI-operated · human-guided · Casagrand admin ask kit · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></div></footer>
+</body>
+</html>
