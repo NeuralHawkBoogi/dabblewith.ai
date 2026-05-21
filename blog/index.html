@@ -32,18 +32,20 @@
       var link = event.target && event.target.closest ? event.target.closest('a') : null;
       if (!link || typeof gtag !== 'function') return;
       var href = link.getAttribute('href') || '';
-      var text = (link.textContent || '').trim().replace(/s+/g, ' ').slice(0, 80);
-      var isCta = /wa.me|whatsapp|#join|/community-bot/?|/casagrand-firstcity/rsvp/?|utm_/.test(href) || /join|rsvp|start|signal|community bot|whatsapp/i.test(text);
+      var text = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 80);
+      var isCta = /wa\.me|whatsapp|#join|\/community-bot\/?|\/casagrand-firstcity\/rsvp\/?|utm_/.test(href) || /join|rsvp|start|signal|community bot|whatsapp/i.test(text);
       if (!isCta) return;
       gtag('event', 'cta_click', {
         link_url: link.href || href,
         link_text: text,
+        cta_id: link.getAttribute('data-cta') || '',
+        cta_source: link.getAttribute('data-source') || location.pathname,
         page_path: location.pathname
       });
     });
   </script>
   <style>
-    :root{--bg:#060912;--panel:rgba(16,27,48,.9);--line:rgba(116,255,219,.26);--text:#f2fbff;--muted:#9eb0c2;--green:#74ff7b;--cyan:#74ffdb;--blue:#58a6ff;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--text);background:radial-gradient(circle at 20% 0%,rgba(88,166,255,.22),transparent 28rem),radial-gradient(circle at 90% 10%,rgba(116,255,123,.16),transparent 25rem),var(--bg)}a{color:inherit}.shell{width:min(980px,calc(100% - 30px));margin:0 auto}nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0}.logo{text-decoration:none;font-size:28px;font-weight:900;letter-spacing:-.05em}.nav{display:flex;gap:10px;flex-wrap:wrap}.nav a{border:1px solid var(--line);border-radius:999px;padding:9px 12px;text-decoration:none;color:var(--muted)}.hero,.card,article{border:1px solid var(--line);background:linear-gradient(180deg,rgba(16,27,48,.94),rgba(8,13,25,.92));border-radius:24px;box-shadow:0 24px 90px rgba(0,0,0,.45)}.hero{padding:36px;margin:18px auto 28px}h1{font-size:clamp(42px,7vw,78px);line-height:.95;letter-spacing:-.06em;margin:12px 0 16px}h2{font-size:32px;letter-spacing:-.04em;margin-top:34px}.eyebrow{color:var(--cyan);font:12px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}.lead{font-size:20px;color:#d7e9f7;line-height:1.5}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.card{padding:22px;text-decoration:none}.card h2{font-size:26px;margin:0 0 10px}.card p,article p{color:var(--muted);line-height:1.7}.meta{color:var(--green);font:13px/1.5 ui-monospace,Menlo,monospace}.content{padding:34px;margin-bottom:30px}.content p{font-size:18px}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}.tag{border:1px solid rgba(116,255,123,.45);color:var(--green);border-radius:999px;padding:6px 9px;font-size:13px}footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0 34px;margin-top:36px}@media(max-width:760px){.grid{grid-template-columns:1fr}.hero{padding:24px}.nav{display:none}}
+    :root{--bg:#060912;--panel:rgba(16,27,48,.9);--line:rgba(116,255,219,.26);--text:#f2fbff;--muted:#9eb0c2;--green:#74ff7b;--cyan:#74ffdb;--blue:#58a6ff;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--text);background:radial-gradient(circle at 20% 0%,rgba(88,166,255,.22),transparent 28rem),radial-gradient(circle at 90% 10%,rgba(116,255,123,.16),transparent 25rem),var(--bg)}a{color:inherit}.shell{width:min(980px,calc(100% - 30px));margin:0 auto}nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0}.logo{text-decoration:none;font-size:28px;font-weight:900;letter-spacing:-.05em}.nav{display:flex;gap:10px;flex-wrap:wrap}.nav a{border:1px solid var(--line);border-radius:999px;padding:9px 12px;text-decoration:none;color:var(--muted)}.hero,.card,article{border:1px solid var(--line);background:linear-gradient(180deg,rgba(16,27,48,.94),rgba(8,13,25,.92));border-radius:24px;box-shadow:0 24px 90px rgba(0,0,0,.45)}.hero{padding:36px;margin:18px auto 28px}h1{font-size:clamp(42px,7vw,78px);line-height:.95;letter-spacing:-.06em;margin:12px 0 16px}h2{font-size:32px;letter-spacing:-.04em;margin-top:34px}.eyebrow{color:var(--cyan);font:12px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}.lead{font-size:20px;color:#d7e9f7;line-height:1.5}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.card{padding:22px;text-decoration:none}.card h2{font-size:26px;margin:0 0 10px}.card p,article p{color:var(--muted);line-height:1.7}.meta{color:var(--green);font:13px/1.5 ui-monospace,Menlo,monospace}.content{padding:34px;margin-bottom:30px}.content p{font-size:18px}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}.tag{border:1px solid rgba(116,255,123,.45);color:var(--green);border-radius:999px;padding:6px 9px;font-size:13px}.blog-cta{margin:24px 0 0;padding:22px;border:1px solid rgba(116,255,123,.42);border-radius:22px;background:rgba(116,255,123,.07)}.blog-cta p{margin:8px 0 16px}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--green);border-radius:14px;padding:13px 16px;background:var(--green);color:#04120e;text-decoration:none;font-weight:800}footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0 34px;margin-top:36px}@media(max-width:760px){.grid{grid-template-columns:1fr}.hero{padding:24px}.nav{display:none}}
   </style>
 </head>
 <body>
@@ -53,6 +55,11 @@
     <div class="eyebrow">dabblewith.ai blog</div>
     <h1>Practical AI workflows, workshops, and community operations.</h1>
     <p class="lead">Daily notes on learning AI by doing: agent workflows, human review, automation patterns, and hands-on demos.</p>
+    <div class="blog-cta">
+      <div class="eyebrow">from reading to doing</div>
+      <p>Got a workflow you want to turn into a practical AI demo? Send the use case and we will suggest a hands-on build path.</p>
+      <a class="btn" data-cta="blog_index_workflow_signal" data-source="blog_index_hero" href="https://wa.me/919566112518?text=I%20read%20the%20dabblewith.ai%20blog%20and%20want%20to%20turn%20a%20workflow%20into%20a%20hands-on%20AI%20demo%20%28source%3A%20blog%20index%29" target="_blank" rel="noreferrer">Send a workflow idea</a>
+    </div>
   </section>
   <section class="grid">
     <a class="card" href="/blog/how-to-design-practical-ai-workshops/"><div class="meta">2026-05-21</div><h2>How to Design Practical AI Workshops People Actually Use</h2><p>The best AI workshops end with artifacts, not applause.</p><div class="tags"><span class="tag">AI workshops</span><span class="tag">practical AI workshop</span><span class="tag">hands-on AI training</span></div></a>
