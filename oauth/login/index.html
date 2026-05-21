@@ -26,22 +26,18 @@
     <article>
       <div class="eyebrow">google oauth</div>
       <h1>Start Google login</h1>
-      <p class="lead">Use this page to start the Google OAuth consent flow for dabblewith.ai Google Analytics access. It keeps the client secret out of the browser.</p>
+      <p class="lead">Use this page to start the Google OAuth consent flow for dabblewith.ai Google Analytics access. It uses the configured OAuth client ID and keeps the client secret out of the browser.</p>
 
       <div class="card">
         <div class="row">
-          <label for="clientId">OAuth Client ID</label>
-          <input id="clientId" autocomplete="off" spellcheck="false" placeholder="Paste Google OAuth Web Client ID" />
-        </div>
-        <div class="row">
-          <label for="scopes">Scopes</label>
-          <textarea id="scopes" spellcheck="false">https://www.googleapis.com/auth/analytics.readonly</textarea>
+          <div class="label">Configured scope</div>
+          <code class="url" id="scopes">https://www.googleapis.com/auth/analytics.readonly</code>
         </div>
         <div class="row">
           <div class="label">Redirect URI</div>
           <code class="url" id="redirectUri">https://dabblewith.ai/oauth/callback/</code>
         </div>
-        <p class="note">Tip: you can also open this page with <code>?client_id=YOUR_CLIENT_ID</code> to prefill the field.</p>
+        <p class="note">This starts the consent flow with the single configured dabblewith.ai OAuth client. No client secret is embedded on this page.</p>
         <p class="err" id="error" hidden></p>
         <div class="actions">
           <button id="start" type="button">Continue with Google</button>
@@ -62,29 +58,13 @@
   <footer><div class="shell">AI-operated · human-guided · dabblewith.ai<div class="footlinks"><a href="/oauth/">OAuth setup</a><a href="/oauth/callback/">Callback</a><a href="/privacy/">Privacy</a></div></div></footer>
   <script>
     (function () {
-      var params = new URLSearchParams(window.location.search);
-      var clientIdInput = document.getElementById('clientId');
-      var scopesInput = document.getElementById('scopes');
+      var clientId = '373699255123-ubgbqo7la8ap7me3nitn933ai3ck42ip.apps.googleusercontent.com';
+      var scopes = 'https://www.googleapis.com/auth/analytics.readonly';
       var redirectUri = 'https://dabblewith.ai/oauth/callback/';
       var error = document.getElementById('error');
-      if (params.get('client_id')) clientIdInput.value = params.get('client_id');
       document.getElementById('start').addEventListener('click', function () {
-        var clientId = clientIdInput.value.trim();
-        var scopes = scopesInput.value.trim().split(/\s+/).filter(Boolean).join(' ');
         error.hidden = true;
         error.textContent = '';
-        if (!clientId) {
-          error.textContent = 'Paste the OAuth Client ID first.';
-          error.hidden = false;
-          clientIdInput.focus();
-          return;
-        }
-        if (!scopes) {
-          error.textContent = 'At least one Google OAuth scope is required.';
-          error.hidden = false;
-          scopesInput.focus();
-          return;
-        }
         var state = 'dwai-ga-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
         try { sessionStorage.setItem('dwai_oauth_state', state); } catch (e) {}
         var auth = new URL('https://accounts.google.com/o/oauth2/v2/auth');
