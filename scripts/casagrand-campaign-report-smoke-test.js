@@ -8,6 +8,7 @@ const {
   buildCampaignReport,
   computeLaunchDecision,
   inferSourceTags,
+  inferSlotVotes,
   inferTopics,
   isCampaignText,
   redactPhone,
@@ -31,6 +32,8 @@ function appendJsonl(file, rows) {
   assert.deepStrictEqual(inferSourceTags('Casagrand First City tester - career. My role is:'), ['tester_career']);
   assert.deepStrictEqual(inferSourceTags('Casagrand workflow help — automate reports'), ['tester_workflow']);
   assert.deepStrictEqual(inferSourceTags('Casagrand community bot demo for residents'), ['tester_community_bot']);
+  assert.deepStrictEqual(inferSourceTags('Casagrand date poll - weekend morning. My topic vote is: job search'), ['casagrand_date_poll']);
+  assert.deepStrictEqual(inferSlotVotes('Casagrand date poll - weekend morning. My topic vote is: job search'), ['weekend_morning']);
   assert.deepStrictEqual(inferSourceTags('Casagrand First City - I want to join AI by Doing'), ['casagrand_first_city']);
   assert.deepStrictEqual(inferSourceTags('Casagrand + AI agents'), ['untagged_casagrand']);
 
@@ -93,6 +96,16 @@ function appendJsonl(file, rows) {
       message_id: 'wamid.real.one',
     },
     {
+      received_at: '2026-05-20T02:00:30.000Z',
+      source: 'whatsapp_business',
+      community: 'dabblewith.ai',
+      intent: 'event_interest',
+      from: '919840380001',
+      display_name: 'Resident Two',
+      text: 'Casagrand date poll - weekend morning. My topic vote is: office productivity',
+      message_id: 'wamid.real.two',
+    },
+    {
       received_at: '2026-05-20T02:01:00.000Z',
       source: 'whatsapp_business',
       community: 'dabblewith.ai',
@@ -122,17 +135,22 @@ function appendJsonl(file, rows) {
   ]);
 
   const report = buildCampaignReport(runtimeDir);
-  assert.strictEqual(report.totals.campaignSignals, 1);
-  assert.strictEqual(report.totals.uniqueUsers, 1);
+  assert.strictEqual(report.totals.campaignSignals, 2);
+  assert.strictEqual(report.totals.uniqueUsers, 2);
   assert.strictEqual(report.totals.syntheticOrExcludedSignals, 1);
-  assert.strictEqual(report.intents.event_interest, 1);
+  assert.strictEqual(report.intents.event_interest, 2);
   assert.strictEqual(report.topics.job_search, 1);
+  assert.strictEqual(report.topics.office_productivity, 1);
   assert.strictEqual(report.sourceTags.tester_career, 1);
+  assert.strictEqual(report.sourceTags.casagrand_date_poll, 1);
   assert.strictEqual(report.trackCounts.career, 1);
-  assert.deepStrictEqual(report.recentSignals[0].sourceTags, ['tester_career']);
-  assert.deepStrictEqual(report.recentSignals[0].tracks, ['career']);
+  assert.strictEqual(report.slotVotes.weekend_morning, 1);
+  assert.deepStrictEqual(report.recentSignals[0].sourceTags, ['casagrand_date_poll']);
+  assert.deepStrictEqual(report.recentSignals[0].slotVotes, ['weekend_morning']);
+  assert.deepStrictEqual(report.recentSignals[1].sourceTags, ['tester_career']);
+  assert.deepStrictEqual(report.recentSignals[1].tracks, ['career']);
   assert.strictEqual(report.deliveryStatuses.delivered, 1);
-  assert.strictEqual(report.recentSignals[0].from.endsWith('2585'), true);
+  assert.strictEqual(report.recentSignals[1].from.endsWith('2585'), true);
   assert(report.decision, 'decision missing from report');
   assert.strictEqual(report.decision.stage, 'first10_tester_dms');
   assert.strictEqual(report.decision.confidence, 'low');
@@ -140,7 +158,7 @@ function appendJsonl(file, rows) {
   assert.strictEqual(typeof report.decision.nextAction, 'string');
   assert(Array.isArray(report.decision.rationale) && report.decision.rationale.length > 0);
   assert.strictEqual(report.decision.thresholds.length, 4);
-  assert(report.decision.rationale.some((r) => r.includes('Top source tag: tester_career')));
+  assert(report.decision.rationale.some((r) => r.includes('Top source tag:')));
   const serialized = JSON.stringify(report);
   assert(!serialized.includes('919840382585'), 'raw phone leaked');
   assert(!serialized.includes('wamid.real.one'), 'raw message id leaked');
@@ -159,5 +177,7 @@ function appendJsonl(file, rows) {
   assert(markdown.includes('tester_career: 1'));
   assert(markdown.includes('## Tester track counts'));
   assert(markdown.includes('career: 1'));
+  assert(markdown.includes('## Date/slot poll counts'));
+  assert(markdown.includes('weekend_morning: 1'));
   console.log('casagrand-campaign-report smoke passed');
 })();

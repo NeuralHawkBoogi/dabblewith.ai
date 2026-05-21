@@ -24,11 +24,17 @@ const TOPIC_RULES = [
 ];
 const SOURCE_TAG_RULES = [
   ['casagrand_rsvp', /casagrand\s+rsvp/i],
+  ['casagrand_date_poll', /casagrand\s+date\s+poll/i],
   ['tester_career', /casagrand\s+(?:first\s+city\s+)?tester\s*[-–]\s*career|casagrand\s+career\s+help/i],
   ['tester_workflow', /casagrand\s+(?:first\s+city\s+)?tester\s*[-–]\s*workflow|casagrand\s+workflow\s+help/i],
   ['tester_founder', /casagrand\s+(?:first\s+city\s+)?tester\s*[-–]\s*founder|casagrand\s+founder\s+help/i],
   ['tester_student', /casagrand\s+(?:first\s+city\s+)?tester\s*[-–]\s*student|casagrand\s+student\s+help/i],
   ['tester_community_bot', /casagrand\s+(?:first\s+city\s+)?tester\s*[-–]\s*community\s*bot|casagrand\s+community\s+bot\s+demo/i],
+];
+const SLOT_RULES = [
+  ['weekend_morning', /weekend\s+morning/i],
+  ['weekend_evening', /weekend\s+evening/i],
+  ['weekday_evening', /weekday\s+evening/i],
 ];
 const TRACK_FOR_TAG = {
   tester_career: 'career',
@@ -113,6 +119,12 @@ function inferSourceTags(text) {
   if (/casagrand\s+first\s+city/i.test(normalized)) return ['casagrand_first_city'];
   if (/casagrand/i.test(normalized)) return ['untagged_casagrand'];
   return [];
+}
+
+function inferSlotVotes(text) {
+  const normalized = normalizeText(text);
+  const votes = SLOT_RULES.filter(([, re]) => re.test(normalized)).map(([slot]) => slot);
+  return [...new Set(votes)];
 }
 
 function tracksForTags(tags) {
@@ -215,6 +227,7 @@ function buildCampaignReport(runtimeDir, options = {}) {
   const topics = {};
   const sourceTags = {};
   const trackCounts = {};
+  const slotVotes = {};
   const recentSignals = [];
 
   for (const signal of realCampaignSignals) {
@@ -228,6 +241,8 @@ function buildCampaignReport(runtimeDir, options = {}) {
     for (const tag of signalSourceTags) sourceTags[tag] = (sourceTags[tag] || 0) + 1;
     const signalTracks = tracksForTags(signalSourceTags);
     for (const track of signalTracks) trackCounts[track] = (trackCounts[track] || 0) + 1;
+    const signalSlotVotes = inferSlotVotes(signal.text);
+    for (const slot of signalSlotVotes) slotVotes[slot] = (slotVotes[slot] || 0) + 1;
     recentSignals.push({
       receivedAt: signal.received_at || null,
       source: signal.source || 'unknown',
@@ -235,6 +250,7 @@ function buildCampaignReport(runtimeDir, options = {}) {
       topics: signalTopics,
       sourceTags: signalSourceTags,
       tracks: signalTracks,
+      slotVotes: signalSlotVotes,
       displayName: normalizeText(signal.display_name || 'unknown').slice(0, 40),
       from: redactPhone(signal.from),
       messageRef: hashId(signal.message_id),
@@ -260,6 +276,7 @@ function buildCampaignReport(runtimeDir, options = {}) {
     topics,
     sourceTags,
     trackCounts,
+    slotVotes,
     deliveryStatuses: summarizeStatuses(statusRows),
     recentSignals: recentSignals.slice(-20).reverse(),
     nextAction,
@@ -295,6 +312,9 @@ function renderMarkdown(report) {
   lines.push('## Tester track counts');
   appendCounts(lines, report.trackCounts, 'No tester tracks captured yet.');
   lines.push('');
+  lines.push('## Date/slot poll counts');
+  appendCounts(lines, report.slotVotes, 'No date poll votes captured yet.');
+  lines.push('');
   lines.push('## Delivery/status counts');
   appendCounts(lines, report.deliveryStatuses, 'No status events available.');
   lines.push('');
@@ -305,7 +325,8 @@ function renderMarkdown(report) {
     for (const signal of report.recentSignals) {
       const sourceTags = signal.sourceTags && signal.sourceTags.length ? signal.sourceTags.join(', ') : 'no_source_tag';
       const tracks = signal.tracks && signal.tracks.length ? signal.tracks.join(', ') : 'no_track';
-      lines.push(`- ${signal.receivedAt || 'unknown'} · ${signal.from || 'unknown'} · ${signal.intent} · topics=${signal.topics.join(', ')} · tags=${sourceTags} · tracks=${tracks} · “${signal.textPreview}” · ref=${signal.messageRef || 'n/a'}`);
+      const slots = signal.slotVotes && signal.slotVotes.length ? signal.slotVotes.join(', ') : 'no_slot_vote';
+      lines.push(`- ${signal.receivedAt || 'unknown'} · ${signal.from || 'unknown'} · ${signal.intent} · topics=${signal.topics.join(', ')} · tags=${sourceTags} · tracks=${tracks} · slots=${slots} · “${signal.textPreview}” · ref=${signal.messageRef || 'n/a'}`);
     }
   }
   lines.push('');
@@ -391,6 +412,7 @@ module.exports = {
   isCampaignText,
   inferTopics,
   inferSourceTags,
+  inferSlotVotes,
   tracksForTags,
   computeLaunchDecision,
   buildCampaignReport,
