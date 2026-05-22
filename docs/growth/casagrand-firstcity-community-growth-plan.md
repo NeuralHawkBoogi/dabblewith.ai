@@ -106,6 +106,7 @@ This segment can become a direct demo for the community-bot platform.
 
 - `https://dabblewith.ai/casagrand-firstcity/admin-ask/` — mobile-ready permission kit with copy buttons for the IT group/admin ask, clubhouse/noticeboard approval, objections, and launch guardrails before any public group post.
 - `https://dabblewith.ai/casagrand-firstcity/testers/` — private first-10 tester page with source-tagged WhatsApp CTAs, copy buttons, target outreach mix, and a 24-hour tracker note before the broader IT-group post.
+- `https://dabblewith.ai/casagrand-firstcity/first-10-outreach/` — mobile-ready first-10 outreach tracker with segment-specific DM copy, privacy-safe reply logging, and 24-hour go/no-go thresholds before another broad WhatsApp post.
 - `https://dabblewith.ai/casagrand-firstcity/community-bot/` — local design-partner intake page for Casagrand groups that may want a WhatsApp AI host.
 - `https://dabblewith.ai/casagrand-firstcity/launch-board/` — mobile-ready launch board with one-tap copy buttons for the exact first post, poll follow-up, first-10 tester fallback DM, share links, T+24 decision thresholds, and internal measurement command.
 - `https://dabblewith.ai/casagrand-firstcity/champions/` — mobile-ready resident champion kit to recruit three trusted residents before the broad post, collect six real use cases, seed first replies, and surface community-bot design-partner referrals.
