@@ -170,6 +170,12 @@
     .btn.primary { color: #04120e; background: var(--green); border-color: var(--green); box-shadow: 0 0 30px rgba(116,255,123,.35); }
     .console { margin-top: 28px; border: 1px solid rgba(116,255,219,.18); border-radius: 18px; background: rgba(0,0,0,.32); padding: 16px; color: #d3ffe5; font: 13px/1.75 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; max-width: 700px; }
     .console .dim { color: #6f879b; }
+    .path-strip { margin-top: 26px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 760px; }
+    .path-card { border: 1px solid rgba(116,255,219,.24); border-radius: 18px; padding: 15px; background: rgba(6,9,18,.5); text-decoration: none; min-height: 138px; display: flex; flex-direction: column; justify-content: space-between; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
+    .path-card:hover { transform: translateY(-2px); border-color: var(--line-hard); background: rgba(116,255,219,.08); }
+    .path-kicker { color: var(--cyan); font: 11px/1.2 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; text-transform: uppercase; letter-spacing: .08em; }
+    .path-card strong { display: block; color: var(--text); font-size: 17px; line-height: 1.18; margin: 8px 0 7px; }
+    .path-card span:last-child { color: #a8bacb; font-size: 13px; line-height: 1.35; }
     .side { display: grid; gap: 18px; }
     .small-panel { padding: 20px; position: relative; z-index: 1; }
     .metric { display: grid; gap: 12px; }
@@ -202,7 +208,7 @@
     footer { border-top: 1px solid var(--line); margin-top: 40px; padding: 26px 0 34px; color: var(--muted); font: 13px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
     footer .shell { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
     @media (max-width: 900px) {
-      .hero, .section-head, .grid { grid-template-columns: 1fr; }
+      .hero, .section-head, .grid, .path-strip { grid-template-columns: 1fr; }
       .event, .flow-step { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .hero-main { min-height: auto; }
@@ -237,24 +243,35 @@
         <div class="panel-head"><span>main_control / dabblewith.ai</span><span class="lights"><i class="light"></i><i class="light"></i><i class="light"></i></span></div>
         <div class="hero-main">
           <div>
-            <div class="eyebrow">AI-run community · human supervised</div>
-            <h1>A community OS for learning AI by doing.</h1>
-            <p class="lead"><strong>dabblewith.ai</strong> is operated with AI agents and overseen by humans. The site, sessions, recaps, reminders, and experiments become part of the demo.</p>
-            <div class="console">
-              <span class="dim">$</span> topic_agent.scan(interests)<br/>
-              <span class="dim">$</span> human_review.approve(direction)<br/>
-              <span class="dim">$</span> session_agent.prepare(demo_materials)<br/>
-              <span class="dim">$</span> community.learn(in_public)
+            <div class="eyebrow">AI community · workshops · community bots</div>
+            <h1>Learn AI by building real things.</h1>
+            <p class="lead"><strong>dabblewith.ai</strong> is a hands-on AI community. Join to attend practical sessions, see how AI agents run community operations, or set up a similar WhatsApp AI host for your own group.</p>
+            <div class="path-strip" aria-label="Choose what you want to do next">
+              <a class="path-card" data-cta="homepage_path_join" data-source="homepage_path_strip" href="https://wa.me/919566112518?text=I%27d%20like%20to%20join%20the%20dabblewith.ai%20AI%20learning%20community%20%28source%3A%20homepage%20path%29" target="_blank" rel="noreferrer">
+                <span class="path-kicker">I want to learn</span>
+                <strong>Join the AI learning community</strong>
+                <span>Message WhatsApp and tell us what you want to build or learn.</span>
+              </a>
+              <a class="path-card" data-cta="homepage_path_bot" data-source="homepage_path_strip" href="/community-bot/">
+                <span class="path-kicker">I run a group</span>
+                <strong>Set up an AI community bot</strong>
+                <span>See how a WhatsApp host can handle Q&A, registrations, and reports.</span>
+              </a>
+              <a class="path-card" data-cta="homepage_path_sessions" data-source="homepage_path_strip" href="/sessions/">
+                <span class="path-kicker">I want examples</span>
+                <strong>Explore upcoming sessions</strong>
+                <span>Browse practical AI demos, workflows, and first-session ideas.</span>
+              </a>
             </div>
           </div>
           <div>
             <div class="actions">
-              <a class="btn primary" data-cta="homepage_join_signal" data-source="homepage_hero" href="https://wa.me/919566112518?text=I%27m%20interested%20in%20dabblewith.ai%20%28source%3A%20homepage%20join%20signal%29" target="_blank" rel="noreferrer">Send join signal</a>
-              <a class="btn" data-cta="homepage_casagrand_pilot" data-source="homepage_hero" href="/casagrand-firstcity/">Casagrand pilot</a>
-              <a class="btn" data-cta="homepage_autopilot" data-source="homepage_hero" href="/autopilot/">Open autopilot</a>
+              <a class="btn primary" data-cta="homepage_join_signal" data-source="homepage_hero" href="https://wa.me/919566112518?text=I%27d%20like%20to%20join%20the%20dabblewith.ai%20AI%20learning%20community%20%28source%3A%20homepage%20hero%29" target="_blank" rel="noreferrer">Join on WhatsApp</a>
               <a class="btn" data-cta="homepage_community_bot" data-source="homepage_hero" href="/community-bot/">Setup a community bot</a>
+              <a class="btn" data-cta="homepage_sessions" data-source="homepage_hero" href="/sessions/">See upcoming sessions</a>
+              <a class="btn" data-cta="homepage_casagrand_pilot" data-source="homepage_hero" href="/casagrand-firstcity/">Casagrand pilot</a>
             </div>
-            <p class="cta-proof"><strong>Start with one message:</strong> tell us what you want to build or learn, and the first control-room invites will be shaped from those signals.</p>
+            <p class="cta-proof"><strong>Not sure what to click?</strong> Start with WhatsApp. Send one line about what you want to learn, build, or automate — we’ll route you from there.</p>
           </div>
         </div>
       </div>
