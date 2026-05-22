@@ -198,12 +198,13 @@ If the signals are useful, I’ll host a free clubhouse intro session.</div>
       </div>
       <div class="panel" id="measure">
         <h2>Measurement command</h2>
-        <p>For internal use after the post; reports must stay privacy-safe and aggregate-only.</p>
+        <p>For internal use after the post; reports stay privacy-safe, aggregate-only, and can exclude owner/test pings by last four digits.</p>
         <button class="btn copy" type="button" data-copy-target="#report-command-copy">Copy report command</button>
         <div id="report-command-copy" class="copybox">node scripts/casagrand-campaign-report.js \
   --runtime-dir /home/clawdbot/dabblewith-whatsapp/data \
   --output-dir reports/casagrand-firstcity \
-  --date 2026-05-22</div>
+  --date 2026-05-22 \
+  --exclude-last4 2585</div>
       </div>
     </section>
   </main>

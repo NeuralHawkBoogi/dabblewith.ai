@@ -18,13 +18,14 @@ This brief is designed for the first 24 hours after Boogi gets admin/group permi
   - Direct bot fallback: `https://wa.me/919566112518?text=Casagrand%20RSVP%20-%20I%20want%20to%20attend%20AI%20by%20Doing.`
 - No private resident data, association data, or sensitive work data is requested.
 - Boogi is available to answer 3-5 direct follow-ups during the first few hours.
-- Campaign report command is ready:
+- Campaign report command is ready. Use `--exclude-last4` for owner/test pings so Boogi’s own RSVP checks do not inflate demand:
 
 ```bash
 node scripts/casagrand-campaign-report.js \
   --runtime-dir /home/clawdbot/dabblewith-whatsapp/data \
   --output-dir reports/casagrand-firstcity \
-  --date 2026-05-21
+  --date 2026-05-22 \
+  --exclude-last4 2585
 ```
 
 ## One-post launch copy
@@ -66,6 +67,7 @@ Run the campaign report and capture:
 - launch decision card (`clubhouse_intro`, `build_sprint`, `design_partner_calls`, or `first10_tester_dms`)
 - campaign signals
 - unique residents/users
+- owner/test signals excluded
 - source tag counts
 - requested topic clusters
 - tester track counts

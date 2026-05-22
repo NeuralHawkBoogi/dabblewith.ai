@@ -11,6 +11,8 @@ const {
   inferSlotVotes,
   inferTopics,
   isCampaignText,
+  isExcludedLast4,
+  normalizeLast4List,
   redactPhone,
   writeCampaignReport,
 } = require('./casagrand-campaign-report');
@@ -26,6 +28,9 @@ function appendJsonl(file, rows) {
 
 (function run() {
   assert.strictEqual(redactPhone('+91 98403 82585'), '********2585');
+  assert.deepStrictEqual(normalizeLast4List('2585, 0001'), ['2585', '0001']);
+  assert.strictEqual(isExcludedLast4({ from: '+91 98403 82585' }, ['2585']), true);
+  assert.strictEqual(isExcludedLast4({ from: '+91 98403 82585' }, ['0001']), false);
   assert.strictEqual(isCampaignText('Casagrand First City - I want to join AI by Doing'), true);
   assert.strictEqual(isCampaignText('random message'), false);
   assert.deepStrictEqual(inferTopics('I need resume and interview prep', 'community_signal'), ['job_search']);
@@ -206,6 +211,8 @@ function appendJsonl(file, rows) {
   assert.strictEqual(report.totals.campaignSignals, 8);
   assert.strictEqual(report.totals.uniqueUsers, 8);
   assert.strictEqual(report.totals.syntheticOrExcludedSignals, 1);
+  assert.strictEqual(report.totals.ownerOrTestExcludedSignals, 0);
+  assert.strictEqual(report.totals.syntheticSignals, 1);
   assert.strictEqual(report.intents.event_interest, 2);
   assert.strictEqual(report.intents.community_signal, 6);
   assert.strictEqual(report.topics.job_search, 1);
@@ -248,6 +255,14 @@ function appendJsonl(file, rows) {
   // The bottom-of-report next action must match the launch decision's next action
   // so the markdown does not present two contradictory next steps.
   assert.strictEqual(report.nextAction, report.decision.nextAction);
+
+  const ownerExcludedReport = buildCampaignReport(runtimeDir, { excludeLast4: ['2585'] });
+  assert.strictEqual(ownerExcludedReport.totals.campaignSignals, 7);
+  assert.strictEqual(ownerExcludedReport.totals.uniqueUsers, 7);
+  assert.strictEqual(ownerExcludedReport.totals.ownerOrTestExcludedSignals, 1);
+  assert.strictEqual(ownerExcludedReport.totals.syntheticOrExcludedSignals, 2);
+  assert(!JSON.stringify(ownerExcludedReport.recentSignals).includes('2585'));
+
   const serialized = JSON.stringify(report);
   assert(!serialized.includes('919840382585'), 'raw phone leaked');
   assert(!serialized.includes('wamid.real.one'), 'raw message id leaked');
@@ -277,5 +292,11 @@ function appendJsonl(file, rows) {
   // Bottom "## Next action" must render the same text as the launch decision card.
   assert(markdown.includes(`- Next action: ${report.decision.nextAction}`));
   assert(markdown.includes(`## Next action\n- ${report.decision.nextAction}\n`));
+
+  const excludedOutputDir = tmpDir();
+  const excluded = writeCampaignReport({ runtimeDir, outputDir: excludedOutputDir, date: '2026-05-20', excludeLast4: ['2585'] });
+  const excludedMarkdown = fs.readFileSync(excluded.mdPath, 'utf8');
+  assert(excludedMarkdown.includes('Owner/test signals excluded: 1'));
+  assert(!excludedMarkdown.includes('********2585'), 'excluded owner/test signal rendered');
   console.log('casagrand-campaign-report smoke passed');
 })();
