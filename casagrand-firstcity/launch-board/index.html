@@ -74,15 +74,36 @@
       <h1>One mobile page to run the first Casagrand AI post.</h1>
       <p class="lead">Use this after admin permission is clear. It keeps Boogi’s launch action tight: post once, collect RSVP/date signals, then decide within 24 hours whether to lock the clubhouse session, run a smaller build sprint, or qualify community-bot design partners.</p>
       <div class="actions">
+        <a class="btn primary" href="#next-move">Current best next move</a>
         <a class="btn" href="/casagrand-firstcity/admin-ask/">Admin ask kit</a>
         <a class="btn" href="/casagrand-firstcity/reboot-copy/">Rewrite low-signal copy</a>
         <a class="btn" href="/casagrand-firstcity/champions/">Recruit champions first</a>
-        <a class="btn primary" href="#copy">Copy the first post</a>
+        <a class="btn" href="#copy">Copy the first post</a>
         <a class="btn" href="/casagrand-firstcity/rsvp/">RSVP funnel</a>
         <a class="btn" href="/casagrand-firstcity/rsvp-follow-up/">Convert first RSVP</a>
         <a class="btn" href="/casagrand-firstcity/date-poll/">Date poll</a>
         <a class="btn" href="/casagrand-firstcity/office-hours/">Office hours fallback</a>
         <a class="btn" href="/casagrand-firstcity/flyer/">Clubhouse flyer</a>
+      </div>
+    </section>
+
+    <section id="next-move" class="shell">
+      <div class="panel" style="border-color:rgba(255,204,102,.5)">
+        <span class="badge warn">current best next move · 2026-05-22</span>
+        <h2>Current best next move: 5 narrow DMs before another broad post</h2>
+        <p>As of 2026-05-22 the live privacy-safe campaign report is still low-signal, so it still supports first-10 / reboot DMs before another broad public post. Use the problem-first <a href="/casagrand-firstcity/reboot-copy/">reboot copy</a>, then work these three small steps.</p>
+        <div class="step"><div class="num">1</div><div><h3>Send 5 narrow DMs</h3><p>Pick 5 trusted residents and send the <a href="/casagrand-firstcity/reboot-copy/">reboot copy</a> one person at a time (career / workflow / group-owner mix). No broadcast and no broad group post yet.</p></div></div>
+        <div class="step"><div class="num">2</div><div><h3>Ask each reply for one intro</h3><p>When someone replies, ask for exactly one referral or group-owner intro. Copy the line below.</p>
+          <button class="btn copy" type="button" data-copy-target="#referral-ask-copy">Copy referral ask</button>
+          <div id="referral-ask-copy" class="copybox">Thanks for replying! One small favour — could you point me to one person, or one group/community owner, who'd find a practical AI workflow useful? I'll keep it low-key and helpful, not promotional.</div>
+        </div></div>
+        <div class="step"><div class="num">3</div><div><h3>Run the report after 24h</h3><p>Wait 24 hours, then run the privacy-safe <a href="#measure">report command below</a> (aggregate-only) and use the T+24 decision card to pick the route.</p></div></div>
+        <button class="btn copy" type="button" data-copy-target="#next-move-copy">Copy this 3-step plan</button>
+        <div id="next-move-copy" class="copybox">Casagrand next move — 2026-05-22 (low signal)
+1) Send 5 narrow DMs from the reboot copy (career / workflow / group-owner)
+2) On each reply, ask for ONE referral or group-owner intro
+3) Run the privacy-safe report after 24h, then pick the route from the T+24 card
+Privacy: aggregate-only; redact phone numbers except last 4; no broad post yet.</div>
       </div>
     </section>
 
@@ -175,14 +196,14 @@ If the signals are useful, I’ll host a free clubhouse intro session.</div>
         <div class="metric"><span>2+ community-bot asks</span><strong>Book design-partner calls</strong></div>
         <div class="metric"><span>&lt;10 weak signals</span><strong>Use first-10 DMs</strong></div>
       </div>
-      <div class="panel">
+      <div class="panel" id="measure">
         <h2>Measurement command</h2>
         <p>For internal use after the post; reports must stay privacy-safe and aggregate-only.</p>
         <button class="btn copy" type="button" data-copy-target="#report-command-copy">Copy report command</button>
         <div id="report-command-copy" class="copybox">node scripts/casagrand-campaign-report.js \
   --runtime-dir /home/clawdbot/dabblewith-whatsapp/data \
   --output-dir reports/casagrand-firstcity \
-  --date 2026-05-21</div>
+  --date 2026-05-22</div>
       </div>
     </section>
   </main>
