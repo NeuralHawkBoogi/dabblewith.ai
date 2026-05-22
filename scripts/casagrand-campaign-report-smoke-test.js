@@ -36,6 +36,7 @@ function appendJsonl(file, rows) {
   assert.deepStrictEqual(inferSourceTags('Casagrand office hours - automate weekly reports'), ['casagrand_office_hours']);
   assert.deepStrictEqual(inferSourceTags('Casagrand champion - I can help seed the AI by Doing pilot'), ['casagrand_champion']);
   assert.deepStrictEqual(inferSourceTags('Casagrand bot readiness audit - I run a WhatsApp group'), ['casagrand_bot_readiness']);
+  assert.deepStrictEqual(inferSourceTags('Casagrand bot design call - I run a WhatsApp group'), ['casagrand_bot_design_call']);
   assert.deepStrictEqual(inferSourceTags('Casagrand reboot career - I want help with interview prep'), ['casagrand_reboot_career']);
   assert.deepStrictEqual(inferSourceTags('Casagrand reboot workflow - my repetitive task is reports'), ['casagrand_reboot_workflow']);
   assert.deepStrictEqual(inferSourceTags('Casagrand reboot community bot - I run a group'), ['casagrand_reboot_community_bot']);
@@ -149,6 +150,16 @@ function appendJsonl(file, rows) {
       intent: 'community_signal',
       from: '919840380005',
       display_name: 'Resident Six',
+      text: 'Casagrand bot design call - I run a WhatsApp group and want a demo for repeated FAQ help',
+      message_id: 'wamid.real.eight',
+    },
+    {
+      received_at: '2026-05-20T02:01:52.000Z',
+      source: 'whatsapp_business',
+      community: 'dabblewith.ai',
+      intent: 'community_signal',
+      from: '919840380007',
+      display_name: 'Resident Eight',
       text: 'Casagrand reboot workflow - my repetitive task is weekly status reports',
       message_id: 'wamid.real.six',
     },
@@ -192,37 +203,40 @@ function appendJsonl(file, rows) {
   ]);
 
   const report = buildCampaignReport(runtimeDir);
-  assert.strictEqual(report.totals.campaignSignals, 7);
-  assert.strictEqual(report.totals.uniqueUsers, 7);
+  assert.strictEqual(report.totals.campaignSignals, 8);
+  assert.strictEqual(report.totals.uniqueUsers, 8);
   assert.strictEqual(report.totals.syntheticOrExcludedSignals, 1);
   assert.strictEqual(report.intents.event_interest, 2);
-  assert.strictEqual(report.intents.community_signal, 5);
+  assert.strictEqual(report.intents.community_signal, 6);
   assert.strictEqual(report.topics.job_search, 1);
   assert.strictEqual(report.topics.office_productivity, 3);
-  assert.strictEqual(report.topics.community_bot, 3);
+  assert.strictEqual(report.topics.community_bot, 4);
   assert.strictEqual(report.sourceTags.tester_career, 1);
   assert.strictEqual(report.sourceTags.casagrand_date_poll, 1);
   assert.strictEqual(report.sourceTags.casagrand_office_hours, 1);
   assert.strictEqual(report.sourceTags.casagrand_champion, 1);
   assert.strictEqual(report.sourceTags.casagrand_bot_readiness, 1);
+  assert.strictEqual(report.sourceTags.casagrand_bot_design_call, 1);
   assert.strictEqual(report.sourceTags.casagrand_reboot_workflow, 1);
   assert.strictEqual(report.sourceTags.casagrand_reboot_community_bot, 1);
   assert.strictEqual(report.trackCounts.career, 1);
-  assert.strictEqual(report.trackCounts.community_bot, 2);
+  assert.strictEqual(report.trackCounts.community_bot, 3);
   assert.strictEqual(report.slotVotes.weekend_morning, 1);
   assert.deepStrictEqual(report.recentSignals[0].sourceTags, ['casagrand_reboot_community_bot']);
   assert.deepStrictEqual(report.recentSignals[0].tracks, ['community_bot']);
   assert.deepStrictEqual(report.recentSignals[1].sourceTags, ['casagrand_reboot_workflow']);
   assert.deepStrictEqual(report.recentSignals[1].tracks, ['workflow']);
-  assert.deepStrictEqual(report.recentSignals[2].sourceTags, ['casagrand_bot_readiness']);
-  assert.deepStrictEqual(report.recentSignals[3].sourceTags, ['casagrand_champion']);
-  assert.deepStrictEqual(report.recentSignals[4].sourceTags, ['casagrand_office_hours']);
-  assert.deepStrictEqual(report.recentSignals[5].sourceTags, ['casagrand_date_poll']);
-  assert.deepStrictEqual(report.recentSignals[5].slotVotes, ['weekend_morning']);
-  assert.deepStrictEqual(report.recentSignals[6].sourceTags, ['tester_career']);
-  assert.deepStrictEqual(report.recentSignals[6].tracks, ['career']);
+  assert.deepStrictEqual(report.recentSignals[2].sourceTags, ['casagrand_bot_design_call']);
+  assert.deepStrictEqual(report.recentSignals[2].tracks, ['community_bot']);
+  assert.deepStrictEqual(report.recentSignals[3].sourceTags, ['casagrand_bot_readiness']);
+  assert.deepStrictEqual(report.recentSignals[4].sourceTags, ['casagrand_champion']);
+  assert.deepStrictEqual(report.recentSignals[5].sourceTags, ['casagrand_office_hours']);
+  assert.deepStrictEqual(report.recentSignals[6].sourceTags, ['casagrand_date_poll']);
+  assert.deepStrictEqual(report.recentSignals[6].slotVotes, ['weekend_morning']);
+  assert.deepStrictEqual(report.recentSignals[7].sourceTags, ['tester_career']);
+  assert.deepStrictEqual(report.recentSignals[7].tracks, ['career']);
   assert.strictEqual(report.deliveryStatuses.delivered, 1);
-  assert.strictEqual(report.recentSignals[6].from.endsWith('2585'), true);
+  assert.strictEqual(report.recentSignals[7].from.endsWith('2585'), true);
   assert(report.decision, 'decision missing from report');
   assert.strictEqual(report.decision.stage, 'design_partner_calls');
   assert.strictEqual(report.decision.confidence, 'medium');
@@ -253,6 +267,7 @@ function appendJsonl(file, rows) {
   assert(markdown.includes('casagrand_office_hours: 1'));
   assert(markdown.includes('casagrand_champion: 1'));
   assert(markdown.includes('casagrand_bot_readiness: 1'));
+  assert(markdown.includes('casagrand_bot_design_call: 1'));
   assert(markdown.includes('casagrand_reboot_workflow: 1'));
   assert(markdown.includes('casagrand_reboot_community_bot: 1'));
   assert(markdown.includes('## Tester track counts'));

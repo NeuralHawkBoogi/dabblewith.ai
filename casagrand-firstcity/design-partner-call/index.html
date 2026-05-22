@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#060912" />
+  <meta property="og:image" content="https://dabblewith.ai/app-icon-1024.png" />
+  <title>Casagrand Community Bot Design-Partner Call — dabblewith.ai</title>
+  <meta name="description" content="A 20-minute design-partner call kit for Casagrand WhatsApp group owners who may want a private AI community bot demo." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://dabblewith.ai/casagrand-firstcity/design-partner-call/" />
+  <meta property="og:site_name" content="dabblewith.ai" />
+  <meta property="og:title" content="Casagrand Community Bot Design-Partner Call" />
+  <meta property="og:description" content="Qualify a WhatsApp group, run a private demo call, and validate willingness to pay for Get a Community Bot." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dabblewith.ai/casagrand-firstcity/design-partner-call/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7473LZQGX2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7473LZQGX2');
+    function trackCallAction(action, label) {
+      if (typeof gtag !== 'function') return;
+      gtag('event', action, { page_path: location.pathname, cta_id: label, cta_source: 'casagrand_bot_design_call' });
+    }
+    function copyText(id, label) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      navigator.clipboard.writeText(el.textContent.trim()).then(function(){ trackCallAction('copy_click', label); });
+    }
+    document.addEventListener('click', function(event) {
+      var link = event.target && event.target.closest ? event.target.closest('a') : null;
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
+      var text = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 80);
+      if (/wa\.me|whatsapp|design-partner|community-bot|bot-readiness/i.test(href + ' ' + text)) {
+        trackCallAction('cta_click', text || href);
+      }
+    });
+  </script>
+  <style>
+    :root{--bg:#060912;--panel:rgba(16,27,48,.94);--line:rgba(116,255,219,.25);--hard:#74ffdb;--text:#f2fbff;--muted:#9eb0c2;--green:#74ff7b;--blue:#58a6ff;--amber:#ffcc66;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--text);background:linear-gradient(rgba(116,255,219,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(116,255,219,.055) 1px,transparent 1px),radial-gradient(circle at 18% 0%,rgba(88,166,255,.24),transparent 30rem),radial-gradient(circle at 90% 8%,rgba(116,255,123,.16),transparent 28rem),var(--bg);background-size:42px 42px,42px 42px,auto,auto,auto}a{color:inherit}.shell{width:min(1120px,calc(100% - 30px));margin:0 auto}nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0}.logo{text-decoration:none;font-size:30px;font-weight:900;letter-spacing:-.055em}.nav{display:flex;gap:10px;flex-wrap:wrap}.nav a{border:1px solid var(--line);border-radius:999px;padding:9px 12px;text-decoration:none;color:var(--muted);background:rgba(255,255,255,.03)}.hero,.panel,.card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(16,27,48,.95),rgba(8,13,25,.92));border-radius:24px;box-shadow:0 24px 90px rgba(0,0,0,.45)}.hero{padding:clamp(28px,5vw,56px);margin:18px auto 26px}.eyebrow{width:fit-content;color:var(--hard);border:1px solid var(--hard);background:rgba(116,255,219,.08);border-radius:999px;padding:9px 12px;font:12px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}h1{font-size:clamp(42px,7vw,84px);line-height:.92;letter-spacing:-.065em;margin:24px 0 18px;max-width:930px}h2{font-size:clamp(28px,4.5vw,50px);line-height:.98;letter-spacing:-.055em;margin:0 0 16px}h3{font-size:22px;margin:0 0 8px}.lead{font-size:clamp(18px,2.2vw,24px);color:#d7e9f7;line-height:1.5;max-width:900px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.two{grid-template-columns:repeat(2,1fr)}.card,.panel{padding:24px}.muted,p,li{color:var(--muted);line-height:1.65}.badge{display:inline-flex;border:1px solid rgba(116,255,123,.45);color:var(--green);background:rgba(116,255,123,.08);padding:5px 9px;border-radius:999px;font:12px/1.2 ui-monospace,Menlo,monospace}.badge.blue{color:var(--blue);border-color:rgba(88,166,255,.45);background:rgba(88,166,255,.08)}.badge.warn{color:var(--amber);border-color:rgba(255,204,102,.45);background:rgba(255,204,102,.08)}section{padding:32px 0}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--hard);color:var(--hard);background:rgba(116,255,219,.07);border-radius:14px;padding:13px 16px;text-decoration:none;font-weight:850;cursor:pointer}.btn.primary{color:#04120e;background:var(--green);border-color:var(--green)}.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:28px}.copybox{white-space:pre-wrap;border:1px solid rgba(116,255,219,.18);border-radius:18px;background:rgba(0,0,0,.28);padding:16px;color:#d9f6ff;font:14px/1.65 ui-monospace,Menlo,monospace}.metric{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(116,255,219,.12);padding:12px 0;font:13px/1.25 ui-monospace,Menlo,monospace}.metric:last-child{border-bottom:0}footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0 34px;margin-top:36px;font:13px/1.4 ui-monospace,Menlo,monospace}@media(max-width:860px){.grid,.two{grid-template-columns:1fr}.nav{display:none}}
+  </style>
+</head>
+<body>
+  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/casagrand-firstcity/">Casagrand pilot</a><a href="/casagrand-firstcity/bot-readiness/">Bot readiness</a><a href="/casagrand-firstcity/community-bot/">Community bot</a><a href="/casagrand-firstcity/launch-board/">Launch board</a></div></nav>
+
+  <main>
+    <section class="hero shell">
+      <div class="eyebrow">Get a Community Bot validation</div>
+      <h1>Turn a warm group-owner reply into a paid-product signal.</h1>
+      <p class="lead">This is the 20-minute design-partner call kit for Casagrand group admins, class owners, club organizers, founders, tutors, and resident initiatives. The goal is not a polished demo — it is evidence that someone has repeated WhatsApp admin work and would pay if a bot saves time.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://wa.me/919566112518?text=Casagrand%20bot%20design%20call%20-%20I%20run%20a%20WhatsApp%20group%20and%20want%20a%2020-minute%20community%20bot%20demo.%20Group%20type%3A%20residents%20or%20interest%20group.%20Repeated%20admin%20work%3A%20FAQs%2C%20registrations%2C%20reminders%2C%20and%20summaries.%20Member%20count%3A%20around%2050%2B.%20I%20can%20join%20a%20short%20setup%20call%20this%20week." target="_blank" rel="noreferrer">Request design-partner demo</a>
+        <button class="btn" onclick="copyText('callInvite', 'call_invite')">Copy private invite</button>
+        <button class="btn" onclick="copyText('pricingProbe', 'pricing_probe')">Copy price probe</button>
+      </div>
+    </section>
+
+    <section class="shell grid">
+      <article class="card"><span class="badge">qualify</span><h3>Clear owner + pain</h3><p>One group admin can name the repeated questions, registration chores, reminders, or summaries that consume time every week.</p></article>
+      <article class="card"><span class="badge blue">demo</span><h3>Private, low-risk scope</h3><p>The first demo answers only approved FAQs and workflow steps. No scraping, no sensitive data, no bot joins the group without explicit admin approval.</p></article>
+      <article class="card"><span class="badge warn">validate</span><h3>Price reaction required</h3><p>Every call must ask whether a small setup fee plus monthly fee would be acceptable if the bot saves admin time.</p></article>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel">
+        <h2>20-minute call agenda</h2>
+        <div class="metric"><span>0-3 min</span><strong>Group context</strong></div>
+        <div class="metric"><span>3-8 min</span><strong>Repeated admin work</strong></div>
+        <div class="metric"><span>8-13 min</span><strong>Bot can answer vs human-only</strong></div>
+        <div class="metric"><span>13-17 min</span><strong>Success metric + risk limits</strong></div>
+        <div class="metric"><span>17-20 min</span><strong>Price reaction + next step</strong></div>
+      </div>
+      <div class="panel">
+        <h2>Decision after the call</h2>
+        <ul>
+          <li><strong>Build demo:</strong> owner, 30+ members, repeated admin work, low-risk scope, and positive price reaction.</li>
+          <li><strong>Interview only:</strong> useful learning but unclear buyer, sensitive scope, or weak repeated task.</li>
+          <li><strong>Park:</strong> no admin ownership, tiny group, or no willingness to pay after value is shown.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel">
+        <h2>Private invite</h2>
+        <p>Send this only to warm group owners/admins. It is designed for 1:1 validation, not a broadcast.</p>
+        <div id="callInvite" class="copybox">Quick follow-up — if your WhatsApp group has repeated FAQs, registrations, reminders, or admin follow-ups, I’m validating a small AI community bot through dabblewith.ai.
+
+I can do a private 20-minute design-partner call this week: understand your group, map what a bot may answer, and check if a tiny demo is worth building.
+
+Call kit: https://dabblewith.ai/casagrand-firstcity/design-partner-call/
+
+No sensitive data, no group scraping, and no bot added without admin approval.</div>
+      </div>
+      <div class="panel">
+        <h2>Price probe</h2>
+        <p>Ask this at the end. The answer is more important than politeness.</p>
+        <div id="pricingProbe" class="copybox">Assuming the bot saves you admin time every week and answers only approved group FAQs, would a small setup fee plus a monthly fee be reasonable?
+
+A. Yes, if it clearly saves time
+B. Maybe, depends on setup effort and support
+C. No, this should be free
+D. Not the decision maker
+
+If yes/maybe: what monthly range feels acceptable for your group?</div>
+      </div>
+    </section>
+
+    <section class="shell grid two">
+      <div class="card"><span class="badge">tracking</span><h3>Source tag for reports</h3><p>The WhatsApp CTA starts with <strong>Casagrand bot design call</strong>, so the campaign report can separate actual design-partner demand from generic interest.</p></div>
+      <div class="card"><span class="badge blue">next action</span><h3>After two positive calls</h3><p>Create one narrow demo for the strongest group-owner use case and test willingness to pay before building generic community-bot features.</p></div>
+    </section>
+  </main>
+
+  <footer><div class="shell">AI-operated · human-guided · design-partner validation · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></div></footer>
+</body>
+</html>

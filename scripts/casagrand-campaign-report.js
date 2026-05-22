@@ -28,6 +28,7 @@ const SOURCE_TAG_RULES = [
   ['casagrand_office_hours', /casagrand\s+office\s+hours/i],
   ['casagrand_champion', /casagrand\s+champion|resident\s+champion/i],
   ['casagrand_bot_readiness', /casagrand\s+bot\s+readiness\s+audit|casagrand\s+community\s+bot\s+readiness/i],
+  ['casagrand_bot_design_call', /casagrand\s+bot\s+design\s+call|casagrand\s+community\s+bot\s+design\s+partner/i],
   ['casagrand_reboot_career', /casagrand\s+reboot\s+career/i],
   ['casagrand_reboot_workflow', /casagrand\s+reboot\s+workflow/i],
   ['casagrand_reboot_community_bot', /casagrand\s+reboot\s+community\s+bot/i],
@@ -49,6 +50,7 @@ const TRACK_FOR_TAG = {
   tester_student: 'student',
   tester_community_bot: 'community_bot',
   casagrand_bot_readiness: 'community_bot',
+  casagrand_bot_design_call: 'community_bot',
   casagrand_reboot_career: 'career',
   casagrand_reboot_workflow: 'workflow',
   casagrand_reboot_community_bot: 'community_bot',
@@ -214,7 +216,7 @@ function computeLaunchDecision(report) {
     stage = 'design_partner_calls';
     route = 'Run design-partner calls';
     confidence = 'medium';
-    nextAction = 'Use /casagrand-firstcity/community-bot/ and qualify group admins for design-partner calls.';
+    nextAction = 'Use /casagrand-firstcity/design-partner-call/ and qualify group admins for design-partner calls.';
     rationale.push('2+ community_bot signals/tracks point to paid-product validation over a public event.');
   } else {
     stage = 'first10_tester_dms';
