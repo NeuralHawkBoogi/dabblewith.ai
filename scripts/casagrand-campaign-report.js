@@ -25,6 +25,7 @@ const TOPIC_RULES = [
 const SOURCE_TAG_RULES = [
   ['casagrand_rsvp', /casagrand\s+rsvp/i],
   ['casagrand_date_poll', /casagrand\s+date\s+poll/i],
+  ['casagrand_office_hours', /casagrand\s+office\s+hours/i],
   ['tester_career', /casagrand\s+(?:first\s+city\s+)?tester\s*[-–]\s*career|casagrand\s+career\s+help/i],
   ['tester_workflow', /casagrand\s+(?:first\s+city\s+)?tester\s*[-–]\s*workflow|casagrand\s+workflow\s+help/i],
   ['tester_founder', /casagrand\s+(?:first\s+city\s+)?tester\s*[-–]\s*founder|casagrand\s+founder\s+help/i],

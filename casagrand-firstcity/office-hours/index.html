@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#060912" />
+  <meta property="og:image" content="https://dabblewith.ai/app-icon-1024.png" />
+  <title>Casagrand AI Office Hours — dabblewith.ai</title>
+  <meta name="description" content="A 45-minute Casagrand First City AI office-hours loop: residents submit one practical problem, Boogi picks three, solves them live, and turns strong use cases into the next build sprint or community-bot design partner call." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://dabblewith.ai/casagrand-firstcity/office-hours/" />
+  <meta property="og:site_name" content="dabblewith.ai" />
+  <meta property="og:title" content="Casagrand AI Office Hours" />
+  <meta property="og:description" content="Submit one real work, career, student, founder, or WhatsApp/community problem. Three are solved live in a practical 45-minute office-hours session." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dabblewith.ai/casagrand-firstcity/office-hours/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7473LZQGX2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7473LZQGX2');
+    function trackOfficeHoursAction(action, label, url) {
+      if (typeof gtag !== 'function') return;
+      gtag('event', action, {
+        cta_id: 'casagrand_office_hours',
+        cta_source: 'casagrand_office_hours',
+        link_url: url || '',
+        link_text: label || '',
+        page_path: location.pathname
+      });
+    }
+    document.addEventListener('click', function(event) {
+      var copyButton = event.target && event.target.closest ? event.target.closest('[data-copy-target]') : null;
+      if (copyButton) {
+        var target = document.querySelector(copyButton.getAttribute('data-copy-target'));
+        var textToCopy = target ? (target.textContent || '').trim() : '';
+        if (!textToCopy) return;
+        var label = (copyButton.textContent || 'copy').trim();
+        var onSuccess = function(){
+          copyButton.setAttribute('data-copied', 'true');
+          copyButton.textContent = 'Copied';
+          trackOfficeHoursAction('copy_text', label, copyButton.getAttribute('data-copy-target'));
+          window.setTimeout(function(){ copyButton.removeAttribute('data-copied'); copyButton.textContent = label; }, 1800);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(textToCopy).then(onSuccess).catch(function(){ window.prompt('Copy this text', textToCopy); });
+        } else {
+          window.prompt('Copy this text', textToCopy);
+        }
+        return;
+      }
+      var link = event.target && event.target.closest ? event.target.closest('a') : null;
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
+      var text = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 80);
+      var isCta = /wa\.me|whatsapp|\/casagrand-firstcity\/(rsvp|date-poll|community-bot|launch-board)\/?|#copy/.test(href) || /office hours|rsvp|submit|copy|community bot|date poll|launch/i.test(text);
+      if (!isCta) return;
+      trackOfficeHoursAction('cta_click', text, link.href || href);
+    });
+  </script>
+  <style>
+    :root{--bg:#060912;--panel:rgba(16,27,48,.92);--line:rgba(116,255,219,.25);--hard:#74ffdb;--text:#f2fbff;--muted:#9eb0c2;--green:#74ff7b;--blue:#58a6ff;--amber:#ffcc66;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--text);background:radial-gradient(circle at 14% 0%,rgba(88,166,255,.24),transparent 30rem),radial-gradient(circle at 88% 6%,rgba(116,255,123,.16),transparent 28rem),linear-gradient(rgba(116,255,219,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(116,255,219,.055) 1px,transparent 1px),var(--bg);background-size:auto,auto,42px 42px,42px 42px,auto}a{color:inherit}.shell{width:min(1120px,calc(100% - 30px));margin:0 auto}nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0}.logo{text-decoration:none;font-size:30px;font-weight:900;letter-spacing:-.055em}.nav{display:flex;gap:10px;flex-wrap:wrap}.nav a{border:1px solid var(--line);border-radius:999px;padding:9px 12px;text-decoration:none;color:var(--muted);background:rgba(255,255,255,.03)}.hero,.panel,.card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(16,27,48,.95),rgba(8,13,25,.92));border-radius:24px;box-shadow:0 24px 90px rgba(0,0,0,.45)}.hero{padding:clamp(26px,5vw,52px);margin:18px auto 26px}.eyebrow{width:fit-content;color:var(--hard);border:1px solid var(--hard);background:rgba(116,255,219,.08);border-radius:999px;padding:9px 12px;font:12px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}h1{font-size:clamp(44px,7.8vw,86px);line-height:.9;letter-spacing:-.07em;margin:24px 0 18px}h2{font-size:clamp(29px,4.3vw,50px);line-height:.98;letter-spacing:-.055em;margin:0 0 16px}h3{font-size:22px;margin:0 0 8px}.lead{font-size:clamp(18px,2.2vw,25px);color:#d7e9f7;line-height:1.45;max-width:900px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.two{grid-template-columns:repeat(2,1fr)}.card,.panel{padding:22px}.muted,p,li{color:var(--muted);line-height:1.65}.badge{display:inline-flex;border:1px solid rgba(116,255,123,.45);color:var(--green);background:rgba(116,255,123,.08);padding:5px 9px;border-radius:999px;font:12px/1.2 ui-monospace,Menlo,monospace}.badge.blue{color:var(--blue);border-color:rgba(88,166,255,.45);background:rgba(88,166,255,.08)}.badge.warn{color:var(--amber);border-color:rgba(255,204,102,.45);background:rgba(255,204,102,.08)}section{padding:30px 0}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--hard);color:var(--hard);background:rgba(116,255,219,.07);border-radius:14px;padding:13px 16px;text-decoration:none;font-weight:850}.btn.primary{color:#04120e;background:var(--green);border-color:var(--green)}.btn.copy{cursor:pointer}.btn.copy[data-copied="true"]{color:#04120e;background:var(--hard);border-color:var(--hard)}.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:28px}.copybox{white-space:pre-wrap;border:1px solid rgba(116,255,219,.18);border-radius:18px;background:rgba(0,0,0,.28);padding:16px;color:#d9f6ff;font:14px/1.65 ui-monospace,Menlo,monospace}.step{display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start;border-bottom:1px solid rgba(116,255,219,.12);padding:14px 0}.step:last-child{border-bottom:0}.num{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:rgba(116,255,123,.12);border:1px solid rgba(116,255,123,.45);color:var(--green);font-weight:900}.metric{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(116,255,219,.12);padding:12px 0;font:13px/1.25 ui-monospace,Menlo,monospace}.metric:last-child{border-bottom:0}footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0 34px;margin-top:36px;font:13px/1.4 ui-monospace,Menlo,monospace}@media(max-width:860px){.grid,.two{grid-template-columns:1fr}.nav{display:none}}
+  </style>
+</head>
+<body>
+  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/casagrand-firstcity/">Pilot</a><a href="/casagrand-firstcity/launch-board/">Launch board</a><a href="/casagrand-firstcity/rsvp/">RSVP</a><a href="/casagrand-firstcity/date-poll/">Date poll</a><a href="/casagrand-firstcity/community-bot/">Community bot</a></div></nav>
+
+  <main>
+    <section class="hero shell">
+      <div class="eyebrow">Casagrand First City office hours</div>
+      <h1>Turn one WhatsApp post into a weekly AI help loop.</h1>
+      <p class="lead">Use this when the first launch gets some interest but not enough certainty for a big clubhouse session. Residents submit one real problem, Boogi picks three, solves them live in 45 minutes, and the best patterns become the next build sprint or community-bot design-partner calls.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://wa.me/919566112518?text=Casagrand%20office%20hours%20-%20I%20want%20help%20with%20one%20practical%20AI%20workflow.%20My%20problem%20is%3A%20prepare%20for%20interviews%2C%20automate%20weekly%20reports%2C%20build%20a%20coding%20helper%2C%20improve%20student%20projects%2C%20or%20create%20a%20WhatsApp%20community%20helper.%20Please%20help%20me%20pick%20the%20best%20next%20step." target="_blank" rel="noreferrer">Submit one problem</a>
+        <a class="btn" href="#copy">Copy office-hours invite</a>
+        <a class="btn" href="/casagrand-firstcity/rsvp/">Use RSVP page</a>
+        <a class="btn" href="/casagrand-firstcity/community-bot/">Community-bot leads</a>
+      </div>
+    </section>
+
+    <section class="shell grid three">
+      <article class="card"><span class="badge">when to use</span><h3>After 5-24 signals</h3><p>Run office hours when the public post or first-10 tester sprint shows demand, but the topic or date is not yet strong enough for a full clubhouse event.</p></article>
+      <article class="card"><span class="badge blue">format</span><h3>45 minutes, three problems</h3><p>Pick three submitted problems, solve them live, then share a short recap and next CTA back into WhatsApp.</p></article>
+      <article class="card"><span class="badge warn">conversion</span><h3>Route owners separately</h3><p>If someone runs a group, coaching circle, resident club, or business community, move them to the community-bot design-partner page.</p></article>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel">
+        <h2>Run of show</h2>
+        <div class="step"><div class="num">1</div><div><h3>Collect problems</h3><p>Ask residents to send one specific AI problem through the WhatsApp CTA or RSVP page. The source phrase is “Casagrand office hours”.</p></div></div>
+        <div class="step"><div class="num">2</div><div><h3>Pick three live demos</h3><p>Choose one career/workflow problem, one builder/founder/student problem, and one wild-card problem from the latest campaign report.</p></div></div>
+        <div class="step"><div class="num">3</div><div><h3>Solve, then ask</h3><p>End each demo with one follow-up: “Would you attend a deeper build sprint on this?” or “Do you need this as a WhatsApp/community bot?”</p></div></div>
+        <div class="step"><div class="num">4</div><div><h3>Post recap within 24h</h3><p>Share three takeaways, anonymized use cases, and exactly one next CTA: RSVP, date poll, or community-bot design-partner call.</p></div></div>
+      </div>
+      <div class="panel">
+        <h2>Decision thresholds</h2>
+        <div class="metric"><span>5+ useful problems</span><strong>Run office hours</strong></div>
+        <div class="metric"><span>10+ same-topic asks</span><strong>Schedule build sprint</strong></div>
+        <div class="metric"><span>2+ owner/admin asks</span><strong>Book bot interviews</strong></div>
+        <div class="metric"><span>Weak/generic asks</span><strong>Rewrite prompt + first-10 DMs</strong></div>
+      </div>
+    </section>
+
+    <section id="copy" class="shell grid two">
+      <div class="panel">
+        <h2>WhatsApp invite</h2>
+        <button class="btn copy" type="button" data-copy-target="#invite-copy">Copy invite</button>
+        <div id="invite-copy" class="copybox">I’m doing a small Casagrand AI office-hours session this week.
+
+Format: 45 minutes, practical only. Bring one real problem — resume/interview prep, office productivity, coding help, founder tools, student projects, or WhatsApp/community automation.
+
+I’ll pick 3 problems and solve them live using AI workflows.
+
+Submit one problem here:
+https://wa.me/919566112518?text=Casagrand%20office%20hours%20-%20I%20want%20help%20with%20one%20practical%20AI%20workflow.%20My%20problem%20is%3A%20prepare%20for%20interviews%2C%20automate%20weekly%20reports%2C%20build%20a%20coding%20helper%2C%20improve%20student%20projects%2C%20or%20create%20a%20WhatsApp%20community%20helper.%20Please%20help%20me%20pick%20the%20best%20next%20step.</div>
+      </div>
+      <div class="panel">
+        <h2>Recap template</h2>
+        <button class="btn copy" type="button" data-copy-target="#recap-copy">Copy recap</button>
+        <div id="recap-copy" class="copybox">Casagrand AI office hours — quick recap
+
+We worked through practical AI workflows for:
+1. Career/interview prep
+2. Office productivity or reports
+3. Coding, student, founder, or community automation
+
+Next I’m choosing between a focused build sprint and a clubhouse intro based on resident interest.
+
+If you want to join the next one, send one problem here:
+https://dabblewith.ai/casagrand-firstcity/office-hours/</div>
+      </div>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel">
+        <h2>Community-bot qualifying questions</h2>
+        <ul>
+          <li>What kind of WhatsApp community do you run?</li>
+          <li>How many members are active in a normal week?</li>
+          <li>What repetitive questions or registrations do you handle manually?</li>
+          <li>Would reminders, FAQs, event intake, or member routing save you time?</li>
+          <li>Would you join a 20-minute design-partner call before this becomes self-serve?</li>
+        </ul>
+        <p><a class="btn" href="/casagrand-firstcity/community-bot/">Open design-partner page</a></p>
+      </div>
+      <div class="panel">
+        <h2>Internal measurement command</h2>
+        <p>Use after the invite and again after the session. Keep reports aggregate-only and privacy-safe.</p>
+        <button class="btn copy" type="button" data-copy-target="#report-command-copy">Copy report command</button>
+        <div id="report-command-copy" class="copybox">node scripts/casagrand-campaign-report.js \
+  --runtime-dir /home/clawdbot/dabblewith-whatsapp/data \
+  --output-dir reports/casagrand-firstcity \
+  --date 2026-05-22</div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="shell">AI-operated · human-guided · Casagrand office-hours loop · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></div></footer>
+</body>
+</html>

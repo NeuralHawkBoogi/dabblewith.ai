@@ -33,6 +33,7 @@ function appendJsonl(file, rows) {
   assert.deepStrictEqual(inferSourceTags('Casagrand workflow help — automate reports'), ['tester_workflow']);
   assert.deepStrictEqual(inferSourceTags('Casagrand community bot demo for residents'), ['tester_community_bot']);
   assert.deepStrictEqual(inferSourceTags('Casagrand date poll - weekend morning. My topic vote is: job search'), ['casagrand_date_poll']);
+  assert.deepStrictEqual(inferSourceTags('Casagrand office hours - automate weekly reports'), ['casagrand_office_hours']);
   assert.deepStrictEqual(inferSlotVotes('Casagrand date poll - weekend morning. My topic vote is: job search'), ['weekend_morning']);
   assert.deepStrictEqual(inferSourceTags('Casagrand First City - I want to join AI by Doing'), ['casagrand_first_city']);
   assert.deepStrictEqual(inferSourceTags('Casagrand + AI agents'), ['untagged_casagrand']);
@@ -110,13 +111,23 @@ function appendJsonl(file, rows) {
       source: 'whatsapp_business',
       community: 'dabblewith.ai',
       intent: 'community_signal',
+      from: '919840380002',
+      display_name: 'Resident Three',
+      text: 'Casagrand office hours - I want help to automate weekly reports',
+      message_id: 'wamid.real.three',
+    },
+    {
+      received_at: '2026-05-20T02:01:30.000Z',
+      source: 'whatsapp_business',
+      community: 'dabblewith.ai',
+      intent: 'community_signal',
       from: '100000000001',
       display_name: 'Synthetic User',
       text: 'Casagrand First City synthetic test',
       message_id: 'wamid.synthetic.llmtest',
     },
     {
-      received_at: '2026-05-20T02:02:00.000Z',
+      received_at: '2026-05-20T02:02:30.000Z',
       source: 'whatsapp_business',
       community: 'dabblewith.ai',
       intent: 'community_signal',
@@ -135,22 +146,25 @@ function appendJsonl(file, rows) {
   ]);
 
   const report = buildCampaignReport(runtimeDir);
-  assert.strictEqual(report.totals.campaignSignals, 2);
-  assert.strictEqual(report.totals.uniqueUsers, 2);
+  assert.strictEqual(report.totals.campaignSignals, 3);
+  assert.strictEqual(report.totals.uniqueUsers, 3);
   assert.strictEqual(report.totals.syntheticOrExcludedSignals, 1);
   assert.strictEqual(report.intents.event_interest, 2);
+  assert.strictEqual(report.intents.community_signal, 1);
   assert.strictEqual(report.topics.job_search, 1);
-  assert.strictEqual(report.topics.office_productivity, 1);
+  assert.strictEqual(report.topics.office_productivity, 2);
   assert.strictEqual(report.sourceTags.tester_career, 1);
   assert.strictEqual(report.sourceTags.casagrand_date_poll, 1);
+  assert.strictEqual(report.sourceTags.casagrand_office_hours, 1);
   assert.strictEqual(report.trackCounts.career, 1);
   assert.strictEqual(report.slotVotes.weekend_morning, 1);
-  assert.deepStrictEqual(report.recentSignals[0].sourceTags, ['casagrand_date_poll']);
-  assert.deepStrictEqual(report.recentSignals[0].slotVotes, ['weekend_morning']);
-  assert.deepStrictEqual(report.recentSignals[1].sourceTags, ['tester_career']);
-  assert.deepStrictEqual(report.recentSignals[1].tracks, ['career']);
+  assert.deepStrictEqual(report.recentSignals[0].sourceTags, ['casagrand_office_hours']);
+  assert.deepStrictEqual(report.recentSignals[1].sourceTags, ['casagrand_date_poll']);
+  assert.deepStrictEqual(report.recentSignals[1].slotVotes, ['weekend_morning']);
+  assert.deepStrictEqual(report.recentSignals[2].sourceTags, ['tester_career']);
+  assert.deepStrictEqual(report.recentSignals[2].tracks, ['career']);
   assert.strictEqual(report.deliveryStatuses.delivered, 1);
-  assert.strictEqual(report.recentSignals[1].from.endsWith('2585'), true);
+  assert.strictEqual(report.recentSignals[2].from.endsWith('2585'), true);
   assert(report.decision, 'decision missing from report');
   assert.strictEqual(report.decision.stage, 'first10_tester_dms');
   assert.strictEqual(report.decision.confidence, 'low');
@@ -175,6 +189,7 @@ function appendJsonl(file, rows) {
   assert(markdown.includes('first10_tester_dms: <10 weak/no signals'));
   assert(markdown.includes('## Source tag counts'));
   assert(markdown.includes('tester_career: 1'));
+  assert(markdown.includes('casagrand_office_hours: 1'));
   assert(markdown.includes('## Tester track counts'));
   assert(markdown.includes('career: 1'));
   assert(markdown.includes('## Date/slot poll counts'));
