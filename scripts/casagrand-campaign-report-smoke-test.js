@@ -187,6 +187,9 @@ function appendJsonl(file, rows) {
   assert(Array.isArray(report.decision.rationale) && report.decision.rationale.length > 0);
   assert.strictEqual(report.decision.thresholds.length, 4);
   assert(report.decision.rationale.some((r) => r.includes('Top source tag:')));
+  // The bottom-of-report next action must match the launch decision's next action
+  // so the markdown does not present two contradictory next steps.
+  assert.strictEqual(report.nextAction, report.decision.nextAction);
   const serialized = JSON.stringify(report);
   assert(!serialized.includes('919840382585'), 'raw phone leaked');
   assert(!serialized.includes('wamid.real.one'), 'raw message id leaked');
@@ -209,5 +212,8 @@ function appendJsonl(file, rows) {
   assert(markdown.includes('career: 1'));
   assert(markdown.includes('## Date/slot poll counts'));
   assert(markdown.includes('weekend_morning: 1'));
+  // Bottom "## Next action" must render the same text as the launch decision card.
+  assert(markdown.includes(`- Next action: ${report.decision.nextAction}`));
+  assert(markdown.includes(`## Next action\n- ${report.decision.nextAction}\n`));
   console.log('casagrand-campaign-report smoke passed');
 })();

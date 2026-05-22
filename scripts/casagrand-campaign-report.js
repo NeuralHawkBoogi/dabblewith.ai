@@ -285,6 +285,12 @@ function buildCampaignReport(runtimeDir, options = {}) {
     privacy: 'Phone numbers are redacted except last 4 digits; message IDs are hashed; tokens and raw webhook payloads are not included.',
   };
   report.decision = computeLaunchDecision(report);
+  // Keep the bottom-of-report "Next action" aligned with the launch decision so
+  // the markdown cannot contradict itself (decision card vs. final next action).
+  // The signal-count default above only applies if no decision is computed.
+  if (report.decision && report.decision.nextAction) {
+    report.nextAction = report.decision.nextAction;
+  }
   return report;
 }
 
