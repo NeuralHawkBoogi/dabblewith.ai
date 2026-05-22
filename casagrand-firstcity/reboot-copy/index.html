@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#060912" />
+  <meta property="og:image" content="https://dabblewith.ai/app-icon-1024.png" />
+  <title>Casagrand Low-Signal Reboot Copy — dabblewith.ai</title>
+  <meta name="description" content="A mobile-ready rewrite kit for restarting the Casagrand First City AI by Doing pilot after weak initial signal, with one-tap copy variants and source-tagged WhatsApp CTAs." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://dabblewith.ai/casagrand-firstcity/reboot-copy/" />
+  <meta property="og:site_name" content="dabblewith.ai" />
+  <meta property="og:title" content="Casagrand AI by Doing Low-Signal Reboot Copy" />
+  <meta property="og:description" content="Rewrite the Casagrand invitation into smaller, problem-first asks before another broad WhatsApp post." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dabblewith.ai/casagrand-firstcity/reboot-copy/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7473LZQGX2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7473LZQGX2');
+    function trackRebootAction(action, label, url) {
+      if (typeof gtag !== 'function') return;
+      gtag('event', action, {
+        cta_id: 'casagrand_reboot_copy',
+        cta_source: 'casagrand_reboot_copy',
+        link_url: url || '',
+        link_text: label || '',
+        page_path: location.pathname
+      });
+    }
+    document.addEventListener('click', function(event) {
+      var copyButton = event.target && event.target.closest ? event.target.closest('[data-copy-target]') : null;
+      if (copyButton) {
+        var target = document.querySelector(copyButton.getAttribute('data-copy-target'));
+        var textToCopy = target ? (target.textContent || '').trim() : '';
+        if (!textToCopy) return;
+        var label = (copyButton.textContent || 'copy').trim();
+        var onSuccess = function(){
+          copyButton.setAttribute('data-copied', 'true');
+          copyButton.textContent = 'Copied';
+          trackRebootAction('copy_text', label, copyButton.getAttribute('data-copy-target'));
+          window.setTimeout(function(){ copyButton.removeAttribute('data-copied'); copyButton.textContent = label; }, 1800);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(textToCopy).then(onSuccess).catch(function(){ window.prompt('Copy this text', textToCopy); });
+        } else {
+          window.prompt('Copy this text', textToCopy);
+        }
+        return;
+      }
+      var link = event.target && event.target.closest ? event.target.closest('a') : null;
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
+      var text = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 80);
+      var isCta = /wa\.me|whatsapp|\/casagrand-firstcity\/(testers|first-10-outreach|rsvp-follow-up|bot-readiness|launch-board)\/?/.test(href) || /copy|whatsapp|tester|reboot|bot readiness|launch/i.test(text);
+      if (!isCta) return;
+      trackRebootAction('cta_click', text, link.href || href);
+    });
+  </script>
+  <style>
+    :root{--bg:#060912;--panel:rgba(16,27,48,.92);--line:rgba(116,255,219,.25);--hard:#74ffdb;--text:#f2fbff;--muted:#9eb0c2;--green:#74ff7b;--blue:#58a6ff;--amber:#ffcc66;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--text);background:radial-gradient(circle at 16% 0%,rgba(88,166,255,.24),transparent 30rem),radial-gradient(circle at 92% 4%,rgba(255,204,102,.14),transparent 28rem),linear-gradient(rgba(116,255,219,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(116,255,219,.055) 1px,transparent 1px),var(--bg);background-size:auto,auto,42px 42px,42px 42px,auto}a{color:inherit}.shell{width:min(1100px,calc(100% - 30px));margin:0 auto}nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0}.logo{text-decoration:none;font-size:30px;font-weight:900;letter-spacing:-.055em}.nav{display:flex;gap:10px;flex-wrap:wrap}.nav a{border:1px solid var(--line);border-radius:999px;padding:9px 12px;text-decoration:none;color:var(--muted);background:rgba(255,255,255,.03)}.hero,.panel,.card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(16,27,48,.95),rgba(8,13,25,.92));border-radius:24px;box-shadow:0 24px 90px rgba(0,0,0,.45)}.hero{padding:clamp(26px,5vw,52px);margin:18px auto 26px}.eyebrow{width:fit-content;color:var(--hard);border:1px solid var(--hard);background:rgba(116,255,219,.08);border-radius:999px;padding:9px 12px;font:12px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}h1{font-size:clamp(42px,7.4vw,82px);line-height:.92;letter-spacing:-.07em;margin:24px 0 18px}h2{font-size:clamp(28px,4vw,46px);line-height:.98;letter-spacing:-.055em;margin:0 0 14px}h3{font-size:22px;margin:0 0 8px}.lead{font-size:clamp(18px,2.2vw,24px);color:#d7e9f7;line-height:1.45;max-width:900px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.two{grid-template-columns:repeat(2,1fr)}.card,.panel{padding:22px}.muted,p,li{color:var(--muted);line-height:1.65}.badge{display:inline-flex;border:1px solid rgba(116,255,123,.45);color:var(--green);background:rgba(116,255,123,.08);padding:5px 9px;border-radius:999px;font:12px/1.2 ui-monospace,Menlo,monospace}.badge.blue{color:var(--blue);border-color:rgba(88,166,255,.45);background:rgba(88,166,255,.08)}.badge.warn{color:var(--amber);border-color:rgba(255,204,102,.45);background:rgba(255,204,102,.08)}section{padding:28px 0}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--hard);color:var(--hard);background:rgba(116,255,219,.07);border-radius:14px;padding:13px 16px;text-decoration:none;font-weight:850}.btn.primary{color:#04120e;background:var(--green);border-color:var(--green)}.btn.copy{cursor:pointer;margin:10px 0 14px}.btn.copy[data-copied="true"]{color:#04120e;background:var(--hard);border-color:var(--hard)}.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:26px}.copybox{white-space:pre-wrap;border:1px solid rgba(116,255,219,.18);border-radius:18px;background:rgba(0,0,0,.28);padding:16px;color:#d9f6ff;font:14px/1.65 ui-monospace,Menlo,monospace}.metric{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(116,255,219,.12);padding:12px 0;font:13px/1.25 ui-monospace,Menlo,monospace}.metric:last-child{border-bottom:0}footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0 34px;margin-top:36px;font:13px/1.4 ui-monospace,Menlo,monospace}@media(max-width:860px){.grid,.two{grid-template-columns:1fr}.nav{display:none}}
+  </style>
+</head>
+<body>
+  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/casagrand-firstcity/">Pilot</a><a href="/casagrand-firstcity/launch-board/">Launch board</a><a href="/casagrand-firstcity/testers/">First 10 testers</a><a href="/casagrand-firstcity/first-10-outreach/">Outreach tracker</a><a href="/casagrand-firstcity/bot-readiness/">Bot readiness</a></div></nav>
+
+  <main>
+    <section class="hero shell">
+      <div class="eyebrow">Low-signal reboot kit</div>
+      <h1>Rewrite the ask before another Casagrand post.</h1>
+      <p class="lead">The live campaign report shows only one resident signal so far. Use this page to switch from a broad “AI community” announcement to smaller problem-first messages that Boogi can send to 10 trusted residents before posting again.</p>
+      <div class="actions">
+        <a class="btn primary" href="#copy">Copy a reboot DM</a>
+        <a class="btn" href="/casagrand-firstcity/first-10-outreach/">Open tracker</a>
+        <a class="btn" href="/casagrand-firstcity/bot-readiness/">Qualify group owners</a>
+        <a class="btn" href="/casagrand-firstcity/launch-board/">Back to launch board</a>
+      </div>
+    </section>
+
+    <section class="shell grid three">
+      <article class="card"><span class="badge warn">use now</span><h3>Do not force the event</h3><p>With fewer than 10 signals, broad posting risks sounding like promotion. Use 1:1 messages to learn which promise creates replies.</p></article>
+      <article class="card"><span class="badge">target</span><h3>10 trusted residents</h3><p>Send 4 career, 3 work-automation, 2 founder/freelancer, and 1 community/group-owner DM. Track replies for 24 hours.</p></article>
+      <article class="card"><span class="badge blue">decision</span><h3>Promote only on proof</h3><p>5+ real replies unlock a public follow-up. 2+ group-owner replies should move to community-bot design-partner calls.</p></article>
+    </section>
+
+    <section id="copy" class="shell grid two">
+      <div class="panel">
+        <h2>Variant A: career hook</h2>
+        <button class="btn copy" type="button" data-copy-target="#career-copy">Copy career DM</button>
+        <div id="career-copy" class="copybox">Hey — quick Casagrand experiment.
+
+I’m testing a practical AI help circle for residents, but instead of a generic event I want to start with real problems.
+
+If I spend 20 minutes helping you with one AI workflow, which would be most useful?
+1. Resume/profile improvement
+2. Interview prep
+3. Learning/career switch plan
+4. Portfolio project idea
+
+If interested, message this bot with:
+Casagrand reboot career - I want help with [your option]
+https://wa.me/919566112518?text=Casagrand%20reboot%20career%20-%20I%20want%20help%20with%20resume%2C%20interview%2C%20career%20switch%2C%20or%20portfolio%20planning.</div>
+      </div>
+      <div class="panel">
+        <h2>Variant B: work automation hook</h2>
+        <button class="btn copy" type="button" data-copy-target="#workflow-copy">Copy workflow DM</button>
+        <div id="workflow-copy" class="copybox">Hey — I’m trying something small for Casagrand residents before posting broadly.
+
+Bring one repetitive work task and I’ll help turn it into an AI-assisted workflow. Examples: reports, Excel cleanup, meeting notes, email drafts, research, documentation.
+
+If you want to be one of the first testers, message:
+Casagrand reboot workflow - my repetitive task is [task]
+https://wa.me/919566112518?text=Casagrand%20reboot%20workflow%20-%20my%20repetitive%20task%20is%20reports%2C%20meetings%2C%20email%2C%20research%2C%20docs%2C%20or%20something%20else.</div>
+      </div>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel">
+        <h2>Variant C: group-owner / bot hook</h2>
+        <button class="btn copy" type="button" data-copy-target="#bot-copy">Copy bot DM</button>
+        <div id="bot-copy" class="copybox">Hey — do you run or help manage any WhatsApp group/community/class/resident initiative?
+
+I’m looking for 2–3 local design partners to test a simple AI host that can answer FAQs, collect registrations, summarize repeated questions, and route issues to humans.
+
+If you’re open to a 10-minute fit check, message:
+Casagrand reboot community bot - I run a group and want to check fit
+https://wa.me/919566112518?text=Casagrand%20reboot%20community%20bot%20-%20I%20run%20a%20group%20and%20want%20to%20check%20fit%20for%20an%20AI%20host.</div>
+      </div>
+      <div class="panel">
+        <h2>Tracker note</h2>
+        <button class="btn copy" type="button" data-copy-target="#tracker-copy">Copy tracker note</button>
+        <div id="tracker-copy" class="copybox">Casagrand reboot tracker
+Date:
+Sent count: career __ / workflow __ / founder __ / community-bot __
+Replies in 24h:
+- career:
+- workflow:
+- founder/freelancer:
+- community-bot/group-owner:
+Decision:
+- 0–2 replies: rewrite again, no public post
+- 3–4 replies: send 10 more 1:1 DMs
+- 5+ replies: post the narrowest winning hook publicly
+- 2+ group-owner replies: book community-bot design-partner calls</div>
+      </div>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel">
+        <h2>Source tags this creates</h2>
+        <div class="metric"><span>Career DM</span><strong>casagrand_reboot_career</strong></div>
+        <div class="metric"><span>Workflow DM</span><strong>casagrand_reboot_workflow</strong></div>
+        <div class="metric"><span>Bot DM</span><strong>casagrand_reboot_community_bot</strong></div>
+      </div>
+      <div class="panel">
+        <h2>Privacy guardrail</h2>
+        <p>Do not paste raw phone numbers into reports. Keep notes aggregate-only, or redact phone numbers except the last four digits. Do not collect sensitive resident, maintenance, medical, or credential data in the bot.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="shell">AI-operated · human-guided · Casagrand low-signal reboot · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></div></footer>
+</body>
+</html>
