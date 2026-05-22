@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#060912" />
+  <meta property="og:image" content="https://dabblewith.ai/app-icon-1024.png" />
+  <title>Casagrand First City Resident Champion Kit — dabblewith.ai</title>
+  <meta name="description" content="A mobile-ready kit to recruit three trusted Casagrand resident champions before the first AI by Doing launch post." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://dabblewith.ai/casagrand-firstcity/champions/" />
+  <meta property="og:site_name" content="dabblewith.ai" />
+  <meta property="og:title" content="Casagrand Resident Champion Kit" />
+  <meta property="og:description" content="Recruit three warm resident champions to de-risk the Casagrand AI by Doing launch and surface community-bot design partners." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dabblewith.ai/casagrand-firstcity/champions/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7473LZQGX2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7473LZQGX2');
+    function trackChampionAction(action, label, url) {
+      if (typeof gtag !== 'function') return;
+      gtag('event', action, {
+        cta_id: 'casagrand_champions',
+        cta_source: 'casagrand_champions',
+        link_url: url || '',
+        link_text: label || '',
+        page_path: location.pathname
+      });
+    }
+    document.addEventListener('click', function(event) {
+      var copyButton = event.target && event.target.closest ? event.target.closest('[data-copy-target]') : null;
+      if (copyButton) {
+        var target = document.querySelector(copyButton.getAttribute('data-copy-target'));
+        var textToCopy = target ? (target.textContent || '').trim() : '';
+        if (!textToCopy) return;
+        var label = (copyButton.textContent || 'copy').trim();
+        var onSuccess = function(){
+          copyButton.setAttribute('data-copied', 'true');
+          copyButton.textContent = 'Copied';
+          trackChampionAction('copy_text', label, copyButton.getAttribute('data-copy-target'));
+          window.setTimeout(function(){ copyButton.removeAttribute('data-copied'); copyButton.textContent = label; }, 1800);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(textToCopy).then(onSuccess).catch(function(){ window.prompt('Copy this text', textToCopy); });
+        } else {
+          window.prompt('Copy this text', textToCopy);
+        }
+        return;
+      }
+      var link = event.target && event.target.closest ? event.target.closest('a') : null;
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
+      var text = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 80);
+      var isCta = /wa\.me|whatsapp|\/casagrand-firstcity\/(launch-board|testers|admin-ask|community-bot)\/?|#copy/.test(href) || /champion|copy|whatsapp|launch|tester|community bot/i.test(text);
+      if (!isCta) return;
+      trackChampionAction('cta_click', text, link.href || href);
+    });
+  </script>
+  <style>
+    :root{--bg:#060912;--panel:rgba(16,27,48,.92);--line:rgba(116,255,219,.25);--hard:#74ffdb;--text:#f2fbff;--muted:#9eb0c2;--green:#74ff7b;--blue:#58a6ff;--amber:#ffcc66;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--text);background:radial-gradient(circle at 16% 0%,rgba(88,166,255,.24),transparent 30rem),radial-gradient(circle at 92% 4%,rgba(116,255,123,.15),transparent 28rem),linear-gradient(rgba(116,255,219,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(116,255,219,.055) 1px,transparent 1px),var(--bg);background-size:auto,auto,42px 42px,42px 42px,auto}a{color:inherit}.shell{width:min(1100px,calc(100% - 30px));margin:0 auto}nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0}.logo{text-decoration:none;font-size:30px;font-weight:900;letter-spacing:-.055em}.nav{display:flex;gap:10px;flex-wrap:wrap}.nav a{border:1px solid var(--line);border-radius:999px;padding:9px 12px;text-decoration:none;color:var(--muted);background:rgba(255,255,255,.03)}.hero,.panel,.card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(16,27,48,.95),rgba(8,13,25,.92));border-radius:24px;box-shadow:0 24px 90px rgba(0,0,0,.45)}.hero{padding:clamp(26px,5vw,52px);margin:18px auto 26px}.eyebrow{width:fit-content;color:var(--hard);border:1px solid var(--hard);background:rgba(116,255,219,.08);border-radius:999px;padding:9px 12px;font:12px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}h1{font-size:clamp(42px,7.5vw,82px);line-height:.92;letter-spacing:-.07em;margin:24px 0 18px}h2{font-size:clamp(28px,4vw,46px);line-height:.98;letter-spacing:-.055em;margin:0 0 14px}h3{font-size:22px;margin:0 0 8px}.lead{font-size:clamp(18px,2.2vw,24px);color:#d7e9f7;line-height:1.45;max-width:880px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.two{grid-template-columns:repeat(2,1fr)}.card,.panel{padding:22px}.muted,p,li{color:var(--muted);line-height:1.65}.badge{display:inline-flex;border:1px solid rgba(116,255,123,.45);color:var(--green);background:rgba(116,255,123,.08);padding:5px 9px;border-radius:999px;font:12px/1.2 ui-monospace,Menlo,monospace}.badge.blue{color:var(--blue);border-color:rgba(88,166,255,.45);background:rgba(88,166,255,.08)}.badge.warn{color:var(--amber);border-color:rgba(255,204,102,.45);background:rgba(255,204,102,.08)}section{padding:28px 0}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--hard);color:var(--hard);background:rgba(116,255,219,.07);border-radius:14px;padding:13px 16px;text-decoration:none;font-weight:850}.btn.primary{color:#04120e;background:var(--green);border-color:var(--green)}.btn.copy{cursor:pointer}.btn.copy[data-copied="true"]{color:#04120e;background:var(--hard);border-color:var(--hard)}.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:26px}.copybox{white-space:pre-wrap;border:1px solid rgba(116,255,219,.18);border-radius:18px;background:rgba(0,0,0,.28);padding:16px;color:#d9f6ff;font:14px/1.65 ui-monospace,Menlo,monospace}.step{display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start;border-bottom:1px solid rgba(116,255,219,.12);padding:14px 0}.step:last-child{border-bottom:0}.num{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:rgba(116,255,123,.12);border:1px solid rgba(116,255,123,.45);color:var(--green);font-weight:900}.metric{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(116,255,219,.12);padding:12px 0;font:13px/1.25 ui-monospace,Menlo,monospace}.metric:last-child{border-bottom:0}footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0 34px;margin-top:36px;font:13px/1.4 ui-monospace,Menlo,monospace}@media(max-width:860px){.grid,.two{grid-template-columns:1fr}.nav{display:none}}
+  </style>
+</head>
+<body>
+  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/casagrand-firstcity/">Pilot</a><a href="/casagrand-firstcity/admin-ask/">Admin ask</a><a href="/casagrand-firstcity/testers/">First 10</a><a href="/casagrand-firstcity/launch-board/">Launch board</a><a href="/casagrand-firstcity/community-bot/">Community bot</a></div></nav>
+
+  <main>
+    <section class="hero shell">
+      <div class="eyebrow">Casagrand resident champion kit</div>
+      <h1>Recruit 3 trusted residents before the first broad post.</h1>
+      <p class="lead">A small champion layer de-risks the 600-member IT group launch: three warm residents can sanity-check the copy, forward to the right pockets, seed the first replies, and surface community-bot design partners without making the launch feel like a cold broadcast.</p>
+      <div class="actions">
+        <a class="btn primary" href="#copy">Copy champion ask</a>
+        <a class="btn" href="https://wa.me/919566112518?text=Casagrand%20champion%20-%20I%20can%20help%20seed%20the%20AI%20by%20Doing%20pilot.%20My%20track%20is%20career%2C%20workflow%2C%20student%2C%20founder%2C%20or%20community%20bot." target="_blank" rel="noreferrer">Message bot as champion</a>
+        <a class="btn" href="/casagrand-firstcity/launch-board/">Open launch board</a>
+        <a class="btn" href="/casagrand-firstcity/community-bot/">Community-bot demo</a>
+      </div>
+    </section>
+
+    <section class="shell grid three">
+      <article class="card"><span class="badge">career champion</span><h3>Jobs/interviews</h3><p>One resident who can pull in job seekers, resume/interview prep needs, and IT opportunities group feedback.</p></article>
+      <article class="card"><span class="badge blue">workflow champion</span><h3>Office automation</h3><p>One working professional/founder who can bring real admin, reporting, email, sales, or research workflows.</p></article>
+      <article class="card"><span class="badge warn">community champion</span><h3>Groups/admins</h3><p>One club, tutor, association, founder, or resident initiative owner who can validate the WhatsApp community-bot product.</p></article>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel">
+        <h2>Champion job</h2>
+        <div class="step"><div class="num">1</div><div><h3>Sanity-check the launch post</h3><p>Confirm it feels useful, non-salesy, and safe for the Casagrand context.</p></div></div>
+        <div class="step"><div class="num">2</div><div><h3>Bring two real problems</h3><p>Each champion sends two concrete use cases before the event so the first session starts from resident demand.</p></div></div>
+        <div class="step"><div class="num">3</div><div><h3>Seed the first replies</h3><p>After Boogi posts, champions can reply with their use case or vote so the group sees early participation.</p></div></div>
+        <div class="step"><div class="num">4</div><div><h3>Refer one group owner</h3><p>Any champion who knows a club, tutor, founder, or resident group owner can point them to the community-bot demo.</p></div></div>
+      </div>
+      <div class="panel">
+        <h2>Success threshold</h2>
+        <div class="metric"><span>Champions recruited</span><strong>3</strong></div>
+        <div class="metric"><span>Use cases collected</span><strong>6+</strong></div>
+        <div class="metric"><span>First replies seeded</span><strong>3</strong></div>
+        <div class="metric"><span>Community-bot referrals</span><strong>1–2</strong></div>
+        <p>If fewer than two champions agree, use the <a href="/casagrand-firstcity/testers/">first-10 tester sprint</a> before the broad IT group post.</p>
+      </div>
+    </section>
+
+    <section id="copy" class="shell grid two">
+      <div class="panel">
+        <h2>1:1 champion ask</h2>
+        <button class="btn copy" type="button" data-copy-target="#champion-ask-copy">Copy champion ask</button>
+        <div id="champion-ask-copy" class="copybox">Hey — I’m testing a practical AI builders circle for Casagrand First City residents before posting it broadly.
+
+Could you be one of 3 resident champions?
+
+Small ask:
+1. sanity-check the launch copy so it feels useful and non-salesy
+2. send me two real AI use cases from your world
+3. after I post, reply/vote once so others see it is resident-led
+4. if you know a club/tutor/founder/community admin who wants a WhatsApp helper bot, connect them
+
+Champion page: https://dabblewith.ai/casagrand-firstcity/champions/
+
+This is free and practical: job search, office automation, coding, founder tools, student projects, and WhatsApp/community bots.</div>
+      </div>
+      <div class="panel">
+        <h2>Champion reply prompt</h2>
+        <button class="btn copy" type="button" data-copy-target="#champion-reply-copy">Copy reply prompt</button>
+        <div id="champion-reply-copy" class="copybox">Casagrand champion - I can help seed the AI by Doing pilot.
+
+My track: career / office workflow / founder / student / community bot
+
+Two real use cases I want residents to build:
+1.
+2.
+
+I can help by: sanity-checking copy / replying after launch / referring a group owner / joining the first session</div>
+      </div>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel">
+        <h2>Tracker note</h2>
+        <button class="btn copy" type="button" data-copy-target="#tracker-copy">Copy tracker</button>
+        <div id="tracker-copy" class="copybox">Casagrand champion tracker
+
+Career champion: pending
+Workflow/founder champion: pending
+Community-bot/group-owner champion: pending
+
+Use cases collected: 0 / 6
+Seed replies committed: 0 / 3
+Community-bot referrals: 0 / 2
+
+Next action after 3 champions: post from launch board and measure T+24.</div>
+      </div>
+      <div class="panel">
+        <h2>What to do after 3 yeses</h2>
+        <p>Use the <a href="/casagrand-firstcity/launch-board/">launch board</a> for the first post, then run the privacy-safe campaign report at T+24. If a champion points to a club, tutor, association, or founder group, route them to the <a href="/casagrand-firstcity/community-bot/">community-bot intake</a> before pitching a generic event.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="shell">AI-operated · human-guided · Casagrand champion kit · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></div></footer>
+</body>
+</html>

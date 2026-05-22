@@ -108,10 +108,12 @@ This segment can become a direct demo for the community-bot platform.
 - `https://dabblewith.ai/casagrand-firstcity/testers/` — private first-10 tester page with source-tagged WhatsApp CTAs, copy buttons, target outreach mix, and a 24-hour tracker note before the broader IT-group post.
 - `https://dabblewith.ai/casagrand-firstcity/community-bot/` — local design-partner intake page for Casagrand groups that may want a WhatsApp AI host.
 - `https://dabblewith.ai/casagrand-firstcity/launch-board/` — mobile-ready launch board with one-tap copy buttons for the exact first post, poll follow-up, first-10 tester fallback DM, share links, T+24 decision thresholds, and internal measurement command.
+- `https://dabblewith.ai/casagrand-firstcity/champions/` — mobile-ready resident champion kit to recruit three trusted residents before the broad post, collect six real use cases, seed first replies, and surface community-bot design-partner referrals.
 - `https://dabblewith.ai/casagrand-firstcity/date-poll/` — source-tagged slot/topic voting page to convert first-post interest into a locked clubhouse date without manual spreadsheet tracking.
 - `https://dabblewith.ai/casagrand-firstcity/office-hours/` — 45-minute repeat-loop page for collecting one real problem per resident, running practical office hours, posting recap copy, and routing community-bot owner/admin signals into design-partner calls.
 - `https://dabblewith.ai/casagrand-firstcity/flyer/` — printable/forwardable clubhouse noticeboard flyer with value prop, audience, what to bring/leave with, RSVP + `Casagrand flyer` source-tagged WhatsApp CTAs, mini share copy, privacy note, and print-friendly CSS.
 - `docs/growth/casagrand-firstcity-first-10-testers-sprint-kit.md` — direct tester sprint before the broader IT-group post.
+- `docs/growth/casagrand-firstcity-resident-champion-kit.md` — three-champion social-proof layer with WhatsApp-ready asks, reply prompt, tracker note, thresholds, and community-bot referral path.
 - `docs/growth/casagrand-firstcity-admin-permission-pack.md` — admin/group permission asks, clubhouse/noticeboard approval copy, launch post, objection handling, and approval checklist.
 - `docs/growth/casagrand-firstcity-24hour-launch-brief.md` — one-post launch sequence, T+1/T+6/T+24 measurement schedule, decision thresholds, and privacy-safe evidence template.
 - `docs/growth/casagrand-firstcity-event-registration-kit.md` — RSVP funnel and registration copy.

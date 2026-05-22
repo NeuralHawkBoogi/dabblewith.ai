@@ -56,7 +56,7 @@
       if (!link) return;
       var href = link.getAttribute('href') || '';
       var text = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 80);
-      var isCta = /wa\.me|whatsapp|\/casagrand-firstcity\/(rsvp|date-poll|flyer|community-bot|testers)\/?|#copy/.test(href) || /copy|rsvp|poll|flyer|community bot|whatsapp|tester/i.test(text);
+      var isCta = /wa\.me|whatsapp|\/casagrand-firstcity\/(rsvp|date-poll|flyer|community-bot|testers|champions)\/?|#copy/.test(href) || /copy|rsvp|poll|flyer|community bot|whatsapp|tester|champion/i.test(text);
       if (!isCta) return;
       trackLaunchBoardAction('cta_click', text, link.href || href);
     });
@@ -66,7 +66,7 @@
   </style>
 </head>
 <body>
-  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/casagrand-firstcity/">Pilot</a><a href="/casagrand-firstcity/admin-ask/">Admin ask</a><a href="/casagrand-firstcity/rsvp/">RSVP</a><a href="/casagrand-firstcity/date-poll/">Date poll</a><a href="/casagrand-firstcity/office-hours/">Office hours</a><a href="/casagrand-firstcity/flyer/">Flyer</a><a href="/casagrand-firstcity/community-bot/">Community bot</a></div></nav>
+  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/casagrand-firstcity/">Pilot</a><a href="/casagrand-firstcity/admin-ask/">Admin ask</a><a href="/casagrand-firstcity/champions/">Champions</a><a href="/casagrand-firstcity/rsvp/">RSVP</a><a href="/casagrand-firstcity/date-poll/">Date poll</a><a href="/casagrand-firstcity/office-hours/">Office hours</a><a href="/casagrand-firstcity/flyer/">Flyer</a><a href="/casagrand-firstcity/community-bot/">Community bot</a></div></nav>
 
   <main>
     <section class="hero shell">
@@ -75,6 +75,7 @@
       <p class="lead">Use this after admin permission is clear. It keeps Boogi’s launch action tight: post once, collect RSVP/date signals, then decide within 24 hours whether to lock the clubhouse session, run a smaller build sprint, or qualify community-bot design partners.</p>
       <div class="actions">
         <a class="btn" href="/casagrand-firstcity/admin-ask/">Admin ask kit</a>
+        <a class="btn" href="/casagrand-firstcity/champions/">Recruit champions first</a>
         <a class="btn primary" href="#copy">Copy the first post</a>
         <a class="btn" href="/casagrand-firstcity/rsvp/">RSVP funnel</a>
         <a class="btn" href="/casagrand-firstcity/date-poll/">Date poll</a>
