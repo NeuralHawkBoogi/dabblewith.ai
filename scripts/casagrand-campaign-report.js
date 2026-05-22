@@ -27,6 +27,7 @@ const SOURCE_TAG_RULES = [
   ['casagrand_date_poll', /casagrand\s+date\s+poll/i],
   ['casagrand_office_hours', /casagrand\s+office\s+hours/i],
   ['casagrand_champion', /casagrand\s+champion|resident\s+champion/i],
+  ['casagrand_bot_readiness', /casagrand\s+bot\s+readiness\s+audit|casagrand\s+community\s+bot\s+readiness/i],
   ['tester_career', /casagrand\s+(?:first\s+city\s+)?tester\s*[-–]\s*career|casagrand\s+career\s+help/i],
   ['tester_workflow', /casagrand\s+(?:first\s+city\s+)?tester\s*[-–]\s*workflow|casagrand\s+workflow\s+help/i],
   ['tester_founder', /casagrand\s+(?:first\s+city\s+)?tester\s*[-–]\s*founder|casagrand\s+founder\s+help/i],
@@ -44,6 +45,7 @@ const TRACK_FOR_TAG = {
   tester_founder: 'founder',
   tester_student: 'student',
   tester_community_bot: 'community_bot',
+  casagrand_bot_readiness: 'community_bot',
 };
 
 function currentDate() {
