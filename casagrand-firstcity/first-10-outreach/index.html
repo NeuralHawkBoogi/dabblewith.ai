@@ -11,7 +11,7 @@
   <link rel="canonical" href="https://dabblewith.ai/casagrand-firstcity/first-10-outreach/" />
   <meta property="og:site_name" content="dabblewith.ai" />
   <meta property="og:title" content="Casagrand First-10 Outreach Tracker" />
-  <meta property="og:description" content="Run 10 direct resident tester conversations before another broad WhatsApp post." />
+  <meta property="og:description" content="Run a tight 5-DM reboot sprint, then expand to 10 direct resident tester conversations before another broad WhatsApp post." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dabblewith.ai/casagrand-firstcity/first-10-outreach/" />
   <meta property="og:image" content="https://dabblewith.ai/app-icon-1024.png" />
@@ -53,42 +53,42 @@
   <main>
     <section class="hero shell">
       <div class="eyebrow">Casagrand no-signal fallback</div>
-      <h1>Run 10 direct tester conversations before another broad post.</h1>
-      <p class="lead">The live campaign report currently shows weak signal, so the safest growth move is not another group announcement. Use this page to DM 10 trusted residents, log replies without full phone numbers, and choose the next event angle from real resident problems.</p>
+      <h1>Start with 5 narrow reboot DMs before another broad post.</h1>
+      <p class="lead">The 2026-05-23 privacy-safe report still shows 0 unique Casagrand resident signals after owner/test exclusion. The safest growth move is not another group announcement. Send 5 narrow DMs first, ask each reply for one referral or group-owner intro, then expand to the full first-10 tester sprint only if there is evidence.</p>
       <div class="actions">
         <button class="btn primary" data-copy-target="dm-career" onclick="copyText('dm-career','career DM')">Copy career DM</button>
         <button class="btn" data-copy-target="dm-workflow" onclick="copyText('dm-workflow','workflow DM')">Copy workflow DM</button>
         <button class="btn" data-copy-target="dm-founder" onclick="copyText('dm-founder','founder DM')">Copy founder DM</button>
         <button class="btn" data-copy-target="dm-community" onclick="copyText('dm-community','community admin DM')">Copy community-admin DM</button>
+        <button class="btn" data-copy-target="referral-ask" onclick="copyText('referral-ask','referral ask')">Copy referral ask</button>
         <button class="btn" data-copy-target="tracker" onclick="copyText('tracker','tracker')">Copy tracker</button>
       </div>
     </section>
 
     <section class="shell grid three">
-      <article class="card"><span class="badge red">current signal</span><h3>Do not force event yet</h3><p>Use first-10 DMs when campaign signals are below 10 or only Boogi/test signals appear in the report.</p></article>
-      <article class="card"><span class="badge">goal</span><h3>6 replies / 3 use cases</h3><p>Minimum useful evidence: six resident replies, three concrete problems, and one resident willing to attend or bring a friend.</p></article>
-      <article class="card"><span class="badge blue">conversion path</span><h3>Ask for one problem</h3><p>Do not sell dabblewith.ai. Ask what AI workflow they would actually use this week.</p></article>
+      <article class="card"><span class="badge red">current signal</span><h3>0 resident signals</h3><p>Do not force an event or broad public post while only owner/test activity appears in the report.</p></article>
+      <article class="card"><span class="badge">this sprint</span><h3>5 DMs / 2 replies</h3><p>Minimum useful reboot evidence: two resident replies, one concrete problem, or one group-owner/community-bot intro.</p></article>
+      <article class="card"><span class="badge blue">conversion path</span><h3>Reply → referral</h3><p>Ask for one real problem first. If they reply, ask for one resident referral or WhatsApp group-owner intro.</p></article>
     </section>
 
     <section class="shell grid two">
       <div class="panel">
-        <h2>Outreach mix</h2>
+        <h2>5-DM reboot mix</h2>
         <div class="slot"><strong>2×</strong><p>Career/job-search residents — resume, interview prep, learning roadmap, portfolio project.</p></div>
         <div class="slot"><strong>2×</strong><p>Office productivity residents — reports, emails, notes, research, repetitive work.</p></div>
-        <div class="slot"><strong>2×</strong><p>Founder/freelancer residents — lead research, proposals, landing page, support bot.</p></div>
-        <div class="slot"><strong>2×</strong><p>Student/early-career residents — projects, coding assistant, learning plan.</p></div>
         <div class="slot"><strong>1×</strong><p>Community/admin/group owner — WhatsApp FAQ, registrations, announcements, triage.</p></div>
-        <div class="slot"><strong>1×</strong><p>Wildcard trusted resident — someone likely to reply honestly and seed the first public comment.</p></div>
+        <p>Only expand to the original 10-person mix after this reboot produces at least two replies or one concrete community-bot lead.</p>
       </div>
       <div class="panel">
         <h2>24-hour decision rule</h2>
-        <div class="metric"><span>0–2 replies</span><strong>rewrite positioning</strong></div>
-        <div class="metric"><span>3–5 replies</span><strong>send 10 more DMs</strong></div>
+        <div class="metric"><span>0 replies</span><strong>rewrite positioning</strong></div>
+        <div class="metric"><span>1–2 replies</span><strong>send 5 more DMs</strong></div>
+        <div class="metric"><span>3–5 replies</span><strong>expand to first-10 sprint</strong></div>
         <div class="metric"><span>6+ replies + 3 use cases</span><strong>post poll</strong></div>
         <div class="metric"><span>10+ interested residents</span><strong>lock event slot</strong></div>
         <div class="metric"><span>2+ group-owner signals</span><strong>book bot design calls</strong></div>
         <p>After logging replies, run the privacy-safe report and use the launch decision card before posting broadly.</p>
-        <div class="copybox">node scripts/casagrand-campaign-report.js --runtime-dir /home/clawdbot/dabblewith-whatsapp/data --output-dir reports/casagrand-firstcity --date 2026-05-22</div>
+        <div class="copybox">node scripts/casagrand-campaign-report.js --runtime-dir /home/clawdbot/dabblewith-whatsapp/data --output-dir reports/casagrand-firstcity --exclude-last4 2585 --date 2026-05-23</div>
       </div>
     </section>
 
@@ -125,24 +125,25 @@ One idea is to demo how a WhatsApp community bot could collect registrations, an
 
 Do you know any group, club, class, or resident initiative inside Casagrand that would benefit from this? If yes, I’d love one intro or one use case.</div>
       </div>
+      <div class="panel">
+        <h2>Reply → referral ask</h2>
+        <div id="referral-ask" class="copybox">Thanks — this is useful. Quick ask: do you know one Casagrand resident who would genuinely benefit from this, or one WhatsApp group owner/admin who struggles with repeated questions, registrations, or announcements?
+
+If yes, please intro me or share this link with them: https://dabblewith.ai/casagrand-firstcity/community-bot/</div>
+      </div>
     </section>
 
     <section class="shell">
       <div class="panel">
         <h2>Privacy-safe reply tracker</h2>
-        <p>Copy this into notes after sending the 10 DMs. Redact phone numbers except the last four digits. Do not paste private messages into public docs.</p>
-        <div id="tracker" class="copybox">Casagrand first-10 outreach tracker — 2026-05-22
+        <p>Copy this into notes after sending the 5 reboot DMs. Redact phone numbers except the last four digits. Do not paste private messages into public docs.</p>
+        <div id="tracker" class="copybox">Casagrand reboot outreach tracker — 2026-05-23
 
 1. Segment: career | phone: ********____ | reply: yes/no/no_reply | use case: | next step:
 2. Segment: career | phone: ********____ | reply: yes/no/no_reply | use case: | next step:
 3. Segment: workflow | phone: ********____ | reply: yes/no/no_reply | use case: | next step:
 4. Segment: workflow | phone: ********____ | reply: yes/no/no_reply | use case: | next step:
-5. Segment: founder | phone: ********____ | reply: yes/no/no_reply | use case: | next step:
-6. Segment: founder | phone: ********____ | reply: yes/no/no_reply | use case: | next step:
-7. Segment: student | phone: ********____ | reply: yes/no/no_reply | use case: | next step:
-8. Segment: student | phone: ********____ | reply: yes/no/no_reply | use case: | next step:
-9. Segment: community-admin | phone: ********____ | reply: yes/no/no_reply | use case: | next step:
-10. Segment: wildcard | phone: ********____ | reply: yes/no/no_reply | use case: | next step:
+5. Segment: community-admin | phone: ********____ | reply: yes/no/no_reply | use case/group-owner intro: | next step:
 
 24h summary:
 - Replies:
@@ -150,7 +151,7 @@ Do you know any group, club, class, or resident initiative inside Casagrand that
 - People willing to attend:
 - People willing to bring a friend:
 - Community-bot leads:
-- Decision: rewrite positioning / send 10 more DMs / post poll / lock event slot / book bot design calls</div>
+- Decision: rewrite positioning / send 5 more DMs / expand to first-10 sprint / post poll / lock event slot / book bot design calls</div>
       </div>
     </section>
   </main>
