@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-23T20:17:21.092Z",
+  "updatedAt": "2026-05-24T02:25:28.689Z",
   "mission": "Run dabblewith.ai as an AI-operated, human-guided community where members learn AI by building real workflows in public.",
   "autonomyLevel": "human-guided",
   "principles": [
@@ -144,6 +144,11 @@
     }
   ],
   "publicChangelog": [
+    {
+      "date": "2026-05-24",
+      "title": "run_001 promoted for host review",
+      "body": "Autopilot selected “OpenClaw: personal AI with tools” as the strongest next session candidate. Human approval is still required before announcement."
+    },
     {
       "date": "2026-05-23",
       "title": "run_001 promoted for host review",
