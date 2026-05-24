@@ -167,6 +167,34 @@ PY
 git diff --check
 ```
 
+### Implemented — slice 8: first-5 follow-up scorecard
+
+**Files added/updated:**
+- `homepage-outreach/follow-up-scorecard/index.html`
+  - Mobile-ready scorecard for converting the 2/5 warm WhatsApp responders into one booked builder mini-session or community-bot readiness call before broadening outreach.
+  - Includes copy buttons for the two-touch follow-up, privacy-safe scorecard template, and booked-session confirmation.
+- `docs/growth/homepage-first5-follow-up-scorecard.md`
+  - Operator rule, privacy-safe tracking fields, copy block, and decision thresholds.
+- `docs/growth/homepage-outreach-2026-05-24-report.md`
+  - Refreshed through 2026-05-24T10:15:00Z; still 2/5 responders, so the action remains conversion before scale.
+
+**Validation commands:**
+```bash
+node --check scripts/homepage-outreach-report.js
+node scripts/homepage-outreach-report-smoke-test.js
+node scripts/homepage-outreach-report.js --since 2026-05-24T05:00:00Z --until 2026-05-24T10:15:00Z --target 5 --out reports/homepage-outreach-2026-05-24.md
+node --check scripts/generate-blog.js
+node scripts/generate-blog.js
+python3 - <<'PY2'
+from html.parser import HTMLParser
+from pathlib import Path
+HTMLParser().feed(Path('homepage-outreach/follow-up-scorecard/index.html').read_text())
+assert 'Book one concrete builder session before scaling outreach' in Path('homepage-outreach/follow-up-scorecard/index.html').read_text()
+assert 'homepage-outreach/follow-up-scorecard' in Path('sitemap.xml').read_text()
+PY2
+git diff --check
+```
+
 ### Next steps
 - [x] Add a WhatsApp CTA/setup-intent adapter that can create lead records when users ask for a similar bot.
 - [x] Wire the adapter into the runtime owner-intent path behind a disabled-by-default flag or explicit local-only capture mode.

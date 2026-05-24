@@ -100,6 +100,10 @@ After 24 hours from a 5-contact batch:
 - **4–5 meaningful replies:** pick the strongest topic, draft the first mini-session, and use that as proof before a wider Casagrand IT-group post.
 - **Any group-owner lead:** prioritize community-bot readiness/design-partner call because it validates the paid product wedge.
 
+## 2026-05-24 10:15 UTC follow-up read
+
+A refreshed privacy-safe report through 10:15 UTC still shows 2/5 unique WhatsApp responders and no additional responders beyond the early two. Use `https://dabblewith.ai/homepage-outreach/follow-up-scorecard/` and `docs/growth/homepage-first5-follow-up-scorecard.md` before sending a wider batch: ask each active responder for one concrete workflow sample, score the fit, and only broaden after one builder session or community-bot readiness call is booked.
+
 ## Recommended next move from the 2026-05-24 first batch
 
 Early signals show the homepage → WhatsApp route works for at least 2 of 5 warm contacts. The next move is to convert those replies into one concrete builder session/call before broadening outreach.
