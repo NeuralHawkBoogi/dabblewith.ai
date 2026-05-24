@@ -105,3 +105,12 @@ After 24 hours from a 5-contact batch:
 Early signals show the homepage → WhatsApp route works for at least 2 of 5 warm contacts. The next move is to convert those replies into one concrete builder session/call before broadening outreach.
 
 Use the tracked evidence artifact at `docs/growth/homepage-outreach-2026-05-24-report.md`; the same command can regenerate the ignored local runtime report at `reports/homepage-outreach-2026-05-24.md`.
+
+## Execution artifact
+
+Use `https://dabblewith.ai/homepage-outreach/builder-session/` and `docs/growth/homepage-first5-builder-session-kit.md` to convert the two first-batch responders into one concrete builder call or mini-session before widening outreach. The kit includes copy for:
+
+- deeper builder-call invite
+- agentic workflow mini-session invite
+- community-bot owner/admin probe
+- next 3–5 warm DM batch

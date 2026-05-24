@@ -143,10 +143,35 @@ node --check scripts/google-analytics-report.js
 git diff --check
 ```
 
+### Implemented — slice 7: first-5 builder-session conversion kit
+
+**Files added:**
+- `homepage-outreach/builder-session/index.html`
+  - Mobile-ready copy kit for turning first-5 homepage WhatsApp responders into one builder call or focused mini-session.
+  - Includes copy buttons for deeper builder-call invite, agentic workflow mini-session invite, community-bot probe, and next 3–5 warm DM forward.
+  - Uses copy-click GA events and avoids exposing responder names, raw messages, full phone numbers, tokens, or webhook payloads.
+- `docs/growth/homepage-first5-builder-session-kit.md`
+  - Operator sequence, copy blocks, session shape, privacy-safe tracking fields, and decision thresholds.
+
+**Validation commands:**
+```bash
+node --check scripts/generate-blog.js
+node scripts/generate-blog.js
+python3 - <<'PY'
+from html.parser import HTMLParser
+from pathlib import Path
+HTMLParser().feed(Path('homepage-outreach/builder-session/index.html').read_text())
+assert 'Build a safe CLI/file-system memory agent' in Path('homepage-outreach/builder-session/index.html').read_text()
+assert 'homepage-outreach/builder-session' in Path('sitemap.xml').read_text()
+PY
+git diff --check
+```
+
 ### Next steps
 - [x] Add a WhatsApp CTA/setup-intent adapter that can create lead records when users ask for a similar bot.
 - [x] Wire the adapter into the runtime owner-intent path behind a disabled-by-default flag or explicit local-only capture mode.
 - [x] Add admin report/export for inbound design-partner leads.
 - [x] Add privacy-safe interview findings tracker and segment decision-gate report.
 - [x] Add homepage warm-outreach response report for first 5-contact validation.
+- [x] Add first-5 builder-session follow-up kit to convert warm homepage responders into one concrete builder call/mini-session and community-bot probe before broad outreach.
 - [ ] Run 10 interviews and record segment findings before building heavy self-serve infrastructure.
