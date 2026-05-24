@@ -223,6 +223,35 @@ PY2
 git diff --check
 ```
 
+### Implemented — slice 10: first builder-session brief
+
+**Files added/updated:**
+- `homepage-outreach/session-brief/index.html`
+  - Mobile-ready session brief for turning one warm homepage responder into a 20-minute builder walkthrough.
+  - Includes copy buttons for slot confirmation, run-of-show, and anonymized recap template.
+  - Uses the refreshed 2026-05-24 16:15 UTC report state: 2/5 responders and 29 inbound signals, so conversion proof comes before broader outreach.
+- `docs/growth/homepage-first5-session-brief.md`
+  - Operator sequence, copy block, recap template, privacy guardrails, and post-session decision rules.
+- `docs/growth/homepage-outreach-2026-05-24-report.md`
+  - Refreshed through 2026-05-24T16:15:00Z; still 2/5 responders, reinforcing the one-session conversion gate.
+
+**Validation commands:**
+```bash
+node --check scripts/homepage-outreach-report.js
+node scripts/homepage-outreach-report-smoke-test.js
+node scripts/homepage-outreach-report.js --since 2026-05-24T05:00:00Z --until 2026-05-24T16:15:00Z --target 5 --generated-at 2026-05-24T16:15:00Z --out docs/growth/homepage-outreach-2026-05-24-report.md
+node --check scripts/generate-blog.js
+node scripts/generate-blog.js
+python3 - <<'PY2'
+from html.parser import HTMLParser
+from pathlib import Path
+HTMLParser().feed(Path('homepage-outreach/session-brief/index.html').read_text())
+assert 'Run one tight workflow walkthrough before scaling outreach' in Path('homepage-outreach/session-brief/index.html').read_text()
+assert 'homepage-outreach/session-brief' in Path('sitemap.xml').read_text()
+PY2
+git diff --check
+```
+
 ### Next steps
 - [x] Add a WhatsApp CTA/setup-intent adapter that can create lead records when users ask for a similar bot.
 - [x] Wire the adapter into the runtime owner-intent path behind a disabled-by-default flag or explicit local-only capture mode.
