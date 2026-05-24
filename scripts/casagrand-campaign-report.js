@@ -238,8 +238,8 @@ function computeLaunchDecision(report) {
     stage = 'first10_tester_dms';
     route = 'Do not force event';
     confidence = 'low';
-    nextAction = 'Send first-10 tester DMs and rewrite the positioning before another public post.';
-    rationale.push('<10 weak/no signals: gather more evidence before another public post.');
+    nextAction = 'Send 5 narrow reboot DMs (2 career, 2 workflow, 1 group-owner/community-bot), ask each reply for one referral, then rerun this report after 24 hours before any broad post.';
+    rationale.push('<10 weak/no signals: use the 5-DM reboot route before another public post.');
   }
 
   return { stage, route, confidence, rationale, thresholds, nextAction };
@@ -290,7 +290,7 @@ function buildCampaignReport(runtimeDir, options = {}) {
   }
 
   const nextAction = realCampaignSignals.length === 0
-    ? 'Forward the Casagrand WhatsApp launch copy once, then run this report after 24 hours to pick the first clubhouse topic.'
+    ? 'Send 5 narrow reboot DMs (2 career, 2 workflow, 1 group-owner/community-bot), ask each reply for one referral, then rerun this report after 24 hours before any broad post.'
     : 'Use the top topic cluster to select the first clubhouse event title and post the poll.';
 
   const report = {

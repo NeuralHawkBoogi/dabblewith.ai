@@ -93,6 +93,8 @@ function appendJsonl(file, rows) {
   });
   assert.strictEqual(reposition.stage, 'first10_tester_dms');
   assert.strictEqual(reposition.confidence, 'low');
+  assert(reposition.nextAction.includes('5 narrow reboot DMs'));
+  assert(reposition.nextAction.includes('before any broad post'));
   assert(reposition.thresholds.some((t) => t.name === 'first10_tester_dms' && t.met === true));
 
   const runtimeDir = tmpDir();
