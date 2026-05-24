@@ -146,11 +146,22 @@ ${responders.length ? responders.map((r, idx) => `### Responder ${idx + 1} (${r.
 - Stage: ${r.stage}
 - Next action: ${r.nextAction}`).join('\n\n') : 'No responders in this window.'}
 
+## Bookable follow-up copy
+
+Use this when a responder has a builder/developer signal:
+
+> Quick follow-up — I’m keeping this small before inviting more people. Send me one real workflow you want to automate or improve: current tool/stack, input you start with, output you want, what usually breaks, and what must stay private/safe. If it is concrete, I’ll turn it into a 20-minute builder walkthrough instead of generic AI talk.
+
+Use this only if they mention running or helping manage a group:
+
+> One more angle I’m validating: a lightweight AI host for WhatsApp communities — FAQs, registrations, summaries, reminders, and admin reports. If you run or help manage any group, would you do a 10-minute readiness check? https://dabblewith.ai/community-bot/
+
 ## Operator actions
 
-1. For any responder asking for deeper discussion, send a short builder-call invite and ask for one workflow sample first.
+1. For any responder asking for deeper discussion, send the bookable workflow-sample ask before proposing a time.
 2. For agentic-workflow/developer signals, offer a focused mini-session: “Build a CLI/file-system memory agent safely.”
-3. Keep the next warm outreach batch small: 3–5 contacts, same CTA, compare reply quality before a broad Casagrand post.
+3. Ask the community-bot readiness question only when a responder has group-owner/admin context.
+4. Keep the next warm outreach batch small: 3–5 contacts, same CTA, compare reply quality before a broad Casagrand post.
 
 ## Privacy guardrails
 
