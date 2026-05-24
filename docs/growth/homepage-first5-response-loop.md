@@ -100,9 +100,9 @@ After 24 hours from a 5-contact batch:
 - **4–5 meaningful replies:** pick the strongest topic, draft the first mini-session, and use that as proof before a wider Casagrand IT-group post.
 - **Any group-owner lead:** prioritize community-bot readiness/design-partner call because it validates the paid product wedge.
 
-## 2026-05-24 10:15 UTC follow-up read
+## 2026-05-24 12:15 UTC follow-up read
 
-A refreshed privacy-safe report through 10:15 UTC still shows 2/5 unique WhatsApp responders and no additional responders beyond the early two. Use `https://dabblewith.ai/homepage-outreach/follow-up-scorecard/` and `docs/growth/homepage-first5-follow-up-scorecard.md` before sending a wider batch: ask each active responder for one concrete workflow sample, score the fit, and only broaden after one builder session or community-bot readiness call is booked.
+A refreshed privacy-safe report through 12:15 UTC still shows 2/5 unique WhatsApp responders and 29 inbound signal messages, with no additional responders beyond the early two. Use `https://dabblewith.ai/homepage-outreach/workflow-sample-intake/` and `docs/growth/homepage-first5-workflow-sample-intake.md` before sending a wider batch: ask each active responder for one concrete workflow sample, score the fit, and only broaden after one builder session or community-bot readiness call is booked.
 
 ## Recommended next move from the 2026-05-24 first batch
 
@@ -112,8 +112,9 @@ Use the tracked evidence artifact at `docs/growth/homepage-outreach-2026-05-24-r
 
 ## Execution artifact
 
-Use `https://dabblewith.ai/homepage-outreach/builder-session/` and `docs/growth/homepage-first5-builder-session-kit.md` to convert the two first-batch responders into one concrete builder call or mini-session before widening outreach. The kit includes copy for:
+Use `https://dabblewith.ai/homepage-outreach/workflow-sample-intake/` and `docs/growth/homepage-first5-workflow-sample-intake.md` first to collect one concrete workflow sample from the active responders. Then use `https://dabblewith.ai/homepage-outreach/builder-session/` and `docs/growth/homepage-first5-builder-session-kit.md` to convert that sample into a concrete builder call or mini-session before widening outreach. The kits include copy for:
 
+- workflow-sample ask and privacy-safe scoring
 - deeper builder-call invite
 - agentic workflow mini-session invite
 - community-bot owner/admin probe

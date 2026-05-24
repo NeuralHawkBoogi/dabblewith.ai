@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#060912" />
+  <title>Workflow Sample Intake — dabblewith.ai</title>
+  <meta name="description" content="A mobile-ready intake kit for turning warm dabblewith.ai WhatsApp replies into one concrete workflow sample and a booked builder mini-session." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://dabblewith.ai/homepage-outreach/workflow-sample-intake/" />
+  <meta property="og:site_name" content="dabblewith.ai" />
+  <meta property="og:title" content="Workflow Sample Intake" />
+  <meta property="og:description" content="Ask the right narrowing question before booking a builder mini-session." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dabblewith.ai/homepage-outreach/workflow-sample-intake/" />
+  <meta property="og:image" content="https://dabblewith.ai/app-icon-1024.png" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7473LZQGX2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7473LZQGX2');
+    function copyText(id, label) {
+      var el = document.getElementById(id);
+      if (!el || !navigator.clipboard) return;
+      navigator.clipboard.writeText(el.innerText.trim()).then(function () {
+        if (typeof gtag === 'function') {
+          gtag('event', 'copy_click', {
+            cta_id: 'homepage_workflow_intake_' + id,
+            cta_source: 'homepage_workflow_sample_intake',
+            link_text: label || id,
+            page_path: location.pathname
+          });
+        }
+        var btn = document.querySelector('[data-copy-target="' + id + '"]');
+        if (btn) { var old = btn.innerText; btn.innerText = 'Copied'; setTimeout(function(){ btn.innerText = old; }, 1400); }
+      });
+    }
+  </script>
+  <style>
+    :root{--bg:#060912;--panel:rgba(16,27,48,.94);--line:rgba(116,255,219,.24);--hard:#74ffdb;--text:#f2fbff;--muted:#9eb0c2;--green:#74ff7b;--blue:#58a6ff;--amber:#ffcc66;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--text);background:radial-gradient(circle at 10% 0%,rgba(88,166,255,.22),transparent 30rem),radial-gradient(circle at 90% 6%,rgba(116,255,123,.14),transparent 28rem),var(--bg)}a{color:inherit}.shell{width:min(1120px,calc(100% - 30px));margin:0 auto}nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0}.logo{text-decoration:none;font-size:30px;font-weight:900;letter-spacing:-.055em}.nav{display:flex;gap:10px;flex-wrap:wrap}.nav a{border:1px solid var(--line);border-radius:999px;padding:9px 12px;text-decoration:none;color:var(--muted);background:rgba(255,255,255,.03)}.hero,.panel,.card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(16,27,48,.96),rgba(8,13,25,.92));border-radius:24px;box-shadow:0 24px 90px rgba(0,0,0,.45)}.hero{padding:clamp(26px,5vw,52px);margin:18px auto 26px}.eyebrow{width:fit-content;color:var(--hard);border:1px solid var(--hard);background:rgba(116,255,219,.08);border-radius:999px;padding:9px 12px;font:12px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}h1{font-size:clamp(42px,7vw,78px);line-height:.9;letter-spacing:-.07em;margin:24px 0 18px}h2{font-size:clamp(28px,4vw,44px);line-height:.96;letter-spacing:-.055em;margin:0 0 16px}h3{font-size:22px;margin:0 0 8px}.lead{font-size:clamp(18px,2.2vw,24px);color:#d7e9f7;line-height:1.45;max-width:920px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.two{grid-template-columns:repeat(2,1fr)}.card,.panel{padding:22px}.muted,p,li{color:var(--muted);line-height:1.65}.badge{display:inline-flex;border:1px solid rgba(116,255,123,.45);color:var(--green);background:rgba(116,255,123,.08);padding:5px 9px;border-radius:999px;font:12px/1.2 ui-monospace,Menlo,monospace}.badge.blue{color:var(--blue);border-color:rgba(88,166,255,.45);background:rgba(88,166,255,.08)}.badge.warn{color:var(--amber);border-color:rgba(255,204,102,.45);background:rgba(255,204,102,.08)}section{padding:30px 0}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--hard);color:var(--hard);background:rgba(116,255,219,.07);border-radius:14px;padding:12px 15px;text-decoration:none;font-weight:850;cursor:pointer}.btn.primary{color:#04120e;background:var(--green);border-color:var(--green)}button.btn{font:inherit}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.copybox{white-space:pre-wrap;border:1px solid rgba(116,255,219,.18);border-radius:18px;background:rgba(0,0,0,.28);padding:16px;color:#d9f6ff;font:14px/1.65 ui-monospace,Menlo,monospace}.metric{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(116,255,219,.12);padding:12px 0;font:13px/1.25 ui-monospace,Menlo,monospace}.metric:last-child{border-bottom:0}.score{font:13px/1.7 ui-monospace,Menlo,monospace;color:#d9f6ff}footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0 34px;margin-top:36px;font:13px/1.4 ui-monospace,Menlo,monospace}@media(max-width:860px){.grid,.two{grid-template-columns:1fr}.nav{display:none}}
+  </style>
+</head>
+<body>
+  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/homepage-outreach/follow-up-scorecard/">Scorecard</a><a href="/homepage-outreach/builder-session/">Builder kit</a><a href="/community-bot/">Community bot</a><a href="/privacy/">Privacy</a></div></nav>
+
+  <main>
+    <section class="hero shell">
+      <div class="eyebrow">workflow sample intake</div>
+      <h1>Turn warm replies into one bookable workflow.</h1>
+      <p class="lead">The 2026-05-24 12:15 UTC read is still 2/5 meaningful WhatsApp responders and 29 inbound signals. This page gives Boogi one tight ask: collect a concrete workflow sample, score it, and only then book the 20-minute builder mini-session.</p>
+      <div class="actions">
+        <button class="btn primary" data-copy-target="workflow-sample-ask" onclick="copyText('workflow-sample-ask','workflow sample ask')">Copy workflow ask</button>
+        <button class="btn" data-copy-target="agentic-session-ask" onclick="copyText('agentic-session-ask','agentic session ask')">Copy agentic-session ask</button>
+        <button class="btn" data-copy-target="sample-score" onclick="copyText('sample-score','sample score')">Copy score note</button>
+      </div>
+    </section>
+
+    <section class="shell grid">
+      <article class="card"><span class="badge">current evidence</span><h3>2/5 responders</h3><p>Homepage → WhatsApp works for warm traffic. The missing proof is a workflow sample strong enough to become a mini-session.</p></article>
+      <article class="card"><span class="badge blue">conversion target</span><h3>1 sample + slot</h3><p>A booked builder walkthrough creates a reusable proof point for the next 3–5 warm DMs and the later Casagrand group post.</p></article>
+      <article class="card"><span class="badge warn">do not overbuild</span><h3>No broad post yet</h3><p>If no sample arrives in 24 hours, rewrite the invite around one narrower promise instead of sending more generic homepage links.</p></article>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel">
+        <h2>Workflow sample ask</h2>
+        <div id="workflow-sample-ask" class="copybox">Can you send one real workflow you want AI help with?
+
+Use this format:
+1) Current tool/stack:
+2) Input you start with:
+3) Output you want:
+4) What usually breaks or takes too long:
+5) What must stay private/safe:
+
+If it is concrete enough, I’ll turn it into a 20-minute builder walkthrough instead of keeping this as generic AI talk.</div>
+      </div>
+      <div class="panel">
+        <h2>Agentic mini-session ask</h2>
+        <div id="agentic-session-ask" class="copybox">The strongest theme so far is agentic workflows / developer productivity.
+
+Would a focused mini-session like “build a safe CLI/file-system memory agent” be useful?
+
+Reply with:
+- preferred stack,
+- one sample task,
+- whether you want live walkthrough, WhatsApp notes, or hands-on demo.</div>
+      </div>
+      <div class="panel">
+        <h2>Score note</h2>
+        <div id="sample-score" class="copybox">Responder: wa_••••____
+Workflow sample: missing / vague / concrete
+Stack captured: yes/no
+Safety boundary captured: yes/no
+Mini-session fit: high / medium / low
+Community-bot lead: yes/no
+Next action: ask one narrowing question / propose 20-min slot / park / route to bot-readiness
+Reusable proof: session title / anonymized before-after / prompt skeleton / checklist</div>
+      </div>
+      <div class="panel">
+        <h2>24-hour decision rule</h2>
+        <div class="metric"><span>1 concrete sample</span><strong>book 20-min slot</strong></div>
+        <div class="metric"><span>2 concrete samples</span><strong>pick one mini-session theme</strong></div>
+        <div class="metric"><span>0 samples</span><strong>rewrite narrower invite</strong></div>
+        <div class="metric"><span>group-owner signal</span><strong>community-bot readiness call</strong></div>
+        <p>After one booked session, send the next 3–5 warm DMs using the anonymized workflow title as the hook.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="shell">AI-operated · human-guided · workflow sample intake · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></div></footer>
+</body>
+</html>
