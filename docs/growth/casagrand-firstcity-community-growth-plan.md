@@ -120,6 +120,7 @@ This segment can become a direct demo for the community-bot platform.
 - `https://dabblewith.ai/casagrand-firstcity/office-hours/` — 45-minute repeat-loop page for collecting one real problem per resident, running practical office hours, posting recap copy, and routing community-bot owner/admin signals into design-partner calls.
 - `https://dabblewith.ai/casagrand-firstcity/flyer/` — printable/forwardable clubhouse noticeboard flyer with value prop, audience, what to bring/leave with, RSVP + `Casagrand flyer` source-tagged WhatsApp CTAs, mini share copy, privacy note, and print-friendly CSS.
 - `docs/growth/casagrand-firstcity-5dm-execution-packet.md` — current no-signal 5-DM execution packet with send mix, privacy-safe tracker, copy location, and 24-hour decision thresholds.
+- `docs/growth/casagrand-firstcity-5dm-manual-tracker.md` — privacy-safe JSON tracker format and report command for private 5-DM replies that do not enter the WhatsApp bot logs.
 - `docs/growth/casagrand-firstcity-first-10-testers-sprint-kit.md` — direct tester sprint before the broader IT-group post.
 - `docs/growth/casagrand-firstcity-resident-champion-kit.md` — three-champion social-proof layer with WhatsApp-ready asks, reply prompt, tracker note, thresholds, and community-bot referral path.
 - `docs/growth/casagrand-firstcity-admin-permission-pack.md` — admin/group permission asks, clubhouse/noticeboard approval copy, launch post, objection handling, and approval checklist.

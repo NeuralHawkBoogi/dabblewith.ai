@@ -14,6 +14,7 @@ const {
   isExcludedLast4,
   normalizeLast4List,
   redactPhone,
+  summarizeManualTracker,
   writeCampaignReport,
 } = require('./casagrand-campaign-report');
 
@@ -48,6 +49,24 @@ function appendJsonl(file, rows) {
   assert.deepStrictEqual(inferSlotVotes('Casagrand date poll - weekend morning. My topic vote is: job search'), ['weekend_morning']);
   assert.deepStrictEqual(inferSourceTags('Casagrand First City - I want to join AI by Doing'), ['casagrand_first_city']);
   assert.deepStrictEqual(inferSourceTags('Casagrand + AI agents'), ['untagged_casagrand']);
+
+  const manualSummary = summarizeManualTracker({
+    rows: [
+      { segment: 'career', last4: '1234', route: 'problem', problem: 'resume rewrite for product manager transition needs long trim', followUpSent: true, nextAction: 'ask date vote' },
+      { segment: 'admin', phoneLast4: '9876', route: 'bot_readiness', problem8Words: 'FAQ repeats in residents group', next: 'send readiness link' },
+      { segment: 'admin', last4: '9999', route: 'bot_readiness', problem: 'registrations and reminders repeat weekly' },
+      { segment: 'workflow', last4: '1111', route: 'topic_vote', problem: 'meeting summaries' },
+      { segment: 'workflow', last4: 'bad-full-number', route: 'problem', problem: 'should reject' },
+    ],
+  });
+  assert.strictEqual(manualSummary.rows, 4);
+  assert.strictEqual(manualSummary.rejectedRows, 1);
+  assert.strictEqual(manualSummary.concreteReplies, 4);
+  assert.strictEqual(manualSummary.botReadiness, 2);
+  assert.strictEqual(manualSummary.sanitizedRows[0].last4, '****1234');
+  assert.strictEqual(manualSummary.sanitizedRows[0].problem, 'resume rewrite for product manager transition needs long');
+  assert(manualSummary.nextAction.includes('Community Bot validation'));
+  assert(!JSON.stringify(manualSummary).includes('99999'), 'manual tracker leaked full phone');
 
   // Launch decision branches mirror the 24-hour launch brief thresholds.
   const clubhouse = computeLaunchDecision({
@@ -269,8 +288,15 @@ function appendJsonl(file, rows) {
   assert(!serialized.includes('919840382585'), 'raw phone leaked');
   assert(!serialized.includes('wamid.real.one'), 'raw message id leaked');
 
+  const manualTrackerPath = path.join(tmpDir(), 'manual-5dm.json');
+  fs.writeFileSync(manualTrackerPath, JSON.stringify({ rows: [
+    { segment: 'career', last4: '1234', route: 'problem', problem: 'interview prep for AI role', followUpSent: true },
+    { segment: 'admin', last4: '9876', route: 'bot_readiness', problem: 'FAQ repeats in group', nextAction: 'send design call' },
+    { segment: 'admin', last4: '9877', route: 'bot_readiness', problem: 'registration reminders repeat' },
+  ] }));
+
   const outputDir = tmpDir();
-  const result = writeCampaignReport({ runtimeDir, outputDir, date: '2026-05-20' });
+  const result = writeCampaignReport({ runtimeDir, outputDir, date: '2026-05-20', manualTracker: manualTrackerPath });
   assert(fs.existsSync(result.mdPath));
   assert(fs.existsSync(result.jsonPath));
   const markdown = fs.readFileSync(result.mdPath, 'utf8');
@@ -291,9 +317,15 @@ function appendJsonl(file, rows) {
   assert(markdown.includes('career: 1'));
   assert(markdown.includes('## Date/slot poll counts'));
   assert(markdown.includes('weekend_morning: 1'));
-  // Bottom "## Next action" must render the same text as the launch decision card.
+  assert(markdown.includes('## Manual 5-DM tracker outcomes'));
+  assert(markdown.includes('Rows accepted: 3'));
+  assert(markdown.includes('Bot readiness: 2'));
+  assert(markdown.includes('Prioritize Get a Community Bot validation'));
+  assert(markdown.includes('****1234'));
+  assert(!markdown.includes('919840382585'), 'raw phone leaked into markdown');
+  // Bottom "## Next action" must prefer the manual tracker when supplied.
   assert(markdown.includes(`- Next action: ${report.decision.nextAction}`));
-  assert(markdown.includes(`## Next action\n- ${report.decision.nextAction}\n`));
+  assert(markdown.includes('## Next action\n- Prioritize Get a Community Bot validation'));
 
   const excludedOutputDir = tmpDir();
   const excluded = writeCampaignReport({ runtimeDir, outputDir: excludedOutputDir, date: '2026-05-20', excludeLast4: ['2585'] });

@@ -66,6 +66,7 @@ function parseArgs(argv = process.argv.slice(2)) {
     outputDir: DEFAULT_OUTPUT_DIR,
     date: currentDate(),
     includeAll: false,
+    manualTracker: null,
     excludeLast4: normalizeLast4List(process.env.DABBLE_CASAGRAND_EXCLUDE_LAST4 || ''),
   };
   for (let i = 0; i < argv.length; i += 1) {
@@ -73,6 +74,7 @@ function parseArgs(argv = process.argv.slice(2)) {
     if (arg === '--runtime-dir') options.runtimeDir = argv[++i];
     else if (arg === '--output-dir') options.outputDir = argv[++i];
     else if (arg === '--date') options.date = argv[++i];
+    else if (arg === '--manual-tracker') options.manualTracker = argv[++i];
     else if (arg === '--exclude-last4') options.excludeLast4.push(...normalizeLast4List(argv[++i]));
     else if (arg === '--include-all') options.includeAll = true;
     else if (arg === '--help' || arg === '-h') options.help = true;
@@ -163,6 +165,69 @@ function tracksForTags(tags) {
   return [...new Set(tracks)];
 }
 
+function loadManualTracker(file) {
+  if (!file) return null;
+  const parsed = JSON.parse(fs.readFileSync(file, 'utf8'));
+  return summarizeManualTracker(parsed);
+}
+
+function summarizeManualTracker(input) {
+  const rows = Array.isArray(input) ? input : Array.isArray(input.rows) ? input.rows : [];
+  const allowedSegments = new Set(['career', 'workflow', 'admin', 'founder', 'student', 'community_bot', 'unknown']);
+  const allowedRoutes = new Set(['no_reply', 'problem', 'referral', 'topic_vote', 'admin_pain', 'bot_readiness', 'design_call', 'no_fit']);
+  const summary = {
+    rows: 0,
+    routeCounts: {},
+    segmentCounts: {},
+    concreteReplies: 0,
+    topicVotes: 0,
+    referrals: 0,
+    adminPains: 0,
+    botReadiness: 0,
+    designCalls: 0,
+    sanitizedRows: [],
+    rejectedRows: 0,
+  };
+
+  for (const row of rows) {
+    const last4 = String(row.last4 || row.phoneLast4 || '').replace(/\D/g, '');
+    if (!/^\d{4}$/.test(last4)) {
+      summary.rejectedRows += 1;
+      continue;
+    }
+    const segment = allowedSegments.has(String(row.segment || '').trim()) ? String(row.segment).trim() : 'unknown';
+    const route = allowedRoutes.has(String(row.route || '').trim()) ? String(row.route).trim() : 'no_reply';
+    const problem = normalizeText(row.problem || row.problem8Words || '').split(/\s+/).slice(0, 8).join(' ');
+    const nextAction = normalizeText(row.nextAction || row.next || '').slice(0, 80);
+    const followUpSent = Boolean(row.followUpSent || row.follow_up_sent);
+
+    summary.rows += 1;
+    summary.routeCounts[route] = (summary.routeCounts[route] || 0) + 1;
+    summary.segmentCounts[segment] = (summary.segmentCounts[segment] || 0) + 1;
+    if (['problem', 'referral', 'topic_vote', 'admin_pain', 'bot_readiness', 'design_call'].includes(route)) summary.concreteReplies += 1;
+    if (route === 'topic_vote') summary.topicVotes += 1;
+    if (route === 'referral') summary.referrals += 1;
+    if (route === 'admin_pain') summary.adminPains += 1;
+    if (route === 'bot_readiness') summary.botReadiness += 1;
+    if (route === 'design_call') summary.designCalls += 1;
+    summary.sanitizedRows.push({ segment, last4: `****${last4}`, route, problem, followUpSent, nextAction });
+  }
+
+  summary.nextAction = computeManualNextAction(summary);
+  return summary;
+}
+
+function computeManualNextAction(summary) {
+  if (!summary || summary.rows === 0) return null;
+  if (summary.designCalls >= 1 || summary.botReadiness >= 2 || summary.adminPains >= 2) {
+    return 'Prioritize Get a Community Bot validation: book bot-readiness/design-partner calls before another broad event post.';
+  }
+  if (summary.topicVotes >= 3) return 'Open the date/topic poll and prepare a small Casagrand session.';
+  if (summary.concreteReplies >= 2) return 'Send 5 more narrow DMs using the winning segment/problem language, then rerun the report.';
+  if (summary.concreteReplies === 1) return 'Send one sharper follow-up to the concrete responder and ask for one referral before scaling.';
+  return 'Rewrite the hook before another batch; the 5-DM manual tracker has no concrete replies yet.';
+}
+
 function summarizeStatuses(statusRows) {
   const counts = {};
   for (const row of statusRows) {
@@ -249,6 +314,7 @@ function buildCampaignReport(runtimeDir, options = {}) {
   const signals = readJsonl(path.join(runtimeDir, 'community-signals.jsonl'));
   const statusRows = readJsonl(path.join(runtimeDir, 'statuses.jsonl')).concat(readJsonl(path.join(runtimeDir, 'webhooks.jsonl')));
   const excludeLast4 = Array.isArray(options.excludeLast4) ? options.excludeLast4 : normalizeLast4List(options.excludeLast4 || '');
+  const manualTracker = loadManualTracker(options.manualTracker || null);
   const campaignSignals = signals.filter((signal) => options.includeAll || isCampaignText(signal.text));
   const syntheticCampaignSignals = campaignSignals.filter((signal) => isSyntheticSignal(signal));
   const ownerOrTestExcludedSignals = campaignSignals.filter((signal) => !isSyntheticSignal(signal) && isExcludedLast4(signal, excludeLast4));
@@ -311,6 +377,7 @@ function buildCampaignReport(runtimeDir, options = {}) {
     trackCounts,
     slotVotes,
     deliveryStatuses: summarizeStatuses(statusRows),
+    manualTracker,
     recentSignals: recentSignals.slice(-20).reverse(),
     nextAction,
     privacy: 'Phone numbers are redacted except last 4 digits; message IDs are hashed; tokens and raw webhook payloads are not included.',
@@ -321,6 +388,9 @@ function buildCampaignReport(runtimeDir, options = {}) {
   // The signal-count default above only applies if no decision is computed.
   if (report.decision && report.decision.nextAction) {
     report.nextAction = report.decision.nextAction;
+  }
+  if (manualTracker && manualTracker.nextAction) {
+    report.nextAction = manualTracker.nextAction;
   }
   return report;
 }
@@ -360,6 +430,8 @@ function renderMarkdown(report) {
   lines.push('## Delivery/status counts');
   appendCounts(lines, report.deliveryStatuses, 'No status events available.');
   lines.push('');
+  appendManualTracker(lines, report.manualTracker);
+  lines.push('');
   lines.push('## Recent campaign signals');
   if (report.recentSignals.length === 0) {
     lines.push('- None yet.');
@@ -377,6 +449,34 @@ function renderMarkdown(report) {
   lines.push('');
   lines.push(`Privacy: ${report.privacy}`);
   return `${lines.join('\n')}\n`;
+}
+
+
+function appendManualTracker(lines, tracker) {
+  lines.push('## Manual 5-DM tracker outcomes');
+  if (!tracker) {
+    lines.push('- No manual tracker file supplied.');
+    return;
+  }
+  lines.push(`- Rows accepted: ${tracker.rows}`);
+  if (tracker.rejectedRows) lines.push(`- Rows rejected: ${tracker.rejectedRows}`);
+  lines.push(`- Concrete replies: ${tracker.concreteReplies}`);
+  lines.push(`- Topic votes: ${tracker.topicVotes}`);
+  lines.push(`- Referrals: ${tracker.referrals}`);
+  lines.push(`- Admin pains: ${tracker.adminPains}`);
+  lines.push(`- Bot readiness: ${tracker.botReadiness}`);
+  lines.push(`- Design calls: ${tracker.designCalls}`);
+  lines.push(`- Manual next action: ${tracker.nextAction || 'none'}`);
+  lines.push('- Route counts:');
+  appendCounts(lines, tracker.routeCounts, 'No manual routes captured.');
+  lines.push('- Sanitized rows:');
+  if (!tracker.sanitizedRows.length) {
+    lines.push('  - None.');
+  } else {
+    for (const row of tracker.sanitizedRows) {
+      lines.push(`  - ${row.segment} · ${row.last4} · ${row.route} · problem="${row.problem || 'n/a'}" · follow_up=${row.followUpSent ? 'yes' : 'no'} · next="${row.nextAction || 'n/a'}"`);
+    }
+  }
 }
 
 function appendLaunchDecision(lines, decision) {
@@ -410,7 +510,7 @@ function writeCampaignReport(options = {}) {
   const runtimeDir = options.runtimeDir || DEFAULT_RUNTIME_DIR;
   const outputDir = options.outputDir || DEFAULT_OUTPUT_DIR;
   const date = options.date || currentDate();
-  const report = buildCampaignReport(runtimeDir, { includeAll: Boolean(options.includeAll), excludeLast4: options.excludeLast4 });
+  const report = buildCampaignReport(runtimeDir, { includeAll: Boolean(options.includeAll), excludeLast4: options.excludeLast4, manualTracker: options.manualTracker });
   fs.mkdirSync(outputDir, { recursive: true, mode: 0o700 });
   const base = `casagrand-firstcity-campaign-${date}`;
   const mdPath = path.join(outputDir, `${base}.md`);
@@ -422,7 +522,7 @@ function writeCampaignReport(options = {}) {
 
 function usage() {
   return [
-    'Usage: node scripts/casagrand-campaign-report.js [--runtime-dir DIR] [--output-dir DIR] [--date YYYY-MM-DD] [--exclude-last4 1234[,5678]] [--include-all]',
+    'Usage: node scripts/casagrand-campaign-report.js [--runtime-dir DIR] [--output-dir DIR] [--date YYYY-MM-DD] [--manual-tracker FILE] [--exclude-last4 1234[,5678]] [--include-all]',
     '',
     `Default runtime dir: ${DEFAULT_RUNTIME_DIR}`,
     `Default output dir: ${DEFAULT_OUTPUT_DIR}`,
@@ -458,6 +558,8 @@ module.exports = {
   inferSourceTags,
   inferSlotVotes,
   tracksForTags,
+  summarizeManualTracker,
+  computeManualNextAction,
   computeLaunchDecision,
   buildCampaignReport,
   renderMarkdown,

@@ -49,10 +49,16 @@ Never store full phone numbers, raw WhatsApp messages, private resident details,
 
 ## 24-hour decision rule
 
-Run:
+If all replies came through the bot, run:
 
 ```bash
 node scripts/casagrand-campaign-report.js --runtime-dir /home/clawdbot/dabblewith-whatsapp/data --output-dir reports/casagrand-firstcity --date 2026-05-25 --exclude-last4 2585
+```
+
+If replies happened in Boogi's private WhatsApp chat, first create a privacy-safe manual tracker using `docs/growth/casagrand-firstcity-5dm-manual-tracker.md`, then run:
+
+```bash
+node scripts/casagrand-campaign-report.js --runtime-dir /home/clawdbot/dabblewith-whatsapp/data --output-dir reports/casagrand-firstcity --date 2026-05-25 --exclude-last4 2585 --manual-tracker reports/casagrand-firstcity/manual-5dm-2026-05-25.json
 ```
 
 Then choose one:
@@ -73,3 +79,4 @@ Use the page copy buttons for:
 - group-owner/admin DM
 - referral ask
 - privacy-safe tracker
+- optional manual tracker import for private WhatsApp replies that never reach the bot
