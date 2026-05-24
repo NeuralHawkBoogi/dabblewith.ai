@@ -1,7 +1,7 @@
 # Homepage 5-contact outreach report
 
-Generated: 2026-05-24T16:15:00.000Z
-Window: 2026-05-24T05:00:00.000Z → 2026-05-24T16:15:00.000Z
+Generated: 2026-05-24T18:15:00.000Z
+Window: 2026-05-24T05:00:00.000Z → 2026-05-24T18:15:00.000Z
 Source: privacy-safe aggregate from community signal logs; phone numbers are redacted to last four digits only.
 
 ## Funnel read

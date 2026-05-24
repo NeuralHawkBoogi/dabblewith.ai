@@ -252,6 +252,34 @@ PY2
 git diff --check
 ```
 
+### Implemented — slice 11: second warm batch kit
+
+**Files added/updated:**
+- `homepage-outreach/second-batch/index.html`
+  - Mobile-ready copy kit for the next 3–5 warm homepage invites using proof language from the first 2/5 responders instead of a broad blast.
+  - Includes copy buttons for proof-led invite, privacy-safe tracker, group-owner/community-bot probe, and 24-hour decision rules.
+- `docs/growth/homepage-second-warm-batch-kit.md`
+  - Operator rule, copy blocks, tracker fields, privacy guardrails, and decision thresholds.
+- `docs/growth/homepage-outreach-2026-05-24-report.md`
+  - Refreshed through 2026-05-24T18:15:00Z; still 2/5 responders and 29 inbound messages, supporting a small second warm batch but not a broad post.
+
+**Validation commands:**
+```bash
+node --check scripts/homepage-outreach-report.js
+node scripts/homepage-outreach-report-smoke-test.js
+node scripts/homepage-outreach-report.js --since 2026-05-24T05:00:00Z --until 2026-05-24T18:15:00Z --target 5 --generated-at 2026-05-24T18:15:00Z --out docs/growth/homepage-outreach-2026-05-24-report.md
+node --check scripts/generate-blog.js
+node scripts/generate-blog.js
+python3 - <<'PY2'
+from html.parser import HTMLParser
+from pathlib import Path
+HTMLParser().feed(Path('homepage-outreach/second-batch/index.html').read_text())
+assert 'Send the next 3–5 invites with proof' in Path('homepage-outreach/second-batch/index.html').read_text()
+assert 'homepage-outreach/second-batch' in Path('sitemap.xml').read_text()
+PY2
+git diff --check
+```
+
 ### Next steps
 - [x] Add a WhatsApp CTA/setup-intent adapter that can create lead records when users ask for a similar bot.
 - [x] Wire the adapter into the runtime owner-intent path behind a disabled-by-default flag or explicit local-only capture mode.

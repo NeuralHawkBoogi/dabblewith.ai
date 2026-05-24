@@ -104,6 +104,10 @@ After 24 hours from a 5-contact batch:
 
 A refreshed privacy-safe report through 16:15 UTC still shows 2/5 unique WhatsApp responders and 29 inbound signal messages, with no additional responders beyond the early two. Use `https://dabblewith.ai/homepage-outreach/session-brief/` and `docs/growth/homepage-first5-session-brief.md` after collecting a workflow sample: confirm one 20-minute builder walkthrough, capture an anonymized recap, and only broaden outreach after a reusable proof point exists.
 
+## 2026-05-24 18:15 UTC second-batch rule
+
+The refreshed report through 18:15 UTC is unchanged at 2/5 responders and 29 inbound signals. Use `https://dabblewith.ai/homepage-outreach/second-batch/` and `docs/growth/homepage-second-warm-batch-kit.md` only for a small 3–5 person warm batch; keep broad Casagrand posting gated on one booked walkthrough or a stronger community-bot owner signal.
+
 ## Recommended next move from the 2026-05-24 first batch
 
 Early signals show the homepage → WhatsApp route works for at least 2 of 5 warm contacts. The next move is to convert those replies into one concrete builder session/call before broadening outreach.

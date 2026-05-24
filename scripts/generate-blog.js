@@ -148,6 +148,7 @@ const urls = [
   ['https://dabblewith.ai/homepage-outreach/follow-up-scorecard/', 'weekly', '0.8'],
   ['https://dabblewith.ai/homepage-outreach/workflow-sample-intake/', 'weekly', '0.8'],
   ['https://dabblewith.ai/homepage-outreach/session-brief/', 'weekly', '0.8'],
+  ['https://dabblewith.ai/homepage-outreach/second-batch/', 'weekly', '0.8'],
   ['https://dabblewith.ai/privacy/', 'monthly', '0.5'],
   ['https://dabblewith.ai/terms/', 'monthly', '0.5'],
   ...published.map(p => [slugUrl(p), 'monthly', '0.8', p.publishedAt])
