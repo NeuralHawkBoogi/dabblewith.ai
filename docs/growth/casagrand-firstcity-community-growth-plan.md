@@ -109,6 +109,7 @@ This segment can become a direct demo for the community-bot platform.
 - `https://dabblewith.ai/casagrand-firstcity/reboot-copy/` — low-signal reboot copy kit with problem-first DM variants for career, workflow, and community-bot group-owner hooks, plus source tags and 24-hour decision rules before another broad post.
 - `https://dabblewith.ai/casagrand-firstcity/first-10-outreach/` — mobile-ready 5-DM reboot sprint and first-10 outreach tracker with segment-specific DM copy, referral ask copy, privacy-safe reply logging, and 24-hour go/no-go thresholds before another broad WhatsApp post.
 - `https://dabblewith.ai/casagrand-firstcity/rsvp-follow-up/` — first-signal conversion kit to turn one RSVP into confirmation, two referrals, a slot/topic vote, and possible WhatsApp community-bot owner/admin signals.
+- `https://dabblewith.ai/casagrand-firstcity/5dm-execution/` — mobile-ready execution packet for the current no-signal route: 2 career DMs, 2 workflow DMs, 1 group-owner/admin DM, referral ask, privacy-safe tracker, and 24-hour rerun thresholds.
 - `https://dabblewith.ai/casagrand-firstcity/reply-router/` — mobile-ready follow-up router for classifying 5-DM reboot replies into attendee, referral, group-owner/community-bot, or no-fit paths with copyable next messages.
 - `https://dabblewith.ai/casagrand-firstcity/community-bot/` — local design-partner intake page for Casagrand groups that may want a WhatsApp AI host.
 - `https://dabblewith.ai/casagrand-firstcity/bot-readiness/` — 10-minute group-owner readiness audit and scorecard for qualifying community-bot design partners from Casagrand.
@@ -118,6 +119,7 @@ This segment can become a direct demo for the community-bot platform.
 - `https://dabblewith.ai/casagrand-firstcity/date-poll/` — source-tagged slot/topic voting page to convert first-post interest into a locked clubhouse date without manual spreadsheet tracking.
 - `https://dabblewith.ai/casagrand-firstcity/office-hours/` — 45-minute repeat-loop page for collecting one real problem per resident, running practical office hours, posting recap copy, and routing community-bot owner/admin signals into design-partner calls.
 - `https://dabblewith.ai/casagrand-firstcity/flyer/` — printable/forwardable clubhouse noticeboard flyer with value prop, audience, what to bring/leave with, RSVP + `Casagrand flyer` source-tagged WhatsApp CTAs, mini share copy, privacy note, and print-friendly CSS.
+- `docs/growth/casagrand-firstcity-5dm-execution-packet.md` — current no-signal 5-DM execution packet with send mix, privacy-safe tracker, copy location, and 24-hour decision thresholds.
 - `docs/growth/casagrand-firstcity-first-10-testers-sprint-kit.md` — direct tester sprint before the broader IT-group post.
 - `docs/growth/casagrand-firstcity-resident-champion-kit.md` — three-champion social-proof layer with WhatsApp-ready asks, reply prompt, tracker note, thresholds, and community-bot referral path.
 - `docs/growth/casagrand-firstcity-admin-permission-pack.md` — admin/group permission asks, clubhouse/noticeboard approval copy, launch post, objection handling, and approval checklist.
