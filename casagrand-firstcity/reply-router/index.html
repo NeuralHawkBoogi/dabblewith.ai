@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#060912" />
+  <title>Casagrand Reply Router — dabblewith.ai</title>
+  <meta name="description" content="A mobile-ready reply router for turning Casagrand reboot DM replies into event RSVPs, referral asks, group-owner design calls, and privacy-safe campaign report inputs." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://dabblewith.ai/casagrand-firstcity/reply-router/" />
+  <meta property="og:site_name" content="dabblewith.ai" />
+  <meta property="og:title" content="Casagrand Reply Router" />
+  <meta property="og:description" content="Route every Casagrand reboot reply into the next best action without losing community-bot validation signal." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dabblewith.ai/casagrand-firstcity/reply-router/" />
+  <meta property="og:image" content="https://dabblewith.ai/app-icon-1024.png" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7473LZQGX2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7473LZQGX2');
+    function copyText(id, label) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var text = el.innerText.trim();
+      navigator.clipboard.writeText(text).then(function () {
+        if (typeof gtag === 'function') {
+          gtag('event', 'copy_click', {
+            cta_id: 'casagrand_reply_router_' + id,
+            cta_source: 'casagrand_reply_router',
+            link_text: label || id,
+            page_path: location.pathname
+          });
+        }
+        var btn = document.querySelector('[data-copy-target="' + id + '"]');
+        if (btn) {
+          var old = btn.innerText;
+          btn.innerText = 'Copied';
+          setTimeout(function(){ btn.innerText = old; }, 1400);
+        }
+      });
+    }
+  </script>
+  <style>
+    :root{--bg:#060912;--panel:rgba(16,27,48,.94);--line:rgba(116,255,219,.24);--hard:#74ffdb;--text:#f2fbff;--muted:#9eb0c2;--green:#74ff7b;--blue:#58a6ff;--amber:#ffcc66;--red:#ff7b8a;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--text);background:linear-gradient(rgba(116,255,219,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(116,255,219,.055) 1px,transparent 1px),radial-gradient(circle at 15% 0%,rgba(88,166,255,.22),transparent 30rem),radial-gradient(circle at 92% 8%,rgba(116,255,123,.16),transparent 28rem),var(--bg);background-size:42px 42px,42px 42px,auto,auto,auto}a{color:inherit}.shell{width:min(1120px,calc(100% - 30px));margin:0 auto}nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0}.logo{text-decoration:none;font-size:30px;font-weight:900;letter-spacing:-.055em}.nav{display:flex;gap:10px;flex-wrap:wrap}.nav a{border:1px solid var(--line);border-radius:999px;padding:9px 12px;text-decoration:none;color:var(--muted);background:rgba(255,255,255,.03)}.hero,.panel,.card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(16,27,48,.96),rgba(8,13,25,.92));border-radius:24px;box-shadow:0 24px 90px rgba(0,0,0,.45)}.hero{padding:clamp(26px,5vw,52px);margin:18px auto 26px}.eyebrow{width:fit-content;color:var(--hard);border:1px solid var(--hard);background:rgba(116,255,219,.08);border-radius:999px;padding:9px 12px;font:12px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}h1{font-size:clamp(42px,7vw,82px);line-height:.9;letter-spacing:-.07em;margin:24px 0 18px}h2{font-size:clamp(28px,4.2vw,46px);line-height:.96;letter-spacing:-.055em;margin:0 0 16px}h3{font-size:22px;margin:0 0 8px}.lead{font-size:clamp(18px,2.2vw,24px);color:#d7e9f7;line-height:1.45;max-width:900px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.two{grid-template-columns:repeat(2,1fr)}.card,.panel{padding:22px}.muted,p,li{color:var(--muted);line-height:1.65}.badge{display:inline-flex;border:1px solid rgba(116,255,123,.45);color:var(--green);background:rgba(116,255,123,.08);padding:5px 9px;border-radius:999px;font:12px/1.2 ui-monospace,Menlo,monospace}.badge.blue{color:var(--blue);border-color:rgba(88,166,255,.45);background:rgba(88,166,255,.08)}.badge.warn{color:var(--amber);border-color:rgba(255,204,102,.45);background:rgba(255,204,102,.08)}.badge.red{color:var(--red);border-color:rgba(255,123,138,.45);background:rgba(255,123,138,.08)}section{padding:30px 0}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--hard);color:var(--hard);background:rgba(116,255,219,.07);border-radius:14px;padding:12px 15px;text-decoration:none;font-weight:850;cursor:pointer}.btn.primary{color:#04120e;background:var(--green);border-color:var(--green)}button.btn{font:inherit}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.copybox{white-space:pre-wrap;border:1px solid rgba(116,255,219,.18);border-radius:18px;background:rgba(0,0,0,.28);padding:16px;color:#d9f6ff;font:14px/1.65 ui-monospace,Menlo,monospace}.metric{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(116,255,219,.12);padding:12px 0;font:13px/1.25 ui-monospace,Menlo,monospace}.metric:last-child{border-bottom:0}.slot{display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:start;border:1px solid rgba(116,255,219,.14);border-radius:18px;padding:14px;background:rgba(255,255,255,.025)}.slot strong{font:16px/1.25 ui-monospace,Menlo,monospace;color:var(--hard)}footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0 34px;margin-top:36px;font:13px/1.4 ui-monospace,Menlo,monospace}@media(max-width:860px){.grid,.two{grid-template-columns:1fr}.nav{display:none}.slot{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/casagrand-firstcity/">Pilot</a><a href="/casagrand-firstcity/first-10-outreach/">5-DM sprint</a><a href="/casagrand-firstcity/reboot-copy/">Reboot copy</a><a href="/casagrand-firstcity/bot-readiness/">Bot readiness</a><a href="/casagrand-firstcity/design-partner-call/">Design call</a></div></nav>
+
+  <main>
+    <section class="hero shell">
+      <div class="eyebrow">Casagrand reply handling</div>
+      <h1>Turn each reboot reply into the next growth signal.</h1>
+      <p class="lead">After the 5 narrow DMs, the win is not “nice reply”. The win is routing every response into one of four measurable paths: RSVP/topic vote, referral, group-owner design call, or positioning rewrite. This page keeps Boogi from manually improvising follow-ups on mobile.</p>
+      <div class="actions">
+        <button class="btn primary" data-copy-target="router-card" onclick="copyText('router-card','router card')">Copy router card</button>
+        <button class="btn" data-copy-target="attendee-followup" onclick="copyText('attendee-followup','attendee follow-up')">Copy attendee follow-up</button>
+        <button class="btn" data-copy-target="referral-followup" onclick="copyText('referral-followup','referral follow-up')">Copy referral follow-up</button>
+        <button class="btn" data-copy-target="owner-followup" onclick="copyText('owner-followup','group-owner follow-up')">Copy group-owner follow-up</button>
+        <button class="btn" data-copy-target="no-fit-followup" onclick="copyText('no-fit-followup','no-fit follow-up')">Copy no-fit follow-up</button>
+      </div>
+    </section>
+
+    <section class="shell grid three">
+      <article class="card"><span class="badge red">current state</span><h3>Low-signal reboot</h3><p>Use this only after the 5-DM route. Do not broaden to the IT group until replies create evidence.</p></article>
+      <article class="card"><span class="badge">primary metric</span><h3>Qualified replies</h3><p>Count concrete use cases, people willing to attend, referrals, and group-owner/admin signals.</p></article>
+      <article class="card"><span class="badge blue">product validation</span><h3>Community-bot pull</h3><p>Any group-owner pain around repeated questions, registrations, or announcements should route to bot readiness/design call.</p></article>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel">
+        <h2>Reply router</h2>
+        <div class="slot"><strong>Interested</strong><p>Ask for one specific problem + push to RSVP/topic vote. Tag as event interest.</p></div>
+        <div class="slot"><strong>Maybe</strong><p>Ask one sharper multiple-choice question; do not sell. Tag the topic if they answer.</p></div>
+        <div class="slot"><strong>Referral</strong><p>Ask for one intro or one resident who has the problem. Tag as warm referral.</p></div>
+        <div class="slot"><strong>Group owner</strong><p>Send bot-readiness audit first, then design-partner call only if pain is concrete.</p></div>
+        <div class="slot"><strong>No fit</strong><p>Thank them and ask what would make it useful. Use this to rewrite positioning.</p></div>
+      </div>
+      <div class="panel">
+        <h2>Decision thresholds</h2>
+        <div class="metric"><span>0 replies after 24h</span><strong>rewrite hook</strong></div>
+        <div class="metric"><span>1 reply, weak detail</span><strong>ask one specific follow-up</strong></div>
+        <div class="metric"><span>2+ concrete use cases</span><strong>send 5 more DMs</strong></div>
+        <div class="metric"><span>3+ topic votes</span><strong>create date poll</strong></div>
+        <div class="metric"><span>2+ group-owner pains</span><strong>book design calls</strong></div>
+        <div class="metric"><span>10+ interested residents</span><strong>lock clubhouse slot</strong></div>
+        <p>After 24 hours, run the report with owner/test exclusion and update the launch board decision.</p>
+        <div class="copybox">node scripts/casagrand-campaign-report.js --runtime-dir /home/clawdbot/dabblewith-whatsapp/data --output-dir reports/casagrand-firstcity --exclude-last4 2585 --date 2026-05-24</div>
+      </div>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel">
+        <h2>Copyable router card</h2>
+        <div id="router-card" class="copybox">Casagrand reboot reply router — 2026-05-24
+
+For every reply, classify only one primary route:
+1. Event attendee: has a career/workflow/coding/student problem and may attend.
+2. Referral source: knows another resident who has the problem.
+3. Group owner/admin: has repeated WhatsApp questions, registrations, announcements, or support load.
+4. No fit/objection: says not useful, too busy, unclear, or wrong topic.
+
+Log only privacy-safe fields:
+- Segment:
+- Phone last4 only:
+- Route:
+- Concrete problem in 8 words:
+- Follow-up sent:
+- Next action/date:
+
+Never paste private messages, full phone numbers, tokens, or sensitive resident details into public docs.</div>
+      </div>
+      <div class="panel">
+        <h2>Attendee follow-up</h2>
+        <div id="attendee-followup" class="copybox">Thanks — that’s exactly the kind of real problem I’m trying to collect.
+
+Quick follow-up: if I run a free practical AI session for Casagrand residents, which format would you actually attend?
+
+1. Job search / interview / resume help
+2. Office productivity workflows
+3. Build a small AI agent/workflow
+4. Founder/freelancer sales/admin automation
+5. Student projects / learning roadmap
+
+You can also vote here: https://dabblewith.ai/casagrand-firstcity/date-poll/</div>
+      </div>
+      <div class="panel">
+        <h2>Referral follow-up</h2>
+        <div id="referral-followup" class="copybox">This is useful. Do you know one Casagrand resident who would genuinely benefit from a practical AI session like this?
+
+If yes, please intro me, or forward this private tester link: https://dabblewith.ai/casagrand-firstcity/first-10-outreach/
+
+I’m keeping it small first so the first public post is based on real resident problems, not generic AI hype.</div>
+      </div>
+      <div class="panel">
+        <h2>Group-owner follow-up</h2>
+        <div id="owner-followup" class="copybox">That sounds like a good fit for the community-bot experiment.
+
+Before I suggest anything, can you do this 10-minute readiness check? https://dabblewith.ai/casagrand-firstcity/bot-readiness/
+
+If the problem is real — repeated questions, registrations, announcements, FAQs, or routing to admins — I can do a 20-minute design-partner call and map what a lightweight WhatsApp AI host should/shouldn’t do.</div>
+      </div>
+      <div class="panel">
+        <h2>No-fit follow-up</h2>
+        <div id="no-fit-followup" class="copybox">Fair — thanks for being direct.
+
+One quick question so I don’t spam the group with the wrong angle: what would make this genuinely useful for Casagrand residents?
+
+A. Better career/job search angle
+B. Real office productivity examples
+C. Student/project track
+D. Founder/freelancer use cases
+E. Community/resident-association utility
+F. Not useful right now</div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="shell">AI-operated · human-guided · Casagrand reply router · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></div></footer>
+</body>
+</html>
