@@ -119,9 +119,34 @@ node market-validation/interviews-smoke-test.js
 git diff --check
 ```
 
+### Implemented — slice 6: homepage warm-outreach response report
+
+**Files added:**
+- `scripts/homepage-outreach-report.js`
+  - Reads WhatsApp community signal JSONL logs for a bounded outreach window.
+  - Emits a privacy-safe Markdown report with target response rate, unique responders, aggregate themes, responder-stage routing, and next actions.
+  - Redacts phone numbers to last four digits only and does not include raw message IDs, webhook payloads, tokens, or display names.
+- `scripts/homepage-outreach-report-smoke-test.js`
+  - Covers aggregate response rate, theme detection, stage routing, and privacy leakage checks.
+- `docs/growth/homepage-first5-response-loop.md`
+  - Converts the first 5 warm homepage-forward replies into builder-call, mini-session, qualification, or community-bot readiness routes.
+- `docs/growth/homepage-outreach-2026-05-24-report.md`
+  - Captures the first 5-contact outreach read: 2/5 WhatsApp responders, 29 inbound signal messages, and a next move to convert first responders into one concrete builder session/call before broadening outreach.
+
+**Validation commands:**
+```bash
+node --check scripts/homepage-outreach-report.js
+node scripts/homepage-outreach-report-smoke-test.js
+node scripts/homepage-outreach-report.js --since 2026-05-24T05:00:00Z --until 2026-05-24T06:15:00Z --target 5 --out reports/homepage-outreach-2026-05-24.md
+node --check scripts/generate-blog.js
+node --check scripts/google-analytics-report.js
+git diff --check
+```
+
 ### Next steps
 - [x] Add a WhatsApp CTA/setup-intent adapter that can create lead records when users ask for a similar bot.
 - [x] Wire the adapter into the runtime owner-intent path behind a disabled-by-default flag or explicit local-only capture mode.
 - [x] Add admin report/export for inbound design-partner leads.
 - [x] Add privacy-safe interview findings tracker and segment decision-gate report.
+- [x] Add homepage warm-outreach response report for first 5-contact validation.
 - [ ] Run 10 interviews and record segment findings before building heavy self-serve infrastructure.
