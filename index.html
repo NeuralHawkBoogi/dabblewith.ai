@@ -28,7 +28,24 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'G-7473LZQGX2');
+    function analyticsPage() {
+      try {
+        var url = new URL(location.href);
+        ['fbclid', 'gclid', 'msclkid', 'gbraid', 'wbraid', 'gtm_latency', 'gtm_debug', '_gl', '_ga'].forEach(function(param) {
+          url.searchParams.delete(param);
+        });
+        var cleanPath = url.pathname + url.search;
+        return { path: cleanPath, location: url.origin + cleanPath };
+      } catch (_) {
+        return { path: location.pathname, location: location.origin + location.pathname };
+      }
+    }
+
+    var analyticsPageView = analyticsPage();
+    gtag('config', 'G-7473LZQGX2', {
+      page_path: analyticsPageView.path,
+      page_location: analyticsPageView.location
+    });
     document.addEventListener('click', function(event) {
       var link = event.target && event.target.closest ? event.target.closest('a') : null;
       if (!link || typeof gtag !== 'function') return;
@@ -36,12 +53,13 @@
       var text = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 80);
       var isCta = /wa\.me|whatsapp|#join|\/community-bot\/?|\/casagrand-firstcity\/rsvp\/?|utm_/.test(href) || /join|rsvp|start|signal|community bot|whatsapp/i.test(text);
       if (!isCta) return;
+      var clickPage = analyticsPage();
       gtag('event', 'cta_click', {
         link_url: link.href || href,
         link_text: text,
         cta_id: link.getAttribute('data-cta') || '',
-        cta_source: link.getAttribute('data-source') || location.pathname,
-        page_path: location.pathname
+        cta_source: link.getAttribute('data-source') || clickPage.path,
+        page_path: clickPage.path
       });
     });
   </script>
