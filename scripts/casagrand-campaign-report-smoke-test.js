@@ -104,7 +104,7 @@ function appendJsonl(file, rows) {
   assert.strictEqual(typeof clubhouse.route, 'string');
   assert.strictEqual(typeof clubhouse.nextAction, 'string');
   assert(Array.isArray(clubhouse.rationale) && clubhouse.rationale.length > 0);
-  assert.strictEqual(clubhouse.thresholds.length, 4);
+  assert.strictEqual(clubhouse.thresholds.length, 5);
   assert(clubhouse.thresholds.some((t) => t.name === 'clubhouse_intro' && t.met === true));
   assert(clubhouse.rationale.some((r) => r.includes('Top topic cluster: job_search')));
   assert(clubhouse.rationale.some((r) => r.includes('Top source tag: tester_career')));
@@ -127,6 +127,19 @@ function appendJsonl(file, rows) {
   });
   assert.strictEqual(designPartner.stage, 'design_partner_calls');
   assert(designPartner.thresholds.some((t) => t.name === 'design_partner_calls' && t.met === true && t.value === 3));
+
+  const firstResponder = computeLaunchDecision({
+    totals: { uniqueUsers: 1, campaignSignals: 1 },
+    topics: { coding_assistant: 1, student_projects: 1, event_interest: 1 },
+    sourceTags: { untagged_casagrand: 1 },
+    trackCounts: {},
+  });
+  assert.strictEqual(firstResponder.stage, 'single_responder_conversion');
+  assert.strictEqual(firstResponder.route, 'Convert first responder');
+  assert.strictEqual(firstResponder.confidence, 'low');
+  assert(firstResponder.nextAction.includes('/casagrand-firstcity/qa-demo-follow-up/'));
+  assert(firstResponder.nextAction.includes('one referral before any broad post'));
+  assert(firstResponder.thresholds.some((t) => t.name === 'single_responder_conversion' && t.met === true));
 
   const reposition = computeLaunchDecision({
     totals: { uniqueUsers: 2, campaignSignals: 2 },
@@ -295,7 +308,7 @@ function appendJsonl(file, rows) {
   assert.strictEqual(typeof report.decision.route, 'string');
   assert.strictEqual(typeof report.decision.nextAction, 'string');
   assert(Array.isArray(report.decision.rationale) && report.decision.rationale.length > 0);
-  assert.strictEqual(report.decision.thresholds.length, 4);
+  assert.strictEqual(report.decision.thresholds.length, 5);
   assert(report.decision.rationale.some((r) => r.includes('Top source tag:')));
   // The bottom-of-report next action must match the launch decision's next action
   // so the markdown does not present two contradictory next steps.

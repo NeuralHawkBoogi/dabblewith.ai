@@ -341,11 +341,15 @@ function computeLaunchDecision(report) {
   const topTopic = topEntry(report.topics);
   const topSourceTag = topEntry(report.sourceTags);
 
+  const firstResponderTopics = new Set(['coding_assistant', 'student_projects', 'event_interest', 'job_search', 'office_productivity', 'founder_tools']);
+  const hasConcreteFirstResponderTopic = Boolean(topTopic && firstResponderTopics.has(topTopic.key));
+
   const thresholds = [
     { name: 'clubhouse_intro', test: '>=25 unique users', met: uniqueUsers >= 25, value: uniqueUsers },
     { name: 'build_sprint', test: '10-24 unique users', met: uniqueUsers >= 10 && uniqueUsers <= 24, value: uniqueUsers },
     { name: 'design_partner_calls', test: '>=2 community_bot signals/tracks', met: communityBotSignals >= 2, value: communityBotSignals },
-    { name: 'first10_tester_dms', test: '<10 weak/no signals', met: uniqueUsers < 10, value: uniqueUsers },
+    { name: 'single_responder_conversion', test: '1-2 users with a concrete topic', met: uniqueUsers >= 1 && uniqueUsers <= 2 && communityBotSignals < 2 && hasConcreteFirstResponderTopic, value: uniqueUsers },
+    { name: 'first10_tester_dms', test: '<10 weak/no signals', met: uniqueUsers < 10 && communityBotSignals < 2 && !hasConcreteFirstResponderTopic, value: uniqueUsers },
   ];
 
   const rationale = [
@@ -377,6 +381,12 @@ function computeLaunchDecision(report) {
     confidence = 'medium';
     nextAction = 'Use /casagrand-firstcity/design-partner-call/ and qualify group admins for design-partner calls.';
     rationale.push('2+ community_bot signals/tracks point to paid-product validation over a public event.');
+  } else if (uniqueUsers >= 1 && uniqueUsers <= 2 && hasConcreteFirstResponderTopic) {
+    stage = 'single_responder_conversion';
+    route = 'Convert first responder';
+    confidence = 'low';
+    nextAction = 'Use /casagrand-firstcity/qa-demo-follow-up/ or /casagrand-firstcity/first-responder/ to collect one concrete workflow sample, one slot/topic vote, and one referral before any broad post.';
+    rationale.push('A small but concrete first signal is more useful as a conversion/referral loop than as justification for a broad post.');
   } else {
     stage = 'first10_tester_dms';
     route = 'Do not force event';
