@@ -11,6 +11,7 @@ The current Casagrand route depends on five private DMs before any broad IT-grou
 
 Only store:
 
+- sprint start/rerun due timestamps
 - segment
 - phone last4 only
 - route
@@ -29,12 +30,17 @@ node scripts/casagrand-campaign-report.js \
   --write-manual-tracker-template reports/casagrand-firstcity/manual-5dm-2026-05-25.json
 ```
 
-The command writes exactly five privacy-safe rows: 2 career, 2 workflow, and 1 admin. It uses `last4` placeholders only and never includes full phone numbers, raw messages, resident names, or message IDs.
+The command writes privacy-safe sprint metadata plus exactly five rows: 2 career, 2 workflow, and 1 admin. It uses `last4` placeholders only and never includes full phone numbers, raw messages, resident names, or message IDs. Fill `sprintStartedAt` and `reportRerunDueAt` in ISO format after the five DMs are sent so the report can show whether the 24-hour rerun is due.
 
 Starter shape:
 
 ```json
 {
+  "meta": {
+    "sprintStartedAt": "",
+    "reportRerunDueAt": "",
+    "notes": "Fill timestamps in ISO format after the 5 DMs are sent. Store only privacy-safe notes."
+  },
   "rows": [
     {
       "segment": "career",
@@ -114,10 +120,19 @@ node scripts/casagrand-campaign-report.js \
 
 ## Decision mapping
 
-When a manual tracker is supplied, the report adds a `Manual 5-DM tracker outcomes` section and lets manual evidence override the bottom next action:
+When a manual tracker is supplied, the report adds a `Manual 5-DM tracker outcomes` section, shows the sprint start/rerun-due timestamps when present, marks the rerun as `due now` or `not due yet`, and lets manual evidence override the bottom next action:
 
 - `0` concrete replies → rewrite the hook before another batch.
 - `1` concrete reply → ask one sharper follow-up and one referral.
 - `2+` concrete replies → send five more narrow DMs using the winning language.
 - `3+` topic votes → open the date/topic poll and prepare a small session.
 - `2+` admin pains / bot-readiness signals, or `1+` design call → prioritize Get a Community Bot validation calls.
+
+## 24-hour rerun discipline
+
+After sending the five private DMs, fill:
+
+- `meta.sprintStartedAt` with the send timestamp.
+- `meta.reportRerunDueAt` with exactly 24 hours later.
+
+The campaign report will then render the due status in the manual tracker section. This prevents the campaign from drifting into more asset creation when the next real growth action is to rerun the report from actual replies.

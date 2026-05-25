@@ -54,6 +54,8 @@ function appendJsonl(file, rows) {
   assert.deepStrictEqual(inferSourceTags('Casagrand + AI agents'), ['untagged_casagrand']);
 
   const template = manualTrackerTemplate();
+  assert.strictEqual(template.meta.sprintStartedAt, '');
+  assert.strictEqual(template.meta.reportRerunDueAt, '');
   assert.strictEqual(template.rows.length, 5);
   assert.deepStrictEqual(template.rows.map((row) => row.segment), ['career', 'career', 'workflow', 'workflow', 'admin']);
   assert(template.rows.every((row) => /^\d{4}$/.test(row.last4)), 'template must use last4 placeholders only');
@@ -67,6 +69,10 @@ function appendJsonl(file, rows) {
   const writtenTemplate = JSON.parse(fs.readFileSync(templatePath, 'utf8'));
   assert.deepStrictEqual(writtenTemplate, template);
   assert.strictEqual(summarizeManualTracker(writtenTemplate).rows, 5);
+  const timedSummary = summarizeManualTracker({ meta: { sprintStartedAt: '2026-05-25T04:00:00Z', reportRerunDueAt: '2000-01-01T00:00:00Z' }, rows: writtenTemplate.rows });
+  assert.strictEqual(timedSummary.sprintStartedAt, '2026-05-25T04:00:00.000Z');
+  assert.strictEqual(timedSummary.reportRerunDueAt, '2000-01-01T00:00:00.000Z');
+  assert.strictEqual(timedSummary.reportRerunDue, true);
 
   const manualSummary = summarizeManualTracker({
     rows: [
@@ -307,7 +313,7 @@ function appendJsonl(file, rows) {
   assert(!serialized.includes('wamid.real.one'), 'raw message id leaked');
 
   const manualTrackerPath = path.join(tmpDir(), 'manual-5dm.json');
-  fs.writeFileSync(manualTrackerPath, JSON.stringify({ rows: [
+  fs.writeFileSync(manualTrackerPath, JSON.stringify({ meta: { sprintStartedAt: '2026-05-20T02:00:00Z', reportRerunDueAt: '2000-01-01T00:00:00Z' }, rows: [
     { segment: 'career', last4: '1234', route: 'problem', problem: 'interview prep for AI role', followUpSent: true },
     { segment: 'admin', last4: '9876', route: 'bot_readiness', problem: 'FAQ repeats in group', nextAction: 'send design call' },
     { segment: 'admin', last4: '9877', route: 'bot_readiness', problem: 'registration reminders repeat' },
@@ -337,6 +343,8 @@ function appendJsonl(file, rows) {
   assert(markdown.includes('weekend_morning: 1'));
   assert(markdown.includes('## Manual 5-DM tracker outcomes'));
   assert(markdown.includes('Rows accepted: 3'));
+  assert(markdown.includes('Sprint started: 2026-05-20T02:00:00.000Z'));
+  assert(markdown.includes('Report rerun due: 2000-01-01T00:00:00.000Z (due now)'));
   assert(markdown.includes('Bot readiness: 2'));
   assert(markdown.includes('Prioritize Get a Community Bot validation'));
   assert(markdown.includes('****1234'));

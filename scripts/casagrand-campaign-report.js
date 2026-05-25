@@ -169,6 +169,11 @@ function tracksForTags(tags) {
 
 function manualTrackerTemplate() {
   return {
+    meta: {
+      sprintStartedAt: '',
+      reportRerunDueAt: '',
+      notes: 'Fill timestamps in ISO format after the 5 DMs are sent. Store only privacy-safe notes.',
+    },
     rows: [
       {
         segment: 'career',
@@ -230,9 +235,13 @@ function loadManualTracker(file) {
 
 function summarizeManualTracker(input) {
   const rows = Array.isArray(input) ? input : Array.isArray(input.rows) ? input.rows : [];
+  const meta = (!Array.isArray(input) && input && typeof input === 'object') ? input.meta || {} : {};
   const allowedSegments = new Set(['career', 'workflow', 'admin', 'founder', 'student', 'community_bot', 'unknown']);
   const allowedRoutes = new Set(['no_reply', 'problem', 'referral', 'topic_vote', 'admin_pain', 'bot_readiness', 'design_call', 'no_fit']);
   const summary = {
+    sprintStartedAt: safeIso(meta.sprintStartedAt),
+    reportRerunDueAt: safeIso(meta.reportRerunDueAt),
+    reportRerunDue: false,
     rows: 0,
     routeCounts: {},
     segmentCounts: {},
@@ -245,6 +254,10 @@ function summarizeManualTracker(input) {
     sanitizedRows: [],
     rejectedRows: 0,
   };
+
+  if (summary.reportRerunDueAt) {
+    summary.reportRerunDue = Date.parse(summary.reportRerunDueAt) <= Date.now();
+  }
 
   for (const row of rows) {
     const last4 = String(row.last4 || row.phoneLast4 || '').replace(/\D/g, '');
@@ -272,6 +285,14 @@ function summarizeManualTracker(input) {
 
   summary.nextAction = computeManualNextAction(summary);
   return summary;
+}
+
+function safeIso(value) {
+  const normalized = normalizeText(value);
+  if (!normalized) return null;
+  const time = Date.parse(normalized);
+  if (!Number.isFinite(time)) return null;
+  return new Date(time).toISOString();
 }
 
 function computeManualNextAction(summary) {
@@ -517,6 +538,8 @@ function appendManualTracker(lines, tracker) {
   }
   lines.push(`- Rows accepted: ${tracker.rows}`);
   if (tracker.rejectedRows) lines.push(`- Rows rejected: ${tracker.rejectedRows}`);
+  if (tracker.sprintStartedAt) lines.push(`- Sprint started: ${tracker.sprintStartedAt}`);
+  if (tracker.reportRerunDueAt) lines.push(`- Report rerun due: ${tracker.reportRerunDueAt} (${tracker.reportRerunDue ? 'due now' : 'not due yet'})`);
   lines.push(`- Concrete replies: ${tracker.concreteReplies}`);
   lines.push(`- Topic votes: ${tracker.topicVotes}`);
   lines.push(`- Referrals: ${tracker.referrals}`);

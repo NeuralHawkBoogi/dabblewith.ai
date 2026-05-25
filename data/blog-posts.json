@@ -1044,5 +1044,118 @@
       ],
       "artifact": "Practical demo rubric: real job, real input, visible failure, review criteria, revised output, reusable artifact, transfer lesson."
     }
+  },
+  {
+    "slug": "ai-workshop-intake-template-for-teams",
+    "title": "AI Workshop Intake Template for Teams",
+    "description": "A practical intake playbook for turning vague AI workshop interest into focused hands-on sessions with real workflows and review gates.",
+    "keywords": [
+      "AI workshop intake template",
+      "practical AI workshops",
+      "hands-on AI learning",
+      "AI workflow workshop"
+    ],
+    "publishedAt": "2026-05-25",
+    "status": "published",
+    "excerpt": "A good AI workshop starts before the session: with the right intake, real tasks, safe sample data, and a clear artifact to build.",
+    "sections": [
+      [
+        "Why most AI workshops start too late",
+        "Many AI workshops begin with a slide deck and a tool demo. That feels efficient, but it skips the highest-leverage step: understanding what participants actually need to do after the workshop. A founder wants faster customer research. A sales team wants better account prep. A community admin wants cleaner event coordination. A student wants project help. If the facilitator discovers those jobs only during the session, the workshop becomes generic. The intake process is where a practical AI workshop becomes specific enough to matter."
+      ],
+      [
+        "The intake goal",
+        "The goal is not to collect a long survey. The goal is to identify repeatable workflows, safe example material, participant skill level, and the final artifact the session should produce. A strong intake should answer five questions: who is attending, what recurring task wastes time, what input can safely be used, what output would be useful tomorrow, and what risk requires human review. If those answers are clear, the workshop can become hands-on instead of performative."
+      ],
+      [
+        "The five-question template",
+        "Use this short intake before every practical AI workshop. 1) What is one task you repeat weekly that feels slow, messy, or inconsistent? 2) What raw material does the task start with: notes, calls, emails, spreadsheets, PDFs, screenshots, WhatsApp messages, or web research? 3) What does a good output look like: summary, decision brief, follow-up message, checklist, plan, table, dashboard, or draft? 4) What must not be exposed: personal data, customer names, pricing, legal, medical, financial, credentials, or private community details? 5) Who reviews the final output before it is used? These questions create a workshop map without overwhelming people."
+      ],
+      [
+        "Turn answers into session tracks",
+        "Once responses come in, cluster them into tracks instead of trying to serve everyone with one demo. Common tracks are research, writing, operations, customer follow-up, meeting notes, community coordination, and analysis. Pick one primary track for the live session and keep the others as office-hour topics. This is where the facilitator should be opinionated. A small group building one useful workflow beats a large group watching ten unrelated tricks. The dabblewith.ai /blog/ pattern is the same: practical workflow first, tool list second."
+      ],
+      [
+        "Prepare safe sample inputs",
+        "The fastest way to ruin trust is to ask people to paste sensitive data into an AI tool without guidance. Before the workshop, convert real examples into sanitized samples. Replace names, remove account numbers, strip private health or financial details, and reduce anything confidential to a realistic but fictional version. If the session is for a company, ask whether data can leave approved systems. If the answer is no, use local tools, approved enterprise accounts, or mock data. Practical AI learning should teach privacy habits as part of the workflow, not as a footnote."
+      ],
+      [
+        "Design around one artifact",
+        "Every workshop should end with one reusable artifact. For a founder workshop, that might be a customer-call follow-up checklist. For a community session, it might be an event-announcement workflow. For a team operations session, it might be a meeting-to-action-items template. For a student group, it might be a project planning worksheet. The artifact is what turns the session from inspiration into changed behavior. Without an artifact, participants remember the demo but do not know what to repeat."
+      ],
+      [
+        "Build the review gate into the exercise",
+        "Do not let participants think the AI output is finished just because it is fluent. Add a review gate to the workshop exercise. Ask participants to check facts, tone, missing context, private information, unsupported claims, and whether the next action is realistic. For higher-risk work, define an escalation path: revise, ask a human expert, use approved sources, or do not automate. This teaches human-guided AI operations in miniature and connects naturally with the broader dabblewith.ai principle: AI can accelerate the workflow, but humans own judgment."
+      ],
+      [
+        "A 60-minute workshop structure",
+        "Here is a practical run-of-show. Minutes 0-5: state the job and show the sanitized input. Minutes 5-15: run a first AI attempt and deliberately inspect what is weak. Minutes 15-30: improve the prompt, context, and constraints. Minutes 30-40: apply the review gate and fix the output. Minutes 40-50: turn the final result into a reusable template or checklist. Minutes 50-60: have each participant choose where they will use it this week. This structure works because it makes the messy middle visible."
+      ],
+      [
+        "Worked example: founder customer research",
+        "Suppose the intake shows that founders struggle with turning scattered customer notes into clear sales insights. The workshop input is a sanitized discovery-call transcript. The AI extracts pains, objections, buying triggers, competitor mentions, and promised follow-ups. The first output is reviewed for invented claims and missing nuance. The revised output becomes a research brief plus a follow-up email draft. The artifact is a reusable customer-call analysis template. The founder leaves with a workflow that can be used after the next real call, not just a memory of an impressive demo."
+      ],
+      [
+        "Worked example: community event operations",
+        "For a WhatsApp-first community, intake might reveal that admins struggle with RSVPs, reminders, and post-event summaries. The workshop uses a fictional event thread and asks AI to cluster attendee questions, draft a reminder, and summarize likely next steps. Humans check whether the message sounds local, whether private details are removed, and whether the call-to-action is simple. The artifact is an event operations checklist that can link back to / for the community promise and to /blog/ for future playbooks."
+      ],
+      [
+        "Risks and tradeoffs",
+        "A short intake can miss edge cases. A long intake can kill participation. A facilitator may overfit the session to the loudest respondent. Participants may bring unsafe data despite instructions. The mitigation is to keep intake short, cluster responses, prepare fallback examples, and repeat the privacy rule at the start of the session. The facilitator should also be transparent that not every task is a good AI task. Some work needs better process, better data, or a human conversation before automation helps."
+      ],
+      [
+        "Next action",
+        "Before your next AI workshop, send the five-question intake to participants and ask for answers in plain language. Pick one recurring workflow, prepare one sanitized input, and define one artifact. Then run the workshop as a build-review-reuse loop. That is the difference between teaching people about AI and helping them actually use AI at work."
+      ]
+    ],
+    "qualityScore": 90,
+    "qualityNote": "Published as an evergreen practical playbook with intake template, run-of-show, privacy guidance, examples, and review gates.",
+    "researchBrief": {
+      "reader": "Founders, operators, community admins, and facilitators planning practical AI workshops.",
+      "jobToBeDone": "Convert vague interest in AI into a focused workshop around real tasks, safe inputs, and reusable artifacts.",
+      "thesis": "The quality of a hands-on AI workshop is mostly decided before the session through intake, sample preparation, artifact design, and review criteria.",
+      "searchIntent": "AI workshop intake template, practical AI workshop planning, hands-on AI learning workshop",
+      "sources": [
+        {
+          "title": "dabblewith.ai SEO Blog Strategy",
+          "url": "SEO-BLOG-STRATEGY.md",
+          "type": "internal",
+          "checkedAt": "2026-05-25",
+          "notes": "Requires practical evergreen guides, artifacts, examples, human-review notes, and internal links."
+        },
+        {
+          "title": "Anthropic — Building effective agents",
+          "url": "https://www.anthropic.com/engineering/building-effective-agents",
+          "type": "primary",
+          "checkedAt": "2026-05-25",
+          "notes": "Supports the principle of simple composable workflows before complex autonomy."
+        },
+        {
+          "title": "Nielsen Norman Group — AI as an intent-based interface",
+          "url": "https://www.nngroup.com/articles/ai-paradigm/",
+          "type": "critical",
+          "checkedAt": "2026-05-25",
+          "notes": "Useful framing for why workshop participants need to specify, inspect, and revise outcomes."
+        }
+      ],
+      "insights": [
+        "Workshop intake should identify jobs, inputs, outputs, risks, and reviewers.",
+        "Safe sample data must be prepared before hands-on exercises.",
+        "One reusable artifact is a better success metric than many tool demos.",
+        "Review gates should be taught inside the workshop exercise, not bolted on afterward."
+      ],
+      "examples": [
+        "Founder customer research workshop",
+        "WhatsApp community event operations workshop",
+        "60-minute build-review-reuse run-of-show"
+      ],
+      "risks": [
+        "Participants may bring unsafe data.",
+        "Workshops can become generic if intake is skipped.",
+        "Too much intake can reduce response rates.",
+        "Facilitators may overfit to one vocal participant."
+      ],
+      "artifact": "Five-question AI workshop intake template plus 60-minute build-review-reuse run-of-show."
+    }
   }
 ]
