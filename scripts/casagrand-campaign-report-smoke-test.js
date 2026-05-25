@@ -42,6 +42,8 @@ function appendJsonl(file, rows) {
   assert.deepStrictEqual(inferSourceTags('Casagrand First City tester - career. My role is:'), ['tester_career']);
   assert.deepStrictEqual(inferSourceTags('Casagrand workflow help — automate reports'), ['tester_workflow']);
   assert.deepStrictEqual(inferSourceTags('Casagrand community bot demo for residents'), ['tester_community_bot']);
+  assert.deepStrictEqual(inferSourceTags('Casagrand referral — I want help with QA workflow'), ['casagrand_referral_sprint']);
+  assert.deepStrictEqual(inferSourceTags('first_responder_referral_sprint: QA intro'), ['casagrand_referral_sprint']);
   assert.deepStrictEqual(inferSourceTags('Casagrand date poll - weekend morning. My topic vote is: job search'), ['casagrand_date_poll']);
   assert.deepStrictEqual(inferSourceTags('Casagrand office hours - automate weekly reports'), ['casagrand_office_hours']);
   assert.deepStrictEqual(inferSourceTags('Casagrand champion - I can help seed the AI by Doing pilot'), ['casagrand_champion']);
@@ -81,16 +83,28 @@ function appendJsonl(file, rows) {
       { segment: 'admin', phoneLast4: '9876', route: 'bot_readiness', problem8Words: 'FAQ repeats in residents group', next: 'send readiness link' },
       { segment: 'admin', last4: '9999', route: 'bot_readiness', problem: 'registrations and reminders repeat weekly' },
       { segment: 'workflow', last4: '1111', route: 'topic_vote', problem: 'meeting summaries' },
+      { segment: 'qa_dev_student', last4: '2222', route: 'first_responder_referral_sprint', problem: 'QA workflow sample', nextAction: 'send warm intro' },
       { segment: 'workflow', last4: 'bad-full-number', route: 'problem', problem: 'should reject' },
     ],
   });
-  assert.strictEqual(manualSummary.rows, 4);
+  assert.strictEqual(manualSummary.rows, 5);
   assert.strictEqual(manualSummary.rejectedRows, 1);
-  assert.strictEqual(manualSummary.concreteReplies, 4);
+  assert.strictEqual(manualSummary.concreteReplies, 5);
+  assert.strictEqual(manualSummary.referrals, 1);
   assert.strictEqual(manualSummary.botReadiness, 2);
   assert.strictEqual(manualSummary.sanitizedRows[0].last4, '****1234');
   assert.strictEqual(manualSummary.sanitizedRows[0].problem, 'resume rewrite for product manager transition needs long');
   assert(manualSummary.nextAction.includes('Community Bot validation'));
+  const referralSprintSummary = summarizeManualTracker({
+    rows: [
+      { segment: 'qa_dev_student', last4: '2222', route: 'first_responder_referral_sprint', problem: 'QA workflow sample' },
+      { segment: 'qa_dev_student', last4: '3333', route: 'first_responder_referral_sprint', problem: 'coding assistant intro' },
+    ],
+  });
+  assert.strictEqual(referralSprintSummary.rows, 2);
+  assert.strictEqual(referralSprintSummary.referrals, 2);
+  assert(referralSprintSummary.nextAction.includes('referred-neighbor warm intro path'));
+  assert(referralSprintSummary.nextAction.includes('date/topic poll'));
   assert(!JSON.stringify(manualSummary).includes('99999'), 'manual tracker leaked full phone');
 
   // Launch decision branches mirror the 24-hour launch brief thresholds.

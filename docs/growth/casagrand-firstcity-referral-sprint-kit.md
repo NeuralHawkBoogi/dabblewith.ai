@@ -52,3 +52,12 @@ The privacy-safe campaign report now routes `single_responder_conversion` direct
 - referral sprint link
 - community-bot gate for group-owner/admin referrals only
 - last4-only tracker note using `route=first_responder_referral_sprint`
+
+## Tracker/reporting update — 2026-05-25 22:15 UTC
+
+The campaign report now recognizes the referral sprint evidence path end to end:
+
+- WhatsApp text containing `Casagrand referral`, `Casagrand referral sprint`, or `first_responder_referral_sprint` is tagged as `casagrand_referral_sprint`.
+- Manual tracker rows may use `segment=qa_dev_student`, `segment=group_owner`, or `segment=other` without being rejected.
+- Manual tracker rows may use `route=first_responder_referral_sprint`; these count as concrete referral signals while still storing only last4 and short privacy-safe notes.
+- If two referral-sprint rows are logged, the manual report next action is to continue the warm-intro path and open the date/topic poll once three total resident signals are captured.

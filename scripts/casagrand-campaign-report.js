@@ -24,6 +24,7 @@ const TOPIC_RULES = [
 ];
 const SOURCE_TAG_RULES = [
   ['casagrand_rsvp', /casagrand\s+rsvp/i],
+  ['casagrand_referral_sprint', /casagrand\s+referral|first[_\s-]?responder[_\s-]?referral|casagrand\s+referral\s+sprint/i],
   ['casagrand_date_poll', /casagrand\s+date\s+poll/i],
   ['casagrand_office_hours', /casagrand\s+office\s+hours/i],
   ['casagrand_champion', /casagrand\s+champion|resident\s+champion/i],
@@ -251,8 +252,8 @@ function loadManualTracker(file) {
 function summarizeManualTracker(input) {
   const rows = Array.isArray(input) ? input : Array.isArray(input.rows) ? input.rows : [];
   const meta = (!Array.isArray(input) && input && typeof input === 'object') ? input.meta || {} : {};
-  const allowedSegments = new Set(['career', 'workflow', 'admin', 'founder', 'student', 'community_bot', 'unknown']);
-  const allowedRoutes = new Set(['no_reply', 'problem', 'referral', 'topic_vote', 'admin_pain', 'bot_readiness', 'design_call', 'no_fit']);
+  const allowedSegments = new Set(['career', 'workflow', 'admin', 'founder', 'student', 'community_bot', 'qa_dev_student', 'group_owner', 'other', 'unknown']);
+  const allowedRoutes = new Set(['no_reply', 'problem', 'referral', 'first_responder_referral_sprint', 'topic_vote', 'admin_pain', 'bot_readiness', 'design_call', 'no_fit']);
   const summary = {
     sprintStartedAt: safeIso(meta.sprintStartedAt),
     reportRerunDueAt: safeIso(meta.reportRerunDueAt),
@@ -289,9 +290,9 @@ function summarizeManualTracker(input) {
     summary.rows += 1;
     summary.routeCounts[route] = (summary.routeCounts[route] || 0) + 1;
     summary.segmentCounts[segment] = (summary.segmentCounts[segment] || 0) + 1;
-    if (['problem', 'referral', 'topic_vote', 'admin_pain', 'bot_readiness', 'design_call'].includes(route)) summary.concreteReplies += 1;
+    if (['problem', 'referral', 'first_responder_referral_sprint', 'topic_vote', 'admin_pain', 'bot_readiness', 'design_call'].includes(route)) summary.concreteReplies += 1;
     if (route === 'topic_vote') summary.topicVotes += 1;
-    if (route === 'referral') summary.referrals += 1;
+    if (route === 'referral' || route === 'first_responder_referral_sprint') summary.referrals += 1;
     if (route === 'admin_pain') summary.adminPains += 1;
     if (route === 'bot_readiness') summary.botReadiness += 1;
     if (route === 'design_call') summary.designCalls += 1;
@@ -316,6 +317,7 @@ function computeManualNextAction(summary) {
     return 'Prioritize Get a Community Bot validation: book bot-readiness/design-partner calls before another broad event post.';
   }
   if (summary.topicVotes >= 3) return 'Open the date/topic poll and prepare a small Casagrand session.';
+  if (summary.referrals >= 2) return 'Use the referred-neighbor warm intro path and open the date/topic poll once 3 total resident signals are logged.';
   if (summary.concreteReplies >= 2) return 'Send 5 more narrow DMs using the winning segment/problem language, then rerun the report.';
   if (summary.concreteReplies === 1) return 'Send one sharper follow-up to the concrete responder and ask for one referral before scaling.';
   return 'Rewrite the hook before another batch; the 5-DM manual tracker has no concrete replies yet.';
