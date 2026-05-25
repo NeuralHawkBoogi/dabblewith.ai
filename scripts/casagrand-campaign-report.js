@@ -67,6 +67,7 @@ function parseArgs(argv = process.argv.slice(2)) {
     date: currentDate(),
     includeAll: false,
     manualTracker: null,
+    writeManualTrackerTemplate: null,
     excludeLast4: normalizeLast4List(process.env.DABBLE_CASAGRAND_EXCLUDE_LAST4 || ''),
   };
   for (let i = 0; i < argv.length; i += 1) {
@@ -75,6 +76,7 @@ function parseArgs(argv = process.argv.slice(2)) {
     else if (arg === '--output-dir') options.outputDir = argv[++i];
     else if (arg === '--date') options.date = argv[++i];
     else if (arg === '--manual-tracker') options.manualTracker = argv[++i];
+    else if (arg === '--write-manual-tracker-template') options.writeManualTrackerTemplate = argv[++i];
     else if (arg === '--exclude-last4') options.excludeLast4.push(...normalizeLast4List(argv[++i]));
     else if (arg === '--include-all') options.includeAll = true;
     else if (arg === '--help' || arg === '-h') options.help = true;
@@ -163,6 +165,61 @@ function tracksForTags(tags) {
     if (TRACK_FOR_TAG[tag]) tracks.push(TRACK_FOR_TAG[tag]);
   }
   return [...new Set(tracks)];
+}
+
+function manualTrackerTemplate() {
+  return {
+    rows: [
+      {
+        segment: 'career',
+        last4: '0001',
+        route: 'no_reply',
+        problem: '',
+        followUpSent: false,
+        nextAction: '',
+      },
+      {
+        segment: 'career',
+        last4: '0002',
+        route: 'no_reply',
+        problem: '',
+        followUpSent: false,
+        nextAction: '',
+      },
+      {
+        segment: 'workflow',
+        last4: '0003',
+        route: 'no_reply',
+        problem: '',
+        followUpSent: false,
+        nextAction: '',
+      },
+      {
+        segment: 'workflow',
+        last4: '0004',
+        route: 'no_reply',
+        problem: '',
+        followUpSent: false,
+        nextAction: '',
+      },
+      {
+        segment: 'admin',
+        last4: '0005',
+        route: 'no_reply',
+        problem: '',
+        followUpSent: false,
+        nextAction: '',
+      },
+    ],
+  };
+}
+
+function writeManualTrackerTemplate(file) {
+  if (!file) throw new Error('--write-manual-tracker-template requires a file path');
+  const outputPath = path.resolve(file);
+  fs.mkdirSync(path.dirname(outputPath), { recursive: true, mode: 0o700 });
+  fs.writeFileSync(outputPath, `${JSON.stringify(manualTrackerTemplate(), null, 2)}\n`, { mode: 0o600 });
+  return outputPath;
 }
 
 function loadManualTracker(file) {
@@ -522,7 +579,9 @@ function writeCampaignReport(options = {}) {
 
 function usage() {
   return [
-    'Usage: node scripts/casagrand-campaign-report.js [--runtime-dir DIR] [--output-dir DIR] [--date YYYY-MM-DD] [--manual-tracker FILE] [--exclude-last4 1234[,5678]] [--include-all]',
+    'Usage: node scripts/casagrand-campaign-report.js [--runtime-dir DIR] [--output-dir DIR] [--date YYYY-MM-DD] [--manual-tracker FILE] [--write-manual-tracker-template FILE] [--exclude-last4 1234[,5678]] [--include-all]',
+    '',
+    'Use --write-manual-tracker-template FILE to create a privacy-safe starter JSON with exactly 5 rows (2 career, 2 workflow, 1 admin) using last4 placeholders only.',
     '',
     `Default runtime dir: ${DEFAULT_RUNTIME_DIR}`,
     `Default output dir: ${DEFAULT_OUTPUT_DIR}`,
@@ -534,6 +593,11 @@ if (require.main === module) {
     const options = parseArgs();
     if (options.help) {
       console.log(usage());
+      process.exit(0);
+    }
+    if (options.writeManualTrackerTemplate) {
+      const templatePath = writeManualTrackerTemplate(options.writeManualTrackerTemplate);
+      console.log(`casagrand manual tracker template written: ${templatePath}`);
       process.exit(0);
     }
     const result = writeCampaignReport(options);
@@ -558,6 +622,8 @@ module.exports = {
   inferSourceTags,
   inferSlotVotes,
   tracksForTags,
+  manualTrackerTemplate,
+  writeManualTrackerTemplate,
   summarizeManualTracker,
   computeManualNextAction,
   computeLaunchDecision,

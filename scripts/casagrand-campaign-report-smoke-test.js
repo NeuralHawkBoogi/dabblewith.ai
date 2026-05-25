@@ -11,11 +11,14 @@ const {
   inferSlotVotes,
   inferTopics,
   isCampaignText,
+  manualTrackerTemplate,
   isExcludedLast4,
   normalizeLast4List,
   redactPhone,
+  parseArgs,
   summarizeManualTracker,
   writeCampaignReport,
+  writeManualTrackerTemplate,
 } = require('./casagrand-campaign-report');
 
 function tmpDir() {
@@ -49,6 +52,21 @@ function appendJsonl(file, rows) {
   assert.deepStrictEqual(inferSlotVotes('Casagrand date poll - weekend morning. My topic vote is: job search'), ['weekend_morning']);
   assert.deepStrictEqual(inferSourceTags('Casagrand First City - I want to join AI by Doing'), ['casagrand_first_city']);
   assert.deepStrictEqual(inferSourceTags('Casagrand + AI agents'), ['untagged_casagrand']);
+
+  const template = manualTrackerTemplate();
+  assert.strictEqual(template.rows.length, 5);
+  assert.deepStrictEqual(template.rows.map((row) => row.segment), ['career', 'career', 'workflow', 'workflow', 'admin']);
+  assert(template.rows.every((row) => /^\d{4}$/.test(row.last4)), 'template must use last4 placeholders only');
+  assert(template.rows.every((row) => row.route === 'no_reply'), 'template routes must use allowed no_reply default');
+  assert(!JSON.stringify(template).match(/phone|message|raw|name|wamid|\+91/i), 'template leaked disallowed fields');
+  assert.strictEqual(parseArgs(['--write-manual-tracker-template', 'out.json']).writeManualTrackerTemplate, 'out.json');
+
+  const templatePath = path.join(tmpDir(), 'nested', 'manual-5dm-template.json');
+  const writtenTemplatePath = writeManualTrackerTemplate(templatePath);
+  assert.strictEqual(writtenTemplatePath, path.resolve(templatePath));
+  const writtenTemplate = JSON.parse(fs.readFileSync(templatePath, 'utf8'));
+  assert.deepStrictEqual(writtenTemplate, template);
+  assert.strictEqual(summarizeManualTracker(writtenTemplate).rows, 5);
 
   const manualSummary = summarizeManualTracker({
     rows: [

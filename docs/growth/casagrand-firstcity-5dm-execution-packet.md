@@ -55,7 +55,13 @@ If all replies came through the bot, run:
 node scripts/casagrand-campaign-report.js --runtime-dir /home/clawdbot/dabblewith-whatsapp/data --output-dir reports/casagrand-firstcity --date 2026-05-25 --exclude-last4 2585
 ```
 
-If replies happened in Boogi's private WhatsApp chat, first create a privacy-safe manual tracker using `docs/growth/casagrand-firstcity-5dm-manual-tracker.md`, then run:
+If replies happened in Boogi's private WhatsApp chat, first create a privacy-safe manual tracker using the CLI template generator:
+
+```bash
+node scripts/casagrand-campaign-report.js --write-manual-tracker-template reports/casagrand-firstcity/manual-5dm-2026-05-25.json
+```
+
+Fill only the generated last4/segment/route/problem/follow-up/next-action fields (no full phones or raw messages), then run:
 
 ```bash
 node scripts/casagrand-campaign-report.js --runtime-dir /home/clawdbot/dabblewith-whatsapp/data --output-dir reports/casagrand-firstcity --date 2026-05-25 --exclude-last4 2585 --manual-tracker reports/casagrand-firstcity/manual-5dm-2026-05-25.json

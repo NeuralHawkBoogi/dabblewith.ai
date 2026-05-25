@@ -22,34 +22,59 @@ Never store full phone numbers, raw WhatsApp messages, resident names, message I
 
 ## Tracker JSON template
 
-Save a local file such as `reports/casagrand-firstcity/manual-5dm-2026-05-25.json`:
+Generate a starter file instead of hand-copying structure:
+
+```bash
+node scripts/casagrand-campaign-report.js \
+  --write-manual-tracker-template reports/casagrand-firstcity/manual-5dm-2026-05-25.json
+```
+
+The command writes exactly five privacy-safe rows: 2 career, 2 workflow, and 1 admin. It uses `last4` placeholders only and never includes full phone numbers, raw messages, resident names, or message IDs.
+
+Starter shape:
 
 ```json
 {
   "rows": [
     {
       "segment": "career",
-      "last4": "1234",
-      "route": "problem",
-      "problem": "resume rewrite for AI role",
-      "followUpSent": true,
-      "nextAction": "ask date/topic vote"
+      "last4": "0001",
+      "route": "no_reply",
+      "problem": "",
+      "followUpSent": false,
+      "nextAction": ""
+    },
+    {
+      "segment": "career",
+      "last4": "0002",
+      "route": "no_reply",
+      "problem": "",
+      "followUpSent": false,
+      "nextAction": ""
     },
     {
       "segment": "workflow",
-      "last4": "2345",
-      "route": "topic_vote",
-      "problem": "meeting summaries and status reports",
-      "followUpSent": true,
-      "nextAction": "include in date poll"
+      "last4": "0003",
+      "route": "no_reply",
+      "problem": "",
+      "followUpSent": false,
+      "nextAction": ""
+    },
+    {
+      "segment": "workflow",
+      "last4": "0004",
+      "route": "no_reply",
+      "problem": "",
+      "followUpSent": false,
+      "nextAction": ""
     },
     {
       "segment": "admin",
-      "last4": "3456",
-      "route": "bot_readiness",
-      "problem": "FAQ repeats in WhatsApp group",
-      "followUpSent": true,
-      "nextAction": "send design-partner call link"
+      "last4": "0005",
+      "route": "no_reply",
+      "problem": "",
+      "followUpSent": false,
+      "nextAction": ""
     }
   ]
 }
