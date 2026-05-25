@@ -29,7 +29,7 @@
       if (!link || typeof gtag !== 'function') return;
       var href = link.getAttribute('href') || '';
       var text = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 80);
-      var isCta = /wa\.me|whatsapp|#join|\/community-bot\/?|\/casagrand-firstcity\/(rsvp|champions|bot-readiness)\/?|utm_/.test(href) || /join|rsvp|start|signal|community bot|bot readiness|champion|whatsapp/i.test(text);
+      var isCta = /wa\.me|whatsapp|#join|\/community-bot\/?|\/casagrand-firstcity\/(rsvp|champions|bot-readiness|first-responder)\/?|utm_/.test(href) || /join|rsvp|start|signal|community bot|bot readiness|champion|first responder|whatsapp/i.test(text);
       if (!isCta) return;
       gtag('event', 'cta_click', {
         link_url: link.href || href,
@@ -65,7 +65,7 @@
   </style>
 </head>
 <body>
-  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/community-bot/">Community bot</a><a href="/casagrand-firstcity/community-bot/">Local bot demo</a><a href="/casagrand-firstcity/bot-readiness/">Bot readiness</a><a href="/casagrand-firstcity/design-partner-call/">Design call</a><a href="/casagrand-firstcity/admin-ask/">Admin ask</a><a href="/casagrand-firstcity/champions/">Champions</a><a href="/casagrand-firstcity/reboot-copy/">Reboot copy</a><a href="/casagrand-firstcity/first-10-outreach/">First-10 outreach</a><a href="/casagrand-firstcity/rsvp-follow-up/">RSVP follow-up</a><a href="/casagrand-firstcity/flyer/">Clubhouse flyer</a><a href="/casagrand-firstcity/launch-board/">Launch board</a><a href="/casagrand-firstcity/office-hours/">Office hours</a><a href="/casagrand-firstcity/date-poll/">Date poll</a><a href="/casagrand-firstcity/testers/">First 10 testers</a><a href="/sessions/">Sessions</a><a href="/blog/">Blog</a><a href="#whatsapp-copy">WhatsApp copy</a></div></nav>
+  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/community-bot/">Community bot</a><a href="/casagrand-firstcity/community-bot/">Local bot demo</a><a href="/casagrand-firstcity/bot-readiness/">Bot readiness</a><a href="/casagrand-firstcity/design-partner-call/">Design call</a><a href="/casagrand-firstcity/admin-ask/">Admin ask</a><a href="/casagrand-firstcity/champions/">Champions</a><a href="/casagrand-firstcity/reboot-copy/">Reboot copy</a><a href="/casagrand-firstcity/first-10-outreach/">First-10 outreach</a><a href="/casagrand-firstcity/rsvp-follow-up/">RSVP follow-up</a><a href="/casagrand-firstcity/first-responder/">First responder</a><a href="/casagrand-firstcity/flyer/">Clubhouse flyer</a><a href="/casagrand-firstcity/launch-board/">Launch board</a><a href="/casagrand-firstcity/office-hours/">Office hours</a><a href="/casagrand-firstcity/date-poll/">Date poll</a><a href="/casagrand-firstcity/testers/">First 10 testers</a><a href="/sessions/">Sessions</a><a href="/blog/">Blog</a><a href="#whatsapp-copy">WhatsApp copy</a></div></nav>
 
   <main>
     <section class="hero shell">
@@ -79,6 +79,7 @@
         <a class="btn" href="/casagrand-firstcity/reboot-copy/">Rewrite low-signal copy</a>
         <a class="btn" href="/casagrand-firstcity/first-10-outreach/">Run first-10 outreach tracker</a>
         <a class="btn" href="/casagrand-firstcity/rsvp-follow-up/">Convert first RSVP</a>
+        <a class="btn" href="/casagrand-firstcity/first-responder/">Convert first real responder</a>
         <a class="btn" href="/casagrand-firstcity/champions/">Recruit 3 resident champions</a>
         <a class="btn" href="/casagrand-firstcity/bot-readiness/">Run bot readiness audit</a>
         <a class="btn" href="/casagrand-firstcity/design-partner-call/">Run design-partner call</a>
