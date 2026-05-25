@@ -114,6 +114,7 @@ This segment can become a direct demo for the community-bot platform.
 - `https://dabblewith.ai/casagrand-firstcity/manual-tracker/` — mobile-safe operator console for turning private 5-DM replies into last4-only manual tracker evidence, a 24-hour rerun command, and threshold-based next action.
 - `https://dabblewith.ai/casagrand-firstcity/first-responder/` — mobile-ready conversion kit for the first real resident signal (QA/coding/event interest): collect a concrete workflow sample, slot/topic vote, two referrals, and a community-bot probe before any broad post.
 - `https://dabblewith.ai/casagrand-firstcity/qa-workflow-demo/` — QA-specific mini-demo kit that turns the first resident signal into an anonymized sample ask, feature-note-to-test-plan prompt, walkthrough invite, and referral scorecard.
+- `https://dabblewith.ai/casagrand-firstcity/qa-demo-follow-up/` — follow-up kit for converting the QA mini-demo into a recap, referrals, topic/date poll signals, and community-bot readiness probes.
 - `https://dabblewith.ai/casagrand-firstcity/community-bot/` — local design-partner intake page for Casagrand groups that may want a WhatsApp AI host.
 - `https://dabblewith.ai/casagrand-firstcity/bot-readiness/` — 10-minute group-owner readiness audit and scorecard for qualifying community-bot design partners from Casagrand.
 - `https://dabblewith.ai/casagrand-firstcity/design-partner-call/` — 20-minute design-partner call kit for qualifying Casagrand WhatsApp group owners, probing price sensitivity, and converting bot-readiness replies into Get a Community Bot validation.
@@ -127,6 +128,7 @@ This segment can become a direct demo for the community-bot platform.
 - `docs/growth/casagrand-firstcity-manual-tracker-console.md` — operator console notes, privacy rules, commands, and decision thresholds for the private 5-DM tracker rerun.
 - `docs/growth/casagrand-firstcity-first-responder-conversion-kit.md` — first-signal conversion sequence for the 2026-05-25 QA/coding resident: QA-specific follow-up, referrals, slot/topic vote, community-bot probe, and last-four-only tracker note.
 - `docs/growth/casagrand-firstcity-qa-workflow-demo-kit.md` — 20-minute QA workflow mini-demo plan, anonymized sample ask, prompt, invite, thresholds, and privacy-safe measurement notes.
+- `docs/growth/casagrand-firstcity-qa-demo-follow-up-kit.md` — post-demo recap, referral, topic-poll, and community-bot probe sequence for converting the first QA walkthrough into measurable next signals.
 - `docs/growth/casagrand-firstcity-first-10-testers-sprint-kit.md` — direct tester sprint before the broader IT-group post.
 - `docs/growth/casagrand-firstcity-resident-champion-kit.md` — three-champion social-proof layer with WhatsApp-ready asks, reply prompt, tracker note, thresholds, and community-bot referral path.
 - `docs/growth/casagrand-firstcity-admin-permission-pack.md` — admin/group permission asks, clubhouse/noticeboard approval copy, launch post, objection handling, and approval checklist.
