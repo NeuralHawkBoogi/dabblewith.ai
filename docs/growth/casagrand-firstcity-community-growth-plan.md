@@ -111,6 +111,7 @@ This segment can become a direct demo for the community-bot platform.
 - `https://dabblewith.ai/casagrand-firstcity/rsvp-follow-up/` — first-signal conversion kit to turn one RSVP into confirmation, two referrals, a slot/topic vote, and possible WhatsApp community-bot owner/admin signals.
 - `https://dabblewith.ai/casagrand-firstcity/5dm-execution/` — mobile-ready execution packet for the current no-signal route: 2 career DMs, 2 workflow DMs, 1 group-owner/admin DM, referral ask, privacy-safe tracker, and 24-hour rerun thresholds.
 - `https://dabblewith.ai/casagrand-firstcity/reply-router/` — mobile-ready follow-up router for classifying 5-DM reboot replies into attendee, referral, group-owner/community-bot, or no-fit paths with copyable next messages.
+- `https://dabblewith.ai/casagrand-firstcity/manual-tracker/` — mobile-safe operator console for turning private 5-DM replies into last4-only manual tracker evidence, a 24-hour rerun command, and threshold-based next action.
 - `https://dabblewith.ai/casagrand-firstcity/community-bot/` — local design-partner intake page for Casagrand groups that may want a WhatsApp AI host.
 - `https://dabblewith.ai/casagrand-firstcity/bot-readiness/` — 10-minute group-owner readiness audit and scorecard for qualifying community-bot design partners from Casagrand.
 - `https://dabblewith.ai/casagrand-firstcity/design-partner-call/` — 20-minute design-partner call kit for qualifying Casagrand WhatsApp group owners, probing price sensitivity, and converting bot-readiness replies into Get a Community Bot validation.
@@ -121,6 +122,7 @@ This segment can become a direct demo for the community-bot platform.
 - `https://dabblewith.ai/casagrand-firstcity/flyer/` — printable/forwardable clubhouse noticeboard flyer with value prop, audience, what to bring/leave with, RSVP + `Casagrand flyer` source-tagged WhatsApp CTAs, mini share copy, privacy note, and print-friendly CSS.
 - `docs/growth/casagrand-firstcity-5dm-execution-packet.md` — current no-signal 5-DM execution packet with send mix, privacy-safe tracker, copy location, and 24-hour decision thresholds.
 - `docs/growth/casagrand-firstcity-5dm-manual-tracker.md` — privacy-safe JSON tracker format, CLI template generator (`--write-manual-tracker-template`), and report command for private 5-DM replies that do not enter the WhatsApp bot logs.
+- `docs/growth/casagrand-firstcity-manual-tracker-console.md` — operator console notes, privacy rules, commands, and decision thresholds for the private 5-DM tracker rerun.
 - `docs/growth/casagrand-firstcity-first-10-testers-sprint-kit.md` — direct tester sprint before the broader IT-group post.
 - `docs/growth/casagrand-firstcity-resident-champion-kit.md` — three-champion social-proof layer with WhatsApp-ready asks, reply prompt, tracker note, thresholds, and community-bot referral path.
 - `docs/growth/casagrand-firstcity-admin-permission-pack.md` — admin/group permission asks, clubhouse/noticeboard approval copy, launch post, objection handling, and approval checklist.
