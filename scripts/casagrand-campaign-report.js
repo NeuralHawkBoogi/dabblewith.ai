@@ -56,6 +56,21 @@ const TRACK_FOR_TAG = {
   casagrand_reboot_community_bot: 'community_bot',
 };
 
+// Copy-ready, privacy-safe workflow-sample asks for the single-responder
+// conversion stage. Keyed by the detected first-responder topic and tailored to
+// QA/coding when that is the concrete signal (coding_assistant/event_interest);
+// other topics fall back to their own concrete ask. These work only from
+// redacted aggregates, never raw phones/messages/tokens.
+const FIRST_RESPONDER_WORKFLOW_ASKS = {
+  coding_assistant: 'Share one QA or coding task you repeat — a flaky test you keep re-running, a PR-review checklist, or a bug-triage step — and I will turn it into a small AI-by-doing sample you can reuse.',
+  event_interest: 'Share one QA or coding task you repeat — a flaky test, a PR-review checklist, or a bug-triage step — and I will turn it into a small AI-by-doing sample you can reuse.',
+  office_productivity: 'Share one report or spreadsheet step you repeat each week and I will turn it into a small AI-by-doing sample you can reuse.',
+  job_search: 'Share one resume or interview-prep task you are working on and I will turn it into a small AI-by-doing sample you can reuse.',
+  founder_tools: 'Share one sales, proposal, or lead-follow-up step you repeat and I will turn it into a small AI-by-doing sample you can reuse.',
+  student_projects: 'Share one study or class-project task you repeat and I will turn it into a small AI-by-doing sample you can reuse.',
+};
+const FIRST_RESPONDER_DEFAULT_WORKFLOW_ASK = FIRST_RESPONDER_WORKFLOW_ASKS.coding_assistant;
+
 function currentDate() {
   return new Date().toISOString().slice(0, 10);
 }
@@ -398,6 +413,47 @@ function computeLaunchDecision(report) {
   return { stage, route, confidence, rationale, thresholds, nextAction };
 }
 
+// Derives the responder's last-4 digits from already-redacted report data
+// (redacted recent-signal phones, then manual-tracker sanitized rows). Never
+// touches a raw phone number, so it cannot widen privacy exposure.
+function firstResponderLast4(report) {
+  const signals = Array.isArray(report.recentSignals) ? report.recentSignals : [];
+  for (const signal of signals) {
+    const digits = String(signal.from || '').replace(/\D/g, '');
+    if (digits.length >= 4) return digits.slice(-4);
+  }
+  const rows = report.manualTracker && Array.isArray(report.manualTracker.sanitizedRows)
+    ? report.manualTracker.sanitizedRows
+    : [];
+  for (const row of rows) {
+    const digits = String(row.last4 || '').replace(/\D/g, '');
+    if (digits.length >= 4) return digits.slice(-4);
+  }
+  return null;
+}
+
+// Builds copy-ready, privacy-safe first-responder follow-up asks for the
+// single_responder_conversion stage; returns null for every other stage. Uses
+// only redacted aggregates already on the report (top topic + last4), never raw
+// phone numbers, message ids, or tokens. Deterministic for a given report.
+function buildFirstResponderFollowUp(report) {
+  if (!report || !report.decision || report.decision.stage !== 'single_responder_conversion') {
+    return null;
+  }
+  const topTopic = topEntry(report.topics);
+  const topic = topTopic ? topTopic.key : 'coding_assistant';
+  const last4 = firstResponderLast4(report);
+  const last4Label = last4 ? `last4=${last4}` : 'last4=unknown';
+  return {
+    topic,
+    last4,
+    workflowSampleAsk: FIRST_RESPONDER_WORKFLOW_ASKS[topic] || FIRST_RESPONDER_DEFAULT_WORKFLOW_ASK,
+    slotVoteAsk: 'Which slot works for a 30-minute build session — weekend morning, weekend evening, or weekday evening — and which topic should we anchor on first?',
+    referralAsk: 'Who is one other Casagrand First City resident who would want the same QA/coding workflow help? One quick intro is enough.',
+    trackerNote: `Log in the manual tracker: ${last4Label} · segment=workflow · route=problem · note="QA/coding workflow sample requested".`,
+  };
+}
+
 function buildCampaignReport(runtimeDir, options = {}) {
   const signals = readJsonl(path.join(runtimeDir, 'community-signals.jsonl'));
   const statusRows = readJsonl(path.join(runtimeDir, 'statuses.jsonl')).concat(readJsonl(path.join(runtimeDir, 'webhooks.jsonl')));
@@ -491,6 +547,11 @@ function renderMarkdown(report) {
   lines.push('');
   appendLaunchDecision(lines, report.decision);
   lines.push('');
+  const firstResponderFollowUp = buildFirstResponderFollowUp(report);
+  if (firstResponderFollowUp) {
+    appendFirstResponderFollowUp(lines, firstResponderFollowUp);
+    lines.push('');
+  }
   lines.push('## Funnel snapshot');
   lines.push(`- Campaign signals: ${report.totals.campaignSignals}`);
   lines.push(`- Unique residents/users: ${report.totals.uniqueUsers}`);
@@ -567,6 +628,16 @@ function appendManualTracker(lines, tracker) {
       lines.push(`  - ${row.segment} · ${row.last4} · ${row.route} · problem="${row.problem || 'n/a'}" · follow_up=${row.followUpSent ? 'yes' : 'no'} · next="${row.nextAction || 'n/a'}"`);
     }
   }
+}
+
+function appendFirstResponderFollowUp(lines, followUp) {
+  lines.push('## First responder follow-up (single responder conversion)');
+  lines.push('Copy-ready, privacy-safe asks for the one concrete responder (last4 only, no phone/message exposure):');
+  lines.push(`- Detected topic: ${followUp.topic}`);
+  lines.push(`- Workflow sample ask: ${followUp.workflowSampleAsk}`);
+  lines.push(`- Slot/topic vote ask: ${followUp.slotVoteAsk}`);
+  lines.push(`- Referral ask: ${followUp.referralAsk}`);
+  lines.push(`- Tracker note: ${followUp.trackerNote}`);
 }
 
 function appendLaunchDecision(lines, decision) {
@@ -660,6 +731,7 @@ module.exports = {
   summarizeManualTracker,
   computeManualNextAction,
   computeLaunchDecision,
+  buildFirstResponderFollowUp,
   buildCampaignReport,
   renderMarkdown,
   writeCampaignReport,

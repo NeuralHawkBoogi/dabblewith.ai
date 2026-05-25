@@ -6,6 +6,7 @@ const os = require('os');
 const path = require('path');
 const {
   buildCampaignReport,
+  buildFirstResponderFollowUp,
   computeLaunchDecision,
   inferSourceTags,
   inferSlotVotes,
@@ -371,5 +372,53 @@ function appendJsonl(file, rows) {
   const excludedMarkdown = fs.readFileSync(excluded.mdPath, 'utf8');
   assert(excludedMarkdown.includes('Owner/test signals excluded: 1'));
   assert(!excludedMarkdown.includes('********2585'), 'excluded owner/test signal rendered');
+
+  // The first-responder follow-up section must only appear for the
+  // single_responder_conversion stage; the design-partner report above must not.
+  assert(!buildFirstResponderFollowUp(report), 'follow-up built for non-single-responder stage');
+  assert(!markdown.includes('## First responder follow-up'), 'first responder section leaked into design-partner report');
+
+  // A single QA/coding responder lands on single_responder_conversion and must
+  // get the copy-ready, privacy-safe follow-up section (last4 only, no leaks).
+  const qaRuntimeDir = tmpDir();
+  appendJsonl(path.join(qaRuntimeDir, 'community-signals.jsonl'), [
+    {
+      received_at: '2026-05-22T03:00:00.000Z',
+      source: 'whatsapp_business',
+      community: 'dabblewith.ai',
+      intent: 'community_signal',
+      from: '919840385678',
+      display_name: 'QA Resident',
+      text: 'Casagrand First City - I want a coding assistant to review pull requests and fix flaky tests in my QA workflow',
+      message_id: 'wamid.qa.coding.one',
+    },
+  ]);
+
+  const qaReport = buildCampaignReport(qaRuntimeDir);
+  assert.strictEqual(qaReport.totals.uniqueUsers, 1);
+  assert.strictEqual(qaReport.decision.stage, 'single_responder_conversion');
+
+  const qaFollowUp = buildFirstResponderFollowUp(qaReport);
+  assert(qaFollowUp, 'first responder follow-up missing for single QA/coding responder');
+  assert.strictEqual(qaFollowUp.topic, 'coding_assistant');
+  assert.strictEqual(qaFollowUp.last4, '5678');
+  assert(/QA or coding/i.test(qaFollowUp.workflowSampleAsk), 'workflow ask not tailored to QA/coding');
+  assert(qaFollowUp.trackerNote.includes('last4=5678'));
+  assert(!JSON.stringify(qaFollowUp).includes('919840385678'), 'follow-up leaked full phone');
+  assert(!JSON.stringify(qaFollowUp).includes('wamid.qa.coding.one'), 'follow-up leaked message id');
+
+  const qaOutputDir = tmpDir();
+  const qaResult = writeCampaignReport({ runtimeDir: qaRuntimeDir, outputDir: qaOutputDir, date: '2026-05-22' });
+  const qaMarkdown = fs.readFileSync(qaResult.mdPath, 'utf8');
+  assert(qaMarkdown.includes('## First responder follow-up'), 'first responder section missing from markdown');
+  assert(qaMarkdown.includes('Workflow sample ask:'));
+  assert(qaMarkdown.includes('Slot/topic vote ask:'));
+  assert(qaMarkdown.includes('Referral ask:'));
+  assert(qaMarkdown.includes('Tracker note:'));
+  assert(/Workflow sample ask:.*QA or coding/.test(qaMarkdown), 'markdown workflow ask not tailored to QA/coding');
+  assert(qaMarkdown.includes('last4=5678'));
+  assert(!qaMarkdown.includes('919840385678'), 'raw phone leaked into first responder markdown');
+  assert(!qaMarkdown.includes('wamid.qa.coding.one'), 'raw message id leaked into first responder markdown');
+
   console.log('casagrand-campaign-report smoke passed');
 })();
