@@ -138,8 +138,9 @@ function appendJsonl(file, rows) {
   assert.strictEqual(firstResponder.stage, 'single_responder_conversion');
   assert.strictEqual(firstResponder.route, 'Convert first responder');
   assert.strictEqual(firstResponder.confidence, 'low');
-  assert(firstResponder.nextAction.includes('/casagrand-firstcity/qa-demo-follow-up/'));
-  assert(firstResponder.nextAction.includes('one referral before any broad post'));
+  assert(firstResponder.nextAction.includes('/casagrand-firstcity/referral-sprint/'));
+  assert(firstResponder.nextAction.includes('/casagrand-firstcity/bot-readiness/'));
+  assert(firstResponder.nextAction.includes('before any broad post'));
   assert(firstResponder.thresholds.some((t) => t.name === 'single_responder_conversion' && t.met === true));
 
   const reposition = computeLaunchDecision({
@@ -403,7 +404,10 @@ function appendJsonl(file, rows) {
   assert.strictEqual(qaFollowUp.topic, 'coding_assistant');
   assert.strictEqual(qaFollowUp.last4, '5678');
   assert(/QA or coding/i.test(qaFollowUp.workflowSampleAsk), 'workflow ask not tailored to QA/coding');
+  assert.strictEqual(qaFollowUp.referralSprintLink, 'https://dabblewith.ai/casagrand-firstcity/referral-sprint/');
+  assert(qaFollowUp.communityBotGate.includes('/casagrand-firstcity/bot-readiness/'));
   assert(qaFollowUp.trackerNote.includes('last4=5678'));
+  assert(qaFollowUp.trackerNote.includes('route=first_responder_referral_sprint'));
   assert(!JSON.stringify(qaFollowUp).includes('919840385678'), 'follow-up leaked full phone');
   assert(!JSON.stringify(qaFollowUp).includes('wamid.qa.coding.one'), 'follow-up leaked message id');
 
@@ -414,7 +418,10 @@ function appendJsonl(file, rows) {
   assert(qaMarkdown.includes('Workflow sample ask:'));
   assert(qaMarkdown.includes('Slot/topic vote ask:'));
   assert(qaMarkdown.includes('Referral ask:'));
+  assert(qaMarkdown.includes('Referral sprint link: https://dabblewith.ai/casagrand-firstcity/referral-sprint/'));
+  assert(qaMarkdown.includes('Community-bot gate: Only send /casagrand-firstcity/bot-readiness/'));
   assert(qaMarkdown.includes('Tracker note:'));
+  assert(qaMarkdown.includes('route=first_responder_referral_sprint'));
   assert(/Workflow sample ask:.*QA or coding/.test(qaMarkdown), 'markdown workflow ask not tailored to QA/coding');
   assert(qaMarkdown.includes('last4=5678'));
   assert(!qaMarkdown.includes('919840385678'), 'raw phone leaked into first responder markdown');

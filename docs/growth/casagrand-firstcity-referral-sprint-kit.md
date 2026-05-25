@@ -41,3 +41,14 @@ Use the public page copy buttons for:
 - Do not store raw WhatsApp messages, raw webhook payloads, screenshots, company data, credentials, or tokens.
 - Do not imply this is official Casagrand association software.
 - Treat community-bot interest as design-partner validation until a human approves any external commitment.
+
+## Report routing update — 2026-05-25 20:15 UTC
+
+The privacy-safe campaign report now routes `single_responder_conversion` directly to this referral sprint when only 1–2 concrete residents exist. The report copy includes:
+
+- workflow-sample ask
+- slot/topic vote ask
+- one-referral ask
+- referral sprint link
+- community-bot gate for group-owner/admin referrals only
+- last4-only tracker note using `route=first_responder_referral_sprint`

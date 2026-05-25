@@ -400,7 +400,7 @@ function computeLaunchDecision(report) {
     stage = 'single_responder_conversion';
     route = 'Convert first responder';
     confidence = 'low';
-    nextAction = 'Use /casagrand-firstcity/qa-demo-follow-up/ or /casagrand-firstcity/first-responder/ to collect one concrete workflow sample, one slot/topic vote, and one referral before any broad post.';
+    nextAction = 'Use /casagrand-firstcity/referral-sprint/ to turn the first QA/coding responder into 2-3 warm resident signals, then route any group-owner/admin referral to /casagrand-firstcity/bot-readiness/ before any broad post.';
     rationale.push('A small but concrete first signal is more useful as a conversion/referral loop than as justification for a broad post.');
   } else {
     stage = 'first10_tester_dms';
@@ -450,7 +450,10 @@ function buildFirstResponderFollowUp(report) {
     workflowSampleAsk: FIRST_RESPONDER_WORKFLOW_ASKS[topic] || FIRST_RESPONDER_DEFAULT_WORKFLOW_ASK,
     slotVoteAsk: 'Which slot works for a 30-minute build session — weekend morning, weekend evening, or weekday evening — and which topic should we anchor on first?',
     referralAsk: 'Who is one other Casagrand First City resident who would want the same QA/coding workflow help? One quick intro is enough.',
-    trackerNote: `Log in the manual tracker: ${last4Label} · segment=workflow · route=problem · note="QA/coding workflow sample requested".`,
+    referralSprintLink: 'https://dabblewith.ai/casagrand-firstcity/referral-sprint/',
+    referralSprintAsk: 'If they agree, send the referred-neighbor warm intro from /casagrand-firstcity/referral-sprint/ and log the new signal with last4 only.',
+    communityBotGate: 'Only send /casagrand-firstcity/bot-readiness/ if the referral owns/admins a WhatsApp group or runs a resident/business/student community.',
+    trackerNote: `Log in the manual tracker: ${last4Label} · segment=workflow · route=first_responder_referral_sprint · note="QA/coding workflow sample + one-referral ask sent".`,
   };
 }
 
@@ -637,6 +640,9 @@ function appendFirstResponderFollowUp(lines, followUp) {
   lines.push(`- Workflow sample ask: ${followUp.workflowSampleAsk}`);
   lines.push(`- Slot/topic vote ask: ${followUp.slotVoteAsk}`);
   lines.push(`- Referral ask: ${followUp.referralAsk}`);
+  lines.push(`- Referral sprint link: ${followUp.referralSprintLink}`);
+  lines.push(`- Referral sprint ask: ${followUp.referralSprintAsk}`);
+  lines.push(`- Community-bot gate: ${followUp.communityBotGate}`);
   lines.push(`- Tracker note: ${followUp.trackerNote}`);
 }
 
