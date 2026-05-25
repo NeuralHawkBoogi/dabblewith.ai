@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#060912" />
+  <title>Casagrand QA Workflow Demo Kit — dabblewith.ai</title>
+  <meta name="description" content="A mobile-ready QA workflow mini-demo kit for converting the first Casagrand resident signal into a practical AI by Doing session seed." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://dabblewith.ai/casagrand-firstcity/qa-workflow-demo/" />
+  <meta property="og:site_name" content="dabblewith.ai" />
+  <meta property="og:title" content="Casagrand QA Workflow Demo Kit" />
+  <meta property="og:description" content="Turn the first QA/coding resident signal into a concrete demo, referral loop, and clubhouse session seed." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dabblewith.ai/casagrand-firstcity/qa-workflow-demo/" />
+  <meta property="og:image" content="https://dabblewith.ai/app-icon-1024.png" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7473LZQGX2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7473LZQGX2');
+    function copyText(id, label) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var text = el.innerText.trim();
+      var done = function () {
+        if (typeof gtag === 'function') gtag('event', 'copy_click', { cta_id: 'casagrand_qa_demo_' + id, cta_source: 'casagrand_qa_workflow_demo', link_text: label || id, page_path: location.pathname });
+        var btn = document.querySelector('[data-copy-target="' + id + '"]');
+        if (btn) { var old = btn.innerText; btn.innerText = 'Copied'; setTimeout(function(){ btn.innerText = old; }, 1400); }
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done).catch(function(){ window.prompt('Copy this text', text); });
+      else window.prompt('Copy this text', text);
+    }
+  </script>
+  <style>
+    :root{--bg:#060912;--panel:rgba(16,27,48,.94);--line:rgba(116,255,219,.24);--hard:#74ffdb;--text:#f2fbff;--muted:#9eb0c2;--green:#74ff7b;--blue:#58a6ff;--amber:#ffcc66;--red:#ff7b8a;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--text);background:linear-gradient(rgba(116,255,219,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(116,255,219,.045) 1px,transparent 1px),radial-gradient(circle at 12% 0%,rgba(88,166,255,.25),transparent 30rem),radial-gradient(circle at 92% 8%,rgba(116,255,123,.16),transparent 28rem),var(--bg);background-size:42px 42px,42px 42px,auto,auto,auto}a{color:inherit}.shell{width:min(1120px,calc(100% - 30px));margin:0 auto}nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0}.logo{text-decoration:none;font-size:30px;font-weight:900;letter-spacing:-.055em}.nav{display:flex;gap:10px;flex-wrap:wrap}.nav a{border:1px solid var(--line);border-radius:999px;padding:9px 12px;text-decoration:none;color:var(--muted);background:rgba(255,255,255,.03)}.hero,.panel,.card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(16,27,48,.96),rgba(8,13,25,.92));border-radius:24px;box-shadow:0 24px 90px rgba(0,0,0,.45)}.hero{padding:clamp(26px,5vw,52px);margin:18px auto 26px}.eyebrow{width:fit-content;color:var(--hard);border:1px solid var(--hard);background:rgba(116,255,219,.08);border-radius:999px;padding:9px 12px;font:12px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}h1{font-size:clamp(42px,7vw,82px);line-height:.9;letter-spacing:-.07em;margin:24px 0 18px}h2{font-size:clamp(28px,4.2vw,46px);line-height:.96;letter-spacing:-.055em;margin:0 0 16px}h3{font-size:22px;margin:0 0 8px}.lead{font-size:clamp(18px,2.2vw,24px);color:#d7e9f7;line-height:1.45;max-width:940px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.two{grid-template-columns:repeat(2,1fr)}.card,.panel{padding:22px}.muted,p,li{color:var(--muted);line-height:1.65}.badge{display:inline-flex;border:1px solid rgba(116,255,123,.45);color:var(--green);background:rgba(116,255,123,.08);padding:5px 9px;border-radius:999px;font:12px/1.2 ui-monospace,Menlo,monospace}.badge.blue{color:var(--blue);border-color:rgba(88,166,255,.45);background:rgba(88,166,255,.08)}.badge.warn{color:var(--amber);border-color:rgba(255,204,102,.45);background:rgba(255,204,102,.08)}section{padding:30px 0}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--hard);color:var(--hard);background:rgba(116,255,219,.07);border-radius:14px;padding:12px 15px;text-decoration:none;font-weight:850;cursor:pointer}.btn.primary{color:#04120e;background:var(--green);border-color:var(--green)}button.btn{font:inherit}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.copybox{white-space:pre-wrap;border:1px solid rgba(116,255,219,.18);border-radius:18px;background:rgba(0,0,0,.28);padding:16px;color:#d9f6ff;font:14px/1.65 ui-monospace,Menlo,monospace;overflow:auto}.metric{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(116,255,219,.12);padding:12px 0;font:13px/1.25 ui-monospace,Menlo,monospace}.metric:last-child{border-bottom:0}.step{display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start;border-bottom:1px solid rgba(116,255,219,.12);padding:14px 0}.step:last-child{border-bottom:0}.num{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:rgba(116,255,123,.12);border:1px solid rgba(116,255,123,.45);color:var(--green);font-weight:900}footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0 34px;margin-top:36px;font:13px/1.4 ui-monospace,Menlo,monospace}@media(max-width:860px){.grid,.two{grid-template-columns:1fr}.nav{display:none}}
+  </style>
+</head>
+<body>
+  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/casagrand-firstcity/">Pilot</a><a href="/casagrand-firstcity/first-responder/">First responder</a><a href="/casagrand-firstcity/date-poll/">Date poll</a><a href="/casagrand-firstcity/community-bot/">Community bot</a></div></nav>
+  <main>
+    <section class="hero shell">
+      <div class="eyebrow">Casagrand QA demo seed · 2026-05-25</div>
+      <h1>Turn the first QA signal into a concrete mini-demo.</h1>
+      <p class="lead">The first real Casagrand resident signal is QA/coding/student-project interest. This kit gives Boogi a ready follow-up and a 20-minute practical demo outline: feature note → AI-generated test cases → human review → reusable QA workflow.</p>
+      <div class="actions">
+        <button class="btn primary" data-copy-target="sample-ask" onclick="copyText('sample-ask','sample ask')">Copy sample ask</button>
+        <button class="btn" data-copy-target="demo-prompt" onclick="copyText('demo-prompt','demo prompt')">Copy demo prompt</button>
+        <button class="btn" data-copy-target="invite" onclick="copyText('invite','mini-demo invite')">Copy mini-demo invite</button>
+        <button class="btn" data-copy-target="scorecard" onclick="copyText('scorecard','scorecard')">Copy scorecard</button>
+      </div>
+    </section>
+
+    <section class="shell grid">
+      <article class="card"><span class="badge warn">why now</span><h3>First signal needs specificity</h3><p>A generic AI meetup ask can go cold. A QA-specific workflow sample makes the next reply easier and creates a stronger event hook.</p></article>
+      <article class="card"><span class="badge">demo outcome</span><h3>One reusable workflow</h3><p>Show how to turn a short product note into test cases, risks, edge cases, and a regression checklist with human review.</p></article>
+      <article class="card"><span class="badge blue">growth loop</span><h3>Mini-demo → referrals</h3><p>Use the demo artifact to ask the responder for two QA/dev/student referrals before posting in the broad IT group.</p></article>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel">
+        <h2>20-minute mini-demo run of show</h2>
+        <div class="step"><div class="num">1</div><div><h3>Collect an anonymized feature note</h3><p>No company/client data. One paragraph is enough.</p></div></div>
+        <div class="step"><div class="num">2</div><div><h3>Generate first-pass test scenarios</h3><p>Use AI for breadth: happy path, negative path, edge cases, accessibility, data validation.</p></div></div>
+        <div class="step"><div class="num">3</div><div><h3>Human QA review</h3><p>Mark missing assumptions, risk areas, duplicates, and what needs manual verification.</p></div></div>
+        <div class="step"><div class="num">4</div><div><h3>Convert to a reusable checklist</h3><p>End with a template the resident can reuse and a one-line referral ask.</p></div></div>
+      </div>
+      <div class="panel">
+        <h2>Activation thresholds</h2>
+        <div class="metric"><span>1 anonymized QA sample</span><strong>record demo seed</strong></div>
+        <div class="metric"><span>1 mini-demo attended</span><strong>ask for 2 referrals</strong></div>
+        <div class="metric"><span>3 QA/dev/student interests</span><strong>post topic poll</strong></div>
+        <div class="metric"><span>5+ total resident signals</span><strong>prepare clubhouse slot</strong></div>
+        <p class="muted">Track only last4, segment, sample type, topic vote, slot vote, and referral context. Do not store raw WhatsApp text or full phone numbers.</p>
+      </div>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel"><h2>Ask for the sample</h2><div id="sample-ask" class="copybox">Can you share one anonymized QA example I can use for the first practical demo?
+
+Any one is enough:
+- a feature note/user story
+- a bug description
+- a regression area
+- an API/UI flow
+- a student project idea that needs test cases
+
+Please remove company names, customer data, credentials, screenshots, and anything confidential. A plain 4–6 line example is perfect.</div></div>
+      <div class="panel"><h2>Demo prompt</h2><div id="demo-prompt" class="copybox">You are helping a QA engineer create a practical test plan from an anonymized feature note.
+
+Feature note:
+[PASTE ANONYMIZED NOTE]
+
+Return:
+1. assumptions to confirm
+2. 8 happy-path test cases
+3. 8 negative/edge cases
+4. data validation checks
+5. accessibility/usability checks
+6. regression checklist
+7. risks a human QA must review
+
+Keep it practical. Avoid fake certainty. Mark anything that needs product clarification.</div></div>
+      <div class="panel"><h2>Mini-demo invite</h2><div id="invite" class="copybox">I can do a quick 20-minute mini-demo using your anonymized QA example:
+
+Feature note → AI test cases → human QA review → reusable regression checklist.
+
+If it works, I’ll turn it into the first Casagrand “AI by Doing” demo topic. Are you free for a quick walkthrough this week?
+
+Also, if you know 1–2 QA/dev/student residents who would like this, please intro them or share the RSVP:
+https://dabblewith.ai/casagrand-firstcity/rsvp/</div></div>
+      <div class="panel"><h2>Privacy-safe scorecard</h2><div id="scorecard" class="copybox">QA mini-demo scorecard — Casagrand
+
+Responder last4: ____
+Sample received? yes/no
+Sample type: feature note / bug / regression / API / UI / student project / other
+Mini-demo booked? yes/no
+Topic vote: QA workflows / coding assistant / student project / other
+Slot vote: weekend morning / weekend evening / weekday evening
+Referral 1 segment:
+Referral 2 segment:
+Community-bot intro? yes/no
+Next action: demo / referral DMs / date poll / clubhouse prep / continue 5-DM sprint</div></div>
+    </section>
+  </main>
+  <footer><div class="shell">AI-operated · human-guided · Casagrand QA workflow demo · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></div></footer>
+</body>
+</html>
