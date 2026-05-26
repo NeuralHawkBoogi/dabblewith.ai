@@ -84,6 +84,7 @@ function parseArgs(argv = process.argv.slice(2)) {
     includeAll: false,
     manualTracker: null,
     writeManualTrackerTemplate: null,
+    writeReferralSprintTemplate: null,
     excludeLast4: normalizeLast4List(process.env.DABBLE_CASAGRAND_EXCLUDE_LAST4 || ''),
   };
   for (let i = 0; i < argv.length; i += 1) {
@@ -93,6 +94,7 @@ function parseArgs(argv = process.argv.slice(2)) {
     else if (arg === '--date') options.date = argv[++i];
     else if (arg === '--manual-tracker') options.manualTracker = argv[++i];
     else if (arg === '--write-manual-tracker-template') options.writeManualTrackerTemplate = argv[++i];
+    else if (arg === '--write-referral-sprint-template') options.writeReferralSprintTemplate = argv[++i];
     else if (arg === '--exclude-last4') options.excludeLast4.push(...normalizeLast4List(argv[++i]));
     else if (arg === '--include-all') options.includeAll = true;
     else if (arg === '--help' || arg === '-h') options.help = true;
@@ -235,12 +237,57 @@ function manualTrackerTemplate() {
   };
 }
 
-function writeManualTrackerTemplate(file) {
-  if (!file) throw new Error('--write-manual-tracker-template requires a file path');
+function referralSprintTrackerTemplate() {
+  return {
+    meta: {
+      sprintStartedAt: '',
+      reportRerunDueAt: '',
+      route: 'first_responder_referral_sprint',
+      notes: 'Fill timestamps after the first-responder referral ask. Store only last4, segment, short problem, and next action; no direct identifiers or copied chat text.',
+    },
+    rows: [
+      {
+        segment: 'qa_dev_student',
+        last4: '1001',
+        route: 'first_responder_referral_sprint',
+        problem: '',
+        followUpSent: false,
+        nextAction: 'send referred-neighbor warm intro',
+      },
+      {
+        segment: 'qa_dev_student',
+        last4: '1002',
+        route: 'first_responder_referral_sprint',
+        problem: '',
+        followUpSent: false,
+        nextAction: 'ask topic/date vote after warm intro',
+      },
+      {
+        segment: 'group_owner',
+        last4: '1003',
+        route: 'first_responder_referral_sprint',
+        problem: '',
+        followUpSent: false,
+        nextAction: 'send bot-readiness audit only if they own/admin a WhatsApp group',
+      },
+    ],
+  };
+}
+
+function writeJsonTemplate(file, template, flagName) {
+  if (!file) throw new Error(`${flagName} requires a file path`);
   const outputPath = path.resolve(file);
   fs.mkdirSync(path.dirname(outputPath), { recursive: true, mode: 0o700 });
-  fs.writeFileSync(outputPath, `${JSON.stringify(manualTrackerTemplate(), null, 2)}\n`, { mode: 0o600 });
+  fs.writeFileSync(outputPath, `${JSON.stringify(template, null, 2)}\n`, { mode: 0o600 });
   return outputPath;
+}
+
+function writeManualTrackerTemplate(file) {
+  return writeJsonTemplate(file, manualTrackerTemplate(), '--write-manual-tracker-template');
+}
+
+function writeReferralSprintTrackerTemplate(file) {
+  return writeJsonTemplate(file, referralSprintTrackerTemplate(), '--write-referral-sprint-template');
 }
 
 function loadManualTracker(file) {
@@ -747,9 +794,10 @@ function writeCampaignReport(options = {}) {
 
 function usage() {
   return [
-    'Usage: node scripts/casagrand-campaign-report.js [--runtime-dir DIR] [--output-dir DIR] [--date YYYY-MM-DD] [--manual-tracker FILE] [--write-manual-tracker-template FILE] [--exclude-last4 1234[,5678]] [--include-all]',
+    'Usage: node scripts/casagrand-campaign-report.js [--runtime-dir DIR] [--output-dir DIR] [--date YYYY-MM-DD] [--manual-tracker FILE] [--write-manual-tracker-template FILE] [--write-referral-sprint-template FILE] [--exclude-last4 1234[,5678]] [--include-all]',
     '',
     'Use --write-manual-tracker-template FILE to create a privacy-safe starter JSON with exactly 5 rows (2 career, 2 workflow, 1 admin) using last4 placeholders only.',
+    'Use --write-referral-sprint-template FILE to create a privacy-safe starter JSON for first-responder referral-sprint follow-up rows.',
     '',
     `Default runtime dir: ${DEFAULT_RUNTIME_DIR}`,
     `Default output dir: ${DEFAULT_OUTPUT_DIR}`,
@@ -766,6 +814,11 @@ if (require.main === module) {
     if (options.writeManualTrackerTemplate) {
       const templatePath = writeManualTrackerTemplate(options.writeManualTrackerTemplate);
       console.log(`casagrand manual tracker template written: ${templatePath}`);
+      process.exit(0);
+    }
+    if (options.writeReferralSprintTemplate) {
+      const templatePath = writeReferralSprintTrackerTemplate(options.writeReferralSprintTemplate);
+      console.log(`casagrand referral sprint tracker template written: ${templatePath}`);
       process.exit(0);
     }
     const result = writeCampaignReport(options);
@@ -791,7 +844,9 @@ module.exports = {
   inferSlotVotes,
   tracksForTags,
   manualTrackerTemplate,
+  referralSprintTrackerTemplate,
   writeManualTrackerTemplate,
+  writeReferralSprintTrackerTemplate,
   summarizeManualTracker,
   computeManualNextAction,
   computeLaunchDecision,

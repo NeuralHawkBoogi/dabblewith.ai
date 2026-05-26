@@ -74,3 +74,20 @@ When the manual tracker is supplied with any `route=first_responder_referral_spr
 - Last4-only row bullets (`segment · ****last4 · problem · follow_up · next`) so the operator can act without opening another kit.
 
 The section is omitted entirely when the tracker has no referral-sprint rows, and rows whose `last4` is not exactly four digits are rejected before rendering.
+
+## Referral-sprint tracker template — 2026-05-26 02:15 UTC
+
+The report CLI can now generate a dedicated privacy-safe starter JSON for the first-responder referral sprint:
+
+```bash
+node scripts/casagrand-campaign-report.js \
+  --write-referral-sprint-template /tmp/casagrand-referral-sprint-tracker.json
+```
+
+Use this when the first responder gives 1–3 warm intros. It creates three last4-only rows:
+
+- two `qa_dev_student` referral rows for QA/dev/student/practical-AI neighbors
+- one `group_owner` referral row for a WhatsApp group owner/admin, routed to bot readiness only when applicable
+- all rows default to `route=first_responder_referral_sprint`, so the existing report renders the **Referral sprint follow-up** section immediately after Boogi fills the last4/problem/next-action fields
+
+Keep the generated file local/private; commit docs and code only, not filled tracker data.

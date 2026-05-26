@@ -14,6 +14,7 @@ const {
   inferTopics,
   isCampaignText,
   manualTrackerTemplate,
+  referralSprintTrackerTemplate,
   isExcludedLast4,
   normalizeLast4List,
   redactPhone,
@@ -21,6 +22,7 @@ const {
   summarizeManualTracker,
   writeCampaignReport,
   writeManualTrackerTemplate,
+  writeReferralSprintTrackerTemplate,
 } = require('./casagrand-campaign-report');
 
 function tmpDir() {
@@ -66,6 +68,25 @@ function appendJsonl(file, rows) {
   assert(template.rows.every((row) => row.route === 'no_reply'), 'template routes must use allowed no_reply default');
   assert(!JSON.stringify(template).match(/phone|message|raw|name|wamid|\+91/i), 'template leaked disallowed fields');
   assert.strictEqual(parseArgs(['--write-manual-tracker-template', 'out.json']).writeManualTrackerTemplate, 'out.json');
+  assert.strictEqual(parseArgs(['--write-referral-sprint-template', 'referrals.json']).writeReferralSprintTemplate, 'referrals.json');
+
+  const referralTemplate = referralSprintTrackerTemplate();
+  assert.strictEqual(referralTemplate.meta.route, 'first_responder_referral_sprint');
+  assert.strictEqual(referralTemplate.rows.length, 3);
+  assert.deepStrictEqual(referralTemplate.rows.map((row) => row.segment), ['qa_dev_student', 'qa_dev_student', 'group_owner']);
+  assert(referralTemplate.rows.every((row) => /^\d{4}$/.test(row.last4)), 'referral template must use last4 placeholders only');
+  assert(referralTemplate.rows.every((row) => row.route === 'first_responder_referral_sprint'), 'referral template routes must use referral sprint route');
+  assert(!JSON.stringify(referralTemplate).match(/phone|message|raw|name|wamid|\+91/i), 'referral template leaked disallowed fields');
+
+  const referralTemplatePath = path.join(tmpDir(), 'nested', 'referral-sprint-template.json');
+  const writtenReferralTemplatePath = writeReferralSprintTrackerTemplate(referralTemplatePath);
+  assert.strictEqual(writtenReferralTemplatePath, path.resolve(referralTemplatePath));
+  const writtenReferralTemplate = JSON.parse(fs.readFileSync(referralTemplatePath, 'utf8'));
+  assert.deepStrictEqual(writtenReferralTemplate, referralTemplate);
+  const writtenReferralSummary = summarizeManualTracker(writtenReferralTemplate);
+  assert.strictEqual(writtenReferralSummary.rows, 3);
+  assert.strictEqual(writtenReferralSummary.referrals, 3);
+  assert.strictEqual(buildReferralSprintFollowUp(writtenReferralSummary).hasGroupOwner, true);
 
   const templatePath = path.join(tmpDir(), 'nested', 'manual-5dm-template.json');
   const writtenTemplatePath = writeManualTrackerTemplate(templatePath);
