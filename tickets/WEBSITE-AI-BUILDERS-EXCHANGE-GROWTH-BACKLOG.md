@@ -1,26 +1,50 @@
-# Ticket Backlog: Dabblewith.ai AI Builder's Exchange Website Growth
+# Dabblewith.ai Website Growth Backlog — Epics + Tickets
 
 Status: open
 Created: 2026-05-26
 Owner: Boogi / dabblewith.ai
 Source strategy: `docs/growth/audience-acquisition-community-strategy.md`
 
-## Goal
-Convert the Dabblewith.ai website from a static/community-bot landing site into an **AI Builder's Exchange**: a workflow discovery, peer experimentation, and community-powered content hub that compounds traffic, retention, and commercial intent.
+## Product goal
+Transform the Dabblewith.ai website from a mostly static/community-bot landing site into an **AI Builder's Exchange**: a workflow discovery, peer experimentation, and community-powered content hub that compounds traffic, trust, retention, and commercial intent.
 
 ## North-star outcomes
-- Visitors understand Dabblewith.ai as a practical AI workflow/community platform within 5 seconds.
+- Visitors understand the platform promise within 5 seconds: discover, fork, and share practical AI workflows.
 - Community-created workflows become indexable SEO assets.
 - Every acquisition channel is trackable via UTM/source/intent.
-- Website routes drive measurable actions: community-bot setup, newsletter signup, workflow consumption, workflow submission, and event/challenge participation.
+- Website routes drive measurable actions: community-bot setup, newsletter signup, workflow consumption, workflow submission, and challenge participation.
 - Growth is judged by retained members and workflow usage, not vanity traffic.
 
-## Execution phases
+## Epic roadmap
 
-### Phase 0 — Measurement and positioning foundation
-Ship first. Without this, growth experiments will be untraceable.
+| Epic | Name | Goal | Priority | Status |
+|---|---|---|---|---|
+| EPIC-WG-00 | Measurement & Positioning Foundation | Make the site clear and measurable before scaling traffic. | P0 | open |
+| EPIC-WG-01 | Workflow Exchange MVP | Publish workflow assets that compound through SEO and community sharing. | P0 | open |
+| EPIC-WG-02 | Newsletter & Build-in-Public Engine | Build an owned audience and transparent trust loop. | P0 | open |
+| EPIC-WG-03 | Community Cold-Start & Retention | Ensure new visitors see useful paths, not an empty community. | P0/P1 | open |
+| EPIC-WG-04 | AI Community Intelligence | Define privacy-safe signals for retention and personalization. | P1/P2 | open |
+| EPIC-WG-05 | Social & Launch Execution Assets | Operationalize reply-guy, launch, and collaboration tactics. | P1 | open |
 
-#### WEB-GROWTH-T01 — Reposition homepage around AI Builder's Exchange
+---
+
+# EPIC-WG-00 — Measurement & Positioning Foundation
+
+Priority: P0
+Status: open
+
+## Goal
+Ship the minimum positioning and analytics foundation required before doing serious acquisition. Without this, growth experiments will be untraceable and visitors will not understand the new AI Builder's Exchange direction.
+
+## Success criteria
+- Homepage clearly positions Dabblewith.ai as a practical AI workflow/community platform.
+- Main CTAs exist and are measurable.
+- UTM/source/intent tracking is documented and wired into CTA flows.
+- GA event taxonomy distinguishes real commercial/community intent from generic clicks.
+
+## Tickets
+
+### WEB-GROWTH-T01 — Reposition homepage around AI Builder's Exchange
 Priority: P0
 Status: todo
 Dependencies: []
@@ -56,7 +80,7 @@ The current site does not yet clearly communicate the strategic pivot: Dabblewit
 
 ---
 
-#### WEB-GROWTH-T02 — Add source/intent tracking and UTM discipline
+### WEB-GROWTH-T02 — Add source/intent tracking and UTM discipline
 Priority: P0
 Status: todo
 Dependencies: []
@@ -83,7 +107,7 @@ Recent GA checks show marketplace/social traffic collapses into Direct/Unassigne
 
 ---
 
-#### WEB-GROWTH-T03 — Add conversion event taxonomy for GA
+### WEB-GROWTH-T03 — Add conversion event taxonomy for GA
 Priority: P0
 Status: todo
 Dependencies: [WEB-GROWTH-T02]
@@ -121,10 +145,23 @@ Each event should include safe metadata only:
 
 ---
 
-### Phase 1 — Workflow Exchange MVP
-Make the website capable of hosting workflow assets that compound through SEO.
+# EPIC-WG-01 — Workflow Exchange MVP
 
-#### WEB-GROWTH-T04 — Create Workflow Exchange information architecture
+Priority: P0
+Status: open
+
+## Goal
+Make the website capable of hosting workflow assets that compound through search, sharing, and community contribution.
+
+## Success criteria
+- `/workflows/` exists as a clear product surface.
+- At least 10 practical workflow mini-tutorials are published.
+- Workflow pages are structured, internally linked, and schema-rich.
+- Visitors can begin submitting a workflow for human review.
+
+## Tickets
+
+### WEB-GROWTH-T04 — Create Workflow Exchange information architecture
 Priority: P0
 Status: todo
 Dependencies: [WEB-GROWTH-T01]
@@ -139,19 +176,7 @@ Dependencies: [WEB-GROWTH-T01]
   - No-code automation workflows
 - Add individual workflow page template.
 - Define workflow frontmatter/data schema:
-  - title
-  - slug
-  - audience
-  - problem
-  - outcome
-  - tools used
-  - time required
-  - difficulty
-  - steps
-  - example output
-  - privacy notes
-  - fork/remix ideas
-  - CTA
+  - title, slug, audience, problem, outcome, tools used, time required, difficulty, steps, example output, privacy notes, fork/remix ideas, CTA.
 
 **Acceptance criteria**
 - `/workflows/` exists and lists at least 5 seed workflow placeholders or real workflows.
@@ -166,13 +191,13 @@ Dependencies: [WEB-GROWTH-T01]
 
 ---
 
-#### WEB-GROWTH-T05 — Seed first 10 practical AI workflow pages
+### WEB-GROWTH-T05 — Seed first 10 practical AI workflow pages
 Priority: P0
 Status: todo
 Dependencies: [WEB-GROWTH-T04]
 
 **Scope**
-Create 10 high-intent seed workflows as mini-tutorials, not feature lists. Suggested initial set:
+Create 10 high-intent seed workflows as mini-tutorials, not feature lists:
 1. AI workshop intake template for teams
 2. WhatsApp community onboarding bot workflow
 3. Founder weekly metrics build-in-public workflow
@@ -184,13 +209,7 @@ Create 10 high-intent seed workflows as mini-tutorials, not feature lists. Sugge
 9. Customer support FAQ gap-mining workflow
 10. AI tool evaluation scorecard workflow
 
-Each workflow must include:
-- exact user problem/query
-- step-by-step process
-- tools used
-- output example
-- constraints and human review notes
-- CTA to newsletter/community/workflow submission
+Each workflow must include exact user problem/query, step-by-step process, tools used, output example, constraints/human-review notes, and CTA.
 
 **Acceptance criteria**
 - 10 workflow pages are published.
@@ -204,7 +223,7 @@ Each workflow must include:
 
 ---
 
-#### WEB-GROWTH-T06 — Add structured schema for workflows and tutorials
+### WEB-GROWTH-T06 — Add structured schema for workflows and tutorials
 Priority: P0
 Status: todo
 Dependencies: [WEB-GROWTH-T04]
@@ -226,7 +245,7 @@ Dependencies: [WEB-GROWTH-T04]
 
 ---
 
-#### WEB-GROWTH-T07 — Add workflow submission intake MVP
+### WEB-GROWTH-T07 — Add workflow submission intake MVP
 Priority: P1
 Status: todo
 Dependencies: [WEB-GROWTH-T04, WEB-GROWTH-T02]
@@ -234,14 +253,7 @@ Dependencies: [WEB-GROWTH-T04, WEB-GROWTH-T02]
 **Scope**
 - Add `/submit-workflow/` page.
 - Provide a simple submission form or WhatsApp-first submission CTA.
-- Collect:
-  - workflow title
-  - intended audience
-  - problem solved
-  - steps/tools
-  - example output
-  - publish permission
-  - contact method
+- Collect workflow title, audience, problem solved, steps/tools, example output, publish permission, and contact method.
 - Store submissions safely as static pending records, email/WhatsApp handoff, or server endpoint depending current site architecture.
 
 **Acceptance criteria**
@@ -256,10 +268,22 @@ Dependencies: [WEB-GROWTH-T04, WEB-GROWTH-T02]
 
 ---
 
-### Phase 2 — Newsletter and build-in-public engine
-Build owned audience and trust loops.
+# EPIC-WG-02 — Newsletter & Build-in-Public Engine
 
-#### WEB-GROWTH-T08 — Create newsletter landing page and Substack operating system
+Priority: P0
+Status: open
+
+## Goal
+Create an owned audience channel and transparent operating rhythm that converts casual visitors into repeat followers, subscribers, and collaborators.
+
+## Success criteria
+- Newsletter page exists with a practical workflow promise.
+- Build-in-public metrics page exists and can be updated weekly.
+- Partner collaboration pipeline exists for issue swaps and Substack Live.
+
+## Tickets
+
+### WEB-GROWTH-T08 — Create newsletter landing page and Substack operating system
 Priority: P0
 Status: todo
 Dependencies: [WEB-GROWTH-T01, WEB-GROWTH-T02]
@@ -287,7 +311,7 @@ Dependencies: [WEB-GROWTH-T01, WEB-GROWTH-T02]
 
 ---
 
-#### WEB-GROWTH-T09 — Create build-in-public metrics page/template
+### WEB-GROWTH-T09 — Create build-in-public metrics page/template
 Priority: P0
 Status: todo
 Dependencies: [WEB-GROWTH-T03]
@@ -295,15 +319,7 @@ Dependencies: [WEB-GROWTH-T03]
 **Scope**
 - Add `/build-in-public/` page.
 - Publish a weekly metrics template:
-  - traffic
-  - active users/community members
-  - workflow views
-  - workflow submissions
-  - CTA clicks
-  - community-bot setup requests
-  - experiments run
-  - failed experiments
-  - lessons learned
+  - traffic, active users/community members, workflow views, workflow submissions, CTA clicks, community-bot setup requests, experiments run, failed experiments, lessons learned.
 - Add copy explaining honest progress and $0 MRR updates if true.
 
 **Acceptance criteria**
@@ -317,21 +333,14 @@ Dependencies: [WEB-GROWTH-T03]
 
 ---
 
-#### WEB-GROWTH-T10 — Create partner collaboration/issue-swap CRM ticket
+### WEB-GROWTH-T10 — Create partner collaboration/issue-swap CRM
 Priority: P1
 Status: todo
 Dependencies: [WEB-GROWTH-T08]
 
 **Scope**
 - Create a lightweight partner shortlist document/table.
-- Fields:
-  - publication/person
-  - audience fit
-  - size estimate
-  - contact channel
-  - engagement notes
-  - proposed collaboration
-  - status
+- Fields: publication/person, audience fit, size estimate, contact channel, engagement notes, proposed collaboration, status.
 - Add website CTA/page section for issue swaps and Substack Live conversations.
 - Define outreach copy templates.
 
@@ -345,10 +354,22 @@ Dependencies: [WEB-GROWTH-T08]
 
 ---
 
-### Phase 3 — Community cold-start and retention loops
-Make new users see value immediately.
+# EPIC-WG-03 — Community Cold-Start & Retention
 
-#### WEB-GROWTH-T11 — Design no-blank-feed onboarding path
+Priority: P0/P1
+Status: open
+
+## Goal
+Avoid the empty-restaurant problem by giving visitors immediate, relevant paths and a clear safe-harbor community culture.
+
+## Success criteria
+- New visitors can self-select intent and get useful next steps.
+- Challenge infrastructure exists for early community participation.
+- Community policy makes Dabblewith.ai safe for AI-curious builders, creators, and professionals.
+
+## Tickets
+
+### WEB-GROWTH-T11 — Design no-blank-feed onboarding path
 Priority: P0
 Status: todo
 Dependencies: [WEB-GROWTH-T04]
@@ -374,7 +395,7 @@ Dependencies: [WEB-GROWTH-T04]
 
 ---
 
-#### WEB-GROWTH-T12 — Launch 4-week AI workflow challenge page
+### WEB-GROWTH-T12 — Launch 4-week AI workflow challenge page
 Priority: P1
 Status: todo
 Dependencies: [WEB-GROWTH-T04, WEB-GROWTH-T08]
@@ -395,21 +416,14 @@ Dependencies: [WEB-GROWTH-T04, WEB-GROWTH-T08]
 
 ---
 
-#### WEB-GROWTH-T13 — Create safe-harbor AI community policy page
+### WEB-GROWTH-T13 — Create safe-harbor AI community policy page
 Priority: P0
 Status: todo
 Dependencies: []
 
 **Scope**
 - Add `/community-policy/` or update existing policy page.
-- Cover:
-  - constructive AI debate
-  - no ideological ambushes
-  - respect for creators/artists/writers
-  - privacy and data ownership
-  - no harassment
-  - human oversight for AI moderation
-  - bias/provenance/data-security principles
+- Cover constructive AI debate, no ideological ambushes, respect for creators/artists/writers, privacy/data ownership, no harassment, human oversight for AI moderation, and bias/provenance/data-security principles.
 
 **Acceptance criteria**
 - Public policy page exists.
@@ -422,27 +436,30 @@ Dependencies: []
 
 ---
 
-### Phase 4 — AI community intelligence
-Turn behavior into retention signals without over-automation.
+# EPIC-WG-04 — AI Community Intelligence
 
-#### WEB-GROWTH-T14 — Define community intelligence event model
+Priority: P1/P2
+Status: open
+
+## Goal
+Define a privacy-safe signal layer for retention, personalization, and future AI-assisted community management without over-automation.
+
+## Success criteria
+- Community intelligence events are documented and privacy-safe.
+- Retention/churn dashboard spec exists for future implementation.
+- Human review remains explicit for any AI-driven moderation or recommendations.
+
+## Tickets
+
+### WEB-GROWTH-T14 — Define community intelligence event model
 Priority: P1
 Status: todo
 Dependencies: [WEB-GROWTH-T03, WEB-GROWTH-T04]
 
 **Scope**
-Create a privacy-safe event model for:
-- workflow viewed
-- workflow saved/copied
-- workflow submitted
-- CTA clicked
-- challenge joined
-- newsletter clicked
-- community-bot setup clicked
-- returning visitor
-- interest category selected
+Create a privacy-safe event model for workflow viewed/saved/submitted, CTA clicked, challenge joined, newsletter clicked, community-bot setup clicked, returning visitor, and interest category selected.
 
-Include rules for what must never be tracked:
+Also define never-track rules:
 - raw phone numbers
 - raw message text
 - secrets/tokens
@@ -458,7 +475,7 @@ Include rules for what must never be tracked:
 
 ---
 
-#### WEB-GROWTH-T15 — Add lightweight churn/retention dashboard spec
+### WEB-GROWTH-T15 — Add lightweight churn/retention dashboard spec
 Priority: P2
 Status: todo
 Dependencies: [WEB-GROWTH-T14]
@@ -484,10 +501,22 @@ Dependencies: [WEB-GROWTH-T14]
 
 ---
 
-### Phase 5 — Social and launch execution assets
-Operationalize the go-to-market plan.
+# EPIC-WG-05 — Social & Launch Execution Assets
 
-#### WEB-GROWTH-T16 — Create Reply Guy and build-in-public content kit
+Priority: P1
+Status: open
+
+## Goal
+Turn the analysis into repeatable go-to-market operating assets for X, Indie Hackers, newsletter swaps, partner launches, and feature launches.
+
+## Success criteria
+- Reply-guy and build-in-public templates exist.
+- Feature launch checklist ensures tracking and follow-up.
+- Launches optimize for target-user intent, not social vanity metrics.
+
+## Tickets
+
+### WEB-GROWTH-T16 — Create Reply Guy and build-in-public content kit
 Priority: P1
 Status: todo
 Dependencies: [WEB-GROWTH-T09]
@@ -508,7 +537,7 @@ Dependencies: [WEB-GROWTH-T09]
 
 ---
 
-#### WEB-GROWTH-T17 — Create launch readiness checklist for new website features
+### WEB-GROWTH-T17 — Create launch readiness checklist for new website features
 Priority: P1
 Status: todo
 Dependencies: [WEB-GROWTH-T02, WEB-GROWTH-T03]
@@ -537,13 +566,13 @@ Dependencies: [WEB-GROWTH-T02, WEB-GROWTH-T03]
 
 1. `WEB-GROWTH-T01` — homepage repositioning
 2. `WEB-GROWTH-T02` — UTM/source tracking
-3. `WEB-GROWTH-T03` — conversion event taxonomy
+3. `WEB-GROWTH-T03` — GA conversion event taxonomy
 4. `WEB-GROWTH-T04` — workflow exchange IA
 5. `WEB-GROWTH-T05` — first 10 workflow pages
-6. `WEB-GROWTH-T06` — workflow schema
+6. `WEB-GROWTH-T06` — workflow schema/JSON-LD
 7. `WEB-GROWTH-T08` — newsletter landing page
 8. `WEB-GROWTH-T09` — build-in-public metrics page
-9. `WEB-GROWTH-T13` — community policy
+9. `WEB-GROWTH-T13` — community policy page
 
 ## Notes
 - This backlog is website-first. Runtime/community-bot platformization remains in `tickets/COMMUNITY-BOT-PLATFORM.md` and related runtime tickets.
