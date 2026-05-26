@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#060912" />
+  <title>Casagrand Date Lock Kit — dabblewith.ai</title>
+  <meta name="description" content="A mobile-ready kit for turning 3 verified Casagrand AI-by-Doing resident signals into a date poll, clubhouse slot ask, and first-session announcement without broad-post spam." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://dabblewith.ai/casagrand-firstcity/date-lock/" />
+  <meta property="og:site_name" content="dabblewith.ai" />
+  <meta property="og:title" content="Casagrand Date Lock Kit" />
+  <meta property="og:description" content="Lock the first Casagrand AI-by-Doing session only after 3 privacy-safe resident signals." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dabblewith.ai/casagrand-firstcity/date-lock/" />
+  <meta property="og:image" content="https://dabblewith.ai/app-icon-1024.png" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7473LZQGX2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-7473LZQGX2');
+    function copyText(id, label) {
+      var el = document.getElementById(id); if (!el) return;
+      var text = el.innerText.trim();
+      var done = function () {
+        if (typeof gtag === 'function') gtag('event', 'copy_click', { cta_id: 'casagrand_date_lock_' + id, cta_source: 'casagrand_date_lock', link_text: label || id, page_path: location.pathname });
+        var btn = document.querySelector('[data-copy-target="' + id + '"]');
+        if (btn) { var old = btn.innerText; btn.innerText = 'Copied'; setTimeout(function(){ btn.innerText = old; }, 1400); }
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done).catch(function(){ window.prompt('Copy this text', text); });
+      else window.prompt('Copy this text', text);
+    }
+  </script>
+  <script src="/scripts/web/dabblewith-tracking.js" defer></script>
+  <style>
+    :root{--bg:#060912;--panel:rgba(16,27,48,.94);--line:rgba(116,255,219,.24);--hard:#74ffdb;--text:#f2fbff;--muted:#9eb0c2;--green:#74ff7b;--blue:#58a6ff;--amber:#ffcc66;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--text);background:linear-gradient(rgba(116,255,219,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(116,255,219,.045) 1px,transparent 1px),radial-gradient(circle at 12% 0%,rgba(88,166,255,.25),transparent 30rem),radial-gradient(circle at 92% 8%,rgba(116,255,123,.16),transparent 28rem),var(--bg);background-size:42px 42px,42px 42px,auto,auto,auto}a{color:inherit}.shell{width:min(1120px,calc(100% - 30px));margin:0 auto}nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0}.logo{text-decoration:none;font-size:30px;font-weight:900;letter-spacing:-.055em}.nav{display:flex;gap:10px;flex-wrap:wrap}.nav a{border:1px solid var(--line);border-radius:999px;padding:9px 12px;text-decoration:none;color:var(--muted);background:rgba(255,255,255,.03)}.hero,.panel,.card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(16,27,48,.96),rgba(8,13,25,.92));border-radius:24px;box-shadow:0 24px 90px rgba(0,0,0,.45)}.hero{padding:clamp(26px,5vw,52px);margin:18px auto 26px}.eyebrow{width:fit-content;color:var(--hard);border:1px solid var(--hard);background:rgba(116,255,219,.08);border-radius:999px;padding:9px 12px;font:12px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}h1{font-size:clamp(42px,7vw,82px);line-height:.9;letter-spacing:-.07em;margin:24px 0 18px}h2{font-size:clamp(28px,4.2vw,46px);line-height:.96;letter-spacing:-.055em;margin:0 0 16px}h3{font-size:22px;margin:0 0 8px}.lead{font-size:clamp(18px,2.2vw,24px);color:#d7e9f7;line-height:1.45;max-width:940px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.two{grid-template-columns:repeat(2,1fr)}.card,.panel{padding:22px}.muted,p,li{color:var(--muted);line-height:1.65}.badge{display:inline-flex;border:1px solid rgba(116,255,123,.45);color:var(--green);background:rgba(116,255,123,.08);padding:5px 9px;border-radius:999px;font:12px/1.2 ui-monospace,Menlo,monospace}.badge.blue{color:var(--blue);border-color:rgba(88,166,255,.45);background:rgba(88,166,255,.08)}.badge.warn{color:var(--amber);border-color:rgba(255,204,102,.45);background:rgba(255,204,102,.08)}section{padding:30px 0}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--hard);color:var(--hard);background:rgba(116,255,219,.07);border-radius:14px;padding:12px 15px;text-decoration:none;font-weight:850;cursor:pointer}.btn.primary{color:#04120e;background:var(--green);border-color:var(--green)}button.btn{font:inherit}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.copybox{white-space:pre-wrap;border:1px solid rgba(116,255,219,.18);border-radius:18px;background:rgba(0,0,0,.28);padding:16px;color:#d9f6ff;font:14px/1.65 ui-monospace,Menlo,monospace;overflow:auto}.metric{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(116,255,219,.12);padding:12px 0;font:13px/1.25 ui-monospace,Menlo,monospace}.metric:last-child{border-bottom:0}.step{display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start;border-bottom:1px solid rgba(116,255,219,.12);padding:14px 0}.step:last-child{border-bottom:0}.num{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:rgba(116,255,123,.12);border:1px solid rgba(116,255,123,.45);color:var(--green);font-weight:900}footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0 34px;margin-top:36px;font:13px/1.4 ui-monospace,Menlo,monospace}@media(max-width:860px){.grid,.two{grid-template-columns:1fr}.nav{display:none}}
+  </style>
+</head>
+<body>
+  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/casagrand-firstcity/">Pilot</a><a href="/casagrand-firstcity/referral-sprint/">Referral sprint</a><a href="/casagrand-firstcity/date-poll/">Date poll</a><a href="/casagrand-firstcity/bot-readiness/">Bot readiness</a></div></nav>
+  <main>
+    <section class="hero shell">
+      <div class="eyebrow">Casagrand date lock · use after 3 signals</div>
+      <h1>Turn warm referrals into a real first session date.</h1>
+      <p class="lead">Use this only after the referral sprint logs at least three privacy-safe resident signals. It converts narrow proof into a date/topic poll, clubhouse slot ask, and first-session announcement without sounding like spam in the IT group.</p>
+      <div class="actions">
+        <button class="btn primary" data-copy-target="signal-summary" onclick="copyText('signal-summary','signal summary')">Copy signal summary</button>
+        <button class="btn" data-copy-target="date-poll-post" onclick="copyText('date-poll-post','date poll post')">Copy date poll post</button>
+        <button class="btn" data-copy-target="clubhouse-ask" onclick="copyText('clubhouse-ask','clubhouse ask')">Copy clubhouse ask</button>
+        <button class="btn" data-copy-target="locked-announcement" onclick="copyText('locked-announcement','locked announcement')">Copy locked-date announcement</button>
+      </div>
+    </section>
+
+    <section class="shell grid">
+      <article class="card"><span class="badge warn">entry gate</span><h3>Minimum 3 real signals</h3><p>Do not use this page for one signal. It is for the moment the referral sprint has 3+ last4-only residents or one group-owner/admin plus two learner signals.</p></article>
+      <article class="card"><span class="badge">decision</span><h3>Poll before broad pitch</h3><p>The first public ask should be a topic/date choice, not a generic community launch. It makes the group post feel resident-led.</p></article>
+      <article class="card"><span class="badge blue">community-bot validation</span><h3>Route owners separately</h3><p>If a group owner/admin appears, send the bot-readiness audit in parallel. Do not mix that ask into the learner event announcement.</p></article>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel">
+        <h2>Lock sequence</h2>
+        <div class="step"><div class="num">1</div><div><h3>Summarize evidence</h3><p>Write a last4-only signal summary from the campaign report/manual tracker.</p></div></div>
+        <div class="step"><div class="num">2</div><div><h3>Run date/topic poll</h3><p>Ask residents to pick one topic and one practical slot.</p></div></div>
+        <div class="step"><div class="num">3</div><div><h3>Ask clubhouse/admin</h3><p>Request a tentative 90-minute slot only after the poll has directional interest.</p></div></div>
+        <div class="step"><div class="num">4</div><div><h3>Announce once</h3><p>Post one clear invite with the winning topic, what to bring, and privacy guardrails.</p></div></div>
+      </div>
+      <div class="panel">
+        <h2>Go/no-go thresholds</h2>
+        <div class="metric"><span>3 total learner signals</span><strong>open date poll</strong></div>
+        <div class="metric"><span>5+ poll votes</span><strong>ask clubhouse slot</strong></div>
+        <div class="metric"><span>8+ RSVPs</span><strong>lock first session</strong></div>
+        <div class="metric"><span>1 group-owner/admin signal</span><strong>run bot-readiness audit</strong></div>
+        <div class="metric"><span>&lt;3 signals after sprint</span><strong>continue 1:1 referrals</strong></div>
+        <p class="muted">Keep reporting aggregate and last4-only. Do not publish names, phone numbers, message screenshots, employer data, tokens, or raw WhatsApp text.</p>
+      </div>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel"><h2>Signal summary</h2><div id="signal-summary" class="copybox">Casagrand AI-by-Doing pilot — current private signal summary:
+
+- 3+ residents have asked for practical QA/coding/student/workflow help.
+- Most useful first topic: practical AI workflow for QA/coding tasks.
+- Format: short hands-on session, no theory, no confidential company data.
+- Next step: quick date/topic poll before locking a clubhouse or online session.
+
+Privacy: I am only tracking aggregate interest and last-four-only internal notes. No phone numbers, message screenshots, company data, or private work content will be posted.</div></div>
+      <div class="panel"><h2>Date/topic poll post</h2><div id="date-poll-post" class="copybox">A few Casagrand residents asked for a practical AI-by-Doing session, especially around QA/coding workflows.
+
+Before I lock anything, quick poll:
+
+1) Topic:
+A. Turn feature notes into test cases
+B. AI coding/PR-review assistant
+C. Resume/interview workflow
+D. Office productivity workflow
+
+2) Slot:
+A. Weekend morning
+B. Weekend evening
+C. Weekday evening
+
+Reply with topic + slot. If 8+ people are interested, I’ll run a free first session for Casagrand residents.</div></div>
+      <div class="panel"><h2>Clubhouse/admin slot ask</h2><div id="clubhouse-ask" class="copybox">Hi — I’m planning a free practical AI-by-Doing session for Casagrand residents based on early resident interest.
+
+Tentative format:
+- 60–90 minutes
+- Small hands-on session, not a sales event
+- Topic: practical AI workflow for QA/coding/productivity
+- No sensitive company/customer data, no recording required
+- Goal: help residents learn useful AI workflows and collect interest for future sessions
+
+Can we use a clubhouse/common space for one weekend or evening slot if the poll crosses 8+ RSVPs?</div></div>
+      <div class="panel"><h2>Locked-date announcement</h2><div id="locked-announcement" class="copybox">Free Casagrand AI-by-Doing session is confirmed ✅
+
+Topic: Practical AI workflow for QA/coding/productivity
+When: [DATE + TIME]
+Where: [CLUBHOUSE / ONLINE]
+
+Bring one small repetitive task you want to improve. We’ll turn a few real examples into reusable AI workflows live.
+
+Privacy rule: do not bring confidential company/customer data, screenshots, credentials, or private documents. Use anonymized examples only.
+
+RSVP: https://dabblewith.ai/casagrand-firstcity/rsvp/</div></div>
+    </section>
+
+    <section class="shell">
+      <div class="panel">
+        <h2>Measurement command</h2>
+        <p>After the poll or locked-date announcement, rerun the privacy-safe report with owner/test exclusion and optional referral-sprint tracker.</p>
+        <div class="copybox">node scripts/casagrand-campaign-report.js --date 2026-05-26 --exclude-last4 2585 --manual-tracker data/casagrand-referral-sprint-tracker.json</div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="shell">AI-operated · human-guided · Casagrand date lock kit · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></div></footer>
+</body>
+</html>

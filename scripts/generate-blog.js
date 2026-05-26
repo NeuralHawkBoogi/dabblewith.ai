@@ -122,6 +122,7 @@ const urls = [
   ['https://dabblewith.ai/casagrand-firstcity/launch-board/', 'weekly', '0.8'],
   ['https://dabblewith.ai/casagrand-firstcity/champions/', 'weekly', '0.8'],
   ['https://dabblewith.ai/casagrand-firstcity/date-poll/', 'weekly', '0.8'],
+  ['https://dabblewith.ai/casagrand-firstcity/date-lock/', 'weekly', '0.8'],
   ['https://dabblewith.ai/casagrand-firstcity/office-hours/', 'weekly', '0.8'],
   ['https://dabblewith.ai/casagrand-firstcity/testers/', 'weekly', '0.8'],
   ['https://dabblewith.ai/casagrand-firstcity/first-10-outreach/', 'weekly', '0.8'],
