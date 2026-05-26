@@ -8,6 +8,7 @@ const {
   buildCampaignReport,
   buildFirstResponderFollowUp,
   buildReferralSprintFollowUp,
+  buildFollowUpCadence,
   computeLaunchDecision,
   inferSourceTags,
   inferSlotVotes,
@@ -473,6 +474,32 @@ function appendJsonl(file, rows) {
   const qaReport = buildCampaignReport(qaRuntimeDir);
   assert.strictEqual(qaReport.totals.uniqueUsers, 1);
   assert.strictEqual(qaReport.decision.stage, 'single_responder_conversion');
+  assert(qaReport.followUpCadence, 'follow-up cadence missing from QA report');
+  assert.strictEqual(qaReport.followUpCadence.state, 'single_responder_stale_24h');
+  assert.strictEqual(qaReport.followUpCadence.latestSignalAt, '2026-05-22T03:00:00.000Z');
+  assert(qaReport.followUpCadence.ageHours >= 24, 'stale single-responder age not detected');
+  assert(qaReport.followUpCadence.nextActionOverride.includes('/casagrand-firstcity/no-reply-nudge/'));
+  assert.strictEqual(qaReport.nextAction, qaReport.followUpCadence.nextActionOverride);
+  assert(!JSON.stringify(qaReport.followUpCadence).includes('919840385678'), 'cadence leaked full phone');
+  assert(!JSON.stringify(qaReport.followUpCadence).includes('wamid.qa.coding.one'), 'cadence leaked message id');
+
+  const freshCadence = buildFollowUpCadence({
+    generatedAt: '2026-05-22T10:00:00.000Z',
+    decision: { stage: 'single_responder_conversion' },
+    manualTracker: null,
+    recentSignals: [{ receivedAt: '2026-05-22T03:00:00.000Z' }],
+  });
+  assert.strictEqual(freshCadence.state, 'single_responder_fresh');
+  assert.strictEqual(freshCadence.nextActionOverride, null);
+
+  const referralLoggedCadence = buildFollowUpCadence({
+    generatedAt: '2026-05-23T10:00:00.000Z',
+    decision: { stage: 'single_responder_conversion' },
+    manualTracker: { rows: 1, referrals: 1 },
+    recentSignals: [{ receivedAt: '2026-05-22T03:00:00.000Z' }],
+  });
+  assert.strictEqual(referralLoggedCadence.state, 'referral_sprint_logged');
+  assert.strictEqual(referralLoggedCadence.nextActionOverride, null);
 
   const qaFollowUp = buildFirstResponderFollowUp(qaReport);
   assert(qaFollowUp, 'first responder follow-up missing for single QA/coding responder');
@@ -490,6 +517,9 @@ function appendJsonl(file, rows) {
   const qaResult = writeCampaignReport({ runtimeDir: qaRuntimeDir, outputDir: qaOutputDir, date: '2026-05-22' });
   const qaMarkdown = fs.readFileSync(qaResult.mdPath, 'utf8');
   assert(qaMarkdown.includes('## First responder follow-up'), 'first responder section missing from markdown');
+  assert(qaMarkdown.includes('## Follow-up cadence'), 'follow-up cadence section missing from markdown');
+  assert(qaMarkdown.includes('Cadence state: single_responder_stale_24h'), 'stale cadence state missing from markdown');
+  assert(qaMarkdown.includes('/casagrand-firstcity/no-reply-nudge/'), 'no-reply nudge route missing from cadence markdown');
   assert(qaMarkdown.includes('Workflow sample ask:'));
   assert(qaMarkdown.includes('Slot/topic vote ask:'));
   assert(qaMarkdown.includes('Referral ask:'));

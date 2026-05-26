@@ -543,6 +543,87 @@ function buildReferralSprintFollowUp(tracker) {
   };
 }
 
+
+function latestRecentSignalAt(report) {
+  const signals = Array.isArray(report && report.recentSignals) ? report.recentSignals : [];
+  let latest = null;
+  for (const signal of signals) {
+    const receivedAt = safeIso(signal && signal.receivedAt);
+    if (!receivedAt) continue;
+    if (!latest || Date.parse(receivedAt) > Date.parse(latest)) latest = receivedAt;
+  }
+  return latest;
+}
+
+// Builds a privacy-safe follow-up cadence for the current Casagrand wedge. This
+// keeps the report actionable when a single first-responder signal goes stale:
+// after 24h without a manual referral-sprint tracker row, the next best move is
+// the one-time no-reply nudge rather than another broad IT-group post. Uses only
+// aggregate counts and timestamps already present in the report.
+function buildFollowUpCadence(report) {
+  if (!report || !report.decision) return null;
+  const latestSignalAt = latestRecentSignalAt(report);
+  if (!latestSignalAt) return null;
+  const generatedAt = safeIso(report.generatedAt) || new Date().toISOString();
+  const ageHours = Math.max(0, Math.floor((Date.parse(generatedAt) - Date.parse(latestSignalAt)) / (60 * 60 * 1000)));
+  const tracker = report.manualTracker || null;
+  const referralsLogged = tracker ? tracker.referrals || 0 : 0;
+  const trackerRows = tracker ? tracker.rows || 0 : 0;
+
+  if (report.decision.stage !== 'single_responder_conversion') {
+    return {
+      stage: report.decision.stage,
+      latestSignalAt,
+      ageHours,
+      state: 'not_single_responder',
+      nextActionOverride: null,
+      note: 'Cadence check recorded; launch decision handles this stage.',
+    };
+  }
+
+  if (referralsLogged > 0) {
+    return {
+      stage: report.decision.stage,
+      latestSignalAt,
+      ageHours,
+      state: 'referral_sprint_logged',
+      nextActionOverride: null,
+      note: 'Referral-sprint evidence exists; use the referral sprint follow-up and threshold rules.',
+    };
+  }
+
+  if (trackerRows > 0) {
+    return {
+      stage: report.decision.stage,
+      latestSignalAt,
+      ageHours,
+      state: 'manual_tracker_no_referral',
+      nextActionOverride: 'Use /casagrand-firstcity/no-reply-nudge/ once for the first responder, then continue narrow discovery if no sample/referral is logged; do not broad-post yet.',
+      note: 'Manual tracker rows exist but no referral-sprint row is logged, so the no-reply nudge is the safest recovery path.',
+    };
+  }
+
+  if (ageHours >= 24) {
+    return {
+      stage: report.decision.stage,
+      latestSignalAt,
+      ageHours,
+      state: 'single_responder_stale_24h',
+      nextActionOverride: 'Use /casagrand-firstcity/no-reply-nudge/ once for the first responder, ask for one tiny sample/slot/referral signal, then continue narrow discovery if there is still no reply; do not broad-post yet.',
+      note: 'The latest first-responder signal is 24h+ old and no referral-sprint tracker evidence is logged.',
+    };
+  }
+
+  return {
+    stage: report.decision.stage,
+    latestSignalAt,
+    ageHours,
+    state: 'single_responder_fresh',
+    nextActionOverride: null,
+    note: 'First-responder signal is still fresh; keep the referral-sprint ask as the primary move.',
+  };
+}
+
 function buildCampaignReport(runtimeDir, options = {}) {
   const signals = readJsonl(path.join(runtimeDir, 'community-signals.jsonl'));
   const statusRows = readJsonl(path.join(runtimeDir, 'statuses.jsonl')).concat(readJsonl(path.join(runtimeDir, 'webhooks.jsonl')));
@@ -625,6 +706,10 @@ function buildCampaignReport(runtimeDir, options = {}) {
   if (manualTracker && manualTracker.nextAction) {
     report.nextAction = manualTracker.nextAction;
   }
+  report.followUpCadence = buildFollowUpCadence(report);
+  if (report.followUpCadence && report.followUpCadence.nextActionOverride) {
+    report.nextAction = report.followUpCadence.nextActionOverride;
+  }
   return report;
 }
 
@@ -641,6 +726,8 @@ function renderMarkdown(report) {
     appendFirstResponderFollowUp(lines, firstResponderFollowUp);
     lines.push('');
   }
+  appendFollowUpCadence(lines, report.followUpCadence);
+  lines.push('');
   lines.push('## Funnel snapshot');
   lines.push(`- Campaign signals: ${report.totals.campaignSignals}`);
   lines.push(`- Unique residents/users: ${report.totals.uniqueUsers}`);
@@ -694,6 +781,20 @@ function renderMarkdown(report) {
   return `${lines.join('\n')}\n`;
 }
 
+
+
+function appendFollowUpCadence(lines, cadence) {
+  lines.push('## Follow-up cadence');
+  if (!cadence) {
+    lines.push('- No cadence signal available yet.');
+    return;
+  }
+  lines.push(`- Latest privacy-safe signal timestamp: ${cadence.latestSignalAt}`);
+  lines.push(`- Signal age: ${cadence.ageHours}h`);
+  lines.push(`- Cadence state: ${cadence.state}`);
+  lines.push(`- Note: ${cadence.note}`);
+  if (cadence.nextActionOverride) lines.push(`- Cadence next action: ${cadence.nextActionOverride}`);
+}
 
 function appendManualTracker(lines, tracker) {
   lines.push('## Manual 5-DM tracker outcomes');
@@ -852,6 +953,8 @@ module.exports = {
   computeLaunchDecision,
   buildFirstResponderFollowUp,
   buildReferralSprintFollowUp,
+  latestRecentSignalAt,
+  buildFollowUpCadence,
   buildCampaignReport,
   renderMarkdown,
   writeCampaignReport,
