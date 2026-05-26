@@ -104,19 +104,22 @@ Just send A/B/C/D. That is enough for me to plan the next step.</div></div>
 Can you forward this to one Casagrand resident in QA/dev/student projects?
 
 “I’m helping validate a small practical AI builders circle for Casagrand. If you want help turning a real QA/coding/student task into an AI workflow, reply with: Casagrand referral — [your task].”</div></div>
-      <div class="panel"><h2>Last4-only nudge tracker</h2><div id="tracker" class="copybox">No-reply nudge tracker — last4 only
+      <div class="panel"><h2>Last4-only nudge tracker</h2><div id="tracker" class="copybox">Generate the private JSON tracker:
 
-last4=____
-route=first_responder_no_reply_nudge
-segment=qa_dev_student
-nudgeSentAt=YYYY-MM-DD
-replyAfterNudge=yes/no/unknown
-replyType=sample/topic_vote/slot_vote/referral/group_owner/no_reply
-sampleReceived=yes/no
-referralPromised=yes/no
-topicVote=qa_test_plan/coding_assistant/student_project/office_workflow/unknown
-slotVote=weekend_morning/weekend_evening/weekday_evening/unknown
-nextAction=qa_walkthrough/referral_sprint/date_lock/bot_readiness/continue_narrow_dms</div></div>
+node scripts/casagrand-campaign-report.js --write-no-reply-nudge-template private/casagrand-no-reply-nudge.json
+
+After the nudge, edit only last4, route, problem, followUpSent, and nextAction.
+Keep meta.route = no_reply_nudge.
+
+Allowed routes:
+no_reply -> stop chasing and continue narrow discovery
+problem -> QA walkthrough
+topic_vote -> weak date-poll signal
+referral -> referral sprint
+bot_readiness -> group-owner/admin readiness audit
+
+Rerun report:
+node scripts/casagrand-campaign-report.js --runtime-dir /home/clawdbot/dabblewith-whatsapp --date 2026-05-26 --exclude-last4 2585 --manual-tracker private/casagrand-no-reply-nudge.json</div></div>
     </section>
 
     <section class="shell panel">

@@ -8,6 +8,7 @@ const {
   buildCampaignReport,
   buildFirstResponderFollowUp,
   buildReferralSprintFollowUp,
+  buildNoReplyNudgeFollowUp,
   buildFollowUpCadence,
   computeLaunchDecision,
   inferSourceTags,
@@ -16,6 +17,7 @@ const {
   isCampaignText,
   manualTrackerTemplate,
   referralSprintTrackerTemplate,
+  noReplyNudgeTrackerTemplate,
   isExcludedLast4,
   normalizeLast4List,
   redactPhone,
@@ -24,6 +26,7 @@ const {
   writeCampaignReport,
   writeManualTrackerTemplate,
   writeReferralSprintTrackerTemplate,
+  writeNoReplyNudgeTrackerTemplate,
 } = require('./casagrand-campaign-report');
 
 function tmpDir() {
@@ -70,6 +73,7 @@ function appendJsonl(file, rows) {
   assert(!JSON.stringify(template).match(/phone|message|raw|name|wamid|\+91/i), 'template leaked disallowed fields');
   assert.strictEqual(parseArgs(['--write-manual-tracker-template', 'out.json']).writeManualTrackerTemplate, 'out.json');
   assert.strictEqual(parseArgs(['--write-referral-sprint-template', 'referrals.json']).writeReferralSprintTemplate, 'referrals.json');
+  assert.strictEqual(parseArgs(['--write-no-reply-nudge-template', 'nudge.json']).writeNoReplyNudgeTemplate, 'nudge.json');
 
   const referralTemplate = referralSprintTrackerTemplate();
   assert.strictEqual(referralTemplate.meta.route, 'first_responder_referral_sprint');
@@ -88,6 +92,32 @@ function appendJsonl(file, rows) {
   assert.strictEqual(writtenReferralSummary.rows, 3);
   assert.strictEqual(writtenReferralSummary.referrals, 3);
   assert.strictEqual(buildReferralSprintFollowUp(writtenReferralSummary).hasGroupOwner, true);
+
+  const nudgeTemplate = noReplyNudgeTrackerTemplate();
+  assert.strictEqual(nudgeTemplate.meta.route, 'no_reply_nudge');
+  assert.strictEqual(nudgeTemplate.rows.length, 4);
+  assert(nudgeTemplate.rows.every((row) => row.route === 'no_reply'), 'nudge template should not pre-count positive outcomes');
+  assert(nudgeTemplate.rows.every((row) => /^\d{4}$/.test(row.last4)), 'nudge template must use last4 placeholders only');
+  assert(!JSON.stringify(nudgeTemplate).match(/phone|message|raw|name|wamid|\+91/i), 'nudge template leaked disallowed fields');
+  const nudgeTemplatePath = path.join(tmpDir(), 'nested', 'no-reply-nudge-template.json');
+  const writtenNudgeTemplatePath = writeNoReplyNudgeTrackerTemplate(nudgeTemplatePath);
+  assert.strictEqual(writtenNudgeTemplatePath, path.resolve(nudgeTemplatePath));
+  assert.deepStrictEqual(JSON.parse(fs.readFileSync(nudgeTemplatePath, 'utf8')), nudgeTemplate);
+  const writtenNudgeSummary = summarizeManualTracker(JSON.parse(fs.readFileSync(nudgeTemplatePath, 'utf8')));
+  assert.strictEqual(writtenNudgeSummary.metaRoute, 'no_reply_nudge');
+  const emptyNudgeFollowUp = buildNoReplyNudgeFollowUp(writtenNudgeSummary);
+  assert(emptyNudgeFollowUp.nextSteps.some((s) => s.includes('stop chasing this responder')));
+  const filledNudgeFollowUp = buildNoReplyNudgeFollowUp(summarizeManualTracker({
+    meta: { route: 'no_reply_nudge' },
+    rows: [
+      { segment: 'qa_dev_student', last4: '2002', route: 'problem', problem: 'QA test-plan sample' },
+      { segment: 'qa_dev_student', last4: '2003', route: 'topic_vote', problem: 'weekend evening' },
+      { segment: 'group_owner', last4: '2004', route: 'bot_readiness', problem: 'runs residents group' },
+    ],
+  }));
+  assert(filledNudgeFollowUp.nextSteps.some((s) => s.includes('/casagrand-firstcity/qa-walkthrough/')));
+  assert(filledNudgeFollowUp.nextSteps.some((s) => s.includes('/casagrand-firstcity/bot-readiness/')));
+  assert(!JSON.stringify(filledNudgeFollowUp).match(/\d{5,}/), 'nudge follow-up leaked a long number');
 
   const templatePath = path.join(tmpDir(), 'nested', 'manual-5dm-template.json');
   const writtenTemplatePath = writeManualTrackerTemplate(templatePath);
@@ -558,6 +588,23 @@ function appendJsonl(file, rows) {
   assert(referralMarkdown.includes('group_owner · ****4444'));
   assert(!referralMarkdown.includes('919840385555'), 'rejected full-number row leaked into referral sprint markdown');
   assert(!referralMarkdown.includes('919840385678'), 'raw phone leaked into referral sprint markdown');
+
+  const nudgeTrackerPath = path.join(tmpDir(), 'no-reply-nudge.json');
+  fs.writeFileSync(nudgeTrackerPath, JSON.stringify({ meta: { route: 'no_reply_nudge' }, rows: [
+    { segment: 'qa_dev_student', last4: '2002', route: 'problem', problem: 'QA sample' },
+    { segment: 'qa_dev_student', last4: '2003', route: 'topic_vote', problem: 'weekend evening' },
+    { segment: 'group_owner', last4: '2004', route: 'bot_readiness', problem: 'runs residents group' },
+    { segment: 'other', last4: '919840385555', route: 'problem', problem: 'full number must be rejected' },
+  ] }));
+  const nudgeOutputDir = tmpDir();
+  const nudgeResult = writeCampaignReport({ runtimeDir: qaRuntimeDir, outputDir: nudgeOutputDir, date: '2026-05-26', manualTracker: nudgeTrackerPath });
+  const nudgeMarkdown = fs.readFileSync(nudgeResult.mdPath, 'utf8');
+  assert(nudgeMarkdown.includes('## No-reply nudge follow-up'), 'no-reply nudge section missing from markdown');
+  assert(nudgeMarkdown.includes('/casagrand-firstcity/qa-walkthrough/'));
+  assert(nudgeMarkdown.includes('/casagrand-firstcity/bot-readiness/'));
+  assert(nudgeMarkdown.includes('****2002'));
+  assert(!nudgeMarkdown.includes('919840385555'), 'rejected full-number row leaked into no-reply nudge markdown');
+  assert(!nudgeMarkdown.includes('919840385678'), 'raw phone leaked into no-reply nudge markdown');
 
   console.log('casagrand-campaign-report smoke passed');
 })();

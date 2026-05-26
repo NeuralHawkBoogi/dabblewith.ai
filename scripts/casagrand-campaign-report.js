@@ -85,6 +85,7 @@ function parseArgs(argv = process.argv.slice(2)) {
     manualTracker: null,
     writeManualTrackerTemplate: null,
     writeReferralSprintTemplate: null,
+    writeNoReplyNudgeTemplate: null,
     excludeLast4: normalizeLast4List(process.env.DABBLE_CASAGRAND_EXCLUDE_LAST4 || ''),
   };
   for (let i = 0; i < argv.length; i += 1) {
@@ -95,6 +96,7 @@ function parseArgs(argv = process.argv.slice(2)) {
     else if (arg === '--manual-tracker') options.manualTracker = argv[++i];
     else if (arg === '--write-manual-tracker-template') options.writeManualTrackerTemplate = argv[++i];
     else if (arg === '--write-referral-sprint-template') options.writeReferralSprintTemplate = argv[++i];
+    else if (arg === '--write-no-reply-nudge-template') options.writeNoReplyNudgeTemplate = argv[++i];
     else if (arg === '--exclude-last4') options.excludeLast4.push(...normalizeLast4List(argv[++i]));
     else if (arg === '--include-all') options.includeAll = true;
     else if (arg === '--help' || arg === '-h') options.help = true;
@@ -274,6 +276,51 @@ function referralSprintTrackerTemplate() {
   };
 }
 
+function noReplyNudgeTrackerTemplate() {
+  return {
+    meta: {
+      sprintStartedAt: '',
+      reportRerunDueAt: '',
+      route: 'no_reply_nudge',
+      notes: 'Fill after the one-time no-reply nudge. Store only last4, segment, route, short problem, and next action; no direct identifiers or copied chat text.',
+    },
+    rows: [
+      {
+        segment: 'qa_dev_student',
+        last4: '2001',
+        route: 'no_reply',
+        problem: '',
+        followUpSent: false,
+        nextAction: 'if still silent, stop chasing and continue narrow discovery',
+      },
+      {
+        segment: 'qa_dev_student',
+        last4: '2002',
+        route: 'no_reply',
+        problem: '',
+        followUpSent: false,
+        nextAction: 'change route to problem if they share a tiny QA/coding sample',
+      },
+      {
+        segment: 'qa_dev_student',
+        last4: '2003',
+        route: 'no_reply',
+        problem: '',
+        followUpSent: false,
+        nextAction: 'change route to topic_vote only after an explicit slot/topic vote',
+      },
+      {
+        segment: 'group_owner',
+        last4: '2004',
+        route: 'no_reply',
+        problem: '',
+        followUpSent: false,
+        nextAction: 'change route to bot_readiness only if they own/admin a WhatsApp group',
+      },
+    ],
+  };
+}
+
 function writeJsonTemplate(file, template, flagName) {
   if (!file) throw new Error(`${flagName} requires a file path`);
   const outputPath = path.resolve(file);
@@ -290,6 +337,10 @@ function writeReferralSprintTrackerTemplate(file) {
   return writeJsonTemplate(file, referralSprintTrackerTemplate(), '--write-referral-sprint-template');
 }
 
+function writeNoReplyNudgeTrackerTemplate(file) {
+  return writeJsonTemplate(file, noReplyNudgeTrackerTemplate(), '--write-no-reply-nudge-template');
+}
+
 function loadManualTracker(file) {
   if (!file) return null;
   const parsed = JSON.parse(fs.readFileSync(file, 'utf8'));
@@ -302,6 +353,7 @@ function summarizeManualTracker(input) {
   const allowedSegments = new Set(['career', 'workflow', 'admin', 'founder', 'student', 'community_bot', 'qa_dev_student', 'group_owner', 'other', 'unknown']);
   const allowedRoutes = new Set(['no_reply', 'problem', 'referral', 'first_responder_referral_sprint', 'topic_vote', 'admin_pain', 'bot_readiness', 'design_call', 'no_fit']);
   const summary = {
+    metaRoute: normalizeText(meta.route || ''),
     sprintStartedAt: safeIso(meta.sprintStartedAt),
     reportRerunDueAt: safeIso(meta.reportRerunDueAt),
     reportRerunDue: false,
@@ -555,6 +607,44 @@ function latestRecentSignalAt(report) {
   return latest;
 }
 
+// Builds privacy-safe routing for the one-time no-reply nudge tracker. Uses
+// only sanitized last4 rows and aggregate counts from the manual tracker.
+function buildNoReplyNudgeFollowUp(tracker) {
+  if (!tracker || tracker.metaRoute !== 'no_reply_nudge') return null;
+  const nextSteps = [];
+  if (tracker.referrals > 0) {
+    nextSteps.push('Referral captured after the no-reply nudge: move that row into the referral sprint path and use /casagrand-firstcity/referral-sprint/.');
+  }
+  if (tracker.topicVotes > 0) {
+    nextSteps.push('Topic/slot vote captured: keep it as a weak date-poll signal; lock a date only after 3 total resident signals.');
+  }
+  if (tracker.botReadiness > 0) {
+    nextSteps.push('Group-owner/admin signal captured: route only that person to /casagrand-firstcity/bot-readiness/.');
+  }
+  if (tracker.concreteReplies > 0 && tracker.referrals === 0) {
+    nextSteps.push('Concrete sample/problem captured: use /casagrand-firstcity/qa-walkthrough/ and ask for one referral after the walkthrough.');
+  }
+  if (tracker.concreteReplies === 0) {
+    nextSteps.push('No concrete reply after the one-time nudge: stop chasing this responder, return to 3-5 narrow discovery DMs, and do not broad-post yet.');
+  }
+  return {
+    rows: tracker.rows,
+    concreteReplies: tracker.concreteReplies,
+    topicVotes: tracker.topicVotes,
+    referrals: tracker.referrals,
+    botReadiness: tracker.botReadiness,
+    nextSteps,
+    rowsPreview: tracker.sanitizedRows.map((row) => ({
+      segment: row.segment,
+      last4: row.last4,
+      route: row.route,
+      problem: row.problem,
+      followUpSent: row.followUpSent,
+      nextAction: row.nextAction,
+    })),
+  };
+}
+
 // Builds a privacy-safe follow-up cadence for the current Casagrand wedge. This
 // keeps the report actionable when a single first-responder signal goes stale:
 // after 24h without a manual referral-sprint tracker row, the next best move is
@@ -728,6 +818,11 @@ function renderMarkdown(report) {
   }
   appendFollowUpCadence(lines, report.followUpCadence);
   lines.push('');
+  const noReplyNudgeFollowUp = buildNoReplyNudgeFollowUp(report.manualTracker);
+  if (noReplyNudgeFollowUp) {
+    appendNoReplyNudgeFollowUp(lines, noReplyNudgeFollowUp);
+    lines.push('');
+  }
   lines.push('## Funnel snapshot');
   lines.push(`- Campaign signals: ${report.totals.campaignSignals}`);
   lines.push(`- Unique residents/users: ${report.totals.uniqueUsers}`);
@@ -838,6 +933,22 @@ function appendFirstResponderFollowUp(lines, followUp) {
   lines.push(`- Tracker note: ${followUp.trackerNote}`);
 }
 
+function appendNoReplyNudgeFollowUp(lines, followUp) {
+  lines.push('## No-reply nudge follow-up');
+  lines.push('Copy-ready, privacy-safe routing from the one-time nudge tracker (last4 only, no phone/message/token exposure):');
+  lines.push(`- Rows logged: ${followUp.rows}`);
+  lines.push(`- Concrete replies: ${followUp.concreteReplies}`);
+  lines.push(`- Topic votes: ${followUp.topicVotes}`);
+  lines.push(`- Referrals: ${followUp.referrals}`);
+  lines.push(`- Bot-readiness rows: ${followUp.botReadiness}`);
+  lines.push('- Recommended next steps:');
+  for (const step of followUp.nextSteps) lines.push(`  - ${step}`);
+  lines.push('- Nudge tracker rows (last4 only):');
+  for (const row of followUp.rowsPreview) {
+    lines.push(`  - ${row.segment} · ${row.last4} · ${row.route} · problem="${row.problem || 'n/a'}" · follow_up=${row.followUpSent ? 'yes' : 'no'} · next="${row.nextAction || 'n/a'}"`);
+  }
+}
+
 function appendReferralSprintFollowUp(lines, followUp) {
   lines.push('## Referral sprint follow-up');
   lines.push('Copy-ready, privacy-safe next steps from the manual tracker referral-sprint rows (last4 only, no phone/message/token exposure):');
@@ -895,10 +1006,11 @@ function writeCampaignReport(options = {}) {
 
 function usage() {
   return [
-    'Usage: node scripts/casagrand-campaign-report.js [--runtime-dir DIR] [--output-dir DIR] [--date YYYY-MM-DD] [--manual-tracker FILE] [--write-manual-tracker-template FILE] [--write-referral-sprint-template FILE] [--exclude-last4 1234[,5678]] [--include-all]',
+    'Usage: node scripts/casagrand-campaign-report.js [--runtime-dir DIR] [--output-dir DIR] [--date YYYY-MM-DD] [--manual-tracker FILE] [--write-manual-tracker-template FILE] [--write-referral-sprint-template FILE] [--write-no-reply-nudge-template FILE] [--exclude-last4 1234[,5678]] [--include-all]',
     '',
     'Use --write-manual-tracker-template FILE to create a privacy-safe starter JSON with exactly 5 rows (2 career, 2 workflow, 1 admin) using last4 placeholders only.',
     'Use --write-referral-sprint-template FILE to create a privacy-safe starter JSON for first-responder referral-sprint follow-up rows.',
+    'Use --write-no-reply-nudge-template FILE to create a privacy-safe starter JSON for one-time no-reply nudge outcomes.',
     '',
     `Default runtime dir: ${DEFAULT_RUNTIME_DIR}`,
     `Default output dir: ${DEFAULT_OUTPUT_DIR}`,
@@ -920,6 +1032,11 @@ if (require.main === module) {
     if (options.writeReferralSprintTemplate) {
       const templatePath = writeReferralSprintTrackerTemplate(options.writeReferralSprintTemplate);
       console.log(`casagrand referral sprint tracker template written: ${templatePath}`);
+      process.exit(0);
+    }
+    if (options.writeNoReplyNudgeTemplate) {
+      const templatePath = writeNoReplyNudgeTrackerTemplate(options.writeNoReplyNudgeTemplate);
+      console.log(`casagrand no-reply nudge tracker template written: ${templatePath}`);
       process.exit(0);
     }
     const result = writeCampaignReport(options);
@@ -946,13 +1063,16 @@ module.exports = {
   tracksForTags,
   manualTrackerTemplate,
   referralSprintTrackerTemplate,
+  noReplyNudgeTrackerTemplate,
   writeManualTrackerTemplate,
   writeReferralSprintTrackerTemplate,
+  writeNoReplyNudgeTrackerTemplate,
   summarizeManualTracker,
   computeManualNextAction,
   computeLaunchDecision,
   buildFirstResponderFollowUp,
   buildReferralSprintFollowUp,
+  buildNoReplyNudgeFollowUp,
   latestRecentSignalAt,
   buildFollowUpCadence,
   buildCampaignReport,
