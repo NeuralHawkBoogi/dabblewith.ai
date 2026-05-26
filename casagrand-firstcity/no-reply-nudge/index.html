@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#060912" />
+  <title>Casagrand First-Responder No-Reply Nudge — dabblewith.ai</title>
+  <meta name="description" content="A mobile-ready 24-hour nudge kit for the first Casagrand QA/coding responder when referral or workflow-sample follow-up has not moved yet." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://dabblewith.ai/casagrand-firstcity/no-reply-nudge/" />
+  <meta property="og:site_name" content="dabblewith.ai" />
+  <meta property="og:title" content="Casagrand First-Responder No-Reply Nudge" />
+  <meta property="og:description" content="Keep the first QA/coding signal warm without broad-posting too early." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dabblewith.ai/casagrand-firstcity/no-reply-nudge/" />
+  <meta property="og:image" content="https://dabblewith.ai/app-icon-1024.png" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7473LZQGX2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7473LZQGX2');
+    function copyText(id, label) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var text = el.innerText.trim();
+      var done = function () {
+        if (typeof gtag === 'function') gtag('event', 'copy_click', { cta_id: 'casagrand_no_reply_nudge_' + id, cta_source: 'casagrand_no_reply_nudge', link_text: label || id, page_path: location.pathname });
+        var btn = document.querySelector('[data-copy-target="' + id + '"]');
+        if (btn) { var old = btn.innerText; btn.innerText = 'Copied'; setTimeout(function(){ btn.innerText = old; }, 1400); }
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done).catch(function(){ window.prompt('Copy this text', text); });
+      else window.prompt('Copy this text', text);
+    }
+  </script>
+  <script src="/scripts/web/dabblewith-tracking.js" defer></script>
+  <style>
+    :root{--bg:#060912;--panel:rgba(16,27,48,.94);--line:rgba(116,255,219,.24);--hard:#74ffdb;--text:#f2fbff;--muted:#9eb0c2;--green:#74ff7b;--blue:#58a6ff;--amber:#ffcc66;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--text);background:linear-gradient(rgba(116,255,219,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(116,255,219,.045) 1px,transparent 1px),radial-gradient(circle at 12% 0%,rgba(88,166,255,.25),transparent 30rem),radial-gradient(circle at 92% 8%,rgba(116,255,123,.16),transparent 28rem),var(--bg);background-size:42px 42px,42px 42px,auto,auto,auto}a{color:inherit}.shell{width:min(1120px,calc(100% - 30px));margin:0 auto}nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0}.logo{text-decoration:none;font-size:30px;font-weight:900;letter-spacing:-.055em}.nav{display:flex;gap:10px;flex-wrap:wrap}.nav a{border:1px solid var(--line);border-radius:999px;padding:9px 12px;text-decoration:none;color:var(--muted);background:rgba(255,255,255,.03)}.hero,.panel,.card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(16,27,48,.96),rgba(8,13,25,.92));border-radius:24px;box-shadow:0 24px 90px rgba(0,0,0,.45)}.hero{padding:clamp(26px,5vw,52px);margin:18px auto 26px}.eyebrow{width:fit-content;color:var(--hard);border:1px solid var(--hard);background:rgba(116,255,219,.08);border-radius:999px;padding:9px 12px;font:12px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}h1{font-size:clamp(42px,7vw,82px);line-height:.9;letter-spacing:-.07em;margin:24px 0 18px}h2{font-size:clamp(28px,4.2vw,46px);line-height:.96;letter-spacing:-.055em;margin:0 0 16px}h3{font-size:22px;margin:0 0 8px}.lead{font-size:clamp(18px,2.2vw,24px);color:#d7e9f7;line-height:1.45;max-width:940px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.two{grid-template-columns:repeat(2,1fr)}.card,.panel{padding:22px}.muted,p,li{color:var(--muted);line-height:1.65}.badge{display:inline-flex;border:1px solid rgba(116,255,123,.45);color:var(--green);background:rgba(116,255,123,.08);padding:5px 9px;border-radius:999px;font:12px/1.2 ui-monospace,Menlo,monospace}.badge.blue{color:var(--blue);border-color:rgba(88,166,255,.45);background:rgba(88,166,255,.08)}.badge.warn{color:var(--amber);border-color:rgba(255,204,102,.45);background:rgba(255,204,102,.08)}section{padding:30px 0}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--hard);color:var(--hard);background:rgba(116,255,219,.07);border-radius:14px;padding:12px 15px;text-decoration:none;font-weight:850;cursor:pointer}.btn.primary{color:#04120e;background:var(--green);border-color:var(--green)}button.btn{font:inherit}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.copybox{white-space:pre-wrap;border:1px solid rgba(116,255,219,.18);border-radius:18px;background:rgba(0,0,0,.28);padding:16px;color:#d9f6ff;font:14px/1.65 ui-monospace,Menlo,monospace;overflow:auto}.metric{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(116,255,219,.12);padding:12px 0;font:13px/1.25 ui-monospace,Menlo,monospace}.metric:last-child{border-bottom:0}.step{display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start;border-bottom:1px solid rgba(116,255,219,.12);padding:14px 0}.step:last-child{border-bottom:0}.num{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:rgba(116,255,123,.12);border:1px solid rgba(116,255,123,.45);color:var(--green);font-weight:900}footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0 34px;margin-top:36px;font:13px/1.4 ui-monospace,Menlo,monospace}@media(max-width:860px){.grid,.two{grid-template-columns:1fr}.nav{display:none}}
+  </style>
+</head>
+<body>
+  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/casagrand-firstcity/">Pilot</a><a href="/casagrand-firstcity/referral-sprint/">Referral sprint</a><a href="/casagrand-firstcity/qa-walkthrough/">QA walkthrough</a><a href="/casagrand-firstcity/date-lock/">Date lock</a><a href="/casagrand-firstcity/bot-readiness/">Bot readiness</a></div></nav>
+  <main>
+    <section class="hero shell">
+      <div class="eyebrow">Casagrand no-reply nudge · 2026-05-26</div>
+      <h1>Keep the first responder warm without sounding like a campaign.</h1>
+      <p class="lead">The live report still shows one real QA/coding resident signal and no measured referral-sprint outcomes. Use this 24-hour nudge to ask for the smallest next action: one anonymized sample, one slot vote, or one warm intro.</p>
+      <div class="actions">
+        <button class="btn primary" data-copy-target="gentle-nudge" onclick="copyText('gentle-nudge','gentle nudge')">Copy gentle nudge</button>
+        <button class="btn" data-copy-target="micro-ask" onclick="copyText('micro-ask','micro ask')">Copy 30-second micro ask</button>
+        <button class="btn" data-copy-target="referral-only" onclick="copyText('referral-only','referral only')">Copy referral-only ask</button>
+        <button class="btn" data-copy-target="tracker" onclick="copyText('tracker','tracker row')">Copy tracker row</button>
+      </div>
+    </section>
+
+    <section class="shell grid">
+      <article class="card"><span class="badge warn">why now</span><h3>24h+ since first signal</h3><p>The first QA/coding signal is still valuable, but it needs a lightweight follow-up before the campaign can earn a date poll or broad group post.</p></article>
+      <article class="card"><span class="badge">tone</span><h3>Make it easy to answer</h3><p>Offer three tiny reply paths instead of asking for a full sample and referral in one message.</p></article>
+      <article class="card"><span class="badge blue">guardrail</span><h3>No broad post yet</h3><p>If this nudge produces zero response, continue narrow DMs or use a new warm intro. Do not treat one stale signal as group-level validation.</p></article>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel">
+        <h2>24-hour nudge sequence</h2>
+        <div class="step"><div class="num">1</div><div><h3>Gentle nudge</h3><p>Send one friendly follow-up that asks for the easiest of sample, slot vote, or intro.</p></div></div>
+        <div class="step"><div class="num">2</div><div><h3>Wait 12–24h</h3><p>If there is a reply, log last4-only and route to walkthrough/referral sprint/date-lock.</p></div></div>
+        <div class="step"><div class="num">3</div><div><h3>If no response</h3><p>Do not chase repeatedly. Continue narrow 5-DM/referral discovery with another warm resident.</p></div></div>
+        <div class="step"><div class="num">4</div><div><h3>If group-owner signal</h3><p>Route only that person to the bot-readiness audit and keep the learner flow separate.</p></div></div>
+      </div>
+      <div class="panel">
+        <h2>Decision rules</h2>
+        <div class="metric"><span>Replies with sample</span><strong>run QA walkthrough</strong></div>
+        <div class="metric"><span>Replies with one referral</span><strong>run referral sprint</strong></div>
+        <div class="metric"><span>Replies with slot/topic only</span><strong>log vote, ask sample later</strong></div>
+        <div class="metric"><span>No reply after 24h</span><strong>continue narrow outreach</strong></div>
+        <div class="metric"><span>3 total resident signals</span><strong>open date-lock kit</strong></div>
+        <p class="muted">Privacy rule: last4 only. Do not log raw WhatsApp messages, company details, screenshots, tickets, logs, credentials, full phone numbers, or customer data.</p>
+      </div>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel"><h2>Gentle nudge</h2><div id="gentle-nudge" class="copybox">Quick nudge on the Casagrand practical AI idea 🙂
+
+No pressure — I’m trying to keep this useful before posting broadly.
+
+If you have 30 seconds, reply with any one of these:
+1. one QA/coding task you repeat often, anonymized
+2. the best slot for a short build session: weekend morning / weekend evening / weekday evening
+3. one Casagrand QA/dev/student person who may find this useful
+
+I’ll use only aggregate/last4 tracking and no private work data.</div></div>
+      <div class="panel"><h2>30-second micro ask</h2><div id="micro-ask" class="copybox">Super short version:
+
+For the first Casagrand AI-by-Doing session, which topic is most useful?
+A) QA test-plan/checklist from feature notes
+B) Coding assistant / PR review helper
+C) Student project helper
+D) Office workflow automation
+
+Just send A/B/C/D. That is enough for me to plan the next step.</div></div>
+      <div class="panel"><h2>Referral-only ask</h2><div id="referral-only" class="copybox">If you are busy, one intro is also enough.
+
+Can you forward this to one Casagrand resident in QA/dev/student projects?
+
+“I’m helping validate a small practical AI builders circle for Casagrand. If you want help turning a real QA/coding/student task into an AI workflow, reply with: Casagrand referral — [your task].”</div></div>
+      <div class="panel"><h2>Last4-only nudge tracker</h2><div id="tracker" class="copybox">No-reply nudge tracker — last4 only
+
+last4=____
+route=first_responder_no_reply_nudge
+segment=qa_dev_student
+nudgeSentAt=YYYY-MM-DD
+replyAfterNudge=yes/no/unknown
+replyType=sample/topic_vote/slot_vote/referral/group_owner/no_reply
+sampleReceived=yes/no
+referralPromised=yes/no
+topicVote=qa_test_plan/coding_assistant/student_project/office_workflow/unknown
+slotVote=weekend_morning/weekend_evening/weekday_evening/unknown
+nextAction=qa_walkthrough/referral_sprint/date_lock/bot_readiness/continue_narrow_dms</div></div>
+    </section>
+
+    <section class="shell panel">
+      <h2>Where this fits</h2>
+      <ul>
+        <li>If the resident gives a sample, use the <a href="/casagrand-firstcity/qa-walkthrough/">QA walkthrough script</a>.</li>
+        <li>If the resident gives one intro, use the <a href="/casagrand-firstcity/referral-sprint/">referral sprint</a>.</li>
+        <li>If total resident signals reach three, use the <a href="/casagrand-firstcity/date-lock/">date-lock kit</a>.</li>
+        <li>If the reply is a WhatsApp group owner/admin signal, use <a href="/casagrand-firstcity/bot-readiness/">bot readiness</a>.</li>
+      </ul>
+    </section>
+  </main>
+  <footer><div class="shell">Casagrand First City pilot · no-reply nudge kit · privacy-safe, last4-only tracking · <a href="/casagrand-firstcity/">Back to pilot</a></div></footer>
+</body>
+</html>
