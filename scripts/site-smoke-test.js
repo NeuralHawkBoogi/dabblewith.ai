@@ -114,6 +114,28 @@ for (const file of htmlFiles) {
   }
 }
 
+
+const newsletterIssuesPath = path.join(root, 'data', 'newsletter-issues.json');
+if (fs.existsSync(newsletterIssuesPath)) {
+  const newsletterIssues = JSON.parse(fs.readFileSync(newsletterIssuesPath, 'utf8'));
+  const slugs = new Set();
+  for (const issue of newsletterIssues) {
+    if (!Number.isInteger(issue.number)) issues.push(`data/newsletter-issues.json: issue ${issue.slug || '(missing slug)'} missing integer number`);
+    if (!/^issue-\d{3}$/.test(issue.slug || '')) issues.push(`data/newsletter-issues.json: invalid slug ${issue.slug || '(missing)'}`);
+    if (slugs.has(issue.slug)) issues.push(`data/newsletter-issues.json: duplicate slug ${issue.slug}`);
+    slugs.add(issue.slug);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(issue.publishedAt || '')) issues.push(`data/newsletter-issues.json: issue ${issue.slug} missing YYYY-MM-DD publishedAt`);
+    const issueFile = path.join(root, 'newsletter', issue.slug || '', 'index.html');
+    if (!fs.existsSync(issueFile)) issues.push(`newsletter/${issue.slug}/index.html: missing generated issue page`);
+    const raw = JSON.stringify(issue);
+    if (/\+?91\d{10}/.test(raw) || /\b\d{10,15}\b/.test(raw)) issues.push(`data/newsletter-issues.json: issue ${issue.slug} contains raw phone-like number`);
+  }
+  const archive = fs.readFileSync(path.join(root, 'newsletter', 'index.html'), 'utf8');
+  for (const issue of newsletterIssues) {
+    if (!archive.includes(`/newsletter/${issue.slug}/`)) issues.push(`newsletter/index.html: missing archive link for ${issue.slug}`);
+  }
+}
+
 if (issues.length) {
   console.error(`site smoke failed (${issues.length} issue${issues.length === 1 ? '' : 's'}):`);
   for (const issue of issues) console.error(`- ${issue}`);

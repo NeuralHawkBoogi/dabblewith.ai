@@ -4,10 +4,14 @@ const path = require('path');
 const root = path.resolve(__dirname, '..');
 const postsPath = path.join(root, 'data', 'blog-posts.json');
 const workflowsPath = path.join(root, 'data', 'workflows.json');
+const newsletterIssuesPath = path.join(root, 'data', 'newsletter-issues.json');
 const posts = JSON.parse(fs.readFileSync(postsPath, 'utf8'));
 const workflowData = fs.existsSync(workflowsPath)
   ? JSON.parse(fs.readFileSync(workflowsPath, 'utf8'))
   : { categories: [], workflows: [] };
+const newsletterIssues = fs.existsSync(newsletterIssuesPath)
+  ? JSON.parse(fs.readFileSync(newsletterIssuesPath, 'utf8'))
+  : [];
 const published = posts
   .filter(p => p.status === 'published' && p.publishedAt)
   .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
@@ -148,8 +152,7 @@ const urls = [
   ['https://dabblewith.ai/submit-workflow/', 'weekly', '0.8'],
   ['https://dabblewith.ai/submit-workflow/moderation/', 'monthly', '0.7'],
   ['https://dabblewith.ai/newsletter/', 'weekly', '0.8'],
-  ['https://dabblewith.ai/newsletter/issue-001/', 'monthly', '0.75', '2026-05-26'],
-  ['https://dabblewith.ai/newsletter/issue-002/', 'monthly', '0.75', '2026-05-26'],
+  ...newsletterIssues.map(issue => [`https://dabblewith.ai/newsletter/${issue.slug}/`, 'monthly', '0.75', issue.publishedAt]),
   ['https://dabblewith.ai/experiments/', 'weekly', '0.8'],
   ['https://dabblewith.ai/metrics/', 'weekly', '0.7'],
   ['https://dabblewith.ai/build-in-public/', 'weekly', '0.8'],

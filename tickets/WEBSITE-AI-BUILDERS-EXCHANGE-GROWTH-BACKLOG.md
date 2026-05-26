@@ -949,11 +949,53 @@ Dependencies: [WEB-GROWTH-T23]
 
 `EPIC-WG-07` is complete: the site now has a privacy-safe conversion dashboard/export, newsletter issue #002/archive cards, and a submission moderation queue/spec that closes the measurement operating loop.
 
+## EPIC-WG-08 — Community contribution engine
+
+Priority: P1
+Status: in progress
+
+## Goal
+Turn the website from a static seed-content library into a repeatable contribution loop: submitted workflows can be reviewed, approved, published, mentioned in newsletter issues, and measured without leaking private data or inventing fake community activity.
+
+## Success criteria
+- Newsletter archive scales from structured data instead of hand-editing the landing page every issue.
+- Moderation data can be checked for blocked words and PII-like patterns before any publish step.
+- Approved workflow submissions have a deterministic path into generated workflow pages, templates, and newsletter mentions.
+- Contributor approval remains explicit; no auto-publish.
+
+### WEB-GROWTH-T26 — Add newsletter issue archive generation
+Priority: P1
+Status: done
+Dependencies: [WEB-GROWTH-T24]
+
+**Scope**
+- Add structured newsletter issue data.
+- Add a generator for `/newsletter/` and `/newsletter/<issue>/` pages.
+- Update sitemap generation to read issue routes from data instead of hardcoding every issue.
+- Add smoke coverage so every issue data row has a generated page and archive link.
+
+**Acceptance criteria**
+- `data/newsletter-issues.json` is the source of truth for public archive issue cards and pages.
+- `scripts/generate-newsletter.js` regenerates the archive landing page plus issue pages.
+- `scripts/generate-blog.js` includes newsletter issue sitemap URLs dynamically.
+- Site smoke fails if an issue has no generated page, archive link, valid slug/date, or contains phone-like raw identifiers.
+
+**Validation**
+- `node scripts/generate-newsletter.js` passes.
+- `node scripts/site-smoke-test.js` passes.
+- `node scripts/generate-blog.js` keeps issue pages in sitemap.
+
+**Evidence**
+- Added `data/newsletter-issues.json` with issue #001 and #002 metadata/content.
+- Added `scripts/generate-newsletter.js`; regenerated `/newsletter/`, `/newsletter/issue-001/`, and `/newsletter/issue-002/`.
+- Updated sitemap generation to map newsletter issues from data.
+- Added newsletter data/page/archive privacy checks to `scripts/site-smoke-test.js`.
+
 ## Recommended next epic
 
-1. `EPIC-WG-08` — Community contribution engine: turn approved moderation rows into generated workflow pages, template downloads, newsletter mentions, and contributor approval records.
-2. `WEB-GROWTH-T26` — Add issue archive index generation so newsletter issues can scale beyond hand-authored pages.
-3. `WEB-GROWTH-T27` — Add moderation smoke checks for blocked words/PII-like patterns in generated workflow submissions.
+1. Continue `EPIC-WG-08` with `WEB-GROWTH-T27` — moderation smoke checks for blocked words/PII-like patterns in generated workflow submissions.
+2. Add a contributor approval record template that can connect moderated submissions to newsletter mentions and workflow pages.
+3. Add a generated contributed-workflow preview page that remains `noindex` until approval.
 
 
 ## Notes

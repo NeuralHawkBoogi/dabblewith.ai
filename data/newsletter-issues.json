@@ -1,0 +1,42 @@
+[
+  {
+    "number": 1,
+    "slug": "issue-001",
+    "title": "Practical AI for one-person teams",
+    "headline": "Practical AI for one-person teams.",
+    "description": "Dabblewith.ai issue 001: three practical workflows, two community asks, and one honest experiment update for one-person teams.",
+    "publishedAt": "2026-05-26",
+    "summary": "Three workflows, two community asks, and one honest experiment update.",
+    "kicker": "newsletter archive · issue 001",
+    "workflows": [
+      {"label": "workflow 1", "title": "Founder weekly metrics", "body": "Turn weekly founder updates into a 6-line build-in-public scorecard with inputs, decisions, and a human review point.", "href": "/workflows/founder-weekly-metrics-build-in-public/", "cta": "issue001_founder_metrics"},
+      {"label": "workflow 2", "title": "Meeting notes to action tracker", "body": "Convert messy meeting notes into owners, due dates, risks, and follow-ups without storing private transcripts publicly.", "href": "/workflows/ai-meeting-notes-to-action-tracker/", "cta": "issue001_meeting_notes"},
+      {"label": "workflow 3", "title": "Creator repurposing", "body": "Take one source asset and draft four channel-specific outputs while preserving your own voice and review standards.", "href": "/workflows/creator-content-repurposing/", "cta": "issue001_creator_repurpose"}
+    ],
+    "asks": [
+      {"title": "What is your hard never-automate line?", "body": "Reply with one task you do not want an AI system doing without human review. We will turn the best answers into moderation rules."},
+      {"title": "Submit one workflow you already use", "body": "Send a practical workflow with the private details removed. We will only publish after contributor approval."}
+    ],
+    "experiment": "The site has seed workflows and a newsletter signup path, but the honest baseline is still early: no paid revenue, no fake user claims, and only intent signals that can be measured safely."
+  },
+  {
+    "number": 2,
+    "slug": "issue-002",
+    "title": "From pages to a measurable AI Builder's Exchange",
+    "headline": "From pages to a measurable AI Builder's Exchange.",
+    "description": "Dabblewith.ai issue 002: templates, social cards, conversion dashboard, moderation queue, and one honest build update.",
+    "publishedAt": "2026-05-26",
+    "summary": "Templates, social cards, conversion dashboard, and moderation path.",
+    "kicker": "newsletter archive · issue 002",
+    "workflows": [
+      {"label": "workflow 1", "title": "Fork a workflow with a worksheet", "body": "The top five workflows now have downloadable Markdown templates with safe input, human review, and never-automate sections.", "href": "/templates/", "cta": "issue002_templates"},
+      {"label": "workflow 2", "title": "Measure CTA intent without PII", "body": "The metrics dashboard maps events to weekly decisions while excluding message bodies, emails, phone numbers, raw URLs, user IDs, IPs, and device identifiers.", "href": "/metrics/", "cta": "issue002_dashboard"},
+      {"label": "workflow 3", "title": "Moderate community submissions", "body": "Submissions get staged, redacted, scored for safety, drafted, approved by the contributor, then published. No auto-publish.", "href": "/submit-workflow/moderation/", "cta": "issue002_moderation"}
+    ],
+    "asks": [
+      {"title": "What should be the first contributed workflow category?", "body": "Reply with one category you would actually read: founder ops, creator workflows, no-code automation, research, healthcare/business ops, or WhatsApp community operations."},
+      {"title": "What changed since issue #001?", "body": "We shipped more surfaces, not fake traction. The useful signal is now clear: worksheet copies, workflow submissions, newsletter clicks, and community-bot setup conversations."}
+    ],
+    "experiment": "MRR remains $0 until real paid demand appears. The next measurable loop is contributed workflow intake, moderation, archive mentions, and newsletter signups."
+  }
+]
