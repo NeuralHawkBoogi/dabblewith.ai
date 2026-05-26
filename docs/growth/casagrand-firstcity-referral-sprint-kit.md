@@ -61,3 +61,16 @@ The campaign report now recognizes the referral sprint evidence path end to end:
 - Manual tracker rows may use `segment=qa_dev_student`, `segment=group_owner`, or `segment=other` without being rejected.
 - Manual tracker rows may use `route=first_responder_referral_sprint`; these count as concrete referral signals while still storing only last4 and short privacy-safe notes.
 - If two referral-sprint rows are logged, the manual report next action is to continue the warm-intro path and open the date/topic poll once three total resident signals are captured.
+
+## Report section — 2026-05-26
+
+When the manual tracker is supplied with any `route=first_responder_referral_sprint` rows, the privacy-safe campaign report now renders a copy-ready **`Referral sprint follow-up`** section built only from sanitized tracker rows and aggregate counts (no raw phones/messages/tokens):
+
+- Referral-sprint rows logged, total referrals, and whether any `group_owner` segment is present.
+- Recommended next steps:
+  - If total referrals >= 2: send the referred-neighbor warm intro from `/casagrand-firstcity/referral-sprint/` and open `/casagrand-firstcity/date-poll/` once 3 total resident signals are logged.
+  - If total referrals < 2: keep running the sprint; 2 referrals are needed before opening the date/topic poll.
+  - If any `group_owner` segment is present: route that referral to `/casagrand-firstcity/bot-readiness/` for the community-bot design-partner path.
+- Last4-only row bullets (`segment · ****last4 · problem · follow_up · next`) so the operator can act without opening another kit.
+
+The section is omitted entirely when the tracker has no referral-sprint rows, and rows whose `last4` is not exactly four digits are rejected before rendering.

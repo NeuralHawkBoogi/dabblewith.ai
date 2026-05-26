@@ -459,6 +459,43 @@ function buildFirstResponderFollowUp(report) {
   };
 }
 
+// Builds a copy-ready, privacy-safe "Referral sprint follow-up" section from the
+// manual tracker when it contains referral-sprint rows
+// (route=first_responder_referral_sprint). Uses only the already-sanitized
+// tracker rows and aggregate counts (last4-masked rows, referral/segment
+// counts) — never raw phones, messages, or tokens. Returns null when no
+// referral-sprint rows are present. Deterministic for a given tracker summary.
+function buildReferralSprintFollowUp(tracker) {
+  if (!tracker || !Array.isArray(tracker.sanitizedRows)) return null;
+  const rows = tracker.sanitizedRows.filter((row) => row.route === 'first_responder_referral_sprint');
+  if (!rows.length) return null;
+  const totalReferrals = tracker.referrals || 0;
+  const hasGroupOwner = rows.some((row) => row.segment === 'group_owner')
+    || Boolean(tracker.segmentCounts && tracker.segmentCounts.group_owner);
+  const nextSteps = [];
+  if (totalReferrals >= 2) {
+    nextSteps.push(`Total referrals ${totalReferrals} (>=2): send the referred-neighbor warm intro from /casagrand-firstcity/referral-sprint/ and open /casagrand-firstcity/date-poll/ once 3 total resident signals are logged.`);
+  } else {
+    nextSteps.push(`Total referrals ${totalReferrals} (<2): keep running the referral sprint; need 2 referrals before opening /casagrand-firstcity/date-poll/.`);
+  }
+  if (hasGroupOwner) {
+    nextSteps.push('Group-owner segment present: route that referral to /casagrand-firstcity/bot-readiness/ for the community-bot design-partner path.');
+  }
+  return {
+    referralSprintRows: rows.length,
+    totalReferrals,
+    hasGroupOwner,
+    nextSteps,
+    rows: rows.map((row) => ({
+      segment: row.segment,
+      last4: row.last4,
+      problem: row.problem,
+      followUpSent: row.followUpSent,
+      nextAction: row.nextAction,
+    })),
+  };
+}
+
 function buildCampaignReport(runtimeDir, options = {}) {
   const signals = readJsonl(path.join(runtimeDir, 'community-signals.jsonl'));
   const statusRows = readJsonl(path.join(runtimeDir, 'statuses.jsonl')).concat(readJsonl(path.join(runtimeDir, 'webhooks.jsonl')));
@@ -586,6 +623,11 @@ function renderMarkdown(report) {
   lines.push('');
   appendManualTracker(lines, report.manualTracker);
   lines.push('');
+  const referralSprintFollowUp = buildReferralSprintFollowUp(report.manualTracker);
+  if (referralSprintFollowUp) {
+    appendReferralSprintFollowUp(lines, referralSprintFollowUp);
+    lines.push('');
+  }
   lines.push('## Recent campaign signals');
   if (report.recentSignals.length === 0) {
     lines.push('- None yet.');
@@ -646,6 +688,20 @@ function appendFirstResponderFollowUp(lines, followUp) {
   lines.push(`- Referral sprint ask: ${followUp.referralSprintAsk}`);
   lines.push(`- Community-bot gate: ${followUp.communityBotGate}`);
   lines.push(`- Tracker note: ${followUp.trackerNote}`);
+}
+
+function appendReferralSprintFollowUp(lines, followUp) {
+  lines.push('## Referral sprint follow-up');
+  lines.push('Copy-ready, privacy-safe next steps from the manual tracker referral-sprint rows (last4 only, no phone/message/token exposure):');
+  lines.push(`- Referral-sprint rows logged: ${followUp.referralSprintRows}`);
+  lines.push(`- Total referrals: ${followUp.totalReferrals}`);
+  lines.push(`- Group-owner segment present: ${followUp.hasGroupOwner ? 'yes' : 'no'}`);
+  lines.push('- Recommended next steps:');
+  for (const step of followUp.nextSteps) lines.push(`  - ${step}`);
+  lines.push('- Referral-sprint rows (last4 only):');
+  for (const row of followUp.rows) {
+    lines.push(`  - ${row.segment} · ${row.last4} · problem="${row.problem || 'n/a'}" · follow_up=${row.followUpSent ? 'yes' : 'no'} · next="${row.nextAction || 'n/a'}"`);
+  }
 }
 
 function appendLaunchDecision(lines, decision) {
@@ -740,6 +796,7 @@ module.exports = {
   computeManualNextAction,
   computeLaunchDecision,
   buildFirstResponderFollowUp,
+  buildReferralSprintFollowUp,
   buildCampaignReport,
   renderMarkdown,
   writeCampaignReport,

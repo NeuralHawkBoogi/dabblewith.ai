@@ -7,6 +7,7 @@ const path = require('path');
 const {
   buildCampaignReport,
   buildFirstResponderFollowUp,
+  buildReferralSprintFollowUp,
   computeLaunchDecision,
   inferSourceTags,
   inferSlotVotes,
@@ -106,6 +107,43 @@ function appendJsonl(file, rows) {
   assert(referralSprintSummary.nextAction.includes('referred-neighbor warm intro path'));
   assert(referralSprintSummary.nextAction.includes('date/topic poll'));
   assert(!JSON.stringify(manualSummary).includes('99999'), 'manual tracker leaked full phone');
+
+  // Manual tracker referral-sprint rows drive a copy-ready, privacy-safe
+  // "Referral sprint follow-up" section built only from sanitized rows/aggregates.
+  assert.strictEqual(
+    buildReferralSprintFollowUp(summarizeManualTracker({
+      rows: [{ segment: 'career', last4: '1234', route: 'problem', problem: 'resume help' }],
+    })),
+    null,
+    'referral sprint follow-up built without any referral-sprint rows',
+  );
+  assert.strictEqual(buildReferralSprintFollowUp(null), null, 'referral sprint follow-up built from null tracker');
+
+  const referralSprintFollowUp = buildReferralSprintFollowUp(referralSprintSummary);
+  assert(referralSprintFollowUp, 'referral sprint follow-up missing for referral-sprint rows');
+  assert.strictEqual(referralSprintFollowUp.referralSprintRows, 2);
+  assert.strictEqual(referralSprintFollowUp.totalReferrals, 2);
+  assert.strictEqual(referralSprintFollowUp.hasGroupOwner, false);
+  assert(referralSprintFollowUp.nextSteps.some((s) => s.includes('referred-neighbor warm intro')));
+  assert(referralSprintFollowUp.nextSteps.some((s) => s.includes('/casagrand-firstcity/date-poll/')));
+  assert(referralSprintFollowUp.nextSteps.some((s) => s.includes('3 total resident signals')));
+  assert(!referralSprintFollowUp.nextSteps.some((s) => s.includes('/casagrand-firstcity/bot-readiness/')), 'bot-readiness step without a group_owner segment');
+  assert.strictEqual(referralSprintFollowUp.rows.length, 2);
+  assert.strictEqual(referralSprintFollowUp.rows[0].last4, '****2222');
+  assert(referralSprintFollowUp.rows.every((row) => /^\*{4}\d{4}$/.test(row.last4)), 'referral sprint rows must mask all but last4');
+  assert(!JSON.stringify(referralSprintFollowUp).match(/\d{5,}/), 'referral sprint follow-up leaked a long number');
+
+  // A single group-owner referral routes to bot-readiness but does not yet
+  // recommend the date/topic poll (needs >=2 total referrals first).
+  const groupOwnerFollowUp = buildReferralSprintFollowUp(summarizeManualTracker({
+    rows: [{ segment: 'group_owner', last4: '4444', route: 'first_responder_referral_sprint', problem: 'runs residents WhatsApp group' }],
+  }));
+  assert(groupOwnerFollowUp, 'referral sprint follow-up missing for group-owner referral row');
+  assert.strictEqual(groupOwnerFollowUp.totalReferrals, 1);
+  assert.strictEqual(groupOwnerFollowUp.hasGroupOwner, true);
+  assert(groupOwnerFollowUp.nextSteps.some((s) => s.includes('/casagrand-firstcity/bot-readiness/')));
+  assert(!groupOwnerFollowUp.nextSteps.some((s) => s.includes('referred-neighbor warm intro')), 'warm intro recommended before 2 referrals');
+  assert(groupOwnerFollowUp.nextSteps.some((s) => s.includes('(<2)')), 'sub-threshold referral step missing for single referral');
 
   // Launch decision branches mirror the 24-hour launch brief thresholds.
   const clubhouse = computeLaunchDecision({
@@ -381,6 +419,8 @@ function appendJsonl(file, rows) {
   // Bottom "## Next action" must prefer the manual tracker when supplied.
   assert(markdown.includes(`- Next action: ${report.decision.nextAction}`));
   assert(markdown.includes('## Next action\n- Prioritize Get a Community Bot validation'));
+  // A manual tracker with no referral-sprint rows must not render the section.
+  assert(!markdown.includes('## Referral sprint follow-up'), 'referral sprint section leaked into a non-referral manual tracker report');
 
   const excludedOutputDir = tmpDir();
   const excluded = writeCampaignReport({ runtimeDir, outputDir: excludedOutputDir, date: '2026-05-20', excludeLast4: ['2585'] });
@@ -440,6 +480,33 @@ function appendJsonl(file, rows) {
   assert(qaMarkdown.includes('last4=5678'));
   assert(!qaMarkdown.includes('919840385678'), 'raw phone leaked into first responder markdown');
   assert(!qaMarkdown.includes('wamid.qa.coding.one'), 'raw message id leaked into first responder markdown');
+
+  // A manual tracker with referral-sprint rows must render a copy-ready,
+  // privacy-safe "Referral sprint follow-up" section using only sanitized
+  // rows/aggregates, with last4-only bullets and no raw phone/message leak.
+  const referralTrackerPath = path.join(tmpDir(), 'referral-sprint.json');
+  fs.writeFileSync(referralTrackerPath, JSON.stringify({ rows: [
+    { segment: 'qa_dev_student', last4: '2222', route: 'first_responder_referral_sprint', problem: 'QA workflow sample', nextAction: 'send warm intro' },
+    { segment: 'qa_dev_student', last4: '3333', route: 'first_responder_referral_sprint', problem: 'coding assistant intro', followUpSent: true },
+    { segment: 'group_owner', last4: '4444', route: 'first_responder_referral_sprint', problem: 'runs residents WhatsApp group' },
+    { segment: 'other', last4: '919840385555', route: 'first_responder_referral_sprint', problem: 'full number must be rejected' },
+  ] }));
+  const referralOutputDir = tmpDir();
+  const referralResult = writeCampaignReport({ runtimeDir: qaRuntimeDir, outputDir: referralOutputDir, date: '2026-05-26', manualTracker: referralTrackerPath });
+  const referralMarkdown = fs.readFileSync(referralResult.mdPath, 'utf8');
+  assert(referralMarkdown.includes('## Referral sprint follow-up'), 'referral sprint section missing from markdown');
+  assert(referralMarkdown.includes('Referral-sprint rows logged: 3'), 'referral sprint row count missing (rejected full-number row should not count)');
+  assert(referralMarkdown.includes('Total referrals: 3'));
+  assert(referralMarkdown.includes('Group-owner segment present: yes'));
+  assert(referralMarkdown.includes('referred-neighbor warm intro'));
+  assert(referralMarkdown.includes('/casagrand-firstcity/date-poll/'));
+  assert(referralMarkdown.includes('3 total resident signals'));
+  assert(referralMarkdown.includes('/casagrand-firstcity/bot-readiness/'));
+  assert(referralMarkdown.includes('- Referral-sprint rows (last4 only):'));
+  assert(referralMarkdown.includes('****2222'));
+  assert(referralMarkdown.includes('group_owner · ****4444'));
+  assert(!referralMarkdown.includes('919840385555'), 'rejected full-number row leaked into referral sprint markdown');
+  assert(!referralMarkdown.includes('919840385678'), 'raw phone leaked into referral sprint markdown');
 
   console.log('casagrand-campaign-report smoke passed');
 })();
