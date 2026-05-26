@@ -117,6 +117,8 @@ Recent GA checks show marketplace/social traffic collapses into Direct/Unassigne
 - Added `scripts/web/dabblewith-tracking.js` to capture attribution in `sessionStorage`, decorate internal/WhatsApp CTA links, and avoid PII capture.
 - Wired tracking script into `index.html`.
 - Removed raw `link_url` from the existing generic CTA analytics payload; only safe `link_host` is emitted.
+- Follow-up hardening: replaced the legacy `/community-bot/` inline click tracker with the shared privacy-safe tracker and added named CTA metadata to WhatsApp setup links.
+- Added `scripts/site-smoke-test.js` to verify local HTML references, JSON-LD parsing, required metadata, and the `/community-bot/` privacy guard.
 - Validation: `node --check scripts/web/dabblewith-tracking.js`; static grep confirms tracked params and CTA attributes exist.
 
 ---
@@ -160,7 +162,8 @@ Each event should include safe metadata only:
 **Evidence**
 - Added `docs/growth/ga-conversion-event-taxonomy.md` with event definitions, allowed metadata, and GA conversion recommendations.
 - Instrumented homepage CTAs with `data-event`, `data-cta`, `data-audience`, and safe workflow metadata where applicable.
-- Allowlisted events in `scripts/web/dabblewith-tracking.js`: `workflow_view`, `workflow_explore_click`, `workflow_submit_start`, `workflow_submit_complete`, `newsletter_signup_click`, `community_bot_setup_click`, `challenge_join_click`, `partner_interest_click`, `build_public_metrics_view`, `audience_segment_click`.
+- Allowlisted events in `scripts/web/dabblewith-tracking.js`: `workflow_view`, `workflow_explore_click`, `workflow_submit_start`, `workflow_submit_complete`, `newsletter_signup_click`, `community_bot_setup_click`, `challenge_join_click`, `partner_interest_click`, `build_public_metrics_view`, `audience_segment_click`, `lead_intent_click`.
+- Follow-up hardening: `/community-bot/` WhatsApp setup CTAs now emit `community_bot_setup_click` through the shared tracker, which also emits privacy-safe `lead_intent_click` without raw URLs or message bodies.
 - Validation: `node --check scripts/web/dabblewith-tracking.js`; static grep confirms core event names are present.
 
 ---

@@ -24,20 +24,8 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-7473LZQGX2');
-    document.addEventListener('click', function(event) {
-      var link = event.target && event.target.closest ? event.target.closest('a') : null;
-      if (!link || typeof gtag !== 'function') return;
-      var href = link.getAttribute('href') || '';
-      var text = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 80);
-      var isCta = /wa\.me|whatsapp|#join|\/community-bot\/?|\/casagrand-firstcity\/rsvp\/?|utm_/.test(href) || /join|rsvp|start|signal|community bot|whatsapp/i.test(text);
-      if (!isCta) return;
-      gtag('event', 'cta_click', {
-        link_url: link.href || href,
-        link_text: text,
-        page_path: location.pathname
-      });
-    });
   </script>
+  <script src="/scripts/web/dabblewith-tracking.js" defer></script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Service","name":"AI WhatsApp Community Host","provider":{"@type":"Organization","name":"dabblewith.ai","url":"https://dabblewith.ai/"},"description":"A WhatsApp-native AI host that welcomes members, answers questions, captures event registrations, and escalates to the human admin when needed.","url":"https://dabblewith.ai/community-bot/"}
   </script>
@@ -56,7 +44,7 @@
       <h1>Your community needs a host, not just a group admin.</h1>
       <p class="lead">WhatsApp communities run on you — answering the same questions, welcoming every new member, chasing RSVPs, announcing events again and again. An AI host handles all of that in your community's own voice, so you can show up as the leader instead of the help desk.</p>
       <div class="actions">
-        <a class="btn primary" href="https://wa.me/919566112518?text=I%20want%20to%20get%20a%20WhatsApp%20community%20bot%20for%20my%20group" target="_blank" rel="noreferrer">Get your WhatsApp community bot</a>
+        <a class="btn primary" data-cta="community_bot_hero_setup" data-event="community_bot_setup_click" href="https://wa.me/919566112518?text=I%20want%20to%20get%20a%20WhatsApp%20community%20bot%20for%20my%20group" target="_blank" rel="noreferrer">Get your WhatsApp community bot</a>
         <a class="btn" href="#how">See how it works</a>
       </div>
     </section>
@@ -160,7 +148,7 @@
             <h2>Already hosting the dabblewith.ai community.</h2>
             <p style="color:var(--muted);line-height:1.65;margin-top:12px">The same AI host is already live inside the dabblewith.ai WhatsApp community — welcoming members, answering questions about upcoming sessions, collecting interest, and escalating to the human team. What you'd get is a version tuned for your community.</p>
             <div class="actions" style="margin-top:20px">
-              <a class="btn primary" href="https://wa.me/919566112518?text=I%20want%20to%20get%20a%20WhatsApp%20community%20bot%20for%20my%20group" target="_blank" rel="noreferrer">Start setup on WhatsApp</a>
+              <a class="btn primary" data-cta="community_bot_proof_setup" data-event="community_bot_setup_click" href="https://wa.me/919566112518?text=I%20want%20to%20get%20a%20WhatsApp%20community%20bot%20for%20my%20group" target="_blank" rel="noreferrer">Start setup on WhatsApp</a>
             </div>
           </div>
           <div class="proof-quote">
@@ -178,8 +166,8 @@
         <h2>Ready to stop being the group admin on-call?</h2>
         <p class="lead">Message us on WhatsApp. That conversation is the setup — we'll collect everything we need to configure your AI community host and get it live.</p>
         <div class="actions">
-          <a class="btn primary" href="https://wa.me/919566112518?text=I%20want%20to%20get%20a%20WhatsApp%20community%20bot%20for%20my%20group" target="_blank" rel="noreferrer">Start setup on WhatsApp</a>
-          <a class="btn" href="https://wa.me/919566112518?text=Tell%20me%20more%20about%20the%20WhatsApp%20community%20bot" target="_blank" rel="noreferrer">Ask a question first</a>
+          <a class="btn primary" data-cta="community_bot_cta_setup" data-event="community_bot_setup_click" href="https://wa.me/919566112518?text=I%20want%20to%20get%20a%20WhatsApp%20community%20bot%20for%20my%20group" target="_blank" rel="noreferrer">Start setup on WhatsApp</a>
+          <a class="btn" data-cta="community_bot_cta_question" data-event="community_bot_setup_click" href="https://wa.me/919566112518?text=Tell%20me%20more%20about%20the%20WhatsApp%20community%20bot" target="_blank" rel="noreferrer">Ask a question first</a>
         </div>
       </div>
     </section>
