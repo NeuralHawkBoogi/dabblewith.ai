@@ -841,9 +841,52 @@ Phase 2 activation surfaces are complete: workflow worksheets, first newsletter 
 
 ## Recommended next sprint
 
-1. `WEB-GROWTH-T23` — add lightweight conversion dashboard/export for privacy-safe events: workflow views, worksheet downloads, newsletter clicks, community-bot setup clicks, and workflow submissions.
-2. `WEB-GROWTH-T24` — create second newsletter issue from actual shipped experiments and add archive index cards.
+1. ✅ `WEB-GROWTH-T23` — lightweight conversion dashboard/export for privacy-safe events: workflow views, worksheet downloads, newsletter clicks, community-bot setup clicks, and workflow submissions.
+2. Next: `WEB-GROWTH-T24` — create second newsletter issue from actual shipped experiments and add archive index cards.
 3. `WEB-GROWTH-T25` — add workflow submission moderation queue/spec so community contributions can become public pages safely.
+
+# EPIC-WG-07 — Measurement Operating Loop
+
+Priority: P0/P1
+Status: in_progress
+
+## Goal
+Turn the public website from tracked pages into a weekly operating system: clear KPIs, privacy-safe exports, and decision rules for what to promote, improve, or archive.
+
+## Tickets
+
+### WEB-GROWTH-T23 — Add lightweight conversion dashboard/export
+Priority: P0
+Status: done
+Dependencies: [WEB-GROWTH-T18, WEB-GROWTH-T22]
+
+**Scope**
+- Add `/metrics/` public dashboard page.
+- Generate a privacy-safe event inventory from public HTML CTA metadata.
+- Add a CSV export template for weekly GA/manual aggregation.
+- Keep the export schema free of PII, raw links, message bodies, phone numbers, and email addresses.
+
+**Acceptance criteria**
+- `/metrics/` explains KPI map, event taxonomy, export fields, and weekly operating loop.
+- `data/conversion-events.json` lists event names, CTA IDs, page paths, audience segments, and workflow categories only.
+- `data/conversion-dashboard-template.csv` provides a manual aggregation template.
+- Site smoke covers the new dashboard and local references.
+
+**Validation**
+- `node scripts/generate-metrics.js --check` passes.
+- `node scripts/site-smoke-test.js` passes.
+- `python3 -m json.tool data/conversion-events.json` passes.
+- `grep` confirms no raw `link_url` tracking in public HTML.
+
+**Evidence**
+- Added deterministic generator `scripts/generate-metrics.js`.
+- Generated `/metrics/`, `data/conversion-events.json`, and `data/conversion-dashboard-template.csv`.
+- Added `/metrics/` to sitemap and linked it from `/experiments/`.
+- Inventory currently discovers 554 CTA/event definitions across public HTML and flags zero unapproved event names.
+- Dashboard reinforces aggregated-only export rules: no WhatsApp text, email addresses, phone numbers, raw URLs, user IDs, IPs, or device identifiers.
+
+---
+
 
 ## Notes
 - This backlog is website-first. Runtime/community-bot platformization remains in `tickets/COMMUNITY-BOT-PLATFORM.md` and related runtime tickets.

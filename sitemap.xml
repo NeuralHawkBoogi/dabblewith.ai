@@ -319,6 +319,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://dabblewith.ai/metrics/</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://dabblewith.ai/build-in-public/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>

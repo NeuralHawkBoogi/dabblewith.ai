@@ -148,6 +148,7 @@ const urls = [
   ['https://dabblewith.ai/newsletter/', 'weekly', '0.8'],
   ['https://dabblewith.ai/newsletter/issue-001/', 'monthly', '0.75', '2026-05-26'],
   ['https://dabblewith.ai/experiments/', 'weekly', '0.8'],
+  ['https://dabblewith.ai/metrics/', 'weekly', '0.7'],
   ['https://dabblewith.ai/build-in-public/', 'weekly', '0.8'],
   ['https://dabblewith.ai/challenges/', 'weekly', '0.8'],
   ['https://dabblewith.ai/challenges/build-in-public-4-weeks/', 'weekly', '0.8'],

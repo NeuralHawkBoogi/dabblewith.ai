@@ -1,0 +1,4837 @@
+{
+  "generated_by": "scripts/generate-metrics.js",
+  "privacy": "No PII, no message bodies, no email/phone values, no raw link URLs. Only event names, CTA IDs, page paths, audience and workflow categories.",
+  "kpis": [
+    {
+      "name": "Workflow views",
+      "event": "workflow_view",
+      "question": "Which workflows earn real attention?",
+      "export_fields": [
+        "page_path",
+        "cta_id",
+        "workflow_category",
+        "audience_segment"
+      ]
+    },
+    {
+      "name": "Workflow exploration clicks",
+      "event": "workflow_explore_click",
+      "question": "Do readers keep browsing/forking?",
+      "export_fields": [
+        "page_path",
+        "cta_id",
+        "workflow_category",
+        "audience_segment"
+      ]
+    },
+    {
+      "name": "Worksheet downloads / opens",
+      "event": "workflow_explore_click",
+      "question": "Which templates are being copied?",
+      "export_fields": [
+        "page_path",
+        "cta_id",
+        "workflow_category"
+      ]
+    },
+    {
+      "name": "Workflow submissions started",
+      "event": "workflow_submit_start",
+      "question": "Are visitors becoming contributors?",
+      "export_fields": [
+        "page_path",
+        "cta_id",
+        "source",
+        "medium",
+        "campaign",
+        "content",
+        "intent"
+      ]
+    },
+    {
+      "name": "Newsletter signup clicks",
+      "event": "newsletter_signup_click",
+      "question": "Does the content loop convert?",
+      "export_fields": [
+        "page_path",
+        "cta_id",
+        "source",
+        "medium",
+        "campaign",
+        "content",
+        "intent"
+      ]
+    },
+    {
+      "name": "Community-bot setup clicks",
+      "event": "community_bot_setup_click",
+      "question": "Is there commercial community-bot intent?",
+      "export_fields": [
+        "page_path",
+        "cta_id",
+        "source",
+        "medium",
+        "campaign",
+        "content",
+        "intent"
+      ]
+    },
+    {
+      "name": "Lead intent clicks",
+      "event": "lead_intent_click",
+      "question": "Which external lead actions happened?",
+      "export_fields": [
+        "page_path",
+        "cta_id",
+        "lead_type",
+        "source_event"
+      ]
+    },
+    {
+      "name": "Build-in-public / roadmap views",
+      "event": "build_public_metrics_view",
+      "question": "Are people checking progress?",
+      "export_fields": [
+        "page_path",
+        "cta_id"
+      ]
+    },
+    {
+      "name": "Audience segment clicks",
+      "event": "audience_segment_click",
+      "question": "Which audience paths pull interest?",
+      "export_fields": [
+        "page_path",
+        "cta_id",
+        "audience_segment",
+        "workflow_category"
+      ]
+    },
+    {
+      "name": "Partner interest clicks",
+      "event": "partner_interest_click",
+      "question": "Are there partnership or issue-swap signals?",
+      "export_fields": [
+        "page_path",
+        "cta_id"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event": "audience_segment_click",
+      "status": "tracked",
+      "cta_count": 10,
+      "page_count": 2,
+      "pages": [
+        "/",
+        "/start/"
+      ]
+    },
+    {
+      "event": "build_public_metrics_view",
+      "status": "tracked",
+      "cta_count": 65,
+      "page_count": 32,
+      "pages": [
+        "/build-in-public/",
+        "/challenges/build-in-public-4-weeks/",
+        "/challenges/",
+        "/community-policy/",
+        "/experiments/",
+        "/",
+        "/newsletter/",
+        "/newsletter/issue-001/",
+        "/start/",
+        "/submit-workflow/",
+        "/templates/ai-meeting-notes-to-action-tracker/",
+        "/templates/ai-workshop-intake-template-for-teams/",
+        "/templates/founder-weekly-metrics-build-in-public/",
+        "/templates/",
+        "/templates/research-paper-summarization-with-human-review/",
+        "/templates/whatsapp-community-onboarding-bot/",
+        "/workflows/ai-meeting-notes-to-action-tracker/",
+        "/workflows/ai-tool-evaluation-scorecard/",
+        "/workflows/ai-workshop-intake-template-for-teams/",
+        "/workflows/creator-content-repurposing/",
+        "/workflows/creators-writers/",
+        "/workflows/customer-support-faq-gap-mining/",
+        "/workflows/",
+        "/workflows/founder-weekly-metrics-build-in-public/",
+        "/workflows/founders-operators/",
+        "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+        "/workflows/healthcare-ops/",
+        "/workflows/nocode-automation/",
+        "/workflows/nocode-lead-qualification/",
+        "/workflows/research-academic/",
+        "/workflows/research-paper-summarization-with-human-review/",
+        "/workflows/whatsapp-community-onboarding-bot/"
+      ]
+    },
+    {
+      "event": "challenge_join_click",
+      "status": "tracked",
+      "cta_count": 70,
+      "page_count": 24,
+      "pages": [
+        "/build-in-public/",
+        "/challenges/build-in-public-4-weeks/",
+        "/challenges/",
+        "/community-policy/",
+        "/",
+        "/newsletter/",
+        "/start/",
+        "/submit-workflow/",
+        "/workflows/ai-meeting-notes-to-action-tracker/",
+        "/workflows/ai-tool-evaluation-scorecard/",
+        "/workflows/ai-workshop-intake-template-for-teams/",
+        "/workflows/creator-content-repurposing/",
+        "/workflows/creators-writers/",
+        "/workflows/customer-support-faq-gap-mining/",
+        "/workflows/",
+        "/workflows/founder-weekly-metrics-build-in-public/",
+        "/workflows/founders-operators/",
+        "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+        "/workflows/healthcare-ops/",
+        "/workflows/nocode-automation/",
+        "/workflows/nocode-lead-qualification/",
+        "/workflows/research-academic/",
+        "/workflows/research-paper-summarization-with-human-review/",
+        "/workflows/whatsapp-community-onboarding-bot/"
+      ]
+    },
+    {
+      "event": "community_bot_setup_click",
+      "status": "tracked",
+      "cta_count": 65,
+      "page_count": 33,
+      "pages": [
+        "/build-in-public/",
+        "/challenges/build-in-public-4-weeks/",
+        "/challenges/",
+        "/community-bot/",
+        "/community-policy/",
+        "/experiments/",
+        "/",
+        "/newsletter/",
+        "/newsletter/issue-001/",
+        "/start/",
+        "/submit-workflow/",
+        "/templates/ai-meeting-notes-to-action-tracker/",
+        "/templates/ai-workshop-intake-template-for-teams/",
+        "/templates/founder-weekly-metrics-build-in-public/",
+        "/templates/",
+        "/templates/research-paper-summarization-with-human-review/",
+        "/templates/whatsapp-community-onboarding-bot/",
+        "/workflows/ai-meeting-notes-to-action-tracker/",
+        "/workflows/ai-tool-evaluation-scorecard/",
+        "/workflows/ai-workshop-intake-template-for-teams/",
+        "/workflows/creator-content-repurposing/",
+        "/workflows/creators-writers/",
+        "/workflows/customer-support-faq-gap-mining/",
+        "/workflows/",
+        "/workflows/founder-weekly-metrics-build-in-public/",
+        "/workflows/founders-operators/",
+        "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+        "/workflows/healthcare-ops/",
+        "/workflows/nocode-automation/",
+        "/workflows/nocode-lead-qualification/",
+        "/workflows/research-academic/",
+        "/workflows/research-paper-summarization-with-human-review/",
+        "/workflows/whatsapp-community-onboarding-bot/"
+      ]
+    },
+    {
+      "event": "newsletter_signup_click",
+      "status": "tracked",
+      "cta_count": 89,
+      "page_count": 32,
+      "pages": [
+        "/build-in-public/",
+        "/challenges/build-in-public-4-weeks/",
+        "/challenges/",
+        "/community-policy/",
+        "/experiments/",
+        "/",
+        "/newsletter/",
+        "/newsletter/issue-001/",
+        "/start/",
+        "/submit-workflow/",
+        "/templates/ai-meeting-notes-to-action-tracker/",
+        "/templates/ai-workshop-intake-template-for-teams/",
+        "/templates/founder-weekly-metrics-build-in-public/",
+        "/templates/",
+        "/templates/research-paper-summarization-with-human-review/",
+        "/templates/whatsapp-community-onboarding-bot/",
+        "/workflows/ai-meeting-notes-to-action-tracker/",
+        "/workflows/ai-tool-evaluation-scorecard/",
+        "/workflows/ai-workshop-intake-template-for-teams/",
+        "/workflows/creator-content-repurposing/",
+        "/workflows/creators-writers/",
+        "/workflows/customer-support-faq-gap-mining/",
+        "/workflows/",
+        "/workflows/founder-weekly-metrics-build-in-public/",
+        "/workflows/founders-operators/",
+        "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+        "/workflows/healthcare-ops/",
+        "/workflows/nocode-automation/",
+        "/workflows/nocode-lead-qualification/",
+        "/workflows/research-academic/",
+        "/workflows/research-paper-summarization-with-human-review/",
+        "/workflows/whatsapp-community-onboarding-bot/"
+      ]
+    },
+    {
+      "event": "partner_interest_click",
+      "status": "tracked",
+      "cta_count": 6,
+      "page_count": 4,
+      "pages": [
+        "/build-in-public/",
+        "/",
+        "/newsletter/",
+        "/workflows/healthcare-ops-call-triage-with-safety-caveats/"
+      ]
+    },
+    {
+      "event": "workflow_explore_click",
+      "status": "tracked",
+      "cta_count": 90,
+      "page_count": 32,
+      "pages": [
+        "/build-in-public/",
+        "/challenges/build-in-public-4-weeks/",
+        "/challenges/",
+        "/community-policy/",
+        "/experiments/",
+        "/",
+        "/newsletter/",
+        "/newsletter/issue-001/",
+        "/start/",
+        "/submit-workflow/",
+        "/templates/ai-meeting-notes-to-action-tracker/",
+        "/templates/ai-workshop-intake-template-for-teams/",
+        "/templates/founder-weekly-metrics-build-in-public/",
+        "/templates/",
+        "/templates/research-paper-summarization-with-human-review/",
+        "/templates/whatsapp-community-onboarding-bot/",
+        "/workflows/ai-meeting-notes-to-action-tracker/",
+        "/workflows/ai-tool-evaluation-scorecard/",
+        "/workflows/ai-workshop-intake-template-for-teams/",
+        "/workflows/",
+        "/workflows/creator-content-repurposing/",
+        "/workflows/creators-writers/",
+        "/workflows/customer-support-faq-gap-mining/",
+        "/workflows/founder-weekly-metrics-build-in-public/",
+        "/workflows/founders-operators/",
+        "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+        "/workflows/healthcare-ops/",
+        "/workflows/nocode-automation/",
+        "/workflows/nocode-lead-qualification/",
+        "/workflows/research-academic/",
+        "/workflows/research-paper-summarization-with-human-review/",
+        "/workflows/whatsapp-community-onboarding-bot/"
+      ]
+    },
+    {
+      "event": "workflow_submit_start",
+      "status": "tracked",
+      "cta_count": 94,
+      "page_count": 25,
+      "pages": [
+        "/build-in-public/",
+        "/challenges/build-in-public-4-weeks/",
+        "/challenges/",
+        "/community-policy/",
+        "/",
+        "/newsletter/",
+        "/start/",
+        "/submit-workflow/",
+        "/templates/",
+        "/workflows/ai-meeting-notes-to-action-tracker/",
+        "/workflows/ai-tool-evaluation-scorecard/",
+        "/workflows/ai-workshop-intake-template-for-teams/",
+        "/workflows/creator-content-repurposing/",
+        "/workflows/creators-writers/",
+        "/workflows/customer-support-faq-gap-mining/",
+        "/workflows/",
+        "/workflows/founder-weekly-metrics-build-in-public/",
+        "/workflows/founders-operators/",
+        "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+        "/workflows/healthcare-ops/",
+        "/workflows/nocode-automation/",
+        "/workflows/nocode-lead-qualification/",
+        "/workflows/research-academic/",
+        "/workflows/research-paper-summarization-with-human-review/",
+        "/workflows/whatsapp-community-onboarding-bot/"
+      ]
+    },
+    {
+      "event": "workflow_view",
+      "status": "tracked",
+      "cta_count": 65,
+      "page_count": 25,
+      "pages": [
+        "/build-in-public/",
+        "/challenges/build-in-public-4-weeks/",
+        "/",
+        "/start/",
+        "/templates/ai-meeting-notes-to-action-tracker/",
+        "/templates/ai-workshop-intake-template-for-teams/",
+        "/templates/founder-weekly-metrics-build-in-public/",
+        "/templates/research-paper-summarization-with-human-review/",
+        "/templates/whatsapp-community-onboarding-bot/",
+        "/workflows/ai-meeting-notes-to-action-tracker/",
+        "/workflows/ai-tool-evaluation-scorecard/",
+        "/workflows/ai-workshop-intake-template-for-teams/",
+        "/workflows/creator-content-repurposing/",
+        "/workflows/creators-writers/",
+        "/workflows/customer-support-faq-gap-mining/",
+        "/workflows/founder-weekly-metrics-build-in-public/",
+        "/workflows/founders-operators/",
+        "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+        "/workflows/healthcare-ops/",
+        "/workflows/nocode-automation/",
+        "/workflows/nocode-lead-qualification/",
+        "/workflows/research-academic/",
+        "/workflows/research-paper-summarization-with-human-review/",
+        "/workflows/whatsapp-community-onboarding-bot/",
+        "/workflows/"
+      ]
+    }
+  ],
+  "ctas": [
+    {
+      "event": "audience_segment_click",
+      "cta_id": "audience_creators",
+      "page_path": "/",
+      "workflow_category": "creators-writers",
+      "audience_segment": "creators_writers",
+      "status": "tracked"
+    },
+    {
+      "event": "audience_segment_click",
+      "cta_id": "audience_founders",
+      "page_path": "/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "audience_segment_click",
+      "cta_id": "audience_healthcare_ops",
+      "page_path": "/",
+      "workflow_category": "healthcare-ops",
+      "audience_segment": "healthcare_business_ops",
+      "status": "tracked"
+    },
+    {
+      "event": "audience_segment_click",
+      "cta_id": "audience_nocode",
+      "page_path": "/",
+      "workflow_category": "nocode-automation",
+      "audience_segment": "nocode_automation_builders",
+      "status": "tracked"
+    },
+    {
+      "event": "audience_segment_click",
+      "cta_id": "audience_researchers",
+      "page_path": "/",
+      "workflow_category": "research-academic",
+      "audience_segment": "researchers_academics",
+      "status": "tracked"
+    },
+    {
+      "event": "audience_segment_click",
+      "cta_id": "intent_creator",
+      "page_path": "/start/",
+      "workflow_category": "creators-writers",
+      "audience_segment": "creators_writers",
+      "status": "tracked"
+    },
+    {
+      "event": "audience_segment_click",
+      "cta_id": "intent_healthcare",
+      "page_path": "/start/",
+      "workflow_category": "healthcare-ops",
+      "audience_segment": "healthcare_business_ops",
+      "status": "tracked"
+    },
+    {
+      "event": "audience_segment_click",
+      "cta_id": "intent_learn",
+      "page_path": "/start/",
+      "workflow_category": "",
+      "audience_segment": "learn_practical_ai",
+      "status": "tracked"
+    },
+    {
+      "event": "audience_segment_click",
+      "cta_id": "intent_nocode",
+      "page_path": "/start/",
+      "workflow_category": "nocode-automation",
+      "audience_segment": "nocode_automation_builders",
+      "status": "tracked"
+    },
+    {
+      "event": "audience_segment_click",
+      "cta_id": "intent_research",
+      "page_path": "/start/",
+      "workflow_category": "research-academic",
+      "audience_segment": "researchers_academics",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "footer_build_public",
+      "page_path": "/build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_build_public",
+      "page_path": "/build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "footer_build_public",
+      "page_path": "/challenges/build-in-public-4-weeks/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_build_public",
+      "page_path": "/challenges/build-in-public-4-weeks/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "footer_build_public",
+      "page_path": "/challenges/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_build_public",
+      "page_path": "/challenges/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "footer_build_public",
+      "page_path": "/community-policy/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_build_public",
+      "page_path": "/community-policy/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "experiments_community_bot_lead_capture",
+      "page_path": "/experiments/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "experiments_conversion_dashboard",
+      "page_path": "/experiments/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "experiments_copyable_templates",
+      "page_path": "/experiments/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "experiments_newsletter_archive",
+      "page_path": "/experiments/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "experiments_social_preview_cards",
+      "page_path": "/experiments/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "experiments_workflow_exchange_mvp",
+      "page_path": "/experiments/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_experiments",
+      "page_path": "/experiments/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "footer_build_public",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "homepage_view_autopilot",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_build_public",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "footer_build_public",
+      "page_path": "/newsletter/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_experiments",
+      "page_path": "/newsletter/issue-001/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_build_public",
+      "page_path": "/newsletter/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "newsletter_view_build_public",
+      "page_path": "/newsletter/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "footer_build_public",
+      "page_path": "/start/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_build_public",
+      "page_path": "/start/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "footer_build_public",
+      "page_path": "/submit-workflow/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_build_public",
+      "page_path": "/submit-workflow/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_experiments",
+      "page_path": "/templates/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_experiments",
+      "page_path": "/templates/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_experiments",
+      "page_path": "/templates/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_experiments",
+      "page_path": "/templates/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_experiments",
+      "page_path": "/templates/research-paper-summarization-with-human-review/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_experiments",
+      "page_path": "/templates/whatsapp-community-onboarding-bot/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "footer_build_public",
+      "page_path": "/workflows/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_build_public",
+      "page_path": "/workflows/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "footer_build_public",
+      "page_path": "/workflows/ai-tool-evaluation-scorecard/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_build_public",
+      "page_path": "/workflows/ai-tool-evaluation-scorecard/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "footer_build_public",
+      "page_path": "/workflows/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_build_public",
+      "page_path": "/workflows/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "footer_build_public",
+      "page_path": "/workflows/creator-content-repurposing/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_build_public",
+      "page_path": "/workflows/creator-content-repurposing/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "footer_build_public",
+      "page_path": "/workflows/creators-writers/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_build_public",
+      "page_path": "/workflows/creators-writers/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "footer_build_public",
+      "page_path": "/workflows/customer-support-faq-gap-mining/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_build_public",
+      "page_path": "/workflows/customer-support-faq-gap-mining/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "footer_build_public",
+      "page_path": "/workflows/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "footer_build_public",
+      "page_path": "/workflows/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_build_public",
+      "page_path": "/workflows/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "workflow_founder-weekly-metrics-build-in-public_primary",
+      "page_path": "/workflows/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "footer_build_public",
+      "page_path": "/workflows/founders-operators/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_build_public",
+      "page_path": "/workflows/founders-operators/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "footer_build_public",
+      "page_path": "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_build_public",
+      "page_path": "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "footer_build_public",
+      "page_path": "/workflows/healthcare-ops/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_build_public",
+      "page_path": "/workflows/healthcare-ops/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_build_public",
+      "page_path": "/workflows/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "footer_build_public",
+      "page_path": "/workflows/nocode-automation/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_build_public",
+      "page_path": "/workflows/nocode-automation/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "footer_build_public",
+      "page_path": "/workflows/nocode-lead-qualification/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_build_public",
+      "page_path": "/workflows/nocode-lead-qualification/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "footer_build_public",
+      "page_path": "/workflows/research-academic/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_build_public",
+      "page_path": "/workflows/research-academic/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "footer_build_public",
+      "page_path": "/workflows/research-paper-summarization-with-human-review/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_build_public",
+      "page_path": "/workflows/research-paper-summarization-with-human-review/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "footer_build_public",
+      "page_path": "/workflows/whatsapp-community-onboarding-bot/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "build_public_metrics_view",
+      "cta_id": "nav_build_public",
+      "page_path": "/workflows/whatsapp-community-onboarding-bot/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "footer_challenges",
+      "page_path": "/build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "nav_challenges",
+      "page_path": "/build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "challenge_join_email",
+      "page_path": "/challenges/build-in-public-4-weeks/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "challenge_join_footer_email",
+      "page_path": "/challenges/build-in-public-4-weeks/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "challenge_join_footer_whatsapp",
+      "page_path": "/challenges/build-in-public-4-weeks/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "challenge_join_whatsapp",
+      "page_path": "/challenges/build-in-public-4-weeks/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "footer_challenges",
+      "page_path": "/challenges/build-in-public-4-weeks/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "nav_challenges",
+      "page_path": "/challenges/build-in-public-4-weeks/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "challenges_index_card_4w",
+      "page_path": "/challenges/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "challenges_index_view",
+      "page_path": "/challenges/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "footer_challenges",
+      "page_path": "/challenges/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "nav_challenges",
+      "page_path": "/challenges/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "footer_challenges",
+      "page_path": "/community-policy/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "nav_challenges",
+      "page_path": "/community-policy/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "footer_challenges",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "homepage_view_sessions",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "nav_challenges",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "footer_challenges",
+      "page_path": "/newsletter/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "nav_challenges",
+      "page_path": "/newsletter/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "session_personal_ai_interest",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "session_voice_agent_interest",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "footer_challenges",
+      "page_path": "/start/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "intent_challenge",
+      "page_path": "/start/",
+      "workflow_category": "",
+      "audience_segment": "builders",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "nav_challenges",
+      "page_path": "/start/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "footer_challenges",
+      "page_path": "/submit-workflow/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "nav_challenges",
+      "page_path": "/submit-workflow/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "workflows_section_challenge",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "footer_challenges",
+      "page_path": "/workflows/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "nav_challenges",
+      "page_path": "/workflows/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "workflow_ai-meeting-notes-to-action-tracker_challenge",
+      "page_path": "/workflows/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "footer_challenges",
+      "page_path": "/workflows/ai-tool-evaluation-scorecard/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "nav_challenges",
+      "page_path": "/workflows/ai-tool-evaluation-scorecard/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "workflow_ai-tool-evaluation-scorecard_challenge",
+      "page_path": "/workflows/ai-tool-evaluation-scorecard/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "footer_challenges",
+      "page_path": "/workflows/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "nav_challenges",
+      "page_path": "/workflows/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "workflow_ai-workshop-intake-template-for-teams_challenge",
+      "page_path": "/workflows/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "footer_challenges",
+      "page_path": "/workflows/creator-content-repurposing/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "nav_challenges",
+      "page_path": "/workflows/creator-content-repurposing/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "workflow_creator-content-repurposing_challenge",
+      "page_path": "/workflows/creator-content-repurposing/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "footer_challenges",
+      "page_path": "/workflows/creators-writers/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "nav_challenges",
+      "page_path": "/workflows/creators-writers/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "footer_challenges",
+      "page_path": "/workflows/customer-support-faq-gap-mining/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "nav_challenges",
+      "page_path": "/workflows/customer-support-faq-gap-mining/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "workflow_customer-support-faq-gap-mining_challenge",
+      "page_path": "/workflows/customer-support-faq-gap-mining/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "footer_challenges",
+      "page_path": "/workflows/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "footer_challenges",
+      "page_path": "/workflows/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "nav_challenges",
+      "page_path": "/workflows/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "workflow_founder-weekly-metrics-build-in-public_challenge",
+      "page_path": "/workflows/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "footer_challenges",
+      "page_path": "/workflows/founders-operators/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "nav_challenges",
+      "page_path": "/workflows/founders-operators/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "footer_challenges",
+      "page_path": "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "nav_challenges",
+      "page_path": "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "workflow_healthcare-ops-call-triage-with-safety-caveats_challenge",
+      "page_path": "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "footer_challenges",
+      "page_path": "/workflows/healthcare-ops/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "nav_challenges",
+      "page_path": "/workflows/healthcare-ops/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "nav_challenges",
+      "page_path": "/workflows/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "footer_challenges",
+      "page_path": "/workflows/nocode-automation/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "nav_challenges",
+      "page_path": "/workflows/nocode-automation/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "footer_challenges",
+      "page_path": "/workflows/nocode-lead-qualification/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "nav_challenges",
+      "page_path": "/workflows/nocode-lead-qualification/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "workflow_nocode-lead-qualification_challenge",
+      "page_path": "/workflows/nocode-lead-qualification/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "footer_challenges",
+      "page_path": "/workflows/research-academic/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "nav_challenges",
+      "page_path": "/workflows/research-academic/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "footer_challenges",
+      "page_path": "/workflows/research-paper-summarization-with-human-review/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "nav_challenges",
+      "page_path": "/workflows/research-paper-summarization-with-human-review/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "workflow_research-paper-summarization-with-human-review_challenge",
+      "page_path": "/workflows/research-paper-summarization-with-human-review/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "footer_challenges",
+      "page_path": "/workflows/whatsapp-community-onboarding-bot/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "nav_challenges",
+      "page_path": "/workflows/whatsapp-community-onboarding-bot/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "workflow_whatsapp-community-onboarding-bot_challenge",
+      "page_path": "/workflows/whatsapp-community-onboarding-bot/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "challenge_join_click",
+      "cta_id": "workflows_index_challenge",
+      "page_path": "/workflows/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "footer_community_bot",
+      "page_path": "/build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "footer_community_bot",
+      "page_path": "/challenges/build-in-public-4-weeks/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/challenges/build-in-public-4-weeks/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "footer_community_bot",
+      "page_path": "/challenges/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/challenges/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "community_bot_cta_question",
+      "page_path": "/community-bot/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "community_bot_cta_setup",
+      "page_path": "/community-bot/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "community_bot_hero_setup",
+      "page_path": "/community-bot/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "community_bot_proof_setup",
+      "page_path": "/community-bot/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "footer_community_bot",
+      "page_path": "/community-policy/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/community-policy/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/experiments/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "footer_community_bot",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "hero_launch_community_bot",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "homepage_bot_onboarding",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "homepage_view_bot_offering",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "footer_community_bot",
+      "page_path": "/newsletter/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/newsletter/issue-001/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/newsletter/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "footer_community_bot",
+      "page_path": "/start/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "intent_community",
+      "page_path": "/start/",
+      "workflow_category": "",
+      "audience_segment": "community_runners",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/start/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "footer_community_bot",
+      "page_path": "/submit-workflow/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/submit-workflow/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/templates/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/templates/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/templates/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/templates/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/templates/research-paper-summarization-with-human-review/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/templates/whatsapp-community-onboarding-bot/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "footer_community_bot",
+      "page_path": "/workflows/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/workflows/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "footer_community_bot",
+      "page_path": "/workflows/ai-tool-evaluation-scorecard/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/workflows/ai-tool-evaluation-scorecard/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "footer_community_bot",
+      "page_path": "/workflows/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/workflows/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "footer_community_bot",
+      "page_path": "/workflows/creator-content-repurposing/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/workflows/creator-content-repurposing/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "footer_community_bot",
+      "page_path": "/workflows/creators-writers/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/workflows/creators-writers/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "footer_community_bot",
+      "page_path": "/workflows/customer-support-faq-gap-mining/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/workflows/customer-support-faq-gap-mining/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "footer_community_bot",
+      "page_path": "/workflows/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "footer_community_bot",
+      "page_path": "/workflows/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/workflows/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "footer_community_bot",
+      "page_path": "/workflows/founders-operators/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/workflows/founders-operators/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "footer_community_bot",
+      "page_path": "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "footer_community_bot",
+      "page_path": "/workflows/healthcare-ops/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/workflows/healthcare-ops/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/workflows/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "footer_community_bot",
+      "page_path": "/workflows/nocode-automation/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/workflows/nocode-automation/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "footer_community_bot",
+      "page_path": "/workflows/nocode-lead-qualification/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/workflows/nocode-lead-qualification/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "footer_community_bot",
+      "page_path": "/workflows/research-academic/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/workflows/research-academic/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "footer_community_bot",
+      "page_path": "/workflows/research-paper-summarization-with-human-review/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/workflows/research-paper-summarization-with-human-review/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "footer_community_bot",
+      "page_path": "/workflows/whatsapp-community-onboarding-bot/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "nav_community_bot",
+      "page_path": "/workflows/whatsapp-community-onboarding-bot/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "workflow_whatsapp-community-onboarding-bot_primary",
+      "page_path": "/workflows/whatsapp-community-onboarding-bot/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "build_public_newsletter",
+      "page_path": "/build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "build_public_newsletter_footer",
+      "page_path": "/build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "footer_newsletter",
+      "page_path": "/build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "challenge_newsletter",
+      "page_path": "/challenges/build-in-public-4-weeks/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "footer_newsletter",
+      "page_path": "/challenges/build-in-public-4-weeks/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/challenges/build-in-public-4-weeks/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "challenges_index_newsletter",
+      "page_path": "/challenges/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "footer_newsletter",
+      "page_path": "/challenges/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/challenges/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "footer_newsletter",
+      "page_path": "/community-policy/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/community-policy/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/experiments/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "footer_newsletter",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "hero_join_newsletter",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "homepage_join_footer",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "newsletter_signup_email",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "newsletter_signup_whatsapp",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "footer_newsletter",
+      "page_path": "/newsletter/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "issue001_subscribe",
+      "page_path": "/newsletter/issue-001/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/newsletter/issue-001/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/newsletter/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "newsletter_issue_001",
+      "page_path": "/newsletter/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "newsletter_read_archive",
+      "page_path": "/newsletter/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "newsletter_signup_email_footer",
+      "page_path": "/newsletter/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "newsletter_signup_email_hero",
+      "page_path": "/newsletter/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "newsletter_signup_whatsapp_footer",
+      "page_path": "/newsletter/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "newsletter_signup_whatsapp_hero",
+      "page_path": "/newsletter/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "footer_newsletter",
+      "page_path": "/start/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "intent_newsletter",
+      "page_path": "/start/",
+      "workflow_category": "",
+      "audience_segment": "newsletter_readers",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/start/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "footer_newsletter",
+      "page_path": "/submit-workflow/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/submit-workflow/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/templates/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/templates/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/templates/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/templates/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/templates/research-paper-summarization-with-human-review/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/templates/whatsapp-community-onboarding-bot/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "workflows_section_newsletter",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "footer_newsletter",
+      "page_path": "/workflows/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/workflows/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "workflow_ai-meeting-notes-to-action-tracker_newsletter",
+      "page_path": "/workflows/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "footer_newsletter",
+      "page_path": "/workflows/ai-tool-evaluation-scorecard/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/workflows/ai-tool-evaluation-scorecard/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "workflow_ai-tool-evaluation-scorecard_newsletter",
+      "page_path": "/workflows/ai-tool-evaluation-scorecard/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "footer_newsletter",
+      "page_path": "/workflows/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/workflows/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "workflow_ai-workshop-intake-template-for-teams_newsletter",
+      "page_path": "/workflows/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "footer_newsletter",
+      "page_path": "/workflows/creator-content-repurposing/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/workflows/creator-content-repurposing/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "workflow_creator-content-repurposing_newsletter",
+      "page_path": "/workflows/creator-content-repurposing/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "category_newsletter_creators-writers",
+      "page_path": "/workflows/creators-writers/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "footer_newsletter",
+      "page_path": "/workflows/creators-writers/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/workflows/creators-writers/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "footer_newsletter",
+      "page_path": "/workflows/customer-support-faq-gap-mining/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/workflows/customer-support-faq-gap-mining/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "workflow_customer-support-faq-gap-mining_newsletter",
+      "page_path": "/workflows/customer-support-faq-gap-mining/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "footer_newsletter",
+      "page_path": "/workflows/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "footer_newsletter",
+      "page_path": "/workflows/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/workflows/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "workflow_founder-weekly-metrics-build-in-public_newsletter",
+      "page_path": "/workflows/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "category_newsletter_founders-operators",
+      "page_path": "/workflows/founders-operators/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "footer_newsletter",
+      "page_path": "/workflows/founders-operators/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/workflows/founders-operators/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "footer_newsletter",
+      "page_path": "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "workflow_healthcare-ops-call-triage-with-safety-caveats_newsletter",
+      "page_path": "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "category_newsletter_healthcare-ops",
+      "page_path": "/workflows/healthcare-ops/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "footer_newsletter",
+      "page_path": "/workflows/healthcare-ops/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/workflows/healthcare-ops/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/workflows/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "category_newsletter_nocode-automation",
+      "page_path": "/workflows/nocode-automation/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "footer_newsletter",
+      "page_path": "/workflows/nocode-automation/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/workflows/nocode-automation/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "footer_newsletter",
+      "page_path": "/workflows/nocode-lead-qualification/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/workflows/nocode-lead-qualification/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "workflow_nocode-lead-qualification_newsletter",
+      "page_path": "/workflows/nocode-lead-qualification/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "category_newsletter_research-academic",
+      "page_path": "/workflows/research-academic/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "footer_newsletter",
+      "page_path": "/workflows/research-academic/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/workflows/research-academic/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "footer_newsletter",
+      "page_path": "/workflows/research-paper-summarization-with-human-review/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/workflows/research-paper-summarization-with-human-review/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "workflow_research-paper-summarization-with-human-review_newsletter",
+      "page_path": "/workflows/research-paper-summarization-with-human-review/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "footer_newsletter",
+      "page_path": "/workflows/whatsapp-community-onboarding-bot/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "nav_newsletter",
+      "page_path": "/workflows/whatsapp-community-onboarding-bot/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "workflow_whatsapp-community-onboarding-bot_newsletter",
+      "page_path": "/workflows/whatsapp-community-onboarding-bot/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "newsletter_signup_click",
+      "cta_id": "workflows_index_newsletter",
+      "page_path": "/workflows/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "partner_interest_click",
+      "cta_id": "build_public_partner_swap",
+      "page_path": "/build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "partner_interest_click",
+      "cta_id": "homepage_email_interest",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "partner_interest_click",
+      "cta_id": "newsletter_partner_swap",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "partner_interest_click",
+      "cta_id": "newsletter_partner_swap",
+      "page_path": "/newsletter/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "partner_interest_click",
+      "cta_id": "newsletter_partner_whatsapp",
+      "page_path": "/newsletter/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "partner_interest_click",
+      "cta_id": "workflow_healthcare-ops-call-triage-with-safety-caveats_primary",
+      "page_path": "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+      "workflow_category": "healthcare-ops",
+      "audience_segment": "healthcare_business_ops",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "footer_workflows",
+      "page_path": "/build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "footer_workflows",
+      "page_path": "/challenges/build-in-public-4-weeks/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/challenges/build-in-public-4-weeks/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "footer_workflows",
+      "page_path": "/challenges/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/challenges/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "footer_workflows",
+      "page_path": "/community-policy/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/community-policy/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_templates",
+      "page_path": "/experiments/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/experiments/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "footer_workflows",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "hero_explore_workflows",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "homepage_workflows_creators",
+      "page_path": "/",
+      "workflow_category": "creators-writers",
+      "audience_segment": "creators_writers",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "homepage_workflows_founders",
+      "page_path": "/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "homepage_workflows_healthcare",
+      "page_path": "/",
+      "workflow_category": "healthcare-ops",
+      "audience_segment": "healthcare_business_ops",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "homepage_workflows_nocode",
+      "page_path": "/",
+      "workflow_category": "nocode-automation",
+      "audience_segment": "nocode_automation_builders",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "homepage_workflows_research",
+      "page_path": "/",
+      "workflow_category": "research-academic",
+      "audience_segment": "researchers_academics",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "footer_workflows",
+      "page_path": "/newsletter/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "issue001_templates",
+      "page_path": "/newsletter/issue-001/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_templates",
+      "page_path": "/newsletter/issue-001/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/newsletter/issue-001/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/newsletter/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "newsletter_browse_workflows",
+      "page_path": "/newsletter/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "footer_workflows",
+      "page_path": "/start/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/start/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "footer_workflows",
+      "page_path": "/submit-workflow/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/submit-workflow/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "submit_workflow_browse",
+      "page_path": "/submit-workflow/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_templates",
+      "page_path": "/templates/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/templates/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "template_ai-meeting-notes-to-action-tracker_download",
+      "page_path": "/templates/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_templates",
+      "page_path": "/templates/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/templates/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "template_ai-workshop-intake-template-for-teams_download",
+      "page_path": "/templates/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_templates",
+      "page_path": "/templates/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/templates/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "template_founder-weekly-metrics-build-in-public_download",
+      "page_path": "/templates/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_templates",
+      "page_path": "/templates/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/templates/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_templates",
+      "page_path": "/templates/research-paper-summarization-with-human-review/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/templates/research-paper-summarization-with-human-review/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "template_research-paper-summarization-with-human-review_download",
+      "page_path": "/templates/research-paper-summarization-with-human-review/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "template_card_ai-meeting-notes-to-action-tracker",
+      "page_path": "/templates/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "template_card_ai-workshop-intake-template-for-teams",
+      "page_path": "/templates/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "template_card_founder-weekly-metrics-build-in-public",
+      "page_path": "/templates/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "template_card_research-paper-summarization-with-human-review",
+      "page_path": "/templates/",
+      "workflow_category": "research-academic",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "template_card_whatsapp-community-onboarding-bot",
+      "page_path": "/templates/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "templates_browse_workflows",
+      "page_path": "/templates/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_templates",
+      "page_path": "/templates/whatsapp-community-onboarding-bot/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/templates/whatsapp-community-onboarding-bot/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "template_whatsapp-community-onboarding-bot_download",
+      "page_path": "/templates/whatsapp-community-onboarding-bot/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "workflows_section_browse_all",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "footer_workflows",
+      "page_path": "/workflows/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/workflows/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "footer_workflows",
+      "page_path": "/workflows/ai-tool-evaluation-scorecard/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/workflows/ai-tool-evaluation-scorecard/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "footer_workflows",
+      "page_path": "/workflows/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/workflows/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "category_card_creators-writers",
+      "page_path": "/workflows/",
+      "workflow_category": "creators-writers",
+      "audience_segment": "creators_writers",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "category_card_founders-operators",
+      "page_path": "/workflows/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "category_card_healthcare-ops",
+      "page_path": "/workflows/",
+      "workflow_category": "healthcare-ops",
+      "audience_segment": "healthcare_business_ops",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "category_card_nocode-automation",
+      "page_path": "/workflows/",
+      "workflow_category": "nocode-automation",
+      "audience_segment": "nocode_automation_builders",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "category_card_research-academic",
+      "page_path": "/workflows/",
+      "workflow_category": "research-academic",
+      "audience_segment": "researchers_academics",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "footer_workflows",
+      "page_path": "/workflows/creator-content-repurposing/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/workflows/creator-content-repurposing/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "footer_workflows",
+      "page_path": "/workflows/creators-writers/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/workflows/creators-writers/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "footer_workflows",
+      "page_path": "/workflows/customer-support-faq-gap-mining/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/workflows/customer-support-faq-gap-mining/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "footer_workflows",
+      "page_path": "/workflows/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "footer_workflows",
+      "page_path": "/workflows/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/workflows/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "footer_workflows",
+      "page_path": "/workflows/founders-operators/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/workflows/founders-operators/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "footer_workflows",
+      "page_path": "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "footer_workflows",
+      "page_path": "/workflows/healthcare-ops/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/workflows/healthcare-ops/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/workflows/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "footer_workflows",
+      "page_path": "/workflows/nocode-automation/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/workflows/nocode-automation/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "footer_workflows",
+      "page_path": "/workflows/nocode-lead-qualification/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/workflows/nocode-lead-qualification/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "footer_workflows",
+      "page_path": "/workflows/research-academic/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/workflows/research-academic/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "footer_workflows",
+      "page_path": "/workflows/research-paper-summarization-with-human-review/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/workflows/research-paper-summarization-with-human-review/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "footer_workflows",
+      "page_path": "/workflows/whatsapp-community-onboarding-bot/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_workflows",
+      "page_path": "/workflows/whatsapp-community-onboarding-bot/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "build_public_submit",
+      "page_path": "/build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "footer_submit",
+      "page_path": "/build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "nav_submit",
+      "page_path": "/build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "challenge_submit_link",
+      "page_path": "/challenges/build-in-public-4-weeks/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "footer_submit",
+      "page_path": "/challenges/build-in-public-4-weeks/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "nav_submit",
+      "page_path": "/challenges/build-in-public-4-weeks/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "footer_submit",
+      "page_path": "/challenges/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "nav_submit",
+      "page_path": "/challenges/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "footer_submit",
+      "page_path": "/community-policy/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "nav_submit",
+      "page_path": "/community-policy/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "footer_submit",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "hero_submit_workflow",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "nav_submit",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "footer_submit",
+      "page_path": "/newsletter/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "nav_submit",
+      "page_path": "/newsletter/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "session_60min_workflow_interest",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "footer_submit",
+      "page_path": "/start/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "intent_build",
+      "page_path": "/start/",
+      "workflow_category": "",
+      "audience_segment": "builders",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "nav_submit",
+      "page_path": "/start/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "submit_workflow_email",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "submit_workflow_whatsapp",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "footer_submit",
+      "page_path": "/submit-workflow/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "nav_submit",
+      "page_path": "/submit-workflow/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "submit_workflow_email",
+      "page_path": "/submit-workflow/",
+      "workflow_category": "community_submission",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "submit_workflow_email_footer",
+      "page_path": "/submit-workflow/",
+      "workflow_category": "community_submission",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "submit_workflow_whatsapp",
+      "page_path": "/submit-workflow/",
+      "workflow_category": "community_submission",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "submit_workflow_whatsapp_footer",
+      "page_path": "/submit-workflow/",
+      "workflow_category": "community_submission",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "templates_submit",
+      "page_path": "/templates/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflows_section_submit",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "footer_submit",
+      "page_path": "/workflows/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "nav_submit",
+      "page_path": "/workflows/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_ai-meeting-notes-to-action-tracker_primary",
+      "page_path": "/workflows/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_ai-meeting-notes-to-action-tracker_submit",
+      "page_path": "/workflows/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_ai-meeting-notes-to-action-tracker_submit_footer",
+      "page_path": "/workflows/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "footer_submit",
+      "page_path": "/workflows/ai-tool-evaluation-scorecard/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "nav_submit",
+      "page_path": "/workflows/ai-tool-evaluation-scorecard/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_ai-tool-evaluation-scorecard_primary",
+      "page_path": "/workflows/ai-tool-evaluation-scorecard/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_ai-tool-evaluation-scorecard_submit",
+      "page_path": "/workflows/ai-tool-evaluation-scorecard/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_ai-tool-evaluation-scorecard_submit_footer",
+      "page_path": "/workflows/ai-tool-evaluation-scorecard/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "footer_submit",
+      "page_path": "/workflows/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "nav_submit",
+      "page_path": "/workflows/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_ai-workshop-intake-template-for-teams_primary",
+      "page_path": "/workflows/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_ai-workshop-intake-template-for-teams_submit",
+      "page_path": "/workflows/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_ai-workshop-intake-template-for-teams_submit_footer",
+      "page_path": "/workflows/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "footer_submit",
+      "page_path": "/workflows/creator-content-repurposing/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "nav_submit",
+      "page_path": "/workflows/creator-content-repurposing/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_creator-content-repurposing_primary",
+      "page_path": "/workflows/creator-content-repurposing/",
+      "workflow_category": "creators-writers",
+      "audience_segment": "creators_writers",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_creator-content-repurposing_submit",
+      "page_path": "/workflows/creator-content-repurposing/",
+      "workflow_category": "creators-writers",
+      "audience_segment": "creators_writers",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_creator-content-repurposing_submit_footer",
+      "page_path": "/workflows/creator-content-repurposing/",
+      "workflow_category": "creators-writers",
+      "audience_segment": "creators_writers",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "category_submit_creators-writers",
+      "page_path": "/workflows/creators-writers/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "footer_submit",
+      "page_path": "/workflows/creators-writers/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "nav_submit",
+      "page_path": "/workflows/creators-writers/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "footer_submit",
+      "page_path": "/workflows/customer-support-faq-gap-mining/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "nav_submit",
+      "page_path": "/workflows/customer-support-faq-gap-mining/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_customer-support-faq-gap-mining_primary",
+      "page_path": "/workflows/customer-support-faq-gap-mining/",
+      "workflow_category": "healthcare-ops",
+      "audience_segment": "healthcare_business_ops",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_customer-support-faq-gap-mining_submit",
+      "page_path": "/workflows/customer-support-faq-gap-mining/",
+      "workflow_category": "healthcare-ops",
+      "audience_segment": "healthcare_business_ops",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_customer-support-faq-gap-mining_submit_footer",
+      "page_path": "/workflows/customer-support-faq-gap-mining/",
+      "workflow_category": "healthcare-ops",
+      "audience_segment": "healthcare_business_ops",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "footer_submit",
+      "page_path": "/workflows/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "footer_submit",
+      "page_path": "/workflows/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "nav_submit",
+      "page_path": "/workflows/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_founder-weekly-metrics-build-in-public_submit",
+      "page_path": "/workflows/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_founder-weekly-metrics-build-in-public_submit_footer",
+      "page_path": "/workflows/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "category_submit_founders-operators",
+      "page_path": "/workflows/founders-operators/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "footer_submit",
+      "page_path": "/workflows/founders-operators/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "nav_submit",
+      "page_path": "/workflows/founders-operators/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "footer_submit",
+      "page_path": "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "nav_submit",
+      "page_path": "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_healthcare-ops-call-triage-with-safety-caveats_submit",
+      "page_path": "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+      "workflow_category": "healthcare-ops",
+      "audience_segment": "healthcare_business_ops",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_healthcare-ops-call-triage-with-safety-caveats_submit_footer",
+      "page_path": "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+      "workflow_category": "healthcare-ops",
+      "audience_segment": "healthcare_business_ops",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "category_submit_healthcare-ops",
+      "page_path": "/workflows/healthcare-ops/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "footer_submit",
+      "page_path": "/workflows/healthcare-ops/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "nav_submit",
+      "page_path": "/workflows/healthcare-ops/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "nav_submit",
+      "page_path": "/workflows/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "category_submit_nocode-automation",
+      "page_path": "/workflows/nocode-automation/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "footer_submit",
+      "page_path": "/workflows/nocode-automation/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "nav_submit",
+      "page_path": "/workflows/nocode-automation/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "footer_submit",
+      "page_path": "/workflows/nocode-lead-qualification/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "nav_submit",
+      "page_path": "/workflows/nocode-lead-qualification/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_nocode-lead-qualification_primary",
+      "page_path": "/workflows/nocode-lead-qualification/",
+      "workflow_category": "nocode-automation",
+      "audience_segment": "nocode_automation_builders",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_nocode-lead-qualification_submit",
+      "page_path": "/workflows/nocode-lead-qualification/",
+      "workflow_category": "nocode-automation",
+      "audience_segment": "nocode_automation_builders",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_nocode-lead-qualification_submit_footer",
+      "page_path": "/workflows/nocode-lead-qualification/",
+      "workflow_category": "nocode-automation",
+      "audience_segment": "nocode_automation_builders",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "category_submit_research-academic",
+      "page_path": "/workflows/research-academic/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "footer_submit",
+      "page_path": "/workflows/research-academic/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "nav_submit",
+      "page_path": "/workflows/research-academic/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "footer_submit",
+      "page_path": "/workflows/research-paper-summarization-with-human-review/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "nav_submit",
+      "page_path": "/workflows/research-paper-summarization-with-human-review/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_research-paper-summarization-with-human-review_primary",
+      "page_path": "/workflows/research-paper-summarization-with-human-review/",
+      "workflow_category": "research-academic",
+      "audience_segment": "researchers_academics",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_research-paper-summarization-with-human-review_submit",
+      "page_path": "/workflows/research-paper-summarization-with-human-review/",
+      "workflow_category": "research-academic",
+      "audience_segment": "researchers_academics",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_research-paper-summarization-with-human-review_submit_footer",
+      "page_path": "/workflows/research-paper-summarization-with-human-review/",
+      "workflow_category": "research-academic",
+      "audience_segment": "researchers_academics",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "footer_submit",
+      "page_path": "/workflows/whatsapp-community-onboarding-bot/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "nav_submit",
+      "page_path": "/workflows/whatsapp-community-onboarding-bot/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_whatsapp-community-onboarding-bot_submit",
+      "page_path": "/workflows/whatsapp-community-onboarding-bot/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflow_whatsapp-community-onboarding-bot_submit_footer",
+      "page_path": "/workflows/whatsapp-community-onboarding-bot/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "workflows_index_submit",
+      "page_path": "/workflows/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "build_public_workflow",
+      "page_path": "/build-in-public/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "challenge_prompt_community",
+      "page_path": "/challenges/build-in-public-4-weeks/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "challenge_prompt_creator",
+      "page_path": "/challenges/build-in-public-4-weeks/",
+      "workflow_category": "creators-writers",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "challenge_prompt_founder",
+      "page_path": "/challenges/build-in-public-4-weeks/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "challenge_prompt_healthcare",
+      "page_path": "/challenges/build-in-public-4-weeks/",
+      "workflow_category": "healthcare-ops",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "challenge_prompt_nocode",
+      "page_path": "/challenges/build-in-public-4-weeks/",
+      "workflow_category": "nocode-automation",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "challenge_prompt_research",
+      "page_path": "/challenges/build-in-public-4-weeks/",
+      "workflow_category": "research-academic",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "homepage_workflows_community",
+      "page_path": "/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "start_quickread_community",
+      "page_path": "/start/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "start_quickread_metrics",
+      "page_path": "/start/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "template_ai-meeting-notes-to-action-tracker_source",
+      "page_path": "/templates/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "template_ai-workshop-intake-template-for-teams_source",
+      "page_path": "/templates/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "template_founder-weekly-metrics-build-in-public_source",
+      "page_path": "/templates/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "template_research-paper-summarization-with-human-review_source",
+      "page_path": "/templates/research-paper-summarization-with-human-review/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "template_whatsapp-community-onboarding-bot_source",
+      "page_path": "/templates/whatsapp-community-onboarding-bot/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_ai-workshop-intake-template-for-teams",
+      "page_path": "/workflows/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_founder-weekly-metrics-build-in-public",
+      "page_path": "/workflows/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_research-paper-summarization-with-human-review",
+      "page_path": "/workflows/ai-meeting-notes-to-action-tracker/",
+      "workflow_category": "research-academic",
+      "audience_segment": "researchers_academics",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_ai-meeting-notes-to-action-tracker",
+      "page_path": "/workflows/ai-tool-evaluation-scorecard/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_founder-weekly-metrics-build-in-public",
+      "page_path": "/workflows/ai-tool-evaluation-scorecard/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_nocode-lead-qualification",
+      "page_path": "/workflows/ai-tool-evaluation-scorecard/",
+      "workflow_category": "nocode-automation",
+      "audience_segment": "nocode_automation_builders",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_ai-meeting-notes-to-action-tracker",
+      "page_path": "/workflows/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_customer-support-faq-gap-mining",
+      "page_path": "/workflows/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "healthcare-ops",
+      "audience_segment": "healthcare_business_ops",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_whatsapp-community-onboarding-bot",
+      "page_path": "/workflows/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_ai-tool-evaluation-scorecard",
+      "page_path": "/workflows/creator-content-repurposing/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_customer-support-faq-gap-mining",
+      "page_path": "/workflows/creator-content-repurposing/",
+      "workflow_category": "healthcare-ops",
+      "audience_segment": "healthcare_business_ops",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_founder-weekly-metrics-build-in-public",
+      "page_path": "/workflows/creator-content-repurposing/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_creator-content-repurposing",
+      "page_path": "/workflows/creators-writers/",
+      "workflow_category": "creators-writers",
+      "audience_segment": "creators_writers",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_ai-workshop-intake-template-for-teams",
+      "page_path": "/workflows/customer-support-faq-gap-mining/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_nocode-lead-qualification",
+      "page_path": "/workflows/customer-support-faq-gap-mining/",
+      "workflow_category": "nocode-automation",
+      "audience_segment": "nocode_automation_builders",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_whatsapp-community-onboarding-bot",
+      "page_path": "/workflows/customer-support-faq-gap-mining/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_ai-meeting-notes-to-action-tracker",
+      "page_path": "/workflows/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_ai-tool-evaluation-scorecard",
+      "page_path": "/workflows/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_customer-support-faq-gap-mining",
+      "page_path": "/workflows/founder-weekly-metrics-build-in-public/",
+      "workflow_category": "healthcare-ops",
+      "audience_segment": "healthcare_business_ops",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_ai-meeting-notes-to-action-tracker",
+      "page_path": "/workflows/founders-operators/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_ai-tool-evaluation-scorecard",
+      "page_path": "/workflows/founders-operators/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_ai-workshop-intake-template-for-teams",
+      "page_path": "/workflows/founders-operators/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_founder-weekly-metrics-build-in-public",
+      "page_path": "/workflows/founders-operators/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_whatsapp-community-onboarding-bot",
+      "page_path": "/workflows/founders-operators/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_ai-meeting-notes-to-action-tracker",
+      "page_path": "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_ai-tool-evaluation-scorecard",
+      "page_path": "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_customer-support-faq-gap-mining",
+      "page_path": "/workflows/healthcare-ops-call-triage-with-safety-caveats/",
+      "workflow_category": "healthcare-ops",
+      "audience_segment": "healthcare_business_ops",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_customer-support-faq-gap-mining",
+      "page_path": "/workflows/healthcare-ops/",
+      "workflow_category": "healthcare-ops",
+      "audience_segment": "healthcare_business_ops",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_healthcare-ops-call-triage-with-safety-caveats",
+      "page_path": "/workflows/healthcare-ops/",
+      "workflow_category": "healthcare-ops",
+      "audience_segment": "healthcare_business_ops",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_nocode-lead-qualification",
+      "page_path": "/workflows/nocode-automation/",
+      "workflow_category": "nocode-automation",
+      "audience_segment": "nocode_automation_builders",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_ai-meeting-notes-to-action-tracker",
+      "page_path": "/workflows/nocode-lead-qualification/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_ai-tool-evaluation-scorecard",
+      "page_path": "/workflows/nocode-lead-qualification/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_customer-support-faq-gap-mining",
+      "page_path": "/workflows/nocode-lead-qualification/",
+      "workflow_category": "healthcare-ops",
+      "audience_segment": "healthcare_business_ops",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_research-paper-summarization-with-human-review",
+      "page_path": "/workflows/research-academic/",
+      "workflow_category": "research-academic",
+      "audience_segment": "researchers_academics",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_ai-meeting-notes-to-action-tracker",
+      "page_path": "/workflows/research-paper-summarization-with-human-review/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_ai-tool-evaluation-scorecard",
+      "page_path": "/workflows/research-paper-summarization-with-human-review/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_customer-support-faq-gap-mining",
+      "page_path": "/workflows/research-paper-summarization-with-human-review/",
+      "workflow_category": "healthcare-ops",
+      "audience_segment": "healthcare_business_ops",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_ai-meeting-notes-to-action-tracker",
+      "page_path": "/workflows/whatsapp-community-onboarding-bot/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_ai-workshop-intake-template-for-teams",
+      "page_path": "/workflows/whatsapp-community-onboarding-bot/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_customer-support-faq-gap-mining",
+      "page_path": "/workflows/whatsapp-community-onboarding-bot/",
+      "workflow_category": "healthcare-ops",
+      "audience_segment": "healthcare_business_ops",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_ai-meeting-notes-to-action-tracker",
+      "page_path": "/workflows/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_ai-tool-evaluation-scorecard",
+      "page_path": "/workflows/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_ai-workshop-intake-template-for-teams",
+      "page_path": "/workflows/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_creator-content-repurposing",
+      "page_path": "/workflows/",
+      "workflow_category": "creators-writers",
+      "audience_segment": "creators_writers",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_customer-support-faq-gap-mining",
+      "page_path": "/workflows/",
+      "workflow_category": "healthcare-ops",
+      "audience_segment": "healthcare_business_ops",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_founder-weekly-metrics-build-in-public",
+      "page_path": "/workflows/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_healthcare-ops-call-triage-with-safety-caveats",
+      "page_path": "/workflows/",
+      "workflow_category": "healthcare-ops",
+      "audience_segment": "healthcare_business_ops",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_nocode-lead-qualification",
+      "page_path": "/workflows/",
+      "workflow_category": "nocode-automation",
+      "audience_segment": "nocode_automation_builders",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_research-paper-summarization-with-human-review",
+      "page_path": "/workflows/",
+      "workflow_category": "research-academic",
+      "audience_segment": "researchers_academics",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_view",
+      "cta_id": "workflow_card_whatsapp-community-onboarding-bot",
+      "page_path": "/workflows/",
+      "workflow_category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "status": "tracked"
+    }
+  ]
+}
