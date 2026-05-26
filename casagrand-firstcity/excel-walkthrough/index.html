@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#060912" />
+  <title>Casagrand Excel Walkthrough Kit — dabblewith.ai</title>
+  <meta name="description" content="A mobile-ready 20-minute Excel and office-workflow walkthrough kit for converting one Casagrand responder into a demo, referrals, topic votes, and measurable next action." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://dabblewith.ai/casagrand-firstcity/excel-walkthrough/" />
+  <meta property="og:site_name" content="dabblewith.ai" />
+  <meta property="og:title" content="Casagrand Excel Walkthrough Kit" />
+  <meta property="og:description" content="Run a privacy-safe 20-minute messy-Excel-to-clean-report walkthrough for Casagrand residents." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dabblewith.ai/casagrand-firstcity/excel-walkthrough/" />
+  <meta property="og:image" content="https://dabblewith.ai/app-icon-1024.png" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7473LZQGX2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7473LZQGX2');
+    function copyText(id, label) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var text = el.innerText.trim();
+      var done = function () {
+        if (typeof gtag === 'function') gtag('event', 'copy_click', { cta_id: 'casagrand_excel_walkthrough_' + id, cta_source: 'casagrand_excel_walkthrough', link_text: label || id, page_path: location.pathname });
+        var btn = document.querySelector('[data-copy-target="' + id + '"]');
+        if (btn) { var old = btn.innerText; btn.innerText = 'Copied'; setTimeout(function(){ btn.innerText = old; }, 1400); }
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done).catch(function(){ window.prompt('Copy this text', text); });
+      else window.prompt('Copy this text', text);
+    }
+  </script>
+  <script src="/scripts/web/dabblewith-tracking.js" defer></script>
+  <style>
+    :root{--bg:#060912;--panel:rgba(16,27,48,.94);--line:rgba(116,255,219,.24);--hard:#74ffdb;--text:#f2fbff;--muted:#9eb0c2;--green:#74ff7b;--blue:#58a6ff;--amber:#ffcc66;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--text);background:linear-gradient(rgba(116,255,219,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(116,255,219,.045) 1px,transparent 1px),radial-gradient(circle at 12% 0%,rgba(88,166,255,.25),transparent 30rem),radial-gradient(circle at 92% 8%,rgba(116,255,123,.16),transparent 28rem),var(--bg);background-size:42px 42px,42px 42px,auto,auto,auto}a{color:inherit}.shell{width:min(1120px,calc(100% - 30px));margin:0 auto}nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0}.logo{text-decoration:none;font-size:30px;font-weight:900;letter-spacing:-.055em}.nav{display:flex;gap:10px;flex-wrap:wrap}.nav a{border:1px solid var(--line);border-radius:999px;padding:9px 12px;text-decoration:none;color:var(--muted);background:rgba(255,255,255,.03)}.hero,.panel,.card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(16,27,48,.96),rgba(8,13,25,.92));border-radius:24px;box-shadow:0 24px 90px rgba(0,0,0,.45)}.hero{padding:clamp(26px,5vw,52px);margin:18px auto 26px}.eyebrow{width:fit-content;color:var(--hard);border:1px solid var(--hard);background:rgba(116,255,219,.08);border-radius:999px;padding:9px 12px;font:12px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}h1{font-size:clamp(42px,7vw,82px);line-height:.9;letter-spacing:-.07em;margin:24px 0 18px}h2{font-size:clamp(28px,4.2vw,46px);line-height:.96;letter-spacing:-.055em;margin:0 0 16px}h3{font-size:22px;margin:0 0 8px}.lead{font-size:clamp(18px,2.2vw,24px);color:#d7e9f7;line-height:1.45;max-width:940px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.two{grid-template-columns:repeat(2,1fr)}.card,.panel{padding:22px}.muted,p,li{color:var(--muted);line-height:1.65}.badge{display:inline-flex;border:1px solid rgba(116,255,123,.45);color:var(--green);background:rgba(116,255,123,.08);padding:5px 9px;border-radius:999px;font:12px/1.2 ui-monospace,Menlo,monospace}.badge.blue{color:var(--blue);border-color:rgba(88,166,255,.45);background:rgba(88,166,255,.08)}.badge.warn{color:var(--amber);border-color:rgba(255,204,102,.45);background:rgba(255,204,102,.08)}section{padding:30px 0}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--hard);color:var(--hard);background:rgba(116,255,219,.07);border-radius:14px;padding:12px 15px;text-decoration:none;font-weight:850;cursor:pointer}.btn.primary{color:#04120e;background:var(--green);border-color:var(--green)}button.btn{font:inherit}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.copybox{white-space:pre-wrap;border:1px solid rgba(116,255,219,.18);border-radius:18px;background:rgba(0,0,0,.28);padding:16px;color:#d9f6ff;font:14px/1.65 ui-monospace,Menlo,monospace;overflow:auto}.metric{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(116,255,219,.12);padding:12px 0;font:13px/1.25 ui-monospace,Menlo,monospace}.metric:last-child{border-bottom:0}.step{display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start;border-bottom:1px solid rgba(116,255,219,.12);padding:14px 0}.step:last-child{border-bottom:0}.num{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:rgba(116,255,123,.12);border:1px solid rgba(116,255,123,.45);color:var(--green);font-weight:900}footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0 34px;margin-top:36px;font:13px/1.4 ui-monospace,Menlo,monospace}@media(max-width:860px){.grid,.two{grid-template-columns:1fr}.nav{display:none}}
+  </style>
+</head>
+<body>
+  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/casagrand-firstcity/">Pilot</a><a href="/casagrand-firstcity/excel-cleanup-sample/">Excel sample</a><a href="/casagrand-firstcity/referral-sprint/">Referral sprint</a><a href="/casagrand-firstcity/no-reply-nudge/">No-reply nudge</a><a href="/casagrand-firstcity/date-lock/">Date lock</a></div></nav>
+  <main>
+    <section class="hero shell">
+      <div class="eyebrow">Casagrand Excel walkthrough · 2026-05-26</div>
+      <h1>Run the Excel demo without turning it into a consulting rabbit hole.</h1>
+      <p class="lead">A tight 20-minute host script for the office-workflow signal: show one fake messy sheet, create a reusable cleanup checklist, collect topic/slot/referral evidence, and stop before scope expands.</p>
+      <div class="actions">
+        <button class="btn primary" data-copy-target="opener" onclick="copyText('opener','opening script')">Copy opener</button>
+        <button class="btn" data-copy-target="agenda" onclick="copyText('agenda','agenda')">Copy agenda</button>
+        <button class="btn" data-copy-target="close" onclick="copyText('close','closing ask')">Copy closing ask</button>
+        <button class="btn" data-copy-target="scorecard" onclick="copyText('scorecard','scorecard')">Copy scorecard</button>
+      </div>
+    </section>
+
+    <section class="shell grid">
+      <article class="card"><span class="badge warn">boundary</span><h3>Demo, not delivery</h3><p>Keep this to one fake/scrubbed sample. Do not accept real employer, customer, resident, financial, or personal spreadsheet data.</p></article>
+      <article class="card"><span class="badge">conversion job</span><h3>Get one next signal</h3><p>The win is not a perfect automation. The win is a concrete topic vote, one referral, or a booked office-hours/demo follow-up.</p></article>
+      <article class="card"><span class="badge blue">product signal</span><h3>Watch for bot readiness</h3><p>If the responder manages reports for a group or community, route to bot-readiness only after confirming they own/admin the workflow.</p></article>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel">
+        <h2>20-minute run of show</h2>
+        <div class="step"><div class="num">0</div><div><h3>Privacy check</h3><p>Confirm the sample is fake or scrubbed. If it is real/sensitive, stop and ask them to replace names, phones, emails, IDs, company/customer details, and amounts.</p></div></div>
+        <div class="step"><div class="num">5</div><div><h3>Before/after demo</h3><p>Show messy rows → standardized rows → duplicate flags → summary → human review questions.</p></div></div>
+        <div class="step"><div class="num">12</div><div><h3>Make it repeatable</h3><p>Turn the demo into a reusable checklist/prompt the resident can run on future scrubbed data.</p></div></div>
+        <div class="step"><div class="num">17</div><div><h3>Close with evidence</h3><p>Ask for topic vote, preferred slot, one referral, and whether this should become a small office-hours topic.</p></div></div>
+      </div>
+      <div class="panel">
+        <h2>Go/no-go thresholds</h2>
+        <div class="metric"><span>Demo completed + useful</span><strong>ask one referral</strong></div>
+        <div class="metric"><span>2 office-workflow referrals</span><strong>run referral sprint</strong></div>
+        <div class="metric"><span>3 Excel/workflow signals</span><strong>date-lock poll</strong></div>
+        <div class="metric"><span>Group/admin reporting owner</span><strong>bot-readiness audit</strong></div>
+        <div class="metric"><span>No sample or no reply</span><strong>continue narrow discovery</strong></div>
+      </div>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel"><h2>Opening script</h2><div id="opener" class="copybox">Let’s keep this very small and privacy-safe.
+
+Please use only fake or scrubbed rows. No names, phones, emails, employer/customer/resident details, IDs, screenshots, or confidential amounts.
+
+In 20 minutes I’ll show:
+1. how to clean inconsistent rows
+2. how to flag duplicates/missing values
+3. how to create a summary
+4. how to turn it into a repeatable checklist
+
+At the end, I’ll ask whether “AI for Excel and office workflows” is worth doing as a Casagrand mini-session.</div></div>
+      <div class="panel"><h2>Agenda to send</h2><div id="agenda" class="copybox">20-minute Excel cleanup walkthrough
+
+0-3 min: confirm fake/scrubbed sample
+3-8 min: clean dates/status/names/amount columns
+8-12 min: flag duplicates and missing fields
+12-16 min: create summary + human review questions
+16-20 min: topic vote, slot vote, one-referral ask
+
+Output: one reusable Excel/report cleanup prompt + checklist.</div></div>
+      <div class="panel"><h2>Closing ask</h2><div id="close" class="copybox">Was this useful enough to make “AI for Excel and office workflows” the first Casagrand AI-by-Doing topic?
+
+Quick vote:
+1. Topic: Excel cleanup / reporting automation / office productivity / student project data / other
+2. Slot: weekend morning / weekend evening / weekday evening
+3. One referral: who else in Casagrand regularly handles spreadsheets or reports and may find this useful?
+
+I’m collecting 2–3 resident signals before posting broadly in the IT group.</div></div>
+      <div class="panel"><h2>Last4-only scorecard</h2><div id="scorecard" class="copybox">Excel walkthrough scorecard — last4 only
+
+last4=____
+route=excel_walkthrough
+segment=office_workflow
+privacyChecked=yes/no
+sampleType=fake/scrubbed/not_shared
+demoCompleted=yes/no
+usefulness=high/medium/low
+workflowPain=excel_cleanup/reporting_automation/duplicate_detection/student_project/other
+topicVote=____
+slotVote=weekend_morning/weekend_evening/weekday_evening/unknown
+referralAsked=yes/no
+referralCount=0
+nextAction=referral_sprint/date_lock/bot_readiness/office_hours/continue_narrow_discovery</div></div>
+    </section>
+  </main>
+  <footer><div class="shell">AI-operated · human-guided · Casagrand Excel walkthrough · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></div></footer>
+</body>
+</html>
