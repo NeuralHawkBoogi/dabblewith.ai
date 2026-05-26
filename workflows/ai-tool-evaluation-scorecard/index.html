@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<meta name="theme-color" content="#060912" />
+<meta property="og:image" content="https://dabblewith.ai/app-icon-1024.png" />
+<title>AI tool evaluation scorecard workflow — Dabblewith.ai workflow exchange</title>
+<meta name="description" content="New AI tools ship every week. You can&#39;t evaluate them all, and bad tool choices cost months. — outcome: Every tool gets a 30-minute scorecard with a keep/park/kill verdict and a follow-up date — no more open tabs forever." />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="canonical" href="https://dabblewith.ai/workflows/ai-tool-evaluation-scorecard/" />
+<meta property="og:site_name" content="dabblewith.ai" />
+<meta property="og:title" content="AI tool evaluation scorecard workflow — Dabblewith.ai workflow exchange" />
+<meta property="og:description" content="New AI tools ship every week. You can&#39;t evaluate them all, and bad tool choices cost months. — outcome: Every tool gets a 30-minute scorecard with a keep/park/kill verdict and a follow-up date — no more open tabs forever." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dabblewith.ai/workflows/ai-tool-evaluation-scorecard/" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AI tool evaluation scorecard workflow — Dabblewith.ai workflow exchange" />
+<meta name="twitter:description" content="New AI tools ship every week. You can&#39;t evaluate them all, and bad tool choices cost months. — outcome: Every tool gets a 30-minute scorecard with a keep/park/kill verdict and a follow-up date — no more open tabs forever." />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7473LZQGX2"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7473LZQGX2',{page_path:location.pathname});</script>
+<script src="/scripts/web/dabblewith-tracking.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"AI tool evaluation scorecard workflow","description":"Every tool gets a 30-minute scorecard with a keep/park/kill verdict and a follow-up date — no more open tabs forever.","url":"https://dabblewith.ai/workflows/ai-tool-evaluation-scorecard/","audience":{"@type":"Audience","audienceType":"Founder & operator workflows"},"totalTime":"30 minutes per tool","tool":[{"@type":"HowToTool","name":"A blank scorecard template"},{"@type":"HowToTool","name":"Sample inputs from your real workflows"},{"@type":"HowToTool","name":"An LLM only as a comparison aid"},{"@type":"HowToTool","name":"A calendar"}],"step":[{"@type":"HowToStep","position":1,"name":"Step 1","text":"Define 6 fields: real problem it solves, your sample input, output quality, integration cost, privacy posture, switching cost."},{"@type":"HowToStep","position":2,"name":"Step 2","text":"Try the tool on your real (sanitized) sample input — not the vendor's demo data."},{"@type":"HowToStep","position":3,"name":"Step 3","text":"Score each field 1-5. No averages — just look at the worst score."},{"@type":"HowToStep","position":4,"name":"Step 4","text":"Decide: keep (use this month), park (revisit in 90 days), kill (don't reopen). Set the date."},{"@type":"HowToStep","position":5,"name":"Step 5","text":"Publish the scorecard internally so you don't re-evaluate the same tool in 30 days."}],"datePublished":"2026-05-26"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"AI tool evaluation scorecard workflow","description":"New AI tools ship every week. You can't evaluate them all, and bad tool choices cost months.","learningResourceType":"Workflow tutorial","audience":{"@type":"Audience","audienceType":"Founder & operator workflows"},"url":"https://dabblewith.ai/workflows/ai-tool-evaluation-scorecard/","educationalUse":"professional development","datePublished":"2026-05-26","publisher":{"@type":"Organization","name":"dabblewith.ai","url":"https://dabblewith.ai/"}}</script>
+<style>
+:root{--bg:#060912;--panel:rgba(16,27,48,.92);--line:rgba(116,255,219,.26);--line-hard:#74ffdb;--text:#f2fbff;--muted:#9eb0c2;--green:#74ff7b;--cyan:#74ffdb;--blue:#58a6ff;--amber:#ffcc66;--violet:#a78bfa;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;color:var(--text);background:linear-gradient(rgba(116,255,219,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(116,255,219,.055) 1px,transparent 1px),radial-gradient(circle at 20% 0%,rgba(88,166,255,.22),transparent 28rem),radial-gradient(circle at 90% 10%,rgba(116,255,123,.16),transparent 25rem),radial-gradient(circle at 50% 100%,rgba(167,139,250,.15),transparent 34rem),var(--bg);background-size:42px 42px,42px 42px,auto,auto,auto,auto;overflow-x:hidden}
+a{color:inherit}
+.shell{width:min(1120px,calc(100% - 30px));margin:0 auto}
+nav.top{display:flex;justify-content:space-between;align-items:center;padding:24px 0;gap:18px;flex-wrap:wrap}
+.logo{text-decoration:none;font-size:30px;font-weight:900;letter-spacing:-.055em}
+.nav{display:flex;gap:10px;flex-wrap:wrap}
+.nav a{border:1px solid var(--line);border-radius:999px;padding:9px 12px;text-decoration:none;color:var(--muted);background:rgba(255,255,255,.03);font-size:14px}
+.hero,.card,.panel,.step{border:1px solid var(--line);background:linear-gradient(180deg,rgba(16,27,48,.94),rgba(8,13,25,.92));border-radius:24px;box-shadow:0 24px 90px rgba(0,0,0,.45)}
+.hero{padding:clamp(28px,5vw,56px);margin:18px auto 28px}
+.eyebrow{width:fit-content;color:var(--cyan);border:1px solid var(--line-hard);background:rgba(116,255,219,.08);border-radius:999px;padding:9px 12px;font:12px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}
+h1{font-size:clamp(36px,6vw,72px);line-height:.95;letter-spacing:-.055em;margin:18px 0 14px;max-width:920px}
+h2{font-size:clamp(24px,3.6vw,40px);line-height:1;letter-spacing:-.04em;margin:0 0 14px}
+h3{font-size:20px;margin:0 0 10px;letter-spacing:-.02em}
+.lead{font-size:clamp(17px,2vw,21px);color:#d7e9f7;line-height:1.55;max-width:860px}
+.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line-hard);color:var(--cyan);background:rgba(116,255,219,.07);border-radius:14px;padding:12px 18px;text-decoration:none;font-weight:800;font-size:14px}
+.btn.primary{color:#04120e;background:var(--green);border-color:var(--green);box-shadow:0 0 30px rgba(116,255,123,.30)}
+section{padding:26px 0}
+.section-head{display:grid;grid-template-columns:.85fr 1fr;gap:22px;align-items:end;margin-bottom:24px}
+.section-head p,.card p,.step p,.panel p,.body p,.body li{color:var(--muted);line-height:1.65}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.two{grid-template-columns:repeat(2,1fr)}
+.card{padding:22px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:8px}
+.card .meta{color:var(--cyan);font:12px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}
+.card strong{font-size:18px;letter-spacing:-.015em}
+.card:hover{border-color:var(--line-hard)}
+.badge{display:inline-flex;border:1px solid rgba(116,255,123,.45);color:var(--green);background:rgba(116,255,123,.08);padding:6px 9px;border-radius:999px;font:12px/1.2 ui-monospace,Menlo,monospace;margin-bottom:14px}
+.badge.blue{color:var(--blue);border-color:rgba(88,166,255,.45);background:rgba(88,166,255,.08)}
+.badge.warn{color:var(--amber);border-color:rgba(255,204,102,.45);background:rgba(255,204,102,.08)}
+.body{max-width:780px;line-height:1.65;color:#d7e9f7}
+.body h2{margin-top:30px}
+.body ol,.body ul{padding-left:20px}
+.kv{display:grid;grid-template-columns:160px 1fr;gap:12px;margin:14px 0}
+.kv .k{color:var(--muted);font:12px/1.6 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}
+.kv .v{color:#f2fbff}
+.callout{border:1px solid rgba(255,204,102,.4);background:rgba(255,204,102,.06);border-radius:16px;padding:16px;margin:18px 0;color:#ffd9a0}
+.privacy{border:1px solid rgba(167,139,250,.4);background:rgba(167,139,250,.06);border-radius:16px;padding:16px;margin:18px 0;color:#d6caff}
+footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0 34px;margin-top:36px;font:13px/1.5 ui-monospace,Menlo,monospace}
+@media(max-width:860px){.grid,.two,.section-head{grid-template-columns:1fr}.nav{justify-content:flex-start}.kv{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="top shell">
+  <a class="logo" href="/">dabblewith.ai</a>
+  <div class="nav">
+    <a href="/workflows/" data-cta="nav_workflows" data-event="workflow_explore_click">Workflows</a>
+    <a href="/submit-workflow/" data-cta="nav_submit" data-event="workflow_submit_start">Submit</a>
+    <a href="/newsletter/" data-cta="nav_newsletter" data-event="newsletter_signup_click">Newsletter</a>
+    <a href="/challenges/" data-cta="nav_challenges" data-event="challenge_join_click">Challenges</a>
+    <a href="/build-in-public/" data-cta="nav_build_public" data-event="build_public_metrics_view">Build in public</a>
+    <a href="/community-bot/" data-cta="nav_community_bot" data-event="community_bot_setup_click">Community bot</a>
+    <a href="/blog/" data-cta="nav_blog">Blog</a>
+  </div>
+</nav>
+<main>
+
+<section class="hero shell">
+  <div class="eyebrow">Founder &amp; operator workflows</div>
+  <h1>AI tool evaluation scorecard workflow</h1>
+  <p class="lead">New AI tools ship every week. You can&#39;t evaluate them all, and bad tool choices cost months.</p>
+  <div class="actions">
+    <a class="btn primary" href="/submit-workflow/?intent=submit-workflow&amp;utm_source=workflow&amp;utm_medium=workflow-page&amp;utm_campaign=workflow_exchange&amp;utm_content=ai-tool-evaluation-scorecard" data-cta="workflow_ai-tool-evaluation-scorecard_primary" data-event="workflow_submit_start" data-audience="founders_operators" data-workflow-category="founders-operators">Submit your version of this workflow</a>
+    <a class="btn" href="/submit-workflow/?intent=submit-workflow&utm_source=workflow&utm_medium=workflow-page&utm_campaign=workflow_exchange&utm_content=ai-tool-evaluation-scorecard" data-cta="workflow_ai-tool-evaluation-scorecard_submit" data-event="workflow_submit_start" data-audience="founders_operators" data-workflow-category="founders-operators">Submit your version</a>
+    <a class="btn" href="/newsletter/" data-cta="workflow_ai-tool-evaluation-scorecard_newsletter" data-event="newsletter_signup_click">Subscribe</a>
+  </div>
+</section>
+
+<section class="shell">
+  <div class="body">
+    <div class="kv">
+      <div class="k">Audience</div><div class="v">Founder &amp; operator workflows</div>
+      <div class="k">Problem</div><div class="v">New AI tools ship every week. You can&#39;t evaluate them all, and bad tool choices cost months.</div>
+      <div class="k">Outcome</div><div class="v">Every tool gets a 30-minute scorecard with a keep/park/kill verdict and a follow-up date — no more open tabs forever.</div>
+      <div class="k">Tools used</div><div class="v"><ul><li>A blank scorecard template</li>
+<li>Sample inputs from your real workflows</li>
+<li>An LLM only as a comparison aid</li>
+<li>A calendar</li></ul></div>
+      <div class="k">Time required</div><div class="v">30 minutes per tool</div>
+      <div class="k">Difficulty</div><div class="v">Easy</div>
+    </div>
+
+    <h2>Steps</h2>
+    <ol><li>Define 6 fields: real problem it solves, your sample input, output quality, integration cost, privacy posture, switching cost.</li>
+<li>Try the tool on your real (sanitized) sample input — not the vendor&#39;s demo data.</li>
+<li>Score each field 1-5. No averages — just look at the worst score.</li>
+<li>Decide: keep (use this month), park (revisit in 90 days), kill (don&#39;t reopen). Set the date.</li>
+<li>Publish the scorecard internally so you don&#39;t re-evaluate the same tool in 30 days.</li></ol>
+
+    <h2>Example output</h2>
+    <p>Tool: Vendor X note-taker. Worst score: privacy posture (2/5, no clear data-retention policy). Verdict: park. Revisit: 2026-08-26.</p>
+
+    <div class="callout"><strong>Human-review point.</strong> Founder/team lead writes the verdict and date. LLM may compare features but cannot decide adoption.</div>
+    <div class="privacy"><strong>Privacy notes.</strong> Never paste real customer data, employee data, or unreleased product information into vendor tools during evaluation. Use sanitized samples.</div>
+
+    <h2>Fork and remix ideas</h2>
+    <ul><li>Adapt for hiring tool evaluation.</li>
+<li>Adapt for community-bot platform comparison.</li>
+<li>Adapt for picking a model provider with clear privacy rules.</li></ul>
+  </div>
+</section>
+
+<section class="shell">
+  <div class="section-head"><div><div class="eyebrow">related workflows</div><h2>Keep going.</h2></div><p>These pair well with this workflow.</p></div>
+  <div class="grid"><a class="card" href="/workflows/founder-weekly-metrics-build-in-public/" data-cta="workflow_card_founder-weekly-metrics-build-in-public" data-event="workflow_view" data-audience="founders_operators" data-workflow-category="founders-operators">
+  <span class="meta">Founder &amp; operator workflows · Easy</span>
+  <strong>Founder weekly metrics build-in-public workflow</strong>
+  <p>You want to share weekly progress publicly but don&#39;t know which numbers honestly reflect momentum versus vanity.</p>
+</a>
+<a class="card" href="/workflows/ai-meeting-notes-to-action-tracker/" data-cta="workflow_card_ai-meeting-notes-to-action-tracker" data-event="workflow_view" data-audience="founders_operators" data-workflow-category="founders-operators">
+  <span class="meta">Founder &amp; operator workflows · Easy</span>
+  <strong>AI meeting notes to action tracker workflow</strong>
+  <p>Meeting recordings pile up. Decisions and owners get lost the next morning.</p>
+</a>
+<a class="card" href="/workflows/nocode-lead-qualification/" data-cta="workflow_card_nocode-lead-qualification" data-event="workflow_view" data-audience="nocode_automation_builders" data-workflow-category="nocode-automation">
+  <span class="meta">No-code &amp; automation workflows · Medium</span>
+  <strong>No-code lead qualification workflow</strong>
+  <p>Inbound leads include great fits, casual browsers, and time-wasters — and you waste hours sorting them.</p>
+</a></div>
+</section>
+
+<section class="shell">
+  <div class="hero">
+    <div class="eyebrow">submit yours</div>
+    <h2>Have a better version of this workflow?</h2>
+    <p class="lead">Send the audience, the problem, the steps, and what you'd never automate. We review every submission with a human before publishing.</p>
+    <div class="actions">
+      <a class="btn primary" href="/submit-workflow/?intent=submit-workflow&utm_source=workflow&utm_medium=workflow-page&utm_campaign=workflow_exchange&utm_content=ai-tool-evaluation-scorecard_footer" data-cta="workflow_ai-tool-evaluation-scorecard_submit_footer" data-event="workflow_submit_start" data-audience="founders_operators" data-workflow-category="founders-operators">Submit a workflow</a>
+      <a class="btn" href="/challenges/build-in-public-4-weeks/" data-cta="workflow_ai-tool-evaluation-scorecard_challenge" data-event="challenge_join_click">Join the 4-week challenge</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="shell">
+  <span>AI-drafted · human-reviewed · privacy-aware · <a href="/workflows/" data-cta="footer_workflows" data-event="workflow_explore_click">Workflows</a> · <a href="/submit-workflow/" data-cta="footer_submit" data-event="workflow_submit_start">Submit</a> · <a href="/newsletter/" data-cta="footer_newsletter" data-event="newsletter_signup_click">Newsletter</a> · <a href="/challenges/" data-cta="footer_challenges" data-event="challenge_join_click">Challenges</a> · <a href="/build-in-public/" data-cta="footer_build_public" data-event="build_public_metrics_view">Build in public</a> · <a href="/community-policy/" data-cta="footer_policy">Community policy</a> · <a href="/community-bot/" data-cta="footer_community_bot" data-event="community_bot_setup_click">Community bot</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span>
+  <div style="margin-top:10px;color:var(--muted);font-size:12px">Canonical: https://dabblewith.ai/workflows/ai-tool-evaluation-scorecard/</div>
+</footer>
+</body>
+</html>

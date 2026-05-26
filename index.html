@@ -250,12 +250,14 @@
   <nav class="shell">
     <a class="logo" href="#top"><span class="logo-dot"></span>dabblewith.ai</a>
     <div class="nav-links">
-      <a href="#workflows" data-cta="nav_workflows" data-event="workflow_explore_click">Workflows</a>
-      <a href="#submit" data-cta="nav_submit" data-event="workflow_submit_start">Submit</a>
-      <a href="#newsletter" data-cta="nav_newsletter" data-event="newsletter_signup_click">Newsletter</a>
+      <a href="/workflows/" data-cta="nav_workflows" data-event="workflow_explore_click">Workflows</a>
+      <a href="/submit-workflow/" data-cta="nav_submit" data-event="workflow_submit_start">Submit</a>
+      <a href="/newsletter/" data-cta="nav_newsletter" data-event="newsletter_signup_click">Newsletter</a>
+      <a href="/challenges/" data-cta="nav_challenges" data-event="challenge_join_click">Challenges</a>
+      <a href="/build-in-public/" data-cta="nav_build_public" data-event="build_public_metrics_view">Build in public</a>
       <a href="/community-bot/" data-cta="nav_community_bot" data-event="community_bot_setup_click">Community bot</a>
       <a href="/blog/" data-cta="nav_blog">Blog</a>
-      <a href="#audiences" data-cta="nav_audiences">For you</a>
+      <a href="/start/" data-cta="nav_start">Start here</a>
     </div>
   </nav>
 
@@ -270,34 +272,35 @@
             <p class="lead"><strong>dabblewith.ai</strong> is an AI Builder's Exchange. Browse workflows that real founders, creators, researchers, ops teams, and no-code builders actually use — then fork one, adapt it, or publish your own.</p>
             <p class="direct-route"><strong>Safe to experiment, human-led, privacy-aware.</strong> Every workflow lists tools, steps, human review points, and what to never automate. No fake testimonials. No synthetic users. We tell you what worked, what failed, and what we’re still testing.</p>
             <div class="actions">
-              <a class="btn primary" data-cta="hero_explore_workflows" data-event="workflow_explore_click" href="#workflows">Explore workflows</a>
-              <a class="btn" data-cta="hero_submit_workflow" data-event="workflow_submit_start" href="#submit">Submit a workflow</a>
-              <a class="btn" data-cta="hero_join_newsletter" data-event="newsletter_signup_click" href="#newsletter">Join newsletter</a>
+              <a class="btn primary" data-cta="hero_explore_workflows" data-event="workflow_explore_click" href="/workflows/">Explore workflows</a>
+              <a class="btn" data-cta="hero_submit_workflow" data-event="workflow_submit_start" href="/submit-workflow/">Submit a workflow</a>
+              <a class="btn" data-cta="hero_join_newsletter" data-event="newsletter_signup_click" href="/newsletter/">Join newsletter</a>
               <a class="btn" data-cta="hero_launch_community_bot" data-event="community_bot_setup_click" href="/community-bot/">Launch a community bot</a>
+              <a class="btn" data-cta="hero_start" href="/start/">Start here</a>
             </div>
             <p class="cta-proof"><strong>Pick the path that fits you.</strong> Most visitors start by reading 1–2 workflows in their domain, then either fork one on WhatsApp or subscribe to the weekly issue.</p>
             <div class="path-strip" aria-label="Audience pathways" id="audiences">
-              <a class="path-card" data-cta="audience_founders" data-audience="founders_operators" data-event="audience_segment_click" href="#workflows-founders">
+              <a class="path-card" data-cta="audience_founders" data-audience="founders_operators" data-workflow-category="founders-operators" data-event="audience_segment_click" href="/workflows/founders-operators/">
                 <span class="path-kicker">Founders / operators</span>
                 <strong>Run the company on workflows, not vibes.</strong>
                 <span>Weekly metrics, hiring intake, customer-call triage, board updates — fork the loop your team needs.</span>
               </a>
-              <a class="path-card" data-cta="audience_creators" data-audience="creators_writers" data-event="audience_segment_click" href="#workflows-creators">
+              <a class="path-card" data-cta="audience_creators" data-audience="creators_writers" data-workflow-category="creators-writers" data-event="audience_segment_click" href="/workflows/creators-writers/">
                 <span class="path-kicker">Creators / writers</span>
                 <strong>Repurpose without losing your voice.</strong>
                 <span>Drafting, repurposing, and editing loops where the human keeps the pen and AI handles the busywork.</span>
               </a>
-              <a class="path-card" data-cta="audience_researchers" data-audience="researchers_academics" data-event="audience_segment_click" href="#workflows-researchers">
+              <a class="path-card" data-cta="audience_researchers" data-audience="researchers_academics" data-workflow-category="research-academic" data-event="audience_segment_click" href="/workflows/research-academic/">
                 <span class="path-kicker">Researchers / academics</span>
                 <strong>Summaries you can actually cite.</strong>
                 <span>Paper triage, lit-review skeletons, and dataset-prep workflows with explicit human-review gates.</span>
               </a>
-              <a class="path-card" data-cta="audience_healthcare_ops" data-audience="healthcare_business_ops" data-event="audience_segment_click" href="#workflows-ops">
+              <a class="path-card" data-cta="audience_healthcare_ops" data-audience="healthcare_business_ops" data-workflow-category="healthcare-ops" data-event="audience_segment_click" href="/workflows/healthcare-ops/">
                 <span class="path-kicker">Healthcare / business ops</span>
                 <strong>Triage and routing with safety caveats.</strong>
                 <span>Call summaries, FAQ gap-mining, and intake routing — with red-line lists for what AI must not decide.</span>
               </a>
-              <a class="path-card" data-cta="audience_nocode" data-audience="nocode_automation_builders" data-event="audience_segment_click" href="#workflows-nocode">
+              <a class="path-card" data-cta="audience_nocode" data-audience="nocode_automation_builders" data-workflow-category="nocode-automation" data-event="audience_segment_click" href="/workflows/nocode-automation/">
                 <span class="path-kicker">No-code / automation</span>
                 <strong>Glue prompts to tools that actually run.</strong>
                 <span>Lead qualification, support-ticket sorting, and recurring-report workflows you can wire in an afternoon.</span>
@@ -338,16 +341,18 @@
         <p>These categories are seeding now. Each workflow page (rolling out next) lists the problem, the tools, the exact steps, the human-review gate, the privacy notes, and a fork CTA. No fake reviews. No automated approvals.</p>
       </div>
       <div class="grid">
-        <article class="card" data-code="W1" id="workflows-founders"><strong>Founders & operators</strong><p>Weekly metrics build-in-public loop, AI meeting notes to action tracker, AI tool evaluation scorecard. Built for one-person and small teams.</p></article>
-        <article class="card" data-code="W2" id="workflows-creators"><strong>Creators & writers</strong><p>Content repurposing without losing voice, draft-review-publish loops, editorial workflows that keep the human as final editor.</p></article>
-        <article class="card" data-code="W3" id="workflows-researchers"><strong>Researchers & academics</strong><p>Paper summarization with a mandatory human-review pass, dataset triage, and lit-review skeletons. Citations stay traceable.</p></article>
-        <article class="card" data-code="W4" id="workflows-ops"><strong>Healthcare & business ops</strong><p>Call triage with safety caveats, FAQ gap-mining, intake routing. Each page lists what AI may suggest and what it must not decide.</p></article>
-        <article class="card" data-code="W5" id="workflows-nocode"><strong>No-code / automation</strong><p>Lead qualification, support-ticket sorting, recurring report workflows. Tool-agnostic templates you can wire to whatever you already use.</p></article>
-        <article class="card" data-code="W6"><strong>Community workflows</strong><p>WhatsApp community onboarding, customer-support FAQ harvest, AI workshop intake. Reusable across teams of 10 and 10,000.</p></article>
+        <a class="card" data-code="W1" id="workflows-founders" data-cta="homepage_workflows_founders" data-event="workflow_explore_click" data-audience="founders_operators" data-workflow-category="founders-operators" href="/workflows/founders-operators/"><strong>Founders & operators</strong><p>Weekly metrics build-in-public loop, AI meeting notes to action tracker, AI tool evaluation scorecard. Built for one-person and small teams.</p></a>
+        <a class="card" data-code="W2" id="workflows-creators" data-cta="homepage_workflows_creators" data-event="workflow_explore_click" data-audience="creators_writers" data-workflow-category="creators-writers" href="/workflows/creators-writers/"><strong>Creators & writers</strong><p>Content repurposing without losing voice, draft-review-publish loops, editorial workflows that keep the human as final editor.</p></a>
+        <a class="card" data-code="W3" id="workflows-researchers" data-cta="homepage_workflows_research" data-event="workflow_explore_click" data-audience="researchers_academics" data-workflow-category="research-academic" href="/workflows/research-academic/"><strong>Researchers & academics</strong><p>Paper summarization with a mandatory human-review pass, dataset triage, and lit-review skeletons. Citations stay traceable.</p></a>
+        <a class="card" data-code="W4" id="workflows-ops" data-cta="homepage_workflows_healthcare" data-event="workflow_explore_click" data-audience="healthcare_business_ops" data-workflow-category="healthcare-ops" href="/workflows/healthcare-ops/"><strong>Healthcare & business ops</strong><p>Call triage with safety caveats, FAQ gap-mining, intake routing. Each page lists what AI may suggest and what it must not decide.</p></a>
+        <a class="card" data-code="W5" id="workflows-nocode" data-cta="homepage_workflows_nocode" data-event="workflow_explore_click" data-audience="nocode_automation_builders" data-workflow-category="nocode-automation" href="/workflows/nocode-automation/"><strong>No-code / automation</strong><p>Lead qualification, support-ticket sorting, recurring report workflows. Tool-agnostic templates you can wire to whatever you already use.</p></a>
+        <a class="card" data-code="W6" data-cta="homepage_workflows_community" data-event="workflow_view" data-workflow-category="founders-operators" href="/workflows/whatsapp-community-onboarding-bot/"><strong>Community workflows</strong><p>WhatsApp community onboarding, customer-support FAQ harvest, AI workshop intake. Reusable across teams of 10 and 10,000.</p></a>
       </div>
       <div class="actions">
-        <a class="btn primary" data-cta="workflows_section_submit" data-event="workflow_submit_start" href="#submit">Submit a workflow</a>
-        <a class="btn" data-cta="workflows_section_newsletter" data-event="newsletter_signup_click" href="#newsletter">Get the weekly issue</a>
+        <a class="btn primary" data-cta="workflows_section_browse_all" data-event="workflow_explore_click" href="/workflows/">Browse all workflows</a>
+        <a class="btn" data-cta="workflows_section_submit" data-event="workflow_submit_start" href="/submit-workflow/">Submit a workflow</a>
+        <a class="btn" data-cta="workflows_section_newsletter" data-event="newsletter_signup_click" href="/newsletter/">Get the weekly issue</a>
+        <a class="btn" data-cta="workflows_section_challenge" data-event="challenge_join_click" href="/challenges/build-in-public-4-weeks/">Join the 4-week challenge</a>
       </div>
     </section>
 
@@ -494,7 +499,7 @@
   <footer>
     <div class="shell">
       <span>dabblewith.ai / ai builder's exchange</span>
-      <span>AI-drafted · human-published · privacy-aware · <a href="#workflows" data-cta="footer_workflows">Workflows</a> · <a href="#submit" data-cta="footer_submit">Submit</a> · <a href="#newsletter" data-cta="footer_newsletter">Newsletter</a> · <a href="/community-bot/" data-cta="footer_community_bot">Community bot</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span>
+      <span>AI-drafted · human-reviewed · privacy-aware · <a href="/workflows/" data-cta="footer_workflows" data-event="workflow_explore_click">Workflows</a> · <a href="/submit-workflow/" data-cta="footer_submit" data-event="workflow_submit_start">Submit</a> · <a href="/newsletter/" data-cta="footer_newsletter" data-event="newsletter_signup_click">Newsletter</a> · <a href="/challenges/" data-cta="footer_challenges" data-event="challenge_join_click">Challenges</a> · <a href="/build-in-public/" data-cta="footer_build_public" data-event="build_public_metrics_view">Build in public</a> · <a href="/community-policy/" data-cta="footer_policy">Community policy</a> · <a href="/start/" data-cta="footer_start">Start here</a> · <a href="/community-bot/" data-cta="footer_community_bot" data-event="community_bot_setup_click">Community bot</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span>
     </div>
   </footer>
 </body>

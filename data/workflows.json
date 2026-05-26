@@ -1,0 +1,417 @@
+{
+  "version": "2026-05-26",
+  "categories": [
+    {
+      "slug": "founders-operators",
+      "title": "Founder & operator workflows",
+      "audience_segment": "founders_operators",
+      "summary": "Run a one-person or small-team company on repeatable AI loops — metrics, meetings, tool selection, reporting."
+    },
+    {
+      "slug": "creators-writers",
+      "title": "Creator & writer workflows",
+      "audience_segment": "creators_writers",
+      "summary": "Draft, review, and repurpose content without losing voice — humans stay the final editor."
+    },
+    {
+      "slug": "research-academic",
+      "title": "Research & academic workflows",
+      "audience_segment": "researchers_academics",
+      "summary": "Paper triage, summarization, and dataset prep with explicit human-review gates."
+    },
+    {
+      "slug": "healthcare-ops",
+      "title": "Healthcare & business ops workflows",
+      "audience_segment": "healthcare_business_ops",
+      "summary": "Call triage, intake routing, and FAQ gap-mining — every workflow lists what AI may not decide."
+    },
+    {
+      "slug": "nocode-automation",
+      "title": "No-code & automation workflows",
+      "audience_segment": "nocode_automation_builders",
+      "summary": "Lead qualification, support sorting, and recurring reports you can wire in an afternoon."
+    }
+  ],
+  "workflows": [
+    {
+      "slug": "ai-workshop-intake-template-for-teams",
+      "title": "AI workshop intake template for teams",
+      "category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "problem": "You're running an internal AI workshop and don't know what each attendee actually wants to build, so the session ends up generic.",
+      "target_query": "AI workshop intake template for teams",
+      "outcome": "Each attendee shows up with a specific workflow problem, sample inputs, and a publish-or-not decision before the workshop starts.",
+      "tools": ["WhatsApp", "Email", "Spreadsheet", "Any LLM with a draft-only review pass"],
+      "time": "30 minutes to send · 1 hour to triage 20 responses",
+      "difficulty": "Easy",
+      "steps": [
+        "Define the workshop's single outcome — a published workflow, a working draft, or a reviewed prompt.",
+        "Send an intake message asking: role, one workflow they want, sample input they can share safely, what they'd never automate.",
+        "Use an LLM in draft-only mode to cluster responses into 3-5 themes. Read every response yourself.",
+        "Pre-write a starter workflow for each cluster so no one starts at a blank screen.",
+        "Confirm with each attendee 24 hours before the session that the starter fits their problem."
+      ],
+      "example_output": "Cluster: Founder weekly metrics. 4 attendees. Starter: AI meeting-notes-to-action-tracker workflow. Sample input: anonymized weekly review notes.",
+      "human_review": "An organizer must read every intake reply before clustering. LLM may suggest themes but cannot decide who attends or what is exposed.",
+      "privacy_notes": "Do not paste real customer messages, health, or financial data into the LLM. Use sanitized examples or schemas only.",
+      "fork_ideas": [
+        "Use the same intake for community-bot onboarding interviews.",
+        "Use it as a pre-newsletter survey to seed practical issues.",
+        "Adapt for academic course intake — replace 'workflow' with 'research question'."
+      ],
+      "related": [
+        "ai-meeting-notes-to-action-tracker",
+        "customer-support-faq-gap-mining",
+        "whatsapp-community-onboarding-bot"
+      ],
+      "primary_cta": {
+        "label": "Submit your version of this workflow",
+        "event": "workflow_submit_start",
+        "href": "/submit-workflow/?intent=submit-workflow&utm_source=workflow&utm_medium=workflow-page&utm_campaign=workflow_exchange&utm_content=ai-workshop-intake-template-for-teams"
+      },
+      "published": "2026-05-26"
+    },
+    {
+      "slug": "whatsapp-community-onboarding-bot",
+      "title": "WhatsApp community onboarding bot workflow",
+      "category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "problem": "Every new community member asks the same 5 questions and you answer them at 11pm.",
+      "target_query": "WhatsApp community onboarding bot workflow",
+      "outcome": "New members get a consistent welcome, a clear path to the next event, and your phone stays calm.",
+      "tools": ["WhatsApp Business or community bot", "Pinned community FAQ", "Spreadsheet for unanswered questions"],
+      "time": "2 hours to draft · 1 week of human review before going live",
+      "difficulty": "Medium",
+      "steps": [
+        "Write the 5 questions you actually answer most weeks — exact phrasings, not paraphrases.",
+        "Write canonical answers in the community's voice. Each answer must say what the human admin will do next.",
+        "Configure the bot to respond only to message patterns you've reviewed. New patterns escalate to the human.",
+        "Run a dry-run week where the bot proposes replies to the human admin before sending.",
+        "Go live with a clearly stated 'I'm the community AI host, an admin will jump in if needed' opener."
+      ],
+      "example_output": "New member asks 'when is next session?' Bot replies with the upcoming session, RSVP link, and tags admin if member asks anything off-script.",
+      "human_review": "Human admin must approve every new response pattern for the first 14 days. AI never decides who joins, who leaves, or moderation actions.",
+      "privacy_notes": "Do not log raw member messages with phone numbers attached. Store only event types and counts. Never send member content to a third-party LLM without redaction.",
+      "fork_ideas": [
+        "Use for resident communities, alumni groups, or product-user channels.",
+        "Add an event RSVP capture flow.",
+        "Add a weekly digest summarizing pending admin questions."
+      ],
+      "related": [
+        "ai-workshop-intake-template-for-teams",
+        "customer-support-faq-gap-mining",
+        "ai-meeting-notes-to-action-tracker"
+      ],
+      "primary_cta": {
+        "label": "Launch a community bot",
+        "event": "community_bot_setup_click",
+        "href": "https://wa.me/919566112518?text=I%20want%20to%20launch%20a%20WhatsApp%20community%20bot.%20Audience%3A%20___.%20Problem%3A%20___.%20%28source%3A%20workflow%20page%29&utm_source=workflow&utm_medium=workflow-page&utm_campaign=community_bot_setup&utm_content=whatsapp-community-onboarding-bot&intent=launch-community-bot"
+      },
+      "published": "2026-05-26"
+    },
+    {
+      "slug": "founder-weekly-metrics-build-in-public",
+      "title": "Founder weekly metrics build-in-public workflow",
+      "category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "problem": "You want to share weekly progress publicly but don't know which numbers honestly reflect momentum versus vanity.",
+      "target_query": "founder weekly metrics build in public workflow",
+      "outcome": "Each Friday you publish a 6-line update with the same metrics, plus one lesson, in 30 minutes.",
+      "tools": ["GA or analytics export", "Plaintext notes", "Newsletter or X thread", "Any LLM in summarization-only mode"],
+      "time": "30 minutes per week",
+      "difficulty": "Easy",
+      "steps": [
+        "Pick 6 metrics: visitors, returning visitors, signups, replies/conversations, workflow submissions or product actions, and MRR (or $0 if true).",
+        "Add 2 qualitative lines: what experiment ran, what surprised you.",
+        "Add 1 explicit failure or thing that didn't work.",
+        "Use an LLM to compress the raw notes into the same 6-line template every week.",
+        "Publish on the same day and time every week so readers know when to expect it."
+      ],
+      "example_output": "Week of 2026-05-26 — visitors 480, returning 92, newsletter signups 14, workflow submissions 3, MRR $0. Tried X reply-guy rotation; got 1 newsletter swap conversation. Failed: assumed Indie Hackers post would convert; it brought 0 signups.",
+      "human_review": "Founder writes the failure line themselves. LLM may rephrase but must not invent metrics.",
+      "privacy_notes": "Do not publish member-level data, individual phone numbers, or private partner names without consent.",
+      "fork_ideas": [
+        "Adapt for a course/cohort weekly update.",
+        "Adapt for an open-source project (commits, contributors, issues).",
+        "Add a 'what I'm asking for help with' line to recruit collaborators."
+      ],
+      "related": [
+        "ai-tool-evaluation-scorecard",
+        "ai-meeting-notes-to-action-tracker",
+        "customer-support-faq-gap-mining"
+      ],
+      "primary_cta": {
+        "label": "See the build-in-public template",
+        "event": "build_public_metrics_view",
+        "href": "/build-in-public/?utm_source=workflow&utm_medium=workflow-page&utm_campaign=build_in_public&utm_content=founder-weekly-metrics-build-in-public&intent=build-in-public"
+      },
+      "published": "2026-05-26"
+    },
+    {
+      "slug": "ai-meeting-notes-to-action-tracker",
+      "title": "AI meeting notes to action tracker workflow",
+      "category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "problem": "Meeting recordings pile up. Decisions and owners get lost the next morning.",
+      "target_query": "AI meeting notes to action tracker workflow",
+      "outcome": "Every meeting ends with a confirmed action list owned by named humans before anyone leaves the call.",
+      "tools": ["Transcript source you control", "Plain text editor", "An LLM with summarization", "Your team task tracker"],
+      "time": "10 minutes per meeting",
+      "difficulty": "Easy",
+      "steps": [
+        "Capture the transcript locally. Strip names of anyone outside the company before sending to a third-party LLM.",
+        "Ask the LLM for a strict format: Decisions, Action items (owner + due), Open questions. No prose.",
+        "Read the list out loud at the end of the meeting and confirm each owner. Edit live.",
+        "Paste the confirmed list into the task tracker as separate items with owners.",
+        "After the meeting, archive the transcript privately or delete it per your retention rule."
+      ],
+      "example_output": "Decisions: Move launch to 2026-06-08. Actions: Boogi — finalize newsletter copy by 2026-06-02. Open: Do we need a Substack swap before launch?",
+      "human_review": "Human owners must verbally confirm every action item. LLM cannot assign owners on its own.",
+      "privacy_notes": "Never paste customer health, financial, legal, or HR content into a public LLM. Use a local model or redact first.",
+      "fork_ideas": [
+        "Add a 'risks raised' section for ops/legal meetings.",
+        "Adapt for 1-on-1s with a 'commitments' line on both sides.",
+        "Pipe outputs into the build-in-public weekly update."
+      ],
+      "related": [
+        "founder-weekly-metrics-build-in-public",
+        "ai-workshop-intake-template-for-teams",
+        "research-paper-summarization-with-human-review"
+      ],
+      "primary_cta": {
+        "label": "Submit your version of this workflow",
+        "event": "workflow_submit_start",
+        "href": "/submit-workflow/?intent=submit-workflow&utm_source=workflow&utm_medium=workflow-page&utm_campaign=workflow_exchange&utm_content=ai-meeting-notes-to-action-tracker"
+      },
+      "published": "2026-05-26"
+    },
+    {
+      "slug": "research-paper-summarization-with-human-review",
+      "title": "Research paper summarization workflow with human review",
+      "category": "research-academic",
+      "audience_segment": "researchers_academics",
+      "problem": "You need to triage 30 papers a week but can't read them all, and AI summaries hallucinate citations.",
+      "target_query": "research paper summarization workflow with human review",
+      "outcome": "You get a 5-line summary, claim-level citations, and a 'should I read it' verdict in 4 minutes per paper — with hallucinated claims caught before they enter your notes.",
+      "tools": ["PDF reader", "An LLM with citation handling", "Plain reference manager", "Your own notebook"],
+      "time": "4 minutes per paper · 20 minutes per batch",
+      "difficulty": "Medium",
+      "steps": [
+        "Define the 5 fields: claim, method, sample size, result, your relevance note.",
+        "Feed the paper to the LLM only after stripping sensitive subject data (where applicable).",
+        "Ask the LLM to extract claims with quoted source spans, not paraphrases.",
+        "Spot-check at least 3 claims against the paper itself. If any fails, discard the summary.",
+        "Save only verified claims into your notes — never the raw LLM output."
+      ],
+      "example_output": "Claim: 'Method X improves recall by 12%' [p.4, ¶3]. Method: replication study. Sample: 1,200 docs. Result: confirmed within 1%. Relevance: relevant for our retrieval workflow.",
+      "human_review": "Reviewer must verify each claim's source span before saving. LLM may not assign novelty, citation count, or topical importance.",
+      "privacy_notes": "Do not feed unpublished, embargoed, or human-subjects data to a third-party LLM. Use a local model or redact.",
+      "fork_ideas": [
+        "Adapt for grant-proposal triage.",
+        "Adapt for journalism source review.",
+        "Pair with a weekly lit-review newsletter."
+      ],
+      "related": [
+        "ai-meeting-notes-to-action-tracker",
+        "customer-support-faq-gap-mining",
+        "ai-tool-evaluation-scorecard"
+      ],
+      "primary_cta": {
+        "label": "Submit your version of this workflow",
+        "event": "workflow_submit_start",
+        "href": "/submit-workflow/?intent=submit-workflow&utm_source=workflow&utm_medium=workflow-page&utm_campaign=workflow_exchange&utm_content=research-paper-summarization-with-human-review"
+      },
+      "published": "2026-05-26"
+    },
+    {
+      "slug": "healthcare-ops-call-triage-with-safety-caveats",
+      "title": "Healthcare ops call triage workflow with safety caveats",
+      "category": "healthcare-ops",
+      "audience_segment": "healthcare_business_ops",
+      "problem": "Front-desk calls mix appointment requests, billing questions, and urgent symptoms — and untrained routing risks safety.",
+      "target_query": "healthcare ops call triage workflow with safety caveats",
+      "outcome": "Non-urgent calls are routed and logged quickly; anything that smells urgent goes immediately to a human clinician — never to AI.",
+      "tools": ["Your phone / IVR system", "A reviewed routing tree", "Audit log", "Your clinical lead's approval"],
+      "time": "1 week to draft, 4 weeks to validate before any live use",
+      "difficulty": "Hard (clinical safety required)",
+      "steps": [
+        "Have a clinician define a 'never automate' list: chest pain, suicidal ideation, pregnancy bleeding, pediatric fever, allergic reaction, anything emergency-coded by your jurisdiction.",
+        "Build a routing tree that only handles 3-4 known non-clinical categories: appointment scheduling, billing, hours, directions.",
+        "Anything outside the tree, including any of the 'never automate' phrases, must immediately transfer to a human.",
+        "Run a shadow mode where AI suggests routing but a human approves every decision for 4 weeks.",
+        "Publish a public disclosure that AI assists with non-clinical routing only and that members can opt out of AI handling."
+      ],
+      "example_output": "Caller says 'I want to reschedule Tuesday' → AI routes to scheduling. Caller says 'I'm having trouble breathing' → AI immediately transfers to human + flags audit log.",
+      "human_review": "A clinician must own this workflow. AI cannot triage symptoms, give medical advice, or override the 'never automate' list. All AI decisions are auditable.",
+      "privacy_notes": "PHI must never be sent to a third-party LLM without a signed BAA. Do not log call audio without explicit consent. Comply with your jurisdiction's privacy law.",
+      "fork_ideas": [
+        "Adapt for legal-aid call triage with similar 'never automate' lists.",
+        "Adapt for school front-desk calls about safety incidents.",
+        "Use the same 'never automate' pattern for any safety-critical inbox."
+      ],
+      "related": [
+        "customer-support-faq-gap-mining",
+        "ai-meeting-notes-to-action-tracker",
+        "ai-tool-evaluation-scorecard"
+      ],
+      "primary_cta": {
+        "label": "Talk to us before deploying this",
+        "event": "partner_interest_click",
+        "href": "mailto:bhuvanesh@neuralhawk.ai?subject=Healthcare%20call%20triage%20review%20%E2%80%94%20Dabblewith&body=I%27m%20considering%20an%20AI%20triage%20workflow%20and%20want%20a%20human%20review%20pass%20first.%20Context%3A%20___.%20Constraints%20%28jurisdiction%2FPHI%29%3A%20___."
+      },
+      "published": "2026-05-26"
+    },
+    {
+      "slug": "creator-content-repurposing",
+      "title": "Creator content repurposing workflow",
+      "category": "creators-writers",
+      "audience_segment": "creators_writers",
+      "problem": "You publish one good piece a week, but it dies on the page — and rewriting it for every channel sounds like a different person wrote it.",
+      "target_query": "creator content repurposing workflow",
+      "outcome": "One published piece becomes a newsletter, a thread, a video script outline, and a community discussion seed — all in your voice.",
+      "tools": ["Your published piece", "A voice sample (3-5 of your own posts)", "An LLM with voice guidance", "Plain text editor"],
+      "time": "45 minutes per piece",
+      "difficulty": "Easy",
+      "steps": [
+        "Lock the source piece. Don't repurpose drafts.",
+        "Build a voice prompt from 3-5 of your own posts: sentence length, vocabulary you do and don't use, lines you'd never write.",
+        "Generate channel drafts one at a time — newsletter, thread, video outline, community seed.",
+        "Read each draft out loud. If a sentence isn't yours, rewrite or delete it.",
+        "Schedule across the week so the original piece keeps earning attention."
+      ],
+      "example_output": "Source: blog post on practical AI workshops. Output: 1 newsletter intro, 1 X thread (6 tweets), 1 video outline (5 beats), 1 community discussion question.",
+      "human_review": "The creator reads every output aloud and edits before posting. LLM may not auto-publish.",
+      "privacy_notes": "Don't feed unpublished client work or private feedback into a third-party LLM as 'voice samples'. Use your own public writing.",
+      "fork_ideas": [
+        "Add a 'what I'd never publish' line to filter outputs.",
+        "Adapt for a podcast → newsletter → thread loop.",
+        "Adapt for translating content into another language while preserving voice."
+      ],
+      "related": [
+        "founder-weekly-metrics-build-in-public",
+        "customer-support-faq-gap-mining",
+        "ai-tool-evaluation-scorecard"
+      ],
+      "primary_cta": {
+        "label": "Submit your version of this workflow",
+        "event": "workflow_submit_start",
+        "href": "/submit-workflow/?intent=submit-workflow&utm_source=workflow&utm_medium=workflow-page&utm_campaign=workflow_exchange&utm_content=creator-content-repurposing"
+      },
+      "published": "2026-05-26"
+    },
+    {
+      "slug": "nocode-lead-qualification",
+      "title": "No-code lead qualification workflow",
+      "category": "nocode-automation",
+      "audience_segment": "nocode_automation_builders",
+      "problem": "Inbound leads include great fits, casual browsers, and time-wasters — and you waste hours sorting them.",
+      "target_query": "no-code AI lead qualification workflow",
+      "outcome": "Every inbound lead lands with a clear 'reach out today / next week / never' label and an explainer line before you read it.",
+      "tools": ["Your form/intake source", "A no-code automation runner of your choice", "An LLM in scoring-only mode", "A CRM/spreadsheet"],
+      "time": "3 hours to wire · 5 minutes per day to review",
+      "difficulty": "Medium",
+      "steps": [
+        "Define 'great fit' in 5 hard criteria: role, company size, budget signal, urgency wording, exclusion rule.",
+        "Have an LLM score new leads against the criteria — output: tier (now/soon/never) + 1-line reason.",
+        "Send tier + reason into your CRM/spreadsheet, never the raw LLM rationale prose.",
+        "Spot-check 20% of 'never' classifications every week for false negatives.",
+        "Retire any criterion that doesn't change a decision after 30 days."
+      ],
+      "example_output": "Lead: ops manager, mid-size healthcare ops team, mentions burnout from manual call routing. Tier: now. Reason: clinical-adjacent ops + urgency wording.",
+      "human_review": "Founder/owner reviews 'now' tier same-day and a 20% sample of 'never' tier weekly. AI never auto-emails leads.",
+      "privacy_notes": "Strip personal contact info before sending lead content to a third-party LLM, or use a local model. Do not store free-text lead messages outside your CRM.",
+      "fork_ideas": [
+        "Adapt for inbound partnership requests.",
+        "Adapt for job applications with explicit 'never use for protected categories' rules.",
+        "Adapt for community-bot upgrade requests."
+      ],
+      "related": [
+        "customer-support-faq-gap-mining",
+        "ai-meeting-notes-to-action-tracker",
+        "ai-tool-evaluation-scorecard"
+      ],
+      "primary_cta": {
+        "label": "Submit your version of this workflow",
+        "event": "workflow_submit_start",
+        "href": "/submit-workflow/?intent=submit-workflow&utm_source=workflow&utm_medium=workflow-page&utm_campaign=workflow_exchange&utm_content=nocode-lead-qualification"
+      },
+      "published": "2026-05-26"
+    },
+    {
+      "slug": "customer-support-faq-gap-mining",
+      "title": "Customer support FAQ gap-mining workflow",
+      "category": "healthcare-ops",
+      "audience_segment": "healthcare_business_ops",
+      "problem": "Your FAQ answers what you assumed users would ask, not what they're actually asking — and the gap shows up as support load.",
+      "target_query": "customer support FAQ gap mining workflow",
+      "outcome": "Every week you publish 3 new FAQ answers grounded in real questions that didn't have an answer yet.",
+      "tools": ["Last week's support tickets or chat logs", "An LLM in clustering-only mode", "Your FAQ source", "Plain text editor"],
+      "time": "1 hour per week",
+      "difficulty": "Easy",
+      "steps": [
+        "Export last week's support questions with PII stripped (no names, no emails, no phone numbers, no IDs).",
+        "Ask the LLM to cluster questions into themes and list the top 5 themes with example wording.",
+        "Compare to existing FAQ. Flag themes with no current answer.",
+        "Write the 3 highest-impact new FAQ entries yourself, not the LLM. Use exact user wording in the question.",
+        "Publish, and add a 'last updated' date to each entry."
+      ],
+      "example_output": "Theme 1: 'Can the bot pause replies during off-hours?' — 8 mentions, no FAQ entry. New FAQ: 'Yes, see the off-hours pause toggle in the host config.'",
+      "human_review": "Human writes every FAQ answer. LLM only clusters and counts. No automated FAQ publishing.",
+      "privacy_notes": "Never include customer names, emails, phone numbers, or specific case details. Use 'a member asked' phrasing.",
+      "fork_ideas": [
+        "Adapt for internal HR Q&A.",
+        "Adapt for an academic course FAQ.",
+        "Adapt for a community FAQ refreshed weekly."
+      ],
+      "related": [
+        "ai-workshop-intake-template-for-teams",
+        "whatsapp-community-onboarding-bot",
+        "nocode-lead-qualification"
+      ],
+      "primary_cta": {
+        "label": "Submit your version of this workflow",
+        "event": "workflow_submit_start",
+        "href": "/submit-workflow/?intent=submit-workflow&utm_source=workflow&utm_medium=workflow-page&utm_campaign=workflow_exchange&utm_content=customer-support-faq-gap-mining"
+      },
+      "published": "2026-05-26"
+    },
+    {
+      "slug": "ai-tool-evaluation-scorecard",
+      "title": "AI tool evaluation scorecard workflow",
+      "category": "founders-operators",
+      "audience_segment": "founders_operators",
+      "problem": "New AI tools ship every week. You can't evaluate them all, and bad tool choices cost months.",
+      "target_query": "AI tool evaluation scorecard workflow",
+      "outcome": "Every tool gets a 30-minute scorecard with a keep/park/kill verdict and a follow-up date — no more open tabs forever.",
+      "tools": ["A blank scorecard template", "Sample inputs from your real workflows", "An LLM only as a comparison aid", "A calendar"],
+      "time": "30 minutes per tool",
+      "difficulty": "Easy",
+      "steps": [
+        "Define 6 fields: real problem it solves, your sample input, output quality, integration cost, privacy posture, switching cost.",
+        "Try the tool on your real (sanitized) sample input — not the vendor's demo data.",
+        "Score each field 1-5. No averages — just look at the worst score.",
+        "Decide: keep (use this month), park (revisit in 90 days), kill (don't reopen). Set the date.",
+        "Publish the scorecard internally so you don't re-evaluate the same tool in 30 days."
+      ],
+      "example_output": "Tool: Vendor X note-taker. Worst score: privacy posture (2/5, no clear data-retention policy). Verdict: park. Revisit: 2026-08-26.",
+      "human_review": "Founder/team lead writes the verdict and date. LLM may compare features but cannot decide adoption.",
+      "privacy_notes": "Never paste real customer data, employee data, or unreleased product information into vendor tools during evaluation. Use sanitized samples.",
+      "fork_ideas": [
+        "Adapt for hiring tool evaluation.",
+        "Adapt for community-bot platform comparison.",
+        "Adapt for picking a model provider with clear privacy rules."
+      ],
+      "related": [
+        "founder-weekly-metrics-build-in-public",
+        "ai-meeting-notes-to-action-tracker",
+        "nocode-lead-qualification"
+      ],
+      "primary_cta": {
+        "label": "Submit your version of this workflow",
+        "event": "workflow_submit_start",
+        "href": "/submit-workflow/?intent=submit-workflow&utm_source=workflow&utm_medium=workflow-page&utm_campaign=workflow_exchange&utm_content=ai-tool-evaluation-scorecard"
+      },
+      "published": "2026-05-26"
+    }
+  ]
+}

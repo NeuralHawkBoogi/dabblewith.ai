@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<meta name="theme-color" content="#060912" />
+<meta property="og:image" content="https://dabblewith.ai/app-icon-1024.png" />
+<title>Dabblewith.ai newsletter — Weekly practical AI workflows</title>
+<meta name="description" content="One short weekly issue: 3 forkable workflows, 2 community asks, 1 honest experiment update. No listicles, no hype. Subscribe via WhatsApp or email." />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="canonical" href="https://dabblewith.ai/newsletter/" />
+<meta property="og:site_name" content="dabblewith.ai" />
+<meta property="og:title" content="Dabblewith.ai newsletter — Weekly practical AI workflows" />
+<meta property="og:description" content="Three forkable workflows, two community asks, one honest experiment. Weekly. Privacy-aware by default." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://dabblewith.ai/newsletter/" />
+<meta name="twitter:card" content="summary_large_image" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7473LZQGX2"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7473LZQGX2',{page_path:location.pathname});</script>
+<script src="/scripts/web/dabblewith-tracking.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Dabblewith.ai newsletter","url":"https://dabblewith.ai/newsletter/","description":"Weekly practical AI workflows newsletter from Dabblewith.ai. 3 forkable workflows, 2 community posts, 1 honest experiment per issue.","mainEntity":{"@type":"Periodical","name":"Dabblewith.ai weekly workflows","issn":"","publisher":{"@type":"Organization","name":"dabblewith.ai","url":"https://dabblewith.ai/"}}}</script>
+<style>
+:root{--bg:#060912;--panel:rgba(16,27,48,.92);--line:rgba(116,255,219,.26);--line-hard:#74ffdb;--text:#f2fbff;--muted:#9eb0c2;--green:#74ff7b;--cyan:#74ffdb;--blue:#58a6ff;--amber:#ffcc66;--violet:#a78bfa;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;color:var(--text);background:linear-gradient(rgba(116,255,219,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(116,255,219,.055) 1px,transparent 1px),radial-gradient(circle at 20% 0%,rgba(88,166,255,.22),transparent 28rem),radial-gradient(circle at 90% 10%,rgba(116,255,123,.16),transparent 25rem),radial-gradient(circle at 50% 100%,rgba(167,139,250,.15),transparent 34rem),var(--bg);background-size:42px 42px,42px 42px,auto,auto,auto,auto;overflow-x:hidden}
+a{color:inherit}.shell{width:min(1120px,calc(100% - 30px));margin:0 auto}
+nav.top{display:flex;justify-content:space-between;align-items:center;padding:24px 0;gap:18px;flex-wrap:wrap}
+.logo{text-decoration:none;font-size:30px;font-weight:900;letter-spacing:-.055em}
+.nav{display:flex;gap:10px;flex-wrap:wrap}
+.nav a{border:1px solid var(--line);border-radius:999px;padding:9px 12px;text-decoration:none;color:var(--muted);background:rgba(255,255,255,.03);font-size:14px}
+.hero,.card,.panel{border:1px solid var(--line);background:linear-gradient(180deg,rgba(16,27,48,.94),rgba(8,13,25,.92));border-radius:24px;box-shadow:0 24px 90px rgba(0,0,0,.45)}
+.hero{padding:clamp(28px,5vw,56px);margin:18px auto 28px}
+.eyebrow{width:fit-content;color:var(--cyan);border:1px solid var(--line-hard);background:rgba(116,255,219,.08);border-radius:999px;padding:9px 12px;font:12px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}
+h1{font-size:clamp(36px,6vw,72px);line-height:.95;letter-spacing:-.055em;margin:18px 0 14px;max-width:920px}
+h2{font-size:clamp(24px,3.6vw,40px);line-height:1;letter-spacing:-.04em;margin:0 0 14px}
+h3{font-size:20px;margin:0 0 10px;letter-spacing:-.02em}
+.lead{font-size:clamp(17px,2vw,21px);color:#d7e9f7;line-height:1.55;max-width:860px}
+.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line-hard);color:var(--cyan);background:rgba(116,255,219,.07);border-radius:14px;padding:12px 18px;text-decoration:none;font-weight:800;font-size:14px}
+.btn.primary{color:#04120e;background:var(--green);border-color:var(--green);box-shadow:0 0 30px rgba(116,255,123,.30)}
+section{padding:26px 0}
+.section-head{display:grid;grid-template-columns:.85fr 1fr;gap:22px;align-items:end;margin-bottom:24px}
+.section-head p,.card p,.panel p{color:var(--muted);line-height:1.65}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.two{grid-template-columns:repeat(2,1fr)}
+.card{padding:22px}
+.badge{display:inline-flex;border:1px solid rgba(116,255,123,.45);color:var(--green);background:rgba(116,255,123,.08);padding:6px 9px;border-radius:999px;font:12px/1.2 ui-monospace,Menlo,monospace;margin-bottom:10px}
+.badge.blue{color:var(--blue);border-color:rgba(88,166,255,.45);background:rgba(88,166,255,.08)}
+.badge.violet{color:var(--violet);border-color:rgba(167,139,250,.45);background:rgba(167,139,250,.08)}
+.sample{border:1px dashed var(--line);border-radius:18px;padding:22px;background:rgba(8,13,25,.55)}
+.sample h3{margin:0 0 10px}
+.sample ul{padding-left:18px;color:#d7e9f7;line-height:1.6}
+.callout{border:1px solid rgba(255,204,102,.4);background:rgba(255,204,102,.06);border-radius:16px;padding:16px;margin:18px 0;color:#ffd9a0}
+footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0 34px;margin-top:36px;font:13px/1.5 ui-monospace,Menlo,monospace}
+@media(max-width:860px){.grid,.two,.section-head{grid-template-columns:1fr}.nav{justify-content:flex-start}}
+</style>
+</head>
+<body>
+<nav class="top shell">
+  <a class="logo" href="/">dabblewith.ai</a>
+  <div class="nav">
+    <a href="/workflows/" data-cta="nav_workflows" data-event="workflow_explore_click">Workflows</a>
+    <a href="/submit-workflow/" data-cta="nav_submit" data-event="workflow_submit_start">Submit</a>
+    <a href="/newsletter/" data-cta="nav_newsletter" data-event="newsletter_signup_click">Newsletter</a>
+    <a href="/challenges/" data-cta="nav_challenges" data-event="challenge_join_click">Challenges</a>
+    <a href="/build-in-public/" data-cta="nav_build_public" data-event="build_public_metrics_view">Build in public</a>
+    <a href="/community-bot/" data-cta="nav_community_bot" data-event="community_bot_setup_click">Community bot</a>
+    <a href="/blog/" data-cta="nav_blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+<section class="hero shell">
+  <div class="eyebrow">weekly newsletter</div>
+  <h1>One short issue. Three workflows you can use this week.</h1>
+  <p class="lead">The Dabblewith.ai newsletter is the working notebook of an AI Builder's Exchange. Three forkable workflows, two community asks, one experiment update — including the ones that didn't work. No listicles, no hype, no "10 AI tools you must try."</p>
+  <div class="actions">
+    <a class="btn primary"
+       data-cta="newsletter_signup_whatsapp_hero"
+       data-event="newsletter_signup_click"
+       href="https://wa.me/919566112518?text=Add%20me%20to%20the%20Dabblewith%20weekly%20workflows%20newsletter.%20My%20audience%2Frole%3A%20___.%20%28source%3A%20newsletter%20landing%20hero%29&utm_source=direct&utm_medium=newsletter&utm_campaign=newsletter_signup&utm_content=newsletter_hero&intent=join-newsletter"
+       target="_blank" rel="noreferrer">Subscribe on WhatsApp</a>
+    <a class="btn"
+       data-cta="newsletter_signup_email_hero"
+       data-event="newsletter_signup_click"
+       href="mailto:bhuvanesh@neuralhawk.ai?subject=Subscribe%20%E2%80%94%20Dabblewith%20weekly%20workflows&body=Please%20add%20me%20to%20the%20weekly%20Dabblewith%20workflows%20newsletter.%20My%20audience%2Frole%3A%20___.">Subscribe by email</a>
+    <a class="btn"
+       data-cta="newsletter_browse_workflows"
+       data-event="workflow_explore_click"
+       href="/workflows/">See what we publish</a>
+  </div>
+</section>
+
+<section class="shell">
+  <div class="section-head">
+    <div><div class="eyebrow">the 3-2-1 cadence</div><h2>What every issue contains.</h2></div>
+    <p>A consistent shape so you know what to skim and what to keep. No issue is longer than 5 minutes to read.</p>
+  </div>
+  <div class="grid">
+    <article class="card"><span class="badge">3 workflow posts</span><h3>Three forkable mini-tutorials</h3><p>One founder/operator, one creator/research, one no-code or community. Each has the same shape as a workflow page: problem, steps, human-review point, what to never automate.</p></article>
+    <article class="card"><span class="badge blue">2 community posts</span><h3>Two community asks or discussions</h3><p>An open question we want your take on, plus one community-submitted workflow we're spotlighting with the author's permission.</p></article>
+    <article class="card"><span class="badge violet">1 soft promo</span><h3>One honest experiment update</h3><p>What we tried last week, what worked, what didn't. Includes real numbers and a clear $0 MRR line when that's the truth.</p></article>
+  </div>
+</section>
+
+<section class="shell">
+  <div class="section-head">
+    <div><div class="eyebrow">sample issue outline</div><h2>What this looks like in practice.</h2></div>
+    <p>A representative outline. The format is fixed; the content rotates every week.</p>
+  </div>
+  <div class="sample">
+    <h3>Issue #001 — Practical AI for one-person teams</h3>
+    <ul>
+      <li><strong>Workflow 1:</strong> Founder weekly metrics build-in-public — 6 lines, 30 minutes a week.</li>
+      <li><strong>Workflow 2:</strong> AI meeting notes to action tracker — strip names, confirm owners verbally, archive transcript.</li>
+      <li><strong>Workflow 3:</strong> Creator content repurposing — 1 source, 4 outputs, voice prompt grounded in your own writing.</li>
+      <li><strong>Community ask:</strong> What's your hard "never automate" line as a one-person founder? Reply and we'll publish a digest.</li>
+      <li><strong>Community spotlight:</strong> A submitted workflow from the exchange (with the author's name and permission).</li>
+      <li><strong>This week's experiment:</strong> Indie Hackers post → 0 newsletter signups. WhatsApp partner DM → 2 signups. What we'll try next.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="shell">
+  <div class="section-head">
+    <div><div class="eyebrow">partner issue swaps</div><h2>For newsletter authors and community runners.</h2></div>
+    <p>If you publish a practical AI, builder, or community newsletter, we'd like to talk about issue swaps and Substack Live conversations. We don't pitch lists or affiliate ladders.</p>
+  </div>
+  <div class="two">
+    <article class="card">
+      <h3>What we offer</h3>
+      <p>A guest-written issue (1 workflow + 1 honest experiment), a reciprocal mention with attribution, and a Substack Live or recorded conversation if formats align.</p>
+    </article>
+    <article class="card">
+      <h3>What we ask</h3>
+      <p>Practical, builder-aligned audience. No clickbait swaps. No paid placement disguised as editorial. Honest disclosure on both sides.</p>
+    </article>
+  </div>
+  <div class="actions">
+    <a class="btn primary"
+       data-cta="newsletter_partner_swap"
+       data-event="partner_interest_click"
+       href="mailto:bhuvanesh@neuralhawk.ai?subject=Issue%20swap%20interest%20%E2%80%94%20Dabblewith%20newsletter&body=Audience%20%2F%20focus%20of%20my%20newsletter%3A%20%0AApprox.%20subscriber%20count%3A%20%0AProposed%20collaboration%3A%20%0AAnything%20we%20should%20avoid%3A%20">Email about an issue swap</a>
+    <a class="btn"
+       data-cta="newsletter_partner_whatsapp"
+       data-event="partner_interest_click"
+       href="https://wa.me/919566112518?text=I%27d%20like%20to%20discuss%20a%20newsletter%20issue%20swap%20or%20Substack%20Live%20with%20Dabblewith.ai.%20%28source%3A%20newsletter%20partner%29&utm_source=direct&utm_medium=newsletter&utm_campaign=partner_swap&utm_content=newsletter_partner&intent=partner-interest"
+       target="_blank" rel="noreferrer">Message on WhatsApp</a>
+  </div>
+</section>
+
+<section class="shell">
+  <div class="hero">
+    <div class="eyebrow">privacy &amp; honesty</div>
+    <h2>What we won't send.</h2>
+    <p class="lead">No sponsored placements without disclosure. No mass list-buys, no scraping, no fake usage. No issue full of "amazing tools we love" without telling you which ones we actually use. If we don't have a workflow worth shipping, we delay the issue instead of padding it.</p>
+    <div class="callout"><strong>What you can expect.</strong> Plain-text-friendly emails, an unsubscribe link in every issue, and the option to be paused for a month if you're overloaded. We never sell or share subscriber data.</div>
+  </div>
+</section>
+
+<section class="shell">
+  <div class="hero">
+    <div class="eyebrow">subscribe</div>
+    <h2>Join the weekly issue.</h2>
+    <div class="actions">
+      <a class="btn primary"
+         data-cta="newsletter_signup_whatsapp_footer"
+         data-event="newsletter_signup_click"
+         href="https://wa.me/919566112518?text=Add%20me%20to%20the%20Dabblewith%20weekly%20workflows%20newsletter.%20%28source%3A%20newsletter%20landing%20footer%29&utm_source=direct&utm_medium=newsletter&utm_campaign=newsletter_signup&utm_content=newsletter_footer&intent=join-newsletter"
+         target="_blank" rel="noreferrer">Subscribe on WhatsApp</a>
+      <a class="btn"
+         data-cta="newsletter_signup_email_footer"
+         data-event="newsletter_signup_click"
+         href="mailto:bhuvanesh@neuralhawk.ai?subject=Subscribe%20%E2%80%94%20Dabblewith%20weekly%20workflows&body=Please%20add%20me%20to%20the%20weekly%20Dabblewith%20workflows%20newsletter.%20My%20audience%2Frole%3A%20___.">Subscribe by email</a>
+      <a class="btn"
+         data-cta="newsletter_view_build_public"
+         data-event="build_public_metrics_view"
+         href="/build-in-public/">See what we're shipping</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="shell">
+  <span>AI-drafted · human-reviewed · privacy-aware · <a href="/workflows/" data-cta="footer_workflows" data-event="workflow_explore_click">Workflows</a> · <a href="/submit-workflow/" data-cta="footer_submit" data-event="workflow_submit_start">Submit</a> · <a href="/newsletter/" data-cta="footer_newsletter" data-event="newsletter_signup_click">Newsletter</a> · <a href="/challenges/" data-cta="footer_challenges" data-event="challenge_join_click">Challenges</a> · <a href="/build-in-public/" data-cta="footer_build_public" data-event="build_public_metrics_view">Build in public</a> · <a href="/community-policy/" data-cta="footer_policy">Community policy</a> · <a href="/community-bot/" data-cta="footer_community_bot" data-event="community_bot_setup_click">Community bot</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span>
+</footer>
+</body>
+</html>

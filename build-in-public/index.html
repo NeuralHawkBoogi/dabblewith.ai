@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<meta name="theme-color" content="#060912" />
+<meta property="og:image" content="https://dabblewith.ai/app-icon-1024.png" />
+<title>Build in public — Dabblewith.ai weekly metrics</title>
+<meta name="description" content="Weekly Dabblewith.ai metrics, experiments, and lessons. Reusable template you can fork. No vanity numbers, honest $0 MRR updates when that's the truth." />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="canonical" href="https://dabblewith.ai/build-in-public/" />
+<meta property="og:site_name" content="dabblewith.ai" />
+<meta property="og:title" content="Build in public — Dabblewith.ai weekly metrics" />
+<meta property="og:description" content="The weekly Dabblewith.ai update — workflows, experiments, lessons, and the failed ones too." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://dabblewith.ai/build-in-public/" />
+<meta name="twitter:card" content="summary_large_image" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7473LZQGX2"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7473LZQGX2',{page_path:location.pathname});
+document.addEventListener('DOMContentLoaded',function(){
+  if (typeof gtag==='function') gtag('event','build_public_metrics_view',{page_path:location.pathname});
+});</script>
+<script src="/scripts/web/dabblewith-tracking.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Build in public — Dabblewith.ai","url":"https://dabblewith.ai/build-in-public/","description":"Weekly Dabblewith.ai metrics, experiments, and lessons. Reusable template, honest numbers.","about":{"@type":"Thing","name":"Build-in-public weekly update"}}</script>
+<style>
+:root{--bg:#060912;--panel:rgba(16,27,48,.92);--line:rgba(116,255,219,.26);--line-hard:#74ffdb;--text:#f2fbff;--muted:#9eb0c2;--green:#74ff7b;--cyan:#74ffdb;--blue:#58a6ff;--amber:#ffcc66;--violet:#a78bfa;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;color:var(--text);background:linear-gradient(rgba(116,255,219,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(116,255,219,.055) 1px,transparent 1px),radial-gradient(circle at 20% 0%,rgba(88,166,255,.22),transparent 28rem),radial-gradient(circle at 90% 10%,rgba(116,255,123,.16),transparent 25rem),radial-gradient(circle at 50% 100%,rgba(167,139,250,.15),transparent 34rem),var(--bg);background-size:42px 42px,42px 42px,auto,auto,auto,auto;overflow-x:hidden}
+a{color:inherit}.shell{width:min(1120px,calc(100% - 30px));margin:0 auto}
+nav.top{display:flex;justify-content:space-between;align-items:center;padding:24px 0;gap:18px;flex-wrap:wrap}
+.logo{text-decoration:none;font-size:30px;font-weight:900;letter-spacing:-.055em}
+.nav{display:flex;gap:10px;flex-wrap:wrap}
+.nav a{border:1px solid var(--line);border-radius:999px;padding:9px 12px;text-decoration:none;color:var(--muted);background:rgba(255,255,255,.03);font-size:14px}
+.hero,.card,.panel{border:1px solid var(--line);background:linear-gradient(180deg,rgba(16,27,48,.94),rgba(8,13,25,.92));border-radius:24px;box-shadow:0 24px 90px rgba(0,0,0,.45)}
+.hero{padding:clamp(28px,5vw,56px);margin:18px auto 28px}
+.eyebrow{width:fit-content;color:var(--cyan);border:1px solid var(--line-hard);background:rgba(116,255,219,.08);border-radius:999px;padding:9px 12px;font:12px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}
+h1{font-size:clamp(36px,6vw,72px);line-height:.95;letter-spacing:-.055em;margin:18px 0 14px;max-width:920px}
+h2{font-size:clamp(24px,3.6vw,40px);line-height:1;letter-spacing:-.04em;margin:0 0 14px}
+h3{font-size:20px;margin:0 0 10px;letter-spacing:-.02em}
+.lead{font-size:clamp(17px,2vw,21px);color:#d7e9f7;line-height:1.55;max-width:860px}
+.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line-hard);color:var(--cyan);background:rgba(116,255,219,.07);border-radius:14px;padding:12px 18px;text-decoration:none;font-weight:800;font-size:14px}
+.btn.primary{color:#04120e;background:var(--green);border-color:var(--green);box-shadow:0 0 30px rgba(116,255,123,.30)}
+section{padding:26px 0}
+.section-head{display:grid;grid-template-columns:.85fr 1fr;gap:22px;align-items:end;margin-bottom:24px}
+.section-head p,.card p,.panel p{color:var(--muted);line-height:1.65}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.two{grid-template-columns:repeat(2,1fr)}
+.card{padding:22px}
+.metric{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.metric .panel{padding:18px}
+.metric .panel .k{color:var(--muted);font:12px/1.4 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}
+.metric .panel .v{color:var(--cyan);font:900 30px/1.2 Inter,ui-sans-serif,sans-serif;letter-spacing:-.04em}
+.weekly{padding:22px;border:1px dashed var(--line);border-radius:18px;background:rgba(8,13,25,.55);margin-top:14px}
+.weekly h3{margin:0 0 10px}
+.weekly ul{padding-left:18px;color:#d7e9f7;line-height:1.65}
+.callout{border:1px solid rgba(255,204,102,.4);background:rgba(255,204,102,.06);border-radius:16px;padding:16px;margin:18px 0;color:#ffd9a0}
+.privacy{border:1px solid rgba(167,139,250,.4);background:rgba(167,139,250,.06);border-radius:16px;padding:16px;margin:18px 0;color:#d6caff}
+footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0 34px;margin-top:36px;font:13px/1.5 ui-monospace,Menlo,monospace}
+@media(max-width:860px){.grid,.two,.section-head,.metric{grid-template-columns:1fr}.nav{justify-content:flex-start}}
+</style>
+</head>
+<body>
+<nav class="top shell">
+  <a class="logo" href="/">dabblewith.ai</a>
+  <div class="nav">
+    <a href="/workflows/" data-cta="nav_workflows" data-event="workflow_explore_click">Workflows</a>
+    <a href="/submit-workflow/" data-cta="nav_submit" data-event="workflow_submit_start">Submit</a>
+    <a href="/newsletter/" data-cta="nav_newsletter" data-event="newsletter_signup_click">Newsletter</a>
+    <a href="/challenges/" data-cta="nav_challenges" data-event="challenge_join_click">Challenges</a>
+    <a href="/build-in-public/" data-cta="nav_build_public" data-event="build_public_metrics_view">Build in public</a>
+    <a href="/community-bot/" data-cta="nav_community_bot" data-event="community_bot_setup_click">Community bot</a>
+    <a href="/blog/" data-cta="nav_blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+<section class="hero shell">
+  <div class="eyebrow">build in public</div>
+  <h1>Honest weekly progress. No vanity numbers.</h1>
+  <p class="lead">This is the operating-room view of Dabblewith.ai. Six metrics, two qualitative lines, one explicit failure — every week. If a number is zero, we publish a zero. If MRR is $0, we publish $0. The point is the loop, not the leaderboard.</p>
+  <div class="actions">
+    <a class="btn primary" href="/newsletter/" data-cta="build_public_newsletter" data-event="newsletter_signup_click">Get the weekly issue</a>
+    <a class="btn" href="/workflows/founder-weekly-metrics-build-in-public/" data-cta="build_public_workflow" data-event="workflow_view" data-workflow-category="founders-operators">See the workflow</a>
+    <a class="btn" href="/submit-workflow/" data-cta="build_public_submit" data-event="workflow_submit_start">Submit a workflow</a>
+  </div>
+</section>
+
+<section class="shell">
+  <div class="section-head">
+    <div><div class="eyebrow">latest baseline</div><h2>Where we are this week.</h2></div>
+    <p>Updated 2026-05-26. Numbers are baseline placeholders until the first full week of measurement closes. We won't backfill or round up.</p>
+  </div>
+  <div class="metric">
+    <div class="panel"><div class="k">Site visitors (7d)</div><div class="v">baseline</div></div>
+    <div class="panel"><div class="k">Returning visitors (7d)</div><div class="v">baseline</div></div>
+    <div class="panel"><div class="k">Workflow views (7d)</div><div class="v">baseline</div></div>
+    <div class="panel"><div class="k">Workflow submissions (cumulative)</div><div class="v">0</div></div>
+    <div class="panel"><div class="k">Community bot setup clicks (7d)</div><div class="v">baseline</div></div>
+    <div class="panel"><div class="k">Newsletter signups (cumulative)</div><div class="v">baseline</div></div>
+    <div class="panel"><div class="k">Experiments shipped (7d)</div><div class="v">3</div></div>
+    <div class="panel"><div class="k">Experiments that failed</div><div class="v">tracked</div></div>
+    <div class="panel"><div class="k">MRR</div><div class="v">$0</div></div>
+  </div>
+  <div class="callout"><strong>Baseline note.</strong> "Baseline" means we are intentionally not publishing a number yet because the measurement window hasn't closed. We'll replace each placeholder with the real number — including zero — at the next weekly update.</div>
+</section>
+
+<section class="shell">
+  <div class="section-head">
+    <div><div class="eyebrow">weekly template</div><h2>The shape we follow every week.</h2></div>
+    <p>Forkable. The same template lives in <a href="/workflows/founder-weekly-metrics-build-in-public/">the founder weekly metrics workflow</a>.</p>
+  </div>
+  <div class="weekly">
+    <h3>Week of YYYY-MM-DD</h3>
+    <ul>
+      <li><strong>Metrics:</strong> visitors, returning, workflow views, submissions, community-bot setup clicks, newsletter signups, MRR.</li>
+      <li><strong>Experiment shipped:</strong> 1-2 lines on the most important thing we tried.</li>
+      <li><strong>Surprise:</strong> the thing we didn't expect — positive or negative.</li>
+      <li><strong>Failure of the week:</strong> the specific thing that didn't work, and what we'll change next week.</li>
+      <li><strong>Lesson:</strong> 1 line a reader can use without context.</li>
+      <li><strong>What I'm asking for help with:</strong> 1 concrete ask the reader can do in &lt;5 minutes.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="shell">
+  <div class="section-head">
+    <div><div class="eyebrow">what we never publish</div><h2>Honest by default.</h2></div>
+    <p>The guardrails for build-in-public posts on this site and on social.</p>
+  </div>
+  <div class="grid">
+    <article class="card"><h3>No fake usage</h3><p>We will not publish member counts, testimonials, or use cases that aren't real. If a feature has 0 users, we say 0.</p></article>
+    <article class="card"><h3>No private member data</h3><p>We won't publish names, phone numbers, or message content without explicit permission, and never identifiable health/financial details.</p></article>
+    <article class="card"><h3>No padded experiments</h3><p>If we didn't ship an experiment that week, we say so. We don't dress up "thinking about it" as "iterating".</p></article>
+  </div>
+  <div class="privacy"><strong>Privacy contract.</strong> Analytics on this site only collect path, CTA id, link host, audience segment, workflow category, and UTM/intent values. No PII, no raw message content, no phone numbers. See <a href="/privacy/">privacy</a>.</div>
+</section>
+
+<section class="shell">
+  <div class="hero">
+    <div class="eyebrow">follow along</div>
+    <h2>Get the weekly update.</h2>
+    <p class="lead">The build-in-public summary goes out with the newsletter — same time, same format.</p>
+    <div class="actions">
+      <a class="btn primary"
+         data-cta="build_public_newsletter_footer"
+         data-event="newsletter_signup_click"
+         href="https://wa.me/919566112518?text=Add%20me%20to%20the%20Dabblewith%20weekly%20updates.%20%28source%3A%20build%20in%20public%29&utm_source=direct&utm_medium=build-in-public&utm_campaign=newsletter_signup&utm_content=build_public_footer&intent=build-in-public"
+         target="_blank" rel="noreferrer">Subscribe on WhatsApp</a>
+      <a class="btn"
+         data-cta="build_public_partner_swap"
+         data-event="partner_interest_click"
+         href="mailto:bhuvanesh@neuralhawk.ai?subject=Issue%20swap%20%E2%80%94%20Dabblewith%20build%20in%20public&body=I%27d%20like%20to%20swap%20a%20build-in-public%20issue%20with%20Dabblewith.%20My%20audience%2Ffocus%3A%20___.%20Proposed%20week%3A%20___.">Issue-swap interest</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="shell">
+  <span>AI-drafted · human-reviewed · privacy-aware · <a href="/workflows/" data-cta="footer_workflows" data-event="workflow_explore_click">Workflows</a> · <a href="/submit-workflow/" data-cta="footer_submit" data-event="workflow_submit_start">Submit</a> · <a href="/newsletter/" data-cta="footer_newsletter" data-event="newsletter_signup_click">Newsletter</a> · <a href="/challenges/" data-cta="footer_challenges" data-event="challenge_join_click">Challenges</a> · <a href="/build-in-public/" data-cta="footer_build_public" data-event="build_public_metrics_view">Build in public</a> · <a href="/community-policy/" data-cta="footer_policy">Community policy</a> · <a href="/community-bot/" data-cta="footer_community_bot" data-event="community_bot_setup_click">Community bot</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span>
+</footer>
+</body>
+</html>

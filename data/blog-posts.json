@@ -1157,5 +1157,100 @@
       ],
       "artifact": "Five-question AI workshop intake template plus 60-minute build-review-reuse run-of-show."
     }
+  },
+  {
+    "slug": "founder-ai-automation-review-checklist",
+    "title": "Founder AI Automation Review Checklist",
+    "description": "A practical checklist for founders to choose, scope, review, and safely ship AI automations without creating brittle busywork.",
+    "keywords": [
+      "AI automation checklist for founders",
+      "founder AI automation",
+      "human in the loop AI workflow",
+      "AI workflow automation"
+    ],
+    "publishedAt": "2026-05-26",
+    "status": "published",
+    "excerpt": "Before a founder automates a workflow with AI, the real job is to define the decision, the source of truth, the review gate, and the failure path.",
+    "sections": [
+      [
+        "Start with the decision, not the tool",
+        "A useful founder AI automation starts with one recurring decision or handoff, not with a model feature. Write the sentence first: “When X arrives, we need Y prepared so Z can decide.” Examples: when a sales call ends, prepare follow-up notes so the founder can approve the next email; when a customer complaint arrives, classify urgency so support can respond; when a competitor launches something, summarize the change so product can decide whether it matters. If the workflow cannot be expressed as a decision, draft, routing step, or checklist, it is probably too vague to automate."
+      ],
+      [
+        "Map the current manual loop",
+        "Before adding AI, capture the existing loop in five columns: trigger, input, human judgment, output, and next action. For a customer-research workflow, the trigger may be a new call transcript, the input is the transcript and CRM notes, the judgment is whether the pain is real or polite noise, the output is a three-bullet insight, and the next action is update the roadmap or follow up. This map prevents the classic mistake of automating only the easy text generation while ignoring the judgment that actually makes the workflow valuable."
+      ],
+      [
+        "Choose the source of truth",
+        "AI should transform and route information; it should not become the source of truth for facts that belong in a database, CRM, ticket tracker, calendar, or document repository. Put each fact into a home. Customer status lives in the CRM. Event timing lives in the calendar or event sheet. Pricing lives in the billing doc. The AI workflow can retrieve, summarize, and draft from those sources, but the review screen should show where the answer came from. If nobody can trace the source, the automation is not ready for customer-facing use."
+      ],
+      [
+        "Design the human review gate",
+        "Every founder automation needs an explicit review rule. Low-risk work can be auto-saved as a draft. Medium-risk work should ask for approval before sending. High-risk work should escalate with context and stop. A practical review checklist is short: did the AI use the right input, did it invent anything, is the tone acceptable, is private data exposed, and is the recommended next step strategically sound? The goal is not to slow everything down; it is to put human attention exactly where trust, money, brand, or customer relationships are at stake."
+      ],
+      [
+        "Define the failure path before launch",
+        "Founders often test the happy path and forget the awkward cases: missing transcript, empty CRM field, angry customer, duplicate event, stale price, unclear owner, or model output that sounds confident but wrong. Write the failure path as plainly as the main workflow. If required data is missing, ask one clarifying question. If confidence is low, create a task for a human. If the request involves legal, medical, financial, or sensitive personal information, stop and escalate. A boring failure path is a sign of a mature AI workflow."
+      ],
+      [
+        "A 30-minute shipping checklist",
+        "Use this checklist before turning on a new automation. 1) Name the workflow and owner. 2) Identify the trigger and source systems. 3) Save three real examples and one edge case. 4) Define the output format. 5) Add a human review rule. 6) Add a privacy rule for what must never be pasted or published. 7) Log input source, model/tool used, reviewer, and final action. 8) Measure one useful outcome for two weeks: time saved, faster follow-up, fewer missed tasks, or better conversion. If the automation does not improve one measurable loop, keep it as a workshop exercise, not production operations."
+      ]
+    ],
+    "qualityScore": 88,
+    "qualityNote": "Evergreen founder playbook with concrete checklist, review gate, source-of-truth guidance, and failure-path design.",
+    "researchBrief": {
+      "reader": "Founders and operators who want practical AI automation but need a safe way to choose and ship workflows.",
+      "jobToBeDone": "Decide which business workflow is ready for AI automation and how to add human review without slowing the business down.",
+      "thesis": "Founder AI automation works when the workflow has a clear decision, trusted source of truth, explicit review gate, and boring failure path.",
+      "searchIntent": "AI automation checklist for founders, founder AI automation workflow, human in the loop AI workflow checklist",
+      "sources": [
+        {
+          "title": "Anthropic — Building effective agents",
+          "url": "https://www.anthropic.com/engineering/building-effective-agents",
+          "type": "primary",
+          "checkedAt": "2026-05-26",
+          "notes": "Supports starting with simple composable workflows and avoiding unnecessary autonomy."
+        },
+        {
+          "title": "OpenAI Agents SDK documentation",
+          "url": "https://openai.github.io/openai-agents-python/",
+          "type": "primary",
+          "checkedAt": "2026-05-26",
+          "notes": "Frames production agents around tools, handoffs, guardrails, tracing, and human-in-the-loop patterns."
+        },
+        {
+          "title": "Nielsen Norman Group — AI: First New UI Paradigm in 60 Years",
+          "url": "https://www.nngroup.com/articles/ai-paradigm/",
+          "type": "critical",
+          "checkedAt": "2026-05-26",
+          "notes": "Useful framing for intent-based interfaces where humans must inspect whether the system understood the desired outcome."
+        },
+        {
+          "title": "dabblewith.ai SEO Blog Strategy",
+          "url": "SEO-BLOG-STRATEGY.md",
+          "type": "internal",
+          "checkedAt": "2026-05-26",
+          "notes": "Requires practical evergreen playbooks for hands-on AI learning, agent workflows, and human-guided operations."
+        }
+      ],
+      "insights": [
+        "The automation candidate should be framed as a decision or handoff before any tool is chosen.",
+        "AI should not become the source of truth for business facts.",
+        "Review gates should match business risk instead of requiring blanket manual approval.",
+        "Failure paths are where founder automations either become reliable systems or brittle demos."
+      ],
+      "examples": [
+        "Sales-call follow-up draft with founder approval",
+        "Customer complaint urgency routing",
+        "Competitor-change summary for product decisions"
+      ],
+      "risks": [
+        "Automating vague workflows creates more cleanup work than leverage.",
+        "Untraceable AI answers can damage customer trust.",
+        "Over-automation of sensitive decisions can create legal, financial, or brand risk."
+      ],
+      "artifact": "30-minute founder AI automation review checklist covering trigger, source systems, examples, output, review rule, privacy rule, logs, and outcome metric."
+    }
   }
 ]

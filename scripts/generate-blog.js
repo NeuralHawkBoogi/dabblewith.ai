@@ -3,7 +3,11 @@ const path = require('path');
 
 const root = path.resolve(__dirname, '..');
 const postsPath = path.join(root, 'data', 'blog-posts.json');
+const workflowsPath = path.join(root, 'data', 'workflows.json');
 const posts = JSON.parse(fs.readFileSync(postsPath, 'utf8'));
+const workflowData = fs.existsSync(workflowsPath)
+  ? JSON.parse(fs.readFileSync(workflowsPath, 'utf8'))
+  : { categories: [], workflows: [] };
 const published = posts
   .filter(p => p.status === 'published' && p.publishedAt)
   .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
@@ -150,6 +154,16 @@ const urls = [
   ['https://dabblewith.ai/casagrand-firstcity/community-bot/', 'weekly', '0.8'],
   ['https://dabblewith.ai/casagrand-firstcity/flyer/', 'weekly', '0.7'],
   ['https://dabblewith.ai/community-bot/', 'weekly', '0.9'],
+  ['https://dabblewith.ai/workflows/', 'weekly', '0.9'],
+  ...(workflowData.categories || []).map(c => [`https://dabblewith.ai/workflows/${c.slug}/`, 'weekly', '0.8']),
+  ...(workflowData.workflows || []).map(w => [`https://dabblewith.ai/workflows/${w.slug}/`, 'monthly', '0.8', w.published]),
+  ['https://dabblewith.ai/submit-workflow/', 'weekly', '0.8'],
+  ['https://dabblewith.ai/newsletter/', 'weekly', '0.8'],
+  ['https://dabblewith.ai/build-in-public/', 'weekly', '0.8'],
+  ['https://dabblewith.ai/challenges/', 'weekly', '0.8'],
+  ['https://dabblewith.ai/challenges/build-in-public-4-weeks/', 'weekly', '0.8'],
+  ['https://dabblewith.ai/community-policy/', 'weekly', '0.7'],
+  ['https://dabblewith.ai/start/', 'weekly', '0.8'],
   ['https://dabblewith.ai/homepage-outreach/builder-session/', 'weekly', '0.8'],
   ['https://dabblewith.ai/homepage-outreach/follow-up-scorecard/', 'weekly', '0.8'],
   ['https://dabblewith.ai/homepage-outreach/workflow-sample-intake/', 'weekly', '0.8'],

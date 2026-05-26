@@ -183,7 +183,7 @@ Make the website capable of hosting workflow assets that compound through search
 
 ### WEB-GROWTH-T04 — Create Workflow Exchange information architecture
 Priority: P0
-Status: todo
+Status: done
 Dependencies: [WEB-GROWTH-T01]
 
 **Scope**
@@ -209,11 +209,18 @@ Dependencies: [WEB-GROWTH-T01]
 - Sitemap includes workflow index and pages.
 - No workflow example contains real private data.
 
+**Evidence**
+- Added `data/workflows.json` as the structured workflow source with category and workflow fields for title, slug, audience segment, problem, outcome, tools, time, difficulty, steps, example output, human-review gate, privacy notes, fork ideas, related workflows, and CTA.
+- Added `scripts/generate-workflows.js` to render `/workflows/`, five category routes, and individual workflow pages from the structured source.
+- Homepage audience cards now deep-link to workflow category pages, and generated workflow routes are included in sitemap through `scripts/generate-blog.js`.
+- Validation: `node --check scripts/generate-workflows.js`; `node scripts/generate-workflows.js --check`; static smoke checks for route, category, and sitemap presence.
+
+
 ---
 
 ### WEB-GROWTH-T05 — Seed first 10 practical AI workflow pages
 Priority: P0
-Status: todo
+Status: done
 Dependencies: [WEB-GROWTH-T04]
 
 **Scope**
@@ -241,11 +248,17 @@ Each workflow must include exact user problem/query, step-by-step process, tools
 - Content generation script passes.
 - Link/sitemap assertions pass.
 
+**Evidence**
+- Published 10 seed workflow mini-tutorials covering the required topics: workshop intake, WhatsApp community onboarding bot, founder weekly metrics, meeting notes to action tracker, research paper summarization, healthcare ops call triage, creator repurposing, no-code lead qualification, FAQ gap mining, and AI tool evaluation scorecard.
+- Each workflow includes a searchable query/problem, step-by-step process, tools, example output, human-review notes, privacy notes, fork ideas, related workflows, and CTA.
+- Validation: workflow generator check plus static smoke confirming 10 workflow pages, internal related links, and sitemap entries.
+
+
 ---
 
 ### WEB-GROWTH-T06 — Add structured schema for workflows and tutorials
 Priority: P0
-Status: todo
+Status: done
 Dependencies: [WEB-GROWTH-T04]
 
 **Scope**
@@ -263,11 +276,17 @@ Dependencies: [WEB-GROWTH-T04]
 - Schema validation script passes.
 - Static HTML contains JSON-LD for sample workflow page.
 
+**Evidence**
+- Workflow index/category pages include `ItemList` JSON-LD; individual workflow pages include `HowTo` and `LearningResource` JSON-LD generated from safe workflow metadata.
+- Schema uses only public workflow content from `data/workflows.json`; no private user data, tokens, raw messages, or secrets.
+- Validation: static smoke parsed JSON-LD blocks from sample workflow pages and verified `HowTo`/`LearningResource` types and required fields.
+
+
 ---
 
 ### WEB-GROWTH-T07 — Add workflow submission intake MVP
 Priority: P1
-Status: todo
+Status: done
 Dependencies: [WEB-GROWTH-T04, WEB-GROWTH-T02]
 
 **Scope**
@@ -285,6 +304,12 @@ Dependencies: [WEB-GROWTH-T04, WEB-GROWTH-T02]
 **Validation**
 - Form/CTA smoke passes.
 - Submission copy clearly says human review before publishing.
+
+**Evidence**
+- Added `/submit-workflow/` with WhatsApp-first submission intake, required fields, publish-permission guidance, privacy warnings, and explicit human-review-before-publishing copy.
+- Submission CTAs use `workflow_submit_start` and preserve safe UTM/intent parameters via the site tracking layer.
+- Validation: static smoke confirmed route, CTA event, privacy copy, and human-review language.
+
 
 ---
 
@@ -305,7 +330,7 @@ Create an owned audience channel and transparent operating rhythm that converts 
 
 ### WEB-GROWTH-T08 — Create newsletter landing page and Substack operating system
 Priority: P0
-Status: todo
+Status: done
 Dependencies: [WEB-GROWTH-T01, WEB-GROWTH-T02]
 
 **Scope**
@@ -329,11 +354,17 @@ Dependencies: [WEB-GROWTH-T01, WEB-GROWTH-T02]
 - Static generation and sitemap pass.
 - GA event taxonomy includes newsletter CTA.
 
+**Evidence**
+- Added `/newsletter/` landing page positioned around weekly practical AI workflows, not generic AI news.
+- Includes 3-2-1 operating cadence, sample issue structure, signup CTA, and partner/issue-swap CTA.
+- Validation: static smoke confirmed route, `newsletter_signup_click`, `partner_interest_click`, and sitemap entry.
+
+
 ---
 
 ### WEB-GROWTH-T09 — Create build-in-public metrics page/template
 Priority: P0
-Status: todo
+Status: done
 Dependencies: [WEB-GROWTH-T03]
 
 **Scope**
@@ -351,11 +382,17 @@ Dependencies: [WEB-GROWTH-T03]
 - Static generation passes.
 - No private analytics secrets exposed.
 
+**Evidence**
+- Added `/build-in-public/` with weekly metrics template for traffic, returning visitors, workflow views, submissions, CTA clicks, community-bot requests, experiments, failed experiments, lessons, and honest `$0 MRR` support when true.
+- Links to workflow submission and newsletter routes.
+- Validation: static smoke confirmed route, reusable metric fields, no exposed analytics secrets, and sitemap entry.
+
+
 ---
 
 ### WEB-GROWTH-T10 — Create partner collaboration/issue-swap CRM
 Priority: P1
-Status: todo
+Status: done
 Dependencies: [WEB-GROWTH-T08]
 
 **Scope**
@@ -371,6 +408,12 @@ Dependencies: [WEB-GROWTH-T08]
 
 **Validation**
 - Manual doc review.
+
+**Evidence**
+- Added `docs/growth/partner-collaboration-crm.md` with target slots, audience-fit fields, collaboration types, statuses, and outreach templates for issue swaps/Substack Live.
+- Newsletter page includes a partner collaboration CTA using `partner_interest_click`.
+- Validation: manual/static review confirmed CRM fields and CTA route.
+
 
 ---
 
@@ -391,7 +434,7 @@ Avoid the empty-restaurant problem by giving visitors immediate, relevant paths 
 
 ### WEB-GROWTH-T11 — Design no-blank-feed onboarding path
 Priority: P0
-Status: todo
+Status: done
 Dependencies: [WEB-GROWTH-T04]
 
 **Scope**
@@ -413,11 +456,17 @@ Dependencies: [WEB-GROWTH-T04]
 - Route/link smoke passes.
 - Intent CTA events exist.
 
+**Evidence**
+- Added `/start/` no-blank-feed onboarding route with self-selection paths for learning practical AI, building workflows, automating a community, exploring AI by profession, and joining a challenge.
+- Each path routes to relevant workflow categories, newsletter, community-bot, or challenge pages with safe intent/source tracking.
+- Validation: static smoke confirmed route links and safe CTA/event attributes.
+
+
 ---
 
 ### WEB-GROWTH-T12 — Launch 4-week AI workflow challenge page
 Priority: P1
-Status: todo
+Status: done
 Dependencies: [WEB-GROWTH-T04, WEB-GROWTH-T08]
 
 **Scope**
@@ -434,11 +483,17 @@ Dependencies: [WEB-GROWTH-T04, WEB-GROWTH-T08]
 **Validation**
 - Static generation and sitemap pass.
 
+**Evidence**
+- Added `/challenges/` and `/challenges/build-in-public-4-weeks/` for the 4-week practical AI workflow challenge.
+- Includes schedule, participation rules, weekly prompts, submission CTA, newsletter CTA, and safe experimentation/human-review framing.
+- Validation: static smoke confirmed both routes, `challenge_join_click`, workflow submission/newsletter CTAs, and sitemap entries.
+
+
 ---
 
 ### WEB-GROWTH-T13 — Create safe-harbor AI community policy page
 Priority: P0
-Status: todo
+Status: done
 Dependencies: []
 
 **Scope**
@@ -453,6 +508,12 @@ Dependencies: []
 **Validation**
 - Static generation passes.
 - Footer/link smoke passes.
+
+**Evidence**
+- Added `/community-policy/` with safe-harbor rules for constructive AI debate, creator respect, privacy/data ownership, no harassment, human oversight, provenance, bias, and data-security principles.
+- Linked from homepage/footer and generated workflow footers.
+- Validation: static smoke confirmed route, footer link, and protective non-preachy policy coverage.
+
 
 ---
 
@@ -473,7 +534,7 @@ Define a privacy-safe signal layer for retention, personalization, and future AI
 
 ### WEB-GROWTH-T14 — Define community intelligence event model
 Priority: P1
-Status: todo
+Status: done
 Dependencies: [WEB-GROWTH-T03, WEB-GROWTH-T04]
 
 **Scope**
@@ -493,11 +554,17 @@ Also define never-track rules:
 **Validation**
 - Manual review; event names match implementation where available.
 
+**Evidence**
+- Added `docs/growth/community-intelligence-event-model.md` defining privacy-safe events for workflow views, saves/submissions, CTA clicks, challenge joins, newsletter clicks, community-bot setup clicks, returning visitors, and interest-category selection.
+- Explicit never-track rules cover raw phones, raw message text, secrets/tokens, and sensitive personal/health/financial content.
+- Validation: manual/static review confirmed event names align with current tracking taxonomy where implemented.
+
+
 ---
 
 ### WEB-GROWTH-T15 — Add lightweight churn/retention dashboard spec
 Priority: P2
-Status: todo
+Status: done
 Dependencies: [WEB-GROWTH-T14]
 
 **Scope**
@@ -519,6 +586,12 @@ Dependencies: [WEB-GROWTH-T14]
 **Validation**
 - Manual review.
 
+**Evidence**
+- Added `docs/growth/churn-retention-dashboard-spec.md` defining 7/14/30-day return visits, workflow views per visitor, CTA-to-signup conversion, community-bot funnel, newsletter funnel, and challenge participation metrics.
+- Spec distinguishes analytics from automated action and keeps human review explicit for future recommendations.
+- Validation: manual/static review confirmed mappings to the event model and privacy guardrails.
+
+
 ---
 
 # EPIC-WG-05 — Social & Launch Execution Assets
@@ -538,7 +611,7 @@ Turn the analysis into repeatable go-to-market operating assets for X, Indie Hac
 
 ### WEB-GROWTH-T16 — Create Reply Guy and build-in-public content kit
 Priority: P1
-Status: todo
+Status: done
 Dependencies: [WEB-GROWTH-T09]
 
 **Scope**
@@ -555,11 +628,17 @@ Dependencies: [WEB-GROWTH-T09]
 **Validation**
 - Manual review.
 
+**Evidence**
+- Added `docs/growth/reply-guy-and-build-in-public-content-kit.md` with high-value X/Indie Hackers reply patterns, weekly progress thread template, early-follower DM templates, vanity-metric warning, and target-buyer-fit checklist.
+- `/build-in-public/` links the template into the transparent growth loop.
+- Validation: manual/static review confirmed required templates and no fake activity claims.
+
+
 ---
 
 ### WEB-GROWTH-T17 — Create launch readiness checklist for new website features
 Priority: P1
-Status: todo
+Status: done
 Dependencies: [WEB-GROWTH-T02, WEB-GROWTH-T03]
 
 **Scope**
@@ -579,6 +658,12 @@ Dependencies: [WEB-GROWTH-T02, WEB-GROWTH-T03]
 
 **Validation**
 - Manual review.
+
+**Evidence**
+- Added `docs/growth/launch-readiness-checklist.md` covering UTM links, GA events, sitemap, screenshots/social assets, early-person shortlist, launch timing, follow-up post, and metrics review.
+- Used against this website-feature batch by validating workflow/newsletter/challenge/community-policy route coverage, CTA events, and sitemap inclusion before commit.
+- Validation: `git diff --check`, node syntax checks, generator checks, and static route/schema/sitemap smoke.
+
 
 ---
 
