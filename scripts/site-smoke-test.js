@@ -72,6 +72,30 @@ for (const file of htmlFiles) {
     const href = row.href || row.src;
     if (href && !localTargetExists(file, href)) issues.push(`${rel}: broken local reference ${href}`);
   }
+
+  const metas = attrs(html, 'meta');
+  const ogImage = metas.find(row => row.property === 'og:image')?.content;
+  const twitterImage = metas.find(row => row.name === 'twitter:image')?.content;
+  if (ogImage && !localTargetExists(file, ogImage)) issues.push(`${rel}: broken og:image ${ogImage}`);
+  if (twitterImage && !localTargetExists(file, twitterImage)) issues.push(`${rel}: broken twitter:image ${twitterImage}`);
+}
+
+const requiredPreviewImages = {
+  'index.html': '/media/og/home.svg',
+  'workflows/index.html': '/media/og/workflow-exchange.svg',
+  'community-bot/index.html': '/media/og/community-bot.svg',
+  'newsletter/issue-001/index.html': '/media/og/newsletter-issue-001.svg',
+  'templates/index.html': '/media/og/templates.svg',
+  'experiments/index.html': '/media/og/experiments.svg',
+};
+
+for (const [rel, expected] of Object.entries(requiredPreviewImages)) {
+  const html = fs.readFileSync(path.join(root, rel), 'utf8');
+  const metas = attrs(html, 'meta');
+  const ogImage = metas.find(row => row.property === 'og:image')?.content || '';
+  const twitterImage = metas.find(row => row.name === 'twitter:image')?.content || '';
+  if (!ogImage.endsWith(expected)) issues.push(`${rel}: expected og:image ${expected}`);
+  if (!twitterImage.endsWith(expected)) issues.push(`${rel}: expected twitter:image ${expected}`);
 }
 
 const communityBot = fs.readFileSync(path.join(root, 'community-bot', 'index.html'), 'utf8');

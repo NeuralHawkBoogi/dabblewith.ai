@@ -130,7 +130,8 @@ function pageShell({ title, description, canonicalPath, jsonLd, body }) {
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <meta name="theme-color" content="#060912" />
-<meta property="og:image" content="https://dabblewith.ai/app-icon-1024.png" />
+<meta property="og:image" content="https://dabblewith.ai/media/og/workflow-exchange.svg" />
+<meta name="twitter:image" content="https://dabblewith.ai/media/og/workflow-exchange.svg" />
 <title>${escape(title)}</title>
 <meta name="description" content="${escape(description)}" />
 <meta name="robots" content="index, follow, max-image-preview:large" />

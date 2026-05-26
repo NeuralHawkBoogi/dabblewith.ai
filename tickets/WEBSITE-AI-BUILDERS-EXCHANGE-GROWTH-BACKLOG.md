@@ -711,13 +711,13 @@ Phase 1 website epics `EPIC-WG-00` through `EPIC-WG-05` are complete: positionin
 1. ✅ `WEB-GROWTH-T19` — downloadable workflow templates / copyable worksheets for the top 5 workflows.
 2. ✅ `WEB-GROWTH-T20` — first newsletter issue as a web archive linked from `/newsletter/`.
 3. ✅ `WEB-GROWTH-T21` — lightweight `/experiments/` page showing what is live, testing, and next.
-4. Next: `WEB-GROWTH-T22` — create social preview images for homepage, workflow index, community bot, newsletter issue, templates, and experiments.
+4. ✅ `WEB-GROWTH-T22` — social preview images for homepage, workflow index, community bot, newsletter issue, templates, and experiments.
 
 
 # EPIC-WG-06 — Phase 2 Activation Surfaces
 
 Priority: P0/P1
-Status: in_progress
+Status: done
 
 ## Goal
 Convert the Phase 1 website from readable surfaces into reusable assets: worksheets visitors can copy, archive issues they can share, and a public roadmap that explains what is live versus experimental.
@@ -800,7 +800,7 @@ Dependencies: [WEB-GROWTH-T09, WEB-GROWTH-T18]
 - Sitemap includes `/experiments/`.
 
 **Evidence**
-- Added `/experiments/` with live Workflow Exchange, templates, newsletter archive, community-bot lead capture test, and next social preview card work.
+- Added `/experiments/` with live Workflow Exchange, templates, newsletter archive, community-bot lead capture test, and social preview card work.
 - Added decision rule: prioritize replies, worksheet copies, workflow submissions, and community-bot setup conversations over vanity traffic.
 - Generated Phase 2 nav/footer surfaces link to `/experiments/`.
 
@@ -808,7 +808,7 @@ Dependencies: [WEB-GROWTH-T09, WEB-GROWTH-T18]
 
 ### WEB-GROWTH-T22 — Create social preview images for launch surfaces
 Priority: P1
-Status: todo
+Status: done
 Dependencies: [WEB-GROWTH-T17]
 
 **Scope**
@@ -822,9 +822,28 @@ Dependencies: [WEB-GROWTH-T17]
 - Images avoid AI-art weirdness and stay readable at social-card size.
 
 **Validation**
-- Visual QC + live metadata smoke.
+- SVG dimensions check: all six cards are `1200x630`.
+- `node scripts/generate-og-images.js --check` passes.
+- `node scripts/site-smoke-test.js` validates `og:image`/`twitter:image` local references.
+- Live metadata smoke confirms each launch surface references its page-specific card.
+
+**Evidence**
+- Added deterministic generator `scripts/generate-og-images.js`.
+- Generated six branded SVG social preview cards under `media/og/`: homepage, workflow exchange, community bot, newsletter issue #001, templates, and experiments.
+- Wired page-specific `og:image` and `twitter:image` metadata into static pages and generated workflow/Phase 2 surfaces.
+- Extended site smoke test to fail on missing or broken social preview metadata.
 
 ---
+
+## Phase 2 completion summary
+
+Phase 2 activation surfaces are complete: workflow worksheets, first newsletter archive, experiments board, and page-specific social preview cards are shipped and validated.
+
+## Recommended next sprint
+
+1. `WEB-GROWTH-T23` — add lightweight conversion dashboard/export for privacy-safe events: workflow views, worksheet downloads, newsletter clicks, community-bot setup clicks, and workflow submissions.
+2. `WEB-GROWTH-T24` — create second newsletter issue from actual shipped experiments and add archive index cards.
+3. `WEB-GROWTH-T25` — add workflow submission moderation queue/spec so community contributions can become public pages safely.
 
 ## Notes
 - This backlog is website-first. Runtime/community-bot platformization remains in `tickets/COMMUNITY-BOT-PLATFORM.md` and related runtime tickets.
