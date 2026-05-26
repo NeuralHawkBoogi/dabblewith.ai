@@ -4,8 +4,10 @@
  * - Persists UTM + intent params in sessionStorage on first hit.
  * - Appends persisted params to internal CTA links + the bot WhatsApp number.
  * - Emits named GA events for CTAs that declare data-event="<name>".
+ * - Emits a separate lead_intent_click when a CTA opens WhatsApp or email for
+ *   submission, signup, community-bot setup, session interest, or partner interest.
  * - Sends only safe metadata: page path, CTA id, audience segment, link host,
- *   workflow category, and source/medium/campaign/content/intent when present.
+ *   workflow category, lead type, and source/medium/campaign/content/intent when present.
  *
  * Privacy rules (must hold):
  * - Never store or send phone numbers, message bodies, emails, tokens, or PII.
@@ -29,7 +31,8 @@
     challenge_join_click: true,
     partner_interest_click: true,
     build_public_metrics_view: true,
-    audience_segment_click: true
+    audience_segment_click: true,
+    lead_intent_click: true
   };
 
   function safeText(value) {
@@ -123,9 +126,7 @@
     for (var i = 0; i < links.length; i++) decorateLink(links[i], attribution);
   }
 
-  function namedEvent(eventName, link, attribution) {
-    if (typeof window.gtag !== 'function') return;
-    if (!ALLOWED_EVENTS[eventName]) return;
+  function eventPayload(link, attribution) {
     var payload = {
       cta_id: safeText(link.getAttribute('data-cta') || link.id || ''),
       cta_label: safeText(link.textContent || ''),
@@ -136,7 +137,7 @@
     };
     try {
       var u = new URL(link.href || link.getAttribute('href') || '', window.location.href);
-      payload.link_host = u.hostname || '';
+      payload.link_host = u.protocol === 'mailto:' ? 'email' : (u.hostname || '');
     } catch (_) { /* ignore */ }
     if (attribution) {
       if (attribution.utm_source) payload.source = attribution.utm_source;
@@ -145,7 +146,33 @@
       if (attribution.utm_content) payload.content = attribution.utm_content;
       if (attribution.intent) payload.intent = attribution.intent;
     }
+    return payload;
+  }
+
+  function namedEvent(eventName, link, attribution, extra) {
+    if (typeof window.gtag !== 'function') return;
+    if (!ALLOWED_EVENTS[eventName]) return;
+    var payload = eventPayload(link, attribution);
+    if (extra && typeof extra === 'object') {
+      Object.keys(extra).forEach(function (key) {
+        if (extra[key] != null) payload[key] = safeText(extra[key]);
+      });
+    }
     try { window.gtag('event', eventName, payload); } catch (_) { /* ignore */ }
+  }
+
+  function leadTypeFor(link, eventName) {
+    var href = link.getAttribute('href') || '';
+    var ctaId = link.getAttribute('data-cta') || '';
+    var joined = safeText([eventName, ctaId, link.textContent || '', href].join(' ')).toLowerCase();
+    var isLeadDestination = /^mailto:/i.test(href) || /wa\.me\/919566112518/i.test(href);
+    if (!isLeadDestination) return '';
+    if (/community[_ -]?bot|bot[_ -]?setup|launch/.test(joined)) return 'community_bot_setup';
+    if (/submit|workflow_submit/.test(joined)) return 'workflow_submission';
+    if (/newsletter|subscribe/.test(joined)) return 'newsletter_signup';
+    if (/session|signal|interest/.test(joined)) return 'session_interest';
+    if (/partner|issue[-_ ]?swap/.test(joined)) return 'partner_interest';
+    return '';
   }
 
   function handleClick(event) {
@@ -155,6 +182,13 @@
     decorateLink(link, attribution);
     var eventName = link.getAttribute('data-event');
     if (eventName) namedEvent(eventName, link, attribution);
+    var leadType = leadTypeFor(link, eventName || '');
+    if (leadType) {
+      namedEvent('lead_intent_click', link, attribution, {
+        lead_type: leadType,
+        source_event: eventName || 'cta_click'
+      });
+    }
   }
 
   function init() {

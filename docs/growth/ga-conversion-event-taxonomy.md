@@ -20,6 +20,8 @@ Allowed metadata:
 - `audience_segment`
 - `workflow_category` when non-sensitive
 - `link_host`
+- `lead_type` for WhatsApp/email lead-intent CTAs
+- `source_event` for the originating safe CTA event
 - attribution: `source`, `medium`, `campaign`, `content`, `intent`
 
 Do not send:
@@ -47,6 +49,7 @@ Do not send:
 | `partner_interest_click` | Visitor clicks partner/newsletter swap/business interest CTA. | Partner email CTA. | Partner pipeline |
 | `build_public_metrics_view` | Visitor clicks into build-in-public or metrics/status surface. | Autopilot/build-public CTA. | Trust signal |
 | `audience_segment_click` | Visitor selects an audience pathway. | Founder/creator/researcher/ops/no-code cards. | Segmentation |
+| `lead_intent_click` | Visitor clicks a WhatsApp/email CTA that can create a real lead. Includes only safe `lead_type`, never message body/contact details. | Submit, newsletter, community-bot setup, session interest, partner-interest links. | Lead intent |
 
 ## Required CTA attributes
 
@@ -81,9 +84,9 @@ data-workflow-category="community_submission"
 
 Mark these as conversions/key events in GA once traffic is flowing:
 
-1. `community_bot_setup_click`
-2. `workflow_submit_start`
-3. `newsletter_signup_click`
-4. `partner_interest_click`
+1. `lead_intent_click`
+2. `community_bot_setup_click`
+3. `workflow_submit_start`
+4. `newsletter_signup_click`
 
-Keep `audience_segment_click` and `workflow_explore_click` as diagnostic events, not conversions.
+Keep `audience_segment_click`, `workflow_explore_click`, and `source_event` as diagnostic context, not standalone conversion goals.
