@@ -46,24 +46,7 @@
       page_path: analyticsPageView.path,
       page_location: analyticsPageView.location
     });
-    document.addEventListener('click', function(event) {
-      var link = event.target && event.target.closest ? event.target.closest('a') : null;
-      if (!link || typeof gtag !== 'function') return;
-      var href = link.getAttribute('href') || '';
-      var text = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 80);
-      var isCta = /wa\.me|whatsapp|#join|#workflows|#submit|#newsletter|\/community-bot\/?|\/casagrand-firstcity\/rsvp\/?|utm_/.test(href) || /join|rsvp|start|signal|community bot|whatsapp|workflow|newsletter/i.test(text);
-      if (!isCta) return;
-      var clickPage = analyticsPage();
-      var linkHost = '';
-      try { linkHost = new URL(link.href || href, location.href).hostname; } catch (_) {}
-      gtag('event', 'cta_click', {
-        link_host: linkHost,
-        link_text: text,
-        cta_id: link.getAttribute('data-cta') || '',
-        cta_source: link.getAttribute('data-source') || clickPage.path,
-        page_path: clickPage.path
-      });
-    });
+
   </script>
   <script type="application/ld+json">
   {

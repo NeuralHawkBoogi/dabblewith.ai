@@ -1,6 +1,6 @@
 # Dabblewith.ai Website Growth Backlog — Epics + Tickets
 
-Status: open
+Status: phase-1 done / phase-2 open
 Created: 2026-05-26
 Owner: Boogi / dabblewith.ai
 Source strategy: `docs/growth/audience-acquisition-community-strategy.md`
@@ -19,19 +19,19 @@ Transform the Dabblewith.ai website from a mostly static/community-bot landing s
 
 | Epic | Name | Goal | Priority | Status |
 |---|---|---|---|---|
-| EPIC-WG-00 | Measurement & Positioning Foundation | Make the site clear and measurable before scaling traffic. | P0 | open |
-| EPIC-WG-01 | Workflow Exchange MVP | Publish workflow assets that compound through SEO and community sharing. | P0 | open |
-| EPIC-WG-02 | Newsletter & Build-in-Public Engine | Build an owned audience and transparent trust loop. | P0 | open |
-| EPIC-WG-03 | Community Cold-Start & Retention | Ensure new visitors see useful paths, not an empty community. | P0/P1 | open |
-| EPIC-WG-04 | AI Community Intelligence | Define privacy-safe signals for retention and personalization. | P1/P2 | open |
-| EPIC-WG-05 | Social & Launch Execution Assets | Operationalize reply-guy, launch, and collaboration tactics. | P1 | open |
+| EPIC-WG-00 | Measurement & Positioning Foundation | Make the site clear and measurable before scaling traffic. | P0 | done |
+| EPIC-WG-01 | Workflow Exchange MVP | Publish workflow assets that compound through SEO and community sharing. | P0 | done |
+| EPIC-WG-02 | Newsletter & Build-in-Public Engine | Build an owned audience and transparent trust loop. | P0 | done |
+| EPIC-WG-03 | Community Cold-Start & Retention | Ensure new visitors see useful paths, not an empty community. | P0/P1 | done |
+| EPIC-WG-04 | AI Community Intelligence | Define privacy-safe signals for retention and personalization. | P1/P2 | done |
+| EPIC-WG-05 | Social & Launch Execution Assets | Operationalize reply-guy, launch, and collaboration tactics. | P1 | done |
 
 ---
 
 # EPIC-WG-00 — Measurement & Positioning Foundation
 
 Priority: P0
-Status: open
+Status: done
 
 ## Goal
 Ship the minimum positioning and analytics foundation required before doing serious acquisition. Without this, growth experiments will be untraceable and visitors will not understand the new AI Builder's Exchange direction.
@@ -168,10 +168,42 @@ Each event should include safe metadata only:
 
 ---
 
+### WEB-GROWTH-T18 — Harden privacy-safe analytics across public surfaces
+Priority: P0
+Status: done
+Dependencies: [WEB-GROWTH-T02, WEB-GROWTH-T03]
+
+**Problem**
+Older generated/static pages still used legacy inline GA listeners that emitted raw `link_url`, which can leak WhatsApp numbers, prefilled message text, or unnecessary full URLs into analytics.
+
+**Scope**
+- Replace legacy inline CTA trackers on generated blog/community OS pages with `/scripts/web/dabblewith-tracking.js`.
+- Harden public static pages so GA-enabled pages use the shared privacy-safe tracker.
+- Keep copy-button analytics scoped to safe selector IDs, not raw URLs or copied text.
+- Add smoke coverage to prevent any public HTML from emitting `link_url`.
+
+**Acceptance criteria**
+- No public HTML file contains `link_url`.
+- GA-enabled pages include the shared privacy-safe tracker.
+- Blog/autopilot/session generators do not reintroduce raw URL tracking.
+- Site smoke test fails on future raw `link_url` regressions.
+
+**Validation**
+- `node scripts/site-smoke-test.js` passes.
+- `grep -R "link_url" -n *.html */index.html */*/index.html` shows no public HTML regressions.
+
+**Evidence**
+- Updated `scripts/generate-blog.js` and `scripts/generate-community-os.js` to use the shared privacy-safe tracker instead of inline raw URL click listeners.
+- Regenerated blog, autopilot, and session pages.
+- Hardened existing public static pages to include `/scripts/web/dabblewith-tracking.js` where GA is present and removed legacy raw URL click listeners.
+- Updated `scripts/site-smoke-test.js` to fail if any HTML contains `link_url` or if a GA-enabled page lacks the shared tracker.
+
+---
+
 # EPIC-WG-01 — Workflow Exchange MVP
 
 Priority: P0
-Status: open
+Status: done
 
 ## Goal
 Make the website capable of hosting workflow assets that compound through search, sharing, and community contribution.
@@ -319,7 +351,7 @@ Dependencies: [WEB-GROWTH-T04, WEB-GROWTH-T02]
 # EPIC-WG-02 — Newsletter & Build-in-Public Engine
 
 Priority: P0
-Status: open
+Status: done
 
 ## Goal
 Create an owned audience channel and transparent operating rhythm that converts casual visitors into repeat followers, subscribers, and collaborators.
@@ -423,7 +455,7 @@ Dependencies: [WEB-GROWTH-T08]
 # EPIC-WG-03 — Community Cold-Start & Retention
 
 Priority: P0/P1
-Status: open
+Status: done
 
 ## Goal
 Avoid the empty-restaurant problem by giving visitors immediate, relevant paths and a clear safe-harbor community culture.
@@ -523,7 +555,7 @@ Dependencies: []
 # EPIC-WG-04 — AI Community Intelligence
 
 Priority: P1/P2
-Status: open
+Status: done
 
 ## Goal
 Define a privacy-safe signal layer for retention, personalization, and future AI-assisted community management without over-automation.
@@ -600,7 +632,7 @@ Dependencies: [WEB-GROWTH-T14]
 # EPIC-WG-05 — Social & Launch Execution Assets
 
 Priority: P1
-Status: open
+Status: done
 
 ## Goal
 Turn the analysis into repeatable go-to-market operating assets for X, Indie Hackers, newsletter swaps, partner launches, and feature launches.
@@ -670,17 +702,16 @@ Dependencies: [WEB-GROWTH-T02, WEB-GROWTH-T03]
 
 ---
 
-## Recommended immediate sprint
+## Phase 1 completion summary
 
-1. `WEB-GROWTH-T01` — homepage repositioning
-2. `WEB-GROWTH-T02` — UTM/source tracking
-3. `WEB-GROWTH-T03` — GA conversion event taxonomy
-4. `WEB-GROWTH-T04` — workflow exchange IA
-5. `WEB-GROWTH-T05` — first 10 workflow pages
-6. `WEB-GROWTH-T06` — workflow schema/JSON-LD
-7. `WEB-GROWTH-T08` — newsletter landing page
-8. `WEB-GROWTH-T09` — build-in-public metrics page
-9. `WEB-GROWTH-T13` — community policy page
+Phase 1 website epics `EPIC-WG-00` through `EPIC-WG-05` are complete: positioning, workflow exchange, newsletter/build-in-public, cold-start routing, privacy-safe intelligence specs, launch assets, and analytics hardening are shipped.
+
+## Recommended next sprint
+
+1. `WEB-GROWTH-T19` — add downloadable workflow templates / copyable worksheets for the top 5 workflows.
+2. `WEB-GROWTH-T20` — publish first newsletter issue as a web archive and link it from `/newsletter/`.
+3. `WEB-GROWTH-T21` — add lightweight `/roadmap/` or `/experiments/` page showing what is live, testing, and next.
+4. `WEB-GROWTH-T22` — create social preview images for homepage, workflow index, community bot, and challenge pages.
 
 ## Notes
 - This backlog is website-first. Runtime/community-bot platformization remains in `tickets/COMMUNITY-BOT-PLATFORM.md` and related runtime tickets.

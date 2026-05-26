@@ -24,20 +24,9 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-7473LZQGX2');
-    document.addEventListener('click', function(event) {
-      var link = event.target && event.target.closest ? event.target.closest('a') : null;
-      if (!link || typeof gtag !== 'function') return;
-      var href = link.getAttribute('href') || '';
-      var text = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 80);
-      var isCta = /wa\.me|whatsapp|#join|\/community-bot\/?|\/casagrand-firstcity\/(rsvp|champions|bot-readiness|first-responder|qa-workflow-demo|qa-demo-follow-up|referral-sprint)\/?|utm_/.test(href) || /join|rsvp|start|signal|community bot|bot readiness|champion|first responder|qa workflow|qa demo follow-up|referral sprint|whatsapp/i.test(text);
-      if (!isCta) return;
-      gtag('event', 'cta_click', {
-        link_url: link.href || href,
-        link_text: text,
-        page_path: location.pathname
-      });
-    });
+
   </script>
+  <script src="/scripts/web/dabblewith-tracking.js" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",

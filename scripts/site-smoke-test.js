@@ -78,8 +78,16 @@ const communityBot = fs.readFileSync(path.join(root, 'community-bot', 'index.htm
 if (!communityBot.includes('/scripts/web/dabblewith-tracking.js')) {
   issues.push('community-bot/index.html: missing shared privacy-safe tracker');
 }
-if (/\blink_url\b/.test(communityBot)) {
-  issues.push('community-bot/index.html: must not emit raw link_url');
+
+for (const file of htmlFiles) {
+  const rel = path.relative(root, file);
+  const html = fs.readFileSync(file, 'utf8');
+  if (/\blink_url\b/.test(html)) {
+    issues.push(`${rel}: must not emit raw link_url`);
+  }
+  if (/G-7473LZQGX2/.test(html) && !html.includes('/scripts/web/dabblewith-tracking.js')) {
+    issues.push(`${rel}: GA page missing shared privacy-safe tracker`);
+  }
 }
 
 if (issues.length) {
