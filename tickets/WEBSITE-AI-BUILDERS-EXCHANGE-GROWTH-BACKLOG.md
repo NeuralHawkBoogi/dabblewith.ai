@@ -46,7 +46,7 @@ Ship the minimum positioning and analytics foundation required before doing seri
 
 ### WEB-GROWTH-T01 — Reposition homepage around AI Builder's Exchange
 Priority: P0
-Status: todo
+Status: done
 Dependencies: []
 
 **Problem**
@@ -78,11 +78,18 @@ The current site does not yet clearly communicate the strategic pivot: Dabblewit
 - HTML contains the new primary CTAs.
 - Sitemap includes homepage and new routes where applicable.
 
+**Evidence**
+- Homepage hero now positions Dabblewith.ai as an AI Builder's Exchange: "Discover, fork, and share practical AI workflows."
+- Added above-the-fold CTAs for Explore workflows, Submit a workflow, Join newsletter, and Launch a community bot.
+- Added audience pathways for founders/operators, creators/writers, researchers/academics, healthcare/business ops teams, and no-code/automation builders.
+- Added workflow, submission, newsletter, and community-bot sections without creating new workflow routes.
+- Validation: `git diff --check`, `node --check scripts/web/dabblewith-tracking.js`, static grep smoke for CTA/event coverage.
+
 ---
 
 ### WEB-GROWTH-T02 — Add source/intent tracking and UTM discipline
 Priority: P0
-Status: todo
+Status: done
 Dependencies: []
 
 **Problem**
@@ -105,11 +112,18 @@ Recent GA checks show marketplace/social traffic collapses into Direct/Unassigne
 - JS/HTML smoke test verifies UTM preservation.
 - GA event naming remains stable.
 
+**Evidence**
+- Added `docs/growth/utm-link-conventions.md` with source/medium/campaign/content/intent rules and channel templates.
+- Added `scripts/web/dabblewith-tracking.js` to capture attribution in `sessionStorage`, decorate internal/WhatsApp CTA links, and avoid PII capture.
+- Wired tracking script into `index.html`.
+- Removed raw `link_url` from the existing generic CTA analytics payload; only safe `link_host` is emitted.
+- Validation: `node --check scripts/web/dabblewith-tracking.js`; static grep confirms tracked params and CTA attributes exist.
+
 ---
 
 ### WEB-GROWTH-T03 — Add conversion event taxonomy for GA
 Priority: P0
-Status: todo
+Status: done
 Dependencies: [WEB-GROWTH-T02]
 
 **Problem**
@@ -142,6 +156,12 @@ Each event should include safe metadata only:
 **Validation**
 - Static smoke test confirms event calls exist.
 - Manual browser or script smoke verifies no syntax errors.
+
+**Evidence**
+- Added `docs/growth/ga-conversion-event-taxonomy.md` with event definitions, allowed metadata, and GA conversion recommendations.
+- Instrumented homepage CTAs with `data-event`, `data-cta`, `data-audience`, and safe workflow metadata where applicable.
+- Allowlisted events in `scripts/web/dabblewith-tracking.js`: `workflow_view`, `workflow_explore_click`, `workflow_submit_start`, `workflow_submit_complete`, `newsletter_signup_click`, `community_bot_setup_click`, `challenge_join_click`, `partner_interest_click`, `build_public_metrics_view`, `audience_segment_click`.
+- Validation: `node --check scripts/web/dabblewith-tracking.js`; static grep confirms core event names are present.
 
 ---
 

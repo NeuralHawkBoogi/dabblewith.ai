@@ -7,20 +7,20 @@
   <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml" />
   <meta name="theme-color" content="#060912" />
   <meta property="og:image" content="https://dabblewith.ai/app-icon-1024.png" />
-  <title>dabblewith.ai — Hands-on AI Community & Workshops</title>
-  <meta name="description" content="dabblewith.ai is an AI-operated, human-guided community for hands-on AI workshops, agent workflows, practical demos, and learning by doing." />
+  <title>dabblewith.ai — AI Builder's Exchange: Discover, Fork, Share Practical AI Workflows</title>
+  <meta name="description" content="Dabblewith.ai is an AI Builder's Exchange: discover, fork, and share practical AI workflows. Built by founders, creators, researchers, healthcare ops teams, and no-code automators — human-led, privacy-aware, safe to experiment." />
   <meta name="robots" content="index, follow, max-image-preview:large" />
-  <meta name="keywords" content="AI community, AI workshops, agent workflows, hands-on AI, learn AI, AI demos, AI automation community, dabblewith.ai" />
+  <meta name="keywords" content="AI workflows, AI builder exchange, practical AI, fork AI workflow, share AI workflow, AI community, AI for founders, AI for creators, AI for researchers, AI for healthcare ops, no-code AI automation, dabblewith.ai" />
   <meta name="author" content="dabblewith.ai" />
   <link rel="canonical" href="https://dabblewith.ai/" />
   <meta property="og:site_name" content="dabblewith.ai" />
-  <meta property="og:title" content="dabblewith.ai — Hands-on AI Community" />
-  <meta property="og:description" content="An AI-operated, human-guided community for hands-on AI workshops, agent workflows, practical demos, and learning by doing." />
+  <meta property="og:title" content="dabblewith.ai — AI Builder's Exchange" />
+  <meta property="og:description" content="Discover, fork, and share practical AI workflows. Human-led, privacy-aware, safe to experiment." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dabblewith.ai/" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="dabblewith.ai — Hands-on AI Community" />
-  <meta name="twitter:description" content="AI-operated, human-guided workshops and demos for learning AI by doing." />
+  <meta name="twitter:title" content="dabblewith.ai — AI Builder's Exchange" />
+  <meta name="twitter:description" content="Discover, fork, and share practical AI workflows. Human-led, privacy-aware, safe to experiment." />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7473LZQGX2"></script>
   <script>
@@ -51,11 +51,13 @@
       if (!link || typeof gtag !== 'function') return;
       var href = link.getAttribute('href') || '';
       var text = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 80);
-      var isCta = /wa\.me|whatsapp|#join|\/community-bot\/?|\/casagrand-firstcity\/rsvp\/?|utm_/.test(href) || /join|rsvp|start|signal|community bot|whatsapp/i.test(text);
+      var isCta = /wa\.me|whatsapp|#join|#workflows|#submit|#newsletter|\/community-bot\/?|\/casagrand-firstcity\/rsvp\/?|utm_/.test(href) || /join|rsvp|start|signal|community bot|whatsapp|workflow|newsletter/i.test(text);
       if (!isCta) return;
       var clickPage = analyticsPage();
+      var linkHost = '';
+      try { linkHost = new URL(link.href || href, location.href).hostname; } catch (_) {}
       gtag('event', 'cta_click', {
-        link_url: link.href || href,
+        link_host: linkHost,
         link_text: text,
         cta_id: link.getAttribute('data-cta') || '',
         cta_source: link.getAttribute('data-source') || clickPage.path,
@@ -69,7 +71,7 @@
     "@type": "Organization",
     "name": "dabblewith.ai",
     "url": "https://dabblewith.ai/",
-    "description": "AI-operated, human-guided community for hands-on AI workshops, agent workflows, practical demos, and learning by doing.",
+    "description": "AI Builder's Exchange: discover, fork, and share practical AI workflows. Human-led, privacy-aware, safe to experiment.",
     "sameAs": []
   }
   </script>
@@ -79,9 +81,10 @@
     "@type": "WebSite",
     "name": "dabblewith.ai",
     "url": "https://dabblewith.ai/",
-    "description": "Hands-on AI community and workshops."
+    "description": "AI Builder's Exchange. Discover, fork, and share practical AI workflows."
   }
   </script>
+  <script src="/scripts/web/dabblewith-tracking.js" defer></script>
   <style>
     :root {
       --bg: #060912;
@@ -238,174 +241,251 @@
 <body>
   <div class="statusbar">
     <div class="shell">
-      <span><span class="ok">●</span> community_os: booting</span>
+      <span><span class="ok">●</span> ai_builders_exchange: open</span>
       <span><span class="warn">●</span> human_review: required</span>
-      <span>mode: online-first / hands-on</span>
+      <span>mode: workflows / fork / share</span>
     </div>
   </div>
 
   <nav class="shell">
     <a class="logo" href="#top"><span class="logo-dot"></span>dabblewith.ai</a>
     <div class="nav-links">
-      <a href="/community-bot/">Community bot</a>
-      <a href="/autopilot/">Autopilot</a>
-      <a href="/sessions/">Sessions</a>
-      <a href="/blog/">Blog</a>
-      <a href="#control-room">Control room</a>
-      <a href="#join">Join signal</a>
+      <a href="#workflows" data-cta="nav_workflows" data-event="workflow_explore_click">Workflows</a>
+      <a href="#submit" data-cta="nav_submit" data-event="workflow_submit_start">Submit</a>
+      <a href="#newsletter" data-cta="nav_newsletter" data-event="newsletter_signup_click">Newsletter</a>
+      <a href="/community-bot/" data-cta="nav_community_bot" data-event="community_bot_setup_click">Community bot</a>
+      <a href="/blog/" data-cta="nav_blog">Blog</a>
+      <a href="#audiences" data-cta="nav_audiences">For you</a>
     </div>
   </nav>
 
   <main id="top">
     <section class="hero shell">
       <div class="panel">
-        <div class="panel-head"><span>main_control / dabblewith.ai</span><span class="lights"><i class="light"></i><i class="light"></i><i class="light"></i></span></div>
+        <div class="panel-head"><span>ai_builders_exchange / dabblewith.ai</span><span class="lights"><i class="light"></i><i class="light"></i><i class="light"></i></span></div>
         <div class="hero-main">
           <div>
-            <div class="eyebrow">AI community · workshops · community bots</div>
-            <h1>Learn AI by building real things.</h1>
-            <p class="lead"><strong>dabblewith.ai</strong> is a hands-on AI community. Join to attend practical sessions, see how AI agents run community operations, or set up a similar WhatsApp AI host for your own group.</p>
-            <p class="direct-route"><strong>Start here if you came from a forwarded link:</strong> send one WhatsApp line with your role plus the workflow you want to learn, build, or automate. We’ll route you to the right session or bot demo.</p>
-            <div class="path-strip" aria-label="Choose what you want to do next">
-              <a class="path-card" data-cta="homepage_path_join" data-source="homepage_path_strip" href="https://wa.me/919566112518?text=I%27d%20like%20to%20join%20the%20dabblewith.ai%20AI%20learning%20community.%20My%20role%20is%3A%20___.%20I%20want%20to%20learn%2Fbuild%3A%20___.%20%28via%20homepage%29&utm_source=direct&utm_medium=homepage&utm_campaign=ai_learning_join&utm_content=hero_path" target="_blank" rel="noreferrer">
-                <span class="path-kicker">I want to learn</span>
-                <strong>Join the AI learning community</strong>
-                <span>Message WhatsApp and tell us what you want to build or learn.</span>
+            <div class="eyebrow">ai builder's exchange · workflows · fork · share</div>
+            <h1>Discover, fork, and share practical AI workflows.</h1>
+            <p class="lead"><strong>dabblewith.ai</strong> is an AI Builder's Exchange. Browse workflows that real founders, creators, researchers, ops teams, and no-code builders actually use — then fork one, adapt it, or publish your own.</p>
+            <p class="direct-route"><strong>Safe to experiment, human-led, privacy-aware.</strong> Every workflow lists tools, steps, human review points, and what to never automate. No fake testimonials. No synthetic users. We tell you what worked, what failed, and what we’re still testing.</p>
+            <div class="actions">
+              <a class="btn primary" data-cta="hero_explore_workflows" data-event="workflow_explore_click" href="#workflows">Explore workflows</a>
+              <a class="btn" data-cta="hero_submit_workflow" data-event="workflow_submit_start" href="#submit">Submit a workflow</a>
+              <a class="btn" data-cta="hero_join_newsletter" data-event="newsletter_signup_click" href="#newsletter">Join newsletter</a>
+              <a class="btn" data-cta="hero_launch_community_bot" data-event="community_bot_setup_click" href="/community-bot/">Launch a community bot</a>
+            </div>
+            <p class="cta-proof"><strong>Pick the path that fits you.</strong> Most visitors start by reading 1–2 workflows in their domain, then either fork one on WhatsApp or subscribe to the weekly issue.</p>
+            <div class="path-strip" aria-label="Audience pathways" id="audiences">
+              <a class="path-card" data-cta="audience_founders" data-audience="founders_operators" data-event="audience_segment_click" href="#workflows-founders">
+                <span class="path-kicker">Founders / operators</span>
+                <strong>Run the company on workflows, not vibes.</strong>
+                <span>Weekly metrics, hiring intake, customer-call triage, board updates — fork the loop your team needs.</span>
               </a>
-              <a class="path-card" data-cta="homepage_path_bot" data-source="homepage_path_strip" href="/community-bot/">
-                <span class="path-kicker">I run a group</span>
-                <strong>Set up an AI community bot</strong>
-                <span>See how a WhatsApp host can handle Q&A, registrations, and reports.</span>
+              <a class="path-card" data-cta="audience_creators" data-audience="creators_writers" data-event="audience_segment_click" href="#workflows-creators">
+                <span class="path-kicker">Creators / writers</span>
+                <strong>Repurpose without losing your voice.</strong>
+                <span>Drafting, repurposing, and editing loops where the human keeps the pen and AI handles the busywork.</span>
               </a>
-              <a class="path-card" data-cta="homepage_path_sessions" data-source="homepage_path_strip" href="/sessions/">
-                <span class="path-kicker">I want examples</span>
-                <strong>Explore upcoming sessions</strong>
-                <span>Browse practical AI demos, workflows, and first-session ideas.</span>
+              <a class="path-card" data-cta="audience_researchers" data-audience="researchers_academics" data-event="audience_segment_click" href="#workflows-researchers">
+                <span class="path-kicker">Researchers / academics</span>
+                <strong>Summaries you can actually cite.</strong>
+                <span>Paper triage, lit-review skeletons, and dataset-prep workflows with explicit human-review gates.</span>
+              </a>
+              <a class="path-card" data-cta="audience_healthcare_ops" data-audience="healthcare_business_ops" data-event="audience_segment_click" href="#workflows-ops">
+                <span class="path-kicker">Healthcare / business ops</span>
+                <strong>Triage and routing with safety caveats.</strong>
+                <span>Call summaries, FAQ gap-mining, and intake routing — with red-line lists for what AI must not decide.</span>
+              </a>
+              <a class="path-card" data-cta="audience_nocode" data-audience="nocode_automation_builders" data-event="audience_segment_click" href="#workflows-nocode">
+                <span class="path-kicker">No-code / automation</span>
+                <strong>Glue prompts to tools that actually run.</strong>
+                <span>Lead qualification, support-ticket sorting, and recurring-report workflows you can wire in an afternoon.</span>
               </a>
             </div>
           </div>
           <div>
-            <div class="actions">
-              <a class="btn primary" data-cta="homepage_join_signal" data-source="homepage_hero_direct_route" href="https://wa.me/919566112518?text=I%27d%20like%20to%20join%20the%20dabblewith.ai%20AI%20learning%20community.%20My%20role%20is%3A%20___.%20I%20want%20to%20learn%2Fbuild%3A%20___.%20%28via%20homepage%29&utm_source=direct&utm_medium=homepage&utm_campaign=ai_learning_join&utm_content=hero_primary" target="_blank" rel="noreferrer">Join on WhatsApp</a>
-              <a class="btn" data-cta="homepage_community_bot" data-source="homepage_hero" href="/community-bot/">Setup a community bot</a>
-              <a class="btn" data-cta="homepage_sessions" data-source="homepage_hero" href="/sessions/">See upcoming sessions</a>
-            </div>
-            <p class="cta-proof"><strong>Not sure what to click?</strong> Start with WhatsApp. Send one line about what you want to learn, build, or automate — we’ll route you from there.</p>
+            <p class="cta-proof"><strong>Why an exchange, not another tool list?</strong> Because tools change every month, but the underlying workflows — intake, draft, review, publish, learn — are reusable. We document the loop, not the logo.</p>
           </div>
         </div>
       </div>
 
       <aside class="side">
         <div class="panel">
-          <div class="panel-head"><span>operator_status</span><span class="ok">LIVE</span></div>
+          <div class="panel-head"><span>exchange_status</span><span class="ok">LIVE</span></div>
           <div class="small-panel metric">
-            <div class="metric-row"><span>topic_agent</span><span class="badge">online</span></div>
-            <div class="metric-row"><span>event_page_agent</span><span class="badge">drafting</span></div>
-            <div class="metric-row"><span>recap_agent</span><span class="badge blue">standby</span></div>
+            <div class="metric-row"><span>workflow_drafts</span><span class="badge">seeding</span></div>
+            <div class="metric-row"><span>submission_queue</span><span class="badge">open</span></div>
+            <div class="metric-row"><span>newsletter</span><span class="badge blue">weekly</span></div>
             <div class="metric-row"><span>human_review</span><span class="badge warn">mandatory</span></div>
-            <div class="metric-row"><span>community_status</span><span class="badge">forming</span></div>
+            <div class="metric-row"><span>privacy_mode</span><span class="badge">no PII in logs</span></div>
           </div>
         </div>
         <div class="panel">
-          <div class="panel-head"><span>mission</span><span>v0.1</span></div>
+          <div class="panel-head"><span>operating principle</span><span>v0.2</span></div>
           <div class="small-panel">
-            <h3>AI is not the mascot. It is part of the operating team.</h3>
-            <p>Every meetup should reveal what AI helped run, what humans corrected, and what members can reuse.</p>
+            <h3>Workflows compound. Tools rotate.</h3>
+            <p>Every page shows the workflow, the tools used today, the human review point, and what we’d never automate. Fork the loop, swap the tools.</p>
           </div>
         </div>
       </aside>
     </section>
 
 
+    <section class="shell" id="workflows">
+      <div class="section-head">
+        <div><div class="eyebrow">workflow exchange · preview</div><h2>Workflows by audience.</h2></div>
+        <p>These categories are seeding now. Each workflow page (rolling out next) lists the problem, the tools, the exact steps, the human-review gate, the privacy notes, and a fork CTA. No fake reviews. No automated approvals.</p>
+      </div>
+      <div class="grid">
+        <article class="card" data-code="W1" id="workflows-founders"><strong>Founders & operators</strong><p>Weekly metrics build-in-public loop, AI meeting notes to action tracker, AI tool evaluation scorecard. Built for one-person and small teams.</p></article>
+        <article class="card" data-code="W2" id="workflows-creators"><strong>Creators & writers</strong><p>Content repurposing without losing voice, draft-review-publish loops, editorial workflows that keep the human as final editor.</p></article>
+        <article class="card" data-code="W3" id="workflows-researchers"><strong>Researchers & academics</strong><p>Paper summarization with a mandatory human-review pass, dataset triage, and lit-review skeletons. Citations stay traceable.</p></article>
+        <article class="card" data-code="W4" id="workflows-ops"><strong>Healthcare & business ops</strong><p>Call triage with safety caveats, FAQ gap-mining, intake routing. Each page lists what AI may suggest and what it must not decide.</p></article>
+        <article class="card" data-code="W5" id="workflows-nocode"><strong>No-code / automation</strong><p>Lead qualification, support-ticket sorting, recurring report workflows. Tool-agnostic templates you can wire to whatever you already use.</p></article>
+        <article class="card" data-code="W6"><strong>Community workflows</strong><p>WhatsApp community onboarding, customer-support FAQ harvest, AI workshop intake. Reusable across teams of 10 and 10,000.</p></article>
+      </div>
+      <div class="actions">
+        <a class="btn primary" data-cta="workflows_section_submit" data-event="workflow_submit_start" href="#submit">Submit a workflow</a>
+        <a class="btn" data-cta="workflows_section_newsletter" data-event="newsletter_signup_click" href="#newsletter">Get the weekly issue</a>
+      </div>
+    </section>
+
+    <section class="shell" id="submit">
+      <div class="section-head">
+        <div><div class="eyebrow">contribute</div><h2>Submit a workflow.</h2></div>
+        <p>Send us a workflow you actually use. We review it with you, strip anything sensitive, and publish it with your name and a backlink. Human review before anything goes public — no auto-publish.</p>
+      </div>
+      <div class="grid">
+        <article class="card" data-code="S1"><strong>What to send</strong><p>The problem, the audience, the steps, the tools you used today, an example output (sanitized), the human review point, and what you’d never automate.</p></article>
+        <article class="card" data-code="S2"><strong>What we strip</strong><p>Names, phone numbers, emails, internal customer data, secrets, and anything ideologically loaded. If in doubt, anonymize twice.</p></article>
+        <article class="card" data-code="S3"><strong>What you get</strong><p>A published workflow page, an internal link from related workflows, a mention in the next newsletter, and an open invite to swap notes.</p></article>
+      </div>
+      <div class="actions">
+        <a class="btn primary" data-cta="submit_workflow_whatsapp" data-event="workflow_submit_start" href="https://wa.me/919566112518?text=I%27d%20like%20to%20submit%20an%20AI%20workflow%20to%20the%20Dabblewith%20Builder%27s%20Exchange.%20Audience%3A%20___.%20Problem%20it%20solves%3A%20___.%20Tools%20used%3A%20___.%20%28source%3A%20homepage%20submit%29&utm_source=direct&utm_medium=homepage&utm_campaign=workflow_submit&utm_content=submit_section" target="_blank" rel="noreferrer">Send on WhatsApp</a>
+        <a class="btn" data-cta="submit_workflow_email" data-event="workflow_submit_start" href="mailto:bhuvanesh@neuralhawk.ai?subject=Workflow%20submission%20%E2%80%94%20Dabblewith%20Builder%27s%20Exchange&body=Audience%3A%20%0AProblem%20it%20solves%3A%20%0ASteps%2Ftools%3A%20%0AExample%20output%20(sanitized)%3A%20%0AHuman-review%20point%3A%20%0AWhat%20you%27d%20never%20automate%3A%20">Send by email</a>
+      </div>
+    </section>
+
+    <section class="shell" id="newsletter">
+      <div class="section-head">
+        <div><div class="eyebrow">weekly issue</div><h2>Join the newsletter.</h2></div>
+        <p>One short weekly issue: practical AI workflows, experiments that worked, experiments that flopped, and one community ask. No hype, no listicles.</p>
+      </div>
+      <div class="grid">
+        <article class="card" data-code="N1"><strong>3 workflows</strong><p>Three forkable mini-tutorials per issue — one founder/ops, one creator/research, one no-code or community.</p></article>
+        <article class="card" data-code="N2"><strong>2 community notes</strong><p>What people submitted, what we shipped, what broke, what we’re testing next.</p></article>
+        <article class="card" data-code="N3"><strong>1 honest update</strong><p>Real metrics, real failures, real asks. If MRR is $0, we say $0. If a workflow flopped, we publish the post-mortem.</p></article>
+      </div>
+      <div class="actions">
+        <a class="btn primary" data-cta="newsletter_signup_whatsapp" data-event="newsletter_signup_click" href="https://wa.me/919566112518?text=Add%20me%20to%20the%20Dabblewith%20weekly%20workflows%20newsletter.%20%28source%3A%20homepage%20newsletter%29&utm_source=direct&utm_medium=homepage&utm_campaign=newsletter_signup&utm_content=newsletter_section" target="_blank" rel="noreferrer">Subscribe on WhatsApp</a>
+        <a class="btn" data-cta="newsletter_signup_email" data-event="newsletter_signup_click" href="mailto:bhuvanesh@neuralhawk.ai?subject=Subscribe%20%E2%80%94%20Dabblewith%20weekly%20workflows&body=Please%20add%20me%20to%20the%20weekly%20Dabblewith%20workflows%20newsletter.%20My%20audience%2Frole%3A%20___.">Subscribe by email</a>
+        <a class="btn" data-cta="newsletter_partner_swap" data-event="partner_interest_click" href="mailto:bhuvanesh@neuralhawk.ai?subject=Issue%20swap%20interest%20%E2%80%94%20Dabblewith&body=I%27d%20like%20to%20discuss%20a%20newsletter%20issue%20swap%20or%20guest%20post.%20My%20newsletter%2Faudience%3A%20___.">Issue-swap interest</a>
+      </div>
+    </section>
+
+
     <section class="shell" id="community-bot">
       <div class="section-head">
-        <div><div class="eyebrow">new platform offering</div><h2>Setup a similar AI community bot.</h2></div>
-        <p>The dabblewith.ai WhatsApp host is becoming a platform: onboard a community through WhatsApp, connect a community number, and launch a human-like AI host for registrations, Q&A, events, and reports.</p>
+        <div><div class="eyebrow">launch a community bot</div><h2>Run a workflow exchange of your own.</h2></div>
+        <p>If you operate a group, you can launch a WhatsApp community host that captures workflow questions, routes them to humans, and publishes recaps. Same exchange model, your audience, your topics.</p>
       </div>
       <div class="grid">
         <article class="card" data-code="B1"><strong>WhatsApp-first onboarding</strong><p>The setup bot asks for community purpose, tone, audience, topics, rules, links, events, registration fields, and escalation preferences.</p></article>
-        <article class="card" data-code="B2"><strong>Dedicated community host</strong><p>Each community gets a configured persona that answers members naturally and captures structured signals.</p></article>
+        <article class="card" data-code="B2"><strong>Dedicated community host</strong><p>Each community gets a configured persona that answers members naturally and captures structured signals — no raw chat is stored beyond what's needed.</p></article>
         <article class="card" data-code="B3"><strong>Human-guided operations</strong><p>Admins receive reports, escalations, knowledge gaps, and delivery health without needing to watch every message.</p></article>
       </div>
       <div class="actions">
-        <a class="btn primary" data-cta="homepage_bot_onboarding" data-source="homepage_community_bot_section" href="https://wa.me/919566112518?text=I%20want%20to%20setup%20a%20similar%20community%20bot%20%28source%3A%20homepage%20community%20bot%29" target="_blank" rel="noreferrer">Start WhatsApp onboarding</a>
-        <a class="btn" data-cta="homepage_view_bot_offering" data-source="homepage_community_bot_section" href="/community-bot/">View offering</a>
+        <a class="btn primary" data-cta="homepage_bot_onboarding" data-event="community_bot_setup_click" href="https://wa.me/919566112518?text=I%20want%20to%20launch%20a%20community%20bot%20on%20Dabblewith.%20Community%3A%20___.%20Audience%3A%20___.%20%28source%3A%20homepage%20community%20bot%29&utm_source=direct&utm_medium=homepage&utm_campaign=community_bot_setup&utm_content=community_bot_section" target="_blank" rel="noreferrer">Start WhatsApp onboarding</a>
+        <a class="btn" data-cta="homepage_view_bot_offering" data-event="community_bot_setup_click" href="/community-bot/">View offering</a>
+      </div>
+    </section>
+
+    <section class="shell" id="trust">
+      <div class="section-head">
+        <div><div class="eyebrow">how we operate</div><h2>Safe to experiment. Human-led. Privacy-aware.</h2></div>
+        <p>The exchange runs on three rules: never auto-publish, never log PII into analytics, never claim users we don't have. If a workflow is risky, the page says so.</p>
+      </div>
+      <div class="grid">
+        <article class="card" data-code="T1"><strong>Safe to experiment</strong><p>Every workflow lists what's reversible, what's not, and where a human must approve. Experimental workflows are labeled experimental — we don't pretend they're production.</p></article>
+        <article class="card" data-code="T2"><strong>Human-led, not AI-led</strong><p>AI drafts, humans publish. AI suggests, humans decide. No automated moderation. No automated public commitments. No automated outreach in your name.</p></article>
+        <article class="card" data-code="T3"><strong>Privacy-aware analytics</strong><p>Tracking captures source, intent, page path, and CTA id. It never captures phone numbers, message bodies, emails, or workflow contents. Submissions go through a human stripping pass before publish.</p></article>
       </div>
     </section>
 
     <section class="shell" id="autopilot-preview">
       <div class="section-head">
-        <div><div class="eyebrow">autonomous layer</div><h2>The community now has an autopilot.</h2></div>
-        <p>Agents maintain the topic queue, session drafts, public playbooks, and operating log. Humans still approve taste, safety, and public commitments.</p>
+        <div><div class="eyebrow">behind the exchange</div><h2>How workflows get drafted.</h2></div>
+        <p>Agents draft workflow outlines, related-workflow suggestions, and recap copy from incoming signals. Humans approve every page that gets published. The autopilot helps us ship; it never decides what's worth shipping.</p>
       </div>
       <div class="grid">
-        <article class="card" data-code="A1"><strong>Signal intake</strong><p>Member interest is converted into structured topic signals instead of disappearing into chat history.</p></article>
-        <article class="card" data-code="A2"><strong>Session queue</strong><p>AI drafts event candidates, artifacts, and agendas; the host reviews before announcement.</p></article>
-        <article class="card" data-code="A3"><strong>Content engine</strong><p>Workshops and operating notes become blog posts, recaps, checklists, and SEO pages.</p></article>
+        <article class="card" data-code="A1"><strong>Signal intake</strong><p>Builder questions and workflow submissions are converted into structured drafts instead of disappearing into chat history.</p></article>
+        <article class="card" data-code="A2"><strong>Workflow drafting</strong><p>AI drafts workflow outlines, tool suggestions, and example outputs. A human author rewrites, strips anything sensitive, and signs the page.</p></article>
+        <article class="card" data-code="A3"><strong>Content engine</strong><p>Published workflows become newsletter issues, related-workflow links, internal SEO pages, and reusable templates.</p></article>
       </div>
       <div class="actions">
-        <a class="btn primary" href="/autopilot/">View autopilot</a>
-        <a class="btn" href="/sessions/">View session queue</a>
+        <a class="btn primary" data-cta="homepage_view_autopilot" data-event="build_public_metrics_view" href="/autopilot/">View autopilot</a>
+        <a class="btn" data-cta="homepage_view_sessions" data-event="challenge_join_click" href="/sessions/">See live sessions</a>
       </div>
     </section>
 
     <section class="shell" id="control-room">
       <div class="section-head">
         <div><div class="eyebrow">control room</div><h2>What AI runs. What humans own.</h2></div>
-        <p>The community is designed as a transparent operating system: agents do the busywork, humans keep judgment, taste, safety, and context.</p>
+        <p>The exchange is a transparent operating system: agents do the busywork, humans keep judgment, taste, safety, and context. We show the prompts, the workflows, the mistakes, and the fixes.</p>
       </div>
       <div class="grid">
-        <article class="card" data-code="01"><strong>AI handles operations</strong><p>Topic clustering, event copy, website updates, session notes, recaps, reminders, follow-up drafts, and content outlines.</p></article>
-        <article class="card" data-code="02"><strong>Humans supervise decisions</strong><p>People approve public copy, choose session direction, protect privacy, host the room, and correct bad outputs.</p></article>
-        <article class="card" data-code="03"><strong>Members see the machinery</strong><p>We show prompts, workflows, mistakes, fixes, and practical takeaways instead of pretending the system is magic.</p></article>
+        <article class="card" data-code="01"><strong>AI handles drafts</strong><p>Workflow outlines, repurposing, tag suggestions, recap drafts, reminders, follow-up drafts, and content scaffolds.</p></article>
+        <article class="card" data-code="02"><strong>Humans supervise decisions</strong><p>People approve public copy, set workflow direction, protect privacy, host the rooms, and correct bad outputs.</p></article>
+        <article class="card" data-code="03"><strong>Members see the machinery</strong><p>Prompts, workflows, mistakes, fixes, and practical takeaways are public — no magic, no fake polish.</p></article>
       </div>
     </section>
 
     <section class="shell" id="workflow">
       <div class="section-head">
-        <div><div class="eyebrow">operating loop</div><h2>Community workflow.</h2></div>
-        <p>A simple loop for each session: collect interest, let AI prepare options, humans approve, run the event, publish the learning.</p>
+        <div><div class="eyebrow">operating loop</div><h2>The exchange loop.</h2></div>
+        <p>Same loop, every workflow: someone shares a problem, AI drafts options, a human picks and refines, the result ships in public.</p>
       </div>
       <div class="flow">
-        <div class="flow-step"><div class="agent">01 / signal intake</div><p>People message what they want to learn or build.</p><span class="badge">WhatsApp</span></div>
-        <div class="flow-step"><div class="agent">02 / AI clustering</div><p>Agents group interests into session themes and draft possible agendas.</p><span class="badge blue">AI assist</span></div>
-        <div class="flow-step"><div class="agent">03 / human gate</div><p>Humans pick the useful topic, check quality, and set the tone.</p><span class="badge warn">required</span></div>
-        <div class="flow-step"><div class="agent">04 / public learning</div><p>After the session, AI drafts notes and humans publish the final recap.</p><span class="badge">recap</span></div>
+        <div class="flow-step"><div class="agent">01 / signal intake</div><p>Builders share a workflow they want to learn, fork, or improve.</p><span class="badge">WhatsApp / email</span></div>
+        <div class="flow-step"><div class="agent">02 / AI drafting</div><p>Agents draft a workflow outline, related workflows, tool suggestions, and a sample output.</p><span class="badge blue">AI assist</span></div>
+        <div class="flow-step"><div class="agent">03 / human gate</div><p>A human author reviews, strips anything sensitive, and decides what's safe to publish.</p><span class="badge warn">required</span></div>
+        <div class="flow-step"><div class="agent">04 / public learning</div><p>Workflow page goes live with the human author, a fork CTA, and a newsletter mention.</p><span class="badge">publish</span></div>
       </div>
     </section>
 
     <section class="shell" id="sessions">
       <div class="section-head">
-        <div><div class="eyebrow">first session queue</div><h2>Proposed runs.</h2></div>
-        <p>Initial topics for the first circle. Final order depends on member signals and human review.</p>
+        <div><div class="eyebrow">live sessions queue</div><h2>Workflows we're building live.</h2></div>
+        <p>Live builds where a workflow is drafted in front of the audience. Topic order depends on incoming signals and human review.</p>
       </div>
       <div class="events">
         <article class="event">
           <div class="date">queued<br/>run_001</div>
-          <div><h3>OpenClaw: personal AI with tools</h3><p>How an assistant can remember context, use tools, send messages, schedule work, and still need human boundaries.</p></div>
-          <a class="btn" href="https://wa.me/919566112518?text=I%27m%20interested%20in%20the%20OpenClaw%20session" target="_blank" rel="noreferrer">Signal interest</a>
+          <div><h3>Personal AI with tools</h3><p>How an assistant can remember context, use tools, send messages, schedule work — and where the human still has to draw the line.</p></div>
+          <a class="btn" data-cta="session_personal_ai_interest" data-event="challenge_join_click" href="https://wa.me/919566112518?text=I%27m%20interested%20in%20the%20personal%20AI%20with%20tools%20workflow%20session&utm_source=direct&utm_medium=homepage&utm_campaign=session_interest&utm_content=session_personal_ai" target="_blank" rel="noreferrer">Signal interest</a>
         </article>
         <article class="event">
           <div class="date">queued<br/>run_002</div>
-          <div><h3>NeoSapien voice agents</h3><p>Live voice-agent demos, useful workflows, failure modes, and where the hype breaks.</p></div>
-          <a class="btn" href="https://wa.me/919566112518?text=I%27m%20interested%20in%20the%20NeoSapien%20session" target="_blank" rel="noreferrer">Signal interest</a>
+          <div><h3>Voice agent workflows</h3><p>Live voice-agent demos, useful workflows, failure modes, and where the hype breaks.</p></div>
+          <a class="btn" data-cta="session_voice_agent_interest" data-event="challenge_join_click" href="https://wa.me/919566112518?text=I%27m%20interested%20in%20the%20voice%20agent%20workflow%20session&utm_source=direct&utm_medium=homepage&utm_campaign=session_interest&utm_content=session_voice_agent" target="_blank" rel="noreferrer">Signal interest</a>
         </article>
         <article class="event">
           <div class="date">queued<br/>run_003</div>
-          <div><h3>Build an AI workflow in 60 minutes</h3><p>Prompt → tool → automation → review loop. A small useful workflow, built live.</p></div>
-          <a class="btn" href="https://wa.me/919566112518?text=I%27m%20interested%20in%20AI%20workflow%20sessions" target="_blank" rel="noreferrer">Signal interest</a>
+          <div><h3>Build an AI workflow in 60 minutes</h3><p>Prompt → tool → automation → review loop. A small useful workflow, built live, published the same day.</p></div>
+          <a class="btn" data-cta="session_60min_workflow_interest" data-event="workflow_submit_start" href="https://wa.me/919566112518?text=I%27m%20interested%20in%20the%20build-an-AI-workflow-in-60-minutes%20session&utm_source=direct&utm_medium=homepage&utm_campaign=session_interest&utm_content=session_60min_workflow" target="_blank" rel="noreferrer">Signal interest</a>
         </article>
       </div>
     </section>
 
     <section class="shell" id="join">
       <div class="join">
-        <div class="eyebrow">join signal</div>
-        <h2>Enter the first control room.</h2>
-        <p>Message us on WhatsApp. We’ll use the first set of signals to decide the topic, timing, format, and community rhythm — with AI helping organize the inputs and humans making the call.</p>
+        <div class="eyebrow">first signal</div>
+        <h2>Pick one workflow. Send it back.</h2>
+        <p>If one workflow on this page sparks an idea, message us. Tell us the audience you serve, the workflow you'd fork, and what you'd change. That single signal shapes the next issue and the next workflow page.</p>
         <div class="actions">
-          <a class="btn primary" data-cta="homepage_join_footer" data-source="homepage_join_section" href="https://wa.me/919566112518?text=I%27m%20interested%20in%20dabblewith.ai%20%28source%3A%20homepage%20join%20section%29" target="_blank" rel="noreferrer">WhatsApp interest</a>
-          <a class="btn" href="mailto:bhuvanesh@neuralhawk.ai?subject=dabblewith.ai%20interest">Email interest</a>
+          <a class="btn primary" data-cta="homepage_join_footer" data-event="newsletter_signup_click" href="https://wa.me/919566112518?text=I%27m%20interested%20in%20Dabblewith%20workflows.%20Audience%2Frole%3A%20___.%20Workflow%20I%27d%20fork%3A%20___.%20%28source%3A%20homepage%20join%29&utm_source=direct&utm_medium=homepage&utm_campaign=workflow_signal&utm_content=join_section" target="_blank" rel="noreferrer">WhatsApp signal</a>
+          <a class="btn" data-cta="homepage_email_interest" data-event="partner_interest_click" href="mailto:bhuvanesh@neuralhawk.ai?subject=dabblewith.ai%20workflow%20interest&body=Audience%2Frole%3A%20%0AWorkflow%20I%27d%20fork%3A%20%0AWhat%20I%27d%20change%3A%20">Email signal</a>
         </div>
       </div>
     </section>
@@ -413,8 +493,8 @@
 
   <footer>
     <div class="shell">
-      <span>dabblewith.ai / community_os</span>
-      <span>AI-operated · human-supervised · online-first · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span>
+      <span>dabblewith.ai / ai builder's exchange</span>
+      <span>AI-drafted · human-published · privacy-aware · <a href="#workflows" data-cta="footer_workflows">Workflows</a> · <a href="#submit" data-cta="footer_submit">Submit</a> · <a href="#newsletter" data-cta="footer_newsletter">Newsletter</a> · <a href="/community-bot/" data-cta="footer_community_bot">Community bot</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span>
     </div>
   </footer>
 </body>
