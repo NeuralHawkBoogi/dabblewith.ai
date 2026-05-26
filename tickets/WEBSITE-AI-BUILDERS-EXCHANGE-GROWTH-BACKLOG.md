@@ -708,10 +708,123 @@ Phase 1 website epics `EPIC-WG-00` through `EPIC-WG-05` are complete: positionin
 
 ## Recommended next sprint
 
-1. `WEB-GROWTH-T19` — add downloadable workflow templates / copyable worksheets for the top 5 workflows.
-2. `WEB-GROWTH-T20` — publish first newsletter issue as a web archive and link it from `/newsletter/`.
-3. `WEB-GROWTH-T21` — add lightweight `/roadmap/` or `/experiments/` page showing what is live, testing, and next.
-4. `WEB-GROWTH-T22` — create social preview images for homepage, workflow index, community bot, and challenge pages.
+1. ✅ `WEB-GROWTH-T19` — downloadable workflow templates / copyable worksheets for the top 5 workflows.
+2. ✅ `WEB-GROWTH-T20` — first newsletter issue as a web archive linked from `/newsletter/`.
+3. ✅ `WEB-GROWTH-T21` — lightweight `/experiments/` page showing what is live, testing, and next.
+4. Next: `WEB-GROWTH-T22` — create social preview images for homepage, workflow index, community bot, newsletter issue, templates, and experiments.
+
+
+# EPIC-WG-06 — Phase 2 Activation Surfaces
+
+Priority: P0/P1
+Status: in_progress
+
+## Goal
+Convert the Phase 1 website from readable surfaces into reusable assets: worksheets visitors can copy, archive issues they can share, and a public roadmap that explains what is live versus experimental.
+
+## Tickets
+
+### WEB-GROWTH-T19 — Add downloadable workflow templates / copyable worksheets
+Priority: P0
+Status: done
+Dependencies: [WEB-GROWTH-T04, WEB-GROWTH-T05]
+
+**Scope**
+- Add `/templates/` index route.
+- Generate copyable worksheet pages for the top 5 workflows.
+- Generate downloadable Markdown worksheets.
+- Include human-review gates, privacy notes, first-run notes, and publish/share decisions.
+
+**Acceptance criteria**
+- `/templates/` lists at least 5 worksheets.
+- Each worksheet links back to the source workflow.
+- Each worksheet has a downloadable Markdown file.
+- No worksheet contains real private data.
+
+**Validation**
+- `node scripts/generate-phase2.js --check` passes.
+- `node scripts/site-smoke-test.js` passes.
+- Sitemap includes template routes.
+
+**Evidence**
+- Added `scripts/generate-phase2.js` to generate `/templates/`, five worksheet pages, and five `.md` worksheet downloads from `data/workflows.json`.
+- Generated worksheets for workshop intake, WhatsApp community onboarding bot, founder weekly metrics, meeting notes action tracker, and research paper summarization.
+- Worksheets include the job, safe input, workflow draft, human review gate, privacy/never-automate notes, first-run notes, and publish/share decision.
+
+---
+
+### WEB-GROWTH-T20 — Publish first newsletter issue as a web archive
+Priority: P0
+Status: done
+Dependencies: [WEB-GROWTH-T08, WEB-GROWTH-T19]
+
+**Scope**
+- Add `/newsletter/issue-001/` as the first public archive issue.
+- Link to it from `/newsletter/`.
+- Include workflow/template links and an honest experiment update.
+
+**Acceptance criteria**
+- Issue route is indexable and in sitemap.
+- Newsletter landing page links to the archive.
+- Issue includes clear CTAs to subscribe and use worksheets.
+- Claims remain framed as experiments; no fake traction.
+
+**Validation**
+- Static route smoke passes.
+- Sitemap includes `/newsletter/issue-001/`.
+
+**Evidence**
+- Added `/newsletter/issue-001/` with the 3-2-1 issue format: three workflows, two community asks, and one honest experiment update.
+- Added CTAs from the newsletter landing page to issue #001.
+- Issue links to relevant templates/workflows and states MRR as $0 rather than implying revenue.
+
+---
+
+### WEB-GROWTH-T21 — Add public roadmap / experiments page
+Priority: P1
+Status: done
+Dependencies: [WEB-GROWTH-T09, WEB-GROWTH-T18]
+
+**Scope**
+- Add `/experiments/` showing live, testing, and next surfaces.
+- Explain decision rule for what moves forward.
+- Reaffirm no fake traction / no synthetic testimonials.
+
+**Acceptance criteria**
+- Page exists and is linked in generated nav/footer surfaces.
+- Page distinguishes live, testing, and next work.
+- Page includes a clear anti-fake-traction policy.
+
+**Validation**
+- Static route smoke passes.
+- Sitemap includes `/experiments/`.
+
+**Evidence**
+- Added `/experiments/` with live Workflow Exchange, templates, newsletter archive, community-bot lead capture test, and next social preview card work.
+- Added decision rule: prioritize replies, worksheet copies, workflow submissions, and community-bot setup conversations over vanity traffic.
+- Generated Phase 2 nav/footer surfaces link to `/experiments/`.
+
+---
+
+### WEB-GROWTH-T22 — Create social preview images for launch surfaces
+Priority: P1
+Status: todo
+Dependencies: [WEB-GROWTH-T17]
+
+**Scope**
+- Create OG/social preview images for homepage, workflow index, community bot, newsletter issue, templates, and experiments.
+- Wire page-specific `og:image` metadata.
+- Validate image dimensions and live fetch.
+
+**Acceptance criteria**
+- At least 6 share images exist.
+- Key public pages reference page-specific images.
+- Images avoid AI-art weirdness and stay readable at social-card size.
+
+**Validation**
+- Visual QC + live metadata smoke.
+
+---
 
 ## Notes
 - This backlog is website-first. Runtime/community-bot platformization remains in `tickets/COMMUNITY-BOT-PLATFORM.md` and related runtime tickets.
