@@ -1,0 +1,2 @@
+submission_id,submitted_date,status,risk_level,audience_segment,workflow_category,title,problem_summary,tools_summary,redaction_status,redaction_notes,human_review_gate,never_automate_line,contributor_approval,attribution_preference,publish_slug,reviewer,decision_notes,published_url
+sample-001,2026-05-26,new,low,founders-operators,workflow_exchange,Example workflow title,One-line sanitized problem,Tool names only,pending,Do not include removed PII here,Human approves before use,Do not automate accountable final decision,pending,anonymous,example-workflow,,,

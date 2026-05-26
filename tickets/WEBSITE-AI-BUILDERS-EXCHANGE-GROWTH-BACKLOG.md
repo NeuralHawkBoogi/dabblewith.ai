@@ -842,13 +842,13 @@ Phase 2 activation surfaces are complete: workflow worksheets, first newsletter 
 ## Recommended next sprint
 
 1. ✅ `WEB-GROWTH-T23` — lightweight conversion dashboard/export for privacy-safe events: workflow views, worksheet downloads, newsletter clicks, community-bot setup clicks, and workflow submissions.
-2. Next: `WEB-GROWTH-T24` — create second newsletter issue from actual shipped experiments and add archive index cards.
-3. `WEB-GROWTH-T25` — add workflow submission moderation queue/spec so community contributions can become public pages safely.
+2. ✅ `WEB-GROWTH-T24` — second newsletter issue from actual shipped experiments and archive index cards.
+3. ✅ `WEB-GROWTH-T25` — workflow submission moderation queue/spec so community contributions can become public pages safely.
 
 # EPIC-WG-07 — Measurement Operating Loop
 
 Priority: P0/P1
-Status: in_progress
+Status: done
 
 ## Goal
 Turn the public website from tracked pages into a weekly operating system: clear KPIs, privacy-safe exports, and decision rules for what to promote, improve, or archive.
@@ -886,6 +886,74 @@ Dependencies: [WEB-GROWTH-T18, WEB-GROWTH-T22]
 - Dashboard reinforces aggregated-only export rules: no WhatsApp text, email addresses, phone numbers, raw URLs, user IDs, IPs, or device identifiers.
 
 ---
+
+
+### WEB-GROWTH-T24 — Publish newsletter issue #002 and archive cards
+Priority: P1
+Status: done
+Dependencies: [WEB-GROWTH-T20, WEB-GROWTH-T23]
+
+**Scope**
+- Add `/newsletter/issue-002/` using actual shipped experiments.
+- Add archive cards to `/newsletter/` for issue #001, issue #002, and the measurement loop.
+- Keep traction claims honest; state MRR as `$0` when true.
+
+**Acceptance criteria**
+- Issue #002 is public, indexable, and in sitemap.
+- Newsletter landing page links to both public archive issues.
+- Issue #002 references shipped surfaces: templates, metrics, moderation, and measurement rules.
+- No fake user counts, testimonials, or revenue claims.
+
+**Validation**
+- `node scripts/site-smoke-test.js` passes.
+- Live smoke confirms `/newsletter/issue-002/` and newsletter archive cards.
+
+**Evidence**
+- Added `/newsletter/issue-002/` with the 3-2-1 format: templates, privacy-safe metrics, moderation path, community ask, and honest experiment update.
+- Updated `/newsletter/` with archive cards for issue #001, issue #002, and the metrics operating loop.
+- Added issue #002 to sitemap.
+
+---
+
+### WEB-GROWTH-T25 — Add workflow submission moderation queue/spec
+Priority: P1
+Status: done
+Dependencies: [WEB-GROWTH-T23]
+
+**Scope**
+- Add public moderation/spec page for submitted workflows.
+- Add a queue CSV template for internal review.
+- Link moderation process from `/submit-workflow/`.
+- Define hard-reject rules, redaction rules, contributor approval, and publish conditions.
+
+**Acceptance criteria**
+- `/submit-workflow/moderation/` explains intake, redaction, safety review, editorial draft, contributor approval, and publish/measure stages.
+- `data/workflow-moderation-queue-template.csv` exists and contains no real submitter data.
+- Submission page links to the moderation process.
+- The moderation spec explicitly forbids auto-publish.
+
+**Validation**
+- `node scripts/site-smoke-test.js` passes.
+- `grep` confirms no raw private destinations in generated moderation data.
+- Live smoke confirms moderation page and CSV template.
+
+**Evidence**
+- Added `/submit-workflow/moderation/` with staged moderation process and hard-reject rules.
+- Added `data/workflow-moderation-queue-template.csv` with sample-only fields.
+- Updated `/submit-workflow/` to link the moderation process.
+- Added moderation route to sitemap.
+
+---
+
+## Epic completion summary
+
+`EPIC-WG-07` is complete: the site now has a privacy-safe conversion dashboard/export, newsletter issue #002/archive cards, and a submission moderation queue/spec that closes the measurement operating loop.
+
+## Recommended next epic
+
+1. `EPIC-WG-08` — Community contribution engine: turn approved moderation rows into generated workflow pages, template downloads, newsletter mentions, and contributor approval records.
+2. `WEB-GROWTH-T26` — Add issue archive index generation so newsletter issues can scale beyond hand-authored pages.
+3. `WEB-GROWTH-T27` — Add moderation smoke checks for blocked words/PII-like patterns in generated workflow submissions.
 
 
 ## Notes
