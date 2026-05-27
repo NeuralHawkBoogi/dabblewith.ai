@@ -37,6 +37,8 @@ Use the combined recovery-batch tracker when the operator sends the full current
 
 The live campaign report's `Stale responder recovery kit` now points to this combined recovery-batch tracker first. Use the separate no-reply or narrow-discovery trackers only when those steps are sent on different days.
 
+When `--manual-tracker private/casagrand-recovery-batch.json` is supplied, the report now renders a dedicated `Recovery batch follow-up` section. It counts stale-responder rows, warm-intro rows, QA/dev signals, Excel/workflow signals, referrals, and group-owner/admin rows, then recommends the exact next page: QA walkthrough, Excel walkthrough, referral sprint, bot-readiness, date-lock, or continued narrow discovery.
+
 ## Routing thresholds
 
 - QA/dev/student problem -> `/casagrand-firstcity/qa-walkthrough/`

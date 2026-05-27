@@ -10,6 +10,7 @@ const {
   buildReferralSprintFollowUp,
   buildNoReplyNudgeFollowUp,
   buildNarrowDiscoveryFollowUp,
+  buildRecoveryBatchFollowUp,
   buildFollowUpCadence,
   buildStaleResponderRecovery,
   computeLaunchDecision,
@@ -176,17 +177,35 @@ function appendJsonl(file, rows) {
   assert.strictEqual(emptyRecoverySummary.rows, 7);
   assert.strictEqual(emptyRecoverySummary.concreteReplies, 0);
   assert(emptyRecoverySummary.nextAction.includes('No concrete recovery-batch replies yet'));
+  const emptyRecoveryFollowUp = buildRecoveryBatchFollowUp(emptyRecoverySummary);
+  assert.strictEqual(emptyRecoveryFollowUp.staleResponderRows, 1);
+  assert.strictEqual(emptyRecoveryFollowUp.warmIntroRows, 1);
+  assert(emptyRecoveryFollowUp.nextSteps.some((s) => s.includes('do not broad-post yet')));
   const filledRecoverySummary = summarizeManualTracker({
     meta: { route: 'stale_responder_recovery_batch' },
     rows: [
-      { segment: 'qa_dev_student', last4: '4101', route: 'problem', problem: 'QA checklist repeat' },
-      { segment: 'excel_workflow', last4: '4102', route: 'problem', problem: 'Excel cleanup report' },
-      { segment: 'group_owner', last4: '4103', route: 'bot_readiness', problem: 'runs residents group' },
+      { segment: 'qa_dev_student', last4: '4101', route: 'problem', problem: 'QA checklist repeat', problemType: 'stale_first_responder_nudge' },
+      { segment: 'other', last4: '4104', route: 'referral', problem: 'warm intro promised', problemType: 'warm_intro_ask' },
+      { segment: 'excel_workflow', last4: '4102', route: 'problem', problem: 'Excel cleanup report', problemType: 'excel_cleanup' },
+      { segment: 'group_owner', last4: '4103', route: 'bot_readiness', problem: 'runs residents group', problemType: 'bot_readiness' },
     ],
   });
-  assert.strictEqual(filledRecoverySummary.concreteReplies, 3);
+  assert.strictEqual(filledRecoverySummary.concreteReplies, 4);
+  assert.strictEqual(filledRecoverySummary.sanitizedRows[0].problemType, 'stale_first_responder_nudge');
   assert(filledRecoverySummary.nextAction.includes('/casagrand-firstcity/date-lock/'));
+  const filledRecoveryFollowUp = buildRecoveryBatchFollowUp(filledRecoverySummary);
+  assert.strictEqual(filledRecoveryFollowUp.staleResponderRows, 1);
+  assert.strictEqual(filledRecoveryFollowUp.warmIntroRows, 1);
+  assert.strictEqual(filledRecoveryFollowUp.qaSignals, 1);
+  assert.strictEqual(filledRecoveryFollowUp.excelSignals, 1);
+  assert.strictEqual(filledRecoveryFollowUp.groupOwnerSignals, 1);
+  assert(filledRecoveryFollowUp.nextSteps.some((s) => s.includes('/casagrand-firstcity/referral-sprint/')));
+  assert(filledRecoveryFollowUp.nextSteps.some((s) => s.includes('/casagrand-firstcity/qa-walkthrough/')));
+  assert(filledRecoveryFollowUp.nextSteps.some((s) => s.includes('/casagrand-firstcity/excel-walkthrough/')));
+  assert(filledRecoveryFollowUp.nextSteps.some((s) => s.includes('/casagrand-firstcity/bot-readiness/')));
+  assert(filledRecoveryFollowUp.nextSteps.some((s) => s.includes('/casagrand-firstcity/date-lock/')));
   assert(!JSON.stringify(filledRecoverySummary).match(/\d{5,}/), 'recovery batch summary leaked a long number');
+  assert(!JSON.stringify(filledRecoveryFollowUp).match(/\d{5,}/), 'recovery batch follow-up leaked a long number');
 
   const templatePath = path.join(tmpDir(), 'nested', 'manual-5dm-template.json');
   const writtenTemplatePath = writeManualTrackerTemplate(templatePath);

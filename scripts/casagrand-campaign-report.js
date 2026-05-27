@@ -530,6 +530,7 @@ function summarizeManualTracker(input) {
     const segment = allowedSegments.has(String(row.segment || '').trim()) ? String(row.segment).trim() : 'unknown';
     const route = allowedRoutes.has(String(row.route || '').trim()) ? String(row.route).trim() : 'no_reply';
     const problem = normalizeText(row.problem || row.problem8Words || '').split(/\s+/).slice(0, 8).join(' ');
+    const problemType = normalizeText(row.problemType || row.problem_type || '').replace(/[^a-z0-9_-]/gi, '').slice(0, 40) || null;
     const nextAction = normalizeText(row.nextAction || row.next || '').slice(0, 80);
     const followUpSent = Boolean(row.followUpSent || row.follow_up_sent);
 
@@ -542,7 +543,7 @@ function summarizeManualTracker(input) {
     if (route === 'admin_pain') summary.adminPains += 1;
     if (route === 'bot_readiness') summary.botReadiness += 1;
     if (route === 'design_call') summary.designCalls += 1;
-    summary.sanitizedRows.push({ segment, last4: `****${last4}`, route, problem, followUpSent, nextAction });
+    summary.sanitizedRows.push({ segment, last4: `****${last4}`, route, problem, problemType, followUpSent, nextAction });
   }
 
   summary.nextAction = computeManualNextAction(summary);
@@ -788,6 +789,51 @@ function buildNarrowDiscoveryFollowUp(tracker) {
       segment: row.segment,
       last4: row.last4,
       route: row.route,
+      problem: row.problem,
+      followUpSent: row.followUpSent,
+      nextAction: row.nextAction,
+    })),
+  };
+}
+
+
+// Builds privacy-safe routing for the combined stale-responder recovery batch:
+// one stale nudge, one warm-intro ask, two QA/dev DMs, two Excel/workflow DMs,
+// and one group-owner/admin DM. It keeps the batch measurable without splitting
+// evidence across multiple private files and only reads already-sanitized rows.
+function buildRecoveryBatchFollowUp(tracker) {
+  if (!tracker || tracker.metaRoute !== 'stale_responder_recovery_batch' || !Array.isArray(tracker.sanitizedRows)) return null;
+  const rows = tracker.sanitizedRows;
+  const staleResponderRows = rows.filter((row) => row.problemType === 'stale_first_responder_nudge');
+  const warmIntroRows = rows.filter((row) => row.problemType === 'warm_intro_ask');
+  const qaRows = rows.filter((row) => row.segment === 'qa_dev_student' && ['problem', 'narrow_discovery', 'topic_vote'].includes(row.route));
+  const excelRows = rows.filter((row) => row.segment === 'excel_workflow' && ['problem', 'narrow_discovery', 'topic_vote'].includes(row.route));
+  const groupOwnerRows = rows.filter((row) => row.segment === 'group_owner' && ['bot_readiness', 'admin_pain', 'design_call', 'narrow_discovery'].includes(row.route));
+  const nextSteps = [];
+  if (staleResponderRows.some((row) => row.route !== 'no_reply')) nextSteps.push('Stale first-responder replied: route the sample to /casagrand-firstcity/qa-walkthrough/ or /casagrand-firstcity/excel-walkthrough/, then ask for one referral.');
+  if (warmIntroRows.some((row) => ['referral', 'first_responder_referral_sprint'].includes(row.route)) || tracker.referrals > 0) nextSteps.push('Warm intro/referral captured: move it into /casagrand-firstcity/referral-sprint/ and keep the referred-neighbor row last4-only.');
+  if (qaRows.length) nextSteps.push('QA/dev/student recovery signal captured: use /casagrand-firstcity/qa-walkthrough/ and ask for one referral after the sample.');
+  if (excelRows.length) nextSteps.push('Excel/office-workflow recovery signal captured: use /casagrand-firstcity/excel-walkthrough/ and ask for one referral after the sample.');
+  if (groupOwnerRows.length || tracker.botReadiness > 0 || tracker.designCalls > 0 || tracker.adminPains > 0) nextSteps.push('Group-owner/admin recovery signal captured: route only that row to /casagrand-firstcity/bot-readiness/ before discussing the community-bot product.');
+  if (tracker.concreteReplies >= 3) nextSteps.push('Three or more recovery-batch resident signals are logged: prepare /casagrand-firstcity/date-lock/ and the clubhouse/admin slot ask.');
+  if (!nextSteps.length) nextSteps.push('No concrete recovery-batch replies yet: rewrite the warm-intro ask or request one different trusted intro; do not broad-post yet.');
+  return {
+    rows: tracker.rows,
+    concreteReplies: tracker.concreteReplies,
+    referrals: tracker.referrals,
+    topicVotes: tracker.topicVotes,
+    botReadiness: tracker.botReadiness,
+    staleResponderRows: staleResponderRows.length,
+    warmIntroRows: warmIntroRows.length,
+    qaSignals: qaRows.length,
+    excelSignals: excelRows.length,
+    groupOwnerSignals: groupOwnerRows.length,
+    nextSteps,
+    rowsPreview: rows.map((row) => ({
+      segment: row.segment,
+      last4: row.last4,
+      route: row.route,
+      problemType: row.problemType,
       problem: row.problem,
       followUpSent: row.followUpSent,
       nextAction: row.nextAction,
@@ -1074,6 +1120,11 @@ function renderMarkdown(report) {
     appendNarrowDiscoveryFollowUp(lines, narrowDiscoveryFollowUp);
     lines.push('');
   }
+  const recoveryBatchFollowUp = buildRecoveryBatchFollowUp(report.manualTracker);
+  if (recoveryBatchFollowUp) {
+    appendRecoveryBatchFollowUp(lines, recoveryBatchFollowUp);
+    lines.push('');
+  }
   lines.push('## Funnel snapshot');
   lines.push(`- Campaign signals: ${report.totals.campaignSignals}`);
   lines.push(`- Unique residents/users: ${report.totals.uniqueUsers}`);
@@ -1240,6 +1291,26 @@ function appendNarrowDiscoveryFollowUp(lines, followUp) {
   }
 }
 
+function appendRecoveryBatchFollowUp(lines, followUp) {
+  lines.push('## Recovery batch follow-up');
+  lines.push('Privacy-safe routing from the combined stale-responder recovery batch tracker (last4 only, no phone/message/token exposure):');
+  lines.push(`- Rows logged: ${followUp.rows}`);
+  lines.push(`- Concrete replies: ${followUp.concreteReplies}`);
+  lines.push(`- Stale-responder rows: ${followUp.staleResponderRows}`);
+  lines.push(`- Warm-intro rows: ${followUp.warmIntroRows}`);
+  lines.push(`- QA/dev/student signals: ${followUp.qaSignals}`);
+  lines.push(`- Excel/workflow signals: ${followUp.excelSignals}`);
+  lines.push(`- Referrals: ${followUp.referrals}`);
+  lines.push(`- Group-owner/admin signals: ${followUp.groupOwnerSignals}`);
+  lines.push(`- Bot-readiness rows: ${followUp.botReadiness}`);
+  lines.push('- Recommended next steps:');
+  for (const step of followUp.nextSteps) lines.push(`  - ${step}`);
+  lines.push('- Recovery batch rows (last4 only):');
+  for (const row of followUp.rowsPreview) {
+    lines.push(`  - ${row.segment} · ${row.last4} · ${row.route} · type=${row.problemType || 'n/a'} · problem="${row.problem || 'n/a'}" · follow_up=${row.followUpSent ? 'yes' : 'no'} · next="${row.nextAction || 'n/a'}"`);
+  }
+}
+
 function appendReferralSprintFollowUp(lines, followUp) {
   lines.push('## Referral sprint follow-up');
   lines.push('Copy-ready, privacy-safe next steps from the manual tracker referral-sprint rows (last4 only, no phone/message/token exposure):');
@@ -1381,6 +1452,7 @@ module.exports = {
   buildReferralSprintFollowUp,
   buildNoReplyNudgeFollowUp,
   buildNarrowDiscoveryFollowUp,
+  buildRecoveryBatchFollowUp,
   latestRecentSignalAt,
   buildFollowUpCadence,
   buildStaleResponderRecovery,
