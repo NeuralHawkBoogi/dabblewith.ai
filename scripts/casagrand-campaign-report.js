@@ -910,6 +910,17 @@ function buildCampaignReport(runtimeDir, options = {}) {
   report.followUpCadence = buildFollowUpCadence(report);
   if (report.followUpCadence && report.followUpCadence.nextActionOverride) {
     report.nextAction = report.followUpCadence.nextActionOverride;
+    // Keep the launch decision card aligned with the effective cadence-driven
+    // next action. This prevents stale single-responder reports from showing a
+    // referral-sprint headline while the bottom of the report correctly routes
+    // to the no-reply/narrow-discovery recovery path.
+    if (report.decision) {
+      report.decision.nextAction = report.followUpCadence.nextActionOverride;
+      const cadenceReason = `Follow-up cadence override: ${report.followUpCadence.state}.`;
+      if (Array.isArray(report.decision.rationale) && !report.decision.rationale.includes(cadenceReason)) {
+        report.decision.rationale.push(cadenceReason);
+      }
+    }
   }
   return report;
 }

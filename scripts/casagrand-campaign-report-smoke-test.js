@@ -547,6 +547,8 @@ function appendJsonl(file, rows) {
   assert(qaReport.followUpCadence.ageHours >= 24, 'stale single-responder age not detected');
   assert(qaReport.followUpCadence.nextActionOverride.includes('/casagrand-firstcity/no-reply-nudge/'));
   assert.strictEqual(qaReport.nextAction, qaReport.followUpCadence.nextActionOverride);
+  assert.strictEqual(qaReport.decision.nextAction, qaReport.followUpCadence.nextActionOverride);
+  assert(qaReport.decision.rationale.some((r) => r.includes('Follow-up cadence override: single_responder_stale_24h.')));
   assert(!JSON.stringify(qaReport.followUpCadence).includes('919840385678'), 'cadence leaked full phone');
   assert(!JSON.stringify(qaReport.followUpCadence).includes('wamid.qa.coding.one'), 'cadence leaked message id');
 
@@ -586,6 +588,8 @@ function appendJsonl(file, rows) {
   assert(qaMarkdown.includes('## First responder follow-up'), 'first responder section missing from markdown');
   assert(qaMarkdown.includes('## Follow-up cadence'), 'follow-up cadence section missing from markdown');
   assert(qaMarkdown.includes('Cadence state: single_responder_stale_24h'), 'stale cadence state missing from markdown');
+  assert(qaMarkdown.includes('Follow-up cadence override: single_responder_stale_24h.'), 'cadence override rationale missing from launch decision markdown');
+  assert(qaMarkdown.includes('- Next action: Use /casagrand-firstcity/no-reply-nudge/ once'), 'launch decision next action did not use cadence override');
   assert(qaMarkdown.includes('/casagrand-firstcity/no-reply-nudge/'), 'no-reply nudge route missing from cadence markdown');
   assert(qaMarkdown.includes('Workflow sample ask:'));
   assert(qaMarkdown.includes('Slot/topic vote ask:'));
