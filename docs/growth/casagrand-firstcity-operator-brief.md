@@ -2,6 +2,7 @@
 
 Date: 2026-05-27
 Asset: `https://dabblewith.ai/casagrand-firstcity/operator-brief/`
+Companion: `https://dabblewith.ai/casagrand-firstcity/recovery-tracker-wizard/` — fills the last4-only recovery batch tracker after sending the stale-nudge + five warm DMs.
 
 ## Purpose
 

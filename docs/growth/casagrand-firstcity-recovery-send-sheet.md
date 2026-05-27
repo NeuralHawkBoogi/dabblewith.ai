@@ -9,6 +9,8 @@ The live campaign report still shows one concrete Casagrand resident signal afte
 
 Public page: `https://dabblewith.ai/casagrand-firstcity/recovery-send-sheet/`
 
+Companion wizard: `https://dabblewith.ai/casagrand-firstcity/recovery-tracker-wizard/` — mobile-friendly step-by-step page that walks Boogi through filling the private last4-only recovery batch tracker (template command, allowed enum values, sample row, rerun command, routing thresholds) after the messages are sent.
+
 ## Send sequence
 
 1. Send the stale responder nudge once if it has not already been sent.
