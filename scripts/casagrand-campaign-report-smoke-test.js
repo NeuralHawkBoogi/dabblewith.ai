@@ -11,6 +11,7 @@ const {
   buildNoReplyNudgeFollowUp,
   buildNarrowDiscoveryFollowUp,
   buildFollowUpCadence,
+  buildStaleResponderRecovery,
   computeLaunchDecision,
   inferSourceTags,
   inferSlotVotes,
@@ -551,6 +552,16 @@ function appendJsonl(file, rows) {
   assert(qaReport.decision.rationale.some((r) => r.includes('Follow-up cadence override: single_responder_stale_24h.')));
   assert(!JSON.stringify(qaReport.followUpCadence).includes('919840385678'), 'cadence leaked full phone');
   assert(!JSON.stringify(qaReport.followUpCadence).includes('wamid.qa.coding.one'), 'cadence leaked message id');
+  const staleRecovery = buildStaleResponderRecovery(qaReport);
+  assert(staleRecovery, 'stale responder recovery kit missing');
+  assert.strictEqual(staleRecovery.last4, '5678');
+  assert.strictEqual(staleRecovery.topic, 'coding_assistant');
+  assert(staleRecovery.nudgeCopy.includes('one tiny QA/coding or Excel task'));
+  assert(staleRecovery.trackerCommand.includes('--write-no-reply-nudge-template'));
+  assert(staleRecovery.fallbackTrackerCommand.includes('--write-narrow-discovery-template'));
+  assert(staleRecovery.thresholds.some((s) => s.includes('/casagrand-firstcity/date-lock/')));
+  assert(!JSON.stringify(staleRecovery).includes('919840385678'), 'stale recovery leaked full phone');
+  assert(!JSON.stringify(staleRecovery).includes('wamid.qa.coding.one'), 'stale recovery leaked message id');
 
   const freshCadence = buildFollowUpCadence({
     generatedAt: '2026-05-22T10:00:00.000Z',
@@ -587,6 +598,10 @@ function appendJsonl(file, rows) {
   const qaMarkdown = fs.readFileSync(qaResult.mdPath, 'utf8');
   assert(qaMarkdown.includes('## First responder follow-up'), 'first responder section missing from markdown');
   assert(qaMarkdown.includes('## Follow-up cadence'), 'follow-up cadence section missing from markdown');
+  assert(qaMarkdown.includes('## Stale responder recovery kit'), 'stale responder recovery section missing from markdown');
+  assert(qaMarkdown.includes('One-time nudge copy:'), 'one-time nudge copy missing from markdown');
+  assert(qaMarkdown.includes('--write-no-reply-nudge-template private/casagrand-no-reply-nudge.json'), 'no-reply tracker command missing from markdown');
+  assert(qaMarkdown.includes('--write-narrow-discovery-template private/casagrand-narrow-discovery.json'), 'narrow-discovery tracker command missing from markdown');
   assert(qaMarkdown.includes('Cadence state: single_responder_stale_24h'), 'stale cadence state missing from markdown');
   assert(qaMarkdown.includes('Follow-up cadence override: single_responder_stale_24h.'), 'cadence override rationale missing from launch decision markdown');
   assert(qaMarkdown.includes('- Next action: Use /casagrand-firstcity/no-reply-nudge/ once'), 'launch decision next action did not use cadence override');

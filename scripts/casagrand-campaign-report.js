@@ -825,6 +825,34 @@ function buildFollowUpCadence(report) {
   };
 }
 
+
+function buildStaleResponderRecovery(report) {
+  const cadence = report && report.followUpCadence;
+  if (!cadence || !['single_responder_stale_24h', 'manual_tracker_no_referral'].includes(cadence.state)) return null;
+  const firstResponder = buildFirstResponderFollowUp(report);
+  const last4 = firstResponder && firstResponder.last4 ? firstResponder.last4 : 'last4_only';
+  const topic = firstResponder && firstResponder.topic ? firstResponder.topic : 'current first-responder topic';
+  return {
+    state: cadence.state,
+    signalAgeHours: cadence.ageHours,
+    last4,
+    topic,
+    nudgeCopy: 'Quick nudge — if useful, send me one tiny QA/coding or Excel task you repeat. I will turn it into a small AI-by-doing sample. If now is not the right time, just reply with: weekend morning / weekend evening / weekday evening, or intro me to one Casagrand resident who may want this.',
+    trackerCommand: 'node scripts/casagrand-campaign-report.js --write-no-reply-nudge-template private/casagrand-no-reply-nudge.json',
+    reportCommand: 'node scripts/casagrand-campaign-report.js --date YYYY-MM-DD --exclude-last4 2585 --manual-tracker private/casagrand-no-reply-nudge.json',
+    fallbackCopy: 'If there is still no reply after the one-time nudge, stop chasing this responder and send the five warm narrow-discovery DMs: 2 QA/dev/student peers, 2 Excel/workflow peers, 1 group-owner/admin. Keep only last4 + segment + route + short problem note.',
+    fallbackTrackerCommand: 'node scripts/casagrand-campaign-report.js --write-narrow-discovery-template private/casagrand-narrow-discovery.json',
+    fallbackReportCommand: 'node scripts/casagrand-campaign-report.js --date YYYY-MM-DD --exclude-last4 2585 --manual-tracker private/casagrand-narrow-discovery.json',
+    thresholds: [
+      'Sample/problem reply -> use /casagrand-firstcity/qa-walkthrough/ or /casagrand-firstcity/excel-walkthrough/.',
+      'One referral -> use /casagrand-firstcity/referral-sprint/.',
+      'Group-owner/admin signal -> use /casagrand-firstcity/bot-readiness/.',
+      'Three total resident signals -> use /casagrand-firstcity/date-lock/.',
+      'No reply/no new signal -> continue narrow discovery; do not broad-post yet.',
+    ],
+  };
+}
+
 function buildCampaignReport(runtimeDir, options = {}) {
   const signals = readJsonl(path.join(runtimeDir, 'community-signals.jsonl'));
   const statusRows = readJsonl(path.join(runtimeDir, 'statuses.jsonl')).concat(readJsonl(path.join(runtimeDir, 'webhooks.jsonl')));
@@ -940,6 +968,11 @@ function renderMarkdown(report) {
   }
   appendFollowUpCadence(lines, report.followUpCadence);
   lines.push('');
+  const staleResponderRecovery = buildStaleResponderRecovery(report);
+  if (staleResponderRecovery) {
+    appendStaleResponderRecovery(lines, staleResponderRecovery);
+    lines.push('');
+  }
   const noReplyNudgeFollowUp = buildNoReplyNudgeFollowUp(report.manualTracker);
   if (noReplyNudgeFollowUp) {
     appendNoReplyNudgeFollowUp(lines, noReplyNudgeFollowUp);
@@ -1058,6 +1091,24 @@ function appendFirstResponderFollowUp(lines, followUp) {
   lines.push(`- Referral sprint ask: ${followUp.referralSprintAsk}`);
   lines.push(`- Community-bot gate: ${followUp.communityBotGate}`);
   lines.push(`- Tracker note: ${followUp.trackerNote}`);
+}
+
+
+function appendStaleResponderRecovery(lines, recovery) {
+  lines.push('## Stale responder recovery kit');
+  lines.push('Copy-ready recovery for a 24h+ first-responder stall (last4 only, no phone/message/token exposure):');
+  lines.push(`- Cadence state: ${recovery.state}`);
+  lines.push(`- Signal age: ${recovery.signalAgeHours}h`);
+  lines.push(`- Responder last4: ${recovery.last4}`);
+  lines.push(`- Detected topic: ${recovery.topic}`);
+  lines.push(`- One-time nudge copy: ${recovery.nudgeCopy}`);
+  lines.push(`- No-reply tracker starter: ${recovery.trackerCommand}`);
+  lines.push(`- No-reply report rerun: ${recovery.reportCommand}`);
+  lines.push(`- Fallback if still quiet: ${recovery.fallbackCopy}`);
+  lines.push(`- Narrow-discovery tracker starter: ${recovery.fallbackTrackerCommand}`);
+  lines.push(`- Narrow-discovery report rerun: ${recovery.fallbackReportCommand}`);
+  lines.push('- Routing thresholds:');
+  for (const threshold of recovery.thresholds) lines.push(`  - ${threshold}`);
 }
 
 function appendNoReplyNudgeFollowUp(lines, followUp) {
@@ -1230,6 +1281,7 @@ module.exports = {
   buildNarrowDiscoveryFollowUp,
   latestRecentSignalAt,
   buildFollowUpCadence,
+  buildStaleResponderRecovery,
   buildCampaignReport,
   renderMarkdown,
   writeCampaignReport,
