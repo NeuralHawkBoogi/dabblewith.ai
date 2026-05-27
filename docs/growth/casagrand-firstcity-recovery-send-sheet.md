@@ -27,9 +27,11 @@ Public page: `https://dabblewith.ai/casagrand-firstcity/recovery-send-sheet/`
 
 ```bash
 mkdir -p private
-node scripts/casagrand-campaign-report.js --write-narrow-discovery-template private/casagrand-narrow-discovery.json
-node scripts/casagrand-campaign-report.js --runtime-dir /home/clawdbot/dabblewith-whatsapp/data --date 2026-05-27 --exclude-last4 2585 --manual-tracker private/casagrand-narrow-discovery.json
+node scripts/casagrand-campaign-report.js --write-recovery-batch-template private/casagrand-recovery-batch.json
+node scripts/casagrand-campaign-report.js --runtime-dir /home/clawdbot/dabblewith-whatsapp/data --date 2026-05-27 --exclude-last4 2585 --manual-tracker private/casagrand-recovery-batch.json
 ```
+
+Use the combined recovery-batch tracker when the operator sends the full current sequence in one sitting: stale-responder nudge, warm-intro ask, two QA/dev DMs, two Excel/workflow DMs, and one group-owner/admin DM. It avoids juggling separate no-reply and narrow-discovery files while keeping all outcomes last4-only.
 
 ## Routing thresholds
 

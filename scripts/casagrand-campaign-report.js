@@ -87,6 +87,7 @@ function parseArgs(argv = process.argv.slice(2)) {
     writeReferralSprintTemplate: null,
     writeNoReplyNudgeTemplate: null,
     writeNarrowDiscoveryTemplate: null,
+    writeRecoveryBatchTemplate: null,
     excludeLast4: normalizeLast4List(process.env.DABBLE_CASAGRAND_EXCLUDE_LAST4 || ''),
   };
   for (let i = 0; i < argv.length; i += 1) {
@@ -99,6 +100,7 @@ function parseArgs(argv = process.argv.slice(2)) {
     else if (arg === '--write-referral-sprint-template') options.writeReferralSprintTemplate = argv[++i];
     else if (arg === '--write-no-reply-nudge-template') options.writeNoReplyNudgeTemplate = argv[++i];
     else if (arg === '--write-narrow-discovery-template') options.writeNarrowDiscoveryTemplate = argv[++i];
+    else if (arg === '--write-recovery-batch-template') options.writeRecoveryBatchTemplate = argv[++i];
     else if (arg === '--exclude-last4') options.excludeLast4.push(...normalizeLast4List(argv[++i]));
     else if (arg === '--include-all') options.includeAll = true;
     else if (arg === '--help' || arg === '-h') options.help = true;
@@ -382,6 +384,82 @@ function narrowDiscoveryTrackerTemplate() {
   };
 }
 
+function recoveryBatchTrackerTemplate() {
+  return {
+    meta: {
+      sprintStartedAt: '',
+      reportRerunDueAt: '',
+      route: 'stale_responder_recovery_batch',
+      notes: 'Use this single private tracker for the current recovery send sheet: one stale-responder nudge plus five warm narrow-discovery sends. Store only last4, segment, route, problemType, followUpSent, nextAction, and short sanitized notes; no direct identifiers or copied chat text.',
+    },
+    rows: [
+      {
+        segment: 'qa_dev_student',
+        last4: '4000',
+        route: 'no_reply',
+        problem: '',
+        problemType: 'stale_first_responder_nudge',
+        followUpSent: false,
+        nextAction: 'qa_walkthrough | referral_sprint | continue_narrow_discovery',
+      },
+      {
+        segment: 'other',
+        last4: '4001',
+        route: 'no_reply',
+        problem: '',
+        problemType: 'warm_intro_ask',
+        followUpSent: false,
+        nextAction: 'referral_sprint | continue_narrow_discovery',
+      },
+      {
+        segment: 'qa_dev_student',
+        last4: '4002',
+        route: 'no_reply',
+        problem: '',
+        problemType: 'qa_checklist',
+        followUpSent: false,
+        nextAction: 'qa_walkthrough | referral_sprint | continue_narrow_discovery',
+      },
+      {
+        segment: 'qa_dev_student',
+        last4: '4003',
+        route: 'no_reply',
+        problem: '',
+        problemType: 'coding_helper',
+        followUpSent: false,
+        nextAction: 'qa_walkthrough | referral_sprint | continue_narrow_discovery',
+      },
+      {
+        segment: 'excel_workflow',
+        last4: '4004',
+        route: 'no_reply',
+        problem: '',
+        problemType: 'excel_cleanup',
+        followUpSent: false,
+        nextAction: 'excel_walkthrough | referral_sprint | continue_narrow_discovery',
+      },
+      {
+        segment: 'excel_workflow',
+        last4: '4005',
+        route: 'no_reply',
+        problem: '',
+        problemType: 'office_workflow',
+        followUpSent: false,
+        nextAction: 'excel_walkthrough | referral_sprint | continue_narrow_discovery',
+      },
+      {
+        segment: 'group_owner',
+        last4: '4006',
+        route: 'no_reply',
+        problem: '',
+        problemType: 'bot_readiness',
+        followUpSent: false,
+        nextAction: 'bot_readiness | design_call | continue_narrow_discovery',
+      },
+    ],
+  };
+}
+
 function writeJsonTemplate(file, template, flagName) {
   if (!file) throw new Error(`${flagName} requires a file path`);
   const outputPath = path.resolve(file);
@@ -404,6 +482,10 @@ function writeNoReplyNudgeTrackerTemplate(file) {
 
 function writeNarrowDiscoveryTrackerTemplate(file) {
   return writeJsonTemplate(file, narrowDiscoveryTrackerTemplate(), '--write-narrow-discovery-template');
+}
+
+function writeRecoveryBatchTrackerTemplate(file) {
+  return writeJsonTemplate(file, recoveryBatchTrackerTemplate(), '--write-recovery-batch-template');
 }
 
 function loadManualTracker(file) {
@@ -1203,12 +1285,13 @@ function writeCampaignReport(options = {}) {
 
 function usage() {
   return [
-    'Usage: node scripts/casagrand-campaign-report.js [--runtime-dir DIR] [--output-dir DIR] [--date YYYY-MM-DD] [--manual-tracker FILE] [--write-manual-tracker-template FILE] [--write-referral-sprint-template FILE] [--write-no-reply-nudge-template FILE] [--write-narrow-discovery-template FILE] [--exclude-last4 1234[,5678]] [--include-all]',
+    'Usage: node scripts/casagrand-campaign-report.js [--runtime-dir DIR] [--output-dir DIR] [--date YYYY-MM-DD] [--manual-tracker FILE] [--write-manual-tracker-template FILE] [--write-referral-sprint-template FILE] [--write-no-reply-nudge-template FILE] [--write-narrow-discovery-template FILE] [--write-recovery-batch-template FILE] [--exclude-last4 1234[,5678]] [--include-all]',
     '',
     'Use --write-manual-tracker-template FILE to create a privacy-safe starter JSON with exactly 5 rows (2 career, 2 workflow, 1 admin) using last4 placeholders only.',
     'Use --write-referral-sprint-template FILE to create a privacy-safe starter JSON for first-responder referral-sprint follow-up rows.',
     'Use --write-no-reply-nudge-template FILE to create a privacy-safe starter JSON for one-time no-reply nudge outcomes.',
     'Use --write-narrow-discovery-template FILE to create a privacy-safe starter JSON for five narrow discovery DMs.',
+    'Use --write-recovery-batch-template FILE to create one privacy-safe tracker for the current stale-responder nudge + warm-intro + five narrow-discovery sends.',
     '',
     `Default runtime dir: ${DEFAULT_RUNTIME_DIR}`,
     `Default output dir: ${DEFAULT_OUTPUT_DIR}`,
@@ -1242,6 +1325,11 @@ if (require.main === module) {
       console.log(`casagrand narrow discovery tracker template written: ${templatePath}`);
       process.exit(0);
     }
+    if (options.writeRecoveryBatchTemplate) {
+      const templatePath = writeRecoveryBatchTrackerTemplate(options.writeRecoveryBatchTemplate);
+      console.log(`casagrand recovery batch tracker template written: ${templatePath}`);
+      process.exit(0);
+    }
     const result = writeCampaignReport(options);
     console.log(`casagrand campaign report written: ${result.mdPath}`);
     console.log(`casagrand campaign report written: ${result.jsonPath}`);
@@ -1268,10 +1356,12 @@ module.exports = {
   referralSprintTrackerTemplate,
   noReplyNudgeTrackerTemplate,
   narrowDiscoveryTrackerTemplate,
+  recoveryBatchTrackerTemplate,
   writeManualTrackerTemplate,
   writeReferralSprintTrackerTemplate,
   writeNoReplyNudgeTrackerTemplate,
   writeNarrowDiscoveryTrackerTemplate,
+  writeRecoveryBatchTrackerTemplate,
   summarizeManualTracker,
   computeManualNextAction,
   computeLaunchDecision,

@@ -21,6 +21,7 @@ const {
   referralSprintTrackerTemplate,
   noReplyNudgeTrackerTemplate,
   narrowDiscoveryTrackerTemplate,
+  recoveryBatchTrackerTemplate,
   isExcludedLast4,
   normalizeLast4List,
   redactPhone,
@@ -31,6 +32,7 @@ const {
   writeReferralSprintTrackerTemplate,
   writeNoReplyNudgeTrackerTemplate,
   writeNarrowDiscoveryTrackerTemplate,
+  writeRecoveryBatchTrackerTemplate,
 } = require('./casagrand-campaign-report');
 
 function tmpDir() {
@@ -79,6 +81,7 @@ function appendJsonl(file, rows) {
   assert.strictEqual(parseArgs(['--write-referral-sprint-template', 'referrals.json']).writeReferralSprintTemplate, 'referrals.json');
   assert.strictEqual(parseArgs(['--write-no-reply-nudge-template', 'nudge.json']).writeNoReplyNudgeTemplate, 'nudge.json');
   assert.strictEqual(parseArgs(['--write-narrow-discovery-template', 'narrow.json']).writeNarrowDiscoveryTemplate, 'narrow.json');
+  assert.strictEqual(parseArgs(['--write-recovery-batch-template', 'recovery.json']).writeRecoveryBatchTemplate, 'recovery.json');
 
   const referralTemplate = referralSprintTrackerTemplate();
   assert.strictEqual(referralTemplate.meta.route, 'first_responder_referral_sprint');
@@ -156,6 +159,22 @@ function appendJsonl(file, rows) {
   assert(filledNarrowFollowUp.nextSteps.some((s) => s.includes('/casagrand-firstcity/bot-readiness/')));
   assert(filledNarrowFollowUp.nextSteps.some((s) => s.includes('/casagrand-firstcity/date-lock/')));
   assert(!JSON.stringify(filledNarrowFollowUp).match(/\d{5,}/), 'narrow follow-up leaked a long number');
+
+  const recoveryTemplate = recoveryBatchTrackerTemplate();
+  assert.strictEqual(recoveryTemplate.meta.route, 'stale_responder_recovery_batch');
+  assert.strictEqual(recoveryTemplate.rows.length, 7);
+  assert.deepStrictEqual(recoveryTemplate.rows.map((row) => row.segment), ['qa_dev_student', 'other', 'qa_dev_student', 'qa_dev_student', 'excel_workflow', 'excel_workflow', 'group_owner']);
+  assert(recoveryTemplate.rows.every((row) => row.route === 'no_reply'), 'recovery batch template should not pre-count positive outcomes');
+  assert(recoveryTemplate.rows.every((row) => /^\d{4}$/.test(row.last4)), 'recovery batch template must use last4 placeholders only');
+  assert(!JSON.stringify(recoveryTemplate).match(/phone|message|raw|name|wamid|\+91/i), 'recovery batch template leaked disallowed fields');
+  const recoveryTemplatePath = path.join(tmpDir(), 'nested', 'recovery-batch-template.json');
+  const writtenRecoveryTemplatePath = writeRecoveryBatchTrackerTemplate(recoveryTemplatePath);
+  assert.strictEqual(writtenRecoveryTemplatePath, path.resolve(recoveryTemplatePath));
+  assert.deepStrictEqual(JSON.parse(fs.readFileSync(recoveryTemplatePath, 'utf8')), recoveryTemplate);
+  const emptyRecoverySummary = summarizeManualTracker(recoveryTemplate);
+  assert.strictEqual(emptyRecoverySummary.metaRoute, 'stale_responder_recovery_batch');
+  assert.strictEqual(emptyRecoverySummary.rows, 7);
+  assert.strictEqual(emptyRecoverySummary.concreteReplies, 0);
 
   const templatePath = path.join(tmpDir(), 'nested', 'manual-5dm-template.json');
   const writtenTemplatePath = writeManualTrackerTemplate(templatePath);

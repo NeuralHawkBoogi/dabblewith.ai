@@ -96,9 +96,9 @@ If that sounds useful, I can do a 10-minute readiness check. No member exports, 
 
     <section class="shell grid two">
       <div class="panel"><h2>Send order</h2><div class="step"><strong>1.</strong><span>Send stale nudge once only if not already sent.</span></div><div class="step"><strong>2.</strong><span>Ask one trusted resident for a warm intro.</span></div><div class="step"><strong>3.</strong><span>Send two QA/dev/student DMs.</span></div><div class="step"><strong>4.</strong><span>Send two Excel/office-workflow DMs.</span></div><div class="step"><strong>5.</strong><span>Send one group-owner/admin DM only to someone who actually owns or manages a group.</span></div></div>
-      <div class="panel"><h2>Rerun command</h2><div id="rerun-command" class="copybox">mkdir -p private
-node scripts/casagrand-campaign-report.js --write-narrow-discovery-template private/casagrand-narrow-discovery.json
-node scripts/casagrand-campaign-report.js --runtime-dir /home/clawdbot/dabblewith-whatsapp/data --date 2026-05-27 --exclude-last4 2585 --manual-tracker private/casagrand-narrow-discovery.json</div><div class="actions"><button class="btn" data-copy-target="rerun-command" onclick="copyText('rerun-command','rerun command')">Copy command</button></div></div>
+      <div class="panel"><h2>Rerun command</h2><p>Use one combined private tracker for the whole recovery batch, instead of juggling separate nudge and narrow-discovery files.</p><div id="rerun-command" class="copybox">mkdir -p private
+node scripts/casagrand-campaign-report.js --write-recovery-batch-template private/casagrand-recovery-batch.json
+node scripts/casagrand-campaign-report.js --runtime-dir /home/clawdbot/dabblewith-whatsapp/data --date 2026-05-27 --exclude-last4 2585 --manual-tracker private/casagrand-recovery-batch.json</div><div class="actions"><button class="btn" data-copy-target="rerun-command" onclick="copyText('rerun-command','rerun command')">Copy command</button></div></div>
     </section>
   </main>
   <footer><div class="shell">Casagrand First City pilot · recovery send sheet · privacy-safe, last4-only tracking · <a href="/casagrand-firstcity/operator-brief/">Back to operator brief</a></div></footer>
