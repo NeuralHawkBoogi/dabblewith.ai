@@ -566,6 +566,13 @@ function computeManualNextAction(summary) {
     if (summary.concreteReplies >= 1) return 'Route the concrete narrow-discovery reply to the matching walkthrough, then ask for one referral before broad-posting.';
     return 'No concrete narrow-discovery replies yet: rewrite the opener or ask for one different warm intro; do not broad-post yet.';
   }
+  if (summary.metaRoute === 'stale_responder_recovery_batch') {
+    if (summary.concreteReplies >= 3) return 'Use /casagrand-firstcity/date-lock/ and prepare the clubhouse/admin slot ask; recovery batch produced three concrete resident signals.';
+    if (summary.botReadiness >= 1 || summary.designCalls >= 1 || summary.adminPains >= 1) return 'Route the group-owner/admin recovery reply to /casagrand-firstcity/bot-readiness/ before another public post.';
+    if (summary.referrals >= 1) return 'Move the recovery referral into /casagrand-firstcity/referral-sprint/ and keep the remaining outcomes last4-only.';
+    if (summary.concreteReplies >= 1) return 'Route the recovery reply to the matching QA/Excel walkthrough, then ask for one referral before broad-posting.';
+    return 'No concrete recovery-batch replies yet: rewrite the warm intro or ask for one different trusted intro; do not broad-post yet.';
+  }
   if (summary.designCalls >= 1 || summary.botReadiness >= 2 || summary.adminPains >= 2) {
     return 'Prioritize Get a Community Bot validation: book bot-readiness/design-partner calls before another broad event post.';
   }
@@ -920,6 +927,8 @@ function buildStaleResponderRecovery(report) {
     last4,
     topic,
     nudgeCopy: 'Quick nudge — if useful, send me one tiny QA/coding or Excel task you repeat. I will turn it into a small AI-by-doing sample. If now is not the right time, just reply with: weekend morning / weekend evening / weekday evening, or intro me to one Casagrand resident who may want this.',
+    recoveryBatchTrackerCommand: 'node scripts/casagrand-campaign-report.js --write-recovery-batch-template private/casagrand-recovery-batch.json',
+    recoveryBatchReportCommand: 'node scripts/casagrand-campaign-report.js --date YYYY-MM-DD --exclude-last4 2585 --manual-tracker private/casagrand-recovery-batch.json',
     trackerCommand: 'node scripts/casagrand-campaign-report.js --write-no-reply-nudge-template private/casagrand-no-reply-nudge.json',
     reportCommand: 'node scripts/casagrand-campaign-report.js --date YYYY-MM-DD --exclude-last4 2585 --manual-tracker private/casagrand-no-reply-nudge.json',
     fallbackCopy: 'If there is still no reply after the one-time nudge, stop chasing this responder and send the five warm narrow-discovery DMs: 2 QA/dev/student peers, 2 Excel/workflow peers, 1 group-owner/admin. Keep only last4 + segment + route + short problem note.',
@@ -1184,8 +1193,11 @@ function appendStaleResponderRecovery(lines, recovery) {
   lines.push(`- Responder last4: ${recovery.last4}`);
   lines.push(`- Detected topic: ${recovery.topic}`);
   lines.push(`- One-time nudge copy: ${recovery.nudgeCopy}`);
-  lines.push(`- No-reply tracker starter: ${recovery.trackerCommand}`);
-  lines.push(`- No-reply report rerun: ${recovery.reportCommand}`);
+  lines.push(`- Recommended combined tracker starter: ${recovery.recoveryBatchTrackerCommand}`);
+  lines.push(`- Recommended combined report rerun: ${recovery.recoveryBatchReportCommand}`);
+  lines.push('- Use the combined tracker if Boogi sends the stale nudge and the warm narrow-discovery batch in one sitting; it avoids splitting evidence across separate private files.');
+  lines.push(`- Optional no-reply-only tracker starter: ${recovery.trackerCommand}`);
+  lines.push(`- Optional no-reply-only report rerun: ${recovery.reportCommand}`);
   lines.push(`- Fallback if still quiet: ${recovery.fallbackCopy}`);
   lines.push(`- Narrow-discovery tracker starter: ${recovery.fallbackTrackerCommand}`);
   lines.push(`- Narrow-discovery report rerun: ${recovery.fallbackReportCommand}`);

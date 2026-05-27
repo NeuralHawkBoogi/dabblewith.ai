@@ -33,6 +33,10 @@ node scripts/casagrand-campaign-report.js --runtime-dir /home/clawdbot/dabblewit
 
 Use the combined recovery-batch tracker when the operator sends the full current sequence in one sitting: stale-responder nudge, warm-intro ask, two QA/dev DMs, two Excel/workflow DMs, and one group-owner/admin DM. It avoids juggling separate no-reply and narrow-discovery files while keeping all outcomes last4-only.
 
+## Report alignment
+
+The live campaign report's `Stale responder recovery kit` now points to this combined recovery-batch tracker first. Use the separate no-reply or narrow-discovery trackers only when those steps are sent on different days.
+
 ## Routing thresholds
 
 - QA/dev/student problem -> `/casagrand-firstcity/qa-walkthrough/`

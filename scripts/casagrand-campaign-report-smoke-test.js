@@ -175,6 +175,18 @@ function appendJsonl(file, rows) {
   assert.strictEqual(emptyRecoverySummary.metaRoute, 'stale_responder_recovery_batch');
   assert.strictEqual(emptyRecoverySummary.rows, 7);
   assert.strictEqual(emptyRecoverySummary.concreteReplies, 0);
+  assert(emptyRecoverySummary.nextAction.includes('No concrete recovery-batch replies yet'));
+  const filledRecoverySummary = summarizeManualTracker({
+    meta: { route: 'stale_responder_recovery_batch' },
+    rows: [
+      { segment: 'qa_dev_student', last4: '4101', route: 'problem', problem: 'QA checklist repeat' },
+      { segment: 'excel_workflow', last4: '4102', route: 'problem', problem: 'Excel cleanup report' },
+      { segment: 'group_owner', last4: '4103', route: 'bot_readiness', problem: 'runs residents group' },
+    ],
+  });
+  assert.strictEqual(filledRecoverySummary.concreteReplies, 3);
+  assert(filledRecoverySummary.nextAction.includes('/casagrand-firstcity/date-lock/'));
+  assert(!JSON.stringify(filledRecoverySummary).match(/\d{5,}/), 'recovery batch summary leaked a long number');
 
   const templatePath = path.join(tmpDir(), 'nested', 'manual-5dm-template.json');
   const writtenTemplatePath = writeManualTrackerTemplate(templatePath);
@@ -619,6 +631,9 @@ function appendJsonl(file, rows) {
   assert(qaMarkdown.includes('## Follow-up cadence'), 'follow-up cadence section missing from markdown');
   assert(qaMarkdown.includes('## Stale responder recovery kit'), 'stale responder recovery section missing from markdown');
   assert(qaMarkdown.includes('One-time nudge copy:'), 'one-time nudge copy missing from markdown');
+  assert(qaMarkdown.includes('--write-recovery-batch-template private/casagrand-recovery-batch.json'), 'combined recovery tracker command missing from markdown');
+  assert(qaMarkdown.includes('--manual-tracker private/casagrand-recovery-batch.json'), 'combined recovery report command missing from markdown');
+  assert(qaMarkdown.includes('Use the combined tracker if Boogi sends the stale nudge'), 'combined tracker usage note missing from markdown');
   assert(qaMarkdown.includes('--write-no-reply-nudge-template private/casagrand-no-reply-nudge.json'), 'no-reply tracker command missing from markdown');
   assert(qaMarkdown.includes('--write-narrow-discovery-template private/casagrand-narrow-discovery.json'), 'narrow-discovery tracker command missing from markdown');
   assert(qaMarkdown.includes('Cadence state: single_responder_stale_24h'), 'stale cadence state missing from markdown');
