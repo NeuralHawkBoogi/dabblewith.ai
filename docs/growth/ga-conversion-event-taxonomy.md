@@ -49,6 +49,7 @@ Do not send:
 | `partner_interest_click` | Visitor clicks partner/newsletter swap/business interest CTA. | Partner email CTA. | Partner pipeline |
 | `build_public_metrics_view` | Visitor clicks into build-in-public or metrics/status surface. | Autopilot/build-public CTA. | Trust signal |
 | `audience_segment_click` | Visitor selects an audience pathway. | Founder/creator/researcher/ops/no-code cards. | Segmentation |
+| `share_nudge_click` | Visitor clicks a UTM-ready share prompt. | Homepage WhatsApp/Slack share invite. | Distribution attribution |
 | `lead_intent_click` | Visitor clicks a WhatsApp/email CTA that can create a real lead. Includes only safe `lead_type`, never message body/contact details. | Submit, newsletter, community-bot setup, session interest, partner-interest links. | Lead intent |
 
 ## Required CTA attributes
@@ -73,6 +74,7 @@ data-workflow-category="community_submission"
 - Hero newsletter CTA → `newsletter_signup_click`
 - Hero community bot CTA → `community_bot_setup_click`
 - Audience cards → `audience_segment_click`
+- Homepage UTM-ready share prompt → `share_nudge_click`
 - Workflow section submission CTA → `workflow_submit_start`
 - Newsletter CTAs → `newsletter_signup_click`
 - Community bot CTAs → `community_bot_setup_click`
@@ -89,4 +91,4 @@ Mark these as conversions/key events in GA once traffic is flowing:
 3. `workflow_submit_start`
 4. `newsletter_signup_click`
 
-Keep `audience_segment_click`, `workflow_explore_click`, and `source_event` as diagnostic context, not standalone conversion goals.
+Keep `audience_segment_click`, `workflow_explore_click`, `share_nudge_click`, and `source_event` as diagnostic context, not standalone conversion goals.

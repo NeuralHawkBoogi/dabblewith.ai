@@ -32,6 +32,7 @@
     partner_interest_click: true,
     build_public_metrics_view: true,
     audience_segment_click: true,
+    share_nudge_click: true,
     lead_intent_click: true
   };
 

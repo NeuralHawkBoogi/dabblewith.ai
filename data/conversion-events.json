@@ -108,6 +108,19 @@
       ]
     },
     {
+      "name": "Share nudge clicks",
+      "event": "share_nudge_click",
+      "question": "Which share prompts create trackable distribution?",
+      "export_fields": [
+        "page_path",
+        "cta_id",
+        "source",
+        "medium",
+        "campaign",
+        "content"
+      ]
+    },
+    {
       "name": "Partner interest clicks",
       "event": "partner_interest_click",
       "question": "Are there partnership or issue-swap signals?",
@@ -131,7 +144,7 @@
     {
       "event": "build_public_metrics_view",
       "status": "tracked",
-      "cta_count": 70,
+      "cta_count": 67,
       "page_count": 34,
       "pages": [
         "/build-in-public/",
@@ -140,9 +153,9 @@
         "/community-policy/",
         "/experiments/",
         "/",
-        "/newsletter/",
         "/newsletter/issue-001/",
         "/newsletter/issue-002/",
+        "/newsletter/",
         "/start/",
         "/submit-workflow/",
         "/submit-workflow/moderation/",
@@ -173,15 +186,14 @@
     {
       "event": "challenge_join_click",
       "status": "tracked",
-      "cta_count": 70,
-      "page_count": 24,
+      "cta_count": 68,
+      "page_count": 23,
       "pages": [
         "/build-in-public/",
         "/challenges/build-in-public-4-weeks/",
         "/challenges/",
         "/community-policy/",
         "/",
-        "/newsletter/",
         "/start/",
         "/submit-workflow/",
         "/workflows/ai-meeting-notes-to-action-tracker/",
@@ -206,7 +218,7 @@
       "event": "community_bot_setup_click",
       "status": "tracked",
       "cta_count": 65,
-      "page_count": 33,
+      "page_count": 34,
       "pages": [
         "/build-in-public/",
         "/challenges/build-in-public-4-weeks/",
@@ -215,8 +227,9 @@
         "/community-policy/",
         "/experiments/",
         "/",
-        "/newsletter/",
         "/newsletter/issue-001/",
+        "/newsletter/issue-002/",
+        "/newsletter/",
         "/start/",
         "/submit-workflow/",
         "/templates/ai-meeting-notes-to-action-tracker/",
@@ -246,7 +259,7 @@
     {
       "event": "newsletter_signup_click",
       "status": "tracked",
-      "cta_count": 95,
+      "cta_count": 89,
       "page_count": 34,
       "pages": [
         "/build-in-public/",
@@ -255,9 +268,9 @@
         "/community-policy/",
         "/experiments/",
         "/",
-        "/newsletter/",
         "/newsletter/issue-001/",
         "/newsletter/issue-002/",
+        "/newsletter/",
         "/start/",
         "/submit-workflow/",
         "/submit-workflow/moderation/",
@@ -298,9 +311,18 @@
       ]
     },
     {
+      "event": "share_nudge_click",
+      "status": "tracked",
+      "cta_count": 1,
+      "page_count": 1,
+      "pages": [
+        "/"
+      ]
+    },
+    {
       "event": "workflow_explore_click",
       "status": "tracked",
-      "cta_count": 94,
+      "cta_count": 98,
       "page_count": 34,
       "pages": [
         "/build-in-public/",
@@ -309,9 +331,9 @@
         "/community-policy/",
         "/experiments/",
         "/",
-        "/newsletter/",
         "/newsletter/issue-001/",
         "/newsletter/issue-002/",
+        "/newsletter/",
         "/start/",
         "/submit-workflow/",
         "/submit-workflow/moderation/",
@@ -342,16 +364,17 @@
     {
       "event": "workflow_submit_start",
       "status": "tracked",
-      "cta_count": 100,
-      "page_count": 27,
+      "cta_count": 99,
+      "page_count": 28,
       "pages": [
         "/build-in-public/",
         "/challenges/build-in-public-4-weeks/",
         "/challenges/",
         "/community-policy/",
         "/",
-        "/newsletter/",
+        "/newsletter/issue-001/",
         "/newsletter/issue-002/",
+        "/newsletter/",
         "/start/",
         "/submit-workflow/",
         "/submit-workflow/moderation/",
@@ -635,15 +658,7 @@
     },
     {
       "event": "build_public_metrics_view",
-      "cta_id": "footer_build_public",
-      "page_path": "/newsletter/",
-      "workflow_category": "",
-      "audience_segment": "",
-      "status": "tracked"
-    },
-    {
-      "event": "build_public_metrics_view",
-      "cta_id": "nav_experiments",
+      "cta_id": "issue-001_metrics",
       "page_path": "/newsletter/issue-001/",
       "workflow_category": "",
       "audience_segment": "",
@@ -651,15 +666,15 @@
     },
     {
       "event": "build_public_metrics_view",
-      "cta_id": "issue002_dashboard",
-      "page_path": "/newsletter/issue-002/",
+      "cta_id": "nav_metrics",
+      "page_path": "/newsletter/issue-001/",
       "workflow_category": "",
       "audience_segment": "",
       "status": "tracked"
     },
     {
       "event": "build_public_metrics_view",
-      "cta_id": "issue002_metrics",
+      "cta_id": "issue-002_metrics",
       "page_path": "/newsletter/issue-002/",
       "workflow_category": "",
       "audience_segment": "",
@@ -675,23 +690,7 @@
     },
     {
       "event": "build_public_metrics_view",
-      "cta_id": "nav_build_public",
-      "page_path": "/newsletter/",
-      "workflow_category": "",
-      "audience_segment": "",
-      "status": "tracked"
-    },
-    {
-      "event": "build_public_metrics_view",
-      "cta_id": "newsletter_archive_metrics",
-      "page_path": "/newsletter/",
-      "workflow_category": "",
-      "audience_segment": "",
-      "status": "tracked"
-    },
-    {
-      "event": "build_public_metrics_view",
-      "cta_id": "newsletter_view_build_public",
+      "cta_id": "nav_metrics",
       "page_path": "/newsletter/",
       "workflow_category": "",
       "audience_segment": "",
@@ -1181,22 +1180,6 @@
       "event": "challenge_join_click",
       "cta_id": "nav_challenges",
       "page_path": "/",
-      "workflow_category": "",
-      "audience_segment": "",
-      "status": "tracked"
-    },
-    {
-      "event": "challenge_join_click",
-      "cta_id": "footer_challenges",
-      "page_path": "/newsletter/",
-      "workflow_category": "",
-      "audience_segment": "",
-      "status": "tracked"
-    },
-    {
-      "event": "challenge_join_click",
-      "cta_id": "nav_challenges",
-      "page_path": "/newsletter/",
       "workflow_category": "",
       "audience_segment": "",
       "status": "tracked"
@@ -1755,8 +1738,8 @@
     },
     {
       "event": "community_bot_setup_click",
-      "cta_id": "footer_community_bot",
-      "page_path": "/newsletter/",
+      "cta_id": "nav_community_bot",
+      "page_path": "/newsletter/issue-001/",
       "workflow_category": "",
       "audience_segment": "",
       "status": "tracked"
@@ -1764,7 +1747,7 @@
     {
       "event": "community_bot_setup_click",
       "cta_id": "nav_community_bot",
-      "page_path": "/newsletter/issue-001/",
+      "page_path": "/newsletter/issue-002/",
       "workflow_category": "",
       "audience_segment": "",
       "status": "tracked"
@@ -2283,15 +2266,7 @@
     },
     {
       "event": "newsletter_signup_click",
-      "cta_id": "footer_newsletter",
-      "page_path": "/newsletter/",
-      "workflow_category": "",
-      "audience_segment": "",
-      "status": "tracked"
-    },
-    {
-      "event": "newsletter_signup_click",
-      "cta_id": "issue001_subscribe",
+      "cta_id": "issue-001_subscribe",
       "page_path": "/newsletter/issue-001/",
       "workflow_category": "",
       "audience_segment": "",
@@ -2307,7 +2282,7 @@
     },
     {
       "event": "newsletter_signup_click",
-      "cta_id": "issue002_subscribe",
+      "cta_id": "issue-002_subscribe",
       "page_path": "/newsletter/issue-002/",
       "workflow_category": "",
       "audience_segment": "",
@@ -2331,7 +2306,7 @@
     },
     {
       "event": "newsletter_signup_click",
-      "cta_id": "newsletter_archive_issue_001",
+      "cta_id": "newsletter_archive_issue-001",
       "page_path": "/newsletter/",
       "workflow_category": "",
       "audience_segment": "",
@@ -2339,7 +2314,7 @@
     },
     {
       "event": "newsletter_signup_click",
-      "cta_id": "newsletter_archive_issue_002",
+      "cta_id": "newsletter_archive_issue-002",
       "page_path": "/newsletter/",
       "workflow_category": "",
       "audience_segment": "",
@@ -2347,47 +2322,7 @@
     },
     {
       "event": "newsletter_signup_click",
-      "cta_id": "newsletter_issue_001",
-      "page_path": "/newsletter/",
-      "workflow_category": "",
-      "audience_segment": "",
-      "status": "tracked"
-    },
-    {
-      "event": "newsletter_signup_click",
-      "cta_id": "newsletter_issue_002",
-      "page_path": "/newsletter/",
-      "workflow_category": "",
-      "audience_segment": "",
-      "status": "tracked"
-    },
-    {
-      "event": "newsletter_signup_click",
-      "cta_id": "newsletter_read_archive",
-      "page_path": "/newsletter/",
-      "workflow_category": "",
-      "audience_segment": "",
-      "status": "tracked"
-    },
-    {
-      "event": "newsletter_signup_click",
-      "cta_id": "newsletter_signup_email_footer",
-      "page_path": "/newsletter/",
-      "workflow_category": "",
-      "audience_segment": "",
-      "status": "tracked"
-    },
-    {
-      "event": "newsletter_signup_click",
-      "cta_id": "newsletter_signup_email_hero",
-      "page_path": "/newsletter/",
-      "workflow_category": "",
-      "audience_segment": "",
-      "status": "tracked"
-    },
-    {
-      "event": "newsletter_signup_click",
-      "cta_id": "newsletter_signup_whatsapp_footer",
+      "cta_id": "newsletter_latest_issue",
       "page_path": "/newsletter/",
       "workflow_category": "",
       "audience_segment": "",
@@ -2938,6 +2873,14 @@
       "status": "tracked"
     },
     {
+      "event": "share_nudge_click",
+      "cta_id": "hero_share_tracked_invite",
+      "page_path": "/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
       "event": "workflow_explore_click",
       "cta_id": "footer_workflows",
       "page_path": "/build-in-public/",
@@ -3083,15 +3026,23 @@
     },
     {
       "event": "workflow_explore_click",
-      "cta_id": "footer_workflows",
-      "page_path": "/newsletter/",
+      "cta_id": "issue001_creator_repurpose",
+      "page_path": "/newsletter/issue-001/",
       "workflow_category": "",
       "audience_segment": "",
       "status": "tracked"
     },
     {
       "event": "workflow_explore_click",
-      "cta_id": "issue001_templates",
+      "cta_id": "issue001_founder_metrics",
+      "page_path": "/newsletter/issue-001/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "issue001_meeting_notes",
       "page_path": "/newsletter/issue-001/",
       "workflow_category": "",
       "audience_segment": "",
@@ -3109,6 +3060,22 @@
       "event": "workflow_explore_click",
       "cta_id": "nav_workflows",
       "page_path": "/newsletter/issue-001/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "issue002_dashboard",
+      "page_path": "/newsletter/issue-002/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "issue002_moderation",
+      "page_path": "/newsletter/issue-002/",
       "workflow_category": "",
       "audience_segment": "",
       "status": "tracked"
@@ -3133,6 +3100,14 @@
       "event": "workflow_explore_click",
       "cta_id": "nav_workflows",
       "page_path": "/newsletter/issue-002/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_explore_click",
+      "cta_id": "nav_templates",
+      "page_path": "/newsletter/",
       "workflow_category": "",
       "audience_segment": "",
       "status": "tracked"
@@ -3795,16 +3770,8 @@
     },
     {
       "event": "workflow_submit_start",
-      "cta_id": "footer_submit",
-      "page_path": "/newsletter/",
-      "workflow_category": "",
-      "audience_segment": "",
-      "status": "tracked"
-    },
-    {
-      "event": "workflow_submit_start",
-      "cta_id": "issue002_moderation",
-      "page_path": "/newsletter/issue-002/",
+      "cta_id": "nav_submit",
+      "page_path": "/newsletter/issue-001/",
       "workflow_category": "",
       "audience_segment": "",
       "status": "tracked"

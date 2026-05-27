@@ -8,4 +8,5 @@ date,event_name,page_path,cta_id,workflow_category,audience_segment,lead_type,so
 ,lead_intent_click,,,,,,,,,,,0,manual export row for Lead intent clicks
 ,build_public_metrics_view,,,,,,,,,,,0,manual export row for Build-in-public / roadmap views
 ,audience_segment_click,,,,,,,,,,,0,manual export row for Audience segment clicks
+,share_nudge_click,,,,,,,,,,,0,manual export row for Share nudge clicks
 ,partner_interest_click,,,,,,,,,,,0,manual export row for Partner interest clicks

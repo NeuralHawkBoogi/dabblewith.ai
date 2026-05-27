@@ -18,6 +18,7 @@ const ALLOWED = new Set([
   'partner_interest_click',
   'build_public_metrics_view',
   'audience_segment_click',
+  'share_nudge_click',
   'lead_intent_click'
 ]);
 const KPI_ROWS = [
@@ -30,6 +31,7 @@ const KPI_ROWS = [
   ['Lead intent clicks', 'lead_intent_click', 'Which external lead actions happened?', 'page_path, cta_id, lead_type, source_event'],
   ['Build-in-public / roadmap views', 'build_public_metrics_view', 'Are people checking progress?', 'page_path, cta_id'],
   ['Audience segment clicks', 'audience_segment_click', 'Which audience paths pull interest?', 'page_path, cta_id, audience_segment, workflow_category'],
+  ['Share nudge clicks', 'share_nudge_click', 'Which share prompts create trackable distribution?', 'page_path, cta_id, source, medium, campaign, content'],
   ['Partner interest clicks', 'partner_interest_click', 'Are there partnership or issue-swap signals?', 'page_path, cta_id']
 ];
 
