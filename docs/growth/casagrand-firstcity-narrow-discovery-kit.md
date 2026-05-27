@@ -34,13 +34,19 @@ The public page contains copy buttons for:
 
 Keep tracker files outside public pages and commit only aggregate/docs when needed.
 
+Generate the starter tracker outside the public repo:
+
+```bash
+node scripts/casagrand-campaign-report.js --write-narrow-discovery-template private/casagrand-narrow-discovery.json
+```
+
 Allowed row shape:
 
 ```json
 {
   "last4": "____",
   "segment": "qa_dev_student | excel_workflow | group_owner | other",
-  "route": "narrow_discovery",
+  "route": "no_reply | problem | referral | narrow_discovery | topic_vote | bot_readiness | design_call",
   "problemType": "qa_checklist | coding_helper | student_project | excel_cleanup | office_workflow | bot_readiness | no_reply",
   "followUpSent": true,
   "nextAction": "qa_walkthrough | excel_walkthrough | referral_sprint | bot_readiness | date_lock | continue_narrow_discovery"
@@ -70,7 +76,7 @@ Privacy rules:
 node scripts/casagrand-campaign-report.js --runtime-dir /home/clawdbot/dabblewith-whatsapp/data --date 2026-05-27 --exclude-last4 2585
 ```
 
-If using a private tracker:
+If using a private tracker, the report now renders a dedicated **Narrow discovery follow-up** section:
 
 ```bash
 node scripts/casagrand-campaign-report.js --runtime-dir /home/clawdbot/dabblewith-whatsapp/data --date 2026-05-27 --exclude-last4 2585 --manual-tracker private/casagrand-narrow-discovery.json

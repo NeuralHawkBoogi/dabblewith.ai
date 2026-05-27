@@ -9,6 +9,7 @@ const {
   buildFirstResponderFollowUp,
   buildReferralSprintFollowUp,
   buildNoReplyNudgeFollowUp,
+  buildNarrowDiscoveryFollowUp,
   buildFollowUpCadence,
   computeLaunchDecision,
   inferSourceTags,
@@ -18,6 +19,7 @@ const {
   manualTrackerTemplate,
   referralSprintTrackerTemplate,
   noReplyNudgeTrackerTemplate,
+  narrowDiscoveryTrackerTemplate,
   isExcludedLast4,
   normalizeLast4List,
   redactPhone,
@@ -27,6 +29,7 @@ const {
   writeManualTrackerTemplate,
   writeReferralSprintTrackerTemplate,
   writeNoReplyNudgeTrackerTemplate,
+  writeNarrowDiscoveryTrackerTemplate,
 } = require('./casagrand-campaign-report');
 
 function tmpDir() {
@@ -74,6 +77,7 @@ function appendJsonl(file, rows) {
   assert.strictEqual(parseArgs(['--write-manual-tracker-template', 'out.json']).writeManualTrackerTemplate, 'out.json');
   assert.strictEqual(parseArgs(['--write-referral-sprint-template', 'referrals.json']).writeReferralSprintTemplate, 'referrals.json');
   assert.strictEqual(parseArgs(['--write-no-reply-nudge-template', 'nudge.json']).writeNoReplyNudgeTemplate, 'nudge.json');
+  assert.strictEqual(parseArgs(['--write-narrow-discovery-template', 'narrow.json']).writeNarrowDiscoveryTemplate, 'narrow.json');
 
   const referralTemplate = referralSprintTrackerTemplate();
   assert.strictEqual(referralTemplate.meta.route, 'first_responder_referral_sprint');
@@ -118,6 +122,39 @@ function appendJsonl(file, rows) {
   assert(filledNudgeFollowUp.nextSteps.some((s) => s.includes('/casagrand-firstcity/qa-walkthrough/')));
   assert(filledNudgeFollowUp.nextSteps.some((s) => s.includes('/casagrand-firstcity/bot-readiness/')));
   assert(!JSON.stringify(filledNudgeFollowUp).match(/\d{5,}/), 'nudge follow-up leaked a long number');
+
+  const narrowTemplate = narrowDiscoveryTrackerTemplate();
+  assert.strictEqual(narrowTemplate.meta.route, 'narrow_discovery');
+  assert.strictEqual(narrowTemplate.rows.length, 5);
+  assert.deepStrictEqual(narrowTemplate.rows.map((row) => row.segment), ['qa_dev_student', 'qa_dev_student', 'excel_workflow', 'excel_workflow', 'group_owner']);
+  assert(narrowTemplate.rows.every((row) => row.route === 'no_reply'), 'narrow template should not pre-count positive outcomes');
+  assert(narrowTemplate.rows.every((row) => /^\d{4}$/.test(row.last4)), 'narrow template must use last4 placeholders only');
+  assert(!JSON.stringify(narrowTemplate).match(/phone|message|raw|name|wamid|\+91/i), 'narrow template leaked disallowed fields');
+  const narrowTemplatePath = path.join(tmpDir(), 'nested', 'narrow-discovery-template.json');
+  const writtenNarrowTemplatePath = writeNarrowDiscoveryTrackerTemplate(narrowTemplatePath);
+  assert.strictEqual(writtenNarrowTemplatePath, path.resolve(narrowTemplatePath));
+  assert.deepStrictEqual(JSON.parse(fs.readFileSync(narrowTemplatePath, 'utf8')), narrowTemplate);
+  const emptyNarrowSummary = summarizeManualTracker(narrowTemplate);
+  assert.strictEqual(emptyNarrowSummary.metaRoute, 'narrow_discovery');
+  assert.strictEqual(emptyNarrowSummary.rows, 5);
+  const emptyNarrowFollowUp = buildNarrowDiscoveryFollowUp(emptyNarrowSummary);
+  assert(emptyNarrowFollowUp.nextSteps.some((s) => s.includes('do not broad-post yet')));
+  const filledNarrowFollowUp = buildNarrowDiscoveryFollowUp(summarizeManualTracker({
+    meta: { route: 'narrow_discovery' },
+    rows: [
+      { segment: 'qa_dev_student', last4: '3001', route: 'problem', problem: 'QA checklist helper' },
+      { segment: 'excel_workflow', last4: '3003', route: 'narrow_discovery', problem: 'Excel cleanup report' },
+      { segment: 'group_owner', last4: '3005', route: 'bot_readiness', problem: 'runs residents group' },
+    ],
+  }));
+  assert.strictEqual(filledNarrowFollowUp.qaSignals, 1);
+  assert.strictEqual(filledNarrowFollowUp.excelSignals, 1);
+  assert.strictEqual(filledNarrowFollowUp.groupOwnerSignals, 1);
+  assert(filledNarrowFollowUp.nextSteps.some((s) => s.includes('/casagrand-firstcity/qa-walkthrough/')));
+  assert(filledNarrowFollowUp.nextSteps.some((s) => s.includes('/casagrand-firstcity/excel-walkthrough/')));
+  assert(filledNarrowFollowUp.nextSteps.some((s) => s.includes('/casagrand-firstcity/bot-readiness/')));
+  assert(filledNarrowFollowUp.nextSteps.some((s) => s.includes('/casagrand-firstcity/date-lock/')));
+  assert(!JSON.stringify(filledNarrowFollowUp).match(/\d{5,}/), 'narrow follow-up leaked a long number');
 
   const templatePath = path.join(tmpDir(), 'nested', 'manual-5dm-template.json');
   const writtenTemplatePath = writeManualTrackerTemplate(templatePath);

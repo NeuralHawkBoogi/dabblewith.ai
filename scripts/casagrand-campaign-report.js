@@ -86,6 +86,7 @@ function parseArgs(argv = process.argv.slice(2)) {
     writeManualTrackerTemplate: null,
     writeReferralSprintTemplate: null,
     writeNoReplyNudgeTemplate: null,
+    writeNarrowDiscoveryTemplate: null,
     excludeLast4: normalizeLast4List(process.env.DABBLE_CASAGRAND_EXCLUDE_LAST4 || ''),
   };
   for (let i = 0; i < argv.length; i += 1) {
@@ -97,6 +98,7 @@ function parseArgs(argv = process.argv.slice(2)) {
     else if (arg === '--write-manual-tracker-template') options.writeManualTrackerTemplate = argv[++i];
     else if (arg === '--write-referral-sprint-template') options.writeReferralSprintTemplate = argv[++i];
     else if (arg === '--write-no-reply-nudge-template') options.writeNoReplyNudgeTemplate = argv[++i];
+    else if (arg === '--write-narrow-discovery-template') options.writeNarrowDiscoveryTemplate = argv[++i];
     else if (arg === '--exclude-last4') options.excludeLast4.push(...normalizeLast4List(argv[++i]));
     else if (arg === '--include-all') options.includeAll = true;
     else if (arg === '--help' || arg === '-h') options.help = true;
@@ -321,6 +323,65 @@ function noReplyNudgeTrackerTemplate() {
   };
 }
 
+
+function narrowDiscoveryTrackerTemplate() {
+  return {
+    meta: {
+      sprintStartedAt: '',
+      reportRerunDueAt: '',
+      route: 'narrow_discovery',
+      notes: 'Fill after the five narrow discovery DMs. Store only last4, segment, route, short problem, and next action; no direct identifiers or copied chat text.',
+    },
+    rows: [
+      {
+        segment: 'qa_dev_student',
+        last4: '3001',
+        route: 'no_reply',
+        problem: '',
+        problemType: 'qa_checklist',
+        followUpSent: false,
+        nextAction: 'qa_walkthrough | referral_sprint | continue_narrow_discovery',
+      },
+      {
+        segment: 'qa_dev_student',
+        last4: '3002',
+        route: 'no_reply',
+        problem: '',
+        problemType: 'coding_helper',
+        followUpSent: false,
+        nextAction: 'qa_walkthrough | referral_sprint | continue_narrow_discovery',
+      },
+      {
+        segment: 'excel_workflow',
+        last4: '3003',
+        route: 'no_reply',
+        problem: '',
+        problemType: 'excel_cleanup',
+        followUpSent: false,
+        nextAction: 'excel_walkthrough | referral_sprint | continue_narrow_discovery',
+      },
+      {
+        segment: 'excel_workflow',
+        last4: '3004',
+        route: 'no_reply',
+        problem: '',
+        problemType: 'office_workflow',
+        followUpSent: false,
+        nextAction: 'excel_walkthrough | referral_sprint | continue_narrow_discovery',
+      },
+      {
+        segment: 'group_owner',
+        last4: '3005',
+        route: 'no_reply',
+        problem: '',
+        problemType: 'bot_readiness',
+        followUpSent: false,
+        nextAction: 'bot_readiness | design_call | continue_narrow_discovery',
+      },
+    ],
+  };
+}
+
 function writeJsonTemplate(file, template, flagName) {
   if (!file) throw new Error(`${flagName} requires a file path`);
   const outputPath = path.resolve(file);
@@ -341,6 +402,10 @@ function writeNoReplyNudgeTrackerTemplate(file) {
   return writeJsonTemplate(file, noReplyNudgeTrackerTemplate(), '--write-no-reply-nudge-template');
 }
 
+function writeNarrowDiscoveryTrackerTemplate(file) {
+  return writeJsonTemplate(file, narrowDiscoveryTrackerTemplate(), '--write-narrow-discovery-template');
+}
+
 function loadManualTracker(file) {
   if (!file) return null;
   const parsed = JSON.parse(fs.readFileSync(file, 'utf8'));
@@ -350,8 +415,8 @@ function loadManualTracker(file) {
 function summarizeManualTracker(input) {
   const rows = Array.isArray(input) ? input : Array.isArray(input.rows) ? input.rows : [];
   const meta = (!Array.isArray(input) && input && typeof input === 'object') ? input.meta || {} : {};
-  const allowedSegments = new Set(['career', 'workflow', 'admin', 'founder', 'student', 'community_bot', 'qa_dev_student', 'group_owner', 'other', 'unknown']);
-  const allowedRoutes = new Set(['no_reply', 'problem', 'referral', 'first_responder_referral_sprint', 'topic_vote', 'admin_pain', 'bot_readiness', 'design_call', 'no_fit']);
+  const allowedSegments = new Set(['career', 'workflow', 'admin', 'founder', 'student', 'community_bot', 'qa_dev_student', 'excel_workflow', 'group_owner', 'other', 'unknown']);
+  const allowedRoutes = new Set(['no_reply', 'problem', 'referral', 'first_responder_referral_sprint', 'narrow_discovery', 'topic_vote', 'admin_pain', 'bot_readiness', 'design_call', 'no_fit']);
   const summary = {
     metaRoute: normalizeText(meta.route || ''),
     sprintStartedAt: safeIso(meta.sprintStartedAt),
@@ -389,7 +454,7 @@ function summarizeManualTracker(input) {
     summary.rows += 1;
     summary.routeCounts[route] = (summary.routeCounts[route] || 0) + 1;
     summary.segmentCounts[segment] = (summary.segmentCounts[segment] || 0) + 1;
-    if (['problem', 'referral', 'first_responder_referral_sprint', 'topic_vote', 'admin_pain', 'bot_readiness', 'design_call'].includes(route)) summary.concreteReplies += 1;
+    if (['problem', 'referral', 'first_responder_referral_sprint', 'narrow_discovery', 'topic_vote', 'admin_pain', 'bot_readiness', 'design_call'].includes(route)) summary.concreteReplies += 1;
     if (route === 'topic_vote') summary.topicVotes += 1;
     if (route === 'referral' || route === 'first_responder_referral_sprint') summary.referrals += 1;
     if (route === 'admin_pain') summary.adminPains += 1;
@@ -412,6 +477,13 @@ function safeIso(value) {
 
 function computeManualNextAction(summary) {
   if (!summary || summary.rows === 0) return null;
+  if (summary.metaRoute === 'narrow_discovery') {
+    if (summary.concreteReplies >= 3) return 'Use /casagrand-firstcity/date-lock/ and prepare the clubhouse/admin slot ask; three narrow-discovery resident signals are logged.';
+    if (summary.botReadiness >= 1 || summary.designCalls >= 1 || summary.adminPains >= 1) return 'Route the group-owner/admin row to /casagrand-firstcity/bot-readiness/; keep the remaining DMs narrow.';
+    if (summary.referrals >= 1) return 'Move the warm referral into /casagrand-firstcity/referral-sprint/ and keep collecting last4-only outcomes.';
+    if (summary.concreteReplies >= 1) return 'Route the concrete narrow-discovery reply to the matching walkthrough, then ask for one referral before broad-posting.';
+    return 'No concrete narrow-discovery replies yet: rewrite the opener or ask for one different warm intro; do not broad-post yet.';
+  }
   if (summary.designCalls >= 1 || summary.botReadiness >= 2 || summary.adminPains >= 2) {
     return 'Prioritize Get a Community Bot validation: book bot-readiness/design-partner calls before another broad event post.';
   }
@@ -588,6 +660,45 @@ function buildReferralSprintFollowUp(tracker) {
     rows: rows.map((row) => ({
       segment: row.segment,
       last4: row.last4,
+      problem: row.problem,
+      followUpSent: row.followUpSent,
+      nextAction: row.nextAction,
+    })),
+  };
+}
+
+
+// Builds privacy-safe next steps from the five-DM narrow discovery tracker.
+// It accepts only last4-masked rows and aggregate route/segment counts from the
+// manual tracker, so it can turn private warm-DM outcomes into campaign routing
+// without storing raw WhatsApp content or full phone numbers.
+function buildNarrowDiscoveryFollowUp(tracker) {
+  if (!tracker || tracker.metaRoute !== 'narrow_discovery' || !Array.isArray(tracker.sanitizedRows)) return null;
+  const rows = tracker.sanitizedRows;
+  const qaRows = rows.filter((row) => row.segment === 'qa_dev_student' && ['problem', 'narrow_discovery', 'topic_vote'].includes(row.route));
+  const excelRows = rows.filter((row) => row.segment === 'excel_workflow' && ['problem', 'narrow_discovery', 'topic_vote'].includes(row.route));
+  const groupOwnerRows = rows.filter((row) => row.segment === 'group_owner' && ['bot_readiness', 'admin_pain', 'design_call', 'narrow_discovery'].includes(row.route));
+  const nextSteps = [];
+  if (qaRows.length) nextSteps.push('QA/dev/student signal captured: route to /casagrand-firstcity/qa-walkthrough/ and ask for one referral after the sample.');
+  if (excelRows.length) nextSteps.push('Excel/office-workflow signal captured: route to /casagrand-firstcity/excel-walkthrough/ and ask for one referral after the sample.');
+  if (tracker.referrals > 0) nextSteps.push('Warm referral captured: move the referred-neighbor intro into /casagrand-firstcity/referral-sprint/.');
+  if (groupOwnerRows.length || tracker.botReadiness > 0 || tracker.designCalls > 0 || tracker.adminPains > 0) nextSteps.push('Group-owner/admin signal captured: route only that row to /casagrand-firstcity/bot-readiness/ before discussing a community bot.');
+  if (tracker.concreteReplies >= 3) nextSteps.push('Three or more concrete resident signals are logged: prepare /casagrand-firstcity/date-lock/ and the clubhouse/admin slot ask.');
+  if (!nextSteps.length) nextSteps.push('No concrete narrow-discovery replies yet: rewrite the opener or ask one different warm intro; do not broad-post yet.');
+  return {
+    rows: tracker.rows,
+    concreteReplies: tracker.concreteReplies,
+    referrals: tracker.referrals,
+    topicVotes: tracker.topicVotes,
+    botReadiness: tracker.botReadiness,
+    qaSignals: qaRows.length,
+    excelSignals: excelRows.length,
+    groupOwnerSignals: groupOwnerRows.length,
+    nextSteps,
+    rowsPreview: rows.map((row) => ({
+      segment: row.segment,
+      last4: row.last4,
+      route: row.route,
       problem: row.problem,
       followUpSent: row.followUpSent,
       nextAction: row.nextAction,
@@ -823,6 +934,11 @@ function renderMarkdown(report) {
     appendNoReplyNudgeFollowUp(lines, noReplyNudgeFollowUp);
     lines.push('');
   }
+  const narrowDiscoveryFollowUp = buildNarrowDiscoveryFollowUp(report.manualTracker);
+  if (narrowDiscoveryFollowUp) {
+    appendNarrowDiscoveryFollowUp(lines, narrowDiscoveryFollowUp);
+    lines.push('');
+  }
   lines.push('## Funnel snapshot');
   lines.push(`- Campaign signals: ${report.totals.campaignSignals}`);
   lines.push(`- Unique residents/users: ${report.totals.uniqueUsers}`);
@@ -949,6 +1065,25 @@ function appendNoReplyNudgeFollowUp(lines, followUp) {
   }
 }
 
+
+function appendNarrowDiscoveryFollowUp(lines, followUp) {
+  lines.push('## Narrow discovery follow-up');
+  lines.push('Privacy-safe routing from the five-DM narrow discovery tracker (last4 only, no phone/message/token exposure):');
+  lines.push(`- Rows logged: ${followUp.rows}`);
+  lines.push(`- Concrete replies: ${followUp.concreteReplies}`);
+  lines.push(`- QA/dev/student signals: ${followUp.qaSignals}`);
+  lines.push(`- Excel/workflow signals: ${followUp.excelSignals}`);
+  lines.push(`- Referrals: ${followUp.referrals}`);
+  lines.push(`- Group-owner/admin signals: ${followUp.groupOwnerSignals}`);
+  lines.push(`- Bot-readiness rows: ${followUp.botReadiness}`);
+  lines.push('- Recommended next steps:');
+  for (const step of followUp.nextSteps) lines.push(`  - ${step}`);
+  lines.push('- Narrow discovery rows (last4 only):');
+  for (const row of followUp.rowsPreview) {
+    lines.push(`  - ${row.segment} · ${row.last4} · ${row.route} · problem="${row.problem || 'n/a'}" · follow_up=${row.followUpSent ? 'yes' : 'no'} · next="${row.nextAction || 'n/a'}"`);
+  }
+}
+
 function appendReferralSprintFollowUp(lines, followUp) {
   lines.push('## Referral sprint follow-up');
   lines.push('Copy-ready, privacy-safe next steps from the manual tracker referral-sprint rows (last4 only, no phone/message/token exposure):');
@@ -1006,11 +1141,12 @@ function writeCampaignReport(options = {}) {
 
 function usage() {
   return [
-    'Usage: node scripts/casagrand-campaign-report.js [--runtime-dir DIR] [--output-dir DIR] [--date YYYY-MM-DD] [--manual-tracker FILE] [--write-manual-tracker-template FILE] [--write-referral-sprint-template FILE] [--write-no-reply-nudge-template FILE] [--exclude-last4 1234[,5678]] [--include-all]',
+    'Usage: node scripts/casagrand-campaign-report.js [--runtime-dir DIR] [--output-dir DIR] [--date YYYY-MM-DD] [--manual-tracker FILE] [--write-manual-tracker-template FILE] [--write-referral-sprint-template FILE] [--write-no-reply-nudge-template FILE] [--write-narrow-discovery-template FILE] [--exclude-last4 1234[,5678]] [--include-all]',
     '',
     'Use --write-manual-tracker-template FILE to create a privacy-safe starter JSON with exactly 5 rows (2 career, 2 workflow, 1 admin) using last4 placeholders only.',
     'Use --write-referral-sprint-template FILE to create a privacy-safe starter JSON for first-responder referral-sprint follow-up rows.',
     'Use --write-no-reply-nudge-template FILE to create a privacy-safe starter JSON for one-time no-reply nudge outcomes.',
+    'Use --write-narrow-discovery-template FILE to create a privacy-safe starter JSON for five narrow discovery DMs.',
     '',
     `Default runtime dir: ${DEFAULT_RUNTIME_DIR}`,
     `Default output dir: ${DEFAULT_OUTPUT_DIR}`,
@@ -1039,6 +1175,11 @@ if (require.main === module) {
       console.log(`casagrand no-reply nudge tracker template written: ${templatePath}`);
       process.exit(0);
     }
+    if (options.writeNarrowDiscoveryTemplate) {
+      const templatePath = writeNarrowDiscoveryTrackerTemplate(options.writeNarrowDiscoveryTemplate);
+      console.log(`casagrand narrow discovery tracker template written: ${templatePath}`);
+      process.exit(0);
+    }
     const result = writeCampaignReport(options);
     console.log(`casagrand campaign report written: ${result.mdPath}`);
     console.log(`casagrand campaign report written: ${result.jsonPath}`);
@@ -1064,15 +1205,18 @@ module.exports = {
   manualTrackerTemplate,
   referralSprintTrackerTemplate,
   noReplyNudgeTrackerTemplate,
+  narrowDiscoveryTrackerTemplate,
   writeManualTrackerTemplate,
   writeReferralSprintTrackerTemplate,
   writeNoReplyNudgeTrackerTemplate,
+  writeNarrowDiscoveryTrackerTemplate,
   summarizeManualTracker,
   computeManualNextAction,
   computeLaunchDecision,
   buildFirstResponderFollowUp,
   buildReferralSprintFollowUp,
   buildNoReplyNudgeFollowUp,
+  buildNarrowDiscoveryFollowUp,
   latestRecentSignalAt,
   buildFollowUpCadence,
   buildCampaignReport,

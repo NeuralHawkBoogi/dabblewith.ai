@@ -1252,5 +1252,101 @@
       ],
       "artifact": "30-minute founder AI automation review checklist covering trigger, source systems, examples, output, review rule, privacy rule, logs, and outcome metric."
     }
+  },
+  {
+    "slug": "founder-agent-workflow-runbook",
+    "title": "Agent Workflow Runbook for Founders",
+    "description": "A practical runbook for founders to design small AI agent workflows with clear tools, review gates, logs, and fallback paths.",
+    "keywords": [
+      "agent workflows for founders",
+      "AI agent workflow runbook",
+      "founder AI automation",
+      "human in the loop AI workflow"
+    ],
+    "publishedAt": "2026-05-27",
+    "status": "published",
+    "excerpt": "A founder agent workflow should behave like a reliable junior operator: narrow job, trusted inputs, visible reasoning trail, human approval, and a boring fallback.",
+    "sections": [
+      [
+        "Pick one workflow narrow enough to supervise",
+        "Do not start with “build an AI agent for the company.” Start with one repeatable founder workflow that already has a clear trigger and a clear next action. Good candidates are investor-update drafting, sales-call follow-up, support triage, lead research, meeting-note extraction, or weekly metrics commentary. The workflow should be small enough that a human can inspect ten runs in one sitting. If you cannot review the output quickly, the workflow is too broad for a first agent."
+      ],
+      [
+        "Write the runbook before touching tools",
+        "A practical runbook has six lines: trigger, input sources, allowed tools, output format, reviewer, and fallback. For example: when a call transcript lands, read the transcript and CRM notes, draft a follow-up email and three CRM fields, send to the founder for approval, and if the transcript is missing or the customer sounds angry, create a human task instead. This turns “agent” from a vague promise into an operating procedure someone can test."
+      ],
+      [
+        "Give the agent fewer tools than you think",
+        "Most early agent workflows fail because the agent has too many ways to act. For a founder workflow, start with read-only tools and draft-only outputs. Let the system read a folder, CRM export, meeting transcript, or public website. Let it write a draft, checklist, summary, or task suggestion. Do not let it send emails, change CRM stages, update prices, issue refunds, or message customers until the review loop is boringly reliable. Autonomy should be earned by evidence, not granted because the demo looked good."
+      ],
+      [
+        "Add a human review gate that matches risk",
+        "The review gate should be explicit, not vibes-based. Low-risk outputs can be saved as internal drafts. Medium-risk outputs, such as customer follow-up emails or investor updates, need approval before sending. High-risk outputs involving money, legal terms, medical information, hiring decisions, or angry customers should stop and escalate. The reviewer checklist is simple: did the agent use the right source, did it invent anything, is the tone right, is private data exposed, and is the recommended next action actually wise?"
+      ],
+      [
+        "Log the minimum evidence needed to debug",
+        "A useful founder agent log does not need to store private message bodies forever. It should capture the workflow name, timestamp, input source reference, tool calls used, output type, reviewer, approval decision, and failure reason. This gives you enough evidence to improve the workflow without turning analytics into a privacy risk. If the same failure happens three times, update the runbook or remove that task from the agent. The point is not to admire automation; the point is to reduce repeatable founder load safely."
+      ],
+      [
+        "A 45-minute build session agenda",
+        "Use this agenda in a hands-on AI workshop or founder working session. Minute 0-5: choose one workflow and define the trigger. Minute 5-15: list input sources and unsafe data that must stay out. Minute 15-25: write the draft output format and review checklist. Minute 25-35: run the AI on one sanitized example. Minute 35-42: critique the output and write the fallback path. Minute 42-45: decide the two-week metric, such as faster follow-up, fewer missed tasks, or less founder review time. Link the artifact back to /blog/ for future playbooks and to / when you want to turn it into a dabblewith.ai community demo."
+      ],
+      [
+        "Example: sales-call follow-up agent",
+        "Trigger: a discovery-call transcript is uploaded. Inputs: transcript, CRM account note, and approved product positioning doc. Tools: read files and draft text only. Output: customer pain summary, promised follow-ups, unanswered questions, and an email draft. Review gate: founder approval before anything is sent. Fallback: if the transcript is incomplete, sentiment is hostile, or pricing is requested, create a task for the founder. Metric: percentage of calls with approved follow-up within 24 hours. This is small, measurable, and safe enough to improve through repetition."
+      ],
+      [
+        "Next action",
+        "Before building your next AI agent, write the runbook on one page. If you cannot name the trigger, source of truth, allowed tools, reviewer, fallback, and metric, you are not ready for autonomy. Run the first version as a supervised workflow for two weeks. Once the logs show boring reliability, automate one more step. That is how founders get leverage without handing judgment to a black box."
+      ]
+    ],
+    "qualityScore": 89,
+    "qualityNote": "Evergreen founder playbook with narrow agent scope, tool limits, review gates, logging, fallback paths, workshop agenda, and concrete sales-call example.",
+    "researchBrief": {
+      "reader": "Founders and operators experimenting with AI agents for business workflows.",
+      "jobToBeDone": "Design a small agent workflow that creates operating leverage without unsafe autonomy or unreviewable outputs.",
+      "thesis": "Founder agent workflows work best when they start as narrow runbooks with limited tools, human review, evidence logs, fallback paths, and one measurable outcome.",
+      "searchIntent": "agent workflows for founders, AI agent workflow runbook, founder AI automation",
+      "sources": [
+        {
+          "title": "Anthropic — Building effective agents",
+          "url": "https://www.anthropic.com/engineering/building-effective-agents",
+          "type": "primary",
+          "checkedAt": "2026-05-27",
+          "notes": "Supports simple composable workflows and clear separation between workflows and open-ended agents."
+        },
+        {
+          "title": "OpenAI Agents SDK documentation",
+          "url": "https://openai.github.io/openai-agents-python/",
+          "type": "primary",
+          "checkedAt": "2026-05-27",
+          "notes": "Useful framing for tools, handoffs, guardrails, tracing, sessions, and human-in-the-loop systems."
+        },
+        {
+          "title": "dabblewith.ai SEO Blog Strategy",
+          "url": "SEO-BLOG-STRATEGY.md",
+          "type": "internal",
+          "checkedAt": "2026-05-27",
+          "notes": "Requires practical evergreen playbooks for hands-on AI learning, agent workflows, and human-guided AI operations."
+        }
+      ],
+      "insights": [
+        "The first version of an agent workflow should be supervised and narrow.",
+        "Tool permissions should expand only after reviewed runs show reliability.",
+        "A fallback path is part of the product, not an afterthought.",
+        "Privacy-safe logs make workflow improvement possible without over-collecting sensitive data."
+      ],
+      "examples": [
+        "Sales-call follow-up agent",
+        "Investor-update draft workflow",
+        "Support triage draft workflow"
+      ],
+      "risks": [
+        "Over-broad agents are hard to review and easy to distrust.",
+        "Write permissions can create customer or data damage before the workflow is proven.",
+        "Logs can become privacy liabilities if they store raw sensitive content unnecessarily."
+      ],
+      "artifact": "One-page founder agent workflow runbook: trigger, input sources, tools, output, reviewer, fallback, log fields, and two-week metric."
+    }
   }
 ]
