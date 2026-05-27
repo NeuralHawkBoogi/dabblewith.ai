@@ -104,6 +104,7 @@ This segment can become a direct demo for the community-bot platform.
 
 ## Active execution kits
 
+- `https://dabblewith.ai/casagrand-firstcity/operator-brief/` — one-screen current-route brief for the stale-first-responder state, with do/do-not guidance, narrow-discovery tracker command, 24-hour report command, and routing thresholds before any broad IT-group post.
 - `https://dabblewith.ai/casagrand-firstcity/admin-ask/` — mobile-ready permission kit with copy buttons for the IT group/admin ask, clubhouse/noticeboard approval, objections, and launch guardrails before any public group post.
 - `https://dabblewith.ai/casagrand-firstcity/testers/` — private first-10 tester page with source-tagged WhatsApp CTAs, copy buttons, target outreach mix, and a 24-hour tracker note before the broader IT-group post.
 - `https://dabblewith.ai/casagrand-firstcity/reboot-copy/` — low-signal reboot copy kit with problem-first DM variants for career, workflow, and community-bot group-owner hooks, plus source tags and 24-hour decision rules before another broad post.
