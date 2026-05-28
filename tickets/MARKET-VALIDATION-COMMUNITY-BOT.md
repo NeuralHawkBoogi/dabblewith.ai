@@ -324,3 +324,20 @@ node scripts/casagrand-campaign-report.js --write-group-owner-pilot-template pri
 node scripts/casagrand-campaign-report.js --date YYYY-MM-DD --exclude-last4 2585 --manual-tracker private/casagrand-group-owner-pilot.json
 git diff --check
 ```
+
+### Implemented — slice 15: Casagrand willingness-to-pay scorecard
+
+**Files added/updated:**
+- `casagrand-firstcity/price-probe-scorecard/index.html`
+  - Mobile-ready private scorecard for interpreting Casagrand group-owner price-probe replies.
+  - Routes high-pain/yes WTP to design-partner call, high-pain/maybe WTP to bounded pilot, unclear budget/trust/ROI to objection follow-up, and low-pain/no WTP to park.
+- `docs/growth/casagrand-firstcity-price-probe-scorecard.md`
+  - Operating note and privacy guardrails for the scorecard.
+
+**Validation commands:**
+```bash
+node --check scripts/generate-blog.js
+node scripts/generate-blog.js
+node scripts/site-smoke-test.js
+git diff --check
+```

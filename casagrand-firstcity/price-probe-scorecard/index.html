@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#060912" />
+  <title>Casagrand Price Probe Scorecard — dabblewith.ai</title>
+  <meta name="description" content="A privacy-safe scorecard for interpreting Casagrand community-bot willingness-to-pay replies and deciding design call, pilot, objection follow-up, or park." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://dabblewith.ai/casagrand-firstcity/price-probe-scorecard/" />
+  <meta property="og:site_name" content="dabblewith.ai" />
+  <meta property="og:title" content="Casagrand Price Probe Scorecard" />
+  <meta property="og:description" content="Turn willingness-to-pay replies into a clear Get a Community Bot validation decision." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dabblewith.ai/casagrand-firstcity/price-probe-scorecard/" />
+  <meta property="og:image" content="https://dabblewith.ai/app-icon-1024.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7473LZQGX2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-7473LZQGX2');
+    function copyText(id, label) {
+      var el = document.getElementById(id); if (!el) return;
+      var text = el.innerText.trim();
+      var done = function () {
+        if (typeof gtag === 'function') gtag('event', 'copy_click', { cta_id: 'casagrand_price_scorecard_' + id, cta_source: 'casagrand_price_scorecard', link_text: label || id, page_path: location.pathname });
+        var btn = document.querySelector('[data-copy-target="' + id + '"]');
+        if (btn) { var old = btn.innerText; btn.innerText = 'Copied'; setTimeout(function(){ btn.innerText = old; }, 1400); }
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done).catch(function(){ window.prompt('Copy this text', text); });
+      else window.prompt('Copy this text', text);
+    }
+  </script>
+  <script src="/scripts/web/dabblewith-tracking.js" defer></script>
+  <style>
+    :root{--bg:#060912;--panel:rgba(16,27,48,.94);--line:rgba(116,255,219,.24);--hard:#74ffdb;--text:#f2fbff;--muted:#9eb0c2;--green:#74ff7b;--blue:#58a6ff;--amber:#ffcc66;--red:#ff8a8a;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--text);background:linear-gradient(rgba(116,255,219,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(116,255,219,.045) 1px,transparent 1px),radial-gradient(circle at 14% 0%,rgba(88,166,255,.25),transparent 30rem),radial-gradient(circle at 92% 8%,rgba(116,255,123,.16),transparent 28rem),var(--bg);background-size:42px 42px,42px 42px,auto,auto,auto}a{color:inherit}.shell{width:min(1120px,calc(100% - 30px));margin:0 auto}nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0}.logo{text-decoration:none;font-size:30px;font-weight:900;letter-spacing:-.055em}.nav{display:flex;gap:10px;flex-wrap:wrap}.nav a{border:1px solid var(--line);border-radius:999px;padding:9px 12px;text-decoration:none;color:var(--muted);background:rgba(255,255,255,.03)}.hero,.panel,.card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(16,27,48,.96),rgba(8,13,25,.92));border-radius:24px;box-shadow:0 24px 90px rgba(0,0,0,.45)}.hero{padding:clamp(26px,5vw,52px);margin:18px auto 26px}.eyebrow{width:fit-content;color:var(--hard);border:1px solid var(--hard);background:rgba(116,255,219,.08);border-radius:999px;padding:9px 12px;font:12px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}h1{font-size:clamp(42px,7vw,82px);line-height:.9;letter-spacing:-.07em;margin:24px 0 18px}h2{font-size:clamp(28px,4.2vw,46px);line-height:.96;letter-spacing:-.055em;margin:0 0 16px}h3{font-size:22px;margin:0 0 8px}.lead{font-size:clamp(18px,2.2vw,24px);color:#d7e9f7;line-height:1.45;max-width:920px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.two{grid-template-columns:repeat(2,1fr)}.card,.panel{padding:22px;margin-bottom:18px}.muted,p,li{color:var(--muted);line-height:1.65}.badge{display:inline-flex;border:1px solid rgba(116,255,123,.45);color:var(--green);background:rgba(116,255,123,.08);padding:5px 9px;border-radius:999px;font:12px/1.2 ui-monospace,Menlo,monospace}.badge.blue{color:var(--blue);border-color:rgba(88,166,255,.45);background:rgba(88,166,255,.08)}.badge.warn{color:var(--amber);border-color:rgba(255,204,102,.45);background:rgba(255,204,102,.08)}.badge.red{color:var(--red);border-color:rgba(255,138,138,.45);background:rgba(255,138,138,.08)}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--hard);color:var(--hard);background:rgba(116,255,219,.07);border-radius:14px;padding:12px 15px;text-decoration:none;font-weight:850;cursor:pointer}.btn.primary{color:#04120e;background:var(--green);border-color:var(--green)}button.btn{font:inherit}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.copybox{white-space:pre-wrap;border:1px solid rgba(116,255,219,.18);border-radius:18px;background:rgba(0,0,0,.28);padding:16px;color:#d9f6ff;font:14px/1.65 ui-monospace,Menlo,monospace;overflow:auto}.metric{display:grid;grid-template-columns:1fr 1.2fr;gap:12px;border-bottom:1px solid rgba(116,255,219,.12);padding:12px 0;font:13px/1.25 ui-monospace,Menlo,monospace}.metric:last-child{border-bottom:0}strong{color:#fff}footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0 34px;margin-top:36px;font:13px/1.4 ui-monospace,Menlo,monospace}@media(max-width:900px){.grid,.two,.metric{grid-template-columns:1fr}.nav{display:none}}
+  </style>
+</head>
+<body>
+  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/casagrand-firstcity/">Pilot</a><a href="/casagrand-firstcity/group-owner-pilot/">Group-owner pilot</a><a href="/casagrand-firstcity/community-bot-price-probe/">Price probe</a><a href="/casagrand-firstcity/design-partner-call/">Design call</a></div></nav>
+  <main>
+    <section class="hero shell">
+      <div class="eyebrow">Community-bot validation · scorecard</div>
+      <h1>Decide what a price-probe reply really means.</h1>
+      <p class="lead">After a Casagrand group-owner/admin answers the private willingness-to-pay probe, use this scorecard to pick one next action: design-partner call, bounded 7-day pilot, objection follow-up, or park. No public pricing decision is made here.</p>
+      <div class="actions">
+        <button class="btn primary" data-copy-target="decision-template" onclick="copyText('decision-template','decision template')">Copy decision note</button>
+        <button class="btn" data-copy-target="objection-replies" onclick="copyText('objection-replies','objection replies')">Copy objection replies</button>
+        <button class="btn" data-copy-target="tracker-command" onclick="copyText('tracker-command','tracker command')">Copy report command</button>
+      </div>
+    </section>
+
+    <section class="shell grid">
+      <article class="card"><span class="badge">go</span><h3>High pain + yes/maybe WTP</h3><p>Move to a 20-minute design-partner call and define a 7-day pilot metric. This is the strongest validation path.</p></article>
+      <article class="card"><span class="badge warn">learn</span><h3>High pain + no WTP</h3><p>Do not discount immediately. Ask one objection question: budget, trust, official approval, or unclear ROI.</p></article>
+      <article class="card"><span class="badge red">park</span><h3>Low pain or vague group</h3><p>Park politely. The product needs repeated admin pain, not one-off curiosity or free custom automation.</p></article>
+    </section>
+
+    <section class="shell panel">
+      <h2>Decision matrix</h2>
+      <div class="metric"><span>high pain + weekly/daily cadence + yes WTP</span><strong>Book design-partner call; propose starter monthly after proof.</strong></div>
+      <div class="metric"><span>high pain + maybe WTP + clear owner access</span><strong>Run 7-day pilot; collect questions handled, RSVPs/interests, admin time saved.</strong></div>
+      <div class="metric"><span>medium pain + maybe/no WTP</span><strong>Ask objection follow-up; only continue if a repeated admin task is named.</strong></div>
+      <div class="metric"><span>500+ member group + yes WTP</span><strong>Require admin approval path before any live test; do not enter the group casually.</strong></div>
+      <div class="metric"><span>low pain + no WTP</span><strong>Park; add to learning log, no free custom build.</strong></div>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel">
+        <h2>Copy-ready decision note</h2>
+        <div id="decision-template" class="copybox">Casagrand community-bot price-probe decision
+- last4 only:
+- group/audience band: lt100 / 100_500 / 500_plus
+- cadence: none / monthly / weekly / daily
+- pain level: low / medium / high
+- WTP reply: no / maybe / yes
+- price band: none / lt_2k / 2k_5k / 5k_plus
+- objection, if any: budget / admin approval / trust / unclear ROI / timing / other
+- next action: design_partner_call / seven_day_pilot / objection_followup / park
+- success metric for pilot: questions handled / RSVPs collected / admin summary usefulness / time saved</div>
+        <div class="actions"><button class="btn" data-copy-target="decision-template" onclick="copyText('decision-template','decision template')">Copy decision note</button></div>
+      </div>
+      <div class="panel">
+        <h2>Objection replies</h2>
+        <div id="objection-replies" class="copybox">If budget is unclear:
+Makes sense. I am not trying to sell this now — I am checking whether the admin pain is expensive enough to solve. If the bot saved you 2-3 hours/month and gave a clean summary, would paid continuation still be a no, maybe, or yes?
+
+If trust/approval is the blocker:
+Fair. For the pilot we can avoid private group data: start with 5-10 approved FAQs, one opt-in event/use-case collection, and a daily admin summary. Would that be safe enough for a 7-day test?
+
+If ROI is unclear:
+The test metric can be simple: repeated questions handled, RSVPs/interests collected, and admin time saved. If those numbers are weak, we stop; if they are strong, we discuss continuation.</div>
+        <div class="actions"><button class="btn" data-copy-target="objection-replies" onclick="copyText('objection-replies','objection replies')">Copy objection replies</button></div>
+      </div>
+    </section>
+
+    <section class="shell panel">
+      <h2>Report loop</h2>
+      <p>Use the existing private group-owner pilot tracker; this scorecard only interprets the sanitized rows. Keep group names, member lists, screenshots, raw chats, full phone numbers, message IDs, and tokens out of the repo.</p>
+      <div id="tracker-command" class="copybox">mkdir -p private
+node scripts/casagrand-campaign-report.js --write-group-owner-pilot-template private/casagrand-group-owner-pilot.json
+node scripts/casagrand-campaign-report.js --date 2026-05-28 --exclude-last4 2585 --manual-tracker private/casagrand-group-owner-pilot.json</div>
+      <div class="actions"><button class="btn" data-copy-target="tracker-command" onclick="copyText('tracker-command','tracker command')">Copy report command</button></div>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel"><h2>Do / do not</h2><ul><li>Do use willingness bands as validation evidence, not approved public pricing.</li><li>Do move only qualified owners to design calls.</li><li>Do ask one objection follow-up when pain is high but budget is unclear.</li><li>Do not offer custom free builds for low-pain groups.</li><li>Do not announce prices publicly until Boogi approves the packaging.</li></ul></div>
+      <div class="panel"><h2>Useful links</h2><div class="actions"><a class="btn primary" href="/casagrand-firstcity/community-bot-price-probe/">Price probe</a><a class="btn" href="/casagrand-firstcity/group-owner-pilot/">Group-owner pilot</a><a class="btn" href="/casagrand-firstcity/design-partner-call/">Design-partner call</a><a class="btn" href="/casagrand-firstcity/bot-readiness/">Bot readiness</a></div></div>
+    </section>
+  </main>
+  <footer><div class="shell">Casagrand First City pilot · private price-probe scorecard · <a href="/casagrand-firstcity/">Back to pilot</a></div></footer>
+</body>
+</html>
