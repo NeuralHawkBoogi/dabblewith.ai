@@ -1,12 +1,12 @@
 # Casagrand Recovery Operator Brief — 2026-05-28
 
-Generated: 2026-05-28T00:18:26.098Z
+Generated: 2026-05-28T06:18:37.607Z
 
 ## Current state
 - Unique resident signals: 1
 - Campaign signals: 1
 - Owner/test signals excluded: 1
-- Cadence: single_responder_stale_24h (66h since latest signal)
+- Cadence: single_responder_stale_24h (72h since latest signal)
 - Next action: Use /casagrand-firstcity/no-reply-nudge/ once for the first responder, ask for one tiny sample/slot/referral signal, then continue narrow discovery if there is still no reply; do not broad-post yet.
 
 ## One-sitting send queue

@@ -31,3 +31,7 @@ Public page: `https://dabblewith.ai/casagrand-firstcity/recovery-checklist/`
 6. Send one group-owner/admin DM only when the person actually manages a group.
 7. Fill last4-only tracker outcomes.
 8. Rerun the privacy-safe report after 24 hours.
+
+## Companion asset
+
+- Recovery reply kit: `https://dabblewith.ai/casagrand-firstcity/recovery-reply-kit/` for copy-ready response handling after a QA/dev, Excel/workflow, referral, group-owner, or no-reply outcome.
