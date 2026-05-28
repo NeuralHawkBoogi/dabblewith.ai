@@ -32,7 +32,7 @@ Public page: `https://dabblewith.ai/casagrand-firstcity/recovery-decision-board/
    - QA/dev sample or slot → QA walkthrough.
    - Excel/workflow sample or slot → Excel walkthrough.
    - Warm intro/referral → referral sprint.
-   - Group-owner/admin signal → bot-readiness audit.
+   - Group-owner/admin signal → bot-readiness audit, then group-owner pilot ask if fit is real.
    - 3+ concrete resident signals → date-lock/topic poll.
    - No positive outcomes → continue narrow discovery and do not chase the same contacts.
 
@@ -41,3 +41,4 @@ Public page: `https://dabblewith.ai/casagrand-firstcity/recovery-decision-board/
 - Recovery checklist: `https://dabblewith.ai/casagrand-firstcity/recovery-checklist/`
 - Recovery reply kit: `https://dabblewith.ai/casagrand-firstcity/recovery-reply-kit/`
 - Recovery tracker wizard: `https://dabblewith.ai/casagrand-firstcity/recovery-tracker-wizard/`
+- Group-owner pilot ask: `https://dabblewith.ai/casagrand-firstcity/group-owner-pilot/`

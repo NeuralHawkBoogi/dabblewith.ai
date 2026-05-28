@@ -288,3 +288,18 @@ git diff --check
 - [x] Add homepage warm-outreach response report for first 5-contact validation.
 - [x] Add first-5 builder-session follow-up kit to convert warm homepage responders into one concrete builder call/mini-session and community-bot probe before broad outreach.
 - [ ] Run 10 interviews and record segment findings before building heavy self-serve infrastructure.
+### Implemented — slice 13: Casagrand group-owner pilot ask
+
+**Files added/updated:**
+- `casagrand-firstcity/group-owner-pilot/index.html`
+  - Copy-ready ask for a real Casagrand WhatsApp group owner/admin to take a 10-minute readiness check and, if qualified, a bounded 7-day AI host pilot.
+  - Includes last4-only qualification scorecard, willingness-to-pay bands, and route rules to readiness audit, design-partner call, or park/no-build.
+- `docs/growth/casagrand-firstcity-group-owner-pilot-ask.md`
+  - Operator flow and privacy rules for using the asset only after a real group-owner/admin signal.
+
+**Validation commands:**
+```bash
+node scripts/generate-blog.js
+node scripts/site-smoke-test.js
+git diff --check
+```

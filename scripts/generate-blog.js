@@ -158,6 +158,7 @@ const urls = [
   ['https://dabblewith.ai/casagrand-firstcity/no-reply-nudge/', 'weekly', '0.8'],
   ['https://dabblewith.ai/casagrand-firstcity/narrow-discovery/', 'weekly', '0.8'],
   ['https://dabblewith.ai/casagrand-firstcity/bot-readiness/', 'weekly', '0.8'],
+  ['https://dabblewith.ai/casagrand-firstcity/group-owner-pilot/', 'weekly', '0.8'],
   ['https://dabblewith.ai/casagrand-firstcity/design-partner-call/', 'weekly', '0.8'],
   ['https://dabblewith.ai/casagrand-firstcity/community-bot/', 'weekly', '0.8'],
   ['https://dabblewith.ai/casagrand-firstcity/flyer/', 'weekly', '0.7'],
