@@ -13,6 +13,8 @@ const {
   buildRecoveryBatchFollowUp,
   buildFollowUpCadence,
   buildStaleResponderRecovery,
+  renderRecoveryOperatorBrief,
+  writeRecoveryOperatorBrief,
   computeLaunchDecision,
   inferSourceTags,
   inferSlotVotes,
@@ -83,6 +85,7 @@ function appendJsonl(file, rows) {
   assert.strictEqual(parseArgs(['--write-no-reply-nudge-template', 'nudge.json']).writeNoReplyNudgeTemplate, 'nudge.json');
   assert.strictEqual(parseArgs(['--write-narrow-discovery-template', 'narrow.json']).writeNarrowDiscoveryTemplate, 'narrow.json');
   assert.strictEqual(parseArgs(['--write-recovery-batch-template', 'recovery.json']).writeRecoveryBatchTemplate, 'recovery.json');
+  assert.strictEqual(parseArgs(['--write-recovery-operator-brief', 'brief.md']).writeRecoveryOperatorBrief, 'brief.md');
 
   const referralTemplate = referralSprintTrackerTemplate();
   assert.strictEqual(referralTemplate.meta.route, 'first_responder_referral_sprint');
@@ -612,6 +615,19 @@ function appendJsonl(file, rows) {
   assert(staleRecovery.thresholds.some((s) => s.includes('/casagrand-firstcity/date-lock/')));
   assert(!JSON.stringify(staleRecovery).includes('919840385678'), 'stale recovery leaked full phone');
   assert(!JSON.stringify(staleRecovery).includes('wamid.qa.coding.one'), 'stale recovery leaked message id');
+
+  const operatorBrief = renderRecoveryOperatorBrief(qaReport, { date: '2026-05-28', runtimeDir: qaRuntimeDir, excludeLast4: ['2585'] });
+  assert(operatorBrief.includes('Casagrand Recovery Operator Brief — 2026-05-28'), 'operator brief title missing');
+  assert(operatorBrief.includes('One-sitting send queue'), 'operator send queue missing');
+  assert(operatorBrief.includes('last4 5678'), 'operator brief missing responder last4');
+  assert(operatorBrief.includes('--write-recovery-batch-template private/casagrand-recovery-batch.json'), 'operator tracker command missing');
+  assert(operatorBrief.includes(`--runtime-dir ${qaRuntimeDir} --date 2026-05-28 --exclude-last4 2585`), 'operator rerun command missing concrete date/runtime/exclusion');
+  assert(operatorBrief.includes('do not store raw WhatsApp text'), 'operator privacy guardrail missing');
+  assert(!operatorBrief.includes('919840385678'), 'operator brief leaked raw phone');
+  assert(!operatorBrief.includes('wamid.qa.coding.one'), 'operator brief leaked message id');
+  const operatorBriefPath = path.join(tmpDir(), 'nested', 'operator-brief.md');
+  assert.strictEqual(writeRecoveryOperatorBrief(operatorBriefPath, qaReport, { date: '2026-05-28', excludeLast4: ['2585'] }), path.resolve(operatorBriefPath));
+  assert(fs.readFileSync(operatorBriefPath, 'utf8').includes('Casagrand Recovery Operator Brief'), 'operator brief file not written');
 
   const freshCadence = buildFollowUpCadence({
     generatedAt: '2026-05-22T10:00:00.000Z',

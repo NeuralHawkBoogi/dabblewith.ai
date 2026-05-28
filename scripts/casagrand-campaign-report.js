@@ -88,6 +88,7 @@ function parseArgs(argv = process.argv.slice(2)) {
     writeNoReplyNudgeTemplate: null,
     writeNarrowDiscoveryTemplate: null,
     writeRecoveryBatchTemplate: null,
+    writeRecoveryOperatorBrief: null,
     excludeLast4: normalizeLast4List(process.env.DABBLE_CASAGRAND_EXCLUDE_LAST4 || ''),
   };
   for (let i = 0; i < argv.length; i += 1) {
@@ -101,6 +102,7 @@ function parseArgs(argv = process.argv.slice(2)) {
     else if (arg === '--write-no-reply-nudge-template') options.writeNoReplyNudgeTemplate = argv[++i];
     else if (arg === '--write-narrow-discovery-template') options.writeNarrowDiscoveryTemplate = argv[++i];
     else if (arg === '--write-recovery-batch-template') options.writeRecoveryBatchTemplate = argv[++i];
+    else if (arg === '--write-recovery-operator-brief') options.writeRecoveryOperatorBrief = argv[++i];
     else if (arg === '--exclude-last4') options.excludeLast4.push(...normalizeLast4List(argv[++i]));
     else if (arg === '--include-all') options.includeAll = true;
     else if (arg === '--help' || arg === '-h') options.help = true;
@@ -1352,6 +1354,69 @@ function appendCounts(lines, counts, empty) {
   for (const [key, count] of entries) lines.push(`- ${key}: ${count}`);
 }
 
+
+function renderRecoveryOperatorBrief(report, options = {}) {
+  const date = options.date || (report.generatedAt || currentDate()).slice(0, 10);
+  const excludeLast4 = normalizeLast4List((options.excludeLast4 || []).join ? options.excludeLast4.join(',') : options.excludeLast4 || '');
+  const excludeArg = excludeLast4.length ? ` --exclude-last4 ${excludeLast4.join(',')}` : '';
+  const runtimeArg = options.runtimeDir ? ` --runtime-dir ${options.runtimeDir}` : '';
+  const recovery = buildStaleResponderRecovery(report);
+  const lines = [];
+  lines.push(`# Casagrand Recovery Operator Brief — ${date}`);
+  lines.push('');
+  lines.push(`Generated: ${report.generatedAt}`);
+  lines.push('');
+  lines.push('## Current state');
+  lines.push(`- Unique resident signals: ${report.totals.uniqueUsers}`);
+  lines.push(`- Campaign signals: ${report.totals.campaignSignals}`);
+  lines.push(`- Owner/test signals excluded: ${report.totals.ownerOrTestExcludedSignals || 0}`);
+  if (report.followUpCadence) {
+    lines.push(`- Cadence: ${report.followUpCadence.state} (${report.followUpCadence.ageHours}h since latest signal)`);
+  }
+  lines.push(`- Next action: ${report.nextAction}`);
+  lines.push('');
+
+  if (!recovery) {
+    lines.push('## Operator action');
+    lines.push('- No stale-responder recovery batch is required for this report state. Follow the report next action above.');
+    lines.push('');
+    lines.push('Privacy: last4-only reporting; do not store raw WhatsApp text, names, screenshots, full phone numbers, message IDs, or tokens.');
+    return `${lines.join('\n')}\n`;
+  }
+
+  lines.push('## One-sitting send queue');
+  lines.push(`1. Send the one-time stale-responder nudge to last4 ${recovery.last4}.`);
+  lines.push('2. Ask one trusted resident for a warm intro.');
+  lines.push('3. Send two QA/dev/student DMs.');
+  lines.push('4. Send two Excel/office-workflow DMs.');
+  lines.push('5. Send one group-owner/admin DM only to someone who actually manages a WhatsApp group.');
+  lines.push('6. Fill only last4 + segment + problemType + outcome in the private tracker.');
+  lines.push('');
+  lines.push('## Copy-ready stale nudge');
+  lines.push(recovery.nudgeCopy);
+  lines.push('');
+  lines.push('## Tracker commands');
+  lines.push('```sh');
+  lines.push('mkdir -p private');
+  lines.push('node scripts/casagrand-campaign-report.js --write-recovery-batch-template private/casagrand-recovery-batch.json');
+  lines.push(`node scripts/casagrand-campaign-report.js${runtimeArg} --date ${date}${excludeArg} --manual-tracker private/casagrand-recovery-batch.json`);
+  lines.push('```');
+  lines.push('');
+  lines.push('## Route after 24h');
+  for (const threshold of recovery.thresholds) lines.push(`- ${threshold}`);
+  lines.push('');
+  lines.push('Privacy: last4-only reporting; do not store raw WhatsApp text, names, screenshots, full phone numbers, message IDs, or tokens.');
+  return `${lines.join('\n')}\n`;
+}
+
+function writeRecoveryOperatorBrief(file, report, options = {}) {
+  if (!file) throw new Error('--write-recovery-operator-brief requires a file path');
+  const outputPath = path.resolve(file);
+  fs.mkdirSync(path.dirname(outputPath), { recursive: true, mode: 0o700 });
+  fs.writeFileSync(outputPath, renderRecoveryOperatorBrief(report, options), { mode: 0o600 });
+  return outputPath;
+}
+
 function writeCampaignReport(options = {}) {
   const runtimeDir = options.runtimeDir || DEFAULT_RUNTIME_DIR;
   const outputDir = options.outputDir || DEFAULT_OUTPUT_DIR;
@@ -1368,13 +1433,14 @@ function writeCampaignReport(options = {}) {
 
 function usage() {
   return [
-    'Usage: node scripts/casagrand-campaign-report.js [--runtime-dir DIR] [--output-dir DIR] [--date YYYY-MM-DD] [--manual-tracker FILE] [--write-manual-tracker-template FILE] [--write-referral-sprint-template FILE] [--write-no-reply-nudge-template FILE] [--write-narrow-discovery-template FILE] [--write-recovery-batch-template FILE] [--exclude-last4 1234[,5678]] [--include-all]',
+    'Usage: node scripts/casagrand-campaign-report.js [--runtime-dir DIR] [--output-dir DIR] [--date YYYY-MM-DD] [--manual-tracker FILE] [--write-manual-tracker-template FILE] [--write-referral-sprint-template FILE] [--write-no-reply-nudge-template FILE] [--write-narrow-discovery-template FILE] [--write-recovery-batch-template FILE] [--write-recovery-operator-brief FILE] [--exclude-last4 1234[,5678]] [--include-all]',
     '',
     'Use --write-manual-tracker-template FILE to create a privacy-safe starter JSON with exactly 5 rows (2 career, 2 workflow, 1 admin) using last4 placeholders only.',
     'Use --write-referral-sprint-template FILE to create a privacy-safe starter JSON for first-responder referral-sprint follow-up rows.',
     'Use --write-no-reply-nudge-template FILE to create a privacy-safe starter JSON for one-time no-reply nudge outcomes.',
     'Use --write-narrow-discovery-template FILE to create a privacy-safe starter JSON for five narrow discovery DMs.',
     'Use --write-recovery-batch-template FILE to create one privacy-safe tracker for the current stale-responder nudge + warm-intro + five narrow-discovery sends.',
+    'Use --write-recovery-operator-brief FILE to create a privacy-safe one-sitting recovery brief from the current aggregate report.',
     '',
     `Default runtime dir: ${DEFAULT_RUNTIME_DIR}`,
     `Default output dir: ${DEFAULT_OUTPUT_DIR}`,
@@ -1411,6 +1477,12 @@ if (require.main === module) {
     if (options.writeRecoveryBatchTemplate) {
       const templatePath = writeRecoveryBatchTrackerTemplate(options.writeRecoveryBatchTemplate);
       console.log(`casagrand recovery batch tracker template written: ${templatePath}`);
+      process.exit(0);
+    }
+    if (options.writeRecoveryOperatorBrief) {
+      const report = buildCampaignReport(options.runtimeDir, { includeAll: Boolean(options.includeAll), excludeLast4: options.excludeLast4, manualTracker: options.manualTracker });
+      const briefPath = writeRecoveryOperatorBrief(options.writeRecoveryOperatorBrief, report, options);
+      console.log(`casagrand recovery operator brief written: ${briefPath}`);
       process.exit(0);
     }
     const result = writeCampaignReport(options);
@@ -1456,6 +1528,8 @@ module.exports = {
   latestRecentSignalAt,
   buildFollowUpCadence,
   buildStaleResponderRecovery,
+  renderRecoveryOperatorBrief,
+  writeRecoveryOperatorBrief,
   buildCampaignReport,
   renderMarkdown,
   writeCampaignReport,
