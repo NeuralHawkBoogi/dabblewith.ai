@@ -19,6 +19,7 @@ Use this only after one of these appears in recovery/referral/narrow-discovery e
 - Copy-ready 10-minute readiness check ask.
 - 7-day pilot framing: one group, limited FAQs/use case, daily summaries, explicit success metrics.
 - Qualification scorecard for last4-only tracking.
+- Copyable private tracker/report command via `--write-group-owner-pilot-template` so pilot evidence flows into the campaign report without raw chats or group names.
 - Route rules for design-partner call, readiness audit, or park/no-build.
 - Product validation guardrail: capture pain, urgency, willingness-to-pay, and objections before building heavier self-serve infra.
 
@@ -28,7 +29,13 @@ Use this only after one of these appears in recovery/referral/narrow-discovery e
 2. Send the pilot ask from the page.
 3. If they agree, run `/casagrand-firstcity/bot-readiness/` first.
 4. Fill the scorecard with last4-only evidence.
-5. Route:
+5. Create/update the private tracker:
+   ```sh
+   mkdir -p private
+   node scripts/casagrand-campaign-report.js --write-group-owner-pilot-template private/casagrand-group-owner-pilot.json
+   node scripts/casagrand-campaign-report.js --date YYYY-MM-DD --exclude-last4 2585 --manual-tracker private/casagrand-group-owner-pilot.json
+   ```
+6. Route:
    - high pain + weekly activity → `/casagrand-firstcity/design-partner-call/`
    - medium pain or unclear budget → readiness audit + price probe
    - no repeated questions/event cadence → park
@@ -45,4 +52,4 @@ Use this only after one of these appears in recovery/referral/narrow-discovery e
 
 ## Privacy rules
 
-Store only last4, group type, audience-size band, pain level, cadence, pilot fit, willingness-to-pay band, price range, and next action. Do not store private group content or member data during validation.
+Store only last4, group type/problem type, audience-size band, pain level, cadence, pilot fit, willingness-to-pay band, price range, and next action. Do not store private group content, group names, member data, screenshots, raw WhatsApp text, full phone numbers, or message IDs during validation.

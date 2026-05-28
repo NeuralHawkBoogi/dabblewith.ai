@@ -30,6 +30,7 @@ const SOURCE_TAG_RULES = [
   ['casagrand_champion', /casagrand\s+champion|resident\s+champion/i],
   ['casagrand_bot_readiness', /casagrand\s+bot\s+readiness\s+audit|casagrand\s+community\s+bot\s+readiness/i],
   ['casagrand_bot_design_call', /casagrand\s+bot\s+design\s+call|casagrand\s+community\s+bot\s+design\s+partner/i],
+  ['casagrand_group_owner_pilot', /casagrand\s+group[-\s]?owner\s+pilot|casagrand\s+community\s+bot\s+pilot/i],
   ['casagrand_reboot_career', /casagrand\s+reboot\s+career/i],
   ['casagrand_reboot_workflow', /casagrand\s+reboot\s+workflow/i],
   ['casagrand_reboot_community_bot', /casagrand\s+reboot\s+community\s+bot/i],
@@ -52,6 +53,7 @@ const TRACK_FOR_TAG = {
   tester_community_bot: 'community_bot',
   casagrand_bot_readiness: 'community_bot',
   casagrand_bot_design_call: 'community_bot',
+  casagrand_group_owner_pilot: 'community_bot',
   casagrand_reboot_career: 'career',
   casagrand_reboot_workflow: 'workflow',
   casagrand_reboot_community_bot: 'community_bot',
@@ -89,6 +91,7 @@ function parseArgs(argv = process.argv.slice(2)) {
     writeNarrowDiscoveryTemplate: null,
     writeRecoveryBatchTemplate: null,
     writeRecoveryOperatorBrief: null,
+    writeGroupOwnerPilotTemplate: null,
     excludeLast4: normalizeLast4List(process.env.DABBLE_CASAGRAND_EXCLUDE_LAST4 || ''),
   };
   for (let i = 0; i < argv.length; i += 1) {
@@ -103,6 +106,7 @@ function parseArgs(argv = process.argv.slice(2)) {
     else if (arg === '--write-narrow-discovery-template') options.writeNarrowDiscoveryTemplate = argv[++i];
     else if (arg === '--write-recovery-batch-template') options.writeRecoveryBatchTemplate = argv[++i];
     else if (arg === '--write-recovery-operator-brief') options.writeRecoveryOperatorBrief = argv[++i];
+    else if (arg === '--write-group-owner-pilot-template') options.writeGroupOwnerPilotTemplate = argv[++i];
     else if (arg === '--exclude-last4') options.excludeLast4.push(...normalizeLast4List(argv[++i]));
     else if (arg === '--include-all') options.includeAll = true;
     else if (arg === '--help' || arg === '-h') options.help = true;
@@ -462,6 +466,59 @@ function recoveryBatchTrackerTemplate() {
   };
 }
 
+
+function groupOwnerPilotTrackerTemplate() {
+  return {
+    meta: {
+      sprintStartedAt: '',
+      reportRerunDueAt: '',
+      route: 'group_owner_pilot',
+      notes: 'Use only after a real Casagrand group-owner/admin signal. Store last4, audienceBand, cadence, painLevel, willingnessToPayBand, route, and nextAction only; no group names, member lists, raw chats, screenshots, or full phone numbers.',
+    },
+    rows: [
+      {
+        segment: 'group_owner',
+        last4: '5001',
+        route: 'bot_readiness',
+        problem: '',
+        problemType: 'faq_or_repeated_questions',
+        audienceBand: 'under_100 | 100_500 | 500_plus',
+        cadence: 'daily | weekly | monthly | ad_hoc',
+        painLevel: 'low | medium | high',
+        willingnessToPayBand: 'unknown | no | under_999 | 999_2999 | 3000_plus',
+        followUpSent: false,
+        nextAction: 'bot_readiness | design_call | pilot_ask | park',
+      },
+      {
+        segment: 'group_owner',
+        last4: '5002',
+        route: 'design_call',
+        problem: '',
+        problemType: 'event_registration_or_reminders',
+        audienceBand: 'under_100 | 100_500 | 500_plus',
+        cadence: 'daily | weekly | monthly | ad_hoc',
+        painLevel: 'low | medium | high',
+        willingnessToPayBand: 'unknown | no | under_999 | 999_2999 | 3000_plus',
+        followUpSent: false,
+        nextAction: 'book design-partner call if pain is high and weekly/daily cadence',
+      },
+      {
+        segment: 'group_owner',
+        last4: '5003',
+        route: 'admin_pain',
+        problem: '',
+        problemType: 'admin_summary_or_escalation',
+        audienceBand: 'under_100 | 100_500 | 500_plus',
+        cadence: 'daily | weekly | monthly | ad_hoc',
+        painLevel: 'low | medium | high',
+        willingnessToPayBand: 'unknown | no | under_999 | 999_2999 | 3000_plus',
+        followUpSent: false,
+        nextAction: 'price_probe | pilot_ask | park',
+      },
+    ],
+  };
+}
+
 function writeJsonTemplate(file, template, flagName) {
   if (!file) throw new Error(`${flagName} requires a file path`);
   const outputPath = path.resolve(file);
@@ -488,6 +545,10 @@ function writeNarrowDiscoveryTrackerTemplate(file) {
 
 function writeRecoveryBatchTrackerTemplate(file) {
   return writeJsonTemplate(file, recoveryBatchTrackerTemplate(), '--write-recovery-batch-template');
+}
+
+function writeGroupOwnerPilotTrackerTemplate(file) {
+  return writeJsonTemplate(file, groupOwnerPilotTrackerTemplate(), '--write-group-owner-pilot-template');
 }
 
 function loadManualTracker(file) {
@@ -534,6 +595,10 @@ function summarizeManualTracker(input) {
     const problem = normalizeText(row.problem || row.problem8Words || '').split(/\s+/).slice(0, 8).join(' ');
     const problemType = normalizeText(row.problemType || row.problem_type || '').replace(/[^a-z0-9_-]/gi, '').slice(0, 40) || null;
     const nextAction = normalizeText(row.nextAction || row.next || '').slice(0, 80);
+    const audienceBand = normalizeText(row.audienceBand || row.audience_band || '').replace(/[^a-z0-9_+-]/gi, '').slice(0, 20) || null;
+    const cadence = normalizeText(row.cadence || '').replace(/[^a-z0-9_+-]/gi, '').slice(0, 20) || null;
+    const painLevel = normalizeText(row.painLevel || row.pain_level || '').replace(/[^a-z0-9_+-]/gi, '').slice(0, 20) || null;
+    const willingnessToPayBand = normalizeText(row.willingnessToPayBand || row.wtpBand || row.willingness_to_pay_band || '').replace(/[^a-z0-9_+-]/gi, '').slice(0, 24) || null;
     const followUpSent = Boolean(row.followUpSent || row.follow_up_sent);
 
     summary.rows += 1;
@@ -545,7 +610,7 @@ function summarizeManualTracker(input) {
     if (route === 'admin_pain') summary.adminPains += 1;
     if (route === 'bot_readiness') summary.botReadiness += 1;
     if (route === 'design_call') summary.designCalls += 1;
-    summary.sanitizedRows.push({ segment, last4: `****${last4}`, route, problem, problemType, followUpSent, nextAction });
+    summary.sanitizedRows.push({ segment, last4: `****${last4}`, route, problem, problemType, audienceBand, cadence, painLevel, willingnessToPayBand, followUpSent, nextAction });
   }
 
   summary.nextAction = computeManualNextAction(summary);
@@ -575,6 +640,11 @@ function computeManualNextAction(summary) {
     if (summary.referrals >= 1) return 'Move the recovery referral into /casagrand-firstcity/referral-sprint/ and keep the remaining outcomes last4-only.';
     if (summary.concreteReplies >= 1) return 'Route the recovery reply to the matching QA/Excel walkthrough, then ask for one referral before broad-posting.';
     return 'No concrete recovery-batch replies yet: rewrite the warm intro or ask for one different trusted intro; do not broad-post yet.';
+  }
+  if (summary.metaRoute === 'group_owner_pilot') {
+    if (summary.designCalls >= 1 || summary.botReadiness >= 2) return 'Use /casagrand-firstcity/design-partner-call/ for qualified group-owner pilot validation; capture price probe before building custom workflow.';
+    if (summary.botReadiness >= 1 || summary.adminPains >= 1) return 'Run /casagrand-firstcity/bot-readiness/ and send the bounded 7-day pilot ask only if pain/cadence are real.';
+    return 'No qualified group-owner pilot signal yet: park community-bot work and continue recovery/narrow discovery.';
   }
   if (summary.designCalls >= 1 || summary.botReadiness >= 2 || summary.adminPains >= 2) {
     return 'Prioritize Get a Community Bot validation: book bot-readiness/design-partner calls before another broad event post.';
@@ -837,6 +907,38 @@ function buildRecoveryBatchFollowUp(tracker) {
       route: row.route,
       problemType: row.problemType,
       problem: row.problem,
+      followUpSent: row.followUpSent,
+      nextAction: row.nextAction,
+    })),
+  };
+}
+
+
+function buildGroupOwnerPilotFollowUp(tracker) {
+  if (!tracker || tracker.metaRoute !== 'group_owner_pilot' || !Array.isArray(tracker.sanitizedRows)) return null;
+  const rows = tracker.sanitizedRows.filter((row) => row.segment === 'group_owner');
+  const qualifiedRows = rows.filter((row) => ['bot_readiness', 'design_call', 'admin_pain'].includes(row.route));
+  const priceProbeRows = rows.filter((row) => row.willingnessToPayBand && !['unknown', 'no'].includes(row.willingnessToPayBand));
+  const highPainRows = rows.filter((row) => row.painLevel === 'high');
+  const nextSteps = [];
+  if (tracker.designCalls > 0 || highPainRows.length) nextSteps.push('Qualified group-owner signal: use /casagrand-firstcity/design-partner-call/ and ask the 7-day pilot + price probe before any custom build.');
+  if (tracker.botReadiness > 0 || tracker.adminPains > 0) nextSteps.push('Run /casagrand-firstcity/bot-readiness/ first; only offer the pilot if repeated questions/events/admin summaries are real.');
+  if (priceProbeRows.length) nextSteps.push('Willingness-to-pay evidence exists: summarize band counts in market validation; do not publish pricing yet.');
+  if (!nextSteps.length) nextSteps.push('No qualified group-owner pilot evidence yet: park community-bot build work and keep Casagrand recovery narrow.');
+  return {
+    rows: rows.length,
+    qualifiedRows: qualifiedRows.length,
+    priceProbeRows: priceProbeRows.length,
+    highPainRows: highPainRows.length,
+    nextSteps,
+    rowsPreview: rows.map((row) => ({
+      last4: row.last4,
+      route: row.route,
+      problemType: row.problemType,
+      audienceBand: row.audienceBand,
+      cadence: row.cadence,
+      painLevel: row.painLevel,
+      willingnessToPayBand: row.willingnessToPayBand,
       followUpSent: row.followUpSent,
       nextAction: row.nextAction,
     })),
@@ -1127,6 +1229,11 @@ function renderMarkdown(report) {
     appendRecoveryBatchFollowUp(lines, recoveryBatchFollowUp);
     lines.push('');
   }
+  const groupOwnerPilotFollowUp = buildGroupOwnerPilotFollowUp(report.manualTracker);
+  if (groupOwnerPilotFollowUp) {
+    appendGroupOwnerPilotFollowUp(lines, groupOwnerPilotFollowUp);
+    lines.push('');
+  }
   lines.push('## Funnel snapshot');
   lines.push(`- Campaign signals: ${report.totals.campaignSignals}`);
   lines.push(`- Unique residents/users: ${report.totals.uniqueUsers}`);
@@ -1313,6 +1420,22 @@ function appendRecoveryBatchFollowUp(lines, followUp) {
   }
 }
 
+
+function appendGroupOwnerPilotFollowUp(lines, followUp) {
+  lines.push('## Group-owner pilot follow-up');
+  lines.push('Privacy-safe routing from the Casagrand group-owner pilot tracker (last4 only, no group names/member lists/raw chats):');
+  lines.push(`- Group-owner rows logged: ${followUp.rows}`);
+  lines.push(`- Qualified rows: ${followUp.qualifiedRows}`);
+  lines.push(`- High-pain rows: ${followUp.highPainRows}`);
+  lines.push(`- Price-probe rows: ${followUp.priceProbeRows}`);
+  lines.push('- Recommended next steps:');
+  for (const step of followUp.nextSteps) lines.push(`  - ${step}`);
+  lines.push('- Group-owner pilot rows (last4 only):');
+  for (const row of followUp.rowsPreview) {
+    lines.push(`  - ${row.last4} · ${row.route} · type=${row.problemType || 'n/a'} · audience=${row.audienceBand || 'n/a'} · cadence=${row.cadence || 'n/a'} · pain=${row.painLevel || 'n/a'} · wtp=${row.willingnessToPayBand || 'n/a'} · follow_up=${row.followUpSent ? 'yes' : 'no'} · next="${row.nextAction || 'n/a'}"`);
+  }
+}
+
 function appendReferralSprintFollowUp(lines, followUp) {
   lines.push('## Referral sprint follow-up');
   lines.push('Copy-ready, privacy-safe next steps from the manual tracker referral-sprint rows (last4 only, no phone/message/token exposure):');
@@ -1433,7 +1556,7 @@ function writeCampaignReport(options = {}) {
 
 function usage() {
   return [
-    'Usage: node scripts/casagrand-campaign-report.js [--runtime-dir DIR] [--output-dir DIR] [--date YYYY-MM-DD] [--manual-tracker FILE] [--write-manual-tracker-template FILE] [--write-referral-sprint-template FILE] [--write-no-reply-nudge-template FILE] [--write-narrow-discovery-template FILE] [--write-recovery-batch-template FILE] [--write-recovery-operator-brief FILE] [--exclude-last4 1234[,5678]] [--include-all]',
+    'Usage: node scripts/casagrand-campaign-report.js [--runtime-dir DIR] [--output-dir DIR] [--date YYYY-MM-DD] [--manual-tracker FILE] [--write-manual-tracker-template FILE] [--write-referral-sprint-template FILE] [--write-no-reply-nudge-template FILE] [--write-narrow-discovery-template FILE] [--write-recovery-batch-template FILE] [--write-recovery-operator-brief FILE] [--write-group-owner-pilot-template FILE] [--exclude-last4 1234[,5678]] [--include-all]',
     '',
     'Use --write-manual-tracker-template FILE to create a privacy-safe starter JSON with exactly 5 rows (2 career, 2 workflow, 1 admin) using last4 placeholders only.',
     'Use --write-referral-sprint-template FILE to create a privacy-safe starter JSON for first-responder referral-sprint follow-up rows.',
@@ -1441,6 +1564,7 @@ function usage() {
     'Use --write-narrow-discovery-template FILE to create a privacy-safe starter JSON for five narrow discovery DMs.',
     'Use --write-recovery-batch-template FILE to create one privacy-safe tracker for the current stale-responder nudge + warm-intro + five narrow-discovery sends.',
     'Use --write-recovery-operator-brief FILE to create a privacy-safe one-sitting recovery brief from the current aggregate report.',
+    'Use --write-group-owner-pilot-template FILE to create a privacy-safe tracker for qualified Casagrand group-owner pilot signals.',
     '',
     `Default runtime dir: ${DEFAULT_RUNTIME_DIR}`,
     `Default output dir: ${DEFAULT_OUTPUT_DIR}`,
@@ -1479,6 +1603,11 @@ if (require.main === module) {
       console.log(`casagrand recovery batch tracker template written: ${templatePath}`);
       process.exit(0);
     }
+    if (options.writeGroupOwnerPilotTemplate) {
+      const templatePath = writeGroupOwnerPilotTrackerTemplate(options.writeGroupOwnerPilotTemplate);
+      console.log(`casagrand group-owner pilot tracker template written: ${templatePath}`);
+      process.exit(0);
+    }
     if (options.writeRecoveryOperatorBrief) {
       const report = buildCampaignReport(options.runtimeDir, { includeAll: Boolean(options.includeAll), excludeLast4: options.excludeLast4, manualTracker: options.manualTracker });
       const briefPath = writeRecoveryOperatorBrief(options.writeRecoveryOperatorBrief, report, options);
@@ -1512,11 +1641,13 @@ module.exports = {
   noReplyNudgeTrackerTemplate,
   narrowDiscoveryTrackerTemplate,
   recoveryBatchTrackerTemplate,
+  groupOwnerPilotTrackerTemplate,
   writeManualTrackerTemplate,
   writeReferralSprintTrackerTemplate,
   writeNoReplyNudgeTrackerTemplate,
   writeNarrowDiscoveryTrackerTemplate,
   writeRecoveryBatchTrackerTemplate,
+  writeGroupOwnerPilotTrackerTemplate,
   summarizeManualTracker,
   computeManualNextAction,
   computeLaunchDecision,
@@ -1525,6 +1656,7 @@ module.exports = {
   buildNoReplyNudgeFollowUp,
   buildNarrowDiscoveryFollowUp,
   buildRecoveryBatchFollowUp,
+  buildGroupOwnerPilotFollowUp,
   latestRecentSignalAt,
   buildFollowUpCadence,
   buildStaleResponderRecovery,

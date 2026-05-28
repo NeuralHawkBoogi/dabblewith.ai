@@ -303,3 +303,24 @@ node scripts/generate-blog.js
 node scripts/site-smoke-test.js
 git diff --check
 ```
+
+### Implemented — slice 12: Casagrand group-owner pilot tracker
+
+**Files updated:**
+- `scripts/casagrand-campaign-report.js`
+  - Added `--write-group-owner-pilot-template` for privacy-safe Casagrand group-owner/admin pilot validation.
+  - Adds source-tag support for `Casagrand group-owner pilot` / `Casagrand community bot pilot` messages.
+  - Renders a `Group-owner pilot follow-up` section from last4-only audience band, cadence, pain level, willingness-to-pay band, route, and next-action fields.
+- `/casagrand-firstcity/group-owner-pilot/`
+  - Added copyable tracker/report commands next to the pilot ask and scorecard.
+- `docs/growth/casagrand-firstcity-group-owner-pilot-ask.md`
+  - Documents the private tracker flow and privacy constraints.
+
+**Validation commands:**
+```bash
+node --check scripts/casagrand-campaign-report.js
+node scripts/casagrand-campaign-report-smoke-test.js
+node scripts/casagrand-campaign-report.js --write-group-owner-pilot-template private/casagrand-group-owner-pilot.json
+node scripts/casagrand-campaign-report.js --date YYYY-MM-DD --exclude-last4 2585 --manual-tracker private/casagrand-group-owner-pilot.json
+git diff --check
+```

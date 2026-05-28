@@ -47,6 +47,7 @@
       <div class="actions">
         <button class="btn primary" data-copy-target="pilot-ask" onclick="copyText('pilot-ask','pilot ask')">Copy pilot ask</button>
         <button class="btn" data-copy-target="scorecard" onclick="copyText('scorecard','scorecard')">Copy scorecard</button>
+        <button class="btn" data-copy-target="tracker-command" onclick="copyText('tracker-command','tracker command')">Copy tracker command</button>
         <a class="btn" href="/casagrand-firstcity/bot-readiness/">Run readiness audit</a>
       </div>
     </section>
@@ -82,6 +83,15 @@ Would you be open to a 10-minute readiness check? If it looks useful, I’ll run
 - next action: bot_readiness / design_partner_call / park</div>
         <div class="actions"><button class="btn" data-copy-target="scorecard" onclick="copyText('scorecard','scorecard')">Copy scorecard</button></div>
       </div>
+    </section>
+
+    <section class="shell panel">
+      <h2>Privacy-safe tracker command</h2>
+      <p>Use this only after a real group-owner/admin signal. It creates a private last4-only tracker and reruns the campaign report with the group-owner pilot follow-up section.</p>
+      <div id="tracker-command" class="copybox">mkdir -p private
+node scripts/casagrand-campaign-report.js --write-group-owner-pilot-template private/casagrand-group-owner-pilot.json
+node scripts/casagrand-campaign-report.js --date 2026-05-28 --exclude-last4 2585 --manual-tracker private/casagrand-group-owner-pilot.json</div>
+      <div class="actions"><button class="btn" data-copy-target="tracker-command" onclick="copyText('tracker-command','tracker command')">Copy tracker command</button></div>
     </section>
 
     <section class="shell panel">

@@ -11,6 +11,7 @@ const {
   buildNoReplyNudgeFollowUp,
   buildNarrowDiscoveryFollowUp,
   buildRecoveryBatchFollowUp,
+  buildGroupOwnerPilotFollowUp,
   buildFollowUpCadence,
   buildStaleResponderRecovery,
   renderRecoveryOperatorBrief,
@@ -25,6 +26,7 @@ const {
   noReplyNudgeTrackerTemplate,
   narrowDiscoveryTrackerTemplate,
   recoveryBatchTrackerTemplate,
+  groupOwnerPilotTrackerTemplate,
   isExcludedLast4,
   normalizeLast4List,
   redactPhone,
@@ -36,6 +38,7 @@ const {
   writeNoReplyNudgeTrackerTemplate,
   writeNarrowDiscoveryTrackerTemplate,
   writeRecoveryBatchTrackerTemplate,
+  writeGroupOwnerPilotTrackerTemplate,
 } = require('./casagrand-campaign-report');
 
 function tmpDir() {
@@ -65,6 +68,7 @@ function appendJsonl(file, rows) {
   assert.deepStrictEqual(inferSourceTags('Casagrand champion - I can help seed the AI by Doing pilot'), ['casagrand_champion']);
   assert.deepStrictEqual(inferSourceTags('Casagrand bot readiness audit - I run a WhatsApp group'), ['casagrand_bot_readiness']);
   assert.deepStrictEqual(inferSourceTags('Casagrand bot design call - I run a WhatsApp group'), ['casagrand_bot_design_call']);
+  assert.deepStrictEqual(inferSourceTags('Casagrand group-owner pilot - I run a WhatsApp group'), ['casagrand_group_owner_pilot']);
   assert.deepStrictEqual(inferSourceTags('Casagrand reboot career - I want help with interview prep'), ['casagrand_reboot_career']);
   assert.deepStrictEqual(inferSourceTags('Casagrand reboot workflow - my repetitive task is reports'), ['casagrand_reboot_workflow']);
   assert.deepStrictEqual(inferSourceTags('Casagrand reboot community bot - I run a group'), ['casagrand_reboot_community_bot']);
@@ -86,6 +90,7 @@ function appendJsonl(file, rows) {
   assert.strictEqual(parseArgs(['--write-narrow-discovery-template', 'narrow.json']).writeNarrowDiscoveryTemplate, 'narrow.json');
   assert.strictEqual(parseArgs(['--write-recovery-batch-template', 'recovery.json']).writeRecoveryBatchTemplate, 'recovery.json');
   assert.strictEqual(parseArgs(['--write-recovery-operator-brief', 'brief.md']).writeRecoveryOperatorBrief, 'brief.md');
+  assert.strictEqual(parseArgs(['--write-group-owner-pilot-template', 'pilot.json']).writeGroupOwnerPilotTemplate, 'pilot.json');
 
   const referralTemplate = referralSprintTrackerTemplate();
   assert.strictEqual(referralTemplate.meta.route, 'first_responder_referral_sprint');
@@ -209,6 +214,33 @@ function appendJsonl(file, rows) {
   assert(filledRecoveryFollowUp.nextSteps.some((s) => s.includes('/casagrand-firstcity/date-lock/')));
   assert(!JSON.stringify(filledRecoverySummary).match(/\d{5,}/), 'recovery batch summary leaked a long number');
   assert(!JSON.stringify(filledRecoveryFollowUp).match(/\d{5,}/), 'recovery batch follow-up leaked a long number');
+
+
+  const groupOwnerPilotTemplate = groupOwnerPilotTrackerTemplate();
+  assert.strictEqual(groupOwnerPilotTemplate.meta.route, 'group_owner_pilot');
+  assert.strictEqual(groupOwnerPilotTemplate.rows.length, 3);
+  assert(groupOwnerPilotTemplate.rows.every((row) => row.segment === 'group_owner'), 'group-owner pilot template should only contain group_owner rows');
+  assert(groupOwnerPilotTemplate.rows.every((row) => /^\d{4}$/.test(row.last4)), 'group-owner pilot template must use last4 placeholders only');
+  assert(!JSON.stringify(groupOwnerPilotTemplate).match(/\d{5,}|wamid|\+91/i), 'group-owner pilot template leaked direct identifiers');
+  const groupOwnerPilotTemplatePath = path.join(tmpDir(), 'nested', 'group-owner-pilot-template.json');
+  const writtenGroupOwnerPilotTemplatePath = writeGroupOwnerPilotTrackerTemplate(groupOwnerPilotTemplatePath);
+  assert.strictEqual(writtenGroupOwnerPilotTemplatePath, path.resolve(groupOwnerPilotTemplatePath));
+  assert.deepStrictEqual(JSON.parse(fs.readFileSync(groupOwnerPilotTemplatePath, 'utf8')), groupOwnerPilotTemplate);
+  const emptyGroupOwnerPilotSummary = summarizeManualTracker(groupOwnerPilotTemplate);
+  assert.strictEqual(emptyGroupOwnerPilotSummary.metaRoute, 'group_owner_pilot');
+  assert(emptyGroupOwnerPilotSummary.nextAction.includes('/casagrand-firstcity/design-partner-call/'));
+  const filledGroupOwnerPilotFollowUp = buildGroupOwnerPilotFollowUp(summarizeManualTracker({
+    meta: { route: 'group_owner_pilot' },
+    rows: [
+      { segment: 'group_owner', last4: '5101', route: 'design_call', problemType: 'event_registration_or_reminders', audienceBand: '100_500', cadence: 'weekly', painLevel: 'high', willingnessToPayBand: '999_2999', nextAction: 'book design call' },
+      { segment: 'group_owner', last4: '5102', route: 'bot_readiness', problemType: 'faq_or_repeated_questions', audienceBand: '500_plus', cadence: 'daily', painLevel: 'medium', willingnessToPayBand: 'unknown', nextAction: 'readiness audit' },
+    ],
+  }));
+  assert.strictEqual(filledGroupOwnerPilotFollowUp.rows, 2);
+  assert.strictEqual(filledGroupOwnerPilotFollowUp.qualifiedRows, 2);
+  assert.strictEqual(filledGroupOwnerPilotFollowUp.priceProbeRows, 1);
+  assert(filledGroupOwnerPilotFollowUp.nextSteps.some((s) => s.includes('/casagrand-firstcity/design-partner-call/')));
+  assert(!JSON.stringify(filledGroupOwnerPilotFollowUp).match(/\d{5,}/), 'group-owner pilot follow-up leaked a long number');
 
   const templatePath = path.join(tmpDir(), 'nested', 'manual-5dm-template.json');
   const writtenTemplatePath = writeManualTrackerTemplate(templatePath);
