@@ -475,6 +475,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://dabblewith.ai/blog/human-in-the-loop-agent-qa-checklist/</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://dabblewith.ai/blog/founder-agent-workflow-runbook/</loc>
     <lastmod>2026-05-27</lastmod>
     <changefreq>monthly</changefreq>

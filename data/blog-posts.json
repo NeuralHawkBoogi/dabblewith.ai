@@ -15,7 +15,7 @@
     "sections": [
       [
         "The AI learning gap is not awareness",
-        "Most people already know AI is important. They have seen ChatGPT screenshots, watched tool demos, saved prompt threads, and heard that agents are coming. The gap is not awareness; it is transfer. A person watches an impressive demo on Monday and still does not know what to do with an invoice, a customer call, a school project, a WhatsApp group, or a business decision on Tuesday. That is why passive AI learning underperforms. It creates vocabulary, but not operating skill. A hands-on AI community changes the unit of learning from “here is a tool” to “here is a workflow you can repeat.”"
+        "Most people already know AI is important. They have seen ChatGPT screenshots, watched tool demos, saved prompt threads, and heard that agents are coming. The gap is not awareness; it is transfer. A person watches an impressive demo on Monday and still does not know what to do with an invoice, a customer call, a school project, a WhatsApp group, or a business decision on Tuesday. That is why passive AI learning underperforms. It creates vocabulary, but not operating skill. A hands-on AI community changes the unit of learning from \u201chere is a tool\u201d to \u201chere is a workflow you can repeat.\u201d"
       ],
       [
         "What passive learning gets wrong",
@@ -23,11 +23,11 @@
       ],
       [
         "Why doing compounds faster",
-        "Anthropic’s guidance on agentic systems is useful even for education: start with the simplest composable workflow that works. In learning terms, that means members should practice small loops repeatedly. Bring a real input. Ask AI to transform it. Compare the output against a human standard. Revise the instruction. Save the final pattern. Repeat with another case. That loop teaches more than a lecture because the learner sees causality: more context improves output, constraints improve usefulness, review catches risk, and artifacts make the work reusable."
+        "Anthropic\u2019s guidance on agentic systems is useful even for education: start with the simplest composable workflow that works. In learning terms, that means members should practice small loops repeatedly. Bring a real input. Ask AI to transform it. Compare the output against a human standard. Revise the instruction. Save the final pattern. Repeat with another case. That loop teaches more than a lecture because the learner sees causality: more context improves output, constraints improve usefulness, review catches risk, and artifacts make the work reusable."
       ],
       [
         "The community advantage",
-        "A solo learner gets only his own examples. A community gets many. One founder tests sales follow-ups, another tests market research, a student tests project planning, a resident tests event coordination, and a designer tests landing-page critique. When those examples are shown openly, members learn across domains. Microsoft’s WorkLab research keeps returning to the same adoption gap: access to AI tools does not automatically redesign work. Communities help close that gap because people can see how other humans redesign actual tasks, not just how a vendor demo works."
+        "A solo learner gets only his own examples. A community gets many. One founder tests sales follow-ups, another tests market research, a student tests project planning, a resident tests event coordination, and a designer tests landing-page critique. When those examples are shown openly, members learn across domains. Microsoft\u2019s WorkLab research keeps returning to the same adoption gap: access to AI tools does not automatically redesign work. Communities help close that gap because people can see how other humans redesign actual tasks, not just how a vendor demo works."
       ],
       [
         "The session scorecard",
@@ -35,11 +35,11 @@
       ],
       [
         "Worked example: local community helper",
-        "For the Casagrand First City pilot, a useful workshop is not “top ten AI tools for residents.” A better session starts with a real job: help a residents’ group collect concerns, cluster them, and prepare a constructive agenda for a committee discussion. The input is a sanitized set of sample messages. The AI clusters themes such as maintenance transparency, amenities, handover questions, payments, and event ideas. Humans check whether the clusters are fair, whether names or private details were removed, and whether the tone is constructive. The artifact is a message-to-agenda workflow residents can reuse after every discussion."
+        "For the Casagrand First City pilot, a useful workshop is not \u201ctop ten AI tools for residents.\u201d A better session starts with a real job: help a residents\u2019 group collect concerns, cluster them, and prepare a constructive agenda for a committee discussion. The input is a sanitized set of sample messages. The AI clusters themes such as maintenance transparency, amenities, handover questions, payments, and event ideas. Humans check whether the clusters are fair, whether names or private details were removed, and whether the tone is constructive. The artifact is a message-to-agenda workflow residents can reuse after every discussion."
       ],
       [
         "Worked example: founder follow-up workflow",
-        "A founder can bring a discovery-call transcript. The AI extracts pains, objections, promised follow-ups, and open questions. The founder reviews whether the AI invented anything, whether the tone sounds trustworthy, and whether the next step is strategically right. The artifact is a follow-up template plus a review checklist. OpenAI’s Agents SDK documentation is a reminder that production AI systems need guardrails, tracing, handoffs, and human-in-the-loop patterns. A workshop does not need a full agent platform, but it should teach the same discipline in miniature."
+        "A founder can bring a discovery-call transcript. The AI extracts pains, objections, promised follow-ups, and open questions. The founder reviews whether the AI invented anything, whether the tone sounds trustworthy, and whether the next step is strategically right. The artifact is a follow-up template plus a review checklist. OpenAI\u2019s Agents SDK documentation is a reminder that production AI systems need guardrails, tracing, handoffs, and human-in-the-loop patterns. A workshop does not need a full agent platform, but it should teach the same discipline in miniature."
       ],
       [
         "Risks and tradeoffs",
@@ -63,7 +63,7 @@
       "searchIntent": "hands-on AI community, learn AI by doing, practical AI workshops, AI learning community",
       "sources": [
         {
-          "title": "Anthropic — Building effective agents",
+          "title": "Anthropic \u2014 Building effective agents",
           "url": "https://www.anthropic.com/engineering/building-effective-agents",
           "type": "primary",
           "checkedAt": "2026-05-20",
@@ -77,14 +77,14 @@
           "notes": "Documents agents as production systems with tools, handoffs, guardrails, sessions, tracing, usage, and human-in-the-loop concepts."
         },
         {
-          "title": "Nielsen Norman Group — AI: First New UI Paradigm in 60 Years",
+          "title": "Nielsen Norman Group \u2014 AI: First New UI Paradigm in 60 Years",
           "url": "https://www.nngroup.com/articles/ai-paradigm/",
           "type": "critical",
           "checkedAt": "2026-05-20",
           "notes": "Frames AI as intent-based interaction and highlights why users need judgment, feedback, and control rather than magic-button interfaces."
         },
         {
-          "title": "Microsoft WorkLab — AI at Work / Work Trend Index",
+          "title": "Microsoft WorkLab \u2014 AI at Work / Work Trend Index",
           "url": "https://www.microsoft.com/en-us/worklab/work-trend-index",
           "type": "practitioner",
           "checkedAt": "2026-05-20",
@@ -141,11 +141,11 @@
     "sections": [
       [
         "The goal is less admin, not less humanity",
-        "Communities fail for boring reasons. Someone forgets to send reminders. Questions repeat. Event notes are lost. New members do not know where to start. Good ideas disappear inside WhatsApp threads. AI can help with all of that, but the phrase “AI-operated community” is easy to misunderstand. It should not mean a fake human host pretending to care. It should mean the repeatable operating layer is handled by software so the actual humans can spend more time on judgment, relationships, and direction."
+        "Communities fail for boring reasons. Someone forgets to send reminders. Questions repeat. Event notes are lost. New members do not know where to start. Good ideas disappear inside WhatsApp threads. AI can help with all of that, but the phrase \u201cAI-operated community\u201d is easy to misunderstand. It should not mean a fake human host pretending to care. It should mean the repeatable operating layer is handled by software so the actual humans can spend more time on judgment, relationships, and direction."
       ],
       [
         "What people usually get wrong",
-        "The common mistake is to automate the most sensitive parts first: public replies, moderation decisions, announcements, and member conflict. That is backwards. Anthropic’s agent guidance recommends simple composable workflows before complex autonomy. For a community, that means first automating low-risk coordination: intake, reminders, summaries, drafts, routing, and checklists. The human should still decide what gets posted, who gets escalated, what tone is right, and when the group needs a real person instead of another bot reply."
+        "The common mistake is to automate the most sensitive parts first: public replies, moderation decisions, announcements, and member conflict. That is backwards. Anthropic\u2019s agent guidance recommends simple composable workflows before complex autonomy. For a community, that means first automating low-risk coordination: intake, reminders, summaries, drafts, routing, and checklists. The human should still decide what gets posted, who gets escalated, what tone is right, and when the group needs a real person instead of another bot reply."
       ],
       [
         "The responsibility map",
@@ -157,7 +157,7 @@
       ],
       [
         "Research-backed design principles",
-        "OpenAI’s Agents SDK documentation treats agents as systems with tools, handoffs, sessions, tracing, usage, guardrails, and human-in-the-loop patterns. That matters for community operations. A bot that can talk is not enough. The system needs memory boundaries, cost controls, escalation paths, and logs that are useful without exposing private chats. Nielsen Norman Group’s AI interface framing is also relevant: people specify outcomes, then inspect whether the system understood. Community AI should therefore ask clarifying questions when needed and show humans enough context to approve the output."
+        "OpenAI\u2019s Agents SDK documentation treats agents as systems with tools, handoffs, sessions, tracing, usage, guardrails, and human-in-the-loop patterns. That matters for community operations. A bot that can talk is not enough. The system needs memory boundaries, cost controls, escalation paths, and logs that are useful without exposing private chats. Nielsen Norman Group\u2019s AI interface framing is also relevant: people specify outcomes, then inspect whether the system understood. Community AI should therefore ask clarifying questions when needed and show humans enough context to approve the output."
       ],
       [
         "Worked example: event registration",
@@ -169,7 +169,7 @@
       ],
       [
         "Risks and tradeoffs",
-        "AI-operated communities have real failure modes. The bot may sound too corporate and weaken the group’s voice. It may over-answer when silence or escalation is better. It may summarize a heated thread in a way that feels biased. It may leak private details into a recap. It may become expensive if every casual message triggers a large model. These are not reasons to avoid AI. They are reasons to design the operating layer with routing, budgets, review gates, and explicit “do not automate” rules from day one."
+        "AI-operated communities have real failure modes. The bot may sound too corporate and weaken the group\u2019s voice. It may over-answer when silence or escalation is better. It may summarize a heated thread in a way that feels biased. It may leak private details into a recap. It may become expensive if every casual message triggers a large model. These are not reasons to avoid AI. They are reasons to design the operating layer with routing, budgets, review gates, and explicit \u201cdo not automate\u201d rules from day one."
       ],
       [
         "The dabblewith.ai operating model",
@@ -189,7 +189,7 @@
       "searchIntent": "AI-operated community, human-guided AI community, AI community operations, WhatsApp community bot",
       "sources": [
         {
-          "title": "Anthropic — Building effective agents",
+          "title": "Anthropic \u2014 Building effective agents",
           "url": "https://www.anthropic.com/engineering/building-effective-agents",
           "type": "primary",
           "checkedAt": "2026-05-20",
@@ -203,14 +203,14 @@
           "notes": "Documents agents as production systems with tools, handoffs, guardrails, sessions, tracing, usage, and human-in-the-loop concepts."
         },
         {
-          "title": "Nielsen Norman Group — AI: First New UI Paradigm in 60 Years",
+          "title": "Nielsen Norman Group \u2014 AI: First New UI Paradigm in 60 Years",
           "url": "https://www.nngroup.com/articles/ai-paradigm/",
           "type": "critical",
           "checkedAt": "2026-05-20",
           "notes": "Frames AI as intent-based interaction and highlights why users need judgment, feedback, and control rather than magic-button interfaces."
         },
         {
-          "title": "Microsoft WorkLab — AI at Work / Work Trend Index",
+          "title": "Microsoft WorkLab \u2014 AI at Work / Work Trend Index",
           "url": "https://www.microsoft.com/en-us/worklab/work-trend-index",
           "type": "practitioner",
           "checkedAt": "2026-05-20",
@@ -268,7 +268,7 @@
     "sections": [
       [
         "The mistake: starting with agents instead of operating loops",
-        "Most founders hear “AI agents” and jump straight to autonomy: a bot that researches, decides, writes, sends, follows up, and maybe updates the CRM. That sounds powerful, but it is usually the wrong first step. Anthropic’s engineering guidance draws a useful distinction between workflows, where models and tools follow predefined code paths, and agents, where the model dynamically controls its own process and tool use. For founders, the practical lesson is simple: start with workflows. A workflow is easier to inspect, cheaper to run, easier to debug, and safer to hand to a small team. Autonomy should be earned only after the repeatable loop is understood."
+        "Most founders hear \u201cAI agents\u201d and jump straight to autonomy: a bot that researches, decides, writes, sends, follows up, and maybe updates the CRM. That sounds powerful, but it is usually the wrong first step. Anthropic\u2019s engineering guidance draws a useful distinction between workflows, where models and tools follow predefined code paths, and agents, where the model dynamically controls its own process and tool use. For founders, the practical lesson is simple: start with workflows. A workflow is easier to inspect, cheaper to run, easier to debug, and safer to hand to a small team. Autonomy should be earned only after the repeatable loop is understood."
       ],
       [
         "The founder job-to-be-done",
@@ -276,15 +276,15 @@
       ],
       [
         "What the research suggests",
-        "Three patterns show up across credible sources. First, Anthropic recommends the simplest solution that works and warns that agentic systems trade latency and cost for task performance. Second, OpenAI’s agent documentation treats production agents as systems with orchestration, guardrails, state, observability, and evals — not just prompts. Third, Shopify’s AI-first engineering playbook, as reported by Bessemer Venture Partners, emphasizes standardizing infrastructure rather than forcing one tool: LLM proxy, usage analytics, model flexibility, access controls, and weekly demos. This matters for founders because the same principles apply at small scale. Do not ask “which agent tool should we use?” first. Ask “what workflow do we need to make repeatable, measurable, and reviewable?”"
+        "Three patterns show up across credible sources. First, Anthropic recommends the simplest solution that works and warns that agentic systems trade latency and cost for task performance. Second, OpenAI\u2019s agent documentation treats production agents as systems with orchestration, guardrails, state, observability, and evals \u2014 not just prompts. Third, Shopify\u2019s AI-first engineering playbook, as reported by Bessemer Venture Partners, emphasizes standardizing infrastructure rather than forcing one tool: LLM proxy, usage analytics, model flexibility, access controls, and weekly demos. This matters for founders because the same principles apply at small scale. Do not ask \u201cwhich agent tool should we use?\u201d first. Ask \u201cwhat workflow do we need to make repeatable, measurable, and reviewable?\u201d"
       ],
       [
         "A practical framework: the founder agent workflow canvas",
-        "Use this canvas before building anything. 1) Trigger: what event starts the workflow — a sales call, WhatsApp message, support ticket, competitor launch, or weekly review? 2) Input: what data is allowed — transcript, CRM note, website, public search, internal docs? 3) Task class: is this summary, extraction, research, drafting, routing, or decision support? 4) AI step: what should the model do in one sentence? 5) Tools/data: which systems can it read or write? 6) Human review gate: who approves, and what do they check? 7) Output: email draft, brief, checklist, task list, agenda, or dashboard row. 8) Metric: time saved, conversion lift, response speed, fewer missed follow-ups, or quality score. 9) Budget limit: token/cost cap and fallback model. 10) Failure mode: what happens if the output is wrong, sensitive, stale, or too expensive?"
+        "Use this canvas before building anything. 1) Trigger: what event starts the workflow \u2014 a sales call, WhatsApp message, support ticket, competitor launch, or weekly review? 2) Input: what data is allowed \u2014 transcript, CRM note, website, public search, internal docs? 3) Task class: is this summary, extraction, research, drafting, routing, or decision support? 4) AI step: what should the model do in one sentence? 5) Tools/data: which systems can it read or write? 6) Human review gate: who approves, and what do they check? 7) Output: email draft, brief, checklist, task list, agenda, or dashboard row. 8) Metric: time saved, conversion lift, response speed, fewer missed follow-ups, or quality score. 9) Budget limit: token/cost cap and fallback model. 10) Failure mode: what happens if the output is wrong, sensitive, stale, or too expensive?"
       ],
       [
         "Example 1: customer call to sales follow-up",
-        "A founder finishes a discovery call. The workflow starts when the transcript lands in a folder or CRM note. The AI extracts pains, objections, buying stage, promised follow-ups, and open questions. It drafts a follow-up email, but it does not send it. The founder reviews for truth, tone, and strategic judgment. The output is a final email plus CRM update plus next-step task. The metric is not “AI wrote an email.” The metric is fewer missed follow-ups and faster movement from call to next action. This is a workflow, not a free-roaming sales agent, and that is why it is safe enough to run every week."
+        "A founder finishes a discovery call. The workflow starts when the transcript lands in a folder or CRM note. The AI extracts pains, objections, buying stage, promised follow-ups, and open questions. It drafts a follow-up email, but it does not send it. The founder reviews for truth, tone, and strategic judgment. The output is a final email plus CRM update plus next-step task. The metric is not \u201cAI wrote an email.\u201d The metric is fewer missed follow-ups and faster movement from call to next action. This is a workflow, not a free-roaming sales agent, and that is why it is safe enough to run every week."
       ],
       [
         "Example 2: market research to positioning brief",
@@ -292,15 +292,15 @@
       ],
       [
         "Example 3: community messages to event agenda",
-        "For dabblewith.ai, a useful workflow is turning WhatsApp community messages into event strategy. The trigger is a batch of member questions. The AI clusters intents — career help, coding, office productivity, founder tools, student projects, or community utilities. It proposes three event themes and a draft agenda. A human chooses one, edits the positioning, and posts the final plan. This is exactly the kind of operating loop that can help grow a community without pretending the AI is a human organizer. It also creates better blog inputs because the content comes from real member needs, not generic keyword ideas."
+        "For dabblewith.ai, a useful workflow is turning WhatsApp community messages into event strategy. The trigger is a batch of member questions. The AI clusters intents \u2014 career help, coding, office productivity, founder tools, student projects, or community utilities. It proposes three event themes and a draft agenda. A human chooses one, edits the positioning, and posts the final plan. This is exactly the kind of operating loop that can help grow a community without pretending the AI is a human organizer. It also creates better blog inputs because the content comes from real member needs, not generic keyword ideas."
       ],
       [
         "Cost and observability are not optional",
-        "Token-heavy workflows can quietly become expensive. That is why the workflow canvas needs task class, model tier, and budget limit. A greeting or FAQ should not use the same model path as deep strategy work. A community bot should route common questions to cheaper models or local rules, summarize old context, cache stable prompts, and log cost estimates without storing raw private messages. This is not premature engineering. It is how a founder prevents the AI system from becoming an invisible cost center. Shopify’s infrastructure lesson — standardize the layer underneath and watch usage — applies even to a tiny startup."
+        "Token-heavy workflows can quietly become expensive. That is why the workflow canvas needs task class, model tier, and budget limit. A greeting or FAQ should not use the same model path as deep strategy work. A community bot should route common questions to cheaper models or local rules, summarize old context, cache stable prompts, and log cost estimates without storing raw private messages. This is not premature engineering. It is how a founder prevents the AI system from becoming an invisible cost center. Shopify\u2019s infrastructure lesson \u2014 standardize the layer underneath and watch usage \u2014 applies even to a tiny startup."
       ],
       [
         "The human review gate is the product",
-        "The phrase “human in the loop” sounds defensive, but for founder workflows it is the core product pattern. Review gates protect brand, privacy, customer trust, and strategic taste. They also prevent comprehension debt — the Shopify warning that people can lose understanding if AI does too much of the thinking. A founder should be able to explain the workflow two layers down: what data entered, what prompt or tool transformed it, what the AI produced, what the human checked, and how the output changed the business decision. If nobody can explain that, the agent is not leverage; it is operational debt."
+        "The phrase \u201chuman in the loop\u201d sounds defensive, but for founder workflows it is the core product pattern. Review gates protect brand, privacy, customer trust, and strategic taste. They also prevent comprehension debt \u2014 the Shopify warning that people can lose understanding if AI does too much of the thinking. A founder should be able to explain the workflow two layers down: what data entered, what prompt or tool transformed it, what the AI produced, what the human checked, and how the output changed the business decision. If nobody can explain that, the agent is not leverage; it is operational debt."
       ],
       [
         "When to upgrade from workflow to agent",
@@ -319,12 +319,12 @@
     "qualityScore": 88,
     "researchBrief": {
       "reader": "Founder or small-team operator trying to use AI beyond one-off prompts without adding operational risk.",
-      "jobToBeDone": "Turn recurring founder work — research, sales, content, hiring, community operations, and decision prep — into repeatable AI-assisted workflows that save cycles while preserving human judgment.",
+      "jobToBeDone": "Turn recurring founder work \u2014 research, sales, content, hiring, community operations, and decision prep \u2014 into repeatable AI-assisted workflows that save cycles while preserving human judgment.",
       "thesis": "The durable founder advantage is not autonomous agents everywhere; it is a small operating system of routed, reviewable workflows where AI handles repeatable steps and humans keep ownership of strategy, quality, privacy, and cost.",
       "searchIntent": "Practical guide for founders evaluating AI agent workflows, AI automation for startups, and AI operating systems.",
       "sources": [
         {
-          "title": "Anthropic — Building effective agents",
+          "title": "Anthropic \u2014 Building effective agents",
           "url": "https://www.anthropic.com/engineering/building-effective-agents",
           "type": "primary",
           "checkedAt": "2026-05-20",
@@ -338,14 +338,14 @@
           "notes": "Shows production agent concepts: agent definitions, orchestration, guardrails, results/state, observability, and evals."
         },
         {
-          "title": "Bessemer Venture Partners — Inside Shopify’s AI-first engineering playbook",
+          "title": "Bessemer Venture Partners \u2014 Inside Shopify\u2019s AI-first engineering playbook",
           "url": "https://www.bvp.com/atlas/inside-shopifys-ai-first-engineering-playbook",
           "type": "practitioner",
           "checkedAt": "2026-05-20",
           "notes": "Shopify standardizes infrastructure rather than tools, uses LLM proxy/cost visibility, MCP/internal systems, weekly demos, and warns about comprehension debt."
         },
         {
-          "title": "Nielsen Norman Group — AI: First New UI Paradigm in 60 Years",
+          "title": "Nielsen Norman Group \u2014 AI: First New UI Paradigm in 60 Years",
           "url": "https://www.nngroup.com/articles/ai-paradigm/",
           "type": "critical",
           "checkedAt": "2026-05-20",
@@ -396,7 +396,7 @@
     "sections": [
       [
         "Start with a job, not a tool",
-        "A practical AI workshop should never begin with “today we will cover five AI tools.” Tools change too quickly, and tool tours make participants passive. Start with a job people already recognize: write a customer follow-up, prepare a resident meeting agenda, critique a landing page, summarize a call, research a market, or turn WhatsApp questions into an event plan. The tool is just the vehicle. The workshop promise should be: by the end, you will have a repeatable way to do this job better."
+        "A practical AI workshop should never begin with \u201ctoday we will cover five AI tools.\u201d Tools change too quickly, and tool tours make participants passive. Start with a job people already recognize: write a customer follow-up, prepare a resident meeting agenda, critique a landing page, summarize a call, research a market, or turn WhatsApp questions into an event plan. The tool is just the vehicle. The workshop promise should be: by the end, you will have a repeatable way to do this job better."
       ],
       [
         "The wrong success metric",
@@ -408,19 +408,19 @@
       ],
       [
         "Design the messy middle on purpose",
-        "The most valuable part of an AI workshop is not the magical first answer. It is the messy middle: the model misses context, writes in the wrong tone, invents a detail, or gives a generic answer. Show that. Ask participants what failed. Add constraints. Improve the input. Compare versions. This is how people learn judgment. Nielsen Norman Group’s AI interface work is useful here because AI interaction is outcome specification; users need practice specifying intent and inspecting whether the system delivered the intended result."
+        "The most valuable part of an AI workshop is not the magical first answer. It is the messy middle: the model misses context, writes in the wrong tone, invents a detail, or gives a generic answer. Show that. Ask participants what failed. Add constraints. Improve the input. Compare versions. This is how people learn judgment. Nielsen Norman Group\u2019s AI interface work is useful here because AI interaction is outcome specification; users need practice specifying intent and inspecting whether the system delivered the intended result."
       ],
       [
         "Use credible workflow patterns",
-        "Anthropic’s agent guidance recommends simple, composable patterns and warns that more agentic systems add cost and latency. That lesson applies in the workshop room. Do not teach beginners to build a sprawling autonomous agent. Teach a clean workflow: collect input, draft, critique, revise, approve, and save. OpenAI’s Agents SDK documentation shows production ideas such as guardrails, tools, tracing, usage, sessions, and human-in-the-loop. You can translate those ideas into non-technical workshop habits: define allowed inputs, log decisions, review sensitive outputs, and know when to escalate."
+        "Anthropic\u2019s agent guidance recommends simple, composable patterns and warns that more agentic systems add cost and latency. That lesson applies in the workshop room. Do not teach beginners to build a sprawling autonomous agent. Teach a clean workflow: collect input, draft, critique, revise, approve, and save. OpenAI\u2019s Agents SDK documentation shows production ideas such as guardrails, tools, tracing, usage, sessions, and human-in-the-loop. You can translate those ideas into non-technical workshop habits: define allowed inputs, log decisions, review sensitive outputs, and know when to escalate."
       ],
       [
         "Worked example: Claude Design workshop",
-        "A Claude Design session should not be “look, Claude can make artifacts.” A stronger workshop starts with a real brief: create a landing page for a community bot, a poster for an AI meetup, or a diagram explaining a workflow. Participants write the brief, generate an artifact, critique hierarchy, copy, spacing, audience fit, and accessibility, then revise. The artifact is a design brief template plus a QC checklist. The lesson is not just how to prompt Claude; it is how to think like a reviewer so AI output becomes client-ready instead of merely impressive."
+        "A Claude Design session should not be \u201clook, Claude can make artifacts.\u201d A stronger workshop starts with a real brief: create a landing page for a community bot, a poster for an AI meetup, or a diagram explaining a workflow. Participants write the brief, generate an artifact, critique hierarchy, copy, spacing, audience fit, and accessibility, then revise. The artifact is a design brief template plus a QC checklist. The lesson is not just how to prompt Claude; it is how to think like a reviewer so AI output becomes client-ready instead of merely impressive."
       ],
       [
         "Worked example: community agenda workshop",
-        "For a local community, use sanitized WhatsApp questions as input. The AI clusters questions into themes and proposes a 60-minute meetup agenda. Participants review whether the themes are accurate, whether sensitive names were removed, whether the agenda matches the audience, and whether the call-to-action is clear. The final artifact is a message-to-agenda workflow that any organizer can reuse. This directly connects to dabblewith.ai’s community-bot direction: AI handles coordination drafts, humans keep trust and judgment."
+        "For a local community, use sanitized WhatsApp questions as input. The AI clusters questions into themes and proposes a 60-minute meetup agenda. Participants review whether the themes are accurate, whether sensitive names were removed, whether the agenda matches the audience, and whether the call-to-action is clear. The final artifact is a message-to-agenda workflow that any organizer can reuse. This directly connects to dabblewith.ai\u2019s community-bot direction: AI handles coordination drafts, humans keep trust and judgment."
       ],
       [
         "Workshop structure that works",
@@ -428,7 +428,7 @@
       ],
       [
         "Risks and mitigation",
-        "Workshops can accidentally teach bad habits. Participants may paste private customer data into tools. They may trust fluent output too quickly. They may think a prompt is a process. They may leave with a tool-specific trick that breaks next month. Mitigate this with sanitized sample inputs, explicit review criteria, a “what AI must not decide” slide, and backup materials if the live tool fails. Make the failure cases part of the curriculum. The goal is durable judgment, not perfect theater."
+        "Workshops can accidentally teach bad habits. Participants may paste private customer data into tools. They may trust fluent output too quickly. They may think a prompt is a process. They may leave with a tool-specific trick that breaks next month. Mitigate this with sanitized sample inputs, explicit review criteria, a \u201cwhat AI must not decide\u201d slide, and backup materials if the live tool fails. Make the failure cases part of the curriculum. The goal is durable judgment, not perfect theater."
       ],
       [
         "Next action",
@@ -448,7 +448,7 @@
       "searchIntent": "practical AI workshop design, hands-on AI training, AI workshop framework",
       "sources": [
         {
-          "title": "Anthropic — Building effective agents",
+          "title": "Anthropic \u2014 Building effective agents",
           "url": "https://www.anthropic.com/engineering/building-effective-agents",
           "type": "primary",
           "checkedAt": "2026-05-20",
@@ -462,14 +462,14 @@
           "notes": "Documents agents as production systems with tools, handoffs, guardrails, sessions, tracing, usage, and human-in-the-loop concepts."
         },
         {
-          "title": "Nielsen Norman Group — AI: First New UI Paradigm in 60 Years",
+          "title": "Nielsen Norman Group \u2014 AI: First New UI Paradigm in 60 Years",
           "url": "https://www.nngroup.com/articles/ai-paradigm/",
           "type": "critical",
           "checkedAt": "2026-05-20",
           "notes": "Frames AI as intent-based interaction and highlights why users need judgment, feedback, and control rather than magic-button interfaces."
         },
         {
-          "title": "Microsoft WorkLab — AI at Work / Work Trend Index",
+          "title": "Microsoft WorkLab \u2014 AI at Work / Work Trend Index",
           "url": "https://www.microsoft.com/en-us/worklab/work-trend-index",
           "type": "practitioner",
           "checkedAt": "2026-05-20",
@@ -538,7 +538,7 @@
       ],
       [
         "What research suggests",
-        "Anthropic’s guidance on effective agents emphasizes simple composable workflows over unnecessary complexity. That is exactly how content should work: deterministic steps with review gates, not an autonomous content bot publishing whatever sounds plausible. OpenAI’s Agents SDK documentation highlights guardrails, tracing, usage, sessions, and human-in-the-loop patterns. For content, those translate into source logs, privacy checks, cost controls, and approval before publication. Nielsen Norman Group’s AI interface framing also matters: humans specify outcomes and judge whether the system met them. AI drafts; humans decide."
+        "Anthropic\u2019s guidance on effective agents emphasizes simple composable workflows over unnecessary complexity. That is exactly how content should work: deterministic steps with review gates, not an autonomous content bot publishing whatever sounds plausible. OpenAI\u2019s Agents SDK documentation highlights guardrails, tracing, usage, sessions, and human-in-the-loop patterns. For content, those translate into source logs, privacy checks, cost controls, and approval before publication. Nielsen Norman Group\u2019s AI interface framing also matters: humans specify outcomes and judge whether the system met them. AI drafts; humans decide."
       ],
       [
         "Worked example: workshop to blog",
@@ -578,7 +578,7 @@
       "searchIntent": "AI content automation community, community content engine, AI SEO workflow, human reviewed AI content",
       "sources": [
         {
-          "title": "Anthropic — Building effective agents",
+          "title": "Anthropic \u2014 Building effective agents",
           "url": "https://www.anthropic.com/engineering/building-effective-agents",
           "type": "primary",
           "checkedAt": "2026-05-20",
@@ -592,14 +592,14 @@
           "notes": "Documents agents as production systems with tools, handoffs, guardrails, sessions, tracing, usage, and human-in-the-loop concepts."
         },
         {
-          "title": "Nielsen Norman Group — AI: First New UI Paradigm in 60 Years",
+          "title": "Nielsen Norman Group \u2014 AI: First New UI Paradigm in 60 Years",
           "url": "https://www.nngroup.com/articles/ai-paradigm/",
           "type": "critical",
           "checkedAt": "2026-05-20",
           "notes": "Frames AI as intent-based interaction and highlights why users need judgment, feedback, and control rather than magic-button interfaces."
         },
         {
-          "title": "Microsoft WorkLab — AI at Work / Work Trend Index",
+          "title": "Microsoft WorkLab \u2014 AI at Work / Work Trend Index",
           "url": "https://www.microsoft.com/en-us/worklab/work-trend-index",
           "type": "practitioner",
           "checkedAt": "2026-05-20",
@@ -660,7 +660,7 @@
       ],
       [
         "The misconception about review",
-        "Many teams treat human review as a brake on automation. That is the wrong framing. Review is the control surface. It defines what quality means, what risks matter, who is accountable, and what happens when the AI is wrong. Anthropic’s agent guidance warns that agentic systems trade cost and latency for performance and recommends the simplest solution that works. Review gates are part of that simplicity: instead of asking an autonomous system to be perfect, you build a predictable workflow where humans approve high-risk steps."
+        "Many teams treat human review as a brake on automation. That is the wrong framing. Review is the control surface. It defines what quality means, what risks matter, who is accountable, and what happens when the AI is wrong. Anthropic\u2019s agent guidance warns that agentic systems trade cost and latency for performance and recommends the simplest solution that works. Review gates are part of that simplicity: instead of asking an autonomous system to be perfect, you build a predictable workflow where humans approve high-risk steps."
       ],
       [
         "The review gate checklist",
@@ -672,7 +672,7 @@
       ],
       [
         "Research-backed patterns",
-        "OpenAI’s Agents SDK documentation includes human-in-the-loop, guardrails, tracing, usage, and sessions as production concepts. Those are engineering words for a product truth: AI systems need inspectability and intervention. Nielsen Norman Group’s view of AI as a new intent-based interface also supports this. Users tell the system what they want, but they still have to judge whether the outcome matches the intent. In operational workflows, that judgment cannot be optional."
+        "OpenAI\u2019s Agents SDK documentation includes human-in-the-loop, guardrails, tracing, usage, and sessions as production concepts. Those are engineering words for a product truth: AI systems need inspectability and intervention. Nielsen Norman Group\u2019s view of AI as a new intent-based interface also supports this. Users tell the system what they want, but they still have to judge whether the outcome matches the intent. In operational workflows, that judgment cannot be optional."
       ],
       [
         "Worked example: sales follow-up",
@@ -708,7 +708,7 @@
       "searchIntent": "human review AI workflows, human in the loop AI, AI workflow quality control",
       "sources": [
         {
-          "title": "Anthropic — Building effective agents",
+          "title": "Anthropic \u2014 Building effective agents",
           "url": "https://www.anthropic.com/engineering/building-effective-agents",
           "type": "primary",
           "checkedAt": "2026-05-20",
@@ -722,14 +722,14 @@
           "notes": "Documents agents as production systems with tools, handoffs, guardrails, sessions, tracing, usage, and human-in-the-loop concepts."
         },
         {
-          "title": "Nielsen Norman Group — AI: First New UI Paradigm in 60 Years",
+          "title": "Nielsen Norman Group \u2014 AI: First New UI Paradigm in 60 Years",
           "url": "https://www.nngroup.com/articles/ai-paradigm/",
           "type": "critical",
           "checkedAt": "2026-05-20",
           "notes": "Frames AI as intent-based interaction and highlights why users need judgment, feedback, and control rather than magic-button interfaces."
         },
         {
-          "title": "Microsoft WorkLab — AI at Work / Work Trend Index",
+          "title": "Microsoft WorkLab \u2014 AI at Work / Work Trend Index",
           "url": "https://www.microsoft.com/en-us/worklab/work-trend-index",
           "type": "practitioner",
           "checkedAt": "2026-05-20",
@@ -774,7 +774,7 @@
   {
     "slug": "community-apple-silicon-distributed-inference",
     "title": "Your Community's Idle MacBooks as a Shared AI Brain: Distributed Inference on Apple Silicon",
-    "description": "How communities can pool idle Apple Silicon Macs to create shared AI inference capacity using tools like exo, llama.cpp, and MLX — with honest caveats about what is and is not technically possible.",
+    "description": "How communities can pool idle Apple Silicon Macs to create shared AI inference capacity using tools like exo, llama.cpp, and MLX \u2014 with honest caveats about what is and is not technically possible.",
     "keywords": [
       "distributed AI inference",
       "Apple Silicon community AI",
@@ -784,11 +784,11 @@
     ],
     "publishedAt": "2026-05-20",
     "status": "published",
-    "excerpt": "Idle Apple Silicon machines in your community can serve real AI inference jobs. The catch is understanding what is actually being shared — and what is not.",
+    "excerpt": "Idle Apple Silicon machines in your community can serve real AI inference jobs. The catch is understanding what is actually being shared \u2014 and what is not.",
     "sections": [
       [
         "The idea: your community's spare Macs as shared AI infrastructure",
-        "Imagine ten members of an AI learning community, each with a MacBook Pro or Mac mini sitting idle most of the day. Collectively, those machines hold anywhere from 96 GB to over 200 GB of unified memory. A 70-billion-parameter language model needs roughly 40 GB to run in 4-bit quantisation. Spread that across two or three machines and suddenly the community has inference capacity that would otherwise require renting cloud GPUs. This is not a hypothetical. Small distributed inference projects are already running on consumer hardware. The question for community builders is whether they can organise people, machines, and tooling well enough to make it practical — and honest enough to set the right expectations."
+        "Imagine ten members of an AI learning community, each with a MacBook Pro or Mac mini sitting idle most of the day. Collectively, those machines hold anywhere from 96 GB to over 200 GB of unified memory. A 70-billion-parameter language model needs roughly 40 GB to run in 4-bit quantisation. Spread that across two or three machines and suddenly the community has inference capacity that would otherwise require renting cloud GPUs. This is not a hypothetical. Small distributed inference projects are already running on consumer hardware. The question for community builders is whether they can organise people, machines, and tooling well enough to make it practical \u2014 and honest enough to set the right expectations."
       ],
       [
         "What unified memory actually is, and what pooling it means",
@@ -816,7 +816,7 @@
       ],
       [
         "Dashboard design: seeing your community's AI capacity",
-        "A well-designed community inference dashboard makes the cluster legible to everyone, not just the person who set it up. The top row should show cluster-wide health at a glance: total nodes, nodes online, nodes offline, total model shards assigned, and a simple green-amber-red status. The second panel shows each node individually — machine name or alias, owner, current status, model shards hosted, memory allocated, uptime percentage for the last 7 days, and last seen timestamp. A connected or offline badge makes it immediately clear who is contributing. The third panel is a live token throughput graph: tokens served per minute across the cluster, broken down by model and by node. This gives contributors visibility into how much their machine is actually helping. The fourth panel covers latency: median and 95th-percentile time-to-first-token and total generation latency, segmented by job size. The fifth panel shows aggregate usage: total tokens served this week, total requests, top requesters, and estimated cloud cost avoided. A shard map — a visual showing which layers of the active model are hosted on which node — helps members understand the distributed architecture intuitively. Finally, an event log showing when nodes joined, left, or were reassigned gives the admin enough information to diagnose problems without needing a terminal."
+        "A well-designed community inference dashboard makes the cluster legible to everyone, not just the person who set it up. The top row should show cluster-wide health at a glance: total nodes, nodes online, nodes offline, total model shards assigned, and a simple green-amber-red status. The second panel shows each node individually \u2014 machine name or alias, owner, current status, model shards hosted, memory allocated, uptime percentage for the last 7 days, and last seen timestamp. A connected or offline badge makes it immediately clear who is contributing. The third panel is a live token throughput graph: tokens served per minute across the cluster, broken down by model and by node. This gives contributors visibility into how much their machine is actually helping. The fourth panel covers latency: median and 95th-percentile time-to-first-token and total generation latency, segmented by job size. The fifth panel shows aggregate usage: total tokens served this week, total requests, top requesters, and estimated cloud cost avoided. A shard map \u2014 a visual showing which layers of the active model are hosted on which node \u2014 helps members understand the distributed architecture intuitively. Finally, an event log showing when nodes joined, left, or were reassigned gives the admin enough information to diagnose problems without needing a terminal."
       ],
       [
         "The honest limits: latency, reliability, and network overhead",
@@ -824,7 +824,7 @@
       ],
       [
         "Privacy and data governance for a community cluster",
-        "When community members use a shared inference cluster, they should understand what data travels where. Prompts and partial activations pass through each node in the pipeline chain. On a trusted local network among known members this is typically acceptable, but the community should have a clear policy. Who can see request logs? Are prompts stored? Can the cluster be accessed remotely or only on-premises? For communities handling sensitive content — resident survey data, personal career questions, financial planning prompts — the right answer may be to keep the cluster on a private network with explicit consent, or to route sensitive jobs to a single trusted machine rather than the full cluster. These are governance questions, not just technical ones. The person setting up the cluster should not be the only one who knows the answers."
+        "When community members use a shared inference cluster, they should understand what data travels where. Prompts and partial activations pass through each node in the pipeline chain. On a trusted local network among known members this is typically acceptable, but the community should have a clear policy. Who can see request logs? Are prompts stored? Can the cluster be accessed remotely or only on-premises? For communities handling sensitive content \u2014 resident survey data, personal career questions, financial planning prompts \u2014 the right answer may be to keep the cluster on a private network with explicit consent, or to route sensitive jobs to a single trusted machine rather than the full cluster. These are governance questions, not just technical ones. The person setting up the cluster should not be the only one who knows the answers."
       ],
       [
         "A practical pilot: three machines, one community model",
@@ -840,39 +840,39 @@
     "researchBrief": {
       "reader": "Community builders, AI learning group organisers, and technically curious founders who want to pool Apple Silicon machines for shared inference without overclaiming what is possible.",
       "jobToBeDone": "Understand whether and how to set up a community-run distributed inference cluster on Apple Silicon, with realistic expectations and practical starting points.",
-      "thesis": "Communities with idle Apple Silicon machines can pool inference capacity — not memory — using tools like exo, llama.cpp, and MLX, provided they design for the real constraints of pipeline latency, node reliability, and data governance.",
+      "thesis": "Communities with idle Apple Silicon machines can pool inference capacity \u2014 not memory \u2014 using tools like exo, llama.cpp, and MLX, provided they design for the real constraints of pipeline latency, node reliability, and data governance.",
       "searchIntent": "distributed inference Apple Silicon, community AI inference, exo distributed llm, llama.cpp cluster, Apple Silicon AI server",
       "sources": [
         {
-          "title": "exo — Run your own AI cluster at home with everyday devices",
+          "title": "exo \u2014 Run your own AI cluster at home with everyday devices",
           "url": "https://github.com/exo-explore/exo",
           "type": "primary",
           "checkedAt": "2026-05-20",
           "notes": "Open-source distributed inference runtime with native Apple Silicon / MLX support. Supports model partitioning across heterogeneous devices on local networks."
         },
         {
-          "title": "Petals — Run large language models at home, BitTorrent-style",
+          "title": "Petals \u2014 Run large language models at home, BitTorrent-style",
           "url": "https://github.com/bigscience-workshop/petals",
           "type": "primary",
           "checkedAt": "2026-05-20",
           "notes": "Research-grade distributed inference via shared transformer block hosting. Designed primarily for CUDA/Linux; limited native Apple Silicon support."
         },
         {
-          "title": "Apple MLX — Machine learning framework for Apple Silicon",
+          "title": "Apple MLX \u2014 Machine learning framework for Apple Silicon",
           "url": "https://github.com/ml-explore/mlx",
           "type": "primary",
           "checkedAt": "2026-05-20",
           "notes": "Apple's own ML framework leveraging unified memory and Metal. Used by exo and mlx-lm for fast local inference on Mac."
         },
         {
-          "title": "llama.cpp — LLM inference in C/C++",
+          "title": "llama.cpp \u2014 LLM inference in C/C++",
           "url": "https://github.com/ggml-org/llama.cpp",
           "type": "primary",
           "checkedAt": "2026-05-20",
           "notes": "The most widely deployed local inference runtime. Supports GGUF quantisation and Metal on Apple Silicon. Foundation for Ollama and many community tools."
         },
         {
-          "title": "Petals research paper — Towards Crowdsourced Training of Large Neural Networks",
+          "title": "Petals research paper \u2014 Towards Crowdsourced Training of Large Neural Networks",
           "url": "https://arxiv.org/abs/2209.01188",
           "type": "critical",
           "checkedAt": "2026-05-20",
@@ -891,7 +891,7 @@
         "exo is currently the most practical Apple Silicon-native distributed inference tool for community use.",
         "Petals is research-grade and primarily Linux/CUDA-oriented; honest about its limits.",
         "Pipeline latency makes distributed inference better for batch workloads than low-latency interactive chat.",
-        "A community cluster needs governance — policies on data, node requirements, and a designated maintainer — as much as it needs software."
+        "A community cluster needs governance \u2014 policies on data, node requirements, and a designated maintainer \u2014 as much as it needs software."
       ],
       "examples": [
         "Three-machine exo cluster pilot: Mac mini primary shard plus two member MacBooks",
@@ -899,7 +899,7 @@
         "Developer community running a shared Llama 3 endpoint to reduce API costs"
       ],
       "risks": [
-        "Overclaiming that unified memory is pooled across the network — it is not.",
+        "Overclaiming that unified memory is pooled across the network \u2014 it is not.",
         "Node unreliability when community member laptops go offline unexpectedly.",
         "Pipeline latency making the cluster feel slow for interactive use cases.",
         "Privacy exposure if intermediate activations travel over untrusted networks.",
@@ -936,7 +936,7 @@
       ],
       [
         "Why workflows transfer better than tools",
-        "Anthropic’s agent guidance distinguishes predictable workflows from more autonomous agents and recommends starting simple. That principle is valuable for learners. A person who understands a workflow can swap tools later. A person who only memorized a tool button is stuck when the interface changes or the company disappears. Nielsen Norman Group’s AI interface framing makes the same point from a UX angle: AI changes the interaction model because people specify outcomes. The durable skill is learning how to specify, inspect, and revise outcomes."
+        "Anthropic\u2019s agent guidance distinguishes predictable workflows from more autonomous agents and recommends starting simple. That principle is valuable for learners. A person who understands a workflow can swap tools later. A person who only memorized a tool button is stuck when the interface changes or the company disappears. Nielsen Norman Group\u2019s AI interface framing makes the same point from a UX angle: AI changes the interaction model because people specify outcomes. The durable skill is learning how to specify, inspect, and revise outcomes."
       ],
       [
         "Where tool lists still help",
@@ -944,7 +944,7 @@
       ],
       [
         "Worked example: landing-page critique",
-        "A weak tool-list session says, “Here are five AI design tools.” A strong demo starts with a landing page draft for a community bot. The AI critiques hierarchy, message clarity, call-to-action, and trust signals. The first critique is too generic, so the facilitator adds audience context: WhatsApp-first community admins, local events, practical AI workshops, and human-guided automation. The revised critique becomes specific. The artifact is a landing-page review checklist that works with Claude, ChatGPT, or a human designer."
+        "A weak tool-list session says, \u201cHere are five AI design tools.\u201d A strong demo starts with a landing page draft for a community bot. The AI critiques hierarchy, message clarity, call-to-action, and trust signals. The first critique is too generic, so the facilitator adds audience context: WhatsApp-first community admins, local events, practical AI workshops, and human-guided automation. The revised critique becomes specific. The artifact is a landing-page review checklist that works with Claude, ChatGPT, or a human designer."
       ],
       [
         "Worked example: community agenda",
@@ -952,11 +952,11 @@
       ],
       [
         "Worked example: founder research memo",
-        "A founder wants to understand a competitor. A tool list might point to search, summarization, and deck tools. A demo shows the workflow: collect public pages, extract claims, separate facts from interpretations, identify unanswered questions, draft a positioning memo, and review source links. OpenAI’s Agents SDK documentation highlights tools, handoffs, tracing, and guardrails in production systems. A beginner demo can teach the same instincts without heavy infrastructure: source everything, show uncertainty, and keep human judgment in the loop."
+        "A founder wants to understand a competitor. A tool list might point to search, summarization, and deck tools. A demo shows the workflow: collect public pages, extract claims, separate facts from interpretations, identify unanswered questions, draft a positioning memo, and review source links. OpenAI\u2019s Agents SDK documentation highlights tools, handoffs, tracing, and guardrails in production systems. A beginner demo can teach the same instincts without heavy infrastructure: source everything, show uncertainty, and keep human judgment in the loop."
       ],
       [
         "Risks and tradeoffs",
-        "Practical demos take more preparation than tool lists. The facilitator needs realistic inputs, backup examples, and review criteria. Live tools may fail. Some learners may still ask, “Which app should I use?” That is fine; answer after the workflow is clear. Demos can also become too polished, hiding the failure cases that teach judgment. The fix is to show the first bad output and explain how to repair it. The goal is not to make AI look magical. The goal is to make AI usable."
+        "Practical demos take more preparation than tool lists. The facilitator needs realistic inputs, backup examples, and review criteria. Live tools may fail. Some learners may still ask, \u201cWhich app should I use?\u201d That is fine; answer after the workflow is clear. Demos can also become too polished, hiding the failure cases that teach judgment. The fix is to show the first bad output and explain how to repair it. The goal is not to make AI look magical. The goal is to make AI usable."
       ],
       [
         "Next action",
@@ -964,7 +964,7 @@
       ],
       [
         "How to share tools responsibly",
-        "When you do share tools, attach them to use cases. Instead of “try these five tools,” say “for this workflow, here are three tool options, when each is useful, what it costs or risks, and what human review still needs to happen.” That framing keeps the learner focused on judgment. It also makes the content age better because the workflow remains useful even if one vendor changes pricing, removes a feature, or gets replaced by a better product."
+        "When you do share tools, attach them to use cases. Instead of \u201ctry these five tools,\u201d say \u201cfor this workflow, here are three tool options, when each is useful, what it costs or risks, and what human review still needs to happen.\u201d That framing keeps the learner focused on judgment. It also makes the content age better because the workflow remains useful even if one vendor changes pricing, removes a feature, or gets replaced by a better product."
       ]
     ],
     "qualityNote": "Ready for review under the new framework; includes demo design rubric and risks.",
@@ -976,7 +976,7 @@
       "searchIntent": "practical AI demos vs AI tool lists, learn AI workflows, AI demos community",
       "sources": [
         {
-          "title": "Anthropic — Building effective agents",
+          "title": "Anthropic \u2014 Building effective agents",
           "url": "https://www.anthropic.com/engineering/building-effective-agents",
           "type": "primary",
           "checkedAt": "2026-05-20",
@@ -990,14 +990,14 @@
           "notes": "Documents agents as production systems with tools, handoffs, guardrails, sessions, tracing, usage, and human-in-the-loop concepts."
         },
         {
-          "title": "Nielsen Norman Group — AI: First New UI Paradigm in 60 Years",
+          "title": "Nielsen Norman Group \u2014 AI: First New UI Paradigm in 60 Years",
           "url": "https://www.nngroup.com/articles/ai-paradigm/",
           "type": "critical",
           "checkedAt": "2026-05-20",
           "notes": "Frames AI as intent-based interaction and highlights why users need judgment, feedback, and control rather than magic-button interfaces."
         },
         {
-          "title": "Microsoft WorkLab — AI at Work / Work Trend Index",
+          "title": "Microsoft WorkLab \u2014 AI at Work / Work Trend Index",
           "url": "https://www.microsoft.com/en-us/worklab/work-trend-index",
           "type": "practitioner",
           "checkedAt": "2026-05-20",
@@ -1124,14 +1124,14 @@
           "notes": "Requires practical evergreen guides, artifacts, examples, human-review notes, and internal links."
         },
         {
-          "title": "Anthropic — Building effective agents",
+          "title": "Anthropic \u2014 Building effective agents",
           "url": "https://www.anthropic.com/engineering/building-effective-agents",
           "type": "primary",
           "checkedAt": "2026-05-25",
           "notes": "Supports the principle of simple composable workflows before complex autonomy."
         },
         {
-          "title": "Nielsen Norman Group — AI as an intent-based interface",
+          "title": "Nielsen Norman Group \u2014 AI as an intent-based interface",
           "url": "https://www.nngroup.com/articles/ai-paradigm/",
           "type": "critical",
           "checkedAt": "2026-05-25",
@@ -1174,7 +1174,7 @@
     "sections": [
       [
         "Start with the decision, not the tool",
-        "A useful founder AI automation starts with one recurring decision or handoff, not with a model feature. Write the sentence first: “When X arrives, we need Y prepared so Z can decide.” Examples: when a sales call ends, prepare follow-up notes so the founder can approve the next email; when a customer complaint arrives, classify urgency so support can respond; when a competitor launches something, summarize the change so product can decide whether it matters. If the workflow cannot be expressed as a decision, draft, routing step, or checklist, it is probably too vague to automate."
+        "A useful founder AI automation starts with one recurring decision or handoff, not with a model feature. Write the sentence first: \u201cWhen X arrives, we need Y prepared so Z can decide.\u201d Examples: when a sales call ends, prepare follow-up notes so the founder can approve the next email; when a customer complaint arrives, classify urgency so support can respond; when a competitor launches something, summarize the change so product can decide whether it matters. If the workflow cannot be expressed as a decision, draft, routing step, or checklist, it is probably too vague to automate."
       ],
       [
         "Map the current manual loop",
@@ -1206,7 +1206,7 @@
       "searchIntent": "AI automation checklist for founders, founder AI automation workflow, human in the loop AI workflow checklist",
       "sources": [
         {
-          "title": "Anthropic — Building effective agents",
+          "title": "Anthropic \u2014 Building effective agents",
           "url": "https://www.anthropic.com/engineering/building-effective-agents",
           "type": "primary",
           "checkedAt": "2026-05-26",
@@ -1220,7 +1220,7 @@
           "notes": "Frames production agents around tools, handoffs, guardrails, tracing, and human-in-the-loop patterns."
         },
         {
-          "title": "Nielsen Norman Group — AI: First New UI Paradigm in 60 Years",
+          "title": "Nielsen Norman Group \u2014 AI: First New UI Paradigm in 60 Years",
           "url": "https://www.nngroup.com/articles/ai-paradigm/",
           "type": "critical",
           "checkedAt": "2026-05-26",
@@ -1269,11 +1269,11 @@
     "sections": [
       [
         "Pick one workflow narrow enough to supervise",
-        "Do not start with “build an AI agent for the company.” Start with one repeatable founder workflow that already has a clear trigger and a clear next action. Good candidates are investor-update drafting, sales-call follow-up, support triage, lead research, meeting-note extraction, or weekly metrics commentary. The workflow should be small enough that a human can inspect ten runs in one sitting. If you cannot review the output quickly, the workflow is too broad for a first agent."
+        "Do not start with \u201cbuild an AI agent for the company.\u201d Start with one repeatable founder workflow that already has a clear trigger and a clear next action. Good candidates are investor-update drafting, sales-call follow-up, support triage, lead research, meeting-note extraction, or weekly metrics commentary. The workflow should be small enough that a human can inspect ten runs in one sitting. If you cannot review the output quickly, the workflow is too broad for a first agent."
       ],
       [
         "Write the runbook before touching tools",
-        "A practical runbook has six lines: trigger, input sources, allowed tools, output format, reviewer, and fallback. For example: when a call transcript lands, read the transcript and CRM notes, draft a follow-up email and three CRM fields, send to the founder for approval, and if the transcript is missing or the customer sounds angry, create a human task instead. This turns “agent” from a vague promise into an operating procedure someone can test."
+        "A practical runbook has six lines: trigger, input sources, allowed tools, output format, reviewer, and fallback. For example: when a call transcript lands, read the transcript and CRM notes, draft a follow-up email and three CRM fields, send to the founder for approval, and if the transcript is missing or the customer sounds angry, create a human task instead. This turns \u201cagent\u201d from a vague promise into an operating procedure someone can test."
       ],
       [
         "Give the agent fewer tools than you think",
@@ -1309,7 +1309,7 @@
       "searchIntent": "agent workflows for founders, AI agent workflow runbook, founder AI automation",
       "sources": [
         {
-          "title": "Anthropic — Building effective agents",
+          "title": "Anthropic \u2014 Building effective agents",
           "url": "https://www.anthropic.com/engineering/building-effective-agents",
           "type": "primary",
           "checkedAt": "2026-05-27",
@@ -1348,5 +1348,121 @@
       ],
       "artifact": "One-page founder agent workflow runbook: trigger, input sources, tools, output, reviewer, fallback, log fields, and two-week metric."
     }
+  },
+  {
+    "slug": "human-in-the-loop-agent-qa-checklist",
+    "title": "Human-in-the-Loop Agent QA Checklist",
+    "description": "A practical checklist for reviewing AI agent work before it reaches customers, teammates, or public channels.",
+    "keywords": [
+      "human in the loop AI",
+      "human review AI workflows",
+      "AI quality control workflow",
+      "agent workflows for founders"
+    ],
+    "publishedAt": "2026-05-28",
+    "status": "published",
+    "excerpt": "AI agents are useful only when their work can be checked. This checklist gives founders and operators a practical review gate before an agent acts in the real world.",
+    "sections": [
+      [
+        "Why agent QA matters more than prompt polish",
+        "A better prompt can improve an AI agent, but it does not replace quality control. Agents are different from one-off chat because they often read files, use tools, summarize conversations, update records, draft messages, or trigger downstream work. That means a small hallucination can become a bad customer email, a misleading dashboard, a broken workflow, or an embarrassing public post. Human-in-the-loop AI is not a sign that the system is weak. It is the operating model that lets useful automation move faster without pretending judgment has been automated."
+      ],
+      [
+        "Define the agent job in one sentence",
+        "Before reviewing output, write the job the agent was supposed to do in plain language: \u201cturn these support notes into three renewal risks,\u201d \u201cprepare a founder follow-up email from this call transcript,\u201d or \u201csummarize unread community messages and flag only urgent items.\u201d If the job is vague, QA becomes taste-based. A clear job gives the reviewer a standard: did the agent solve the actual task, ignore irrelevant material, and avoid inventing missing facts? For founder workflows, this one-sentence job statement is the fastest way to separate useful automation from AI theatre."
+      ],
+      [
+        "Check the source trail first",
+        "Every serious agent workflow needs a source trail. The reviewer should be able to answer: what inputs did the agent use, where did they come from, and which claims depend on which source? For a sales-research agent, the source trail might include a company website, LinkedIn profile, CRM note, and call transcript. For a community bot, it might include sanitized WhatsApp replies and a manual tracker. If the output contains a fact that cannot be traced to an allowed source, mark it as unverified or remove it. This prevents the most common failure mode: confident prose built on weak evidence."
+      ],
+      [
+        "Use a red-flag pass before a style pass",
+        "Do not start by making the writing prettier. First scan for red flags: private data, names that should be masked, phone numbers, medical or financial advice, legal claims, unsupported statistics, fake quotes, fake citations, wrong dates, overconfident conclusions, and actions that affect other people. A message that sounds polished but leaks a phone number is still a failed output. A practical AI quality control workflow reviews safety, truth, and permission before tone, formatting, or cleverness."
+      ],
+      [
+        "Classify the action risk",
+        "Not every agent output needs the same review depth. Use four buckets. Low risk: private brainstorming, internal formatting, or draft-only notes. Medium risk: internal decisions, customer-facing drafts, or updates to shared docs. High risk: messages sent externally, pricing, legal/compliance language, medical/financial content, or changes to production systems. Blocked risk: payments, deletions, public posts, live deployments, or messages sent as a human without explicit approval. The higher the bucket, the more evidence and approval the agent needs before anything leaves the workspace."
+      ],
+      [
+        "Review with a five-question checklist",
+        "Use this quick checklist before approving agent work. 1) Is the task definition clear? 2) Are all important claims traceable to allowed inputs? 3) Did the agent expose or request sensitive information unnecessarily? 4) Does the recommendation match the business goal, not just the prompt? 5) What is the smallest safe next action? This keeps review lightweight enough to use daily. The goal is not bureaucracy; it is to catch the few mistakes that would make people stop trusting the workflow."
+      ],
+      [
+        "Turn corrections into reusable guardrails",
+        "A good review does not end with \u201cfix this.\u201d Capture the correction as a reusable guardrail. If the agent included private phone numbers, add a last-four-only rule. If it recommended broad outreach too early, add a threshold rule. If it wrote generic AI fluff, add examples of acceptable artifacts. If it skipped verification, require filesystem or live-page checks. Over time, these guardrails become an operating system for AI work: fewer repeated mistakes, faster reviews, and clearer delegation."
+      ],
+      [
+        "Example: founder follow-up agent",
+        "A founder can use this checklist after a discovery call. The agent drafts a recap, pulls objections, lists promised follow-ups, and suggests the next action. The human reviewer checks the transcript trail, removes anything speculative, confirms the next action is strategically right, and approves only a draft unless sending was explicitly requested. The output should include the email, a private note on deal risk, and a \u201cdo not say\u201d list. That combination is much safer than a one-click agent that turns a messy call into an overconfident customer email."
+      ],
+      [
+        "Example: AI workshop operations",
+        "For a hands-on AI workshop, the same review model applies. Let an agent collect participant interests, cluster themes, propose exercises, and draft a session plan. Then a human checks whether the exercises use safe sample data, whether beginners can complete them, whether the examples are locally relevant, and whether the final artifact is reusable after the session. This is the dabblewith.ai pattern: AI-operated for busywork, human-guided for judgment, privacy, and community fit."
+      ],
+      [
+        "The simple operating rhythm",
+        "Start each agent workflow with a job statement, run the agent, review the source trail, do the red-flag pass, classify action risk, approve the smallest safe next action, and save one guardrail from every meaningful correction. That rhythm is boring in the best way. It makes AI agents useful for real operations because humans are not checking every token; they are checking the decisions that matter."
+      ]
+    ],
+    "qualityScore": 88,
+    "qualityNote": "Evergreen practical checklist aligned to human-guided AI operations, agent workflows, and workshop execution.",
+    "researchBrief": {
+      "reader": "Founders, operators, workshop facilitators, and community builders using AI agents for real work.",
+      "jobToBeDone": "Review agent outputs quickly enough for daily use while preventing privacy, accuracy, and permission failures.",
+      "thesis": "Human-in-the-loop review works best as a lightweight operating rhythm: source trail, red flags, risk bucket, approval, and reusable guardrail.",
+      "searchIntent": "human in the loop AI, human review AI workflows, AI quality control workflow, agent workflows for founders",
+      "artifact": "A reusable six-step QA checklist for reviewing AI agent outputs before external action.",
+      "risks": [
+        "Review can become too slow if every low-risk draft requires heavyweight approval.",
+        "Teams may treat a checklist as a substitute for domain expertise.",
+        "Source trails can be misleading if the underlying inputs are stale or incomplete.",
+        "Over-automation risk rises when agents are allowed to send, delete, buy, publish, or deploy without explicit approval."
+      ],
+      "sources": [
+        {
+          "title": "Anthropic \u2014 Building effective agents",
+          "url": "https://www.anthropic.com/engineering/building-effective-agents",
+          "type": "primary",
+          "checkedAt": "2026-05-28",
+          "notes": "Useful distinction between predictable workflows and agentic systems; supports simple composable workflows and human control points."
+        },
+        {
+          "title": "OpenAI Agents SDK documentation",
+          "url": "https://openai.github.io/openai-agents-python/",
+          "type": "primary",
+          "checkedAt": "2026-05-28",
+          "notes": "Highlights agent concepts such as tools, handoffs, guardrails, sessions, tracing, and human-in-the-loop operation."
+        },
+        {
+          "title": "NIST AI Risk Management Framework",
+          "url": "https://www.nist.gov/itl/ai-risk-management-framework",
+          "type": "standards",
+          "checkedAt": "2026-05-28",
+          "notes": "Supports risk identification, measurement, management, and governance for AI systems."
+        },
+        {
+          "title": "OWASP Top 10 for Large Language Model Applications",
+          "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/",
+          "type": "security",
+          "checkedAt": "2026-05-28",
+          "notes": "Provides practical risk categories including sensitive information disclosure, excessive agency, and insecure output handling."
+        },
+        {
+          "title": "Microsoft WorkLab \u2014 AI at Work",
+          "url": "https://www.microsoft.com/en-us/worklab",
+          "type": "research",
+          "checkedAt": "2026-05-28",
+          "notes": "Frames the adoption gap between access to AI tools and redesigned work habits; relevant to operator review rhythms."
+        }
+      ]
+    },
+    "checklist": [
+      "Write the agent job in one sentence before review.",
+      "Confirm every important claim has an allowed source trail.",
+      "Run a red-flag pass for private data, unsafe advice, fake citations, and wrong dates.",
+      "Classify the action as low, medium, high, or blocked risk.",
+      "Approve only the smallest safe next action.",
+      "Convert every meaningful correction into a reusable guardrail."
+    ]
   }
 ]
