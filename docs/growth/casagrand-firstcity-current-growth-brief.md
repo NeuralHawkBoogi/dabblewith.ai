@@ -1,6 +1,6 @@
 # Casagrand First City Current Growth Brief
 
-Date: 2026-05-28  
+Date: 2026-05-28
 Artifact: `/casagrand-firstcity/current-brief/`
 
 ## Current evidence
