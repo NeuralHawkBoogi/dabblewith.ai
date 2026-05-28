@@ -38,10 +38,10 @@
   </style>
 </head>
 <body>
-  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/casagrand-firstcity/">Pilot</a><a href="/casagrand-firstcity/operator-brief/">Operator brief</a><a href="/casagrand-firstcity/recovery-send-sheet/">Recovery send sheet</a><a href="/casagrand-firstcity/narrow-discovery/">Narrow discovery</a><a href="/casagrand-firstcity/referral-sprint/">Referral sprint</a><a href="/casagrand-firstcity/date-lock/">Date lock</a></div></nav>
+  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/casagrand-firstcity/">Pilot</a><a href="/casagrand-firstcity/operator-brief/">Operator brief</a><a href="/casagrand-firstcity/recovery-send-sheet/">Recovery send sheet</a><a href="/casagrand-firstcity/recovery-checklist/">Checklist</a><a href="/casagrand-firstcity/narrow-discovery/">Narrow discovery</a><a href="/casagrand-firstcity/referral-sprint/">Referral sprint</a><a href="/casagrand-firstcity/date-lock/">Date lock</a></div></nav>
   <main>
     <section class="hero shell">
-      <div class="eyebrow">Recovery tracker wizard · updated 2026-05-27</div>
+      <div class="eyebrow">Recovery tracker wizard · updated 2026-05-28</div>
       <h1>Fill the recovery batch tracker without leaking anything.</h1>
       <p class="lead">After sending the stale responder nudge and the five warm narrow-discovery DMs, use this wizard to write one combined private tracker — last4 only, no raw phone numbers, names, message bodies, screenshots, or tokens — and rerun the privacy-safe campaign report.</p>
       <div class="actions">
@@ -49,6 +49,7 @@
         <button class="btn" data-copy-target="rerun-command" onclick="copyText('rerun-command','rerun command')">Copy 24h rerun command</button>
         <button class="btn" data-copy-target="row-schema" onclick="copyText('row-schema','row schema')">Copy row schema</button>
         <a class="btn" href="/casagrand-firstcity/recovery-send-sheet/">Back to send sheet</a>
+        <a class="btn" href="/casagrand-firstcity/recovery-checklist/">Open checklist</a>
       </div>
     </section>
 
@@ -84,7 +85,7 @@ node scripts/casagrand-campaign-report.js --write-recovery-batch-template privat
       <div class="panel">
         <h2>3) Rerun the privacy-safe report</h2>
         <p class="muted">The rerun renders the dedicated <strong>Recovery batch follow-up</strong> section and recommends the next page.</p>
-        <div id="rerun-command" class="copybox">node scripts/casagrand-campaign-report.js --runtime-dir /home/clawdbot/dabblewith-whatsapp/data --date 2026-05-27 --exclude-last4 2585 --manual-tracker private/casagrand-recovery-batch.json</div>
+        <div id="rerun-command" class="copybox">node scripts/casagrand-campaign-report.js --runtime-dir /home/clawdbot/dabblewith-whatsapp/data --date 2026-05-28 --exclude-last4 2585 --manual-tracker private/casagrand-recovery-batch.json</div>
         <div class="actions"><button class="btn" data-copy-target="rerun-command" onclick="copyText('rerun-command','rerun command')">Copy command</button></div>
       </div>
       <div class="panel do-not decision">

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#060912" />
+  <title>Casagrand Recovery Checklist — dabblewith.ai</title>
+  <meta name="description" content="Local-only mobile checklist for executing the Casagrand stale-responder recovery batch: send order, copy blocks, tracker command, and 24-hour routing." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://dabblewith.ai/casagrand-firstcity/recovery-checklist/" />
+  <meta property="og:site_name" content="dabblewith.ai" />
+  <meta property="og:title" content="Casagrand Recovery Checklist" />
+  <meta property="og:description" content="Mobile checklist for sending the stale nudge plus five warm DMs and logging last4-only outcomes." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dabblewith.ai/casagrand-firstcity/recovery-checklist/" />
+  <meta property="og:image" content="https://dabblewith.ai/app-icon-1024.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7473LZQGX2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-7473LZQGX2');
+    var KEY = 'casagrand_recovery_checklist_v1';
+    function loadChecks(){ try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e) { return {}; } }
+    function saveChecks(state){ localStorage.setItem(KEY, JSON.stringify(state)); }
+    function syncChecks(){
+      var state = loadChecks();
+      document.querySelectorAll('[data-check]').forEach(function(box){ box.checked = !!state[box.getAttribute('data-check')]; });
+      updateProgress();
+    }
+    function updateProgress(){
+      var boxes = Array.prototype.slice.call(document.querySelectorAll('[data-check]'));
+      var done = boxes.filter(function(b){ return b.checked; }).length;
+      var label = document.getElementById('progress-label');
+      var bar = document.getElementById('progress-bar');
+      if (label) label.innerText = done + '/' + boxes.length + ' recovery steps checked on this device';
+      if (bar) bar.style.width = boxes.length ? Math.round(done * 100 / boxes.length) + '%' : '0%';
+    }
+    function toggleCheck(id, checked){ var state = loadChecks(); state[id] = checked; saveChecks(state); updateProgress(); }
+    function resetChecks(){ localStorage.removeItem(KEY); syncChecks(); }
+    function copyText(id, label) {
+      var el = document.getElementById(id); if (!el) return;
+      var text = el.innerText.trim();
+      var done = function () {
+        if (typeof gtag === 'function') gtag('event', 'copy_click', { cta_id: 'casagrand_recovery_checklist_' + id, cta_source: 'casagrand_recovery_checklist', link_text: label || id, page_path: location.pathname });
+        var btn = document.querySelector('[data-copy-target="' + id + '"]');
+        if (btn) { var old = btn.innerText; btn.innerText = 'Copied'; setTimeout(function(){ btn.innerText = old; }, 1400); }
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done).catch(function(){ window.prompt('Copy this text', text); });
+      else window.prompt('Copy this text', text);
+    }
+    document.addEventListener('DOMContentLoaded', syncChecks);
+  </script>
+  <script src="/scripts/web/dabblewith-tracking.js" defer></script>
+  <style>
+    :root{--bg:#060912;--panel:rgba(16,27,48,.94);--line:rgba(116,255,219,.24);--hard:#74ffdb;--text:#f2fbff;--muted:#9eb0c2;--green:#74ff7b;--blue:#58a6ff;--amber:#ffcc66;--red:#ff8a8a;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--text);background:linear-gradient(rgba(116,255,219,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(116,255,219,.045) 1px,transparent 1px),radial-gradient(circle at 12% 0%,rgba(88,166,255,.25),transparent 30rem),radial-gradient(circle at 92% 8%,rgba(116,255,123,.16),transparent 28rem),var(--bg);background-size:42px 42px,42px 42px,auto,auto,auto}a{color:inherit}.shell{width:min(1120px,calc(100% - 30px));margin:0 auto}nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0}.logo{text-decoration:none;font-size:30px;font-weight:900;letter-spacing:-.055em}.nav{display:flex;gap:10px;flex-wrap:wrap}.nav a{border:1px solid var(--line);border-radius:999px;padding:9px 12px;text-decoration:none;color:var(--muted);background:rgba(255,255,255,.03)}.hero,.panel,.card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(16,27,48,.96),rgba(8,13,25,.92));border-radius:24px;box-shadow:0 24px 90px rgba(0,0,0,.45)}.hero{padding:clamp(26px,5vw,52px);margin:18px auto 26px}.eyebrow{width:fit-content;color:var(--hard);border:1px solid var(--hard);background:rgba(116,255,219,.08);border-radius:999px;padding:9px 12px;font:12px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}h1{font-size:clamp(42px,7vw,82px);line-height:.9;letter-spacing:-.07em;margin:24px 0 18px}h2{font-size:clamp(28px,4.2vw,46px);line-height:.96;letter-spacing:-.055em;margin:0 0 16px}h3{font-size:22px;margin:0 0 8px}.lead{font-size:clamp(18px,2.2vw,24px);color:#d7e9f7;line-height:1.45;max-width:940px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.two{grid-template-columns:repeat(2,1fr)}.card,.panel{padding:22px}.muted,p,li{color:var(--muted);line-height:1.65}.badge{display:inline-flex;border:1px solid rgba(116,255,123,.45);color:var(--green);background:rgba(116,255,123,.08);padding:5px 9px;border-radius:999px;font:12px/1.2 ui-monospace,Menlo,monospace}.badge.blue{color:var(--blue);border-color:rgba(88,166,255,.45);background:rgba(88,166,255,.08)}.badge.warn{color:var(--amber);border-color:rgba(255,204,102,.45);background:rgba(255,204,102,.08)}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--hard);color:var(--hard);background:rgba(116,255,219,.07);border-radius:14px;padding:12px 15px;text-decoration:none;font-weight:850;cursor:pointer}.btn.primary{color:#04120e;background:var(--green);border-color:var(--green)}button.btn{font:inherit}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.copybox{white-space:pre-wrap;border:1px solid rgba(116,255,219,.18);border-radius:18px;background:rgba(0,0,0,.28);padding:16px;color:#d9f6ff;font:14px/1.65 ui-monospace,Menlo,monospace;overflow:auto}.check{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;border-bottom:1px solid rgba(116,255,219,.12);padding:14px 0}.check:last-child{border-bottom:0}.check input{width:22px;height:22px;accent-color:#74ff7b;margin-top:3px}.check strong{display:block;color:var(--text)}.progress{height:12px;background:rgba(255,255,255,.08);border:1px solid rgba(116,255,219,.18);border-radius:999px;overflow:hidden}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--hard));transition:width .2s ease}.metric{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(116,255,219,.12);padding:12px 0;font:13px/1.25 ui-monospace,Menlo,monospace}.metric:last-child{border-bottom:0}footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0 34px;margin-top:36px;font:13px/1.4 ui-monospace,Menlo,monospace}@media(max-width:860px){.grid,.two{grid-template-columns:1fr}.nav{display:none}}
+  </style>
+</head>
+<body>
+  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/casagrand-firstcity/">Pilot</a><a href="/casagrand-firstcity/operator-brief/">Operator brief</a><a href="/casagrand-firstcity/recovery-send-sheet/">Send sheet</a><a href="/casagrand-firstcity/recovery-tracker-wizard/">Tracker wizard</a></div></nav>
+  <main>
+    <section class="hero shell">
+      <div class="eyebrow">Recovery checklist · local-only · updated 2026-05-28</div>
+      <h1>Execute the recovery batch without losing the thread.</h1>
+      <p class="lead">Use this on mobile while sending the stale-responder nudge and five warm DMs. The checkbox state stays only in this browser via localStorage; the campaign tracker still stores last4-only outcomes under <code>private/</code>.</p>
+      <div class="actions">
+        <button class="btn primary" data-copy-target="send-order" onclick="copyText('send-order','send order')">Copy send order</button>
+        <button class="btn" data-copy-target="tracker-command" onclick="copyText('tracker-command','tracker command')">Copy tracker command</button>
+        <button class="btn" onclick="resetChecks()">Reset local checks</button>
+        <a class="btn" href="/casagrand-firstcity/recovery-send-sheet/">Open send sheet</a>
+      </div>
+    </section>
+
+    <section class="shell grid">
+      <article class="card"><span class="badge warn">current evidence</span><h3>One stale resident signal</h3><p>The latest privacy-safe report still supports recovery + narrow discovery, not a broad IT-group post.</p></article>
+      <article class="card"><span class="badge blue">execution goal</span><h3>Six manual sends</h3><p>One stale nudge, one warm-intro ask, two QA/dev DMs, two Excel/workflow DMs, and one group-owner/admin DM if there is a real owner.</p></article>
+      <article class="card"><span class="badge">success threshold</span><h3>Route on replies</h3><p>Any sample, referral, or group-owner signal should route to the matching kit; three total resident signals unlock date-lock planning.</p></article>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel">
+        <h2>Local execution checklist</h2>
+        <p id="progress-label" class="muted">0/8 recovery steps checked on this device</p>
+        <div class="progress"><span id="progress-bar"></span></div>
+        <label class="check"><input type="checkbox" data-check="template" onchange="toggleCheck('template', this.checked)"><span><strong>Generate private tracker template.</strong><span class="muted">Create <code>private/casagrand-recovery-batch.json</code> before sending so every row starts as <code>no_reply</code>.</span></span></label>
+        <label class="check"><input type="checkbox" data-check="stale" onchange="toggleCheck('stale', this.checked)"><span><strong>Send stale-responder nudge once.</strong><span class="muted">Do not keep chasing if there is no reply after this one nudge.</span></span></label>
+        <label class="check"><input type="checkbox" data-check="warm" onchange="toggleCheck('warm', this.checked)"><span><strong>Ask one trusted resident for a warm intro.</strong><span class="muted">The ask is for one relevant resident, not a public announcement.</span></span></label>
+        <label class="check"><input type="checkbox" data-check="qa1" onchange="toggleCheck('qa1', this.checked)"><span><strong>Send QA/dev/student DM #1.</strong><span class="muted">Ask for one tiny anonymized repeated task.</span></span></label>
+        <label class="check"><input type="checkbox" data-check="qa2" onchange="toggleCheck('qa2', this.checked)"><span><strong>Send QA/dev/student DM #2.</strong><span class="muted">Keep it problem-first and non-salesy.</span></span></label>
+        <label class="check"><input type="checkbox" data-check="excel1" onchange="toggleCheck('excel1', this.checked)"><span><strong>Send Excel/workflow DM #1.</strong><span class="muted">No real spreadsheets or work data.</span></span></label>
+        <label class="check"><input type="checkbox" data-check="excel2" onchange="toggleCheck('excel2', this.checked)"><span><strong>Send Excel/workflow DM #2.</strong><span class="muted">Ask only for task type or fake/anonymized sample.</span></span></label>
+        <label class="check"><input type="checkbox" data-check="owner" onchange="toggleCheck('owner', this.checked)"><span><strong>Send group-owner/admin DM only if real owner exists.</strong><span class="muted">Skip this rather than forcing a weak community-bot lead.</span></span></label>
+      </div>
+      <div class="panel">
+        <h2>Commands</h2>
+        <p class="muted">These are internal CLI commands; do not paste them in WhatsApp.</p>
+        <div id="tracker-command" class="copybox">mkdir -p private
+node scripts/casagrand-campaign-report.js --write-recovery-batch-template private/casagrand-recovery-batch.json
+node scripts/casagrand-campaign-report.js --runtime-dir /home/clawdbot/dabblewith-whatsapp/data --date 2026-05-28 --exclude-last4 2585 --manual-tracker private/casagrand-recovery-batch.json</div>
+        <div class="actions"><button class="btn" data-copy-target="tracker-command" onclick="copyText('tracker-command','tracker command')">Copy commands</button></div>
+        <p class="muted">After sending, edit only last4, segment, problemType, outcome, nextAction, and a sanitized note. No names, full numbers, screenshots, message IDs, or raw WhatsApp text.</p>
+      </div>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel"><h2>Copyable send order</h2><div id="send-order" class="copybox">1. Generate private/casagrand-recovery-batch.json.
+2. Send the one-time stale-responder nudge.
+3. Ask one trusted resident for a warm intro.
+4. Send two QA/dev/student DMs.
+5. Send two Excel/office-workflow DMs.
+6. Send one group-owner/admin DM only to a real group owner.
+7. Fill tracker rows with last4-only outcomes.
+8. Rerun the privacy-safe report after 24h.</div><div class="actions"><button class="btn" data-copy-target="send-order" onclick="copyText('send-order','send order')">Copy send order</button></div></div>
+      <div class="panel"><h2>24-hour routing</h2>
+        <div class="metric"><span>QA/dev sample</span><strong><a href="/casagrand-firstcity/qa-walkthrough/">QA walkthrough</a></strong></div>
+        <div class="metric"><span>Excel/workflow sample</span><strong><a href="/casagrand-firstcity/excel-walkthrough/">Excel walkthrough</a></strong></div>
+        <div class="metric"><span>Referral</span><strong><a href="/casagrand-firstcity/referral-sprint/">Referral sprint</a></strong></div>
+        <div class="metric"><span>Group-owner/admin</span><strong><a href="/casagrand-firstcity/bot-readiness/">Bot readiness</a></strong></div>
+        <div class="metric"><span>Three total signals</span><strong><a href="/casagrand-firstcity/date-lock/">Date lock</a></strong></div>
+        <div class="metric"><span>No replies</span><strong><a href="/casagrand-firstcity/narrow-discovery/">Continue narrow discovery</a></strong></div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="shell">Casagrand First City pilot · recovery checklist · local-only checkbox state · <a href="/casagrand-firstcity/recovery-tracker-wizard/">Open tracker wizard</a></div></footer>
+</body>
+</html>

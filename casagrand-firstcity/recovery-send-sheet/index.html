@@ -38,15 +38,16 @@
   </style>
 </head>
 <body>
-  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/casagrand-firstcity/">Pilot</a><a href="/casagrand-firstcity/operator-brief/">Operator brief</a><a href="/casagrand-firstcity/no-reply-nudge/">No-reply nudge</a><a href="/casagrand-firstcity/narrow-discovery/">Narrow discovery</a><a href="/casagrand-firstcity/referral-sprint/">Referral sprint</a><a href="/casagrand-firstcity/recovery-tracker-wizard/">Tracker wizard</a></div></nav>
+  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/casagrand-firstcity/">Pilot</a><a href="/casagrand-firstcity/operator-brief/">Operator brief</a><a href="/casagrand-firstcity/no-reply-nudge/">No-reply nudge</a><a href="/casagrand-firstcity/narrow-discovery/">Narrow discovery</a><a href="/casagrand-firstcity/referral-sprint/">Referral sprint</a><a href="/casagrand-firstcity/recovery-checklist/">Checklist</a><a href="/casagrand-firstcity/recovery-tracker-wizard/">Tracker wizard</a></div></nav>
   <main>
     <section class="hero shell">
-      <div class="eyebrow">Recovery send sheet · updated 2026-05-27</div>
+      <div class="eyebrow">Recovery send sheet · updated 2026-05-28</div>
       <h1>Send one nudge, then five warm DMs.</h1>
       <p class="lead">This is the mobile execution layer for the current Casagrand route: one stale first responder, no logged referral evidence, and no permission to broad-post yet. Copy from here, send manually, and log only last4 outcomes.</p>
       <div class="actions">
         <button class="btn primary" data-copy-target="stale-nudge" onclick="copyText('stale-nudge','stale nudge')">Copy stale responder nudge</button>
         <a class="btn" href="/casagrand-firstcity/recovery-tracker-wizard/">Open tracker wizard</a>
+        <a class="btn" href="/casagrand-firstcity/recovery-checklist/">Open checklist</a>
         <button class="btn" data-copy-target="qa-dm" onclick="copyText('qa-dm','QA/dev DM')">Copy QA/dev DM</button>
         <button class="btn" data-copy-target="excel-dm" onclick="copyText('excel-dm','Excel workflow DM')">Copy Excel/workflow DM</button>
         <button class="btn" data-copy-target="owner-dm" onclick="copyText('owner-dm','group-owner DM')">Copy group-owner DM</button>
@@ -99,7 +100,7 @@ If that sounds useful, I can do a 10-minute readiness check. No member exports, 
       <div class="panel"><h2>Send order</h2><div class="step"><strong>1.</strong><span>Send stale nudge once only if not already sent.</span></div><div class="step"><strong>2.</strong><span>Ask one trusted resident for a warm intro.</span></div><div class="step"><strong>3.</strong><span>Send two QA/dev/student DMs.</span></div><div class="step"><strong>4.</strong><span>Send two Excel/office-workflow DMs.</span></div><div class="step"><strong>5.</strong><span>Send one group-owner/admin DM only to someone who actually owns or manages a group.</span></div></div>
       <div class="panel"><h2>Rerun command</h2><p>Use one combined private tracker for the whole recovery batch, instead of juggling separate nudge and narrow-discovery files.</p><div id="rerun-command" class="copybox">mkdir -p private
 node scripts/casagrand-campaign-report.js --write-recovery-batch-template private/casagrand-recovery-batch.json
-node scripts/casagrand-campaign-report.js --runtime-dir /home/clawdbot/dabblewith-whatsapp/data --date 2026-05-27 --exclude-last4 2585 --manual-tracker private/casagrand-recovery-batch.json</div><div class="actions"><button class="btn" data-copy-target="rerun-command" onclick="copyText('rerun-command','rerun command')">Copy command</button></div><p class="muted">The rerun now prints a dedicated <strong>Recovery batch follow-up</strong> section: stale-responder rows, warm-intro rows, QA/dev signals, Excel/workflow signals, referrals, group-owner/admin rows, and the exact next kit to open.</p></div>
+node scripts/casagrand-campaign-report.js --runtime-dir /home/clawdbot/dabblewith-whatsapp/data --date 2026-05-28 --exclude-last4 2585 --manual-tracker private/casagrand-recovery-batch.json</div><div class="actions"><button class="btn" data-copy-target="rerun-command" onclick="copyText('rerun-command','rerun command')">Copy command</button></div><p class="muted">The rerun now prints a dedicated <strong>Recovery batch follow-up</strong> section: stale-responder rows, warm-intro rows, QA/dev signals, Excel/workflow signals, referrals, group-owner/admin rows, and the exact next kit to open.</p></div>
     </section>
   </main>
   <footer><div class="shell">Casagrand First City pilot · recovery send sheet · privacy-safe, last4-only tracking · <a href="/casagrand-firstcity/operator-brief/">Back to operator brief</a></div></footer>
