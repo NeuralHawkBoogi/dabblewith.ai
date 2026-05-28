@@ -132,6 +132,7 @@ const urls = [
   ['https://dabblewith.ai/casagrand-firstcity/recovery-checklist/', 'weekly', '0.8'],
   ['https://dabblewith.ai/casagrand-firstcity/recovery-tracker-wizard/', 'weekly', '0.8'],
   ['https://dabblewith.ai/casagrand-firstcity/recovery-reply-kit/', 'weekly', '0.8'],
+  ['https://dabblewith.ai/casagrand-firstcity/recovery-decision-board/', 'weekly', '0.8'],
   ['https://dabblewith.ai/casagrand-firstcity/rsvp/', 'weekly', '0.8'],
   ['https://dabblewith.ai/casagrand-firstcity/admin-ask/', 'weekly', '0.8'],
   ['https://dabblewith.ai/casagrand-firstcity/launch-board/', 'weekly', '0.8'],

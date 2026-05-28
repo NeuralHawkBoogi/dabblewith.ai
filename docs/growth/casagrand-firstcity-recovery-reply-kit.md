@@ -30,3 +30,8 @@ Public page: `https://dabblewith.ai/casagrand-firstcity/recovery-reply-kit/`
 3. Copy the matching reply block.
 4. Update the private last4-only tracker.
 5. Rerun the privacy-safe report after 24 hours.
+6. Use the recovery decision board to pick exactly one next route and keep broad IT-group posting gated until the threshold is met.
+
+## Companion asset
+
+- Recovery decision board: `https://dabblewith.ai/casagrand-firstcity/recovery-decision-board/`

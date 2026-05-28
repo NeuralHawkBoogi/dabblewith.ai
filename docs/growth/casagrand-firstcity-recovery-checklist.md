@@ -35,3 +35,4 @@ Public page: `https://dabblewith.ai/casagrand-firstcity/recovery-checklist/`
 ## Companion asset
 
 - Recovery reply kit: `https://dabblewith.ai/casagrand-firstcity/recovery-reply-kit/` for copy-ready response handling after a QA/dev, Excel/workflow, referral, group-owner, or no-reply outcome.
+- Recovery decision board: `https://dabblewith.ai/casagrand-firstcity/recovery-decision-board/` for choosing the next route after the 24-hour privacy-safe report.
