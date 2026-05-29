@@ -11,8 +11,8 @@ The closeout kit gives Boogi a clean way to:
 
 1. Close the stale first-responder loop once without pressure.
 2. Restart discovery with a fresh six-person warm seed batch.
-3. Track only privacy-safe last4 outcome rows.
-4. Route any reply to QA walkthrough, Excel walkthrough, referral sprint, date lock, bot readiness, or group-owner pilot.
+3. Track only privacy-safe last4 outcome rows using the dedicated fresh-seed tracker.
+4. Route any reply to QA walkthrough, Excel walkthrough, founder workflow sample, referral sprint, date lock, bot readiness, or group-owner pilot.
 
 ## Operating rule
 
@@ -56,9 +56,11 @@ Can you intro one Casagrand resident who has a similar task?
 
 ## Tracker/report command
 
+Use the public scorecard at `https://dabblewith.ai/casagrand-firstcity/fresh-seed-scorecard/` while filling this tracker.
+
 ```sh
 mkdir -p private
-node scripts/casagrand-campaign-report.js --write-narrow-discovery-template private/casagrand-fresh-seed-batch.json
+node scripts/casagrand-campaign-report.js --write-fresh-seed-batch-template private/casagrand-fresh-seed-batch.json
 node scripts/casagrand-campaign-report.js --runtime-dir /home/clawdbot/dabblewith-whatsapp/data --date 2026-05-29 --exclude-last4 2585 --manual-tracker private/casagrand-fresh-seed-batch.json
 ```
 

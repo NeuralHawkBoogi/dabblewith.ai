@@ -48,6 +48,7 @@
         <button class="btn primary" data-copy-target="closeout-copy" onclick="copyText('closeout-copy','closeout copy')">Copy closeout message</button>
         <button class="btn" data-copy-target="seed-batch" onclick="copyText('seed-batch','seed batch')">Copy seed batch plan</button>
         <button class="btn" data-copy-target="tracker-command" onclick="copyText('tracker-command','tracker command')">Copy tracker/report commands</button>
+        <a class="btn" href="/casagrand-firstcity/fresh-seed-scorecard/">Open fresh seed scorecard</a>
       </div>
     </section>
 
@@ -90,7 +91,7 @@ Do not broad-post until 3+ concrete resident signals or 1 real group-owner/admin
     <section class="shell panel">
       <h2>Tracker + 24-hour report</h2>
       <div id="tracker-command" class="copybox">mkdir -p private
-node scripts/casagrand-campaign-report.js --write-narrow-discovery-template private/casagrand-fresh-seed-batch.json
+node scripts/casagrand-campaign-report.js --write-fresh-seed-batch-template private/casagrand-fresh-seed-batch.json
 node scripts/casagrand-campaign-report.js --runtime-dir /home/clawdbot/dabblewith-whatsapp/data --date 2026-05-29 --exclude-last4 2585 --manual-tracker private/casagrand-fresh-seed-batch.json</div>
       <p>Use last4, segment, problemType, outcome, and nextAction only. Never store full phone numbers, names, message bodies, screenshots, group names, message IDs, tokens, or raw webhook payloads.</p>
       <div class="actions"><button class="btn" data-copy-target="tracker-command" onclick="copyText('tracker-command','tracker command')">Copy commands</button></div>
@@ -107,7 +108,7 @@ node scripts/casagrand-campaign-report.js --runtime-dir /home/clawdbot/dabblewit
 
     <section class="shell panel">
       <h2>Next kits</h2>
-      <div class="actions"><a class="btn primary" href="/casagrand-firstcity/narrow-discovery/">Narrow discovery</a><a class="btn" href="/casagrand-firstcity/qa-walkthrough/">QA walkthrough</a><a class="btn" href="/casagrand-firstcity/excel-walkthrough/">Excel walkthrough</a><a class="btn" href="/casagrand-firstcity/bot-readiness/">Bot readiness</a><a class="btn" href="/casagrand-firstcity/group-owner-pilot/">Group-owner pilot</a></div>
+      <div class="actions"><a class="btn primary" href="/casagrand-firstcity/fresh-seed-scorecard/">Fresh seed scorecard</a><a class="btn" href="/casagrand-firstcity/narrow-discovery/">Narrow discovery</a><a class="btn" href="/casagrand-firstcity/qa-walkthrough/">QA walkthrough</a><a class="btn" href="/casagrand-firstcity/excel-walkthrough/">Excel walkthrough</a><a class="btn" href="/casagrand-firstcity/bot-readiness/">Bot readiness</a><a class="btn" href="/casagrand-firstcity/group-owner-pilot/">Group-owner pilot</a></div>
     </section>
   </main>
   <footer><div class="shell">Casagrand First City pilot · recovery closeout kit · <a href="/casagrand-firstcity/">Back to pilot</a></div></footer>

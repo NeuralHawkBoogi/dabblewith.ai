@@ -26,6 +26,7 @@ const {
   noReplyNudgeTrackerTemplate,
   narrowDiscoveryTrackerTemplate,
   recoveryBatchTrackerTemplate,
+  freshSeedBatchTrackerTemplate,
   groupOwnerPilotTrackerTemplate,
   isExcludedLast4,
   normalizeLast4List,
@@ -38,6 +39,7 @@ const {
   writeNoReplyNudgeTrackerTemplate,
   writeNarrowDiscoveryTrackerTemplate,
   writeRecoveryBatchTrackerTemplate,
+  writeFreshSeedBatchTrackerTemplate,
   writeGroupOwnerPilotTrackerTemplate,
 } = require('./casagrand-campaign-report');
 
@@ -89,6 +91,7 @@ function appendJsonl(file, rows) {
   assert.strictEqual(parseArgs(['--write-no-reply-nudge-template', 'nudge.json']).writeNoReplyNudgeTemplate, 'nudge.json');
   assert.strictEqual(parseArgs(['--write-narrow-discovery-template', 'narrow.json']).writeNarrowDiscoveryTemplate, 'narrow.json');
   assert.strictEqual(parseArgs(['--write-recovery-batch-template', 'recovery.json']).writeRecoveryBatchTemplate, 'recovery.json');
+  assert.strictEqual(parseArgs(['--write-fresh-seed-batch-template', 'fresh.json']).writeFreshSeedBatchTemplate, 'fresh.json');
   assert.strictEqual(parseArgs(['--write-recovery-operator-brief', 'brief.md']).writeRecoveryOperatorBrief, 'brief.md');
   assert.strictEqual(parseArgs(['--write-group-owner-pilot-template', 'pilot.json']).writeGroupOwnerPilotTemplate, 'pilot.json');
 
@@ -215,6 +218,37 @@ function appendJsonl(file, rows) {
   assert(!JSON.stringify(filledRecoverySummary).match(/\d{5,}/), 'recovery batch summary leaked a long number');
   assert(!JSON.stringify(filledRecoveryFollowUp).match(/\d{5,}/), 'recovery batch follow-up leaked a long number');
 
+  const freshSeedTemplate = freshSeedBatchTrackerTemplate();
+  assert.strictEqual(freshSeedTemplate.meta.route, 'fresh_seed_batch');
+  assert.strictEqual(freshSeedTemplate.rows.length, 6);
+  assert.deepStrictEqual(freshSeedTemplate.rows.map((row) => row.segment), ['qa_dev_student', 'qa_dev_student', 'excel_workflow', 'excel_workflow', 'founder', 'group_owner']);
+  assert(freshSeedTemplate.rows.every((row) => row.route === 'no_reply'), 'fresh seed template should not pre-count positive outcomes');
+  assert(freshSeedTemplate.rows.every((row) => /^\d{4}$/.test(row.last4)), 'fresh seed template must use last4 placeholders only');
+  assert(!JSON.stringify(freshSeedTemplate).match(/phone|message|raw|name|wamid|\+91/i), 'fresh seed template leaked disallowed fields');
+  const freshSeedTemplatePath = path.join(tmpDir(), 'nested', 'fresh-seed-template.json');
+  const writtenFreshSeedTemplatePath = writeFreshSeedBatchTrackerTemplate(freshSeedTemplatePath);
+  assert.strictEqual(writtenFreshSeedTemplatePath, path.resolve(freshSeedTemplatePath));
+  assert.deepStrictEqual(JSON.parse(fs.readFileSync(freshSeedTemplatePath, 'utf8')), freshSeedTemplate);
+  const emptyFreshSeedSummary = summarizeManualTracker(freshSeedTemplate);
+  assert.strictEqual(emptyFreshSeedSummary.metaRoute, 'fresh_seed_batch');
+  assert.strictEqual(emptyFreshSeedSummary.rows, 6);
+  assert(emptyFreshSeedSummary.nextAction.includes('do not broad-post yet'));
+  const filledFreshSeedFollowUp = buildNarrowDiscoveryFollowUp(summarizeManualTracker({
+    meta: { route: 'fresh_seed_batch' },
+    rows: [
+      { segment: 'qa_dev_student', last4: '6101', route: 'problem', problem: 'QA checklist helper' },
+      { segment: 'excel_workflow', last4: '6102', route: 'problem', problem: 'Excel weekly report' },
+      { segment: 'founder', last4: '6103', route: 'problem', problem: 'sales research helper' },
+      { segment: 'group_owner', last4: '6104', route: 'bot_readiness', problem: 'event reminders repeat' },
+    ],
+  }));
+  assert.strictEqual(filledFreshSeedFollowUp.qaSignals, 1);
+  assert.strictEqual(filledFreshSeedFollowUp.excelSignals, 1);
+  assert.strictEqual(filledFreshSeedFollowUp.founderSignals, 1);
+  assert.strictEqual(filledFreshSeedFollowUp.groupOwnerSignals, 1);
+  assert(filledFreshSeedFollowUp.nextSteps.some((s) => s.includes('Founder/freelancer signal')));
+  assert(filledFreshSeedFollowUp.nextSteps.some((s) => s.includes('/casagrand-firstcity/bot-readiness/')));
+  assert(!JSON.stringify(filledFreshSeedFollowUp).match(/\d{5,}/), 'fresh seed follow-up leaked a long number');
 
   const groupOwnerPilotTemplate = groupOwnerPilotTrackerTemplate();
   assert.strictEqual(groupOwnerPilotTemplate.meta.route, 'group_owner_pilot');

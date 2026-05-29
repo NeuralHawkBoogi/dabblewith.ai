@@ -90,6 +90,7 @@ function parseArgs(argv = process.argv.slice(2)) {
     writeNoReplyNudgeTemplate: null,
     writeNarrowDiscoveryTemplate: null,
     writeRecoveryBatchTemplate: null,
+    writeFreshSeedBatchTemplate: null,
     writeRecoveryOperatorBrief: null,
     writeGroupOwnerPilotTemplate: null,
     excludeLast4: normalizeLast4List(process.env.DABBLE_CASAGRAND_EXCLUDE_LAST4 || ''),
@@ -105,6 +106,7 @@ function parseArgs(argv = process.argv.slice(2)) {
     else if (arg === '--write-no-reply-nudge-template') options.writeNoReplyNudgeTemplate = argv[++i];
     else if (arg === '--write-narrow-discovery-template') options.writeNarrowDiscoveryTemplate = argv[++i];
     else if (arg === '--write-recovery-batch-template') options.writeRecoveryBatchTemplate = argv[++i];
+    else if (arg === '--write-fresh-seed-batch-template') options.writeFreshSeedBatchTemplate = argv[++i];
     else if (arg === '--write-recovery-operator-brief') options.writeRecoveryOperatorBrief = argv[++i];
     else if (arg === '--write-group-owner-pilot-template') options.writeGroupOwnerPilotTemplate = argv[++i];
     else if (arg === '--exclude-last4') options.excludeLast4.push(...normalizeLast4List(argv[++i]));
@@ -390,6 +392,74 @@ function narrowDiscoveryTrackerTemplate() {
   };
 }
 
+
+function freshSeedBatchTrackerTemplate() {
+  return {
+    meta: {
+      sprintStartedAt: '',
+      reportRerunDueAt: '',
+      route: 'fresh_seed_batch',
+      notes: 'Use after the stale-responder closeout/reset. Six warm sends only: 2 QA/dev/student, 2 Excel/workflow, 1 founder/freelancer, 1 real group-owner/admin. Store only last4, segment, route, problemType, followUpSent, nextAction, and short sanitized notes; no direct identifiers or copied chat text.',
+    },
+    rows: [
+      {
+        segment: 'qa_dev_student',
+        last4: '6001',
+        route: 'no_reply',
+        problem: '',
+        problemType: 'qa_checklist',
+        followUpSent: false,
+        nextAction: 'qa_walkthrough | referral_sprint | continue_narrow_discovery',
+      },
+      {
+        segment: 'qa_dev_student',
+        last4: '6002',
+        route: 'no_reply',
+        problem: '',
+        problemType: 'coding_or_interview_helper',
+        followUpSent: false,
+        nextAction: 'qa_walkthrough | referral_sprint | continue_narrow_discovery',
+      },
+      {
+        segment: 'excel_workflow',
+        last4: '6003',
+        route: 'no_reply',
+        problem: '',
+        problemType: 'excel_cleanup',
+        followUpSent: false,
+        nextAction: 'excel_walkthrough | referral_sprint | continue_narrow_discovery',
+      },
+      {
+        segment: 'excel_workflow',
+        last4: '6004',
+        route: 'no_reply',
+        problem: '',
+        problemType: 'office_workflow',
+        followUpSent: false,
+        nextAction: 'excel_walkthrough | referral_sprint | continue_narrow_discovery',
+      },
+      {
+        segment: 'founder',
+        last4: '6005',
+        route: 'no_reply',
+        problem: '',
+        problemType: 'sales_admin_research',
+        followUpSent: false,
+        nextAction: 'founder_workflow_sample | referral_sprint | continue_narrow_discovery',
+      },
+      {
+        segment: 'group_owner',
+        last4: '6006',
+        route: 'no_reply',
+        problem: '',
+        problemType: 'bot_readiness',
+        followUpSent: false,
+        nextAction: 'bot_readiness | group_owner_pilot | design_call | continue_narrow_discovery',
+      },
+    ],
+  };
+}
+
 function recoveryBatchTrackerTemplate() {
   return {
     meta: {
@@ -547,6 +617,10 @@ function writeRecoveryBatchTrackerTemplate(file) {
   return writeJsonTemplate(file, recoveryBatchTrackerTemplate(), '--write-recovery-batch-template');
 }
 
+function writeFreshSeedBatchTrackerTemplate(file) {
+  return writeJsonTemplate(file, freshSeedBatchTrackerTemplate(), '--write-fresh-seed-batch-template');
+}
+
 function writeGroupOwnerPilotTrackerTemplate(file) {
   return writeJsonTemplate(file, groupOwnerPilotTrackerTemplate(), '--write-group-owner-pilot-template');
 }
@@ -627,12 +701,12 @@ function safeIso(value) {
 
 function computeManualNextAction(summary) {
   if (!summary || summary.rows === 0) return null;
-  if (summary.metaRoute === 'narrow_discovery') {
-    if (summary.concreteReplies >= 3) return 'Use /casagrand-firstcity/date-lock/ and prepare the clubhouse/admin slot ask; three narrow-discovery resident signals are logged.';
-    if (summary.botReadiness >= 1 || summary.designCalls >= 1 || summary.adminPains >= 1) return 'Route the group-owner/admin row to /casagrand-firstcity/bot-readiness/; keep the remaining DMs narrow.';
+  if (summary.metaRoute === 'narrow_discovery' || summary.metaRoute === 'fresh_seed_batch') {
+    if (summary.concreteReplies >= 3) return 'Use /casagrand-firstcity/date-lock/ and prepare the clubhouse/admin slot ask; three warm-discovery resident signals are logged.';
+    if (summary.botReadiness >= 1 || summary.designCalls >= 1 || summary.adminPains >= 1) return 'Route the group-owner/admin row to /casagrand-firstcity/bot-readiness/ or /casagrand-firstcity/group-owner-pilot/; keep the remaining DMs narrow.';
     if (summary.referrals >= 1) return 'Move the warm referral into /casagrand-firstcity/referral-sprint/ and keep collecting last4-only outcomes.';
     if (summary.concreteReplies >= 1) return 'Route the concrete narrow-discovery reply to the matching walkthrough, then ask for one referral before broad-posting.';
-    return 'No concrete narrow-discovery replies yet: rewrite the opener or ask for one different warm intro; do not broad-post yet.';
+    return 'No concrete warm-discovery replies yet: rewrite the opener or ask for one different warm intro; do not broad-post yet.';
   }
   if (summary.metaRoute === 'stale_responder_recovery_batch') {
     if (summary.concreteReplies >= 3) return 'Use /casagrand-firstcity/date-lock/ and prepare the clubhouse/admin slot ask; recovery batch produced three concrete resident signals.';
@@ -835,19 +909,22 @@ function buildReferralSprintFollowUp(tracker) {
 // manual tracker, so it can turn private warm-DM outcomes into campaign routing
 // without storing raw WhatsApp content or full phone numbers.
 function buildNarrowDiscoveryFollowUp(tracker) {
-  if (!tracker || tracker.metaRoute !== 'narrow_discovery' || !Array.isArray(tracker.sanitizedRows)) return null;
+  if (!tracker || !['narrow_discovery', 'fresh_seed_batch'].includes(tracker.metaRoute) || !Array.isArray(tracker.sanitizedRows)) return null;
   const rows = tracker.sanitizedRows;
   const qaRows = rows.filter((row) => row.segment === 'qa_dev_student' && ['problem', 'narrow_discovery', 'topic_vote'].includes(row.route));
   const excelRows = rows.filter((row) => row.segment === 'excel_workflow' && ['problem', 'narrow_discovery', 'topic_vote'].includes(row.route));
+  const founderRows = rows.filter((row) => row.segment === 'founder' && ['problem', 'narrow_discovery', 'topic_vote'].includes(row.route));
   const groupOwnerRows = rows.filter((row) => row.segment === 'group_owner' && ['bot_readiness', 'admin_pain', 'design_call', 'narrow_discovery'].includes(row.route));
   const nextSteps = [];
   if (qaRows.length) nextSteps.push('QA/dev/student signal captured: route to /casagrand-firstcity/qa-walkthrough/ and ask for one referral after the sample.');
   if (excelRows.length) nextSteps.push('Excel/office-workflow signal captured: route to /casagrand-firstcity/excel-walkthrough/ and ask for one referral after the sample.');
+  if (founderRows.length) nextSteps.push('Founder/freelancer signal captured: convert it into a tiny sales/admin/research workflow sample, then ask for one referral before any broad post.');
   if (tracker.referrals > 0) nextSteps.push('Warm referral captured: move the referred-neighbor intro into /casagrand-firstcity/referral-sprint/.');
   if (groupOwnerRows.length || tracker.botReadiness > 0 || tracker.designCalls > 0 || tracker.adminPains > 0) nextSteps.push('Group-owner/admin signal captured: route only that row to /casagrand-firstcity/bot-readiness/ before discussing a community bot.');
   if (tracker.concreteReplies >= 3) nextSteps.push('Three or more concrete resident signals are logged: prepare /casagrand-firstcity/date-lock/ and the clubhouse/admin slot ask.');
   if (!nextSteps.length) nextSteps.push('No concrete narrow-discovery replies yet: rewrite the opener or ask one different warm intro; do not broad-post yet.');
   return {
+    metaRoute: tracker.metaRoute,
     rows: tracker.rows,
     concreteReplies: tracker.concreteReplies,
     referrals: tracker.referrals,
@@ -855,6 +932,7 @@ function buildNarrowDiscoveryFollowUp(tracker) {
     botReadiness: tracker.botReadiness,
     qaSignals: qaRows.length,
     excelSignals: excelRows.length,
+    founderSignals: founderRows.length,
     groupOwnerSignals: groupOwnerRows.length,
     nextSteps,
     rowsPreview: rows.map((row) => ({
@@ -880,6 +958,7 @@ function buildRecoveryBatchFollowUp(tracker) {
   const warmIntroRows = rows.filter((row) => row.problemType === 'warm_intro_ask');
   const qaRows = rows.filter((row) => row.segment === 'qa_dev_student' && ['problem', 'narrow_discovery', 'topic_vote'].includes(row.route));
   const excelRows = rows.filter((row) => row.segment === 'excel_workflow' && ['problem', 'narrow_discovery', 'topic_vote'].includes(row.route));
+  const founderRows = rows.filter((row) => row.segment === 'founder' && ['problem', 'narrow_discovery', 'topic_vote'].includes(row.route));
   const groupOwnerRows = rows.filter((row) => row.segment === 'group_owner' && ['bot_readiness', 'admin_pain', 'design_call', 'narrow_discovery'].includes(row.route));
   const nextSteps = [];
   if (staleResponderRows.some((row) => row.route !== 'no_reply')) nextSteps.push('Stale first-responder replied: route the sample to /casagrand-firstcity/qa-walkthrough/ or /casagrand-firstcity/excel-walkthrough/, then ask for one referral.');
@@ -890,6 +969,7 @@ function buildRecoveryBatchFollowUp(tracker) {
   if (tracker.concreteReplies >= 3) nextSteps.push('Three or more recovery-batch resident signals are logged: prepare /casagrand-firstcity/date-lock/ and the clubhouse/admin slot ask.');
   if (!nextSteps.length) nextSteps.push('No concrete recovery-batch replies yet: rewrite the warm-intro ask or request one different trusted intro; do not broad-post yet.');
   return {
+    metaRoute: tracker.metaRoute,
     rows: tracker.rows,
     concreteReplies: tracker.concreteReplies,
     referrals: tracker.referrals,
@@ -899,6 +979,7 @@ function buildRecoveryBatchFollowUp(tracker) {
     warmIntroRows: warmIntroRows.length,
     qaSignals: qaRows.length,
     excelSignals: excelRows.length,
+    founderSignals: founderRows.length,
     groupOwnerSignals: groupOwnerRows.length,
     nextSteps,
     rowsPreview: rows.map((row) => ({
@@ -978,6 +1059,7 @@ function buildNoReplyNudgeFollowUp(tracker) {
     nextSteps.push('No concrete reply after the one-time nudge: stop chasing this responder, return to 3-5 narrow discovery DMs, and do not broad-post yet.');
   }
   return {
+    metaRoute: tracker.metaRoute,
     rows: tracker.rows,
     concreteReplies: tracker.concreteReplies,
     topicVotes: tracker.topicVotes,
@@ -1383,12 +1465,17 @@ function appendNoReplyNudgeFollowUp(lines, followUp) {
 
 
 function appendNarrowDiscoveryFollowUp(lines, followUp) {
-  lines.push('## Narrow discovery follow-up');
-  lines.push('Privacy-safe routing from the five-DM narrow discovery tracker (last4 only, no phone/message/token exposure):');
+  const title = followUp.metaRoute === 'fresh_seed_batch' ? 'Fresh seed batch follow-up' : 'Narrow discovery follow-up';
+  const description = followUp.metaRoute === 'fresh_seed_batch'
+    ? 'Privacy-safe routing from the six-person fresh seed batch tracker (last4 only, no phone/message/token exposure):'
+    : 'Privacy-safe routing from the five-DM narrow discovery tracker (last4 only, no phone/message/token exposure):';
+  lines.push(`## ${title}`);
+  lines.push(description);
   lines.push(`- Rows logged: ${followUp.rows}`);
   lines.push(`- Concrete replies: ${followUp.concreteReplies}`);
   lines.push(`- QA/dev/student signals: ${followUp.qaSignals}`);
   lines.push(`- Excel/workflow signals: ${followUp.excelSignals}`);
+  if (typeof followUp.founderSignals === 'number') lines.push(`- Founder/freelancer signals: ${followUp.founderSignals}`);
   lines.push(`- Referrals: ${followUp.referrals}`);
   lines.push(`- Group-owner/admin signals: ${followUp.groupOwnerSignals}`);
   lines.push(`- Bot-readiness rows: ${followUp.botReadiness}`);
@@ -1409,6 +1496,7 @@ function appendRecoveryBatchFollowUp(lines, followUp) {
   lines.push(`- Warm-intro rows: ${followUp.warmIntroRows}`);
   lines.push(`- QA/dev/student signals: ${followUp.qaSignals}`);
   lines.push(`- Excel/workflow signals: ${followUp.excelSignals}`);
+  if (typeof followUp.founderSignals === 'number') lines.push(`- Founder/freelancer signals: ${followUp.founderSignals}`);
   lines.push(`- Referrals: ${followUp.referrals}`);
   lines.push(`- Group-owner/admin signals: ${followUp.groupOwnerSignals}`);
   lines.push(`- Bot-readiness rows: ${followUp.botReadiness}`);
@@ -1556,13 +1644,14 @@ function writeCampaignReport(options = {}) {
 
 function usage() {
   return [
-    'Usage: node scripts/casagrand-campaign-report.js [--runtime-dir DIR] [--output-dir DIR] [--date YYYY-MM-DD] [--manual-tracker FILE] [--write-manual-tracker-template FILE] [--write-referral-sprint-template FILE] [--write-no-reply-nudge-template FILE] [--write-narrow-discovery-template FILE] [--write-recovery-batch-template FILE] [--write-recovery-operator-brief FILE] [--write-group-owner-pilot-template FILE] [--exclude-last4 1234[,5678]] [--include-all]',
+    'Usage: node scripts/casagrand-campaign-report.js [--runtime-dir DIR] [--output-dir DIR] [--date YYYY-MM-DD] [--manual-tracker FILE] [--write-manual-tracker-template FILE] [--write-referral-sprint-template FILE] [--write-no-reply-nudge-template FILE] [--write-narrow-discovery-template FILE] [--write-recovery-batch-template FILE] [--write-fresh-seed-batch-template FILE] [--write-recovery-operator-brief FILE] [--write-group-owner-pilot-template FILE] [--exclude-last4 1234[,5678]] [--include-all]',
     '',
     'Use --write-manual-tracker-template FILE to create a privacy-safe starter JSON with exactly 5 rows (2 career, 2 workflow, 1 admin) using last4 placeholders only.',
     'Use --write-referral-sprint-template FILE to create a privacy-safe starter JSON for first-responder referral-sprint follow-up rows.',
     'Use --write-no-reply-nudge-template FILE to create a privacy-safe starter JSON for one-time no-reply nudge outcomes.',
     'Use --write-narrow-discovery-template FILE to create a privacy-safe starter JSON for five narrow discovery DMs.',
     'Use --write-recovery-batch-template FILE to create one privacy-safe tracker for the current stale-responder nudge + warm-intro + five narrow-discovery sends.',
+    'Use --write-fresh-seed-batch-template FILE to create a privacy-safe six-person tracker after the recovery closeout/reset.',
     'Use --write-recovery-operator-brief FILE to create a privacy-safe one-sitting recovery brief from the current aggregate report.',
     'Use --write-group-owner-pilot-template FILE to create a privacy-safe tracker for qualified Casagrand group-owner pilot signals.',
     '',
@@ -1603,6 +1692,11 @@ if (require.main === module) {
       console.log(`casagrand recovery batch tracker template written: ${templatePath}`);
       process.exit(0);
     }
+    if (options.writeFreshSeedBatchTemplate) {
+      const templatePath = writeFreshSeedBatchTrackerTemplate(options.writeFreshSeedBatchTemplate);
+      console.log(`casagrand fresh seed batch tracker template written: ${templatePath}`);
+      process.exit(0);
+    }
     if (options.writeGroupOwnerPilotTemplate) {
       const templatePath = writeGroupOwnerPilotTrackerTemplate(options.writeGroupOwnerPilotTemplate);
       console.log(`casagrand group-owner pilot tracker template written: ${templatePath}`);
@@ -1641,12 +1735,14 @@ module.exports = {
   noReplyNudgeTrackerTemplate,
   narrowDiscoveryTrackerTemplate,
   recoveryBatchTrackerTemplate,
+  freshSeedBatchTrackerTemplate,
   groupOwnerPilotTrackerTemplate,
   writeManualTrackerTemplate,
   writeReferralSprintTrackerTemplate,
   writeNoReplyNudgeTrackerTemplate,
   writeNarrowDiscoveryTrackerTemplate,
   writeRecoveryBatchTrackerTemplate,
+  writeFreshSeedBatchTrackerTemplate,
   writeGroupOwnerPilotTrackerTemplate,
   summarizeManualTracker,
   computeManualNextAction,
