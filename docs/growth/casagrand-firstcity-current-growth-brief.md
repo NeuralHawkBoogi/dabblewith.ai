@@ -1,16 +1,16 @@
 # Casagrand First City Current Stale-Responder Brief
 
-Date: 2026-05-28
+Date: 2026-05-29
 Artifact: `/casagrand-firstcity/current-brief/`
 
 ## Current evidence
 
-The live privacy-safe campaign report for 2026-05-28, run with owner/test exclusion, currently shows:
+The live privacy-safe campaign report for 2026-05-29, run with owner/test exclusion, currently shows:
 
 - 1 qualified Casagrand resident signal after owner/test exclusion
 - 1 unique resident/user
 - latest qualified signal timestamp: 2026-05-25T05:34:39.095Z
-- signal age at the latest run: 88h
+- signal age at the latest run: 90h
 - detected topic cluster: `coding_assistant` with `student_projects` / `event_interest` context
 - 0 community-bot signals
 - no recovery-batch, referral-sprint, or no-reply tracker evidence supplied yet
@@ -34,12 +34,12 @@ Run one narrow recovery pass:
 ```bash
 mkdir -p private
 node scripts/casagrand-campaign-report.js --write-recovery-batch-template private/casagrand-recovery-batch.json
-node scripts/casagrand-campaign-report.js --date 2026-05-28 --exclude-last4 2585 --manual-tracker private/casagrand-recovery-batch.json
+node scripts/casagrand-campaign-report.js --date 2026-05-29 --exclude-last4 2585 --manual-tracker private/casagrand-recovery-batch.json
 ```
 
 ## Route thresholds
 
-- No recovery replies / no concrete problems: continue narrow discovery or ask Boogi for warmer names; still no broad post.
+- No recovery replies / no concrete problems after the current recovery pass: use `/casagrand-firstcity/recovery-closeout/` once, then restart with a fresh six-person seed batch; still no broad post.
 - QA/dev sample reply: use `/casagrand-firstcity/qa-walkthrough/`.
 - Excel/workflow sample reply: use `/casagrand-firstcity/excel-walkthrough/`.
 - One referral: use `/casagrand-firstcity/referral-sprint/`.

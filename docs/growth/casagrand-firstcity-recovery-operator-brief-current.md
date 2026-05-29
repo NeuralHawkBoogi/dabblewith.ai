@@ -1,12 +1,12 @@
-# Casagrand Recovery Operator Brief — 2026-05-28
+# Casagrand Recovery Operator Brief — 2026-05-29
 
-Generated: 2026-05-28T10:16:38.413Z
+Generated: 2026-05-29T00:20:04.444Z
 
 ## Current state
 - Unique resident signals: 1
 - Campaign signals: 1
 - Owner/test signals excluded: 1
-- Cadence: single_responder_stale_24h (76h since latest signal)
+- Cadence: single_responder_stale_24h (90h since latest signal)
 - Next action: Use /casagrand-firstcity/no-reply-nudge/ once for the first responder, ask for one tiny sample/slot/referral signal, then continue narrow discovery if there is still no reply; do not broad-post yet.
 
 ## One-sitting send queue
@@ -24,7 +24,7 @@ Quick nudge — if useful, send me one tiny QA/coding or Excel task you repeat. 
 ```sh
 mkdir -p private
 node scripts/casagrand-campaign-report.js --write-recovery-batch-template private/casagrand-recovery-batch.json
-node scripts/casagrand-campaign-report.js --runtime-dir /home/clawdbot/dabblewith-whatsapp/data --date 2026-05-28 --exclude-last4 2585 --manual-tracker private/casagrand-recovery-batch.json
+node scripts/casagrand-campaign-report.js --runtime-dir /home/clawdbot/dabblewith-whatsapp/data --date 2026-05-29 --exclude-last4 2585 --manual-tracker private/casagrand-recovery-batch.json
 ```
 
 ## Route after 24h
