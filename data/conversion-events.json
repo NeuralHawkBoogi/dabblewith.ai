@@ -217,13 +217,14 @@
     {
       "event": "community_bot_setup_click",
       "status": "tracked",
-      "cta_count": 78,
-      "page_count": 47,
+      "cta_count": 79,
+      "page_count": 48,
       "pages": [
         "/blog/agent-workflows-for-founders/",
         "/blog/ai-automation-community-content-engine/",
         "/blog/ai-operated-community-human-guided/",
         "/blog/ai-workshop-intake-template-for-teams/",
+        "/blog/ai-workshop-template-founder-build-sprint/",
         "/blog/",
         "/blog/community-apple-silicon-distributed-inference/",
         "/blog/founder-agent-workflow-runbook/",
@@ -377,13 +378,14 @@
     {
       "event": "workflow_submit_start",
       "status": "tracked",
-      "cta_count": 112,
-      "page_count": 41,
+      "cta_count": 113,
+      "page_count": 42,
       "pages": [
         "/blog/agent-workflows-for-founders/",
         "/blog/ai-automation-community-content-engine/",
         "/blog/ai-operated-community-human-guided/",
         "/blog/ai-workshop-intake-template-for-teams/",
+        "/blog/ai-workshop-template-founder-build-sprint/",
         "/blog/",
         "/blog/community-apple-silicon-distributed-inference/",
         "/blog/founder-agent-workflow-runbook/",
@@ -1646,6 +1648,14 @@
       "event": "community_bot_setup_click",
       "cta_id": "blog_article_community_bot_path",
       "page_path": "/blog/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "community_bot_setup_click",
+      "cta_id": "blog_article_community_bot_path",
+      "page_path": "/blog/ai-workshop-template-founder-build-sprint/",
       "workflow_category": "",
       "audience_segment": "",
       "status": "tracked"
@@ -3822,6 +3832,14 @@
       "event": "workflow_submit_start",
       "cta_id": "blog_article_workflow_signal",
       "page_path": "/blog/ai-workshop-intake-template-for-teams/",
+      "workflow_category": "",
+      "audience_segment": "",
+      "status": "tracked"
+    },
+    {
+      "event": "workflow_submit_start",
+      "cta_id": "blog_article_workflow_signal",
+      "page_path": "/blog/ai-workshop-template-founder-build-sprint/",
       "workflow_category": "",
       "audience_segment": "",
       "status": "tracked"

@@ -140,6 +140,13 @@
       var u = new URL(link.href || link.getAttribute('href') || '', window.location.href);
       payload.link_host = u.protocol === 'mailto:' ? 'email' : (u.hostname || '');
     } catch (_) { /* ignore */ }
+    var linkContext = {
+      source: link.getAttribute('data-source') || '',
+      medium: link.getAttribute('data-medium') || '',
+      campaign: link.getAttribute('data-campaign') || '',
+      content: link.getAttribute('data-content') || '',
+      intent: link.getAttribute('data-intent') || ''
+    };
     if (attribution) {
       if (attribution.utm_source) payload.source = attribution.utm_source;
       if (attribution.utm_medium) payload.medium = attribution.utm_medium;
@@ -147,6 +154,9 @@
       if (attribution.utm_content) payload.content = attribution.utm_content;
       if (attribution.intent) payload.intent = attribution.intent;
     }
+    Object.keys(linkContext).forEach(function (key) {
+      if (!payload[key] && linkContext[key]) payload[key] = safeText(linkContext[key]);
+    });
     return payload;
   }
 
