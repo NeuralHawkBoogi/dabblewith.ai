@@ -137,6 +137,7 @@ const urls = [
   ['https://dabblewith.ai/casagrand-firstcity/fresh-seed-scorecard/', 'weekly', '0.8'],
   ['https://dabblewith.ai/casagrand-firstcity/fresh-seed-dm-pack/', 'weekly', '0.8'],
   ['https://dabblewith.ai/casagrand-firstcity/healthcare-workflow-sample/', 'weekly', '0.8'],
+  ['https://dabblewith.ai/casagrand-firstcity/healthcare-nudge/', 'weekly', '0.8'],
   ['https://dabblewith.ai/casagrand-firstcity/rsvp/', 'weekly', '0.8'],
   ['https://dabblewith.ai/casagrand-firstcity/admin-ask/', 'weekly', '0.8'],
   ['https://dabblewith.ai/casagrand-firstcity/launch-board/', 'weekly', '0.8'],

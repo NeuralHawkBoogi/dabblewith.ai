@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#060912" />
+  <title>Casagrand Healthcare Nudge — dabblewith.ai</title>
+  <meta name="description" content="A one-time privacy-safe nudge kit for converting a stale Casagrand healthcare workflow signal into a sample, slot vote, referral, or clean stop." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://dabblewith.ai/casagrand-firstcity/healthcare-nudge/" />
+  <meta property="og:site_name" content="dabblewith.ai" />
+  <meta property="og:title" content="Casagrand Healthcare Nudge" />
+  <meta property="og:description" content="One safe follow-up for the stale doctor/pathologist signal before continuing narrow discovery." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dabblewith.ai/casagrand-firstcity/healthcare-nudge/" />
+  <meta property="og:image" content="https://dabblewith.ai/app-icon-1024.png" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7473LZQGX2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-7473LZQGX2');
+    function copyText(id, label) {
+      var el = document.getElementById(id); if (!el) return;
+      var text = el.innerText.trim();
+      var done = function () {
+        if (typeof gtag === 'function') gtag('event', 'copy_click', { cta_id: 'casagrand_healthcare_nudge_' + id, cta_source: 'casagrand_healthcare_nudge', link_text: label || id, page_path: location.pathname });
+        var btn = document.querySelector('[data-copy-target="' + id + '"]');
+        if (btn) { var old = btn.innerText; btn.innerText = 'Copied'; setTimeout(function(){ btn.innerText = old; }, 1400); }
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done).catch(function(){ window.prompt('Copy this text', text); });
+      else window.prompt('Copy this text', text);
+    }
+  </script>
+  <script src="/scripts/web/dabblewith-tracking.js" defer></script>
+  <style>
+    :root{--bg:#060912;--panel:rgba(16,27,48,.94);--line:rgba(116,255,219,.24);--hard:#74ffdb;--text:#f2fbff;--muted:#9eb0c2;--green:#74ff7b;--blue:#58a6ff;--amber:#ffcc66;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--text);background:radial-gradient(circle at 10% 0%,rgba(88,166,255,.24),transparent 28rem),radial-gradient(circle at 90% 8%,rgba(116,255,123,.14),transparent 26rem),var(--bg)}a{color:inherit}.shell{width:min(1080px,calc(100% - 30px));margin:0 auto}nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0}.logo{text-decoration:none;font-size:30px;font-weight:900;letter-spacing:-.055em}.nav{display:flex;gap:10px;flex-wrap:wrap}.nav a{border:1px solid var(--line);border-radius:999px;padding:9px 12px;text-decoration:none;color:var(--muted);background:rgba(255,255,255,.03)}.hero,.panel,.card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(16,27,48,.96),rgba(8,13,25,.92));border-radius:24px;box-shadow:0 24px 90px rgba(0,0,0,.45)}.hero{padding:clamp(26px,5vw,52px);margin:18px auto 26px}.eyebrow{width:fit-content;color:var(--hard);border:1px solid var(--hard);background:rgba(116,255,219,.08);border-radius:999px;padding:9px 12px;font:12px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em}h1{font-size:clamp(42px,7vw,80px);line-height:.9;letter-spacing:-.07em;margin:24px 0 18px}h2{font-size:clamp(28px,4vw,44px);line-height:.96;letter-spacing:-.055em;margin:0 0 16px}h3{font-size:22px;margin:0 0 8px}.lead{font-size:clamp(18px,2.2vw,24px);color:#d7e9f7;line-height:1.45;max-width:900px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.two{grid-template-columns:repeat(2,1fr)}.card,.panel{padding:22px}.muted,p,li{color:var(--muted);line-height:1.65}.badge{display:inline-flex;border:1px solid rgba(116,255,123,.45);color:var(--green);background:rgba(116,255,123,.08);padding:5px 9px;border-radius:999px;font:12px/1.2 ui-monospace,Menlo,monospace}.badge.warn{color:var(--amber);border-color:rgba(255,204,102,.45);background:rgba(255,204,102,.08)}section{padding:28px 0}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--hard);color:var(--hard);background:rgba(116,255,219,.07);border-radius:14px;padding:12px 15px;text-decoration:none;font-weight:850;cursor:pointer}.btn.primary{color:#04120e;background:var(--green);border-color:var(--green)}button.btn{font:inherit}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.copybox{white-space:pre-wrap;border:1px solid rgba(116,255,219,.18);border-radius:18px;background:rgba(0,0,0,.28);padding:16px;color:#d9f6ff;font:14px/1.65 ui-monospace,Menlo,monospace;overflow:auto}.route{border-left:3px solid var(--green);padding-left:14px;margin:14px 0}.stop{border-left-color:var(--amber)}footer{border-top:1px solid var(--line);color:var(--muted);padding:26px 0 34px;margin-top:36px;font:13px/1.4 ui-monospace,Menlo,monospace}@media(max-width:860px){.grid,.two{grid-template-columns:1fr}.nav{display:none}}
+  </style>
+</head>
+<body>
+  <nav class="shell"><a class="logo" href="/">dabblewith.ai</a><div class="nav"><a href="/casagrand-firstcity/">Pilot</a><a href="/casagrand-firstcity/healthcare-workflow-sample/">Healthcare sample</a><a href="/casagrand-firstcity/referral-sprint/">Referral sprint</a><a href="/casagrand-firstcity/narrow-discovery/">Narrow discovery</a></div></nav>
+  <main>
+    <section class="hero shell">
+      <div class="eyebrow">Casagrand healthcare follow-up · one nudge only</div>
+      <h1>One safe nudge, then stop chasing.</h1>
+      <p class="lead">The latest Casagrand healthcare-professional signal is now stale. Use this page to send one privacy-safe follow-up, capture a sample/slot/referral if it lands, or cleanly route back to narrow discovery without broad-posting.</p>
+      <div class="actions">
+        <button class="btn primary" data-copy-target="nudge" onclick="copyText('nudge','healthcare nudge')">Copy one-time nudge</button>
+        <button class="btn" data-copy-target="slot" onclick="copyText('slot','slot vote')">Copy slot-only fallback</button>
+        <button class="btn" data-copy-target="referral" onclick="copyText('referral','referral fallback')">Copy referral fallback</button>
+        <button class="btn" data-copy-target="tracker" onclick="copyText('tracker','tracker row')">Copy tracker row</button>
+      </div>
+    </section>
+
+    <section class="shell grid">
+      <article class="card"><span class="badge warn">send once</span><h3>No drip sequence</h3><p>If there is no reply after this nudge, stop chasing this resident and continue the warm narrow-discovery route.</p></article>
+      <article class="card"><span class="badge warn">no PHI</span><h3>Fake/scrubbed only</h3><p>No patient data, reports, lab values, screenshots, names, phone numbers, prescriptions, or clinical decision support.</p></article>
+      <article class="card"><span class="badge">growth gate</span><h3>2 healthcare signals → micro-session</h3><p>Two healthcare/admin workflow signals are enough for a tiny private micro-session; broad IT-group posting still needs stronger evidence.</p></article>
+    </section>
+
+    <section class="shell grid two">
+      <div class="panel"><h2>One-time healthcare nudge</h2><div id="nudge" class="copybox">Quick nudge — if useful, send me one tiny non-clinical healthcare admin/reporting task you repeat.
+
+I’ll turn it into a small AI-by-doing sample using fake/scrubbed data only.
+
+Good examples: report-formatting checklist, generic patient-instruction draft for human review, appointment follow-up tracker, inventory/admin summary, or public-article learning digest.
+
+Please don’t send patient names, lab values, reports, screenshots, prescriptions, IDs, clinic/customer details, or anything confidential.
+
+If now is not the right time, just reply with one slot: weekend morning / weekend evening / weekday evening.</div></div>
+      <div class="panel"><h2>Slot-only fallback</h2><div id="slot" class="copybox">No need to send any sample now. Which slot should I keep in mind if I run a tiny Casagrand “AI for healthcare/admin workflows” demo?
+
+1. weekend morning
+2. weekend evening
+3. weekday evening
+
+I’ll keep it non-clinical: fake/scrubbed data only, human review required, no medical advice.</div></div>
+      <div class="panel"><h2>Referral fallback</h2><div id="referral" class="copybox">If this is not your priority, one intro would still help: is there one Casagrand resident in healthcare, diagnostics, clinic/lab admin, insurance, reporting, or operations who may want a safe AI workflow sample?
+
+I’m validating with 2–3 residents privately before posting anything broadly.</div></div>
+      <div class="panel"><h2>Last4-only tracker row</h2><div id="tracker" class="copybox">last4=8787
+route=healthcare_nudge
+segment=healthcare_workflow
+nudgeSent=yes
+sampleShared=yes/no
+slotVote=weekend_morning/weekend_evening/weekday_evening/unknown
+referralCount=0
+taskType=report_formatting/patient_instruction_draft/appointment_followup/inventory_admin/learning_digest/other/unknown
+nextAction=healthcare_sample/referral_sprint/date_lock/bot_readiness/narrow_discovery
+
+Do not store raw WhatsApp text, names, full phone numbers, screenshots, patient data, lab values, prescriptions, IDs, or message IDs.</div></div>
+    </section>
+
+    <section class="shell panel">
+      <h2>Decision route after 24 hours</h2>
+      <div class="route"><h3>Sample shared</h3><p>Use <a href="/casagrand-firstcity/healthcare-workflow-sample/">/healthcare-workflow-sample/</a>, run a 20-minute fake/scrubbed demo, then ask for one referral.</p></div>
+      <div class="route"><h3>One referral</h3><p>Use <a href="/casagrand-firstcity/referral-sprint/">/referral-sprint/</a> and log only last4 + segment + route.</p></div>
+      <div class="route"><h3>Group-owner/admin signal</h3><p>Use <a href="/casagrand-firstcity/bot-readiness/">/bot-readiness/</a> only if they actually own/admin a WhatsApp group or run a community.</p></div>
+      <div class="route"><h3>Three total resident signals</h3><p>Use <a href="/casagrand-firstcity/date-lock/">/date-lock/</a> to lock topic/date before any broad WhatsApp post.</p></div>
+      <div class="route stop"><h3>No reply</h3><p>Do not send a second nudge. Continue <a href="/casagrand-firstcity/narrow-discovery/">/narrow-discovery/</a> with warm DMs and keep broad posting gated.</p></div>
+    </section>
+  </main>
+  <footer><div class="shell">AI-operated · human-guided · Casagrand healthcare nudge · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></div></footer>
+</body>
+</html>
