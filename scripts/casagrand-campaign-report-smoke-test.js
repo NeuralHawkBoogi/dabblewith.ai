@@ -60,6 +60,7 @@ function appendJsonl(file, rows) {
   assert.strictEqual(isCampaignText('Casagrand First City - I want to join AI by Doing'), true);
   assert.strictEqual(isCampaignText('random message'), false);
   assert.deepStrictEqual(inferTopics('I need resume and interview prep', 'community_signal'), ['job_search']);
+  assert(inferTopics('Casagrand resident doctor pathologist wants to automate lab reporting', 'join_request').includes('healthcare_workflow'));
   assert.deepStrictEqual(inferSourceTags('Casagrand First City tester - career. My role is:'), ['tester_career']);
   assert.deepStrictEqual(inferSourceTags('Casagrand workflow help — automate reports'), ['tester_workflow']);
   assert.deepStrictEqual(inferSourceTags('Casagrand community bot demo for residents'), ['tester_community_bot']);
@@ -724,6 +725,21 @@ function appendJsonl(file, rows) {
   assert(qaFollowUp.trackerNote.includes('route=first_responder_referral_sprint'));
   assert(!JSON.stringify(qaFollowUp).includes('919840385678'), 'follow-up leaked full phone');
   assert(!JSON.stringify(qaFollowUp).includes('wamid.qa.coding.one'), 'follow-up leaked message id');
+
+  // A latest healthcare professional signal should not reuse the older generic
+  // QA/coding ask just because event_interest is also present in the aggregate.
+  const healthcareReport = {
+    decision: { stage: 'single_responder_conversion' },
+    topics: { event_interest: 2, healthcare_workflow: 1 },
+    recentSignals: [{ receivedAt: '2026-05-29T08:11:02.157Z', from: '********8787', topics: ['healthcare_workflow', 'event_interest'] }],
+  };
+  const healthcareFollowUp = buildFirstResponderFollowUp(healthcareReport);
+  assert.strictEqual(healthcareFollowUp.topic, 'healthcare_workflow');
+  assert.strictEqual(healthcareFollowUp.last4, '8787');
+  assert(healthcareFollowUp.workflowSampleAsk.includes('healthcare admin or reporting task'));
+  assert(healthcareFollowUp.referralAsk.includes('healthcare, clinics, labs'));
+  assert(healthcareFollowUp.trackerNote.includes('segment=healthcare_workflow'));
+  assert(!JSON.stringify(healthcareFollowUp).match(/\d{5,}/), 'healthcare follow-up leaked a long number');
 
   const qaOutputDir = tmpDir();
   const qaResult = writeCampaignReport({ runtimeDir: qaRuntimeDir, outputDir: qaOutputDir, date: '2026-05-22' });

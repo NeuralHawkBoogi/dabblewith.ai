@@ -20,6 +20,7 @@ const TOPIC_RULES = [
   ['founder_tools', /\b(founder|startup|business|sales|proposal|lead|customer|freelance)/i],
   ['student_projects', /\b(student|college|school|project|learn|study|intern)/i],
   ['community_bot', /\b(whatsapp bot|community bot|resident helper|faq bot|bot)/i],
+  ['healthcare_workflow', /\b(doctor|pathologist|clinic|clinical|patient|medical|healthcare|lab|diagnostic|diagnosis|prescription|reporting)/i],
   ['event_interest', /\b(event|session|workshop|clubhouse|attend|register|join)/i],
 ];
 const SOURCE_TAG_RULES = [
@@ -66,7 +67,8 @@ const TRACK_FOR_TAG = {
 // redacted aggregates, never raw phones/messages/tokens.
 const FIRST_RESPONDER_WORKFLOW_ASKS = {
   coding_assistant: 'Share one QA or coding task you repeat — a flaky test you keep re-running, a PR-review checklist, or a bug-triage step — and I will turn it into a small AI-by-doing sample you can reuse.',
-  event_interest: 'Share one QA or coding task you repeat — a flaky test, a PR-review checklist, or a bug-triage step — and I will turn it into a small AI-by-doing sample you can reuse.',
+  event_interest: 'Share one tiny task you repeat at work — a checklist, report, note, QA step, spreadsheet, or follow-up — and I will turn it into a small AI-by-doing sample you can reuse.',
+  healthcare_workflow: 'Share one non-clinical healthcare admin or reporting task you repeat — lab-report formatting, patient-instruction draft, appointment follow-up, inventory checklist, or insurance/admin summary — and I will turn it into a small AI-by-doing sample you can reuse. Use fake/scrubbed data only.',
   office_productivity: 'Share one report or spreadsheet step you repeat each week and I will turn it into a small AI-by-doing sample you can reuse.',
   job_search: 'Share one resume or interview-prep task you are working on and I will turn it into a small AI-by-doing sample you can reuse.',
   founder_tools: 'Share one sales, proposal, or lead-follow-up step you repeat and I will turn it into a small AI-by-doing sample you can reuse.',
@@ -765,7 +767,7 @@ function computeLaunchDecision(report) {
   const topTopic = topEntry(report.topics);
   const topSourceTag = topEntry(report.sourceTags);
 
-  const firstResponderTopics = new Set(['coding_assistant', 'student_projects', 'event_interest', 'job_search', 'office_productivity', 'founder_tools']);
+  const firstResponderTopics = new Set(['coding_assistant', 'student_projects', 'event_interest', 'job_search', 'office_productivity', 'founder_tools', 'healthcare_workflow']);
   const hasConcreteFirstResponderTopic = Boolean(topTopic && firstResponderTopics.has(topTopic.key));
 
   const thresholds = [
@@ -845,24 +847,37 @@ function firstResponderLast4(report) {
 // single_responder_conversion stage; returns null for every other stage. Uses
 // only redacted aggregates already on the report (top topic + last4), never raw
 // phone numbers, message ids, or tokens. Deterministic for a given report.
+function firstResponderTopic(report) {
+  const priority = ['healthcare_workflow', 'coding_assistant', 'office_productivity', 'founder_tools', 'job_search', 'student_projects', 'event_interest'];
+  const latest = Array.isArray(report.recentSignals) ? report.recentSignals[0] : null;
+  if (latest && Array.isArray(latest.topics)) {
+    const topic = priority.find((candidate) => latest.topics.includes(candidate));
+    if (topic) return topic;
+  }
+  const topTopic = topEntry(report.topics);
+  return topTopic ? topTopic.key : 'coding_assistant';
+}
+
 function buildFirstResponderFollowUp(report) {
   if (!report || !report.decision || report.decision.stage !== 'single_responder_conversion') {
     return null;
   }
-  const topTopic = topEntry(report.topics);
-  const topic = topTopic ? topTopic.key : 'coding_assistant';
+  const topic = firstResponderTopic(report);
   const last4 = firstResponderLast4(report);
   const last4Label = last4 ? `last4=${last4}` : 'last4=unknown';
+  const isHealthcare = topic === 'healthcare_workflow';
   return {
     topic,
     last4,
     workflowSampleAsk: FIRST_RESPONDER_WORKFLOW_ASKS[topic] || FIRST_RESPONDER_DEFAULT_WORKFLOW_ASK,
     slotVoteAsk: 'Which slot works for a 30-minute build session — weekend morning, weekend evening, or weekday evening — and which topic should we anchor on first?',
-    referralAsk: 'Who is one other Casagrand First City resident who would want the same QA/coding workflow help? One quick intro is enough.',
+    referralAsk: isHealthcare
+      ? 'Who is one other Casagrand First City resident in healthcare, clinics, labs, admin, or reporting who would want a practical AI workflow sample? One quick intro is enough.'
+      : 'Who is one other Casagrand First City resident who would want the same practical workflow help? One quick intro is enough.',
     referralSprintLink: 'https://dabblewith.ai/casagrand-firstcity/referral-sprint/',
     referralSprintAsk: 'If they agree, send the referred-neighbor warm intro from /casagrand-firstcity/referral-sprint/ and log the new signal with last4 only.',
     communityBotGate: 'Only send /casagrand-firstcity/bot-readiness/ if the referral owns/admins a WhatsApp group or runs a resident/business/student community.',
-    trackerNote: `Log in the manual tracker: ${last4Label} · segment=workflow · route=first_responder_referral_sprint · note="QA/coding workflow sample + one-referral ask sent".`,
+    trackerNote: `Log in the manual tracker: ${last4Label} · segment=${isHealthcare ? 'healthcare_workflow' : 'workflow'} · route=first_responder_referral_sprint · note="${isHealthcare ? 'healthcare workflow sample + one-referral ask sent' : 'workflow sample + one-referral ask sent'}".`,
   };
 }
 
@@ -1158,7 +1173,9 @@ function buildStaleResponderRecovery(report) {
     signalAgeHours: cadence.ageHours,
     last4,
     topic,
-    nudgeCopy: 'Quick nudge — if useful, send me one tiny QA/coding or Excel task you repeat. I will turn it into a small AI-by-doing sample. If now is not the right time, just reply with: weekend morning / weekend evening / weekday evening, or intro me to one Casagrand resident who may want this.',
+    nudgeCopy: topic === 'healthcare_workflow'
+      ? 'Quick nudge — if useful, send me one tiny non-clinical healthcare admin/reporting task you repeat. I will turn it into a small AI-by-doing sample using fake/scrubbed data only. If now is not the right time, just reply with: weekend morning / weekend evening / weekday evening, or intro me to one Casagrand resident who may want this.'
+      : 'Quick nudge — if useful, send me one tiny QA/coding or Excel task you repeat. I will turn it into a small AI-by-doing sample. If now is not the right time, just reply with: weekend morning / weekend evening / weekday evening, or intro me to one Casagrand resident who may want this.',
     recoveryBatchTrackerCommand: 'node scripts/casagrand-campaign-report.js --write-recovery-batch-template private/casagrand-recovery-batch.json',
     recoveryBatchReportCommand: 'node scripts/casagrand-campaign-report.js --date YYYY-MM-DD --exclude-last4 2585 --manual-tracker private/casagrand-recovery-batch.json',
     trackerCommand: 'node scripts/casagrand-campaign-report.js --write-no-reply-nudge-template private/casagrand-no-reply-nudge.json',
@@ -1167,7 +1184,9 @@ function buildStaleResponderRecovery(report) {
     fallbackTrackerCommand: 'node scripts/casagrand-campaign-report.js --write-narrow-discovery-template private/casagrand-narrow-discovery.json',
     fallbackReportCommand: 'node scripts/casagrand-campaign-report.js --date YYYY-MM-DD --exclude-last4 2585 --manual-tracker private/casagrand-narrow-discovery.json',
     thresholds: [
-      'Sample/problem reply -> use /casagrand-firstcity/qa-walkthrough/ or /casagrand-firstcity/excel-walkthrough/.',
+      topic === 'healthcare_workflow'
+        ? 'Healthcare/admin sample reply -> use /casagrand-firstcity/healthcare-workflow-sample/ first, then route demos/referrals through /casagrand-firstcity/referral-sprint/.'
+        : 'Sample/problem reply -> use /casagrand-firstcity/qa-walkthrough/ or /casagrand-firstcity/excel-walkthrough/.',
       'One referral -> use /casagrand-firstcity/referral-sprint/.',
       'Group-owner/admin signal -> use /casagrand-firstcity/bot-readiness/.',
       'Three total resident signals -> use /casagrand-firstcity/date-lock/.',
